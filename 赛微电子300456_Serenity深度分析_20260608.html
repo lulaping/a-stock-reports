@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赛微电子 (300456) — Serenity 深度分析 | 2026-06-08</title>
+<style>
+  :root {
+    --bg: #0d1117; --card-bg: #161b22; --border: #30363d;
+    --text: #c9d1d9; --text-secondary: #8b949e;
+    --accent: #58a6ff; --green: #3fb950; --red: #f85149;
+    --yellow: #d2991d; --purple: #a371f7; --orange: #f0883e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height: 1.8; padding: 2rem 1.5rem; max-width: 1100px; margin: 0 auto;
+  }
+  h1 { font-size: 1.8rem; color: #fff; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 0.3rem; }
+  h2 { font-size: 1.35rem; color: var(--accent); margin-top: 2.5rem; margin-bottom: 1rem; padding-left: 0.5rem; border-left: 4px solid var(--accent); }
+  h3 { font-size: 1.1rem; color: #f0f6fc; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+  .meta { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 2rem; }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .verdict { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+  .verdict-item {
+    flex: 1; min-width: 240px;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+    border-radius: 6px; padding: 0.8rem 1rem;
+  }
+  .verdict-item .label { font-size: 0.8rem; color: var(--text-secondary); }
+  .verdict-item .value { font-size: 1rem; font-weight: 600; margin-top: 0.2rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+  th, td { border: 1px solid var(--border); padding: 0.5rem 0.7rem; text-align: left; }
+  th { background: rgba(255,255,255,0.05); color: var(--text-secondary); font-weight: 600; }
+  .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.78rem; font-weight: 600; margin-right: 0.3rem; }
+  .tag-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-red { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-yellow { background: rgba(210,153,29,0.15); color: var(--yellow); }
+  .tag-accent { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .highlight { color: var(--green); font-weight: 600; }
+  .danger { color: var(--red); font-weight: 600; }
+  .warn { color: var(--yellow); font-weight: 600; }
+  .info { color: var(--accent); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  .stock-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
+  .stock-code { color: var(--text-secondary); font-size: 0.9rem; }
+  .stock-name { font-size: 1.2rem; font-weight: 700; color: #fff; }
+  ul { padding-left: 1.2rem; margin-bottom: 0.8rem; }
+  li { margin-bottom: 0.3rem; }
+  .bold { font-weight: 700; color: #fff; }
+  .disclaimer {
+    background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.3);
+    border-radius: 8px; padding: 1rem 1.5rem; margin-top: 3rem; font-size: 0.85rem; color: var(--text-secondary);
+  }
+  .duality { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
+  .duality-col { flex: 1; min-width: 280px; }
+  .verdict-box {
+    border: 2px solid var(--red); border-radius: 8px; padding: 1.2rem;
+    background: rgba(248,81,73,0.06); margin: 1.5rem 0;
+    text-align: center;
+  }
+  .verdict-box h3 { margin-top: 0; color: var(--red); }
+  @media (max-width: 768px) {
+    body { padding: 1rem; }
+    .verdict, .duality { flex-direction: column; }
+    table { font-size: 0.75rem; }
+    th, td { padding: 0.3rem 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>赛微电子 (300456) — Serenity 供应链卡点逆向深度分析</h1>
+<p class="meta">
+  分析日期：2026-06-08 &nbsp;|&nbsp; 模式：Mode 1（Serenity框架 + 客观框架对照）<br>
+  赛道：MEMS纯代工 / AI光互连(OCS) / 硅光子 &nbsp;|&nbsp; 能力圈：✅ <span class="highlight">核心能力圈</span>（半导体制造+AI供应链）
+</p>
+
+<!-- ═══════════ 结论 ═══════════ -->
+<h2>① 结论</h2>
+
+<div class="verdict-box">
+  <h3>Serenity 判定：<span class="danger">Sell / 回避（短期不可碰）</span></h3>
+  <p style="margin-top:0.5rem">核心资产出售后只剩空壳，北京FAB3产能利用率29%、年化营收不足4亿、扣非连续巨亏、PS >80x。<br>
+  <span class="bold">"国产MEMS龙头"是过去式——Silex已经出表，剩下的北京产线远未证明自己。</span></p>
+</div>
+
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 180亿（PS 4x = 中芯国际水平） / Base: 330亿（当前） / Bull: 550亿（OCS放量+机器人兑现）</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-red">Sell / 回避</span> 资产出售后主业崩塌，PS泡沫、实控人减持、产能空转，概念溢价远大于基本面</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">翻倍门槛（+100%）</div>
+    <div class="value"><span class="danger">不满足</span>。Bull case需OCS年出货3.8万台实现19亿营收——当前年化仅4亿，概率 <15%</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 客观事实底座 ═══════════ -->
+<h2>② 客观事实底座</h2>
+
+<div class="card">
+
+<h3>L0-事实：核心财务数据</h3>
+<table>
+  <tr><th>指标</th><th>2025全年</th><th>2026Q1</th><th>意味着什么</th></tr>
+  <tr>
+    <td>营收</td>
+    <td>8.24亿（-31.59%）</td>
+    <td class="danger">9854万（-62.68%）</td>
+    <td><span class="danger">Silex出表后营收断崖。Q1年化不足4亿，仅2024年营收的1/3。</span></td>
+  </tr>
+  <tr>
+    <td>归母净利润</td>
+    <td class="highlight">14.73亿（+966.77%）</td>
+    <td class="danger">-4910万（-1958%）</td>
+    <td><span class="danger">2025利润全部来自出售Silex控股权投资收益22.31亿。主业连续性巨亏。</span></td>
+  </tr>
+  <tr>
+    <td>扣非净利润</td>
+    <td class="danger">-3.42亿（亏扩）</td>
+    <td class="danger">-4942万（-567.95%）</td>
+    <td><span class="danger">经营实质：2024年扣非亏1.91亿、2025年亏3.42亿、2026Q1亏0.49亿。连亏无拐点。</span></td>
+  </tr>
+  <tr>
+    <td>毛利率</td>
+    <td>35.50%（+0.39pct）</td>
+    <td class="danger">16.51%（-26.43pct）</td>
+    <td><span class="danger">Q1毛利率崩塌。产能利用率低→单位固定成本高→毛利率被折旧吞噬。</span></td>
+  </tr>
+  <tr>
+    <td>经营现金流</td>
+    <td class="danger">-1390万</td>
+    <td class="danger">-1.50亿</td>
+    <td><span class="danger">主业不造血，持续消耗现金。2026Q1恶化显著。</span></td>
+  </tr>
+  <tr>
+    <td>资产负债率</td>
+    <td colspan="2">21.46%（财务安全）</td>
+    <td><span class="highlight">唯一亮点</span>：货币资金19.8亿，短期无破产风险</td>
+  </tr>
+  <tr>
+    <td>北京FAB3产能利用率</td>
+    <td colspan="2" class="danger">29%-35%（极低）</td>
+    <td>1.5万片/月产能，稼动率远低于盈亏平衡线（~60%）。折旧固定吃利润。</td>
+  </tr>
+  <tr>
+    <td>市值</td>
+    <td colspan="2">~330亿（约45元）</td>
+    <td>PS(TTM)=40x，PS(年化Q1)=<span class="danger">83x</span></td>
+  </tr>
+</table>
+
+<h3>L0-框架：产业链定位 &amp; 资产演变</h3>
+
+<table>
+  <tr><th>时间段</th><th>资产结构</th><th>定位</th></tr>
+  <tr>
+    <td>2016 - 2025.06</td>
+    <td><span class="highlight">瑞典Silex（全资）</span> + 北京FAB3（培育）</td>
+    <td><span class="highlight">全球MEMS纯代工第一</span>（Silex全球市占~28%）</td>
+  </tr>
+  <tr style="background: rgba(248,81,73,0.06)">
+    <td>2025.07 - 至今</td>
+    <td><span class="danger">瑞典Silex（参股9.9%）</span> + 北京FAB3（唯一主业）</td>
+    <td><span class="danger">国内中小MEMS代工厂</span>（年化营收<4亿，全球排名边缘化）</td>
+  </tr>
+</table>
+
+<p style="margin-top:1rem"><span class="bold">产业链栈</span>（当前）：</p>
+<p style="font-family:monospace;font-size:0.9rem;margin:0.5rem 0">
+  AI数据中心 / 人形机器人 / 5G手机 / 汽车<br>
+  &nbsp;&nbsp;→ 硅光引擎 / MEMS-OCS / BAW滤波器 / IMU / 微振镜<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;→ <span class="info">【赛微电子北京FAB3】</span> 8英寸MEMS晶圆代工<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 设备（进口光刻机/刻蚀机，存管制风险）<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 硅衬底 / 特种气体 / 光刻胶
+</p>
+
+<h3>核心产品线</h3>
+<table>
+  <tr><th>产品</th><th>状态</th><th>核心客户</th><th>竞争格局</th></tr>
+  <tr>
+    <td><span class="info">MEMS-OCS（光交换芯片）</span></td>
+    <td>量产，全球唯二</td>
+    <td class="danger">谷歌（独家，>70%）</td>
+    <td>仅瑞典Silex（参股公司）+ 北京FAB3</td>
+  </tr>
+  <tr>
+    <td>BAW滤波器</td>
+    <td>量产，良率90%+</td>
+    <td>华为等国内客户</td>
+    <td>博通/Qorvo垄断，国产唯一突破</td>
+  </tr>
+  <tr>
+    <td>MEMS-IMU（惯性传感器）</td>
+    <td>客户验证中</td>
+    <td>特斯拉Optimus（声称）</td>
+    <td>博世/ST/ TDK主导</td>
+  </tr>
+  <tr>
+    <td>硅光子代工</td>
+    <td>早期</td>
+    <td>华为海思（声称）</td>
+    <td>台积电/Tower/GlobalFoundries</td>
+  </tr>
+  <tr>
+    <td>MEMS微振镜（激光雷达）</td>
+    <td>量产</td>
+    <td>小米SU7等</td>
+    <td>多厂商竞争</td>
+  </tr>
+</table>
+
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 正反双方证据 ═══════════ -->
+<h2>③ 多空双方核心论据对照</h2>
+
+<div class="duality">
+  <div class="duality-col card" style="background:rgba(63,185,80,0.03); border-color:rgba(63,185,80,0.2)">
+    <h3 style="color:var(--green);margin-top:0">🐂 多头叙事（看多逻辑）</h3>
+    <ul>
+      <li><span class="highlight">全球唯二MEMS-OCS量产</span>：AI数据中心光交换核心芯片，谷歌TPU集群独家供应</li>
+      <li><span class="highlight">BAW滤波器国产唯一突破</span>：博通/Qorvo垄断被打破</li>
+      <li><span class="highlight">人形机器人传感器大市场</span>：单台Optimus需40+颗MEMS传感器</li>
+      <li>国内唯一8英寸高端MEMS量产线，8英寸MEMS产线稀缺</li>
+      <li>低负债（21%），现金19.8亿，财务安全</li>
+      <li>Silex参股保留技术合作通道</li>
+      <li>黄仁勋6月2日"万亿美元连接公司"定调→AI光互连赛道催化剂</li>
+    </ul>
+  </div>
+  <div class="duality-col card" style="background:rgba(248,81,73,0.03); border-color:rgba(248,81,73,0.2)">
+    <h3 style="color:var(--red);margin-top:0">🐻 空头证据（看空逻辑）</h3>
+    <ul>
+      <li><span class="danger">核心资产Silex已出售</span>：全球MEMS代工第一→国内中小厂，竞争力骤降</li>
+      <li><span class="danger">Q1营收仅0.99亿</span>：年化不足4亿，PS >80x</li>
+      <li><span class="danger">扣非连续巨亏</span>：2024-2025-2026Q1持续扩大，无盈利拐点</li>
+      <li><span class="danger">产能利用率29-35%</span>：1.5万片产能大量空转，折旧+固定成本吞噬利润</li>
+      <li><span class="danger">实控人减持套现11.67亿</span>：40.86元（市价8折），高位大额套现</li>
+      <li><span class="danger">大基金+高管集体减持</span>：产业资本离场</li>
+      <li><span class="danger">谷歌单一客户依赖</span>：OCS收入几乎全部来自谷歌，风险极高</li>
+      <li>国内MEMS代工竞争加剧：中芯/华虹/士兰微/华润微纷纷布局</li>
+      <li>机构2026E净利润预测分歧极大（5亿 vs 20.5亿，差4倍），无人有共识</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ Serenity分析 ═══════════ -->
+<h2>④ Serenity 框架评估</h2>
+
+<div class="card">
+
+<h3>好卡点判据（15条逐一过）</h3>
+<table>
+  <tr><th>#</th><th>判据</th><th>结果</th><th>说明</th></tr>
+  <tr>
+    <td>1</td><td>垄断/双寡头/single point of failure</td>
+    <td class="warn">⚠️ 部分</td>
+    <td>MEMS-OCS全球唯二（Silex+北京FAB3），但Silex已不并表。纯代工不是SPOF——谷歌可转向Silex自产。</td>
+  </tr>
+  <tr>
+    <td>2</td><td>极小市值 vs 巨大下游TAM</td>
+    <td class="danger">❌ 不满足</td>
+    <td>330亿市值 vs 全球MEMS代工TAM约$15亿——<span class="bold">市值已超过可触达市场</span>。OCS市场虽高增但体量小。</td>
+  </tr>
+  <tr style="background:rgba(248,81,73,0.04)">
+    <td>3</td><td>BOM占比相对市值巨大 + designed-in</td>
+    <td class="danger">❌ 不满足</td>
+    <td>OCS单颗$3000在整机$12-14万中占比仅2-2.5%，非BOM占比较大。</td>
+  </tr>
+  <tr>
+    <td>4</td><td>designed-in + 多客户</td>
+    <td class="danger">❌ 不满足</td>
+    <td><span class="bold">谷歌单一客户依赖</span>：OCS高度集中，不符合"多客户toll booth"。</td>
+  </tr>
+  <tr style="background:rgba(63,185,80,0.03)">
+    <td>5</td><td>认证周期长、未反映当期营收</td>
+    <td class="highlight">✅ 满足</td>
+    <td>MEMS客户导入周期12-24个月，车规更长。部分认证中的产品尚未贡献营收。</td>
+  </tr>
+  <tr style="background:rgba(248,81,73,0.04)">
+    <td>6</td><td>未来爆发营收（当期财务无所谓）</td>
+    <td class="danger">❌ 不满足</td>
+    <td>OCS爆发是最大希望，但<span class="bold">当前年化仅4亿→到19亿需5x增长</span>，不确定性极高。</td>
+  </tr>
+  <tr>
+    <td>7</td><td>资产负债表能撑过爬坡</td>
+    <td class="highlight">✅ 满足</td>
+    <td>负债率21%、现金19.8亿，能撑2-3年。</td>
+  </tr>
+  <tr>
+    <td>8</td><td>Demand far outstrips supply</td>
+    <td class="warn">⚠️ 不确定</td>
+    <td>OCS需求旺盛但产能利用率仅29-35%——说明不是产能不够，是拿不到足够订单。</td>
+  </tr>
+  <tr>
+    <td>13</td><td>极少数玩家（世界没几家能做）</td>
+    <td class="highlight">✅ 满足</td>
+    <td>MEMS-OCS量产全球仅2家（含Silex），北京FAB3国内唯一。</td>
+  </tr>
+  <tr>
+    <td>15</td><td>国产替代紧迫度</td>
+    <td class="highlight">✅ 满足</td>
+    <td>BAW滤波器/高端MEMS国产化率低，有替代紧迫性。</td>
+  </tr>
+</table>
+
+<p style="margin-top:1rem"><span class="bold">好卡点通过率：4/10（含2个部分通过），核心判据#1#2#6均不满足。</span> 不达Serenity建仓门槛。</p>
+</div>
+
+<div class="card">
+
+<h3>红旗扫描（12项 — 命中即降级/否决）</h3>
+<table>
+  <tr><th>红旗</th><th>命中？</th><th>详情</th></tr>
+  <tr style="background:rgba(248,81,73,0.08)">
+    <td class="danger">🔴 无限ATM/增发稀释</td>
+    <td class="danger">⚠️ 近红旗</td>
+    <td>未增发但<span class="bold">实控人折价减持3.9%套现11.67亿</span> + 大基金减持 + 高管集体减持 → 产业资本集中离场</td>
+  </tr>
+  <tr style="background:rgba(248,81,73,0.08)">
+    <td class="danger">🔴 单一客户集中（>50%）</td>
+    <td class="danger">✅ 命中</td>
+    <td>OCS订单几乎<span class="bold">100%依赖谷歌</span>。谷歌一旦更换技术路线或自研=收入坍塌。</td>
+  </tr>
+  <tr>
+    <td>资产负债表toxic</td>
+    <td class="highlight">✅ 通过</td>
+    <td>负债率21%，现金19.8亿，财务安全。</td>
+  </tr>
+  <tr style="background:rgba(248,81,73,0.05)">
+    <td class="warn">⚠️ 零收入纯炒作/靠backlog</td>
+    <td class="warn">⚠️ 偏近</td>
+    <td>有收入但年化仅4亿vs 330亿市值，几乎就是"叙事驱动"。OCS出货预测（19亿→40亿→72亿）均来自卖方/自媒体，未在财报中确认。</td>
+  </tr>
+  <tr>
+    <td>技术太远（2030+不碰）</td>
+    <td class="highlight">✅ 通过</td>
+    <td>MEMS/OCS已量产，非科学项目。</td>
+  </tr>
+  <tr style="background:rgba(248,81,73,0.05)">
+    <td class="warn">⚠️ 纯软件/SaaS无硬卡点</td>
+    <td class="highlight">✅ 通过</td>
+    <td>硬件代工，有硬卡点（但产能空转消解了卡点意义）。</td>
+  </tr>
+  <tr style="background:rgba(248,81,73,0.05)">
+    <td class="warn">⚠️ 海外核心技术依赖</td>
+    <td class="warn">⚠️ 命中</td>
+    <td>核心设备依赖进口（光刻机/刻蚀机），管制风险存在但非单点致命。</td>
+  </tr>
+  <tr>
+    <td>政策依赖（补助>30%）</td>
+    <td class="highlight">✅ 通过</td>
+    <td>Q1亏损，不谈补助占比。</td>
+  </tr>
+  <tr style="background:rgba(248,81,73,0.08)">
+    <td class="danger">🔴 大股东质押>50%</td>
+    <td class="danger">✅ 命中</td>
+    <td><span class="bold">实控人杨云春持股24.46%，其中1184万股被司法冻结</span>（融资租赁合同纠纷，占其持股6.61%）。虽非质押但同样是股东风险信号。</td>
+  </tr>
+  <tr>
+    <td>商誉>50%净资产</td>
+    <td class="highlight">✅ 通过</td>
+    <td>Silex出表后商誉大减。</td>
+  </tr>
+</table>
+
+<p style="margin-top:1rem"><span class="danger bold">红旗扫描结论：命中3项硬红旗（单一客户集中 + 产业资本集体离场 + 股东司法冻结）+ 1项近红旗（营收vs市值严重倒挂）→ Serenity框架硬降级。</span></p>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 估值 ═══════════ -->
+<h2>⑤ 估值分析</h2>
+
+<div class="card">
+
+<h3>三套尺子交叉验证</h3>
+
+<h4>尺子1：PS 倍数法（代工行业通用）</h4>
+<table>
+  <tr><th>可比公司</th><th>PS(TTM)</th><th>备注</th></tr>
+  <tr><td>中芯国际 (688981)</td><td>~4x</td><td>全球第三大晶圆代工厂，成熟制程为主</td></tr>
+  <tr><td>华虹公司 (688347)</td><td>~3x</td><td>特色工艺代工</td></tr>
+  <tr><td>Tower Semiconductor</td><td>~3x</td><td>全球MEMS/模拟代工对标</td></tr>
+  <tr><td>台积电 (TSM)</td><td>~9x</td><td>先进制程溢价</td></tr>
+  <tr style="background:rgba(248,81,73,0.06)"><td><span class="danger bold">赛微电子</span></td><td><span class="danger bold">40x (TTM) / 83x (年化Q1)</span></td><td>比行业均值高10-20倍</td></tr>
+</table>
+
+<h4>尺子2：产能估值法（代工估值核心）</h4>
+<table>
+  <tr><th>参数</th><th>北京FAB3</th></tr>
+  <tr><td>月产能</td><td>1.5万片（当前）/ 目标3万片</td></tr>
+  <tr><td>当前利用率</td><td class="danger">29-35%</td></tr>
+  <tr><td>满产年营收潜力</td><td>~15-20亿（乐观估算）</td></tr>
+  <tr><td>满产净利率</td><td>乐观15% = 净利2.25-3亿</td></tr>
+  <tr><td>满产PE (当前330亿)</td><td class="danger">110-147x</td></tr>
+</table>
+
+<h4>尺子3：净现金/清算价值法</h4>
+<table>
+  <tr><th>项目</th><th>数值</th></tr>
+  <tr><td>Silex持股（9.9%普通股 + 19.1%待售）</td><td>保守估值~30-50亿</td></tr>
+  <tr><td>净现金（货币资金19.8亿 - 有息负债13.06亿）</td><td>~6.7亿</td></tr>
+  <tr><td>北京FAB3重置成本</td><td>约40-60亿</td></tr>
+  <tr><td><span class="bold">清算价值合计</span></td><td><span class="bold">约80-115亿</span></td></tr>
+  <tr style="background:rgba(248,81,73,0.06)"><td>当前市值 vs 清算价值</td><td class="danger">330亿 vs ~100亿 = 溢价2.3x</td></tr>
+</table>
+
+<h3>Bear / Base / Bull 三情景</h3>
+<table>
+  <tr><th></th><th>Bear</th><th>Base</th><th>Bull</th></tr>
+  <tr><td>核心假设</td><td>OCS未放量、产能利用率<50%、扣非继续亏损</td><td>产能利用率60%、OCS小批量、2027盈亏平衡</td><td>OCS年出货3.8万台=19亿营收、机器人IMU放量、2026Q4扣非转正</td></tr>
+  <tr><td>年化营收</td><td>4亿</td><td>8亿</td><td>25亿</td></tr>
+  <tr><td>合理PS</td><td>4x（对标中芯国际）</td><td>8x（成长溢价）</td><td>12x（OCS高毛利溢价）</td></tr>
+  <tr><td>估值</td><td class="danger">~180亿</td><td>~260亿</td><td>~550亿</td></tr>
+  <tr><td>vs 当前330亿</td><td class="danger">-45%</td><td class="warn">-21%</td><td class="highlight">+67%</td></tr>
+  <tr><td>概率（Serenity判断）</td><td class="danger">~55%</td><td class="warn">~35%</td><td><span class="highlight">~10%</span></td></tr>
+</table>
+
+<p style="margin-top:1rem"><span class="bold">预期值</span> = 180×0.55 + 260×0.35 + 550×0.10 = <span class="danger">245亿</span>。vs 当前330亿 → <span class="danger">下行风险-26%</span>。正向不对称不存在。</p>
+
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 催化剂 ═══════════ -->
+<h2>⑥ 催化剂时点</h2>
+
+<div class="card">
+<table>
+  <tr><th>催化剂</th><th>预计时间</th><th>信号强度</th><th>方向</th></tr>
+  <tr>
+    <td>2026Q2季报（营收/产能利用率）</td>
+    <td>2026年8月</td>
+    <td class="danger">强</td>
+    <td>若Q2营收仍<1.5亿→空头确认。若>3亿→多头逆转。</td>
+  </tr>
+  <tr>
+    <td>谷歌TPU v6 OCS订单公告</td>
+    <td>2026H2</td>
+    <td class="highlight">极强</td>
+    <td>若获谷歌下一代TPU的OCS独家订单→本质变。若未获→OCS逻辑断裂。</td>
+  </tr>
+  <tr>
+    <td>北京FAB3二期投产（月产能→3万片）</td>
+    <td>2026Q2-Q3</td>
+    <td>中</td>
+    <td>产能增加≠收入增加，需配套订单。</td>
+  </tr>
+  <tr>
+    <td>英伟达NVLink Fusion合作进展</td>
+    <td>2026-2027</td>
+    <td>中</td>
+    <td>与英伟达联合研发OCS工艺（管理层声称），若正式design-win→极大利多。</td>
+  </tr>
+  <tr>
+    <td>特斯拉Optimus IMU批量订单</td>
+    <td>2026H2</td>
+    <td>中</td>
+    <td>若获特斯拉人形机器人传感器批量合同→第二增长极确认。</td>
+  </tr>
+  <tr>
+    <td>硅光子CompoundTek整合进展</td>
+    <td>2026-2027</td>
+    <td>弱</td>
+    <td>仅10%股权，整合话语权有限。</td>
+  </tr>
+  <tr>
+    <td class="danger">Silex 19.1%持股减持</td>
+    <td>2026年底（锁定期满）</td>
+    <td class="danger">强</td>
+    <td>若大幅减持→进一步削弱与Silex关联，海外技术通道收窄。</td>
+  </tr>
+</table>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 综合判定 ═══════════ -->
+<h2>⑦ 综合判定：空壳中的期权 — 不是Serenity的击球区</h2>
+
+<div class="card">
+
+<h3>核心矛盾</h3>
+<p>
+  赛微电子当前是一场<span class="bold">"叙事 vs 数据"</span>的极端对决：
+</p>
+<ul>
+  <li><span class="highlight">叙事端</span>：全球唯二MEMS-OCS + AI光互连万亿赛道 + 人形机器人传感器 + 国产替代唯一 = 极具想象空间</li>
+  <li><span class="danger">数据端</span>：Q1营收不足1亿（年化4亿）、扣非连续6季度亏损、产能三分之二空转、实控人高位套现11亿、产业资本集体离场 = 基本面极度脆弱</li>
+</ul>
+
+<h3>Serenity 为什么不碰</h3>
+<ol>
+  <li><span class="bold">核心资产已卖</span>：Silex才是真正的全球MEMS龙头，但它已经不并表了。留在手里的北京FAB3是一个产能利用率29%、年化营收4亿的<span class="danger">空转工厂</span>。市场还在按"Silex时代"的估值框架定价——这是最大的定价错误。</li>
+  <li><span class="bold">OCS叙事很美但未验证</span>：谷歌独家OCS的出货预测（2026年19亿）来自卖方和自媒体，不是来自公司官方指引。即使OCS真的放量，<span class="warn">330亿的市值已经提前price in了这个预期</span>——Bull case达成也只值550亿，仅+67%上行。</li>
+  <li><span class="bold">不对称是负的</span>：预期值245亿 vs 当前330亿 = -26%期望回报。下行风险大于上行空间。</li>
+  <li><span class="bold">产业资本用脚投票</span>：实控人8折转让、大基金减持、高管集体减持——没有人比内部人更了解公司。</li>
+</ol>
+
+<h3>什么情况下会重新考虑</h3>
+<ul>
+  <li>单季营收突破5亿（证明OCS/机器人订单落地）</li>
+  <li>产能利用率突破60%</li>
+  <li>扣非净利润连续2个季度为正</li>
+  <li>获得英伟达/NVLink Fusion的正式design-win公告</li>
+  <li>实控人停止减持并明确锁仓</li>
+</ul>
+
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 独立复核 ═══════════ -->
+<h2>⑧ 独立复核</h2>
+
+<table>
+  <tr><th>复核项</th><th>结果</th></tr>
+  <tr><td>财务数据一手来源</td><td><span class="highlight">✅</span> 2025年报/2026Q1季报数据经证券时报、证券之星、新浪财经多源交叉验证一致</td></tr>
+  <tr><td>营收/利润关键数字</td><td><span class="highlight">✅</span> 2025营收8.24亿(-31.59%)、Q1 9854万(-62.68%)、扣非-3.42亿、Q1扣非-4942万，多源一致</td></tr>
+  <tr><td>产能利用率数据</td><td><span class="warn">⚠️</span> 29%(年报) vs 35%(卖方)→取保守值29%；1.5万片/月产能经年报验证</td></tr>
+  <tr><td>实控人减持数据</td><td><span class="highlight">✅</span> 杨云春询价转让3.9%股份、40.86元、套现11.67亿，多源验证一致</td></tr>
+  <tr><td>确认偏误检查</td><td><span class="highlight">✅</span> 完整列举多空双方证据；OCS出货预测标注来源(卖方/自媒体)与性质(未在财报确认)</td></tr>
+  <tr><td>跨标的倍数对比同源</td><td><span class="highlight">✅</span> PS/PB来自同花顺/东方财富，中芯国际/华虹/台积电PS为同日同源</td></tr>
+  <tr><td>政府补助占比</td><td><span class="highlight">✅</span> Q1处于亏损状态，政府补助不构成利润占比风险（已标注）</td></tr>
+  <tr><td>大股东质押/冻结</td><td><span class="warn">⚠️</span> 杨云春1184万股司法冻结（融资租赁纠纷），已作为红旗标注</td></tr>
+  <tr><td>Silex持股变动</td><td><span class="highlight">✅</span> 保留9.9%普通股+19.1%转让Bure，180天锁定期，清算价值已计算</td></tr>
+</table>
+
+<div class="disclaimer">
+  <p><strong>风险声明</strong>：以上分析基于公开信息，不构成投资建议。Serenity方法论强调在信息不对称中寻找定价错误，所有判断均为概率性推演。赛微电子当前处于"叙事驱动"阶段，股价波动极大（深交所曾发异常波动提示），请独立决策。</p>
+  <p style="margin-top:0.5rem">分析方法论：<a href="https://x.com/aleabitoreddit" style="color:var(--accent)">Serenity(@aleabitoreddit)</a> 供应链卡点逆向投资框架 · A股适配版</p>
+</div>
+
+</body>
+</html>

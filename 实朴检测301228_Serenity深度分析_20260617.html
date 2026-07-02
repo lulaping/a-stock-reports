@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实朴检测(301228) Serenity深度分析 — 2026年6月17日</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d;
+    --text: #c9d1d9; --text-muted: #8b949e;
+    --green: #3fb950; --red: #f85149; --blue: #58a6ff;
+    --orange: #d2991d; --purple: #a3717f; --cyan: #39d2c0; --gold: #e3b341;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    max-width: 1100px; margin: 0 auto; padding: 20px;
+  }
+  h1 { font-size: 1.8em; color: #fff; border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-bottom: 6px; }
+  h2 { font-size: 1.3em; color: var(--blue); margin: 28px 0 12px; padding-left: 10px; border-left: 3px solid var(--blue); }
+  h3 { font-size: 1.05em; color: var(--orange); margin: 18px 0 8px; }
+  .subtitle { color: var(--text-muted); font-size: 0.9em; margin-bottom: 24px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9em; margin: 10px 0; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #1c2433; color: var(--text-muted); font-weight: 600; font-size: 0.85em; }
+  .up { color: var(--red); } .down { color: var(--green); }
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em;
+    margin: 2px; font-weight: 600;
+  }
+  .tag-red { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-blue { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .tag-orange { background: rgba(210,153,29,0.15); color: var(--orange); }
+  .tag-purple { background: rgba(163,113,247,0.15); color: var(--purple); }
+  .highlight { color: var(--gold); font-weight: 700; }
+  .warn { background: rgba(248,81,73,0.08); border-left: 3px solid var(--red); padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .info { background: rgba(88,166,255,0.08); border-left: 3px solid var(--blue); padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .bull { background: rgba(63,185,80,0.08); border-left: 3px solid var(--green); padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .verdict-box {
+    background: linear-gradient(135deg, rgba(248,81,73,0.12), rgba(210,153,29,0.12));
+    border: 2px solid var(--red); border-radius: 8px; padding: 20px; margin: 20px 0;
+  }
+  .verdict-box h3 { color: var(--red); margin-top: 0; font-size: 1.2em; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+  .big-num { font-size: 1.4em; font-weight: 800; }
+  .small-label { font-size: 0.78em; color: var(--text-muted); }
+  .red-flag { color: var(--red); font-weight: 700; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
+  .score-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(48,54,61,0.3); }
+  .score-bar { height: 8px; background: var(--border); border-radius: 4px; flex: 1; margin: 0 12px; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 4px; }
+  .score-fill-red { background: var(--red); }
+  .score-fill-green { background: var(--green); }
+  .score-fill-blue { background: var(--blue); }
+  .score-fill-orange { background: var(--orange); }
+</style>
+</head>
+<body>
+
+<h1>实朴检测 (301228) — Serenity 深度分析</h1>
+<div class="subtitle">2026年6月17日收盘 · 总市值 ~101.09亿 · 收盘价 84.24元 (+2.73%)</div>
+
+<!-- 结论 -->
+<div class="verdict-box">
+  <h3>Serenity 综合判定：HARD SELL（强烈回避）</h3>
+  <table>
+    <tr><td style="width:120px;"><strong>客观框架</strong></td><td>Bear: 30-40元（回归行业均值PB 3-4x） / Base: 50-60元（给予概念溢价） / Bull: 80-100元（维持当前炒作热度，但不可持续） — 无论哪种框架，距离翻倍门槛(+100%)均不成立，向下空间远大于向上</td></tr>
+    <tr><td><strong>Serenity 视角</strong></td><td class="highlight">Hard Sell — 纯概念炒作，没有供应链卡点，没有垄断地位，没有业绩支撑，101亿市值 vs 3.98亿营收 → 25x PS在检测行业是极端泡沫。不是"买不买"的问题，是"跑不跑"的问题。</td></tr>
+    <tr><td><strong>一句话定性</strong></td><td>一家连续三年亏损、营收持续萎缩的传统检测公司，被"机器人巡检"概念标签和机构筹码集中推上101亿市值。这不是Serenity要找的卡点，这是典型的"你需要知道为什么不能碰"的票。</td></tr>
+  </table>
+</div>
+
+<!-- 客观事实 -->
+<h2>一、客观事实底座 (L0)</h2>
+
+<h3>1.1 核心财务数据</h3>
+
+<div class="card">
+  <table>
+    <tr><th>指标</th><th>2023年</th><th>2024年</th><th>2025年</th><th>2026Q1</th><th>趋势</th></tr>
+    <tr><td>营业收入</td><td>3.74亿</td><td>4.42亿</td><td class="highlight">3.98亿</td><td>6535万</td><td class="down">↓ 持续萎缩</td></tr>
+    <tr><td>营收增速</td><td>+6.36%</td><td>+18.26%</td><td class="highlight">-9.89%</td><td>-30.76%</td><td class="down">↓ 加速下滑</td></tr>
+    <tr><td>归母净利润</td><td>-1.05亿</td><td>-6579万</td><td class="highlight">-6800万</td><td>-435万</td><td class="down">↓ 连续3年亏损</td></tr>
+    <tr><td>扣非净利润</td><td>—</td><td>-6702万</td><td class="highlight">-8669万</td><td>-834万</td><td class="down">↓ 亏损扩大</td></tr>
+    <tr><td>毛利率</td><td>20.47%</td><td>27.55%</td><td class="highlight">20.32%</td><td>20.32%</td><td class="down">↓ 大幅波动</td></tr>
+    <tr><td>ROE</td><td>-10.84%</td><td>-8.67%</td><td class="highlight">-10.01%</td><td>-0.72%</td><td class="down">↓ 持续为负</td></tr>
+    <tr><td>经营现金流</td><td>-1364万</td><td>+2435万</td><td class="highlight">+3986万</td><td>-3303万</td><td>Q1恶化</td></tr>
+    <tr><td>每股净资产</td><td>—</td><td>—</td><td>5.10元</td><td>4.99元</td><td class="down">↓ 持续缩水</td></tr>
+  </table>
+</div>
+
+<div class="warn">
+  <strong>核心事实解读：</strong> 这是一家连续三年亏损、营收持续萎缩、扣非亏损持续扩大的公司。2025年经营现金流虽转正(+3986万)，但2026Q1再次恶化至-3303万(-128.81%)。每股未分配利润为-1.029元，意味着上市以来累计亏损已侵蚀全部留存收益。2025年末每股净资产5.10元，2026Q1已降至4.99元。<strong>基本面毫无改善迹象。</strong>
+</div>
+
+<h3>1.2 业务拆分（2025年报）</h3>
+
+<div class="card">
+  <table>
+    <tr><th>业务板块</th><th>营收占比</th><th>业务性质</th><th>竞争壁垒</th></tr>
+    <tr><td>土壤和地下水检测</td><td class="highlight">45.13%</td><td>传统检测服务</td><td>低 — 检测行业门槛低，竞争激烈</td></tr>
+    <tr><td>钻井采样</td><td>20.23%</td><td>工程服务</td><td>极低 — 劳务密集型</td></tr>
+    <tr><td>修复服务</td><td>11.47%</td><td>环境工程</td><td>低 — 地方性小公司众多</td></tr>
+    <tr><td>食品安全检测</td><td>7.43%</td><td>检测服务</td><td>低 — 华测检测、谱尼测试全面压制</td></tr>
+    <tr><td>技术咨询服务</td><td>6.23%</td><td>咨询服务</td><td>极低</td></tr>
+    <tr><td>其他检测服务</td><td>5.27%</td><td>杂项检测</td><td>极低</td></tr>
+    <tr><td>水质和气体检测</td><td>4.23%</td><td>检测服务</td><td>低</td></tr>
+  </table>
+  <p style="margin-top:10px;color:var(--text-muted);">来源：2025年报 — 主营业务收入构成</p>
+</div>
+
+<div class="info">
+  <strong>行业定位：</strong> 实朴检测处于"专业技术服务业 → 检测服务"赛道，属于申万三级行业"检测服务"。行业可比公司：华测检测(300012, 市值~400亿, PE~30x)、广电计量(002967)、谱尼测试(300887)、国检集团(603060)。行业特征：<strong>高度分散、竞争激烈、低价中标普遍、毛利率持续承压</strong>。行业内企业普遍PE在20-50x，PS在2-5x。实朴检测25x PS和16.66x PB在行业内属于极端高估。
+</div>
+
+<h3>1.3 资产负债表关键项目</h3>
+
+<div class="card">
+  <table>
+    <tr><th>项目</th><th>2026Q1</th><th>2025年末</th><th>变动</th><th>风险提示</th></tr>
+    <tr><td>总资产</td><td>10.16亿</td><td>10.53亿</td><td>-3.54%</td><td></td></tr>
+    <tr><td>净资产</td><td>5.99亿</td><td>6.12亿</td><td>-2.13%</td><td class="down">持续缩水</td></tr>
+    <tr><td>货币资金</td><td>1.69亿</td><td>2.49亿</td><td>-32.19%</td><td>购买理财</td></tr>
+    <tr><td>应收账款</td><td class="highlight">3.33亿</td><td>3.59亿</td><td>-7.32%</td><td class="red-flag">占净资产55.6%，回收风险</td></tr>
+    <tr><td>商誉</td><td class="highlight">—</td><td>—</td><td>+65.56%</td><td class="red-flag">2025年商誉大增，减值风险</td></tr>
+    <tr><td>长期借款</td><td>4540万</td><td>1575万</td><td>+188.39%</td><td class="red-flag">总部基地建设，杠杆上升</td></tr>
+    <tr><td>资产负债率</td><td class="highlight">40.25%</td><td>—</td><td>+13.92pp</td><td class="red-flag">从26.33%急升至40.25%</td></tr>
+  </table>
+</div>
+
+<h3>1.4 市值与估值</h3>
+
+<div class="grid-3">
+  <div class="card" style="text-align:center;">
+    <div class="small-label">总市值</div>
+    <div class="big-num" style="color:var(--gold);">101亿</div>
+    <div class="small-label">总股本1.20亿 × 84.24元</div>
+  </div>
+  <div class="card" style="text-align:center;">
+    <div class="small-label">市净率 (PB)</div>
+    <div class="big-num" style="color:var(--red);">16.66x</div>
+    <div class="small-label">行业正常PB: 2-5x</div>
+  </div>
+  <div class="card" style="text-align:center;">
+    <div class="small-label">市销率 (PS)</div>
+    <div class="big-num" style="color:var(--red);">~25x</div>
+    <div class="small-label">行业正常PS: 2-5x</div>
+  </div>
+</div>
+
+<div class="warn">
+  <strong>估值结论：</strong> 101亿市值对应3.98亿年营收，PS高达25x — 这在检测行业是极端估值。华测检测（行业龙头、盈利稳定）PS约4-5x，谱尼测试PS约3-4x。实朴检测的估值不是基于基本面，而是基于"机器人巡检"概念和对筹码结构的投机。PB 16.66x意味着市场在用16.66倍的价格购买每股4.99元的净资产 — 且这净资产还在持续缩水。
+</div>
+
+<!-- 红旗扫描 -->
+<h2>二、红旗扫描 (Red Flags) — 命中7/12项，严重超标</h2>
+
+<div class="card">
+  <table>
+    <tr><th style="width:30px;">#</th><th>红旗项</th><th>判定</th><th>详情</th></tr>
+    <tr>
+      <td class="red-flag">1</td><td><strong>商誉过高</strong></td><td class="red-flag">⚠ 降级</td>
+      <td>2025年商誉同比增加65.56%，占总资产比重上升3.3个百分点。公司通过并购扩张导致商誉积累，减值风险显著</td>
+    </tr>
+    <tr>
+      <td class="red-flag">2</td><td><strong>连续亏损，扣非亏损扩大</strong></td><td class="red-flag">⚠ 降级</td>
+      <td>2023/2024/2025年归母净利润分别为-1.05亿/-6579万/-6800万，连续3年亏损。扣非亏损从-6702万扩大至-8669万</td>
+    </tr>
+    <tr>
+      <td class="red-flag">3</td><td><strong>营收持续萎缩</strong></td><td class="red-flag">⚠ 降级</td>
+      <td>2025年营收-9.89%，2026Q1营收-30.76%。核心业务土壤三普项目收尾，新业务未形成规模</td>
+    </tr>
+    <tr>
+      <td class="red-flag">4</td><td><strong>应收账款高企</strong></td><td class="red-flag">⚠ 降级</td>
+      <td>应收账款3.33亿，占净资产55.6%。信用减值损失Q1同比+307.33%，回款风险显著</td>
+    </tr>
+    <tr>
+      <td class="red-flag">5</td><td><strong>资产负债率急升</strong></td><td class="red-flag">⚠ 关注</td>
+      <td>从26.33%飙升至40.25%，长期借款+188%用于总部基地建设</td>
+    </tr>
+    <tr>
+      <td class="red-flag">6</td><td><strong>业绩考核未达标</strong></td><td class="red-flag">⚠ 信号</td>
+      <td>2026.5.18公告：作废90.80万股限制性股票（业绩考核未达标），说明管理层自己对业绩都没有信心</td>
+    </tr>
+    <tr>
+      <td class="red-flag">7</td><td><strong>纯概念炒作</strong></td><td class="red-flag">⚠ 降级</td>
+      <td>"机器人巡检"只是公司众多服务中的边缘业务，远非核心收入来源。101亿市值全靠概念驱动</td>
+    </tr>
+    <tr>
+      <td>8</td><td>大股东质押过高</td><td>✅ 未触发</td><td>暂无大股东高比例质押信息</td>
+    </tr>
+    <tr>
+      <td>9</td><td>政府补助依赖</td><td>⚠ 关注</td><td>Q1政府补助112.46万，非经常性损益合计399.32万，归母净利润-434.56万。主业亏损远大于账面数字</td>
+    </tr>
+    <tr>
+      <td>10</td><td>单一客户集中</td><td>[未核实]</td><td>年报未单独披露单一客户占比，但客户以政府机构为主，回款周期长</td>
+    </tr>
+  </table>
+</div>
+
+<div class="warn">
+  <strong>红旗结论：命中7项，其中5项为降级项。</strong> 即使不考虑Serenity的供应链卡点逻辑，仅从传统财务分析角度，这也是一家基本面极度糟糕的公司。连续亏损、营收萎缩、应收高企、商誉膨胀、杠杆上升 — 五毒俱全。
+</div>
+
+<!-- Serenity 框架 -->
+<h2>三、Serenity 框架分析</h2>
+
+<h3>3.1 卡点五连判</h3>
+
+<div class="card">
+  <table>
+    <tr><th>判据</th><th>判定</th><th>分析</th></tr>
+    <tr>
+      <td>1. 是不是 Single Point of Failure？</td>
+      <td class="red-flag">否</td>
+      <td>检测服务行业高度分散，全国有上万家检测机构。实朴检测在土壤检测领域有一定特色，但远非"唯一供应商"。任何一家检测公司都可以替代它。</td>
+    </tr>
+    <tr>
+      <td>2. 市值 vs TAM 不对称？</td>
+      <td class="red-flag">反而不对称</td>
+      <td>中国检测行业TAM约4000亿，但实朴检测聚焦的土壤检测子市场TAM不到100亿。101亿市值 vs 3.98亿营收 → 市值已经超过了其可触及的TAM。Serenity要的是"极小市值 vs 巨大TAM"，这里是"极大市值 vs 极小TAM"。</td>
+    </tr>
+    <tr>
+      <td>3. Designed-in 程度？</td>
+      <td class="red-flag">不适用</td>
+      <td>检测服务不存在"designed-in"概念。客户每次招标都是重新比价，不存在技术锁定。这是服务业，不是制造业。</td>
+    </tr>
+    <tr>
+      <td>4. 认证/放量时间？</td>
+      <td class="red-flag">无</td>
+      <td>公司拥有CMA/CNAS资质，但这是行业标配，不是壁垒。没有独家认证、没有独家技术路线。</td>
+    </tr>
+    <tr>
+      <td>5. 表层被定价程度？</td>
+      <td class="red-flag">完全过度定价</td>
+      <td>101亿市值已经把所有最乐观的预期全部price in。即使机器人巡检业务爆发（假设从0到1亿营收），对3.98亿总营收的增量也只有25%，完全不足以支撑当前估值。</td>
+    </tr>
+  </table>
+</div>
+
+<h3>3.2 15条好卡点判据 — 命中0条</h3>
+
+<div class="card">
+  <p style="color:var(--text-muted);">逐一对照Serenity的15条好卡点判据，实朴检测<strong>命中0条</strong>。它没有垄断地位、没有极小市值(101亿)、没有designed-in、没有认证壁垒、没有供需缺口、没有国家战略支持(非半导体/非军工)、没有大额backlog。它唯一的"亮点"是机构持仓集中(46家机构持仓57.94%流通股)和"机器人巡检"概念标签 — 前者是筹码博弈，后者是蹭热点。</p>
+</div>
+
+<h3>3.3 供应链栈定位</h3>
+
+<div class="info">
+  <strong>实朴检测不在任何AI/半导体/新能源供应链上。</strong> 它是一家纯粹的第三方检测服务公司，终端客户是政府环保部门、土壤修复公司和工业企业。Serenity框架的核心是"沿供应链逆向找卡点"，而实朴检测根本不在我们关心的任何供应链上。它所谓的"机器人巡检"概念，是公司提供的一项边缘服务（用机器人做环境巡检），不是机器人核心零部件、不是AI算法、不是具身智能。这就像一家餐厅说"我们用POS机点餐"然后被贴上"金融科技"标签一样荒谬。
+</div>
+
+<!-- 资金面与筹码 -->
+<h2>四、资金面与筹码结构 — 理解这波上涨的关键</h2>
+
+<div class="card">
+  <table>
+    <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+    <tr><td>机构持仓</td><td class="highlight">46家机构，持仓6920万股，占流通股57.94%</td><td>筹码高度集中，流通盘实际可交易量极小</td></tr>
+    <tr><td>股东户数</td><td class="highlight">5732户（2026.3.31）</td><td>较上期减少11.57%，筹码持续集中</td></tr>
+    <tr><td>人均流通股</td><td>20837股</td><td>较上期增加13.08%</td></tr>
+    <tr><td>融资余额</td><td class="highlight">4.58亿</td><td>杠杆资金深度参与</td></tr>
+    <tr><td>近20日主力净流入</td><td class="highlight">1.31亿</td><td>主力持续买入推高股价</td></tr>
+    <tr><td>近5日主力净流入</td><td>6810万</td><td>加速流入</td></tr>
+  </table>
+</div>
+
+<div class="warn">
+  <strong>筹码结构解读：</strong> 46家机构持有近58%的流通股，5732户股东，这是典型的"锁仓拉升"模式。流通盘极小 + 机构锁仓 = 少量资金就能大幅推高股价。但这种模式的致命弱点是：一旦有人先跑，承接盘极薄，下跌会非常惨烈。4.58亿融资余额更是一个定时炸弹 — 融资盘在股价下跌时会强制平仓，形成"多杀多"的踩踏。
+</div>
+
+<!-- 近期催化剂 -->
+<h2>五、近期催化剂时间线</h2>
+
+<div class="card">
+  <table>
+    <tr><th>日期</th><th>事件</th><th>性质</th></tr>
+    <tr><td>2026.6.12</td><td>发布员工持股计划（草案），拟向激励对象授予1289.70万股限制性股票</td><td><span class="tag tag-orange">中性偏利好</span> — 绑定员工利益，但授予价可能远低于市价</td></tr>
+    <tr><td>2026.5.18</td><td>业绩考核未达标，作废90.80万股限制性股票</td><td><span class="tag tag-red">利空</span> — 之前设的业绩目标都没完成，新目标能完成吗？</td></tr>
+    <tr><td>2026.4.23</td><td>发布2025年报 & 2026一季报</td><td><span class="tag tag-red">利空</span> — 全年亏损6800万，Q1营收-30.76%</td></tr>
+    <tr><td>2026.3.23</td><td>董事长无偿捐赠股份（回馈母校）</td><td><span class="tag tag-orange">中性</span> — 不涉及公司经营</td></tr>
+    <tr><td>2026.3.12</td><td>员工增持计划实施完毕，尹炳奎累计增持24.88万股</td><td><span class="tag tag-green">微弱利好</span> — 金额极小，象征意义大于实质</td></tr>
+    <tr><td>2025.11.17</td><td>龙虎榜：3日涨幅偏离值累计达30%</td><td><span class="tag tag-orange">游资信号</span> — 上一波炒作起点</td></tr>
+  </table>
+</div>
+
+<!-- 综合判定 -->
+<h2>六、综合判定与投资建议</h2>
+
+<div class="verdict-box">
+  <h3>Serenity 最终判定：HARD SELL / 强烈回避</h3>
+  <table>
+    <tr><td style="width:120px;"><strong>Serenity 档位</strong></td><td class="highlight">Hard Sell（这不是"现在不买等回调"，这是"永远不要碰"）</td></tr>
+    <tr><td><strong>核心逻辑</strong></td><td>1. 没有供应链卡点 — 不在Serenity能力圈的任何供应链上<br>2. 基本面极度糟糕 — 连亏3年、营收萎缩、扣非亏损扩大<br>3. 估值极端泡沫 — 25x PS、16.66x PB，检测行业顶级龙头都没有这个估值<br>4. "机器人巡检"概念是伪概念 — 边缘业务，对营收贡献几乎为零<br>5. 筹码结构极度危险 — 机构锁仓+融资盘堆积，一旦崩盘没有承接</td></tr>
+    <tr><td><strong>下行风险</strong></td><td class="highlight">如果概念退潮，合理估值区间为30-50元（PB 3-5x，对应行业正常水平），较当前84.24元有40-64%的下行空间</td></tr>
+    <tr><td><strong>如果一定要给一个Bull Case</strong></td><td>唯一的"利好"是筹码结构 — 机构锁仓+流通盘极小+融资盘推升，短期可能继续拉升。但这不是投资逻辑，这是博傻逻辑。你赚的是下一个接盘人的钱，而不是公司创造的价值。</td></tr>
+  </table>
+</div>
+
+<div class="info">
+  <strong>Serenity 方法论教会我们最重要的事：</strong> 不是"这个票能不能涨"，而是"我在供应链的哪一层、有没有卡点、值不值这个价"。实朴检测在三个问题上全部答不上来。它是一朵没有根基的云，风一吹就散。如果你手上持有，请认真考虑你的退出策略；如果你在观望，请把时间花在真正有卡点的公司上。
+</div>
+
+<hr>
+<div class="warn" style="margin-top:20px;">
+  <strong>免责声明：</strong> 本报告基于公开数据，采用Serenity投资分析框架进行客观评估。所有分析均不构成投资建议。股市有风险，投资需谨慎。本报告中的"Hard Sell"是Serenity框架下的分析结论，不代表对股价短期走势的预测 — 短期内股价可能因筹码博弈继续上涨，但中长期基于基本面的回归是大概率事件。<br>
+  <span style="color:var(--text-muted);">报告生成时间：2026年6月17日盘后 | 数据来源：深交所公告、东方财富、新浪财经、同花顺、证券之星</span>
+</div>
+
+</body>
+</html>

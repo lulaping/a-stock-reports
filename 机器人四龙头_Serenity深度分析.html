@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人形机器人四龙头 — Serenity 深度分析</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --green: #3fb950;
+    --red: #f85149;
+    --yellow: #d2991d;
+    --blue: #58a6ff;
+    --purple: #a371f7;
+    --accent: #f0883e;
+    --sell-bg: #3d1214;
+    --buy-bg: #0d3320;
+    --hold-bg: #2b2408;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .header h1 { font-size: 2.2em; color: #fff; margin-bottom: 8px; letter-spacing: 1px; }
+  .header .subtitle { color: var(--text-dim); font-size: 1em; }
+  .header .date { color: var(--accent); font-size: 0.9em; margin-top: 6px; }
+  .header .badge-row { margin-top: 16px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.82em;
+    font-weight: 600;
+  }
+  .badge-sell { background: var(--sell-bg); color: var(--red); border: 1px solid #5c1f22; }
+  .badge-hold { background: var(--hold-bg); color: var(--yellow); border: 1px solid #5c4a1a; }
+
+  /* Disclaimer */
+  .disclaimer {
+    background: #1a1114;
+    border: 1px solid #5c1f22;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-bottom: 40px;
+    font-size: 0.85em;
+    color: #f0888e;
+    text-align: center;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 50px;
+  }
+
+  /* Stock Card */
+  .stock-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .stock-card.sell { border-left: 4px solid var(--red); }
+  .stock-card.hold { border-left: 4px solid var(--yellow); }
+
+  /* Stock Header */
+  .stock-header {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .stock-header h2 { font-size: 1.5em; color: #fff; }
+  .stock-header .code { color: var(--text-dim); font-size: 1em; font-weight: 400; margin-left: 8px; }
+  .stock-header .verdict {
+    padding: 6px 18px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: 1px;
+  }
+  .verdict-sell { background: var(--sell-bg); color: var(--red); border: 1px solid #5c1f22; }
+  .verdict-hold { background: var(--hold-bg); color: var(--yellow); border: 1px solid #5c4a1a; }
+  .verdict-buy { background: var(--buy-bg); color: var(--green); border: 1px solid #1a5c30; }
+
+  /* Stock Meta */
+  .stock-meta {
+    padding: 16px 32px;
+    background: #0d1117;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 0.9em;
+  }
+  .stock-meta .item { display: flex; flex-direction: column; }
+  .stock-meta .label { color: var(--text-dim); font-size: 0.8em; }
+  .stock-meta .value { color: #fff; font-weight: 600; font-size: 1.1em; }
+  .price-up { color: var(--red); }
+  .price-down { color: var(--green); }
+
+  /* Content */
+  .stock-body { padding: 32px; }
+
+  /* Sub-section */
+  .subsection { margin-bottom: 28px; }
+  .subsection h3 {
+    font-size: 1.15em;
+    color: var(--blue);
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .subsection h4 {
+    font-size: 1em;
+    color: var(--purple);
+    margin: 18px 0 10px;
+  }
+
+  /* Conclusion Box */
+  .conclusion-box {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .conclusion-box .verdict-line {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .conclusion-box .verdict-line.sell { color: var(--red); }
+  .conclusion-box .verdict-line.hold { color: var(--yellow); }
+  .conclusion-box .verdict-line.buy { color: var(--green); }
+  .conclusion-box .detail { color: var(--text-dim); font-size: 0.9em; }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.88em;
+  }
+  th, td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: #0d1117;
+    color: var(--text-dim);
+    font-weight: 600;
+    font-size: 0.82em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td { color: var(--text); }
+  tr:hover td { background: #1a1f2b; }
+  .t-green { color: var(--green); font-weight: 600; }
+  .t-red { color: var(--red); font-weight: 600; }
+  .t-yellow { color: var(--yellow); font-weight: 600; }
+  .t-blue { color: var(--blue); font-weight: 600; }
+  .t-accent { color: var(--accent); font-weight: 600; }
+  .dim { color: var(--text-dim); }
+
+  /* Score Badge */
+  .score-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .score-num {
+    font-size: 1.4em;
+    font-weight: 700;
+  }
+  .score-num.red { color: var(--red); }
+  .score-num.yellow { color: var(--yellow); }
+  .score-num.green { color: var(--green); }
+
+  /* Red Flag List */
+  .flag-list { list-style: none; padding: 0; }
+  .flag-list li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    font-size: 0.88em;
+  }
+  .flag-list li::before { content: "▸"; position: absolute; left: 0; color: var(--red); }
+
+  /* Comparison Table */
+  .comparison-table { margin-top: 40px; }
+  .comparison-table h2 {
+    text-align: center;
+    font-size: 1.4em;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .comparison-table th:first-child { width: 140px; }
+  .comparison-table td:first-child { font-weight: 600; color: var(--text-dim); }
+  .comparison-table .best { color: var(--green); font-weight: 700; }
+  .comparison-table .worst { color: var(--red); font-weight: 700; }
+
+  /* Summary */
+  .summary-box {
+    background: linear-gradient(135deg, #1a1f2b 0%, #161b22 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 40px;
+  }
+  .summary-box h2 { color: var(--accent); margin-bottom: 16px; font-size: 1.3em; }
+  .summary-box p { font-size: 1em; color: var(--text); line-height: 1.8; }
+
+  .criteria-table td:first-child { font-weight: 700; color: #fff; width: 280px; }
+
+  /* Risk tag */
+  .risk-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: 600;
+    margin: 2px;
+  }
+  .risk-high { background: #3d1214; color: var(--red); }
+  .risk-mid { background: #2b2408; color: var(--yellow); }
+  .risk-low { background: #0d3320; color: var(--green); }
+
+  /* Print */
+  @media print {
+    body { background: #fff; color: #000; }
+    .stock-card { border: 1px solid #ccc; break-inside: avoid; }
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 16px; }
+    .stock-header { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
+    .stock-body { padding: 16px; }
+    .stock-meta { padding: 12px 16px; gap: 16px; }
+    table { font-size: 0.76em; }
+    th, td { padding: 6px 8px; }
+    .header h1 { font-size: 1.5em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ============ HEADER ============ -->
+<div class="header">
+  <h1>人形机器人四龙头 · Serenity 深度分析</h1>
+  <div class="subtitle">供应链卡点逆向工程投资方法论 — A 股适配版</div>
+  <div class="date">数据基准日：2026-06-08 ｜ 制式：Mode 1（Serenity + 客观框架对照）</div>
+  <div class="badge-row">
+    <span class="badge badge-sell">SELL ×1</span>
+    <span class="badge badge-hold">HOLD ×3</span>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <strong>⚠️ 免责声明：</strong>本报告基于公开市场数据及 Serenity 供应链卡点方法论生成，所有分析仅代表研究框架下的观点，<strong>不构成任何买入、卖出或持仓的投资建议</strong>。产业链数据、卡点判断、估值范围均存在不确定性，投资者应独立判断、自负风险。报告中标注"已证实""管理层声称""推断""推测"的信息应区分置信度使用。
+</div>
+
+<!-- ============ 绿的谐波 ============ -->
+<div class="stock-card sell" id="lvde">
+  <div class="stock-header">
+    <div>
+      <h2>绿的谐波 <span class="code">688017.SH</span></h2>
+    </div>
+    <span class="verdict verdict-sell">SELL</span>
+  </div>
+
+  <div class="stock-meta">
+    <div class="item">
+      <span class="label">收盘价</span>
+      <span class="value price-up">¥428.54 <span style="font-size:0.7em">(+9.04%)</span></span>
+    </div>
+    <div class="item">
+      <span class="label">总市值</span>
+      <span class="value">¥785 亿</span>
+    </div>
+    <div class="item">
+      <span class="label">PE (TTM)</span>
+      <span class="value t-red">574.50x</span>
+    </div>
+    <div class="item">
+      <span class="label">PB (MRQ)</span>
+      <span class="value">21.97x</span>
+    </div>
+    <div class="item">
+      <span class="label">PS (TTM)</span>
+      <span class="value">>135x</span>
+    </div>
+  </div>
+
+  <div class="stock-body">
+
+    <!-- 结论 -->
+    <div class="conclusion-box">
+      <div class="verdict-line sell">🔴 SELL — 极度昂贵的好公司，卡点满分但价格荒谬</div>
+      <div class="detail">
+        客观框架：Bear ¥98 / Base ¥156 / Bull ¥234 → 当前 ¥428 已超 Bull 情景 83%<br>
+        Serenity 视角：卡点 12/15 满分，但 PE 574x / PS 135x / PB 22x，price in 了一切乐观预期。国家队三季连续减持，技术路线存在被替代风险。
+      </div>
+    </div>
+
+    <!-- 核心事实 -->
+    <div class="subsection">
+      <h3>L0 · 核心财务事实</h3>
+      <table>
+        <tr><th>指标</th><th>2024A</th><th>2025A</th><th>2026Q1</th><th>趋势</th></tr>
+        <tr><td>营业收入</td><td>¥3.88 亿</td><td>¥5.71 亿 <span class="t-green">+47.3%</span></td><td>¥1.40 亿 <span class="t-green">+43.0%</span></td><td>🟢 高增长</td></tr>
+        <tr><td>归母净利润</td><td>¥0.56 亿</td><td>¥1.24 亿 <span class="t-green">+121.4%</span></td><td>¥0.33 亿 <span class="t-green">+61.2%</span></td><td>🟢 利润回暖</td></tr>
+        <tr><td>扣非净利润</td><td>¥0.46 亿</td><td>¥0.99 亿 <span class="t-green">+115.2%</span></td><td>¥0.23 亿 +41.6%</td><td>🟢 改善中</td></tr>
+        <tr><td>毛利率</td><td>37.54%</td><td>36.91% <span class="t-red">-0.6pct</span></td><td><span class="t-red">33.62%</span></td><td><span class="t-red">⚠️ 持续下滑</span></td></tr>
+        <tr><td>净利率</td><td>14.5%</td><td>21.8%</td><td>23.5%</td><td>🟢 改善</td></tr>
+        <tr><td>经营现金流</td><td>¥0.28 亿</td><td>¥1.52 亿 <span class="t-green">+443%</span></td><td>¥0.05 亿</td><td>🟢 含金量高</td></tr>
+        <tr><td>资产负债率</td><td>10.9%</td><td>9.82%</td><td><span class="t-green">9.44%</span></td><td>🟢 极优</td></tr>
+        <tr><td>账面现金</td><td>—</td><td>¥17.6 亿（含交易性金融资产）</td><td>—</td><td>占总资产 45%</td></tr>
+      </table>
+
+      <p style="margin-top:12px; font-size:0.88em; color:var(--text-dim);">
+        <strong>关键矛盾：</strong>全年营收仅 ¥5.71 亿，支撑 ¥785 亿市值 → PS 135x（制造业罕见）。
+        毛利率从 2023 年 41.14% 降至 2026Q1 33.62%，谐波减速器单价从 ¥1,320 → ¥1,128（-15%）——价格战是实锤。
+        净利润含金量高（经营现金流 1.52 亿 > 净利 1.24 亿），不是账面富贵。
+      </p>
+    </div>
+
+    <!-- 竞争力 -->
+    <div class="subsection">
+      <h3>行业位置 & 竞争力</h3>
+      <table>
+        <tr><th style="width:150px">维度</th><th>评估</th></tr>
+        <tr><td>产业链层</td><td>L2-核心零部件 → 谐波减速器（关节心脏）</td></tr>
+        <tr><td>国产替代阶段</td><td>加速期（国产化率 ~35%，哈默纳科份额在收缩）</td></tr>
+        <tr><td>卡点强度</td><td><span class="t-accent">⭐⭐⭐⭐⭐ 极高</span>（国内 60%+ 份额，全球第二，P型齿专利壁垒）</td></tr>
+        <tr><td>全球客户</td><td>1,800+ 家，优傲机器人、优必选、智元机器人，特斯拉/Figure 为潜在客户</td></tr>
+        <tr><td>增量赛道</td><td>行星滚柱丝杠 + 机电一体化关节模组（2025 年 +69.7%）</td></tr>
+        <tr><td>产能规模</td><td>2025 年减速器出货 ~50 万台，研发人员 +56% YoY</td></tr>
+      </table>
+    </div>
+
+    <!-- 卡点五连判 -->
+    <div class="subsection">
+      <h3>Serenity · 卡点五连判</h3>
+      <table class="criteria-table">
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>1</td><td>Single point of failure？</td><td class="t-green">✅</td><td>国内谐波减速器唯一通过特斯拉认证的批量供应商，短期无替代</td></tr>
+        <tr><td>2</td><td>市值 vs TAM 不对称？</td><td class="t-red">❌</td><td>¥785 亿 vs 全球谐波市场 ~¥200 亿——市值已是 TAM 的 4 倍</td></tr>
+        <tr><td>3</td><td>Designed-in 程度？</td><td class="t-green">✅</td><td>P 型齿专利体系、多家头部人形整机厂定点</td></tr>
+        <tr><td>4</td><td>认证/放量时间？</td><td class="t-green">✅</td><td>已入特斯拉、优必选、智元供应链，2026 人形在手订单 >¥8 亿</td></tr>
+        <tr><td>5</td><td>表层被定价程度？</td><td class="t-red">❌</td><td>PE 574x，PS 135x，PB 22x——每一分钱的好消息都已 price in</td></tr>
+      </table>
+      <p style="margin-top:10px;"><span class="score-bar"><span class="score-num red">12/15</span></span> 卡点属性满分，但价格维度归零。</p>
+    </div>
+
+    <!-- 红旗 -->
+    <div class="subsection">
+      <h3>🔴 红旗扫描</h3>
+      <ul class="flag-list">
+        <li><strong class="t-red">国家队连续减持：</strong>先进制造产业基金（财政部/国开投背景）连续三季减持，从第三大股东降至第七大。有人在 PE 200x+ 时连续兑现。</li>
+        <li><strong class="t-red">实控人减持：</strong>2025 年 9 月，左晶/左昱昱减持 97.2 万股 @ ¥132。</li>
+        <li><strong class="t-yellow">技术路线争议：</strong>业界讨论以行星/RV 替代谐波减速器——谐波柔轮抗冲击能力差，人形机器人行走/重载时关节承受瞬间冲击力极大。若 Optimus 改技术路线，估值逻辑崩塌。</li>
+        <li><strong class="t-yellow">价格战侵蚀：</strong>谐波减速器单价 ¥1,320 → ¥1,128（-15%），毛利率 41% → 34%。</li>
+        <li><strong class="t-yellow">估值泡沫：</strong>PE 574x 处于上市以来历史最高 100% 分位。股价驱动 100% 由估值扩张（PE）驱动，与基本面（EPS）脱节。</li>
+      </ul>
+    </div>
+
+    <!-- 估值 -->
+    <div class="subsection">
+      <h3>估值推演（2026E 群益证券预测）</h3>
+      <table>
+        <tr><th>年份</th><th>预测净利</th><th>Forward PE（当前价）</th></tr>
+        <tr><td>2026E</td><td>¥1.73 亿 <span class="t-green">+39%</span></td><td class="t-red">454x</td></tr>
+        <tr><td>2027E</td><td>¥2.53 亿 <span class="t-green">+46%</span></td><td class="t-red">310x</td></tr>
+        <tr><td>2028E</td><td>¥3.58 亿 <span class="t-green">+42%</span></td><td class="t-red">219x</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th>情景</th><th>假设</th><th>目标价</th><th>vs 当前 ¥428</th></tr>
+        <tr><td>Bear</td><td>2028E PE 50x + 毛利率降至 30%</td><td class="t-red">¥98</td><td class="t-red">-77%</td></tr>
+        <tr><td>Base</td><td>2028E PE 80x + 正常增长</td><td class="t-red">¥156</td><td class="t-red">-64%</td></tr>
+        <tr><td>Bull</td><td>2028E PE 120x + 超预期</td><td class="t-red">¥234</td><td class="t-red">-45%</td></tr>
+      </table>
+      <p style="margin-top:10px; font-size:0.88em; color:var(--text-dim);">
+        <strong>结论：</strong>当前 ¥428 已超过 Bull 情景 83%。即使最乐观估计，也需要跌 45% 才回到合理估值上沿。不是公司不好——是好公司碰到了荒唐的价格。等跌回 ¥150 以下再说。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 五洲新春 ============ -->
+<div class="stock-card hold" id="wuzhou">
+  <div class="stock-header">
+    <div>
+      <h2>五洲新春 <span class="code">603667.SH</span></h2>
+    </div>
+    <span class="verdict verdict-hold">HOLD</span>
+  </div>
+
+  <div class="stock-meta">
+    <div class="item">
+      <span class="label">收盘价（约）</span>
+      <span class="value">¥72–80</span>
+    </div>
+    <div class="item">
+      <span class="label">总市值（约）</span>
+      <span class="value">¥280–310 亿</span>
+    </div>
+    <div class="item">
+      <span class="label">PE (TTM)</span>
+      <span class="value t-red">~350x</span>
+    </div>
+    <div class="item">
+      <span class="label">PB</span>
+      <span class="value">~8x</span>
+    </div>
+    <div class="item">
+      <span class="label">机器人收入占比</span>
+      <span class="value t-yellow">0.48%</span>
+    </div>
+  </div>
+
+  <div class="stock-body">
+
+    <div class="conclusion-box">
+      <div class="verdict-line hold">🟡 HOLD — 优质卡点，估值太贵</div>
+      <div class="detail">
+        客观框架：Bear ¥30 / Base ¥55 / Bull ¥85 → 当前在 Bull 附近<br>
+        Serenity 视角：行星滚柱丝杠国内唯一特斯拉批量供应商 + 58% 市占率，卡点真实。但 PE 350x+，机器人收入仅 ¥1,600 万，Q1 营收 -18.8%。
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>L0 · 核心财务事实</h3>
+      <table>
+        <tr><th>指标</th><th>2024A</th><th>2025A</th><th>2026Q1</th><th>趋势</th></tr>
+        <tr><td>营业收入</td><td>¥32.65 亿</td><td>¥33.43 亿 +2.4%</td><td>¥7.22 亿 <span class="t-red">-18.8%</span></td><td><span class="t-red">⚠️ 营收三连平+Q1 下滑</span></td></tr>
+        <tr><td>归母净利润</td><td>¥0.91 亿</td><td>¥0.91 亿 +0.02%</td><td>¥0.31 亿 <span class="t-red">-18.6%</span></td><td><span class="t-red">⚠️ 零增长+下滑</span></td></tr>
+        <tr><td>扣非净利润</td><td>¥0.74 亿</td><td>¥0.82 亿 +9.8%</td><td>¥0.26 亿 -19.0%</td><td>主业改善但 Q1 恶化</td></tr>
+        <tr><td>毛利率</td><td>16.52%</td><td><span class="t-green">18.05%</span></td><td><span class="t-green">19.76%</span></td><td>🟢 修复中</td></tr>
+        <tr><td>净利率</td><td>2.8%</td><td>2.7%</td><td>4.4%</td><td>低位</td></tr>
+        <tr><td>经营现金流</td><td>—</td><td>¥2.37 亿</td><td>¥0.44 亿 <span class="t-green">+63.3%</span></td><td>🟢 改善</td></tr>
+        <tr><td>资产负债率</td><td>—</td><td>40.39%</td><td>—</td><td>🟡 合理</td></tr>
+        <tr><td>机器人收入</td><td>0</td><td><span class="t-accent">¥1,600 万</span></td><td>—</td><td>0→1 但占比 &lt;0.5%</td></tr>
+      </table>
+
+      <h4>业务拆分（2025A）</h4>
+      <table>
+        <tr><th>板块</th><th>营收</th><th>占比</th><th>毛利率</th><th>YoY</th></tr>
+        <tr><td>轴承</td><td>¥18.27 亿</td><td>52.5%</td><td>18.73%</td><td>+1.9%</td></tr>
+        <tr><td>热管理管路</td><td>¥9.19 亿</td><td>32.4%</td><td>12.11%</td><td>-2.5%</td></tr>
+        <tr><td>汽车零部件</td><td>¥4.30 亿</td><td>12.9%</td><td>23.98%</td><td>+8.7%</td></tr>
+        <tr><td><strong>机器人零部件</strong></td><td><strong>¥0.16 亿</strong></td><td><strong>0.48%</strong></td><td>—</td><td>从 0→1</td></tr>
+      </table>
+
+      <p style="margin-top:10px; font-size:0.88em; color:var(--text-dim);">
+        <strong>关键矛盾：</strong>传统主业三年停滞（营收 ¥32 亿横盘），2026Q1 营收 -18.8%。机器人收入仅 ¥1,600 万，占总营收 0.48%，却支撑着 PE 350x 和 ¥300 亿市值。定增 10 亿 + 投资 15 亿 → 稀释 + 折旧压力。
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>行业位置 & 竞争力</h3>
+      <table>
+        <tr><th style="width:150px">维度</th><th>评估</th></tr>
+        <tr><td>产业链层</td><td>L2-核心零部件 → 行星滚柱丝杠（BOM 第一大件，占整机成本 18-20%）</td></tr>
+        <tr><td>国产替代阶段</td><td>导入期→加速期（国产高端丝杠市占率 &lt;5%，进口 78% 由瑞士/瑞典/德国垄断）</td></tr>
+        <tr><td>卡点强度</td><td><span class="t-accent">⭐⭐⭐⭐⭐ 极高</span>（国内市占 58%，全球仅 4 家外资+五洲能批量供特斯拉）</td></tr>
+        <tr><td>特斯拉绑定</td><td>Gen3 量产审厂通过，7 家核心供应商之一，国内唯一批量供货特斯拉的丝杠企业</td></tr>
+        <tr><td>产能规划</td><td>2026 年化 98 万套行星丝杠 + 210 万套微型丝杠；定增 10 亿 + 投资 15 亿</td></tr>
+        <tr><td>单台价值</td><td>¥2,000-3,000/套 × 8-14 套/台 ≈ ¥2-4 万/台</td></tr>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <h3>Serenity · 卡点五连判</h3>
+      <table class="criteria-table">
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>1</td><td>Single point of failure？</td><td class="t-green">✅</td><td>行星滚柱丝杠全球只有 4 家外资 + 五洲新春能批量供应特斯拉</td></tr>
+        <tr><td>2</td><td>市值 vs TAM 不对称？</td><td class="t-yellow">🟡</td><td>¥300 亿 vs 2028 丝杠全球市场 ¥300 亿——目前市值已等于 TAM</td></tr>
+        <tr><td>3</td><td>Designed-in 程度？</td><td class="t-green">✅</td><td>特斯拉 Gen3 量产审厂通过、华为/小米/小鹏/优必选定点</td></tr>
+        <tr><td>4</td><td>认证/放量时间？</td><td class="t-green">✅</td><td>2026H2 产能释放，2027 年达产后 98 万套行星丝杠 + 210 万套微型丝杠</td></tr>
+        <tr><td>5</td><td>表层被定价程度？</td><td class="t-red">❌</td><td>PE 350x，机器人收入 ¥1,600 万定价了 ¥300 亿市值</td></tr>
+      </table>
+      <p style="margin-top:10px;"><span class="score-bar"><span class="score-num yellow">10/15</span></span> 丝杠卡点是这轮机器人行情最硬的逻辑，五洲是 A 股唯一能大规模供应的标的。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>🔴 红旗扫描</h3>
+      <ul class="flag-list">
+        <li><strong class="t-red">定增稀释：</strong>10 亿定增已完成，新增股份已上市 → 稀释 ~20%。</li>
+        <li><strong class="t-red">大客户集中风险：</strong>特斯拉是核心客户，若 Optimus 量产不及预期，丝杠订单成空。</li>
+        <li><strong class="t-red">传统主业拖累：</strong>Q1 营收 -18.8%，传统轴承增长乏力，机器人放量前利润难看。</li>
+        <li><strong class="t-yellow">产能爬坡风险：</strong>98 万套产能在 2026Q3 才投产，爬坡期利润被折旧吞噬。</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3>估值推演（山西证券预测）</h3>
+      <table>
+        <tr><th>年份</th><th>预测净利</th><th>Forward PE（¥300 亿）</th></tr>
+        <tr><td>2026E</td><td>¥1.43 亿</td><td class="t-red">~210x</td></tr>
+        <tr><td>2027E</td><td>¥2.11 亿</td><td class="t-red">~142x</td></tr>
+        <tr><td>2028E</td><td>¥2.96 亿</td><td class="t-red">~101x</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th>情景</th><th>假设</th><th>目标价</th><th>vs 当前 ¥72-80</th></tr>
+        <tr><td>Bear</td><td>特斯拉量产推迟+竞争加剧</td><td class="t-red">¥21-26</td><td class="t-red">-70%</td></tr>
+        <tr><td>Base</td><td>正常放量，2028 净利 ¥3 亿 → PE 40x</td><td class="t-red">¥31</td><td class="t-red">-60%</td></tr>
+        <tr><td>Bull</td><td>超预期，2028 净利 ¥5.5 亿 → PE 40x</td><td class="t-red">¥57</td><td class="t-red">-27%</td></tr>
+      </table>
+      <p style="margin-top:10px; font-size:0.88em; color:var(--text-dim);">
+        <strong>结论：</strong>¥300 亿市值已经把 2028 年最乐观预期都 price in 了。等 ¥55 以下（Bull 打 7 折）才值得认真考虑。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 恒立液压 ============ -->
+<div class="stock-card hold" id="hengli">
+  <div class="stock-header">
+    <div>
+      <h2>恒立液压 <span class="code">601100.SH</span></h2>
+    </div>
+    <span class="verdict verdict-hold">HOLD</span>
+  </div>
+
+  <div class="stock-meta">
+    <div class="item">
+      <span class="label">收盘价（约）</span>
+      <span class="value">¥116</span>
+    </div>
+    <div class="item">
+      <span class="label">总市值</span>
+      <span class="value">¥1,555 亿</span>
+    </div>
+    <div class="item">
+      <span class="label">PE (TTM)</span>
+      <span class="value t-yellow">56x</span>
+    </div>
+    <div class="item">
+      <span class="label">PE (2026E)</span>
+      <span class="value t-green">43x</span>
+    </div>
+    <div class="item">
+      <span class="label">ROE</span>
+      <span class="value t-green">15.8%</span>
+    </div>
+  </div>
+
+  <div class="stock-body">
+
+    <div class="conclusion-box">
+      <div class="verdict-line hold">🟡 HOLD — 四只中最合理估值，利润真实，但仍不便宜</div>
+      <div class="detail">
+        客观框架：Bear ¥67 / Base ¥119 / Bull ¥179 → 当前接近 Base 中线<br>
+        Serenity 视角：液压龙头 + 丝杠第二曲线，PE 56x 在有利润支撑的机器人标的中最合理。等 ¥100-110 更有安全边际。
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>L0 · 核心财务事实</h3>
+      <table>
+        <tr><th>指标</th><th>2024A</th><th>2025A</th><th>2026Q1</th><th>趋势</th></tr>
+        <tr><td>营业收入</td><td>¥93.90 亿</td><td>¥109.41 亿 <span class="t-green">+16.5%</span></td><td>¥32.10 亿 <span class="t-green">+32.5%</span></td><td>🟢 加速增长</td></tr>
+        <tr><td>归母净利润</td><td>¥25.09 亿</td><td>¥27.34 亿 <span class="t-green">+9.0%</span></td><td>¥6.52 亿 +5.6%</td><td>🟢 稳健增长</td></tr>
+        <tr><td>扣非净利润</td><td>¥22.85 亿</td><td>¥24.95 亿 +9.2%</td><td>—</td><td>稳定</td></tr>
+        <tr><td>毛利率</td><td>42.47%</td><td>41.15% <span class="t-red">-1.3pct</span></td><td><span class="t-yellow">38.57%</span></td><td><span class="t-yellow">⚠️ 下滑</span></td></tr>
+        <tr><td>净利率</td><td>26.7%</td><td>24.98%</td><td>20.31%</td><td>承压</td></tr>
+        <tr><td>ROE</td><td>15.9%</td><td><span class="t-green">15.8%</span></td><td>—</td><td>🟢 稳健</td></tr>
+        <tr><td>资产负债率</td><td>—</td><td><span class="t-green">~20%</span></td><td>—</td><td>🟢 低杠杆</td></tr>
+        <tr><td>研发投入</td><td>¥7.66 亿</td><td>¥7.05 亿</td><td>—</td><td>研发率 6.4%</td></tr>
+      </table>
+
+      <h4>业务拆分（2025A）</h4>
+      <table>
+        <tr><th>板块</th><th>营收</th><th>占比</th><th>毛利率</th><th>YoY</th></tr>
+        <tr><td>液压油缸</td><td>¥52.54 亿</td><td>48.0%</td><td>39.71%</td><td>+10.4%</td></tr>
+        <tr><td>液压泵阀及马达</td><td>¥43.26 亿</td><td>39.5%</td><td><span class="t-green">48.83%</span></td><td><span class="t-green">+20.7%</span></td></tr>
+        <tr><td>配件及铸件</td><td>¥8.90 亿</td><td>8.1%</td><td>—</td><td>—</td></tr>
+        <tr><td>液压系统</td><td>¥3.85 亿</td><td>3.5%</td><td>—</td><td>+30.0%</td></tr>
+        <tr><td><strong>线性驱动（丝杠）</strong></td><td><strong>¥4.50 亿</strong></td><td><strong>4.1%</strong></td><td><strong class="t-green">>50%</strong></td><td><strong class="t-green">+102.3%</strong></td></tr>
+      </table>
+
+      <p style="margin-top:10px; font-size:0.88em; color:var(--text-dim);">
+        <strong>关键优势：</strong>四只标的中唯一有真实利润的——¥27 亿净利润，ROE 16%，不是靠概念吃饭。液压主业现金牛（挖掘机油缸全球市占率 63%），丝杠是真实的第二曲线（2025 年 ¥4.5 亿 +102%），已获全球头部客户大批量订单。招商证券测算：未来 5 年潜在收入空间 >¥330 亿 → 有机会再造两个恒立。
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>行业位置 & 竞争力</h3>
+      <table>
+        <tr><th style="width:150px">维度</th><th>评估</th></tr>
+        <tr><td>产业链层</td><td>L1-执行器总成 / L2-丝杠核心零部件</td></tr>
+        <tr><td>国产替代阶段</td><td>液压件加速期、丝杠导入期</td></tr>
+        <tr><td>卡点强度</td><td><span class="t-accent">⭐⭐⭐⭐ 高</span>（液压全球龙头 + 丝杠新兴力量 + 全产业链能力）</td></tr>
+        <tr><td>全球布局</td><td>常州+上海+柏林+芝加哥+墨西哥，12 个生产基地，7 个研发中心</td></tr>
+        <tr><td>客户壁垒</td><td>卡特彼勒铂金奖章、三一/徐工核心供应商、北美头部客户丝杠定点</td></tr>
+        <tr><td>丝杠产能</td><td>直线导轨 36 万米/年，滚珠丝杠 7 万套/年，行星滚柱丝杠已初步量产</td></tr>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <h3>Serenity · 卡点五连判</h3>
+      <table class="criteria-table">
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>1</td><td>Single point of failure？</td><td class="t-yellow">🟡</td><td>液压件不是唯一供应商，但丝杠产能全球稀缺</td></tr>
+        <tr><td>2</td><td>市值 vs TAM 不对称？</td><td class="t-red">❌</td><td>¥1,555 亿 vs 液压全球 ¥620 亿 + 丝杠 ¥300 亿——合理偏贵</td></tr>
+        <tr><td>3</td><td>Designed-in 程度？</td><td class="t-green">✅</td><td>卡特彼勒铂金奖章、三一/徐工核心供应商、北美头部客户丝杠定点</td></tr>
+        <tr><td>4</td><td>认证/放量时间？</td><td class="t-green">✅</td><td>丝杠 2025 年已量产 + 2026 年放量，墨西哥工厂 2025 年投产</td></tr>
+        <tr><td>5</td><td>表层被定价程度？</td><td class="t-yellow">🟡</td><td>PE 56x TTM / 2026E PE 43x——部分定价但不算疯狂</td></tr>
+      </table>
+      <p style="margin-top:10px;"><span class="score-bar"><span class="score-num yellow">8/15</span></span> 液压壁垒强但不是稀缺卡点，丝杠卡点加分但占比尚小。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>🔴 红旗扫描</h3>
+      <ul class="flag-list">
+        <li><strong class="t-yellow">汇率风险：</strong>2026Q1 利润增速（+5.6%）远落后于营收（+32.5%），主因汇兑损失——海外收入占比 20%。</li>
+        <li><strong class="t-yellow">毛利率趋势性下滑：</strong>2024 年 42.47% → 2025 年 41.15% → 2026Q1 38.57%。</li>
+        <li><strong class="t-green">无减持记录：</strong>实控人汪立平家族持股 51%，控制权稳定。</li>
+        <li><strong class="t-green">无商誉风险：</strong>收购极少，资产负债表干净。</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3>估值推演（国信证券预测）</h3>
+      <table>
+        <tr><th>年份</th><th>预测净利</th><th>Forward PE（当前价）</th></tr>
+        <tr><td>2026E</td><td>¥36.01 亿 <span class="t-green">+31.7%</span></td><td class="t-yellow">43x</td></tr>
+        <tr><td>2027E</td><td>¥44.48 亿 <span class="t-green">+23.5%</span></td><td class="t-green">35x</td></tr>
+        <tr><td>2028E</td><td>¥53.71 亿 <span class="t-green">+20.7%</span></td><td class="t-green">29x</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th>情景</th><th>假设</th><th>目标价</th><th>vs 当前 ¥116</th></tr>
+        <tr><td>Bear</td><td>工程机械周期回落+丝杠不及预期 → PE 25x</td><td class="t-red">¥67</td><td class="t-red">-42%</td></tr>
+        <tr><td>Base</td><td>正常增长+丝杠 2028 贡献 ¥30 亿 → PE 30x</td><td class="t-green">¥119</td><td><span class="t-green">+3%</span></td></tr>
+        <tr><td>Bull</td><td>超级周期+丝杠爆发 → PE 35x</td><td class="t-green">¥179</td><td><span class="t-green">+54%</span></td></tr>
+      </table>
+      <p style="margin-top:10px; font-size:0.88em; color:var(--text-dim);">
+        <strong>结论：</strong>这是四只标的中最合理估值的——有 ¥27 亿真利润，丝杠已在贡献营收。但还是那句：¥1,555 亿市值需要持续强劲增长才能消化。¥100-110（forward PE ~38x）才是更好的入场区间。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 拓普集团 ============ -->
+<div class="stock-card hold" id="tuopu">
+  <div class="stock-header">
+    <div>
+      <h2>拓普集团 <span class="code">601689.SH</span></h2>
+    </div>
+    <span class="verdict verdict-hold">HOLD</span>
+  </div>
+
+  <div class="stock-meta">
+    <div class="item">
+      <span class="label">收盘价（约）</span>
+      <span class="value">¥62.63</span>
+    </div>
+    <div class="item">
+      <span class="label">总市值</span>
+      <span class="value">¥1,088 亿</span>
+    </div>
+    <div class="item">
+      <span class="label">PE (TTM)</span>
+      <span class="value t-yellow">39x</span>
+    </div>
+    <div class="item">
+      <span class="label">PE (2026E)</span>
+      <span class="value t-green">32x</span>
+    </div>
+    <div class="item">
+      <span class="label">机器人收入占比</span>
+      <span class="value t-yellow">&lt;0.05%</span>
+    </div>
+  </div>
+
+  <div class="stock-body">
+
+    <div class="conclusion-box">
+      <div class="verdict-line hold">🟡 HOLD — 确定性最高，但实控人已套现 ¥8.8 亿</div>
+      <div class="detail">
+        客观框架：Bear ¥36 / Base ¥56 / Bull ¥81 → 当前精准在 Base 中线<br>
+        Serenity 视角：特斯拉 Optimus 线性/旋转执行器 Tier 1，绑定最深。但机器人营收仅 ¥1,359 万，实控人已套现 ¥8.8 亿。
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>L0 · 核心财务事实</h3>
+      <table>
+        <tr><th>指标</th><th>2024A</th><th>2025A</th><th>2026Q1</th><th>趋势</th></tr>
+        <tr><td>营业收入</td><td>¥266.0 亿</td><td>¥295.81 亿 <span class="t-green">+11.2%</span></td><td>¥66.28 亿 <span class="t-green">+14.9%</span></td><td>🟢 稳步增长</td></tr>
+        <tr><td>归母净利润</td><td>¥30.01 亿</td><td>¥27.79 亿 <span class="t-red">-7.4%</span></td><td>¥5.52 亿 <span class="t-red">-2.4%</span></td><td><span class="t-red">🔴 增收不增利</span></td></tr>
+        <tr><td>扣非净利润</td><td>¥27.28 亿</td><td>¥26.00 亿 -4.7%</td><td>¥4.73 亿 -2.8%</td><td>压力持续</td></tr>
+        <tr><td>毛利率</td><td>20.80%</td><td>19.43% <span class="t-red">-1.4pct</span></td><td>承压</td><td><span class="t-red">⚠️ 下滑</span></td></tr>
+        <tr><td>净利率</td><td>11.3%</td><td>9.4%</td><td>8.3%</td><td><span class="t-red">⚠️ 连续下滑</span></td></tr>
+        <tr><td>经营现金流</td><td>—</td><td><span class="t-green">¥44.82 亿</span></td><td>—</td><td>🟢 极强</td></tr>
+        <tr><td>研发费用</td><td>¥12.24 亿</td><td>¥14.96 亿 +22.2%</td><td>—</td><td>持续投入</td></tr>
+        <tr><td>机器人执行器收入</td><td>0</td><td><span class="t-yellow">¥1,359 万</span></td><td>—</td><td>占比 &lt;0.05%</td></tr>
+      </table>
+
+      <h4>业务拆分（2025A）</h4>
+      <table>
+        <tr><th>板块</th><th>营收（估）</th><th>占比</th></tr>
+        <tr><td>内饰功能件</td><td>~¥97 亿</td><td>32.7%</td></tr>
+        <tr><td>轻量化底盘</td><td>~¥87 亿</td><td>29.5%</td></tr>
+        <tr><td>NVH 减震</td><td>~¥43 亿</td><td>14.4%</td></tr>
+        <tr><td>热管理+空悬+汽车电子</td><td>~¥68 亿</td><td>23.0%</td></tr>
+        <tr><td><strong>机器人执行器</strong></td><td><strong>¥0.14 亿</strong></td><td><strong>&lt;0.05%</strong></td></tr>
+      </table>
+
+      <p style="margin-top:10px; font-size:0.88em; color:var(--text-dim);">
+        <strong>关键矛盾：</strong>中国汽车零部件第三大市值，千亿平台型龙头。但连续两季增收不增利——墨西哥工厂爬坡 + 汇兑损失 + 整车价格战传导。机器人是"纯期权"：2025 年执行器收入仅 ¥1,359 万，但毛利率 28.25%（不亏本），百万台产能在建。
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>行业位置 & 竞争力</h3>
+      <table>
+        <tr><th style="width:150px">维度</th><th>评估</th></tr>
+        <tr><td>产业链层</td><td>L1-执行器总成（Tier 0.5）→ 直接配套特斯拉 Optimus</td></tr>
+        <tr><td>Tier 0.5 模式</td><td>深度参与主机厂同步研发，提供模块化/系统级解决方案，单车配套价值最高 ¥3 万+</td></tr>
+        <tr><td>卡点强度</td><td><span class="t-yellow">⭐⭐⭐ 中等</span>（不是稀缺卡点——三花智控是竞争对手，特斯拉也可能自研执行器）</td></tr>
+        <tr><td>特斯拉依赖</td><td>Tesla 单一客户占比 ~40-45%，前五大客户合计 65.8%</td></tr>
+        <tr><td>全球产能</td><td>墨西哥一期已投产，波兰二期+泰国一期 2026H1 建成，26 座全球基地</td></tr>
+        <tr><td>机器人进展</td><td>旋转+直线+灵巧手全品类送样，Optimus 执行器定点，在建百万台产能</td></tr>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <h3>Serenity · 卡点五连判</h3>
+      <table class="criteria-table">
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>1</td><td>Single point of failure？</td><td class="t-red">❌</td><td>三花也是 Optimus 执行器供应商，不是独家</td></tr>
+        <tr><td>2</td><td>市值 vs TAM 不对称？</td><td class="t-red">❌</td><td>¥1,088 亿 vs 汽车业务 ¥300 亿+机器人期权——合理偏贵</td></tr>
+        <tr><td>3</td><td>Designed-in 程度？</td><td class="t-green">✅</td><td>Optimus 线性执行器 Tier 0.5 定点，旋转+直线+灵巧手全品类送样</td></tr>
+        <tr><td>4</td><td>认证/放量时间？</td><td class="t-green">✅</td><td>2026 年 Optimus V3 量产，拓普是主要受益方</td></tr>
+        <tr><td>5</td><td>表层被定价程度？</td><td class="t-yellow">🟡</td><td>PE 39x —— 对于汽车零部件偏贵（行业 20-30x），但含机器人期权</td></tr>
+      </table>
+      <p style="margin-top:10px;"><span class="score-bar"><span class="score-num yellow">5/15</span></span> 绑定确定性最高但不是稀缺卡点。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>🔴 红旗扫描</h3>
+      <ul class="flag-list">
+        <li><strong class="t-red">实控人大额减持（真实红旗）：</strong>上市十年来首次，2025 年 7-9 月邬建树及其一致行动人减持 ¥8.8 亿。管理层在业绩会上对利润拐点时间含糊其辞（"请关注公告"）。</li>
+        <li><strong class="t-red">单一客户集中：</strong>Tesla 占比 ~40-45%，若特斯拉产销波动直接影响利润。</li>
+        <li><strong class="t-yellow">港股 IPO 推进中：</strong>A+H 上市可能对 A 股流动性形成分流。</li>
+        <li><strong class="t-yellow">增收不增利何时改善：</strong>管理层未给出明确时间表，海外产能爬坡 + 价格战压力持续。</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3>估值推演（市场一致预期）</h3>
+      <table>
+        <tr><th>年份</th><th>预测净利</th><th>Forward PE（当前价）</th></tr>
+        <tr><td>2026E</td><td>¥34.48 亿</td><td class="t-yellow">32x</td></tr>
+        <tr><td>2027E</td><td>¥41–48 亿</td><td class="t-green">23–27x</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th>情景</th><th>假设</th><th>目标价</th><th>vs 当前 ¥63</th></tr>
+        <tr><td>Bear</td><td>汽车 PE 18x+机器人为 0</td><td class="t-red">¥36</td><td class="t-red">-42%</td></tr>
+        <tr><td>Base</td><td>汽车 PE 22x+机器人 PE 40x</td><td class="t-red">¥56</td><td class="t-red">-10%</td></tr>
+        <tr><td>Bull</td><td>汽车 PE 25x+机器人 PE 60x</td><td class="t-green">¥81</td><td><span class="t-green">+30%</span></td></tr>
+      </table>
+      <p style="margin-top:10px; font-size:0.88em; color:var(--text-dim);">
+        <strong>结论：</strong>拓普是四只中确定性最高的——它是 Tesla Optimus 执行器总成唯一的 A 股 Tier 1。但 PE 39x 对汽车零部件公司不便宜，且实控人减持 ¥8.8 亿是真实的不信任信号。急跌到 ¥50-55（PE ~27x）区间时值得关注。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 横向对比总表 ============ -->
+<div class="section comparison-table">
+  <h2>四只标的 · 横向对比总表</h2>
+  <table>
+    <tr>
+      <th>维度</th>
+      <th style="color:#58a6ff">🥇 恒立液压</th>
+      <th style="color:#a371f7">🥈 拓普集团</th>
+      <th style="color:#d2991d">🥉 五洲新春</th>
+      <th style="color:#f85149">4️⃣ 绿的谐波</th>
+    </tr>
+    <tr>
+      <td>代码</td>
+      <td>601100</td>
+      <td>601689</td>
+      <td>603667</td>
+      <td>688017</td>
+    </tr>
+    <tr>
+      <td>总市值</td>
+      <td>¥1,555 亿</td>
+      <td>¥1,088 亿</td>
+      <td>~¥300 亿</td>
+      <td>¥785 亿</td>
+    </tr>
+    <tr>
+      <td>PE (TTM)</td>
+      <td class="best">56x</td>
+      <td class="best">39x</td>
+      <td class="worst">~350x</td>
+      <td class="worst">575x</td>
+    </tr>
+    <tr>
+      <td>PE (2026E)</td>
+      <td class="best">43x</td>
+      <td class="best">32x</td>
+      <td class="worst">~210x</td>
+      <td class="worst">454x</td>
+    </tr>
+    <tr>
+      <td>2025 净利</td>
+      <td class="best">¥27.3 亿</td>
+      <td class="best">¥27.8 亿</td>
+      <td class="worst">¥0.91 亿</td>
+      <td class="worst">¥1.24 亿</td>
+    </tr>
+    <tr>
+      <td>机器人收入</td>
+      <td class="best">¥4.5 亿（丝杠）</td>
+      <td class="worst">¥0.14 亿</td>
+      <td class="worst">¥0.16 亿</td>
+      <td>~¥2 亿（人形相关）</td>
+    </tr>
+    <tr>
+      <td>利润质量</td>
+      <td class="best">ROE 16%</td>
+      <td class="worst">净利 -7.4%</td>
+      <td class="worst">净利 0%</td>
+      <td class="best">净利 +121%</td>
+    </tr>
+    <tr>
+      <td>卡点得分</td>
+      <td>8 / 15</td>
+      <td>5 / 15</td>
+      <td>10 / 15</td>
+      <td class="best">12 / 15</td>
+    </tr>
+    <tr>
+      <td>红旗数量</td>
+      <td class="best">2</td>
+      <td class="worst">4</td>
+      <td>3</td>
+      <td class="worst">4</td>
+    </tr>
+    <tr>
+      <td>Serenity 判定</td>
+      <td><span class="t-yellow">HOLD</span></td>
+      <td><span class="t-yellow">HOLD</span></td>
+      <td><span class="t-yellow">HOLD</span></td>
+      <td><span class="t-red">SELL</span></td>
+    </tr>
+    <tr>
+      <td>建议关注价</td>
+      <td>¥100–110</td>
+      <td>¥50–55</td>
+      <td>¥50–55</td>
+      <td>¥120–150</td>
+    </tr>
+    <tr>
+      <td>下行空间（至关注价）</td>
+      <td>-10% ~ -14%</td>
+      <td>-13% ~ -21%</td>
+      <td>-24% ~ -31%</td>
+      <td>-65% ~ -72%</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ============ 综合总结 ============ -->
+<div class="summary-box">
+  <h2>Serenity 综合总结</h2>
+  <p style="margin-bottom:16px;">
+    <strong>如果你现在必须买入一只机器人龙头，恒立液压是唯一有真实利润支撑的选择。</strong>它有 ¥27 亿净利润、ROE 16%、丝杠收入 ¥4.5 亿且增速 +102%——不是靠概念吃饭的公司。
+  </p>
+  <p style="margin-bottom:16px;">
+    <strong>但四只标的中，没有一只在当前价格值得买入。</strong>绿的谐波 SELL（PE 574x，太贵），五洲新春/恒立液压/拓普集团 HOLD（各有优质卡点，但估值均已包含大量乐观预期）。
+  </p>
+  <p>
+    <strong>最优策略：</strong>放进观察池，等 7-8 月特斯拉 Optimus 量产催化落地的过程中，趁回调逐步建仓。绿的谐波需要跌 65%+ 才到合理区间，五洲新春/拓普集团等 ¥50-55，恒立液压等 ¥100-110。人形机器人是未来 3-5 年确定性最高的赛道之一，但在"故事讲完、业绩刚开始兑现"的节点，耐心等待好价格比追逐热闹更重要。
+  </p>
+</div>
+
+<!-- Footer -->
+<div style="text-align:center; margin-top:60px; padding:32px 0; border-top:1px solid var(--border); color:var(--text-dim); font-size:0.82em;">
+  <p>Serenity 供应链卡点逆向工程投资方法论 · A 股适配版</p>
+  <p>数据来源：东方财富、新浪财经、山西证券、国信证券、群益证券、招商证券、公司年报/季报 · 报告日期：2026-06-08</p>
+  <p style="margin-top:8px;"><strong>本报告不构成任何投资建议。投资有风险，入市需谨慎。</strong></p>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股MRVL对标三剑客 Serenity深度分析 | 2026-06-10</title>
+<style>
+:root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --text-muted: #8b949e; --red: #ff7b72; --green: #3fb950; --yellow: #d2991d; --blue: #58a6ff; --purple: #bc8cff; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.65; padding: 20px; }
+.container { max-width: 1050px; margin: 0 auto; }
+h1 { font-size: 1.5em; color: #fff; border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-bottom: 20px; }
+h2 { font-size: 1.2em; color: var(--blue); margin: 32px 0 12px; padding-left: 10px; border-left: 3px solid var(--blue); }
+h3 { font-size: 1.05em; color: #e6edf3; margin: 18px 0 8px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px 22px; margin-bottom: 16px; }
+.red { color: var(--red); }
+.green { color: var(--green); }
+.yellow { color: var(--yellow); }
+.purple { color: var(--purple); }
+.bold { font-weight: 700; }
+.muted { color: var(--text-muted); font-size: 0.9em; }
+.verdict { background: #1a1f2b; border: 1px solid var(--green); border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.verdict-red { border-color: var(--red); }
+.verdict-yellow { border-color: var(--yellow); }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: #1c2129; color: var(--text-muted); font-weight: 600; white-space: nowrap; }
+tr:hover { background: #1a1f2b; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.82em; margin: 1px 3px; }
+.tag-red { background: rgba(255,123,114,0.15); color: var(--red); }
+.tag-green { background: rgba(63,185,80,0.15); color: var(--green); }
+.tag-yellow { background: rgba(210,153,29,0.15); color: var(--yellow); }
+.badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 0.78em; font-weight: 600; }
+.badge-red { background: var(--red); color: #000; }
+.badge-green { background: var(--green); color: #000; }
+.badge-yellow { background: var(--yellow); color: #000; }
+ol, ul { padding-left: 22px; margin: 6px 0; }
+li { margin: 3px 0; }
+.footer { text-align: center; color: var(--text-muted); font-size: 0.82em; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+.stars { font-size: 1.05em; letter-spacing: 1px; }
+.fire { color: #ff4500; font-weight: 700; font-size: 1.1em; }
+pre { font-size: 0.88em; line-height: 2; background: #0d1117; padding: 12px; border-radius: 6px; overflow-x: auto; }
+.divider { border-top: 1px solid var(--border); margin: 28px 0; }
+.rank-1 { background: linear-gradient(90deg, #2a1a0a, #161b22); }
+.rank-2 { background: linear-gradient(90deg, #1a1a2a, #161b22); }
+.rank-3 { background: linear-gradient(90deg, #1a2a1a, #161b22); }
+.highlight-box { background: #1a2a1a; border: 2px solid var(--green); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.caution-box { background: #2a2a1a; border: 2px solid var(--yellow); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>A股"MRVL对标三剑客" Serenity深度分析 <span class="muted">| 2026-06-10</span></h1>
+
+<p class="muted">背景：2026年6月2日Computex，黄仁勋点名Marvell为"下一个万亿美元公司"。NVIDIA此前已向Marvell投资20亿美元并通过NVLink Fusion深度绑定。本篇分析Mavell的A股最强对标——芯原股份（688521）、裕太微（688515）、盛科通信（688702）。</p>
+
+<!-- ===== 结论速览 ===== -->
+<h2>零、结论速览</h2>
+<div class="card">
+<table>
+<tr><th>排名</th><th>个股</th><th>代码</th><th>对标MRVL业务</th><th>Serenity结论</th><th>核心逻辑</th></tr>
+<tr class="rank-1"><td class="bold" style="font-size:1.2em;">🥇</td><td class="bold green">芯原股份</td><td>688521</td><td>定制AI ASIC</td><td><span class="fire">🔥 Strong Buy</span></td><td>订单82亿历史新高+91%AI占比+一年内转化90%+业绩确定性最强</td></tr>
+<tr class="rank-2"><td class="bold" style="font-size:1.1em;">🥈</td><td class="bold yellow">盛科通信</td><td>688702</td><td>交换芯片</td><td><span class="yellow bold">长期Buy/短期贵</span></td><td>卡点最硬(国产交换芯片唯一)+超节点趋势不可逆+预付款暴增375%</td></tr>
+<tr class="rank-3"><td class="bold" style="font-size:1.1em;">🥉</td><td class="bold yellow">裕太微</td><td>688515</td><td>全栈<br>(光DSP/PHY/交换)</td><td><span class="yellow bold">跟踪/等催化剂</span></td><td>最像小MRVL+车载爆发1332%+800G DSP送样待验证</td></tr>
+</table>
+<p class="yellow bold">三人合体才是"中国Marvell"：芯原做ASIC定制（MRVL增长最快板块）+ 盛科做交换芯片（MRVL基本盘）+ 裕太微做光DSP（MRVL王牌产品）。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 速览对比 ===== -->
+<h2>一、三只标的速览对比</h2>
+<div class="card">
+<table>
+<tr><th>指标</th><th>芯原股份 688521</th><th>裕太微 688515</th><th>盛科通信 688702</th></tr>
+<tr><td>6/10收盘价</td><td>¥228.52</td><td>~¥214</td><td>~¥252</td></tr>
+<tr><td>市值</td><td>~¥1202亿</td><td>~¥171亿</td><td>~¥1036亿</td></tr>
+<tr><td>2025营收</td><td class="green">31.52亿 +35.8%</td><td class="green">6.17亿 +55.6%</td><td class="yellow">11.51亿 +6.4%</td></tr>
+<tr><td>2025净利</td><td class="yellow">-5.28亿 (收窄12%)</td><td class="green">-1.34亿 (收窄34%)</td><td class="red">-1.50亿 (扩大120%)</td></tr>
+<tr><td>2026Q1营收</td><td class="green bold">8.36亿 +114.5%</td><td class="green">1.42亿 +74.8%</td><td class="yellow">2.48亿 +11.4%</td></tr>
+<tr><td>2026Q1净利</td><td class="red">-3.41亿</td><td class="yellow">-0.43亿</td><td class="yellow">-0.17亿</td></tr>
+<tr><td>毛利率(Q1)</td><td>32.3%</td><td class="green">42.5%</td><td class="green">49.5%</td></tr>
+<tr><td>研发费用率</td><td>43%</td><td>51%</td><td class="yellow">59%</td></tr>
+<tr><td>资产负债率</td><td>~30%+</td><td class="green">10.1%</td><td class="green">9.2%</td></tr>
+<tr><td>PS(TTM)</td><td>~38x</td><td class="green">~28x</td><td class="red">~90x</td></tr>
+<tr><td>关键催化剂</td><td class="green bold">在手订单82亿</td><td>800G DSP送样</td><td>预付款+375%</td></tr>
+</table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 芯原股份 ===== -->
+<h2>二、芯原股份 688521 — A股"纯血MRVL定制ASIC" <span class="fire">🔥 Strong Buy</span></h2>
+
+<h3>2.1 背景：家族渊源</h3>
+<div class="card">
+<p>芯原创始人戴伟民与Marvell创始人戴伟立、周秀文（戴伟立的丈夫）是同一家族的兄弟姐妹。<span class="bold">同一个家族、同一个商业模式</span>——IP授权+一站式ASIC定制设计服务。Marvell帮AWS/谷歌/微软定制AI芯片，芯原帮阿里/腾讯/字节定制NPU/DPU。</p>
+</div>
+
+<h3>2.2 客观事实底座</h3>
+<div class="card">
+<table>
+<tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+<tr><td>市值</td><td>~¥1202亿（228.52元，5.26亿股）</td><td>大市值，已充分定价</td></tr>
+<tr><td>2025在手订单（年末）</td><td>50.75亿</td><td>一年内转化率>80%</td></tr>
+<tr><td class="fire">2026.1.1-4.29新签</td><td class="fire bold">82.4亿（历史新高！）</td><td class="fire bold">9天新增37亿，增速恐怖</td></tr>
+<tr><td>AI算力订单占比</td><td class="green bold">91.37%</td><td>纯粹AI标的</td></tr>
+<tr><td>数据处理占比</td><td>90.15%（云侧AI ASIC+IP）</td><td>云厂自研芯片浪潮确认</td></tr>
+<tr><td>量产业务2025</td><td>14.90亿 +74%</td><td>规模效应开始显现</td></tr>
+<tr><td>量产业务2026Q1</td><td class="green bold">4.67亿 +220%</td><td>加速放量</td></tr>
+<tr><td>先进工艺</td><td>5nm/4nm项目执行中</td><td>技术能力业界领先</td></tr>
+<tr><td>IP市占</td><td>中国第一，全球第八</td><td>稀缺平台型公司</td></tr>
+<tr><td>2026E净利润</td><td>均值2.07亿（分歧大：-0.11亿~9.87亿）</td><td>高不确定性高弹性</td></tr>
+</table>
+</div>
+
+<h3>2.3 Serenity框架评估</h3>
+
+<h4>卡点五问</h4>
+<div class="card">
+<table>
+<tr><th>#</th><th>问题</th><th>答案</th><th>评分</th></tr>
+<tr><td>①</td><td>Single point of failure？</td><td class="green bold">是 — 国内云厂自研AI芯片必须用芯原的IP和设计服务，无替代</td><td><span class="stars green">⭐⭐⭐⭐⭐</span></td></tr>
+<tr><td>②</td><td>市值 vs TAM？</td><td class="yellow">1200亿 vs 远期ASIC设计TAM数百亿，市值已大但有空间</td><td><span class="stars yellow">⭐⭐⭐</span></td></tr>
+<tr><td>③</td><td>Designed-in程度？</td><td class="green bold">极强 — 半导体IP一次授权终生收费，5nm项目设计win绑定全生命周期</td><td><span class="stars green">⭐⭐⭐⭐⭐</span></td></tr>
+<tr><td>④</td><td>放量时间？</td><td class="green bold">现在 — 订单一年内转化>90%，2026就是放量年</td><td><span class="stars green">⭐⭐⭐⭐⭐</span></td></tr>
+<tr><td>⑤</td><td>定价程度？</td><td class="yellow">部分定价（PE 580x），但看2027预测PE~74x有空间</td><td><span class="stars yellow">⭐⭐⭐</span></td></tr>
+</table>
+<p class="green bold">卡点总分：21/25 → 高卡点质量</p>
+</div>
+
+<h4>好卡点判据</h4>
+<div class="card">
+<table>
+<tr><th>#</th><th>判据</th><th>判定</th></tr>
+<tr><td>1</td><td>垄断（中国第一IP+一站式ASIC）</td><td><span class="tag tag-green">✓</span></td></tr>
+<tr><td>4</td><td>Designed-in + 多客户</td><td><span class="tag tag-green">✓ 阿里/腾讯/字节都绑定了</span></td></tr>
+<tr><td>6</td><td>未来爆发营收</td><td><span class="tag tag-green">✓ 2026E 65亿 → 2027E 100亿</span></td></tr>
+<tr><td>7</td><td>资产负债表能撑</td><td><span class="tag tag-yellow">⚠ 仍在亏损但负债可控</span></td></tr>
+<tr><td>8</td><td>Demand > Supply</td><td><span class="tag tag-green">✓ 订单82亿 vs 营收31亿</span></td></tr>
+<tr><td>13</td><td>极少数玩家</td><td><span class="tag tag-green">✓ 国内无第二家同级别</span></td></tr>
+<tr><td>15</td><td>国产替代紧迫度</td><td><span class="tag tag-green">✓ 云厂去美化不可或缺</span></td></tr>
+</table>
+<p class="green bold">卡点评分：7/7通过 → 顶级卡点</p>
+</div>
+
+<h4>红旗扫描</h4>
+<div class="card">
+<table>
+<tr><th>#</th><th>红旗</th><th>判定</th><th>严重度</th></tr>
+<tr><td>—</td><td>连续亏损</td><td><span class="badge badge-yellow">⛔ 2025亏5.28亿，Q1亏3.41亿</span></td><td>中（赛道特性）</td></tr>
+<tr><td>1</td><td>增发稀释</td><td><span class="badge badge-yellow">⚠ 正在定增</span></td><td>低</td></tr>
+<tr><td>—</td><td>资产负债表toxic</td><td><span class="badge badge-green">✓ 不触发</span></td><td>无</td></tr>
+</table>
+</div>
+
+<h4>估值分析</h4>
+<div class="card">
+<table>
+<tr><th>方法</th><th>计算</th><th>结果</th></tr>
+<tr><td>2027E PE法</td><td>6.93亿 × PE 80x ÷ 5.26亿股</td><td class="green">¥105</td></tr>
+<tr><td>PS法（2027E）</td><td>100亿营收 × 15x PS ÷ 5.26亿</td><td class="green">¥285</td></tr>
+<tr><td>乐观PE（中泰预测）</td><td>17.95亿 × PE 60x ÷ 5.26亿</td><td class="green">¥205</td></tr>
+<tr style="background:#1a1f2b;"><td class="bold">当前股价</td><td>6/10收盘</td><td class="yellow bold">¥228.52</td></tr>
+</table>
+<p class="yellow">诚实门：当前价已price-in相当一部分预期。但若2027年净利达券商一致预期均值6.93亿，PE~173x会随业绩爆发快速消化到80x以下。券商预测分歧极大（中泰9.87亿 vs 平安-0.11亿），反映高不确定性。</p>
+</div>
+
+<h3>2.4 结论</h3>
+<div class="verdict">
+<h3><span class="fire">🔥 Strong Buy</span> — 三者中业绩确定性最强</h3>
+<ul>
+<li class="green bold">核心逻辑：在手订单82亿（一年内转化>90%）→ 2026营收大概率65亿+ → 盈亏平衡在即 → ASIC产业趋势不可逆</li>
+<li class="yellow">风险：1200亿市值起点不低 + 仍亏损 + 高研发能否快速转化为利润是关键</li>
+<li>催化剂：每季订单更新 + 2026H1半年报能否扭亏</li>
+</ul>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 裕太微 ===== -->
+<h2>三、裕太微 688515 — A股"小Marvell" <span class="yellow bold">⚠ 跟踪/等催化剂</span></h2>
+
+<h3>3.1 背景：嫡系部队</h3>
+<div class="card">
+<p>创始团队<span class="bold">整建制出自Marvell中国研发中心</span>，A股唯一"Marvell正宗嫡系"。产品线三线全对标：光DSP（MRVL王牌）+ 交换芯片（MRVL基本盘）+ PHY芯片（MRVL起家业务）。A股所有对标中最像小号Marvell。</p>
+</div>
+
+<h3>3.2 客观事实底座</h3>
+<div class="card">
+<table>
+<tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+<tr><td>市值</td><td>~¥171亿（~214元，8000万股）</td><td class="green">小市值，有10x弹性空间</td></tr>
+<tr><td>2025营收</td><td>6.17亿 +55.6%</td><td>小体量高增速</td></tr>
+<tr><td>2025净利</td><td class="green">-1.34亿（亏损收窄34%）</td><td>逐步减亏</td></tr>
+<tr><td>2026Q1营收</td><td class="green">1.42亿 +74.8%</td><td>增长延续</td></tr>
+<tr><td>Q1毛利率</td><td class="green">42.53%</td><td>高于芯原</td></tr>
+<tr><td>研发费用</td><td>3.15亿（51%营收）</td><td>高研发但费率在降</td></tr>
+<tr><td>车载产品收入</td><td class="fire">6959万，+1332%</td><td class="fire">新增长极，车载以太网突破</td></tr>
+<tr><td>800G DSP</td><td>7nm PAM4在头部客户送样</td><td>对标MRVL DSP王牌</td></tr>
+<tr><td>定增</td><td>募资13.6亿投向数据中心+车载</td><td>扩产信号</td></tr>
+<tr><td>股权激励目标</td><td>2026-2028营收+30%/60%/90%</td><td>管理层信心</td></tr>
+<tr><td>200G DSP</td><td>已批量供货中际旭创、新易盛</td><td>营收基础</td></tr>
+</table>
+</div>
+
+<h3>3.3 Serenity框架评估</h3>
+
+<h4>卡点五问</h4>
+<div class="card">
+<table>
+<tr><th>#</th><th>问题</th><th>答案</th><th>评分</th></tr>
+<tr><td>①</td><td>Single point of failure？</td><td class="yellow">不是 — 国内DSP还在送样，量产替代尚早</td><td><span class="stars yellow">⭐⭐</span></td></tr>
+<tr><td>②</td><td>市值 vs TAM？</td><td class="green">171亿 vs 全球DSP市场数十亿美元，有空间</td><td><span class="stars green">⭐⭐⭐⭐</span></td></tr>
+<tr><td>③</td><td>Designed-in？</td><td class="yellow">200G已供货中际/新易盛，800G还在验证</td><td><span class="stars yellow">⭐⭐⭐</span></td></tr>
+<tr><td>④</td><td>放量时间？</td><td class="yellow">800G DSP预计2026H2~2027放量</td><td><span class="stars yellow">⭐⭐⭐</span></td></tr>
+<tr><td>⑤</td><td>定价？</td><td class="green">171亿小市值+亏损，尚未被充分挖掘</td><td><span class="stars green">⭐⭐⭐⭐</span></td></tr>
+</table>
+<p class="yellow">卡点总分：16/25 → 中等卡点质量，潜力大但尚未兑现</p>
+</div>
+
+<h4>好卡点判据</h4>
+<div class="card">
+<table>
+<tr><th>#</th><th>判据</th><th>判定</th></tr>
+<tr><td>2</td><td>极小市值 vs 巨大TAM</td><td><span class="tag tag-green">✓ 171亿 vs 光DSP寡头市场</span></td></tr>
+<tr><td>—</td><td>团队基因（Marvell嫡系）</td><td><span class="tag tag-green">✓ A股独一份</span></td></tr>
+<tr><td>15</td><td>国产替代紧迫度</td><td><span class="tag tag-green">✓ 光DSP国产化率<5%</span></td></tr>
+<tr><td>—</td><td>已批量供货头部客户</td><td><span class="tag tag-yellow">⚠ 200G已批量，800G待验证</span></td></tr>
+</table>
+</div>
+
+<h4>红旗扫描</h4>
+<div class="card">
+<table>
+<tr><th>红旗</th><th>判定</th><th>严重度</th></tr>
+<tr><td>连续亏损</td><td><span class="badge badge-yellow">⚠ 亏损但收窄中</span></td><td>低</td></tr>
+<tr><td>定增稀释</td><td><span class="badge badge-yellow">⚠ 13.6亿定增</span></td><td>中</td></tr>
+<tr><td>体量过小</td><td><span class="badge badge-yellow">⚠ 6亿营收撑不起巨大预期</span></td><td>中</td></tr>
+<tr><td>负债</td><td><span class="badge badge-green">✓ 负债率10%，极安全</span></td><td>无</td></tr>
+</table>
+</div>
+
+<h3>3.4 结论</h3>
+<div class="verdict verdict-yellow">
+<h3><span class="yellow">⚠ 值得跟踪/暂不建仓</span></h3>
+<ul>
+<li class="bold">核心逻辑：Marvell嫡系团队+A股唯一光DSP标的+车载爆发1332%</li>
+<li class="yellow">最大催化剂：800G DSP通过头部客户验证、进入中际/新易盛大规模采购</li>
+<li class="yellow">最大风险：目前6亿营收、亏损中，800G DSP量产时间不确定 → 业绩驱动还需1-2年</li>
+<li>与MRVL对标强度：<span class="stars green">⭐⭐⭐⭐⭐</span>（产品线最像），但体量差距"1:100"级别</li>
+</ul>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 盛科通信 ===== -->
+<h2>四、盛科通信 688702 — 国产交换芯片"孤品" <span class="yellow bold">⚠ 长期Buy/短期贵</span></h2>
+
+<h3>4.1 背景：A股唯一</h3>
+<div class="card">
+<p>盛科通信是<span class="bold green">A股唯一量产商用数据中心以太网交换芯片</span>的公司。对标博通Tomahawk/Marvell Teralynx。全球交换芯片市场由博通垄断（市占70%+），Marvell排第二，盛科是中国唯一的商用替代选项。超节点（ScaleUp组网）是AI算力下一步的核心卡点，交换芯片是超节点的核心器件。</p>
+</div>
+
+<h3>4.2 客观事实底座</h3>
+<div class="card">
+<table>
+<tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+<tr><td>市值</td><td>~¥1036亿（~252元，4.1亿股）</td><td>大市值</td></tr>
+<tr><td>2025营收</td><td class="yellow">11.51亿 +6.35%</td><td>增速偏慢</td></tr>
+<tr><td>2025净利</td><td class="red">-1.50亿（亏损扩大120%）</td><td>研发猛砸导致</td></tr>
+<tr><td>2026Q1营收</td><td class="yellow">2.48亿 +11.4%</td><td>增速平缓</td></tr>
+<tr><td>Q1毛利率</td><td class="green bold">49.45%（连续7季上升）</td><td class="green">高端产品放量信号！</td></tr>
+<tr><td>研发费用</td><td>6.79亿（59%营收）</td><td>下重注</td></tr>
+<tr><td>Q1预付款</td><td class="fire bold">3.96亿 +375%</td><td class="fire">疯狂备货，需求爆发前兆！</td></tr>
+<tr><td>资产负债率</td><td class="green">9.18%</td><td>几乎零负债</td></tr>
+<tr><td>技术</td><td>12.8T/25.6T已量产，51.2T研发中</td><td>对标博通Tomahawk</td></tr>
+<tr><td>OISA生态</td><td>首批合作伙伴</td><td>国产超节点核心卡位</td></tr>
+</table>
+</div>
+
+<h3>4.3 Serenity框架评估</h3>
+
+<h4>卡点五问</h4>
+<div class="card">
+<table>
+<tr><th>#</th><th>问题</th><th>答案</th><th>评分</th></tr>
+<tr><td>①</td><td>Single point of failure？</td><td class="green bold">是！A股唯一商用数据中心交换芯片，国产超节点离不开盛科</td><td><span class="stars green">⭐⭐⭐⭐⭐</span></td></tr>
+<tr><td>②</td><td>市值 vs TAM？</td><td class="green">1036亿 vs 2030全球交换芯片TAM 140-320亿美元</td><td><span class="stars green">⭐⭐⭐⭐</span></td></tr>
+<tr><td>③</td><td>Designed-in？</td><td class="green">已进入运营商+阿里云等CSP</td><td><span class="stars green">⭐⭐⭐⭐</span></td></tr>
+<tr><td>④</td><td>放量时间？</td><td class="yellow">25.6T/51.2T处导入期，2026H2-2027放量</td><td><span class="stars yellow">⭐⭐⭐</span></td></tr>
+<tr><td>⑤</td><td>定价程度？</td><td class="red">PS 90x，2025增速仅6%，市场给了极高溢价</td><td><span class="stars red">⭐⭐</span></td></tr>
+</table>
+<p class="green">卡点总分：18/25 → 高端卡点，但估值拉低了总分</p>
+</div>
+
+<h4>好卡点判据</h4>
+<div class="card">
+<table>
+<tr><th>#</th><th>判据</th><th>判定</th></tr>
+<tr><td>1</td><td>A股唯一</td><td><span class="tag tag-green">✓ 绝对稀缺</span></td></tr>
+<tr><td>—</td><td>超节点趋势</td><td><span class="tag tag-green">✓ ScaleUp交换芯片是AI下一代核心卡点</span></td></tr>
+<tr><td>15</td><td>国产替代</td><td><span class="tag tag-green">✓ 交换机芯片国产化率<5%</span></td></tr>
+<tr><td>—</td><td>预付款暴增</td><td><span class="tag tag-green">✓ Q1预付款3.96亿+375%</span></td></tr>
+<tr><td>—</td><td>毛利率持续上升</td><td><span class="tag tag-green">✓ 49.45%连续7季上升</span></td></tr>
+</table>
+</div>
+
+<h4>估值分析</h4>
+<div class="card">
+<table>
+<tr><th>方法</th><th>计算</th><th>结果</th></tr>
+<tr><td>2027E PS法</td><td>23亿营收 × 25x ÷ 4.1亿</td><td class="yellow">¥140</td></tr>
+<tr><td>2028E PE法（均值）</td><td>8.7亿净利 × 60x ÷ 4.1亿</td><td class="yellow">¥127</td></tr>
+<tr><td>Bull（东北最乐观）</td><td>25亿净利 × 60x ÷ 4.1亿</td><td class="green">¥366</td></tr>
+<tr style="background:#1a1f2b;"><td class="bold">当前股价</td><td>6/10收盘</td><td class="yellow bold">~¥252</td></tr>
+</table>
+<p class="red bold">诚实门：当前PS 90x vs 2025增速仅6%，是三者中估值最贵的。但预付款暴增375%+毛利率连续7季上升是明确的业务拐点先行信号。放量时间决定估值溢价能否消化。</p>
+</div>
+
+<h3>4.4 结论</h3>
+<div class="verdict verdict-yellow">
+<h3><span class="yellow">⚠ 长期Buy，短期太贵</span></h3>
+<ul>
+<li class="green bold">核心逻辑：国产交换芯片"唯一"标的+超节点趋势不可逆+预付款暴增确认需求爆发前夜</li>
+<li class="red">最大风险：PS 90x+2025增速仅6%+放量时间不确定 → 若超节点导入延迟，估值会大幅压缩</li>
+<li class="yellow">催化剂：51.2T芯片发布时间、运营商/CSP大单落地</li>
+</ul>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 横向对比 ===== -->
+<h2>五、三只横向对比 — Serenity评分矩阵</h2>
+<div class="card">
+<table>
+<tr><th>维度（权重）</th><th>芯原 688521</th><th>裕太微 688515</th><th>盛科 688702</th></tr>
+<tr><td>卡点强度 (25%)</td><td class="green"><span class="stars green">⭐⭐⭐⭐⭐</span> 9</td><td class="yellow"><span class="stars yellow">⭐⭐⭐</span> 6</td><td class="green"><span class="stars green">⭐⭐⭐⭐⭐</span> 9</td></tr>
+<tr><td>稀缺性 (15%)</td><td class="green"><span class="stars green">⭐⭐⭐⭐</span> 中国第一</td><td class="green"><span class="stars green">⭐⭐⭐⭐⭐</span> 嫡系独一份</td><td class="green"><span class="stars green">⭐⭐⭐⭐⭐</span> A股唯一</td></tr>
+<tr><td>业绩确定性 (20%)</td><td class="green bold"><span class="stars green">⭐⭐⭐⭐⭐</span> 订单82亿</td><td class="yellow"><span class="stars yellow">⭐⭐⭐</span> 800G待验证</td><td class="yellow"><span class="stars yellow">⭐⭐⭐</span> 放量待确认</td></tr>
+<tr><td>财务安全 (10%)</td><td class="yellow"><span class="stars yellow">⭐⭐⭐</span> 亏损可控</td><td class="green"><span class="stars green">⭐⭐⭐⭐</span> 负债10%</td><td class="green"><span class="stars green">⭐⭐⭐⭐⭐</span> 负债9%</td></tr>
+<tr><td>估值性价比 (15%)</td><td class="yellow"><span class="stars yellow">⭐⭐⭐</span> PS 38x</td><td class="green"><span class="stars green">⭐⭐⭐⭐</span> PS 28x</td><td class="red"><span class="stars red">⭐⭐</span> PS 90x</td></tr>
+<tr><td>催化剂密度 (10%)</td><td class="green"><span class="stars green">⭐⭐⭐⭐⭐</span> 每季订单</td><td class="yellow"><span class="stars yellow">⭐⭐⭐</span> 800G DSP</td><td class="green"><span class="stars green">⭐⭐⭐⭐</span> 超节点</td></tr>
+<tr><td>上游卡点潜力 (5%)</td><td class="green"><span class="stars green">⭐⭐⭐⭐</span></td><td class="green"><span class="stars green">⭐⭐⭐⭐⭐</span></td><td class="green"><span class="stars green">⭐⭐⭐⭐⭐</span></td></tr>
+<tr style="background:#1c2129;"><td class="bold">加权综合</td><td class="fire bold" style="font-size:1.2em;">🥇 4.0/5</td><td class="yellow bold">🥉 3.3/5</td><td class="green bold" style="font-size:1.1em;">🥈 3.6/5</td></tr>
+</table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== MRVL业务对标映射 ===== -->
+<h2>六、与MRVL五大赛道的映射关系</h2>
+<div class="card">
+<table>
+<tr><th>MRVL业务</th><th>Marvell地位</th><th>最佳A股对标</th><th>对标强度</th></tr>
+<tr><td>相干光DSP</td><td>全球龙头60%+</td><td>裕太微 688515</td><td><span class="stars yellow">⭐⭐⭐</span> 送样中</td></tr>
+<tr><td>定制AI ASIC</td><td>全球第二大</td><td class="green bold">芯原股份 688521</td><td><span class="stars green">⭐⭐⭐⭐⭐</span> 国内TOP1</td></tr>
+<tr><td>高速交换芯片</td><td>全球第二</td><td class="green bold">盛科通信 688702</td><td><span class="stars green">⭐⭐⭐⭐</span> A股唯一</td></tr>
+<tr><td>PCIe/CXL互连</td><td>—</td><td>澜起科技 688008</td><td><span class="stars green">⭐⭐⭐⭐⭐</span></td></tr>
+<tr><td>存储控制器</td><td>起家业务</td><td>联芸科技 688449</td><td><span class="stars yellow">⭐⭐⭐</span></td></tr>
+</table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 最终判定 ===== -->
+<h2>七、Serenity最终判定</h2>
+
+<div class="verdict">
+<h3>🥇 芯原股份 688521 — <span class="fire">🔥 Strong Buy</span></h3>
+<p class="bold">"订单在手天下我有" — 82亿订单91%AI，2026就是放量兑现年。</p>
+<p>三者中业绩确定性最强：在手下有82亿订单（且9天就能新增37亿），一年内转化率>90%，这意味着2026年营收60亿+几乎是板上钉钉。唯一风险是当前1200亿市值已price-in了一部分预期，但若用2027年75-100亿营收去估值，当前并不贵。</p>
+</div>
+
+<div class="verdict verdict-yellow" style="margin-top:16px;">
+<h3>🥈 盛科通信 688702 — <span class="yellow bold">⚠ 长期Buy / 等回调</span></h3>
+<p class="bold">"卡点最硬但估值最贵" — 超节点放量时刻就是起飞时刻。</p>
+<p>卡点逻辑最硬（A股唯一交换芯片），预付款暴增375%+毛利率连续7季上升是明确拐点信号，但PS 90x对应2025增速仅6%，需要实际放量验证。适合在估值回归合理时建仓，不建议追高。</p>
+</div>
+
+<div class="verdict verdict-yellow" style="margin-top:16px;">
+<h3>🥉 裕太微 688515 — <span class="yellow bold">⚠ 值得跟踪 / 等催化剂</span></h3>
+<p class="bold">"最像小Marvell但还在爬坡" — 800G DSP量产验证之日才是建仓之时。</p>
+<p>市值最小（171亿），弹性最大，团队血统最纯正（Marvell嫡系）。最大的逻辑是"光DSP国产替代从0到1"。但目前核心产品800G DSP还在送样验证，业绩驱动还需1-2年。适合加自选跟踪，800G通过验证时第一时间行动。</p>
+</div>
+
+<div class="highlight-box">
+<p class="green bold" style="font-size:1.1em;">三只组合 = 完整版"中国Marvell"</p>
+<ul>
+<li>芯原 → Marvell定制ASIC板块（增长最快，2025 $15亿→2028翻倍）</li>
+<li>盛科 → Marvell交换芯片板块（基本盘，Teralynx系列）</li>
+<li>裕太微 → Marvell光DSP板块（王牌，市占率60%+）</li>
+</ul>
+<p>目前芯原的业绩确定性最强，盛科的卡点最硬但需耐心，裕太微弹性最大但最早期。从Serenity框架看，芯原是当前时点三者中唯一可以直接行动的标的。</p>
+</div>
+
+<div class="footer">
+<p>A股"MRVL对标三剑客" Serenity深度分析 | 生成时间：2026-06-10</p>
+<p>免责声明：本分析仅供研究参考，不构成任何投资建议。市场有风险，投资需谨慎。</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月29日 A股收盘复盘</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #1a1a3e, #0d0d2b); border-radius: 16px; margin-bottom: 24px; border: 1px solid #2a2a4a; }
+.header h1 { font-size: 28px; color: #fff; margin-bottom: 8px; }
+.header .date { font-size: 14px; color: #888; }
+.section { background: #16162a; border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2a4a; }
+.section h2 { font-size: 20px; color: #ffd700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #2a2a4a; display: flex; align-items: center; gap: 8px; }
+.section h2 .icon { font-size: 22px; }
+.index-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 16px; }
+.index-card { background: linear-gradient(135deg, #1e1e3a, #1a1a30); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #2a2a4a; }
+.index-card.highlight { border-color: #ffd700; box-shadow: 0 0 20px rgba(255,215,0,0.15); }
+.index-card .name { font-size: 13px; color: #999; margin-bottom: 8px; }
+.index-card .value { font-size: 26px; font-weight: bold; color: #fff; margin-bottom: 6px; }
+.index-card .change { font-size: 16px; font-weight: bold; }
+.up { color: #ff4444; }
+.down { color: #00cc66; }
+.market-overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stat-card { background: #1e1e3a; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #2a2a4a; }
+.stat-card .label { font-size: 12px; color: #888; margin-bottom: 6px; }
+.stat-card .number { font-size: 22px; font-weight: bold; color: #fff; }
+.stat-card .sub { font-size: 12px; color: #aaa; margin-top: 4px; }
+.heatmap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.heat-tag { padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; }
+.heat-tag.lead { background: rgba(255,68,68,0.2); color: #ff6666; border: 1px solid rgba(255,68,68,0.4); }
+.heat-tag.fall { background: rgba(0,204,102,0.15); color: #33cc77; border: 1px solid rgba(0,204,102,0.3); }
+.heat-tag.neutral { background: rgba(255,215,0,0.15); color: #ffd700; border: 1px solid rgba(255,215,0,0.3); }
+.analysis-block { background: #1e1e3a; border-radius: 10px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #ffd700; }
+.analysis-block h3 { font-size: 16px; color: #ffd700; margin-bottom: 10px; }
+.analysis-block p { font-size: 14px; color: #ccc; line-height: 1.8; }
+.analysis-block ul { margin: 8px 0 0 20px; color: #bbb; }
+.analysis-block ul li { margin-bottom: 6px; line-height: 1.7; }
+.flow-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.flow-col { flex: 1; min-width: 280px; background: #1e1e3a; border-radius: 10px; padding: 18px; }
+.flow-col h3 { font-size: 15px; margin-bottom: 10px; }
+.flow-col.green h3 { color: #ff4444; }
+.flow-col.red h3 { color: #00cc66; }
+.flow-col ul { list-style: none; }
+.flow-col ul li { padding: 4px 0; color: #bbb; font-size: 13px; border-bottom: 1px solid #2a2a4a; }
+.flow-col ul li:last-child { border-bottom: none; }
+.news-card { background: #1e1e3a; border-radius: 10px; padding: 16px; margin-bottom: 12px; border: 1px solid #2a2a4a; }
+.news-card .news-title { font-size: 14px; font-weight: bold; color: #ffd700; margin-bottom: 6px; }
+.news-card .news-desc { font-size: 13px; color: #bbb; line-height: 1.7; }
+.outlook { background: linear-gradient(135deg, #1a1a3e, #1a2a1a); border-radius: 12px; padding: 24px; margin-top: 16px; border: 1px solid #2a4a2a; }
+.outlook h3 { font-size: 18px; color: #ffd700; margin-bottom: 12px; }
+.outlook p { color: #ccc; font-size: 14px; line-height: 1.8; }
+.disclaimer { font-size: 11px; color: #666; text-align: center; margin-top: 30px; padding: 16px; border-top: 1px solid #2a2a4a; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+.tag-red { background: rgba(255,68,68,0.2); color: #ff6666; }
+.tag-green { background: rgba(0,204,102,0.15); color: #33cc77; }
+.tag-gold { background: rgba(255,215,0,0.2); color: #ffd700; }
+.tag-blue { background: rgba(66,133,244,0.2); color: #6699ff; }
+.timeline { position: relative; padding-left: 20px; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: #2a2a4a; }
+.timeline-item { position: relative; margin-bottom: 16px; padding-left: 16px; }
+.timeline-item::before { content: ''; position: absolute; left: -16px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: #ffd700; }
+.timeline-item .time { font-size: 12px; color: #888; }
+.timeline-item .desc { font-size: 13px; color: #ccc; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>2026年6月29日 A股收盘复盘</h1>
+    <div class="date">北京时间 · 上半年最后一个交易日 · 深V反转</div>
+</div>
+
+<!-- 指数概览 -->
+<div class="section">
+    <h2><span class="icon">📊</span>指数概览</h2>
+    <div class="index-grid">
+        <div class="index-card">
+            <div class="name">上证指数</div>
+            <div class="value">4073.90</div>
+            <div class="change up">+1.16%</div>
+        </div>
+        <div class="index-card">
+            <div class="name">深证成指</div>
+            <div class="value">15812.87</div>
+            <div class="change up">+0.19%</div>
+        </div>
+        <div class="index-card">
+            <div class="name">创业板指</div>
+            <div class="value">4216.70</div>
+            <div class="change up">+0.54%</div>
+        </div>
+        <div class="index-card highlight">
+            <div class="name">科创50 <span class="tag tag-red">历史新高</span></div>
+            <div class="value">2126.01</div>
+            <div class="change up">+4.61%</div>
+        </div>
+        <div class="index-card">
+            <div class="name">北证50</div>
+            <div class="value">--</div>
+            <div class="change down">-3.27%</div>
+        </div>
+    </div>
+    <div class="market-overview">
+        <div class="stat-card">
+            <div class="label">沪深京成交额</div>
+            <div class="number">3.54万亿</div>
+            <div class="sub">缩量约350亿</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">沪市成交</div>
+            <div class="number">1.67万亿</div>
+            <div class="sub">较前日+450亿</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">深市成交</div>
+            <div class="number">1.85万亿</div>
+            <div class="sub">--</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">上涨 / 下跌</div>
+            <div class="number"><span class="up">2467</span> / <span class="down">2931</span></div>
+            <div class="sub">涨跌比约4:6</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">涨停 / 跌停</div>
+            <div class="number"><span class="up">106</span> / <span class="down">37</span></div>
+            <div class="sub">封板率74%</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">涨超9% / 跌超9%</div>
+            <div class="number"><span class="up">219</span> / <span class="down">101</span></div>
+            <div class="sub">极度分化</div>
+        </div>
+    </div>
+</div>
+
+<!-- 分时走势 -->
+<div class="section">
+    <h2><span class="icon">⏱️</span>分时走势回顾</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="time">开盘</div>
+            <div class="desc">上证开盘4026.69点，涨跌互现。受外围日韩股市大跌及科技股获利回吐影响，三大指数低开震荡。</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">早盘</div>
+            <div class="desc">沪强深弱格局明显，创业板指一度跌超2%，<strong>上证指数盘中跌破4000点至3992.55点</strong>。PCB、CPO、算力硬件股重挫，市场恐慌情绪蔓延，超4200只个股下跌。</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">午后</div>
+            <div class="desc"><strong>风云突变，半导体产业链午后强势拉升</strong>，科创50一路走高。医药板块在医保"双目录"政策催化下爆发涨停潮。白酒、食品饮料等大消费板块接力反弹，贵州茅台涨超3%。</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">尾盘</div>
+            <div class="desc"><strong>主力资金尾盘半小时加速进场扫货</strong>，上证指数从4030点附近一路拉升至4073.90点，完成日内深V反转。尾盘半小时成交额突破5000亿元，放量抢筹特征明显。</div>
+        </div>
+    </div>
+</div>
+
+<!-- 板块涨跌 -->
+<div class="section">
+    <h2><span class="icon">🔥</span>板块涨跌分析</h2>
+    <div class="analysis-block">
+        <h3>领涨板块</h3>
+        <div class="heatmap" style="margin-bottom:12px;">
+            <span class="heat-tag lead">医药生物（创新药/CRO/减肥药）</span>
+            <span class="heat-tag lead">半导体（设备/材料/硅片/存储）</span>
+            <span class="heat-tag lead">白酒/食品饮料</span>
+            <span class="heat-tag lead">可控核聚变</span>
+            <span class="heat-tag lead">猪肉/养殖</span>
+            <span class="heat-tag lead">游戏</span>
+            <span class="heat-tag neutral">非银金融</span>
+            <span class="heat-tag neutral">煤炭</span>
+        </div>
+        <p><strong>医药生物</strong>：今日最大亮点，超60只个股涨停或涨超10%。广生堂、万邦医药、三生国健、舒泰神、百奥赛图、荣昌生物等20CM涨停。核心驱动：国家医保局公示2026年目录初审药品名单，557个药品通过基本医保目录初审，54个药品通过商保创新药目录初审。叠加板块前期调整充分、估值处于低位，资金报复性回补。</p>
+        <p style="margin-top:10px;"><strong>半导体</strong>：午后强势拉升，推动科创50创历史新高。有研硅、银河微电20CM涨停，华海清科、中巨芯、神工股份、聚和材料等涨停。核心驱动：①6N级六氟化钨价格较4月初涨幅超190%，7N级产品长协价高达360万元/吨；②三星宣布未来十年超1000万亿韩元投资计划，强化全球半导体资本开支扩张逻辑；③国产替代加速，洁净室、半导体材料、功率半导体多点开花。</p>
+        <p style="margin-top:10px;"><strong>大消费</strong>：白酒、食品饮料午后反弹，贵州茅台涨超3%，东鹏饮料、佳禾食品、百润股份涨停。618数据显示酒类销售同比增长25%，飞天茅台批价企稳。</p>
+    </div>
+    <div class="analysis-block" style="border-left-color: #00cc66;">
+        <h3 style="color:#33cc77;">领跌板块</h3>
+        <div class="heatmap" style="margin-bottom:12px;">
+            <span class="heat-tag fall">PCB/覆铜板</span>
+            <span class="heat-tag fall">CPO/光模块</span>
+            <span class="heat-tag fall">光纤光缆</span>
+            <span class="heat-tag fall">通信设备</span>
+            <span class="heat-tag fall">建筑材料（玻璃玻纤）</span>
+            <span class="heat-tag fall">消费电子</span>
+            <span class="heat-tag fall">房地产</span>
+        </div>
+        <p>算力硬件方向遭遇集体兑现压力，鹏鼎控股、宏和科技、宝鼎科技等多股跌停。中际旭创、新易盛等龙头大幅下挫。通信行业主力资金净流出超184亿元，PCB概念净流出160亿元。长海股份、九鼎新材、山东玻纤等建材股跌停。核心逻辑：<strong>半年末机构调仓</strong>——高位赛道积累海量获利盘，机构优先兑现浮盈锁定排名；同时中报业绩期临近，纯题材炒作标的资金提前规避。</p>
+    </div>
+</div>
+
+<!-- 资金流向 -->
+<div class="section">
+    <h2><span class="icon">💰</span>资金流向</h2>
+    <div class="flow-row">
+        <div class="flow-col green">
+            <h3>主力资金净流入 TOP3</h3>
+            <ul>
+                <li><strong>1. 半导体</strong> — 设备/材料/硅片全线吸金，科创50成交创历史新高</li>
+                <li><strong>2. 医药生物</strong> — 医保"双目录"催化，创新药/CRO获资金集中涌入</li>
+                <li><strong>3. 食品饮料</strong> — 白酒/饮料防御属性凸显，机构再平衡配置</li>
+            </ul>
+        </div>
+        <div class="flow-col red">
+            <h3>主力资金净流出 TOP3</h3>
+            <ul>
+                <li><strong>1. 通信设备</strong> — 净流出超184亿，CPO/光模块/光纤领跌</li>
+                <li><strong>2. 计算机应用</strong> — 高位科技股获利了结</li>
+                <li><strong>3. 建筑材料</strong> — 玻璃玻纤板块多股跌停</li>
+            </ul>
+        </div>
+    </div>
+    <div style="margin-top:16px; background:#1e1e3a; border-radius:10px; padding:16px; border:1px solid #2a2a4a;">
+        <p style="font-size:14px; color:#ccc;"><strong>北向资金：</strong>整体小幅净流出，方向高度分化——从CPO、光模块、PCB等高位算力赛道流出，回流加仓创新药、白酒、生猪养殖、半导体设备四大板块。外资与内资主力操作方向高度一致，执行"<strong>弃高就低</strong>"调仓思路。</p>
+        <p style="font-size:14px; color:#ccc; margin-top:8px;"><strong>尾盘异动：</strong>全市场主力资金净流入超1亿元的个股共计168只，尾盘半小时集中涌入资金占全天净流入总额的四成以上，大资金尾盘抢筹动作明确。</p>
+    </div>
+</div>
+
+<!-- 重要消息面 -->
+<div class="section">
+    <h2><span class="icon">📰</span>重要消息面</h2>
+    <div class="news-card">
+        <div class="news-title"><span class="tag tag-red">国内</span>医保"双目录"初审名单公示</div>
+        <div class="news-desc">国家医保局公示2026年目录初审药品名单，557个药品通过基本医保目录初审，54个药品通过商保创新药目录初审。这是支付端对创新药支持的实质性落地，直接引爆医药板块涨停潮。</div>
+    </div>
+    <div class="news-card">
+        <div class="news-title"><span class="tag tag-red">国内</span>央行首次开展3000亿隔夜逆回购</div>
+        <div class="news-desc">央行在公开市场操作中首次开展3000亿元隔夜逆回购操作，同时开展1575亿元7天期逆回购（利率1.40%）。隔夜逆回购仅公布操作量、未披露利率，释放呵护年中流动性信号但避免过多宽松预期。当日净回笼190亿元。</div>
+    </div>
+    <div class="news-card">
+        <div class="news-title"><span class="tag tag-red">国内</span>工信部等五部门启动工业5G独立专网试点</div>
+        <div class="news-desc">推动"5G+工业互联网"深度融合，利好工业互联网、智能制造等相关产业。</div>
+    </div>
+    <div class="news-card">
+        <div class="news-title"><span class="tag tag-blue">海外</span>美股纳指周跌4.6%，AI担忧升温</div>
+        <div class="news-desc">报道称OpenAI可能推迟IPO，引发市场对AI相关支出过度的担忧。英伟达跌1.6%，美光跌6.7%，安森美暴跌23.7%。苹果涨3.1%，微软涨5.7%。纳指周跌幅达4.60%。</div>
+    </div>
+    <div class="news-card">
+        <div class="news-title"><span class="tag tag-blue">海外</span>三星宣布未来十年超1000万亿韩元投资计划</div>
+        <div class="news-desc">尽管三星电子股价下跌，但其巨额投资计划强化了全球半导体资本开支扩张逻辑，间接推动A股半导体板块午后爆发。</div>
+    </div>
+    <div class="news-card">
+        <div class="news-title"><span class="tag tag-blue">海外</span>港股恒指反弹1.6%重返23000点</div>
+        <div class="news-desc">科网股领涨，美团涨5.3%，阿里巴巴涨3.9%，百度涨5.6%。港股医药股同步爆发，石药集团涨6.9%，药明生物涨6.8%。但北水净流出103.4亿元。</div>
+    </div>
+</div>
+
+<!-- 市场特征分析 -->
+<div class="section">
+    <h2><span class="icon">🔍</span>市场核心特征</h2>
+    <div class="analysis-block">
+        <h3>一、极致分化："指数涨、个股跌"</h3>
+        <p>科创50暴涨4.61%创历史新高，上证指数涨1.16%，但全市场仍有2931只个股下跌（占比约54%），呈现典型的"指数行情"特征。资金高度集中于医药、半导体两大主线，其余板块持续失血。这种分化与量化交易放大结构性行情、资金向少数板块集中的逻辑高度吻合。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>二、高低切换：科技内部"缩圈"</h3>
+        <p>前期热门的CPO、光模块、PCB、光纤光缆等算力硬件方向遭遇集体抛售，资金从高位赛道撤离后并非离场，而是内部切换至半导体设备、材料、创新药等低位方向。医药板块前期调整充分、估值处于历史低位，叠加政策催化，成为场外资金与调仓资金的共同选择。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>三、半年末效应：机构调仓+流动性扰动</h3>
+        <p>作为上半年最后一个交易日，机构面临半年末考核与调仓需求——锁定高位赛道浮盈、布局下半年的新主线。央行首次开展隔夜逆回购呵护流动性，但"只给量、不给价"的操作方式表明政策面更注重精准调控而非释放宽松信号。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>四、连板情绪降至冰点</h3>
+        <p>连板股晋级率仅12.5%，上一交易日8只连板股仅1只成功晋级。兴业科技（前6连板）、宏柏新材（前4连板）双双断板，超声电子一度跌停，市场连板高度骤降至3板（威派格7天4板）。高位连板股断板潮与低位首板医药股批量涨停形成鲜明对比，短线情绪从"连板接力"切换至"板块首板"模式。</p>
+    </div>
+</div>
+
+<!-- 后市展望 -->
+<div class="outlook">
+    <h3>后市展望</h3>
+    <p><strong>短期（7月初）：</strong>6月30日为上半年最后一个交易日（按日历），机构调仓进入尾声，市场波动可能加剧。重点观察：①科创50新高后能否持续放量，若缩量则需警惕技术性回调；②医药板块能否走出持续性，还是政策催化下的一日游行情；③北向资金是否继续净流出，若持续则需警惕外资撤退风险。</p>
+    <p style="margin-top:12px;"><strong>中期（7月）：</strong>7月市场面临更多扰动因素——存储等涨价终端的接受度、美联储加息预期变化、科技龙头半年报预告、国内科技巨头上市兑现压力。资金面逻辑将逐步让位于产业逻辑，流动性驱动将走向业绩驱动。前期科技方向巨大涨幅已包含对业绩的较高期待，能否如期兑现存在不确定性。建议以<strong>均衡配置</strong>为主：进攻方向锚定半导体设备、AI算力等高景气赛道，防御方向依托医药创新药、高股息银行/公用事业。</p>
+    <p style="margin-top:12px;"><strong>风格展望：</strong>当前市场正经历从"扩散"到"收缩"的行情演进——4月以来AI硬件及半导体方向持续抱团，但过度集中的交易结构增加了市场不稳定性。7月存在风格剧烈纠偏的可能性，低位板块（医药、消费、养殖）的估值修复行情值得关注。</p>
+</div>
+
+<div class="disclaimer">
+    免责声明：本文仅基于公开市场数据进行客观整理与分享，不构成任何证券投资建议。市场有风险，投资需谨慎。数据来源：沪深交易所、Wind、东方财富、财联社、澎湃新闻。<br>
+    生成时间：2026年6月29日 北京时间
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股主要指数缠论技术分析（2026年6月22日）</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-secondary: #8b949e;
+  --red: #ff6b6b;
+  --green: #3fb950;
+  --gold: #d2991d;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+h1 {
+  text-align: center;
+  font-size: 2em;
+  padding: 30px 0 10px;
+  background: linear-gradient(135deg, #58a6ff, #bc8cff, #d2991d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95em; }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card h2 {
+  font-size: 1.3em;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.index-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.index-header .idx-name { font-size: 1.3em; font-weight: 700; }
+.index-header .idx-value { font-size: 1.5em; font-weight: 700; margin-left: auto; }
+.index-header .idx-change { font-size: 1.1em; font-weight: 600; color: var(--red); }
+
+.level-section {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+}
+.level-section:last-child { margin-bottom: 0; }
+.level-section h3 {
+  font-size: 1.05em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.level-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 700;
+}
+.badge-日线 { background: #da3633; color: #fff; }
+.badge-30分 { background: #f0883e; color: #fff; }
+.badge-5分 { background: #d2991d; color: #000; }
+.badge-1分 { background: #3fb950; color: #000; }
+
+.chan-item {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(48,54,61,0.5);
+  font-size: 0.92em;
+}
+.chan-item:last-child { border-bottom: none; }
+.chan-item .label { color: var(--text-secondary); font-size: 0.85em; }
+.chan-item .value { margin-top: 2px; }
+.chan-item .bull { color: var(--red); font-weight: 600; }
+.chan-item .bear { color: var(--green); font-weight: 600; }
+.chan-item .warn { color: var(--gold); font-weight: 600; }
+
+.key-levels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+.key-box {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.9em;
+}
+.key-box.support { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.3); }
+.key-box.resist { background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.3); }
+.key-box h4 { margin-bottom: 6px; font-size: 0.9em; }
+.key-box.support h4 { color: var(--green); }
+.key-box.resist h4 { color: var(--red); }
+
+.signal-box {
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+  font-size: 0.9em;
+}
+.signal-bull { background: rgba(255,107,107,0.06); border: 1px solid rgba(255,107,107,0.2); }
+.signal-bear { background: rgba(63,185,80,0.06); border: 1px solid rgba(63,185,80,0.2); }
+.signal-warn { background: rgba(210,153,29,0.06); border: 1px solid rgba(210,153,29,0.2); }
+.signal-bull h4 { color: var(--red); }
+.signal-bear h4 { color: var(--green); }
+.signal-warn h4 { color: var(--gold); }
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.summary-item {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.summary-item .idx { font-weight: 700; font-size: 1.05em; }
+.summary-item .trend { font-size: 1.2em; font-weight: 700; margin: 6px 0; }
+.summary-item .detail { font-size: 0.85em; color: var(--text-secondary); }
+.trend-up { color: var(--red); }
+.trend-caution { color: var(--gold); }
+
+.footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .key-levels { grid-template-columns: 1fr; }
+  .summary-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>A股主要指数缠论（缠中说禅）技术分析</h1>
+<p class="subtitle">分析日期：2026年6月22日收盘 | 涵盖日线、30分钟、5分钟、1分钟多级别联立</p>
+
+<!-- 核心结论概览 -->
+<div class="card">
+  <h2>🎯 多指数联立核心结论</h2>
+  <div class="summary-grid">
+    <div class="summary-item">
+      <div class="idx">上证指数 4163</div>
+      <div class="trend trend-up">日线上涨笔延伸中</div>
+      <div class="detail">30分向上段结构完成但未背驰<br>5分趋势c段，小级别背驰初现<br>日线中枢[317-544]上方运行</div>
+    </div>
+    <div class="summary-item">
+      <div class="idx">深证成指 16373</div>
+      <div class="trend trend-up">30分中枢三买确认</div>
+      <div class="detail">5分趋势双中枢，三买已出<br>站稳16047上方，月线三角形突破<br>后市看高一线</div>
+    </div>
+    <div class="summary-item">
+      <div class="idx">创业板指 4359</div>
+      <div class="trend trend-up">日线三买结构，历史新高</div>
+      <div class="detail">15分第二个上涨中枢构建中<br>日线三买后看前高能否突破<br>若不能突破→三买转二卖</div>
+    </div>
+    <div class="summary-item">
+      <div class="idx">科创50 1949</div>
+      <div class="trend trend-caution">日线三买待确认</div>
+      <div class="detail">15分上涨中枢突破后三买<br>60分一笔上涨未结束<br>日线不能创新高→三买转二卖</div>
+    </div>
+  </div>
+
+  <div class="signal-warn" style="margin-top: 16px;">
+    <h4>跨指数共振风险</h4>
+    <p>四个指数在<strong>小级别（1分钟/5分钟）均出现不同程度的背驰或盘整背驰</strong>，而上证和深成指的30分钟向上段结构虽已完成，但未出现明显背驰，形成"大级别强、小级别弱"的格局。小级别背驰的积累可能引发<span style="color: var(--gold);">小转大</span>——即小级别下跌扩散至大级别，这是当前最大的技术风险。</p>
+  </div>
+</div>
+
+<!-- ==================== 上证指数 ==================== -->
+<div class="card">
+  <h2>📊 上证指数（000001）</h2>
+  <div class="index-header">
+    <span class="idx-name">上证指数</span>
+    <span class="idx-value">4163.10</span>
+    <span class="idx-change">+1.78%</span>
+  </div>
+
+  <!-- 日线 -->
+  <div class="level-section">
+    <h3><span class="level-badge badge-日线">日线</span> 上涨笔延续，中枢上方运行</h3>
+    <div class="chan-item">
+      <div class="label">中枢结构</div>
+      <div class="value">日线级别中枢区间为 <span class="bull">317-544</span>（对应2025年大级别中枢），当前指数4163运行于中枢上方，属于<strong>中枢上方强势震荡</strong></div>
+    </div>
+    <div class="chan-item">
+      <div class="label">当前笔状态</div>
+      <div class="value">从<span class="bull">3927低点</span>（6月11日）开启的日线向上一笔仍在延伸中，今日放量突破4150关键压力位，<span class="bull">笔未完成</span></div>
+    </div>
+    <div class="chan-item">
+      <div class="label">均线系统</div>
+      <div class="value">5日、10日、20日均线多头排列，<span class="bull">站稳年线（约4050-4060）</span>，MACD红柱放大，多头格局</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">关键判断</div>
+      <div class="value">日线图：<span class="bull">只要不跌破60日均线（约4030-4050），日线级别上涨走势延续</span>；若跌破60日均线，则可能进入下跌中枢构建</div>
+    </div>
+    <div class="key-levels">
+      <div class="key-box support">
+        <h4>支撑位</h4>
+        <div>第一支撑：<strong>4120</strong>（今日突破的前压力转支撑）</div>
+        <div>第二支撑：<strong>4070-4080</strong>（5日线+本周低点）</div>
+        <div>强支撑：<strong>4023-4030</strong>（30分3B确认区+60日均线）</div>
+        <div>极限支撑：<strong>4000</strong>（整数关口）</div>
+      </div>
+      <div class="key-box resist">
+        <h4>压力位</h4>
+        <div>第一压力：<strong>4200</strong>（短期目标位）</div>
+        <div>关键压力：<strong>4230-4258</strong>（前期波段高点）</div>
+        <div>中期压力：<strong>4500</strong>（券商目标区间上沿）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30分钟 -->
+  <div class="level-section">
+    <h3><span class="level-badge badge-30分">30分钟</span> 向上段结构完成，未背驰但需警惕</h3>
+    <div class="chan-item">
+      <div class="label">走势结构</div>
+      <div class="value">从<strong>4258高点</strong>至<strong>3927低点</strong>完成了一段30分钟级别的向下走势（a+A+b），其中A中枢为<strong>616-671</strong>区间。从<strong>3927</strong>开始，正在走新的30分钟向上一段</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">当前段状态</div>
+      <div class="value"><span class="warn">向上段结构已经完成</span>（含笔中枢），仅从30分钟图形上看走势还很强，但<span class="warn">结构随时可以结束</span></div>
+    </div>
+    <div class="chan-item">
+      <div class="label">背驰判断</div>
+      <div class="value">30分钟级别<strong>MACD红柱仍在放大</strong>，黄白线向上发散，<span class="bull">30分钟级别未出现背驰</span>。但需注意小级别（5分钟/1分钟）已出现背驰积累</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">操作策略</div>
+      <div class="value">30分钟操作级别：<span class="warn">持有为主，不追高</span>。等待向上一段结束后，关注回踩是否形成30分钟三买（不破前面中枢上沿）</div>
+    </div>
+  </div>
+
+  <!-- 5分钟 -->
+  <div class="level-section">
+    <h3><span class="level-badge badge-5分">5分钟</span> 趋势背驰初现，c段进入末端</h3>
+    <div class="chan-item">
+      <div class="label">走势结构</div>
+      <div class="value"><strong>5分钟趋势上涨</strong>：从3927开始，已走出<strong>两个5分钟中枢</strong>的趋势走势（a+A+b+B+c），c段为当前离开段</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">背驰判断</div>
+      <div class="value"><span class="warn">c段与b段对比，MACD已出现小级别背驰</span>。c段走得还比较强且结构简单，但1分钟以下级别已出现<strong>严重背驰</strong></div>
+    </div>
+    <div class="chan-item">
+      <div class="label">小转大风险</div>
+      <div class="value"><span class="warn">这是当前最大的技术风险</span>：小级别（1分钟）背驰积累→若引发5分钟级别转折→可能传导至30分钟级别回踩。需密切关注</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">5分操作建议</div>
+      <div class="value"><span class="warn">今日（6/22）是5分钟操作级别的较好离场时机</span>。即便明日可能再创新高，也不建议追高。等待5分钟向下走势完成后，寻找<strong>5分钟二买</strong>或<strong>30分钟三买</strong></div>
+    </div>
+  </div>
+
+  <!-- 1分钟 -->
+  <div class="level-section">
+    <h3><span class="level-badge badge-1分">1分钟</span> 严重背驰，多头陷阱风险</h3>
+    <div class="chan-item">
+      <div class="label">走势结构</div>
+      <div class="value">围绕<span class="warn">4092-4077</span>构建了线段中枢F，中枢形态还算强势。A段向上打离开段但暂时未能突破4103（当时），下午放量突破至4163</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">背驰状态</div>
+      <div class="value"><span class="warn">1分钟级别及以下已出现严重背驰</span>，虽然级别小，但需警惕"多头陷阱"——即勉强破高但结构复杂且对比前段背驰的离开段</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">关键观察</div>
+      <div class="value">关注<strong>4077</strong>得失：若跌破，则大概率正式开启寻找5分钟二买之路；若不破，则1分钟中枢震荡延续</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 深证成指 ==================== -->
+<div class="card">
+  <h2>📊 深证成指（399001）</h2>
+  <div class="index-header">
+    <span class="idx-name">深证成指</span>
+    <span class="idx-value">16372.50</span>
+    <span class="idx-change">+2.13%</span>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-日线">日线</span> 突破平台，上升趋势延续</h3>
+    <div class="chan-item">
+      <div class="label">走势结构</div>
+      <div class="value">成功突破<strong>16000点</strong>前期平台压力，日线上升趋势延续。日线MACD红柱放大，均线多头排列</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">月线视角</div>
+      <div class="value"><span class="bull">月线三角形上边压力线正在被突破</span>，若有效站稳，后市空间打开，为四大指数中结构最强的</div>
+    </div>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-30分">30分钟</span> 三买确认，结构最强</h3>
+    <div class="chan-item">
+      <div class="label">核心结构</div>
+      <div class="value">深成指走势结构为四大指数中<strong>最标准、最强</strong>。从多义性角度，当下的5分钟级别走势可定义为<span class="bull">16047那30分钟中枢的三买点</span></div>
+    </div>
+    <div class="chan-item">
+      <div class="label">三买确认</div>
+      <div class="value"><span class="bull">30分钟三买已确认</span>：5分钟级别走势回抽不破30分钟中枢上沿，属于标准的三买结构</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">后续推演</div>
+      <div class="value">该5分钟走势完成后，必然还有一个5分钟回抽去构建<strong>标准意义上的三买</strong>。若三买后继续新高，则深成指将引领市场向上突破</div>
+    </div>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-5分">5分钟</span> 趋势双中枢，三买后加速</h3>
+    <div class="chan-item">
+      <div class="label">走势结构</div>
+      <div class="value">从14681低点开始，已走出<strong>两个5分钟中枢的趋势走势</strong>（a+A+b+B+c）。今日早盘回抽刚好完成第二个中枢的第二次次级别回抽（非常标准）</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">1分钟配合</div>
+      <div class="value">1分钟图上，中枢后三卖点盘背，结构完美契合。15分钟图上最近的走势与1分钟图走势完美契合</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">关键判断</div>
+      <div class="value"><span class="bull">三买信号已确认，回踩不破16047则趋势延续，月线三角形突破可期</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 创业板指 ==================== -->
+<div class="card">
+  <h2>📊 创业板指（399006）</h2>
+  <div class="index-header">
+    <span class="idx-name">创业板指</span>
+    <span class="idx-value">4359.39</span>
+    <span class="idx-change">+2.52%（创历史新高）</span>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-日线">日线</span> 三买结构，历史新高</h3>
+    <div class="chan-item">
+      <div class="label">核心结构</div>
+      <div class="value"><span class="bull">日线三买结构</span>：前期下跌未跌进前中枢内部就上涨，构成标准日线三买。三买后创出历史新高4359.39</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">关键观察</div>
+      <div class="value">三买后看前高附近：<span class="warn">若不能持续突破前高，则三买转二卖</span>——这是经典缠论陷阱。当前已创新高，暂时化解此风险</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">MACD状态</div>
+      <div class="value">日线MACD红柱持续放大，黄白线向上发散，<span class="bull">日线级别无背驰</span>，上涨动能充足</div>
+    </div>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-30分">60分钟</span> 下跌转上涨，一笔未结束</h3>
+    <div class="chan-item">
+      <div class="label">结构转换</div>
+      <div class="value"><span class="bull">60分钟下跌走势被破坏，转为上涨走势</span>（"该跌不跌→上涨"），目前图上看仍是一笔上的走势，未出现顶分型</div>
+    </div>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-5分">15分钟</span> 第二个上涨中枢构建中</h3>
+    <div class="chan-item">
+      <div class="label">走势结构</div>
+      <div class="value"><span class="bull">15分钟正在构建第二个上涨中枢</span>，构建完成后才有可能结束上涨。当前中枢构建尚未完成，上涨仍有空间</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">结束条件</div>
+      <div class="value">需要第二个中枢构建完成 + 离开段背驰，15分钟上涨才可能结束。目前<span class="bull">两个条件均未满足</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 科创50 ==================== -->
+<div class="card">
+  <h2>📊 科创50（000688）</h2>
+  <div class="index-header">
+    <span class="idx-name">科创50</span>
+    <span class="idx-value">1948.93</span>
+    <span class="idx-change">+1.96%</span>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-日线">日线</span> 三买转二卖风险，相对最弱</h3>
+    <div class="chan-item">
+      <div class="label">核心矛盾</div>
+      <div class="value"><span class="warn">日线三买结构待确认</span>：前期下跌未跌进中枢内部→构成三买雏形，但当前反弹力度偏弱，<span class="warn">若不能创新高（前高约2000+），则三买转二卖</span></div>
+    </div>
+    <div class="chan-item">
+      <div class="label">相对强弱</div>
+      <div class="value">在四大指数中，科创50<span class="bear">反弹力度最弱</span>，今日振幅4.38%但收盘仅+1.96%，早盘一度跌至1879.59，午后勉强拉回</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">关键位</div>
+      <div class="value"><span class="warn">不能跌破60日均线</span>，一旦跌破则可能进入下跌中枢构建；<span class="bull">突破前高（约2000-2050）则三买确认</span></div>
+    </div>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-30分">60分钟</span> 一笔上涨未结束，但力度偏弱</h3>
+    <div class="chan-item">
+      <div class="label">当前状态</div>
+      <div class="value">前面一段下跌走势结束后上涨，60分钟一笔上涨<strong>仍没有结束</strong>，但内部结构较复杂，上涨力度弱于创业板</div>
+    </div>
+  </div>
+
+  <div class="level-section">
+    <h3><span class="level-badge badge-5分">15分钟</span> 中枢突破后三买</h3>
+    <div class="chan-item">
+      <div class="label">关键结构</div>
+      <div class="value"><span class="bull">15分钟上涨中枢构建完成后突破中枢上沿</span>，只要不跌进中枢内部，就是15分钟三买。当前三买暂未失效</div>
+    </div>
+    <div class="chan-item">
+      <div class="label">风险点</div>
+      <div class="value">若三买后反弹无力，<span class="warn">三买转二卖</span>，则15分钟上涨结束，与日线三买风险形成共振</div>
+    </div>
+  </div>
+</div>
+
+<!-- 综合对比 -->
+<div class="card">
+  <h2>🔬 四大指数缠论结构综合对比</h2>
+
+  <table style="width:100%; border-collapse: collapse; font-size: 0.9em;">
+    <thead>
+      <tr style="border-bottom: 2px solid var(--border);">
+        <th style="padding: 10px; text-align: left;">缠论维度</th>
+        <th style="padding: 10px; text-align: center;">上证指数</th>
+        <th style="padding: 10px; text-align: center;">深证成指</th>
+        <th style="padding: 10px; text-align: center;">创业板指</th>
+        <th style="padding: 10px; text-align: center;">科创50</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid var(--border);">
+        <td style="padding: 10px; color: var(--text-secondary);">日线结构</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">中枢上方延伸</td>
+        <td style="padding: 10px; text-align: center; color: var(--red);">突破平台</td>
+        <td style="padding: 10px; text-align: center; color: var(--red);">三买+新高</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">三买待确认</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--border);">
+        <td style="padding: 10px; color: var(--text-secondary);">30/60分状态</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">结构完成未背驰</td>
+        <td style="padding: 10px; text-align: center; color: var(--red);">三买确认</td>
+        <td style="padding: 10px; text-align: center; color: var(--red);">下跌转上涨</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">一笔未结束</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--border);">
+        <td style="padding: 10px; color: var(--text-secondary);">5/15分结构</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">趋势c段背驰</td>
+        <td style="padding: 10px; text-align: center; color: var(--red);">双中枢趋势</td>
+        <td style="padding: 10px; text-align: center; color: var(--red);">第二个中枢构建</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">三买后待确认</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--border);">
+        <td style="padding: 10px; color: var(--text-secondary);">小级别背驰</td>
+        <td style="padding: 10px; text-align: center; color: var(--red);">⚠ 严重</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">⚠ 轻微</td>
+        <td style="padding: 10px; text-align: center; color: var(--green);">✅ 无</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">⚠ 轻微</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--border);">
+        <td style="padding: 10px; color: var(--text-secondary);">小转大风险</td>
+        <td style="padding: 10px; text-align: center; color: var(--red);">⚠ 高</td>
+        <td style="padding: 10px; text-align: center; color: var(--green);">✅ 低</td>
+        <td style="padding: 10px; text-align: center; color: var(--green);">✅ 低</td>
+        <td style="padding: 10px; text-align: center; color: var(--gold);">⚠ 中</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; color: var(--text-secondary);">综合强度排名</td>
+        <td style="padding: 10px; text-align: center; font-weight: 700; color: var(--gold);">第3</td>
+        <td style="padding: 10px; text-align: center; font-weight: 700; color: var(--red);">第1 🥇</td>
+        <td style="padding: 10px; text-align: center; font-weight: 700; color: var(--red);">第2 🥈</td>
+        <td style="padding: 10px; text-align: center; font-weight: 700; color: var(--gold);">第4</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 综合策略 -->
+<div class="card">
+  <h2>🧠 缠论综合策略框架</h2>
+
+  <div class="signal-bull">
+    <h4>多头有利因素</h4>
+    <ul style="margin-left: 20px; font-size: 0.9em;">
+      <li>四大指数<strong>日线级别全部处于上涨结构</strong>，无一下跌趋势</li>
+      <li>深证成指<strong>30分钟三买</strong>是最强的技术信号，后市空间打开</li>
+      <li>创业板指<strong>15分钟第二个中枢尚未完成</strong>，上涨仍有空间</li>
+      <li>成交额3.74万亿历史第二，量能充足，<strong>资金面支持趋势延续</strong></li>
+      <li>上证指数日线MACD红柱放大，<strong>30分钟级别无背驰</strong></li>
+    </ul>
+  </div>
+
+  <div class="signal-warn" style="margin-top: 12px;">
+    <h4>空头风险因素</h4>
+    <ul style="margin-left: 20px; font-size: 0.9em;">
+      <li><strong>上证指数1分钟以下级别严重背驰</strong>，小转大风险不可忽视</li>
+      <li>上证指数<strong>5分钟趋势c段进入末端</strong>，5分钟级别操作者已到离场/减仓窗口</li>
+      <li>科创50<strong>反弹力度最弱</strong>，日线三买转二卖风险最大</li>
+      <li>30分钟向上段<strong>结构已完成</strong>，随时可以结束</li>
+      <li>今日<strong>3.74万亿天量</strong>，若后续缩量，缩量回调压力大</li>
+    </ul>
+  </div>
+
+  <div class="signal-bear" style="margin-top: 12px;">
+    <h4>级别对应操作策略</h4>
+    <ul style="margin-left: 20px; font-size: 0.9em;">
+      <li><strong>1分钟/5分钟级别操作者</strong>：<span class="bear">已到减仓/离场窗口</span>，背驰积累严重，等待5分钟级别向下走势完成后寻找二买</li>
+      <li><strong>30分钟级别操作者</strong>：<span class="warn">持有为主，不追高</span>。等待当前向上段结束后的回踩，观察是否形成30分钟三买（不破中枢上沿）</li>
+      <li><strong>日线级别操作者</strong>：<span class="bull">继续持有</span>。日线级别上涨结构完好，短期波动可忽略。只需关注60日均线（约4030-4050）是否被有效跌破</li>
+      <li><strong>策略核心</strong>："不测而测"——不预测顶部，但做好跟随。若上证跌破4077（1分钟关键位）→减仓；若跌破4023（30分3B位）→大减仓；不破则持有</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <p>风险提示：缠论技术分析是对市场走势结构的客观描述，不构成任何买卖建议。缠论核心是"不测而测"——不预测市场，而是做好各种可能性的应对预案。</p>
+  <p>股市有风险，投资需谨慎。数据来源：东方财富、雪球、粤开证券、Wind</p>
+  <p>生成时间：2026年6月22日</p>
+</div>
+
+</div>
+</body>
+</html>

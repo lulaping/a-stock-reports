@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月26日 A股午评</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-secondary: #8b949e;
+  --red: #ff6b6b;
+  --green: #3fb950;
+  --gold: #d2991d;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+h1 {
+  text-align: center;
+  font-size: 2em;
+  padding: 30px 0 10px;
+  background: linear-gradient(135deg, var(--red), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95em; }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card h2 {
+  font-size: 1.25em;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.index-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.index-card .name { color: var(--text-secondary); font-size: 0.85em; margin-bottom: 4px; }
+.index-card .value { font-size: 1.4em; font-weight: 700; }
+.index-card .change { font-size: 1em; font-weight: 600; }
+.up { color: var(--red); }
+.down { color: var(--green); }
+
+.market-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.stat-item {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.stat-item .label { font-size: 0.78em; color: var(--text-secondary); }
+.stat-item .val { font-size: 1.1em; font-weight: 700; color: var(--gold); margin-top: 3px; }
+
+.sector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.sector-section h3 { font-size: 0.95em; margin-bottom: 10px; }
+.sector-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(48,54,61,0.4);
+  font-size: 0.88em;
+}
+.sector-item:last-child { border-bottom: none; }
+.sector-up { color: var(--red); font-weight: 600; }
+.sector-down { color: var(--green); font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.73em;
+  font-weight: 600;
+  margin: 0 2px;
+}
+.tag-red { background: rgba(218,54,51,0.2); color: #ff7b72; }
+.tag-green { background: rgba(63,185,80,0.2); color: #56d364; }
+.tag-blue { background: rgba(88,166,255,0.2); color: #79c0ff; }
+.tag-gold { background: rgba(210,153,29,0.2); color: #d2991d; }
+.tag-purple { background: rgba(188,140,255,0.2); color: #bc8cff; }
+
+.analysis-box {
+  background: rgba(210,153,29,0.08);
+  border: 1px solid rgba(210,153,29,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.analysis-box h4 { color: var(--gold); margin-bottom: 8px; }
+
+.warn-box {
+  background: rgba(218,54,51,0.08);
+  border: 1px solid rgba(218,54,51,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.warn-box h4 { color: var(--red); margin-bottom: 8px; }
+.warn-box ul { margin-left: 20px; font-size: 0.88em; }
+.warn-box li { margin-bottom: 4px; }
+
+.bull-box {
+  background: rgba(63,185,80,0.08);
+  border: 1px solid rgba(63,185,80,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.bull-box h4 { color: var(--green); margin-bottom: 8px; }
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+}
+.news-item {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  font-size: 0.85em;
+}
+.news-item.liduo { border-left: 3px solid var(--red); }
+.news-item.likong { border-left: 3px solid var(--green); }
+.news-item strong { color: var(--gold); }
+
+.flow-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid rgba(48,54,61,0.3); font-size: 0.85em; }
+.flow-row:last-child { border-bottom: none; }
+.flow-in { color: var(--red); font-weight: 600; }
+.flow-out { color: var(--green); font-weight: 600; }
+
+.stock-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .sector-grid, .stock-grid, .news-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>2026年6月26日 A股午评</h1>
+<p class="subtitle">放量暴跌 | 三大指数集体重挫 | 近4600只个股下跌 | 午间收盘 11:30</p>
+
+<!-- 指数概览 -->
+<div class="card">
+  <h2>📊 指数收盘：全线暴跌，创业板指重挫3.72%</h2>
+  <div class="index-grid">
+    <div class="index-card">
+      <div class="name">上证指数</div>
+      <div class="value">4032.30</div>
+      <div class="change down">-2.14%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">深证成指</div>
+      <div class="value">15846.98</div>
+      <div class="change down">-3.04%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">创业板指</div>
+      <div class="value">4209.29</div>
+      <div class="change down" style="font-size: 1.2em;">-3.72% 🔥</div>
+    </div>
+    <div class="index-card">
+      <div class="name">科创综指</div>
+      <div class="value">2331.79</div>
+      <div class="change down">-2.52%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">北证50</div>
+      <div class="value" style="color: var(--red);">--</div>
+      <div class="change up">+0.68%</div>
+    </div>
+    <div class="index-card" style="border-color: var(--red);">
+      <div class="name" style="color: var(--red);">盘中最低</div>
+      <div class="value" style="color: var(--red);">4007.86</div>
+      <div class="change" style="color: var(--text-secondary);">下探4000整数关口</div>
+    </div>
+  </div>
+
+  <div class="market-stats">
+    <div class="stat-item">
+      <div class="label">半日成交额</div>
+      <div class="val">2.43万亿</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">较昨日放量</div>
+      <div class="val" style="color:var(--red);">+33亿</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">上涨家数</div>
+      <div class="val" style="color:var(--red);">864</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">下跌家数</div>
+      <div class="val" style="color:var(--green);">4596</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">涨跌比</div>
+      <div class="val" style="color:var(--green);">0.19</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">半日涨停</div>
+      <div class="val">78</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">跌幅≥9%</div>
+      <div class="val" style="color:var(--green);">73</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">主力净流出</div>
+      <div class="val" style="color:var(--green);">-216.8亿</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <h4>早盘核心特征：放量跳水，恐慌盘集中涌出</h4>
+    <ul>
+      <li><strong>放量暴跌</strong>：半日成交2.43万亿（放量33亿），低开低走无V型修复，盘中最低触及4007.86，逼近4000整数关口</li>
+      <li><strong>昨日主线全线崩塌</strong>：昨日领涨的存储芯片、算力硬件、光通信、PCB全线暴跌，CPO方向多股跌停</li>
+      <li><strong>近4600只个股下跌</strong>：涨跌比1:4.2，半日跌幅超9%个股超400只，踩踏行情显现</li>
+      <li><strong>北向资金净卖出34.2亿</strong>：外资同步规避高估值成长股，4007低点无明显抄底回流</li>
+      <li><strong>仅北证50逆势收红</strong>：+0.68%，其余主流指数全线大跌</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 板块表现 -->
+<div class="card">
+  <h2>🔥 板块表现：算力硬件全线崩塌，仅少数逆势突围</h2>
+  <div class="sector-grid">
+    <div class="sector-section">
+      <h3 style="color: var(--red);">逆势上涨板块</h3>
+      <div class="sector-item"><span>玻璃基板</span><span class="sector-up">莱宝高科/雷曼光电涨停</span></div>
+      <div class="sector-item"><span>绿电（风电/光伏）</span><span class="sector-up">节能风电/龙源电力涨停</span></div>
+      <div class="sector-item"><span>光刻机</span><span class="sector-up">新莱应材/海立股份涨停</span></div>
+      <div class="sector-item"><span>猪肉/农林牧渔</span><span class="sector-up">神农集团涨停，牧原+4%</span></div>
+      <div class="sector-item"><span>建材（玻璃）</span><span class="sector-up">旗滨集团一度涨停</span></div>
+      <div class="sector-item"><span>电子纸</span><span class="sector-up">主力净流入33.17亿</span></div>
+      <div class="sector-item"><span>HJT电池</span><span class="sector-up">主力净流入9.28亿</span></div>
+    </div>
+    <div class="sector-section">
+      <h3 style="color: var(--green);">领跌板块（重灾区）</h3>
+      <div class="sector-item"><span>CPO/光通信</span><span class="sector-down">太辰光/长盈通大跌</span></div>
+      <div class="sector-item"><span>算力硬件（光纤）</span><span class="sector-down">特发信息/烽火通信跌停</span></div>
+      <div class="sector-item"><span>PCB</span><span class="sector-down">多股跌停</span></div>
+      <div class="sector-item"><span>有色金属/锂矿</span><span class="sector-down">东方锆业-8%+</span></div>
+      <div class="sector-item"><span>通信设备</span><span class="sector-down">平治信息/永鼎跌停</span></div>
+      <div class="sector-item"><span>人形机器人</span><span class="sector-down">集体下挫</span></div>
+      <div class="sector-item"><span>创新药</span><span class="sector-down">集体下挫</span></div>
+    </div>
+  </div>
+
+  <div class="analysis-box" style="margin-top: 16px;">
+    <h4>盘面逻辑：半年末兑现窗口全面开启</h4>
+    <p>昨日存储芯片、光通信、PCB三大主线涨停潮，今日一开盘即全线暴跌，典型的"昨日涨停潮→今日跌停潮"的极端多杀多走势。资金无主线承接，仅零散低位题材（玻璃基板、绿电、光刻机）脉冲，板块轮动失效。主力半日净流出216.8亿，集中抛售电子、通信、有色、锂电四大高位赛道，仅小幅流入公用事业、银行防御板块。</p>
+  </div>
+</div>
+
+<!-- 资金流向 -->
+<div class="card">
+  <h2>💵 资金流向</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div>
+      <h3 style="color: var(--red); font-size: 0.9em; margin-bottom: 8px;">主力净流入板块</h3>
+      <div class="flow-row"><span>电子纸</span><span class="flow-in">+33.17亿</span></div>
+      <div class="flow-row"><span>HJT电池</span><span class="flow-in">+9.28亿</span></div>
+      <div class="flow-row"><span>电子竞技</span><span class="flow-in">+5.92亿</span></div>
+      <div class="flow-row"><span>猪肉</span><span class="flow-in">+3.00亿</span></div>
+      <div class="flow-row"><span>公用事业/银行</span><span class="flow-in">防御性流入</span></div>
+    </div>
+    <div>
+      <h3 style="color: var(--green); font-size: 0.9em; margin-bottom: 8px;">主力净流出板块</h3>
+      <div class="flow-row"><span>电子（半导体）</span><span class="flow-out">大幅流出</span></div>
+      <div class="flow-row"><span>通信（CPO/光纤）</span><span class="flow-out">大幅流出</span></div>
+      <div class="flow-row"><span>有色金属</span><span class="flow-out">大幅流出</span></div>
+      <div class="flow-row"><span>锂电</span><span class="flow-out">大幅流出</span></div>
+      <div class="flow-row"><span>北向资金</span><span class="flow-out">-34.2亿</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 核心消息面 -->
+<div class="card">
+  <h2>📰 今日核心消息面</h2>
+
+  <div class="news-grid">
+    <div class="news-item liduo">
+      <strong>【利多】十五五新型能源体系规划印发</strong>
+      <p>发改委、能源局联合发文，2030年风电光伏装机过半，储能/特高压/氢能千亿级扶持，绿电板块逆势走强。</p>
+    </div>
+    <div class="news-item liduo">
+      <strong>【利多】三星千亿投资半导体</strong>
+      <p>三星6月29日将发布1000万亿韩元（6480亿美元）投资规划，覆盖芯片/AI数据中心/储能，设备材料板块受提振。</p>
+    </div>
+    <div class="news-item liduo">
+      <strong>【利多】AIIA词元服务工作组筹备成立</strong>
+      <p>中国信通院牵头，联合华为云、百度、三大运营商等22家单位，构建Token服务标准体系。</p>
+    </div>
+    <div class="news-item liduo">
+      <strong>【利多】央行MLF净投放2000亿</strong>
+      <p>6月25日MLF净投放2000亿，叠加逆回购加码，对冲半年末MPA考核资金缺口。</p>
+    </div>
+    <div class="news-item likong">
+      <strong>【利空】英伟达下调GPU出货预期</strong>
+      <p>英伟达下调全年GPU出货乐观指引，全球AI资本开支预期边际走弱，隔夜美股半导体大跌传导A股。</p>
+    </div>
+    <div class="news-item likong">
+      <strong>【利空】半年末三重资金抽血</strong>
+      <p>公募半年业绩结账+大额限售股解禁+两融降杠杆，机构集中止盈高位赛道，无增量资金承接。</p>
+    </div>
+    <div class="news-item likong">
+      <strong>【利空】美联储高利率框架不变</strong>
+      <p>10年期美债收益率维持4.5%上方，中美利差持续走阔，高估值成长股估值承压。</p>
+    </div>
+    <div class="news-item likong">
+      <strong>【利空】大宗商品全线走弱</strong>
+      <p>原油、黄金、铜同步下行，有色、资源板块全天承压拖累指数。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 关键个股 -->
+<div class="card">
+  <h2>⭐ 今日午盘辨识度个股</h2>
+  <div class="stock-grid">
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; border: 1px solid var(--red);">
+      <strong style="color: var(--red);">涨停股</strong>
+      <div style="font-size: 0.85em; margin-top: 6px;">
+        <p><span class="tag tag-red">莱宝高科</span> 玻璃基板涨停</p>
+        <p><span class="tag tag-red">雷曼光电</span> 玻璃基板涨停</p>
+        <p><span class="tag tag-red">节能风电</span> 绿电涨停</p>
+        <p><span class="tag tag-red">龙源电力</span> 绿电涨停</p>
+        <p><span class="tag tag-red">新莱应材</span> 光刻机涨停</p>
+        <p><span class="tag tag-red">海立股份</span> 光刻机涨停</p>
+        <p><span class="tag tag-red">神农集团</span> 猪肉涨停</p>
+      </div>
+    </div>
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; border: 1px solid var(--green);">
+      <strong style="color: var(--green);">跌停/大跌股</strong>
+      <div style="font-size: 0.85em; margin-top: 6px;">
+        <p><span class="tag tag-green">特发信息</span> CPO跌停</p>
+        <p><span class="tag tag-green">烽火通信</span> 光纤跌停</p>
+        <p><span class="tag tag-green">永鼎股份</span> 通信跌停</p>
+        <p><span class="tag tag-green">平治信息</span> 通信跌停</p>
+        <p><span class="tag tag-green">太辰光</span> CPO大跌</p>
+        <p><span class="tag tag-green">新易盛</span> CPO跌超8%</p>
+        <p><span class="tag tag-green">东方锆业</span> 有色-8%+</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 午后展望 -->
+<div class="card">
+  <h2>🔮 午后（13:00-15:00）展望</h2>
+
+  <div class="warn-box">
+    <h4>风险因素</h4>
+    <ul>
+      <li><strong>半日放量跳水无V型修复</strong>：盘中触及4007.86后反弹力度极弱，抄底资金意愿不足，午后仍有惯性下探风险</li>
+      <li><strong>昨日主线全线崩塌</strong>：存储/光通信/PCB无任何资金回流迹象，午后若无主力护盘，跌幅可能进一步扩大</li>
+      <li><strong>4000点整数关口</strong>：若午后有效跌破4000，将触发程序化止损盘，加速下跌</li>
+      <li><strong>周五+月末双重避险</strong>：午后资金持币意愿可能进一步抬升，尾盘可能加速流出</li>
+      <li><strong>半日跌停73家</strong>：若午后跌停数扩大至100+，情绪将进一步恶化</li>
+    </ul>
+  </div>
+
+  <div class="bull-box">
+    <h4>可能的修复信号</h4>
+    <ul>
+      <li><strong>4007为今日低点</strong>：若午后不再创新低，则4000整数关口支撑有效，尾盘可能出现超跌反弹</li>
+      <li><strong>绿电/光刻机逆势走强</strong>：十五五能源规划+三星半导体投资，午后可能扩散至更多低位板块</li>
+      <li><strong>券商/银行护盘</strong>：若午后金融权重出手护盘，上证有望收窄跌幅</li>
+      <li><strong>缩量企稳</strong>：若午后成交明显萎缩，说明恐慌盘已大部分释放，短线止跌</li>
+    </ul>
+  </div>
+
+  <div class="analysis-box">
+    <h4>操作策略参考</h4>
+    <p><strong>仓位建议</strong>：降低至4-5成，午后不建议盲目抄底。</p>
+    <p><strong>核心思路</strong>：①昨日追高半导体的持仓需果断止损，不抱幻想 ②绿电/玻璃基板/光刻机等逆势板块可轻仓参与，但做好止损 ③银行/公用事业等防御板块可适度配置避险 ④关注4000点整数关口得失，若有效跌破则减至3成以下 ⑤锂电/有色/CPO/算力等昨日高位板块，暂不抄底，等待企稳信号。</p>
+    <p><strong>关键判断</strong>：今日是典型的"半年末兑现窗口+美股科技暴跌传导+周五避险"三重共振，属于系统性风险释放，而非个股基本面问题。午后关注4000点支撑力度，若守住则下周有望修复；若跌破则调整级别升级。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>风险提示：本文基于公开市场数据进行午评分析，不构成任何投资建议。</p>
+  <p>股市有风险，投资需谨慎。数据来源：财联社、澎湃新闻、中新经纬、Wind</p>
+  <p>生成时间：2026年6月26日 午间收盘（北京时间）</p>
+</div>
+
+</div>
+</body>
+</html>

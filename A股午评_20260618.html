@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股午评 — 2026年6月18日</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d;
+    --text: #c9d1d9; --text-muted: #8b949e;
+    --green: #3fb950; --red: #f85149; --blue: #58a6ff;
+    --orange: #d2991d; --purple: #a371f7; --cyan: #39d2c0; --gold: #e3b341;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height:1.7;
+    max-width:1100px; margin:0 auto; padding:20px;
+  }
+  h1 { font-size:1.7em; color:#fff; border-bottom:2px solid var(--border); padding-bottom:12px; margin-bottom:6px; }
+  h2 { font-size:1.2em; color:var(--blue); margin:24px 0 10px; padding-left:10px; border-left:3px solid var(--blue); }
+  h3 { font-size:1.02em; color:var(--orange); margin:16px 0 6px; }
+  .subtitle { color:var(--text-muted); font-size:0.9em; margin-bottom:20px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:14px; }
+  table { width:100%; border-collapse:collapse; font-size:0.9em; margin:8px 0; }
+  th, td { padding:7px 10px; text-align:left; border-bottom:1px solid var(--border); }
+  th { background:#1c2433; color:var(--text-muted); font-weight:600; font-size:0.83em; }
+  .up { color:var(--red); font-weight:700; }
+  .down { color:var(--green); font-weight:700; }
+  .tag {
+    display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.78em;
+    margin:2px; font-weight:600;
+  }
+  .tag-red { background:rgba(248,81,73,0.15); color:var(--red); }
+  .tag-green { background:rgba(63,185,80,0.15); color:var(--green); }
+  .tag-blue { background:rgba(88,166,255,0.15); color:var(--blue); }
+  .tag-orange { background:rgba(210,153,29,0.15); color:var(--orange); }
+  .highlight { color:var(--gold); font-weight:700; }
+  .warn { background:rgba(248,81,73,0.06); border-left:3px solid var(--red); padding:10px 14px; border-radius:4px; margin:10px 0; }
+  .info { background:rgba(88,166,255,0.06); border-left:3px solid var(--blue); padding:10px 14px; border-radius:4px; margin:10px 0; }
+  .bull { background:rgba(63,185,80,0.06); border-left:3px solid var(--green); padding:10px 14px; border-radius:4px; margin:10px 0; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media(max-width:700px){.grid-2{grid-template-columns:1fr;}}
+  .big-num { font-size:1.3em; font-weight:800; }
+  .small-label { font-size:0.76em; color:var(--text-muted); }
+  hr { border:none; border-top:1px solid var(--border); margin:10px 0; }
+  .idx-card { text-align:center; padding:14px; border-radius:8px; border:1px solid var(--border); }
+  .news-item { padding:6px 0; border-bottom:1px solid rgba(48,54,61,0.5); }
+  .news-item:last-child { border-bottom:none; }
+  .news-tag { font-size:0.72em; }
+</style>
+</head>
+<body>
+
+<h1>A股午评 — 2026年6月18日（端午前最后一个交易日）</h1>
+<div class="subtitle">科创50飙涨3.6% · 半导体/算力/医药三线齐发 · 创业板创历史新高4250点 · 沪指偏弱微跌0.37%</div>
+
+<!-- 指数概览 -->
+<div class="card">
+  <h3 style="margin-top:0;">指数概览</h3>
+  <div class="grid-2">
+    <div class="idx-card" style="background:rgba(248,81,73,0.04);">
+      <div class="small-label">上证指数</div>
+      <div class="big-num down">4092.76 <span style="font-size:0.6em;">-0.37%</span></div>
+    </div>
+    <div class="idx-card" style="background:rgba(63,185,80,0.04);">
+      <div class="small-label">深证成指</div>
+      <div class="big-num up">15970.86 <span style="font-size:0.6em;">+0.57%</span></div>
+    </div>
+    <div class="idx-card" style="background:rgba(63,185,80,0.04);">
+      <div class="small-label">创业板指 <span class="tag tag-red" style="font-size:0.7em;">盘中创历史新高4250</span></div>
+      <div class="big-num up">4224.96 <span style="font-size:0.6em;">+1.39%</span></div>
+    </div>
+    <div class="idx-card" style="background:rgba(63,185,80,0.06);">
+      <div class="small-label">科创50 <span class="tag tag-red" style="font-size:0.7em;">今日最强宽基</span></div>
+      <div class="big-num up" style="color:var(--gold);">+3.60%</div>
+    </div>
+  </div>
+  <div style="margin-top:10px;display:flex;gap:20px;color:var(--text-muted);font-size:0.85em;">
+    <span>北证50: <span class="down">-0.93%</span></span>
+    <span>科创综指: <span class="up">+2.82%</span></span>
+    <span>半日成交: <span class="highlight">2.15万亿</span>（放量1866亿）</span>
+    <span>涨跌比: <span class="up">~1900涨</span> / <span class="down">3400跌</span></span>
+  </div>
+</div>
+
+<!-- 核心特征 -->
+<div class="bull">
+  <strong>今日盘面核心特征：极致分化，科技独舞</strong><br>
+  <span style="color:var(--text-muted);">三大指数涨跌不一，但内部结构分化极其剧烈。科创50低开高走飙涨3.6%，创业板盘中创历史新高4250点，半导体/算力/医药三线齐发；另一边保险、电力、煤炭等传统权重持续走弱，保险板块多只个股跌超5%。全市场超3400只个股下跌，但半导体、CPO、存储芯片方向批量创历史新高 — 典型的"赚指数不赚个股、买对方向牛熊两重天"。</span>
+</div>
+
+<!-- 领涨板块 -->
+<h2>一、领涨板块</h2>
+
+<div class="card">
+  <table>
+    <tr><th>板块</th><th>涨幅</th><th>龙头个股</th><th>驱动逻辑</th></tr>
+    <tr>
+      <td><strong>半导体</strong></td>
+      <td class="up">板块大涨</td>
+      <td>晶升股份20cm涨停、裕太微20cm涨停、寒武纪+15%创历史新高站上1500元、屹唐股份、盛科通信、兆易创新</td>
+      <td>花旗看多NAND设备延续；陆家嘴论坛开幕 + 大基金三期持续落地；SK海力士HBM4E交付样品</td>
+    </tr>
+    <tr>
+      <td><strong>CPO/算力硬件</strong></td>
+      <td class="up">持续走强</td>
+      <td>光迅科技4天2板创历史新高(市值超2200亿)、中际旭创+5%创历史新高、新易盛、源杰科技创历史新高</td>
+      <td>发改委：算力网建设市场力量起决定性作用；重庆"算力汇渝"万卡级智算集群；字节跳动采购5万颗AI芯片</td>
+    </tr>
+    <tr>
+      <td><strong>存储芯片</strong></td>
+      <td class="up">反复活跃</td>
+      <td>兆易创新+8%续创历史新高、金太阳+10%</td>
+      <td>SK海力士HBM4E交付；MLCC全规格缺货蔓延；存储供需缺口持续扩大</td>
+    </tr>
+    <tr>
+      <td><strong>创新药/医药</strong></td>
+      <td class="up">震荡反弹</td>
+      <td>皓元医药20cm涨停、诺思兰德+15%、华森制药涨停、海欣股份涨停、昭衍新药涨停</td>
+      <td>沉寂已久的医药板块突发拉升，资金轮动至低位赛道</td>
+    </tr>
+    <tr>
+      <td><strong>MLCC</strong></td>
+      <td class="up">持续活跃</td>
+      <td>博迁新材涨停、利和兴、洁美科技、三环集团</td>
+      <td>MLCC全规格缺货蔓延，村田/三星电机被迫放弃低端订单，AI+消费电子双驱动</td>
+    </tr>
+    <tr>
+      <td><strong>PCB</strong></td>
+      <td class="up">延续强势</td>
+      <td>世名科技20cm二连板、中京电子涨停、亨通股份涨停、贤丰控股涨停</td>
+      <td>AI算力基础设施建设持续拉动高端PCB需求</td>
+    </tr>
+    <tr>
+      <td><strong>培育钻石</strong></td>
+      <td class="up">开盘冲高</td>
+      <td>黄河旋风涨停、博云新材涨停、惠丰钻石、四方达、力量钻石</td>
+      <td>题材轮动，低位超跌反弹</td>
+    </tr>
+    <tr>
+      <td><strong>非金属材料</strong></td>
+      <td class="up">低开高走</td>
+      <td>长江新材涨停、三祥新材涨停、龙高股份涨停、联瑞新材</td>
+      <td>半导体上游材料补涨逻辑</td>
+    </tr>
+  </table>
+</div>
+
+<!-- 领跌板块 -->
+<h2>二、领跌板块</h2>
+
+<div class="card">
+  <table>
+    <tr><th>板块</th><th>跌幅</th><th>代表个股</th><th>原因</th></tr>
+    <tr>
+      <td><strong>保险</strong></td>
+      <td class="down">板块大跌</td>
+      <td>中国人保-5%+、中国人寿-5%+、中国平安-5%+、中国太保-5%+、新华保险-5%+</td>
+      <td>资金从大金融全面撤出，机构调仓至科技成长</td>
+    </tr>
+    <tr>
+      <td><strong>电力</strong></td>
+      <td class="down">深度调整</td>
+      <td>西昌电力-8%+、深南电A大跌、赣能股份大跌</td>
+      <td>前期高股息抱团瓦解，资金获利了结</td>
+    </tr>
+    <tr>
+      <td><strong>煤炭</strong></td>
+      <td class="down">震荡下挫</td>
+      <td>云煤能源-6%+</td>
+      <td>传统高股息周期持续走弱，缺乏催化</td>
+    </tr>
+    <tr>
+      <td><strong>贵金属</strong></td>
+      <td class="down">板块走弱</td>
+      <td>山东黄金-4%+</td>
+      <td>美伊签署谅解备忘录，霍尔木兹海峡将重新开放，避险情绪降温</td>
+    </tr>
+    <tr>
+      <td><strong>机场航运</strong></td>
+      <td class="down">表现疲软</td>
+      <td>吉祥航空、华夏航空、春秋航空</td>
+      <td>端午前资金兑现</td>
+    </tr>
+    <tr>
+      <td><strong>证券</strong></td>
+      <td class="down">板块走弱</td>
+      <td>—</td>
+      <td>市场风格切换，金融权重承压</td>
+    </tr>
+  </table>
+</div>
+
+<!-- 连板股 -->
+<h2>三、连板股/强势股追踪</h2>
+
+<div class="card">
+  <table>
+    <tr><th>标的</th><th>代码</th><th>表现</th><th>概念</th><th>备注</th></tr>
+    <tr><td>光迅科技</td><td>—</td><td class="up">4天2板</td><td>CPO</td><td class="highlight">创历史新高，总市值超2200亿</td></tr>
+    <tr><td>世名科技</td><td>—</td><td class="up">20cm二连板</td><td>PCB</td><td>延续昨日强势</td></tr>
+    <tr><td>博迁新材</td><td>605376</td><td class="up">涨停</td><td>MLCC</td><td>MLCC全规格缺货催化</td></tr>
+    <tr><td>寒武纪</td><td>688256</td><td class="up">+15%</td><td>算力芯片</td><td class="highlight">创历史新高，站上1500元</td></tr>
+    <tr><td>兆易创新</td><td>603986</td><td class="up">+8%</td><td>存储芯片</td><td class="highlight">续创历史新高</td></tr>
+    <tr><td>中际旭创</td><td>300308</td><td class="up">+5%</td><td>CPO</td><td class="highlight">创历史新高</td></tr>
+    <tr><td>新易盛</td><td>300502</td><td class="up">—</td><td>CPO</td><td class="highlight">创历史新高</td></tr>
+    <tr><td>源杰科技</td><td>688498</td><td class="up">—</td><td>CPO</td><td class="highlight">创历史新高</td></tr>
+    <tr><td>晶升股份</td><td>688478</td><td class="up">20cm涨停</td><td>半导体设备</td><td>—</td></tr>
+    <tr><td>裕太微</td><td>688515</td><td class="up">20cm涨停</td><td>半导体</td><td>—</td></tr>
+    <tr><td>皓元医药</td><td>688131</td><td class="up">20cm涨停</td><td>创新药</td><td>医药板块反弹龙头</td></tr>
+  </table>
+</div>
+
+<!-- 重要消息 -->
+<h2>四、重要消息面</h2>
+
+<div class="card">
+  <div class="news-item">
+    <span class="tag tag-blue news-tag">发改委</span>
+    <strong>算力网建设市场力量起决定性作用</strong> — 截至3月底我国智能算力规模188.2万P(去年同期2.5倍)，预计保持高速增长
+  </div>
+  <div class="news-item">
+    <span class="tag tag-blue news-tag">重庆</span>
+    <strong>"算力汇渝"工程启动</strong> — 建设万卡级超大规模智算集群，打造高性能、低成本"词元工厂"
+  </div>
+  <div class="news-item">
+    <span class="tag tag-orange news-tag">发改委</span>
+    <strong>第三批625亿国补6月底前下达</strong> — 今年全部2000亿设备更新项目清单将下达
+  </div>
+  <div class="news-item">
+    <span class="tag tag-purple news-tag">SK海力士</span>
+    <strong>HBM4E DRAM样品已向客户交付</strong> — 将与合作伙伴紧密合作以及时实现量产
+  </div>
+  <div class="news-item">
+    <span class="tag tag-green news-tag">字节跳动</span>
+    <strong>正与天数智芯讨论采购超5万颗AI芯片</strong> — 主要用于推理工作，直接催化寒武纪等算力芯片
+  </div>
+  <div class="news-item">
+    <span class="tag tag-orange news-tag">MLCC</span>
+    <strong>全规格缺货蔓延</strong> — 村田/三星电机被迫放弃低端订单，AI+消费电子双驱动，缺口不仅限于AI用MLCC
+  </div>
+  <div class="news-item">
+    <span class="tag tag-green news-tag">地缘政治</span>
+    <strong>美伊签署谅解备忘录</strong> — 伊朗将立即重新开放霍尔木兹海峡，美国解除海上封锁，油价预期回落
+  </div>
+  <div class="news-item">
+    <span class="tag tag-red news-tag">陆家嘴论坛</span>
+    <strong>科创板第五套标准扩容</strong> — 覆盖AI、量子科技、具身智能企业，大基金三期3400亿持续落地
+  </div>
+</div>
+
+<!-- 市场逻辑 -->
+<h2>五、市场核心逻辑</h2>
+
+<div class="card">
+  <p><strong>今日盘面三句话：</strong></p>
+
+  <table>
+    <tr><td style="width:100px;"><span class="tag tag-red">宽基分化</span></td>
+    <td>沪指-0.37% vs 科创50+3.6%，传统权重（保险/电力/煤炭/银行）全面溃败，科技成长（半导体/算力/CPO）独领风骚。资金从防御性高股息大面积撤出，涌入AI+半导体主赛道。</td></tr>
+    <tr><td><span class="tag tag-blue">结构极端</span></td>
+    <td>全市场超3400只个股下跌，但半导体、CPO、存储芯片方向批量创历史新高。不是普涨牛，是选股牛。买对方向天天新高，买错方向天天阴跌。</td></tr>
+    <tr><td><span class="tag tag-orange">节前效应</span></td>
+    <td>端午前最后一个交易日，高位赛道存在获利了结点，但大资金不愿砸盘破坏节后预期。半日成交2.15万亿放量1866亿，量能充沛但盘中轮动加快。</td></tr>
+  </table>
+
+  <hr>
+  <p><strong>科技主线延续逻辑：</strong></p>
+  <ol style="margin-left:20px;line-height:2;color:var(--text-muted);">
+    <li><strong>算力政策催化</strong>：发改委明确算力网建设市场力量起决定性作用 + 重庆万卡级智算集群 + 重庆"算力汇渝"</li>
+    <li><strong>半导体产业催化</strong>：花旗看多NAND设备（昨日驱动）+ SK海力士HBM4E交付 + 存储供需缺口持续扩大</li>
+    <li><strong>MLCC董催化</strong>：全规格缺货蔓延，村田/三星电机被迫放弃低端订单，AI+消费电子双驱动</li>
+    <li><strong>陆家嘴论坛</strong>：科创板第五套标准扩容至AI/量子科技/具身智能，大基金三期3400亿落地</li>
+  </ol>
+</div>
+
+<!-- 午后展望 -->
+<h2>六、午后关键观察</h2>
+
+<div class="card">
+  <table>
+    <tr><th>观察维度</th><th>关键点位/信号</th><th>含义</th></tr>
+    <tr><td><strong>上证指数</strong></td><td>支撑4070 / 压力4110</td><td>日内窄幅震荡概率大，沪指偏弱格局难改</td></tr>
+    <tr><td><strong>科创50</strong></td><td>支撑1775，不破则趋势完好</td><td>科技主线核心风向标</td></tr>
+    <tr><td><strong>量能</strong></td><td>3万亿为强弱分水岭</td><td>若全天成交回落至2.8万亿以下，警惕科技抱团松动</td></tr>
+    <tr><td><strong>半导体</strong></td><td>龙头是否守住5日线</td><td>判断主线强弱核心标准，连续大涨后分时抛压加大</td></tr>
+    <tr><td><strong>保险/电力</strong></td><td>是否止跌企稳</td><td>若午后继续下杀，资金可能加速回流科技或贵金属</td></tr>
+    <tr><td><strong>节前资金</strong></td><td>尾盘是否出现获利了结</td><td>端午前最后一个交易日，高位赛道存在集中兑现需求</td></tr>
+  </table>
+</div>
+
+<div class="warn">
+  <strong>风险提示：</strong> 半导体/算力连续大涨后短期累计涨幅巨大，高位追涨风险极大。节前最后一个交易日，警惕尾盘获利了结。科技主线中长期逻辑不变，但短期节奏需审慎。<br>
+  <span style="color:var(--text-muted);">本报告仅供复盘参考，不构成任何投资建议。股市有风险，投资需谨慎。 | 数据来源：每日经济新闻、证券时报、财联社、东方财富</span>
+</div>
+
+</body>
+</html>

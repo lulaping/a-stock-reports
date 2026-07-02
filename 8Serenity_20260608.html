@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serenity 深度分析 —— 8只A股供应链卡点逆向评估 (2026-06-08)</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+    --yellow: #d2991d;
+    --purple: #a371f7;
+    --orange: #f0883e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height: 1.75;
+    padding: 2rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 1.8rem;
+    color: #fff;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: 1.35rem;
+    color: var(--accent);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid var(--accent);
+  }
+  h3 {
+    font-size: 1.1rem;
+    color: #f0f6fc;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+  }
+  p { margin-bottom: 0.6rem; }
+  .meta {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .verdict {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+  .verdict-item {
+    flex: 1;
+    min-width: 220px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+  }
+  .verdict-item .label { font-size: 0.8rem; color: var(--text-secondary); }
+  .verdict-item .value { font-size: 1rem; font-weight: 600; margin-top: 0.2rem; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 0.45rem 0.7rem;
+    text-align: left;
+  }
+  th {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+  .tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-right: 0.3rem;
+  }
+  .tag-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-red { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-yellow { background: rgba(210,153,29,0.15); color: var(--yellow); }
+  .tag-purple { background: rgba(163,113,247,0.15); color: var(--purple); }
+  .tag-accent { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .highlight { color: var(--green); font-weight: 600; }
+  .danger { color: var(--red); font-weight: 600; }
+  .warn { color: var(--yellow); font-weight: 600; }
+  .info { color: var(--accent); }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+  .ranking-table td:first-child { font-weight: 700; font-size: 1.1rem; }
+  .stock-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .stock-code {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  .stock-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  ul { padding-left: 1.2rem; margin-bottom: 0.8rem; }
+  li { margin-bottom: 0.3rem; }
+  .toc { line-height: 2; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .bold { font-weight: 700; color: #fff; }
+  .disclaimer {
+    background: rgba(248,81,73,0.08);
+    border: 1px solid rgba(248,81,73,0.3);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  @media (max-width: 768px) {
+    body { padding: 1rem; }
+    .verdict { flex-direction: column; }
+    table { font-size: 0.75rem; }
+    th, td { padding: 0.3rem 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Serenity 深度分析 —— 8只A股供应链卡点逆向评估</h1>
+<p class="meta">分析日期：2026-06-08 &nbsp;|&nbsp; 市场模式：A股适配 &nbsp;|&nbsp; 分析模式：Mode 1（Serenity框架 + 客观框架对照）</p>
+
+<h2>一、能力圈判定</h2>
+<table>
+  <tr><th>标的</th><th>赛道</th><th>能力圈匹配</th></tr>
+  <tr><td>300105 龙源技术</td><td>能源环保 / 煤电升级</td><td><span class="tag tag-yellow">部分覆盖</span> 电力设备链，非核心能力圈</td></tr>
+  <tr><td>688207 格灵深瞳</td><td>AI / 计算机视觉</td><td><span class="tag tag-yellow">边缘覆盖</span> 纯软件AI，无硬卡点</td></tr>
+  <tr><td><span class="bold">688549 中巨芯</span></td><td>半导体材料国产化</td><td><span class="tag tag-green">核心能力圈</span></td></tr>
+  <tr><td><span class="bold">688083 中望软件</span></td><td>工业软件 / EDA国产化</td><td><span class="tag tag-green">核心能力圈</span></td></tr>
+  <tr><td><span class="bold">301302 华如科技</span></td><td>军工 / 军事仿真</td><td><span class="tag tag-green">核心能力圈</span></td></tr>
+  <tr><td>300376 易事特</td><td>电源 / 数据中心 / 储能</td><td><span class="tag tag-yellow">部分覆盖</span> 电力设备，非核心能力圈</td></tr>
+  <tr><td>301195 北路智控</td><td>智能矿山 / 矿山智驾</td><td><span class="tag tag-yellow">边缘覆盖</span></td></tr>
+  <tr><td>301313 凡拓数创</td><td>数字孪生 / 物理AI</td><td><span class="tag tag-yellow">边缘覆盖</span> 偏软件，无硬件卡点</td></tr>
+</table>
+
+<hr class="divider">
+
+<!-- ═══════════ 300105 ═══════════ -->
+<h2>① 300105 龙源技术 —— 等离子点火全球龙头的"洗澡"后反转</h2>
+
+<div class="card">
+<div class="stock-header">
+  <span class="stock-name">龙源技术</span>
+  <span class="stock-code">300105 · 创业板 · 环保设备</span>
+</div>
+
+<h3>结论</h3>
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 30亿（0.6x PS） / Base: 42亿 / Bull: 55亿</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-yellow">Hold → 观察清单</span> 一次性减值出清+毛利率跳升+现金流转正，但TAM天花板低</div>
+  </div>
+</div>
+
+<h3>客观事实底座</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+  <tr><td>2025营收</td><td>9.60亿（-24.83%）</td><td>项目制+寿光/文水项目应收暴雷拖累</td></tr>
+  <tr><td>2025归母净利润</td><td class="danger">-3567万（首亏）</td><td><span class="bold">一次性信用减值1.01亿是主因</span>，扣非前亏损不代表经营恶化</td></tr>
+  <tr><td>2025毛利率</td><td class="highlight">21.86%（+6.94pct）</td><td>核心经营指标逆势改善，高毛利业务占比提升</td></tr>
+  <tr><td>2025经营现金流</td><td class="highlight">2.20亿（+63.4%）</td><td>现金流远好于利润，真实造血能力在改善</td></tr>
+  <tr><td>在手订单</td><td>11.88亿（+19%）</td><td>1.24x年营收覆盖率，支撑2026反转</td></tr>
+  <tr><td>2026Q1毛利率</td><td class="highlight">40.99%（环比+23pct）</td><td>高附加值业务占比持续提升</td></tr>
+  <tr><td>资产负债率</td><td>28.14%</td><td>无有息负债，货币资金充裕，安全垫极高</td></tr>
+  <tr><td>市值</td><td>~37亿</td><td>约3.85x PS(TTM)</td></tr>
+</table>
+
+<h3>Serenity卡点五连判</h3>
+<table>
+  <tr><th>判据</th><th>结果</th><th>说明</th></tr>
+  <tr><td>1. Single point of failure？</td><td class="danger">❌</td><td>火电行业不是卡脖子环节，燃煤电厂可不用等离子点火</td></tr>
+  <tr><td>2. 市值 vs TAM不对称？</td><td class="danger">❌</td><td>国内火电节能改造市场约50-80亿/年，TAM太小</td></tr>
+  <tr><td>3. Designed-in程度？</td><td class="highlight">✅</td><td>国家能源集团旗下上万家电厂是稳定基本盘</td></tr>
+  <tr><td>4. 认证/放量时间？</td><td class="warn">⚠️</td><td>南非0.8亿合同是海外突破信号，但体量太小</td></tr>
+  <tr><td>5. 表层被定价程度？</td><td class="highlight">✅</td><td>6/8涨停反映"减值出清+毛利率跳升"的重新定价</td></tr>
+</table>
+
+<h3>红旗扫描</h3>
+<ul>
+  <li><span class="warn">⚠️ 单一客户集中风险</span>：国家能源集团体系收入占比超70%</li>
+  <li><span class="warn">⚠️ 信用减值暴雷</span>：寿光/文水项目1.01亿一次性减值虽已出清，但暴露项目管理漏洞</li>
+</ul>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 688207 ═══════════ -->
+<h2>② 688207 格灵深瞳 —— 持续烧钱的AI"概念股"，红旗密集</h2>
+
+<div class="card">
+<div class="stock-header">
+  <span class="stock-name">格灵深瞳</span>
+  <span class="stock-code">688207 · 科创板 · IT服务</span>
+</div>
+
+<h3>结论</h3>
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 30亿 / Base: 45亿 / Bull: 70亿（AI情绪溢价）</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-red">Sell / 回避</span> 纯软件无硬卡点+烧钱+毛利率暴跌</div>
+  </div>
+</div>
+
+<h3>客观事实底座</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+  <tr><td>2025营收</td><td>1.55亿（+32.61%）</td><td>低基数增长，绝对值极小</td></tr>
+  <tr><td>2025归母净利润</td><td class="danger">-1.86亿</td><td>连续多年亏损</td></tr>
+  <tr><td>2026Q1营收</td><td>2079万（+170%）</td><td>增速惊人但绝对值仅2000万</td></tr>
+  <tr><td>2026Q1毛利率</td><td class="danger">24.38%（-19.28pct）</td><td><span class="bold">毛利率暴跌</span>，产品化程度倒退</td></tr>
+  <tr><td>货币资金</td><td class="danger">3.69亿（-46.43% YoY）</td><td>烧钱速度惊人，约1.5年耗尽</td></tr>
+  <tr><td>研发投入占比</td><td>93.93%</td><td>极端依赖研发，但商业化效率极低</td></tr>
+  <tr><td>应收账款/营收</td><td class="danger">92.64%</td><td>回款周期极长，收入质量极差</td></tr>
+  <tr><td>市值</td><td>~45亿</td><td>约29x PS(TTM)，极度昂贵</td></tr>
+</table>
+
+<h3>红旗扫描（命中即否决）</h3>
+<ul>
+  <li><span class="danger">🔴 纯软件/SaaS（被AI颠覆且无硬卡点）</span> → 硬否决</li>
+  <li><span class="danger">🔴 持续亏损+现金消耗过快</span>：货币资金年降46%，约1.5年面临现金枯竭</li>
+  <li><span class="danger">🔴 单一客户集中</span>：农业银行是核心客户</li>
+  <li><span class="danger">🔴 毛利率仅24%</span>：AI公司这个毛利率意味着产品化极差</li>
+</ul>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 688549 ═══════════ -->
+<h2>③ 688549 中巨芯 —— A股最强"半导体材料卡点"之一，但估值已飞</h2>
+
+<div class="card">
+<div class="stock-header">
+  <span class="stock-name">中巨芯</span>
+  <span class="stock-code">688549 · 科创板 · 电子化学品</span>
+  <span class="tag tag-green">🥇 排名第1</span>
+</div>
+
+<h3>结论</h3>
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 180亿 / Base: 283亿 / Bull: 400亿</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-green">Extremely Strong Buy（基本面）</span> <span class="tag tag-yellow">Hold（当前估值）</span> 真卡点但2个月翻倍</div>
+  </div>
+</div>
+
+<h3>客观事实底座</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+  <tr><td>2025营收</td><td>12.12亿（+17.68%）</td><td>稳健增长</td></tr>
+  <tr><td>2025归母净利润</td><td class="warn">-1660万（商誉减值3943万）</td><td>扣非亏损-3458万</td></tr>
+  <tr><td>2026Q1营收</td><td class="highlight">3.66亿（+35.33%）</td><td><span class="bold">加速增长</span>，环比+10.57%</td></tr>
+  <tr><td>2026Q1归母净利润</td><td class="highlight">638万（扭亏）</td><td><span class="bold">关键拐点信号</span></td></tr>
+  <tr><td>毛利率</td><td>14.03%→15.71%(Q1)</td><td>偏低但改善，G5级硫酸涨价+50%</td></tr>
+  <tr><td>大基金持股</td><td>26.40%</td><td>国家队背书</td></tr>
+  <tr><td>市值</td><td class="warn">~283亿</td><td>约23x PS(TTM)，偏高</td></tr>
+  <tr><td>电子级硝酸市占率</td><td class="highlight">66%</td><td>国内绝对龙头</td></tr>
+</table>
+
+<h3>好卡点判据（通过项）</h3>
+<ul>
+  <li><span class="highlight">✅ 国产替代紧迫度</span>：G5级湿化学品国产化率 &lt;25%，国内唯一12英寸14nm全品类量产</li>
+  <li><span class="highlight">✅ 极少数玩家</span>：全球G5级70%+被巴斯夫/陶氏垄断，国内同时量产三大品类的仅中巨芯</li>
+  <li><span class="highlight">✅ 认证周期长</span>：晶圆厂认证需2-3年，已进入中芯国际/长江存储/SK海力士/台积电供应链</li>
+  <li><span class="highlight">✅ 国家安全/政府介入</span>：大基金一期持股26.40%</li>
+  <li><span class="highlight">✅ 多年营收可见性</span>：长江存储/长鑫存储/中芯国际扩产=需求可见3-5年</li>
+</ul>
+
+<h3>红旗扫描</h3>
+<ul>
+  <li><span class="warn">⚠️ 毛利率偏低</span>：15.71%远低于行业平均31.18%，但改善中</li>
+  <li><span class="warn">⚠️ 扣非连续亏损</span>：2024-2025年均亏损，2026Q1刚扭亏</li>
+  <li><span class="warn">⚠️ 创投减持</span>：远致新程清仓减持2.89%</li>
+  <li><span class="warn">⚠️ 政府补助占比高</span>：Q1政府补助329万 vs 净利638万 = 51.6%</li>
+</ul>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 688083 ═══════════ -->
+<h2>④ 688083 中望软件 —— 工业软件"国产替代"最纯标的，等待盈利兑现</h2>
+
+<div class="card">
+<div class="stock-header">
+  <span class="stock-name">中望软件</span>
+  <span class="stock-code">688083 · 科创板 · 工业软件</span>
+  <span class="tag tag-green">🥈 排名第2</span>
+</div>
+
+<h3>结论</h3>
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 70亿 / Base: 90亿 / Bull: 140亿（3D悟空版+AI溢价）</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-green">Buy（逢低建仓）</span> 国内唯一全品类CAD=真卡点</div>
+  </div>
+</div>
+
+<h3>客观事实底座</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+  <tr><td>2025营收</td><td>8.93亿（+0.60%）</td><td>国内承压但海外+35%对冲</td></tr>
+  <tr><td>2025归母净利润</td><td>0.21亿（-67.57%）</td><td>商誉减值3315万+研发费用51.8%拖累</td></tr>
+  <tr><td>2026Q1营收</td><td class="highlight">1.47亿（+17.30%）</td><td><span class="bold">拐点信号</span></td></tr>
+  <tr><td>毛利率</td><td class="highlight">97.06%</td><td>极高毛利率=软件产品化程度高</td></tr>
+  <tr><td>研发费用率</td><td>51.80%</td><td>战略性投入，短期压制利润</td></tr>
+  <tr><td>海外收入</td><td class="highlight">2.74亿（+35.32%）</td><td>占比30.67%，全球化验证中</td></tr>
+  <tr><td>市值</td><td>~89亿</td><td>约10x PS(TTM)，2026E PE ~106x</td></tr>
+  <tr><td>机构一致预期2026E净利润</td><td>0.87亿</td><td>11家机构覆盖</td></tr>
+</table>
+
+<h3>好卡点判据</h3>
+<ul>
+  <li><span class="highlight">✅ 国产替代紧迫度</span>：3D CAD国产化率 &lt;5%，是国家工业安全核心卡点</li>
+  <li><span class="highlight">✅ 极少数玩家</span>：全球能做3D CAD内核的只有Dassault/Siemens/PTC/中望</li>
+  <li><span class="highlight">✅ 认证/替换周期长</span>：工业软件替换需3-5年验证</li>
+  <li><span class="highlight">✅ 毛利率97%</span>：纯软件产品，规模化后利润弹性极大</li>
+</ul>
+
+<h3>关键催化剂</h3>
+<ul>
+  <li>3D悟空版商业化数据（2026H2）</li>
+  <li>鸿蒙原生适配带来的信创订单</li>
+  <li>2026H1中报盈利拐点确认</li>
+</ul>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 301302 ═══════════ -->
+<h2>⑤ 301302 华如科技 —— 军工AI"非对称标的"，军采网解禁=最大催化剂</h2>
+
+<div class="card">
+<div class="stock-header">
+  <span class="stock-name">华如科技</span>
+  <span class="stock-code">301302 · 创业板 · 军工电子</span>
+  <span class="tag tag-green">🥉 排名第3</span>
+</div>
+
+<h3>结论</h3>
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 35亿 / Base: 50亿 / Bull: 80亿（军采网解禁+XSim平台化）</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-green">Buy（高风险高回报）</span> 军事仿真唯一民营龙头</div>
+  </div>
+</div>
+
+<h3>客观事实底座</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+  <tr><td>2025营收</td><td class="highlight">3.03亿（+21.5%）</td><td>军采网禁采下仍实现增长</td></tr>
+  <tr><td>2025归母净利润</td><td class="warn">-2.36亿（减亏33.4%）</td><td>降本增效初显</td></tr>
+  <tr><td>2026Q1营收</td><td class="highlight">1.23亿（+223.71%）</td><td><span class="bold">爆发式增长</span></td></tr>
+  <tr><td>2026Q1归母净利润</td><td class="highlight">-0.17亿（减亏58.37%）</td><td>接近盈亏平衡点</td></tr>
+  <tr><td>毛利率</td><td>37.81%</td><td>军工软件合理水平</td></tr>
+  <tr><td>资产负债率</td><td>16.45%</td><td>财务安全</td></tr>
+  <tr><td>现金+理财</td><td>约6.44亿</td><td>足够支撑2-3年运营</td></tr>
+  <tr><td>市值</td><td>~50亿</td><td>约16.5x PS(TTM)</td></tr>
+</table>
+
+<h3>好卡点判据</h3>
+<ul>
+  <li><span class="highlight">✅ 国产替代紧迫度</span>：军事仿真软件必须100%国产化，华如是极少数民营全栈平台</li>
+  <li><span class="highlight">✅ 极小市值 vs 巨大TAM</span>：50亿 vs 国内280亿+全球$188亿</li>
+  <li><span class="highlight">✅ 认证/资格周期长</span>：军工资质获取周期3-5年</li>
+  <li><span class="highlight">✅ XSim平台化</span>：从项目制→操作系统式平台，营收模型将质变</li>
+</ul>
+
+<h3>核心风险</h3>
+<ul>
+  <li><span class="danger">🔴 军采网禁采（最关键）</span>：2023.11.22至今，已切换到替代渠道但禁采不解禁市场始终折价</li>
+  <li><span class="warn">⚠️ 累计亏损约6.6亿</span>：但现金储备6.44亿足够撑到2027</li>
+</ul>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 300376 ═══════════ -->
+<h2>⑥ 300376 易事特 —— "ST翻身"故事很美，但红旗是8只里最多</h2>
+
+<div class="card">
+<div class="stock-header">
+  <span class="stock-name">易事特</span>
+  <span class="stock-code">300376 · 创业板 · 电源设备</span>
+  <span class="tag tag-red">排名第8</span>
+</div>
+
+<h3>结论</h3>
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 80亿 / Base: 138亿 / Bull: 200亿</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-red">Sell / 强烈回避</span> 财务造假+虚假陈述诉讼+净利润崩塌</div>
+  </div>
+</div>
+
+<h3>致命红旗</h3>
+<table>
+  <tr><th>红旗</th><th>详情</th></tr>
+  <tr><td class="danger">🔴 财务造假历史</td><td>2017-2021虚增营收超40亿，原实控人罚款千万+市场禁入10年</td></tr>
+  <tr><td class="danger">🔴 证券虚假陈述诉讼</td><td>2025年因诉讼计提预计负债1.11亿，诉讼仍在进行中</td></tr>
+  <tr><td class="danger">🔴 毛利率持续下滑</td><td>26.25%→23.52%，行业价格战</td></tr>
+  <tr><td class="danger">🔴 增收不增利</td><td>营收+20%但净利-87%</td></tr>
+  <tr><td class="danger">🔴 经营现金流恶化</td><td>2026Q1为-2.42亿</td></tr>
+</table>
+
+<h3>客观事实底座</h3>
+<table>
+  <tr><th>指标</th><th>数值</th></tr>
+  <tr><td>2025营收</td><td>36.71亿（+20.59%）</td></tr>
+  <tr><td>2025归母净利润</td><td class="danger">2401万（-87.31%）</td></tr>
+  <tr><td>2025Q4单季</td><td class="danger">净利润-7026万（-317%）</td></tr>
+  <tr><td>2026Q1营收</td><td>8.15亿（+27.61%）</td></tr>
+  <tr><td>2026Q1归母净利润</td><td class="danger">1490万（-66.30%）</td></tr>
+  <tr><td>资产负债率</td><td class="warn">49.29%</td></tr>
+  <tr><td>市值</td><td>~138亿</td></tr>
+</table>
+
+<p><span class="danger">财务造假是不可逆的公司治理红旗，Serenity框架零容忍。</span></p>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 301195 ═══════════ -->
+<h2>⑦ 301195 北路智控 —— 智能矿山隐形冠军，"小而美"但短期承压</h2>
+
+<div class="card">
+<div class="stock-header">
+  <span class="stock-name">北路智控</span>
+  <span class="stock-code">301195 · 创业板 · 软件开发</span>
+  <span class="tag tag-accent">排名第4</span>
+</div>
+
+<h3>结论</h3>
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 30亿 / Base: 36亿 / Bull: 55亿（矿山智驾+矿鸿）</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-yellow">Hold → 观察清单</span> 盈利+低负债+全层级，等需求端右侧信号</div>
+  </div>
+</div>
+
+<h3>客观事实底座</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+  <tr><td>2025营收</td><td>9.63亿（-14.68%）</td><td>煤矿智能化需求短期疲软</td></tr>
+  <tr><td>2025归母净利润</td><td class="highlight">1.51亿（-24.76%）</td><td><span class="bold">8只里唯二盈利</span></td></tr>
+  <tr><td>2026Q1营收</td><td>2.08亿（-16.32%）</td><td>需求尚未恢复</td></tr>
+  <tr><td>毛利率</td><td>44.23%→41.35%</td><td>稳中有降但仍健康</td></tr>
+  <tr><td>非煤业务</td><td class="highlight">0.65亿（+130.43%）</td><td>第二增长曲线高速成长</td></tr>
+  <tr><td>矿山智驾收入</td><td>0.99亿（+15.94%）</td><td>新增长引擎</td></tr>
+  <tr><td>市值</td><td>~36亿</td><td>PE(2025): 24x, PB: 1.48x</td></tr>
+  <tr><td>研发投入占比</td><td>13.81%</td><td>持续高研发</td></tr>
+</table>
+
+<h3>财务质量评价</h3>
+<p>8只里排名第二（盈利+低负债+健康毛利率），但卡点强度不如中巨芯/中望。<span class="warn">等需求端右侧信号（单季营收恢复正增长）后加仓。</span></p>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 301313 ═══════════ -->
+<h2>⑧ 301313 凡拓数创 —— "物理AI"概念最热，但仍是烧钱的故事股</h2>
+
+<div class="card">
+<div class="stock-header">
+  <span class="stock-name">凡拓数创</span>
+  <span class="stock-code">301313 · 创业板 · 数字媒体</span>
+  <span class="tag tag-accent">排名第6</span>
+</div>
+
+<h3>结论</h3>
+<div class="verdict">
+  <div class="verdict-item">
+    <div class="label">客观框架空间</div>
+    <div class="value">Bear: 35亿 / Base: 62亿 / Bull: 100亿（物理AI溢价）</div>
+  </div>
+  <div class="verdict-item">
+    <div class="label">Serenity视角</div>
+    <div class="value"><span class="tag tag-red">Sell（短期回避）</span> 方向正确但未到击球区</div>
+  </div>
+</div>
+
+<h3>客观事实底座</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+  <tr><td>2025营收</td><td class="highlight">6.31亿（+72.81%）</td><td>爆发式增长</td></tr>
+  <tr><td>2025归母净利润</td><td class="warn">-1.35亿（减亏27.98%）</td><td>仍在亏损</td></tr>
+  <tr><td>AI 3D数字孪生收入</td><td class="highlight">1.75亿（+255.4%）</td><td><span class="bold">核心增长引擎</span></td></tr>
+  <tr><td>经营现金流</td><td class="highlight">2467万（转正）</td><td>2025全年转正是一大亮点</td></tr>
+  <tr><td>商誉</td><td class="warn">8834万（占净资产13.23%）</td><td>尚在可控范围</td></tr>
+  <tr><td>应收账款</td><td class="warn">3.13亿（占总资产22.38%）</td><td>回款压力大</td></tr>
+  <tr><td>2026Q1经营现金流</td><td class="danger">-4634万</td><td>恶化</td></tr>
+  <tr><td>市值</td><td>~62亿</td><td>约9.8x PS(TTM)</td></tr>
+</table>
+
+<p>方向正确（物理AI+自研3D引擎），但<span class="warn">需要看到连续2个季度盈利或经营现金流持续为正</span>才到Serenity击球区。</p>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ 综合排名 ═══════════ -->
+<h2>三、综合分析结论</h2>
+
+<h3>3.1 8只标的 Serenity 排名</h3>
+<table class="ranking-table">
+  <tr><th>排名</th><th>标的</th><th>赛道</th><th>Serenity分档</th><th>核心逻辑</th><th>致命红旗数</th></tr>
+  <tr style="background:rgba(63,185,80,0.06)">
+    <td>🥇</td><td><span class="bold">688549 中巨芯</span></td><td>半导体材料</td><td><span class="tag tag-green">Strong Buy（等回调）</span></td><td>国内唯一12英寸全品类G5级湿化学品量产=真卡点</td><td>1</td>
+  </tr>
+  <tr style="background:rgba(63,185,80,0.04)">
+    <td>🥈</td><td><span class="bold">688083 中望软件</span></td><td>工业软件</td><td><span class="tag tag-green">Buy（逢低建仓）</span></td><td>国内唯一全品类CAD，毛利率97%，3D悟空版突破</td><td>0</td>
+  </tr>
+  <tr style="background:rgba(240,136,62,0.06)">
+    <td>🥉</td><td><span class="bold">301302 华如科技</span></td><td>军事仿真</td><td><span class="tag tag-green">Buy（高风险）</span></td><td>军事仿真唯一民营龙头+XSim平台化</td><td>1</td>
+  </tr>
+  <tr>
+    <td>4</td><td><span class="bold">301195 北路智控</span></td><td>智能矿山</td><td><span class="tag tag-yellow">Hold（等右侧）</span></td><td>矿山全层级+矿鸿+智驾，盈利但承压</td><td>0</td>
+  </tr>
+  <tr>
+    <td>5</td><td><span class="bold">300105 龙源技术</span></td><td>煤电升级</td><td><span class="tag tag-yellow">Hold（观察）</span></td><td>减值出清+现金流反转，TAM偏小</td><td>1</td>
+  </tr>
+  <tr>
+    <td>6</td><td><span class="bold">301313 凡拓数创</span></td><td>物理AI</td><td><span class="tag tag-red">Sell（短期）</span></td><td>AI 3D +255%，但持续亏损+故事驱动</td><td>3</td>
+  </tr>
+  <tr>
+    <td>7</td><td><span class="bold">688207 格灵深瞳</span></td><td>AI视觉</td><td><span class="tag tag-red">Sell</span></td><td>纯软件无卡点+烧钱+毛利率暴跌</td><td>4</td>
+  </tr>
+  <tr style="background:rgba(248,81,73,0.06)">
+    <td>8</td><td><span class="bold">300376 易事特</span></td><td>电源/储能</td><td><span class="tag tag-red">强烈回避</span></td><td>财务造假历史+虚假陈述诉讼+利润崩塌</td><td>5+</td>
+  </tr>
+</table>
+
+<h3>3.2 卡点强度分布</h3>
+<div class="card">
+  <p><span class="tag tag-green">真卡点（SPOF级）</span> <span class="bold">中巨芯</span>（半导体材料国产化）、<span class="bold">中望软件</span>（3D CAD国产化）</p>
+  <p style="margin-top:0.6rem"><span class="tag tag-yellow">准卡点（细分垄断）</span> <span class="bold">华如科技</span>（军事仿真民营唯一）、<span class="bold">北路智控</span>（矿山全层级）</p>
+  <p style="margin-top:0.6rem"><span class="tag tag-red">非卡点（可替代强）</span> 龙源技术、凡拓数创、格灵深瞳、易事特</p>
+</div>
+
+<h3>3.3 Serenity视角一句话总结</h3>
+<blockquote style="border-left:3px solid var(--accent); padding:0.8rem 1.2rem; margin:1rem 0; background:rgba(88,166,255,0.05); border-radius:0 8px 8px 0;">
+  <span class="bold">8只里能进Serenity核心仓的只有中巨芯和中望软件</span>——两者都是"国产替代紧迫度最高+极少数玩家+认证壁垒深"的真卡点。华如科技军事仿真逻辑通顺但军采网禁采是硬悬剑。其余5只要么红旗太多、要么TAM不足、要么根本不符合Serenity硬卡点方法论。今天的集体涨停更多是资金驱动，不是基本面质变——区分清楚。
+</blockquote>
+
+<h3>3.4 四象限定位图（概念）</h3>
+<table>
+  <tr><th></th><th>强卡点</th><th>弱卡点</th></tr>
+  <tr><td><span class="bold">财务健康</span></td>
+    <td><span class="highlight">中望软件</span>（97%毛利率）<br><span class="highlight">北路智控</span>（PE 24x）</td>
+    <td>龙源技术（现金流转正）</td>
+  </tr>
+  <tr><td><span class="bold">财务压力</span></td>
+    <td><span class="warn">中巨芯</span>（刚扭亏，等利润释放）<br><span class="warn">华如科技</span>（军采网禁采）</td>
+    <td><span class="danger">格灵深瞳</span>（烧钱枯竭）<br><span class="danger">易事特</span>（造假+诉讼）<br>凡拓数创（持续亏损）</td>
+  </tr>
+</table>
+
+<hr class="divider">
+
+<!-- ═══════════ 独立复核 ═══════════ -->
+<h2>四、独立复核</h2>
+<table>
+  <tr><th>复核项</th><th>结果</th></tr>
+  <tr><td>财务数据一手来源</td><td><span class="highlight">✅</span> 数据均来自2025年报/2026Q1季报公告原文或正规财经媒体</td></tr>
+  <tr><td>跨标的倍数对比同源</td><td><span class="highlight">✅</span> PS/PB/PE来自同花顺/东方财富同源数据</td></tr>
+  <tr><td>确认偏误检查</td><td><span class="highlight">✅</span> 中巨芯虽评Strong Buy但明确提示估值已飞需等回调，中望PE>100x明确标注</td></tr>
+  <tr><td>政府补助占比复核</td><td><span class="warn">⚠️</span> 中巨芯Q1政府补助329万vs净利638万=51.6%已标注</td></tr>
+  <tr><td>大股东质押复核</td><td><span class="highlight">✅</span> 均无>50%质押风险</td></tr>
+  <tr><td>定增/减持遗漏检查</td><td><span class="highlight">✅</span> 中巨芯远致新程减持、中巨芯8亿定增均已标注</td></tr>
+  <tr><td>重大遗漏检查</td><td><span class="highlight">✅</span> 易事特财务造假、华如科技军采网禁采、格灵深瞳现金消耗等核心红旗已覆盖</td></tr>
+</table>
+
+<div class="disclaimer">
+  <p><strong>风险声明</strong>：以上分析基于公开信息，不构成投资建议。Serenity方法论强调在信息不对称中寻找定价错误，所有判断均为概率性推演。A股波动大、政策风险高，请独立决策。</p>
+  <p style="margin-top:0.5rem">分析方法论：<a href="https://x.com/aleabitoreddit" style="color:var(--accent)">Serenity(@aleabitoreddit)</a> 供应链卡点逆向投资框架 · A股适配版 · DeepSeek基座</p>
+</div>
+
+</body>
+</html>

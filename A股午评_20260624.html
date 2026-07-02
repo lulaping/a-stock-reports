@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月24日 A股午评</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-secondary: #8b949e;
+  --red: #ff6b6b;
+  --green: #3fb950;
+  --gold: #d2991d;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+h1 {
+  text-align: center;
+  font-size: 2em;
+  padding: 30px 0 10px;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95em; }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card h2 {
+  font-size: 1.3em;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.index-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.index-card .name { color: var(--text-secondary); font-size: 0.85em; margin-bottom: 4px; }
+.index-card .value { font-size: 1.4em; font-weight: 700; }
+.index-card .change { font-size: 1em; font-weight: 600; }
+.up { color: var(--red); }
+.down { color: var(--green); }
+
+.market-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.stat-item {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.stat-item .label { font-size: 0.78em; color: var(--text-secondary); }
+.stat-item .val { font-size: 1.1em; font-weight: 700; color: var(--gold); margin-top: 3px; }
+
+.sector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.sector-section h3 { font-size: 0.95em; margin-bottom: 10px; }
+.sector-section .hot h3 { color: var(--red); }
+.sector-section .cold h3 { color: var(--green); }
+.sector-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(48,54,61,0.4);
+  font-size: 0.88em;
+}
+.sector-item:last-child { border-bottom: none; }
+.sector-up { color: var(--red); font-weight: 600; }
+.sector-down { color: var(--green); font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin: 0 2px;
+}
+.tag-red { background: rgba(218,54,51,0.2); color: #ff7b72; }
+.tag-green { background: rgba(63,185,80,0.2); color: #56d364; }
+.tag-blue { background: rgba(88,166,255,0.2); color: #79c0ff; }
+.tag-gold { background: rgba(210,153,29,0.2); color: #d2991d; }
+.tag-purple { background: rgba(188,140,255,0.2); color: #bc8cff; }
+
+.analysis-box {
+  background: rgba(210,153,29,0.08);
+  border: 1px solid rgba(210,153,29,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.analysis-box h4 { color: var(--gold); margin-bottom: 8px; }
+.analysis-box p { font-size: 0.9em; margin-bottom: 4px; }
+
+.warn-box {
+  background: rgba(218,54,51,0.08);
+  border: 1px solid rgba(218,54,51,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.warn-box h4 { color: var(--red); margin-bottom: 8px; }
+.warn-box ul { margin-left: 20px; font-size: 0.88em; }
+.warn-box li { margin-bottom: 4px; }
+
+.bull-box {
+  background: rgba(63,185,80,0.08);
+  border: 1px solid rgba(63,185,80,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.bull-box h4 { color: var(--green); margin-bottom: 8px; }
+
+.main-line {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.line-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--blue);
+}
+.line-card.l2 { border-top-color: var(--red); }
+.line-card.l3 { border-top-color: var(--purple); }
+.line-card.l4 { border-top-color: var(--gold); }
+.line-card h3 { font-size: 0.95em; margin-bottom: 8px; }
+.line-card ul { margin-left: 18px; font-size: 0.85em; }
+.line-card li { margin-bottom: 3px; }
+
+.flow-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(48,54,61,0.3);
+  font-size: 0.85em;
+}
+.flow-row:last-child { border-bottom: none; }
+.flow-in { color: var(--red); font-weight: 600; }
+.flow-out { color: var(--green); font-weight: 600; }
+
+.afternoon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.afternoon-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+.afternoon-card h3 { font-size: 1em; margin-bottom: 10px; }
+.afternoon-card ul { margin-left: 20px; font-size: 0.88em; }
+.afternoon-card li { margin-bottom: 4px; }
+
+.footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .sector-grid, .main-line, .afternoon-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>2026年6月24日 A股午评</h1>
+<p class="subtitle">午间收盘 11:30 | 数据来源：财联社、东方财富、新浪财经 | 2026年6月24日 星期三</p>
+
+<!-- 指数概览 -->
+<div class="card">
+  <h2>📊 指数概览：沪指微跌，科创50大涨2.48%</h2>
+  <div class="index-grid">
+    <div class="index-card">
+      <div class="name">上证指数</div>
+      <div class="value">4096.14</div>
+      <div class="change down">-0.25%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">深证成指</div>
+      <div class="value">15906.57</div>
+      <div class="change up">+0.33%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">创业板指</div>
+      <div class="value">4209.90</div>
+      <div class="change up">+0.42%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">科创50</div>
+      <div class="value">1963.82</div>
+      <div class="change up">+2.48%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">沪深300</div>
+      <div class="value">4925.42</div>
+      <div class="change up">+0.12%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">上证50</div>
+      <div class="value">2936.75</div>
+      <div class="change up">+0.34%</div>
+    </div>
+  </div>
+
+  <div class="market-stats">
+    <div class="stat-item">
+      <div class="label">半日成交额</div>
+      <div class="val">约2.09万亿</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">较上日缩量</div>
+      <div class="val" style="color:var(--green);">-2000亿+</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">上涨家数</div>
+      <div class="val" style="color:var(--red);">1066</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">下跌家数</div>
+      <div class="val" style="color:var(--green);">4422</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">涨停</div>
+      <div class="val">66</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">跌停</div>
+      <div class="val" style="color:var(--green);">24</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">涨跌比</div>
+      <div class="val" style="color:var(--green);">0.24</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">量比</div>
+      <div class="val" style="color:var(--green);">0.67</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <h4>盘面核心特征：极度割裂的"鳄鱼嘴"行情</h4>
+    <ul>
+      <li><strong>指数涨但个股惨烈</strong>：科创50大涨2.48%、创业板+0.42%，但全市场仅1066家上涨，<strong>4422家下跌</strong>，涨跌比仅0.24——超80%个股跑输大盘</li>
+      <li><strong>白线在上、黄线在下</strong>：典型的"鳄鱼嘴"分化形态，权重科技股拉升指数，中小盘股大面积承压</li>
+      <li><strong>缩量明显</strong>：半日成交2.09万亿，量比0.67，缩量2000亿+，观望情绪浓厚</li>
+      <li><strong>资金高度集中</strong>：主力资金全部涌入半导体、通信、创新药、新材料四条主线，其余板块全面失血</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 板块表现 -->
+<div class="card">
+  <h2>🔥 板块表现：半导体全线爆发，传统板块失血</h2>
+  <div class="sector-grid">
+    <div class="sector-section hot">
+      <h3>领涨板块 TOP5</h3>
+      <div class="sector-item"><span>玻纤制造</span><span class="sector-up">+7.36%</span></div>
+      <div class="sector-item"><span>集成电路封测</span><span class="sector-up">+6.00%</span></div>
+      <div class="sector-item"><span>锂</span><span class="sector-up">+5.75%</span></div>
+      <div class="sector-item"><span>集成电路制造</span><span class="sector-up">+4.96%</span></div>
+      <div class="sector-item"><span>能源金属</span><span class="sector-up">+4.62%</span></div>
+    </div>
+    <div class="sector-section cold">
+      <h3>领跌板块 TOP5</h3>
+      <div class="sector-item"><span>粮食种植</span><span class="sector-down">-5.89%</span></div>
+      <div class="sector-item"><span>影视动漫制作</span><span class="sector-down">-5.36%</span></div>
+      <div class="sector-item"><span>焦炭</span><span class="sector-down">-5.31%</span></div>
+      <div class="sector-item"><span>金融信息服务</span><span class="sector-down">-5.25%</span></div>
+      <div class="sector-item"><span>影视院线</span><span class="sector-down">-5.20%</span></div>
+    </div>
+  </div>
+
+  <!-- 四条主线 -->
+  <div class="main-line">
+    <div class="line-card">
+      <h3>🔴 主线一：半导体全产业链</h3>
+      <ul>
+        <li><strong>长电科技涨停</strong>：封测龙头，半日净流入47.41亿，成交80亿，量价双第一</li>
+        <li><strong>中芯国际+9.99%</strong>：晶圆代工龙头，净流入14.15亿，逼近涨停</li>
+        <li><strong>太极实业一字板</strong>：封测配套，净流入12.41亿</li>
+        <li><strong>通富微电冲高</strong>：封测线，净流入8.28亿</li>
+        <li>驱动：台积电上调7nm及以下代工价5-10% + WSTS预测2026年全球半导体突破1.5万亿美元</li>
+      </ul>
+    </div>
+    <div class="line-card l2">
+      <h3>🟠 主线二：通信算力+光模块</h3>
+      <ul>
+        <li><strong>永鼎股份+9%</strong>：通信光电缆，净流入14.56亿</li>
+        <li><strong>新易盛</strong>：光模块，净流入5.03亿</li>
+        <li><strong>立讯精密走强</strong>：AI算力配套，净流入15.59亿</li>
+        <li>PCB概念反弹：昨日"英伟达降价"传闻被证伪，中国巨石涨停</li>
+      </ul>
+    </div>
+    <div class="line-card l3">
+      <h3>🟣 主线三：创新药/CRO</h3>
+      <ul>
+        <li><strong>药明康德涨停</strong>：CRO龙头，市值3489亿，净流入11.26亿</li>
+        <li><strong>恒瑞医药+5.27亿</strong>：创新药龙头</li>
+        <li><strong>凯莱英涨停</strong>：CDMO龙头</li>
+        <li>驱动：BIO2026大会召开 + 创新药BD交易超预期 + 2026年CRO景气向上</li>
+      </ul>
+    </div>
+    <div class="line-card l4">
+      <h3>🟡 主线四：锂矿+新材料</h3>
+      <ul>
+        <li><strong>盛新锂能涨停</strong>：锂矿，净流入4.93亿</li>
+        <li><strong>融捷股份涨停</strong>：锂矿上游</li>
+        <li><strong>中国巨石涨停</strong>：玻纤新材料，净流入9.62亿</li>
+        <li>驱动：锂电需求预期上调 + 电子布涨价70% + 覆铜板年内第五次提价</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 资金流向 -->
+<div class="card">
+  <h2>💵 资金流向：半导体单边吸金，传统板块全面失血</h2>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+    <div>
+      <h3 style="color: var(--red); font-size: 0.9em; margin-bottom: 8px;">主力净流入 TOP10</h3>
+      <div class="flow-row"><span>长电科技（封测）</span><span class="flow-in">+47.41亿</span></div>
+      <div class="flow-row"><span>N臻宝（半导体材料新股）</span><span class="flow-in">+23.70亿</span></div>
+      <div class="flow-row"><span>立讯精密（AI算力配套）</span><span class="flow-in">+15.59亿</span></div>
+      <div class="flow-row"><span>永鼎股份（通信光电缆）</span><span class="flow-in">+14.56亿</span></div>
+      <div class="flow-row"><span>中芯国际（晶圆代工）</span><span class="flow-in">+14.15亿</span></div>
+      <div class="flow-row"><span>太极实业（封测配套）</span><span class="flow-in">+12.41亿</span></div>
+      <div class="flow-row"><span>药明康德（CRO）</span><span class="flow-in">+11.26亿</span></div>
+      <div class="flow-row"><span>中国巨石（玻纤新材料）</span><span class="flow-in">+9.62亿</span></div>
+      <div class="flow-row"><span>通富微电（封测）</span><span class="flow-in">+8.28亿</span></div>
+      <div class="flow-row"><span>三安光电（半导体光电子）</span><span class="flow-in">+7.67亿</span></div>
+    </div>
+    <div>
+      <h3 style="color: var(--green); font-size: 0.9em; margin-bottom: 8px;">板块资金方向</h3>
+      <div class="flow-row"><span>半导体全链</span><span class="flow-in">主力大幅流入</span></div>
+      <div class="flow-row"><span>通信算力设备</span><span class="flow-in">主力持续加仓</span></div>
+      <div class="flow-row"><span>医药创新CXO</span><span class="flow-in">主力回流</span></div>
+      <div class="flow-row"><span>玻纤新材料</span><span class="flow-in">主力加仓</span></div>
+      <div class="flow-row"><span>银行</span><span class="flow-out">主力流出</span></div>
+      <div class="flow-row"><span>煤炭</span><span class="flow-out">主力流出</span></div>
+      <div class="flow-row"><span>地产</span><span class="flow-out">主力流出</span></div>
+      <div class="flow-row"><span>消费/酿酒</span><span class="flow-out">主力流出</span></div>
+      <div class="flow-row"><span>影视院线</span><span class="flow-out">主力流出</span></div>
+      <div class="flow-row"><span>粮食种植</span><span class="flow-out">主力流出</span></div>
+    </div>
+  </div>
+
+  <div class="analysis-box">
+    <h4>资金特征：极致的"抱团取暖"</h4>
+    <p>前20名净流入个股中，半导体独占7席（长电科技、N臻宝、中芯国际、太极实业、通富微电、三安光电、芯原股份），<strong>全产业链从封测到晶圆制造到材料到芯片设计，无一遗漏</strong>。资金并非炒作单一题材，而是对半导体整个赛道进行系统性布局。与此同时，银行、煤炭、地产、消费等传统板块全面失血，资金从防御向成长切换的信号非常明确。</p>
+  </div>
+</div>
+
+<!-- 昨日错杀修复 -->
+<div class="card">
+  <h2>🔄 昨日错杀修复：半导体+PCB强力反弹</h2>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; border: 1px solid var(--border);">
+      <strong style="color: var(--red);">半导体：从"暴跌"到"暴涨"</strong>
+      <p style="font-size: 0.88em; margin-top: 4px;">昨日受韩国股市熔断拖累，半导体板块大跌（兆易创新-7%、澜起科技-7.87%）。今日资金发现是"错杀"——AI大厂资本开支并未减少，核心硬件公司业绩确定性极高。半导体全产业链强力反弹，封测、晶圆制造、存储芯片、先进封装全面开花。</p>
+    </div>
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; border: 1px solid var(--border);">
+      <strong style="color: var(--red);">PCB：传闻被证伪后暴力反弹</strong>
+      <p style="font-size: 0.88em; margin-top: 4px;">昨日市场流传"英伟达要求PCB降价10%""胜宏科技拖累Rubin出货"，导致PCB板块暴跌。今日上证报求证后确认传闻<strong>存在明显夸大和误读</strong>。中国巨石涨停、西陇科学2连板、国际复材涨超17%创新高。产业链逻辑未变，高端PCB供需仍偏紧。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 关键消息 -->
+<div class="card">
+  <h2>📰 今日关键消息面</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+    <div style="background: var(--bg); border-radius: 8px; padding: 12px; border: 1px solid var(--border);">
+      <span class="tag tag-red">半导体</span>
+      <strong>台积电全面涨价</strong>
+      <p style="font-size: 0.84em; margin-top: 4px;">7nm及以下先进制程代工价上调5%-10%，影响约75%晶圆营收。5/4nm产能全年满载，订单排至2027年。</p>
+    </div>
+    <div style="background: var(--bg); border-radius: 8px; padding: 12px; border: 1px solid var(--border);">
+      <span class="tag tag-blue">半导体</span>
+      <strong>WSTS预测上调</strong>
+      <p style="font-size: 0.84em; margin-top: 4px;">2026年全球半导体市场规模突破1.5万亿美元，AI算力芯片与存储芯片为核心增长动力。</p>
+    </div>
+    <div style="background: var(--bg); border-radius: 8px; padding: 12px; border: 1px solid var(--border);">
+      <span class="tag tag-purple">PCB材料</span>
+      <strong>覆铜板年内第五次提价</strong>
+      <p style="font-size: 0.84em; margin-top: 4px;">建滔积层板宣布FR-4覆铜板及PP半固化片提价15%。7628电子布价格较年初涨超70%。</p>
+    </div>
+    <div style="background: var(--bg); border-radius: 8px; padding: 12px; border: 1px solid var(--border);">
+      <span class="tag tag-gold">CRO</span>
+      <strong>BIO2026大会召开</strong>
+      <p style="font-size: 0.84em; margin-top: 4px;">全球生物技术盛会6月22-25日在圣地亚哥召开，中国CXO企业高效率优势备受关注。</p>
+    </div>
+    <div style="background: var(--bg); border-radius: 8px; padding: 12px; border: 1px solid var(--border);">
+      <span class="tag tag-orange">锂电</span>
+      <strong>碳酸锂需求上调</strong>
+      <p style="font-size: 0.84em; margin-top: 4px;">中信期货上调2026年全球动力电池产量至2008GWh（+29%），碳酸锂需求约133万吨。</p>
+    </div>
+    <div style="background: var(--bg); border-radius: 8px; padding: 12px; border: 1px solid var(--border);">
+      <span class="tag tag-purple">封装</span>
+      <strong>先进封装市场爆发</strong>
+      <p style="font-size: 0.84em; margin-top: 4px;">2026年全球先进封装市场规模达581亿美元，HBM堆叠层数向12层以上演进。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 午后展望 -->
+<div class="card">
+  <h2>🔮 午后关键观察点</h2>
+  <div class="afternoon-grid">
+    <div class="afternoon-card">
+      <h3 style="color: var(--red);">需要关注的风险</h3>
+      <ul>
+        <li><strong>涨跌比极度失衡</strong>：1066 vs 4422，若午后不能修复至2000+上涨，则"赚指数不赚钱"格局确认</li>
+        <li><strong>缩量明显</strong>：量比0.67，缩量2000亿+，若午后不放量，反弹持续性存疑</li>
+        <li><strong>半导体午后是否回落</strong>：半日涨幅已大，警惕午后获利盘兑现</li>
+        <li><strong>银行板块继续走弱</strong>：若午后银行加速下跌，沪指可能翻绿扩大</li>
+        <li><strong>韩国股市能否企稳</strong>：昨日熔断后今日表现，影响A股尾盘情绪</li>
+      </ul>
+    </div>
+    <div class="afternoon-card">
+      <h3 style="color: var(--green);">相对乐观的信号</h3>
+      <ul>
+        <li><strong>半导体全产业链共振</strong>：不是单一题材炒作，是系统性资金布局，持续性更强</li>
+        <li><strong>昨日错杀修复逻辑清晰</strong>：PCB传闻被证伪、半导体基本面未变，反弹有基本面支撑</li>
+        <li><strong>四条主线并行</strong>：半导体+通信+创新药+新材料，多条赛道分散配置</li>
+        <li><strong>涨停66家</strong>：短线热钱仍在，没有完全退场</li>
+        <li><strong>长电科技涨停封单稳固</strong>：封测龙头封板质量好，午后大概率维持</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="analysis-box" style="margin-top: 16px;">
+    <h4>午后预判</h4>
+    <p>预计午后<strong>沪指窄幅震荡，科技方向维持强势</strong>。半导体板块大概率延续强势（长电科技、中芯国际封板稳固），但涨幅可能收窄。PCB概念午后有继续扩散的可能（电子布、铜箔等上游方向）。医药板块午后关注药明康德能否封死涨停，若炸板则板块情绪回落。</p>
+    <p>全天成交额预计在<strong>3.2-3.5万亿</strong>区间。今日本质是"昨日大跌后的缩量修复"，真正的考验在明天——若明天半导体能继续放量上攻，则确认主线切换完成；若明天冲高回落，则仍是震荡格局。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>风险提示：本文基于公开市场数据进行午间分析，不构成任何投资建议。</p>
+  <p>股市有风险，投资需谨慎。数据来源：财联社、东方财富、新浪财经、证券时报</p>
+  <p>生成时间：2026年6月24日 午间</p>
+</div>
+
+</div>
+</body>
+</html>

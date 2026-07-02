@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIIA词元（Token）服务工作组筹备成立 - 概念股梳理</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-secondary: #8b949e;
+  --red: #ff6b6b;
+  --green: #3fb950;
+  --gold: #d2991d;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --orange: #f0883e;
+  --cyan: #39d2c0;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+h1 {
+  text-align: center;
+  font-size: 1.9em;
+  padding: 30px 0 10px;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 8px; font-size: 0.9em; }
+.source { text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 0.8em; }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card h2 {
+  font-size: 1.25em;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card h3 { font-size: 1.05em; margin: 16px 0 10px; color: var(--gold); }
+
+.news-quote {
+  background: rgba(57,210,192,0.08);
+  border: 1px solid rgba(57,210,192,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 0.9em;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.news-quote strong { color: var(--cyan); }
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.work-item {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  font-size: 0.85em;
+}
+.work-item .num { color: var(--cyan); font-weight: 700; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin: 0 2px;
+}
+.tag-red { background: rgba(218,54,51,0.2); color: #ff7b72; }
+.tag-green { background: rgba(63,185,80,0.2); color: #56d364; }
+.tag-blue { background: rgba(88,166,255,0.2); color: #79c0ff; }
+.tag-gold { background: rgba(210,153,29,0.2); color: #d2991d; }
+.tag-purple { background: rgba(188,140,255,0.2); color: #bc8cff; }
+.tag-cyan { background: rgba(57,210,192,0.2); color: #39d2c0; }
+
+.stock-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+}
+.stock-card.tier-1 { border-left-color: #da3633; }
+.stock-card.tier-2 { border-left-color: var(--orange); }
+.stock-card.tier-3 { border-left-color: var(--blue); }
+.stock-card.tier-4 { border-left-color: var(--green); }
+.stock-card.tier-5 { border-left-color: var(--purple); }
+
+.stock-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.stock-name { font-size: 1.05em; font-weight: 700; }
+.stock-code { color: var(--text-secondary); font-size: 0.82em; }
+.stock-info { font-size: 0.85em; color: var(--text); }
+.stock-logic { font-size: 0.8em; color: var(--cyan); margin-top: 4px; }
+
+.sector-section { margin-bottom: 20px; }
+.sector-section h3 { 
+  font-size: 1em; 
+  margin-bottom: 10px; 
+  padding: 6px 12px; 
+  border-radius: 6px; 
+  display: inline-block;
+}
+.section-up { background: rgba(57,210,192,0.12); color: var(--cyan); }
+.section-mid { background: rgba(88,166,255,0.12); color: var(--blue); }
+.section-down { background: rgba(188,140,255,0.12); color: var(--purple); }
+.section-data { background: rgba(210,153,29,0.12); color: var(--gold); }
+.section-op { background: rgba(63,185,80,0.12); color: var(--green); }
+
+.analysis-box {
+  background: rgba(210,153,29,0.08);
+  border: 1px solid rgba(210,153,29,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.analysis-box h4 { color: var(--gold); margin-bottom: 8px; }
+
+.warn-box {
+  background: rgba(218,54,51,0.08);
+  border: 1px solid rgba(218,54,51,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.warn-box h4 { color: var(--red); margin-bottom: 8px; }
+
+.bull-box {
+  background: rgba(63,185,80,0.08);
+  border: 1px solid rgba(63,185,80,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.bull-box h4 { color: var(--green); margin-bottom: 8px; }
+
+.chain-diagram {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.chain-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.chain-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-width: 140px;
+  text-align: center;
+}
+.chain-box .layer { font-size: 0.7em; color: var(--text-secondary); }
+.chain-box .name { font-weight: 700; font-size: 0.95em; margin-top: 2px; }
+.chain-box .content { font-size: 0.75em; color: var(--text-secondary); margin-top: 4px; }
+.chain-arrow { color: var(--cyan); font-size: 1.3em; font-weight: 700; }
+
+.footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .chain-row { flex-direction: column; }
+  .chain-arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>AIIA词元（Token）服务工作组筹备成立 —— 概念股深度梳理</h1>
+<p class="subtitle">新闻解读 + 利好板块 + 核心标的梳理</p>
+<p class="source">新闻来源：人民财讯 | 2026年6月26日 11:07 | 北京时间：2026年6月26日（周五）</p>
+
+<!-- 新闻原文 -->
+<div class="card">
+  <h2>📰 新闻核心</h2>
+  <div class="news-quote">
+    <p>为助力Token服务实现高质量发展，<strong>中国人工智能产业发展联盟（AIIA）</strong>词元（Token）服务工作组的筹备工作正式启动。由<strong>中国信通院</strong>牵头，联合<strong>华为云、百度智能云、中国移动、中国电信、中国联通</strong>等22家单位，凝聚产业上下游合力，构建<strong>"高质量Token服务"生态体系</strong>。</p>
+  </div>
+
+  <h3>八大工作方向</h3>
+  <div class="work-grid">
+    <div class="work-item"><span class="num">一</span> 推进高质量Token服务标准体系建设（生产/流通/应用/计量计费全流程）</div>
+    <div class="work-item"><span class="num">二</span> 协同优化Token服务质量，"Token服务能力攀登计划"</div>
+    <div class="work-item"><span class="num">三</span> 加速Token服务赋能行业应用（金融/医疗/政务）</div>
+    <div class="work-item"><span class="num">四</span> 培育Token服务产业生态，举办"高质量Token服务"产业大会</div>
+    <div class="work-item"><span class="num">五</span> 构建安全可信服务生态，Token安全可信评估评测</div>
+    <div class="work-item"><span class="num">六</span> 推进Token跨境流动机制建设与开放合作</div>
+    <div class="work-item"><span class="num">七</span> <strong>推进国产Token自主可控能力建设</strong>（国产大模型+国产算力+国产开发框架）</div>
+    <div class="work-item"><span class="num">八</span> 构建绿色Token服务生态（能耗优化+碳效提升）</div>
+  </div>
+
+  <div class="analysis-box">
+    <h4>解读：词元经济进入"国家顶层设计"阶段</h4>
+    <p>这是继6月16日"高质量Token服务研讨会"之后的又一里程碑事件。AIIA词元服务工作组由国家发改委、科技部、工信部、网信办指导下的中国信通院牵头，联合华为云、百度智能云及三大运营商等22家单位，标志着词元（Token）经济正式从<strong>行业自发探索进入国家级标准化、规模化统筹阶段</strong>。</p>
+    <p>核心背景：我国日均Token调用量已从2024年初的1000亿飙升至<strong>140万亿</strong>，两年增长超千倍。工作组将建立统一计量计费标准、推动国产Token与国产芯片协同适配、构建跨境流动机制，解决"服务不稳定、计费不透明、安全可信不足"三大痛点。</p>
+  </div>
+</div>
+
+<!-- 产业链全景 -->
+<div class="card">
+  <h2>🔗 词元（Token）产业链全景</h2>
+  <div class="chain-diagram">
+    <div class="chain-row">
+      <div class="chain-box">
+        <div class="layer">上游 — 词元生产</div>
+        <div class="name" style="color:var(--cyan);">「词元工厂」</div>
+        <div class="content">AI芯片/算力/IDC</div>
+      </div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-box">
+        <div class="layer">中游 — 词元流通</div>
+        <div class="name" style="color:var(--blue);">「词元平台」</div>
+        <div class="content">Token工厂/调度/计费</div>
+      </div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-box">
+        <div class="layer">下游 — 词元消费</div>
+        <div class="name" style="color:var(--purple);">「词元应用」</div>
+        <div class="content">大模型/AI服务/场景</div>
+      </div>
+    </div>
+    <div class="chain-row" style="justify-content: center; gap: 40px;">
+      <div class="chain-box" style="border-color: var(--gold);">
+        <div class="layer">数据要素</div>
+        <div class="name" style="color:var(--gold);">「词元原料」</div>
+        <div class="content">语料/版权/训练数据</div>
+      </div>
+      <div class="chain-box" style="border-color: var(--green);">
+        <div class="layer">结算/平台</div>
+        <div class="name" style="color:var(--green);">「词元计价」</div>
+        <div class="content">计量计费/监测认证</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 利好板块与个股 -->
+<div class="card">
+  <h2>📋 利好板块与核心标的梳理</h2>
+
+  <!-- 上游 -->
+  <div class="sector-section">
+    <h3 class="section-up">上游：词元生产 — 算力基建（AI芯片/服务器/IDC/光模块）</h3>
+    <p style="color: var(--text-secondary); font-size: 0.82em; margin-bottom: 10px;">Token调用量千倍增长→算力需求指数级爆发。工作组"国产Token自主可控"要求直接利好国产算力。</p>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="stock-name">浪潮信息</span>
+        <span class="stock-code">000977.SZ</span>
+        <span class="tag tag-red">AI服务器龙头</span>
+      </div>
+      <div class="stock-info">国内AI服务器市占率超35%，参与全国80%以上智算中心建设，BAT/字节核心供应商。Token调用量爆发直接拉动AI服务器出货量。</div>
+    </div>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="stock-name">工业富联</span>
+        <span class="stock-code">601138.SH</span>
+        <span class="tag tag-red">英伟达核心伙伴</span>
+      </div>
+      <div class="stock-info">全球AI服务器代工龙头，市占率超42%，英伟达核心供应商，订单锁定至2027年。词元工厂的"生产设备"供应商。</div>
+    </div>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="stock-name">中科曙光</span>
+        <span class="stock-code">603019.SH</span>
+        <span class="tag tag-red">国产算力国家队</span>
+      </div>
+      <div class="stock-info">国产超算+AI算力基础设施领军企业，国家级智算中心核心承建方，拥有国产AI服务器+超算系统+液冷全栈能力。工作组"国产自主可控"最受益标的之一。</div>
+    </div>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="stock-name">海光信息</span>
+        <span class="stock-code">688041.SH</span>
+        <span class="tag tag-red">国产DCU芯片</span>
+      </div>
+      <div class="stock-info">X86+DCU双引擎架构，DCU算力达120TOPS，兼容类CUDA生态。国产Token自主可控的核心算力底座，政务/金融信创刚需。</div>
+    </div>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="stock-name">寒武纪</span>
+        <span class="stock-code">688256.SH</span>
+        <span class="tag tag-red">国产AI芯片标杆</span>
+      </div>
+      <div class="stock-info">国内唯一专注AI芯片设计上市公司，思元系列覆盖云端/边缘/终端全场景，支持大模型训练与推理。国产Token生产芯片环节核心标的。</div>
+    </div>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="stock-name">中际旭创</span>
+        <span class="stock-code">300308.SZ</span>
+        <span class="tag tag-gold">光模块全球龙头</span>
+      </div>
+      <div class="stock-info">全球光模块龙头，800G全球市占率超40%，1.6T全球第一。Token传输环节核心硬件，AI算力高速光互联必需。</div>
+    </div>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="stock-name">润泽科技</span>
+        <span class="stock-code">300442.SZ</span>
+        <span class="tag tag-gold">AIDC龙头</span>
+      </div>
+      <div class="stock-info">字节系核心Token工厂，7大智算中心、3万P+算力，液冷+算电协同。Token生产"超级工厂"，单位成本行业最低。</div>
+    </div>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="stock-name">首都在线</span>
+        <span class="stock-code">300846.SZ</span>
+        <span class="tag tag-gold">跨境Token出海</span>
+      </div>
+      <div class="stock-info">跨境算力+分布式算力龙头。工作组"Token跨境流动机制建设"最直接受益，词元出海核心标的。</div>
+    </div>
+  </div>
+
+  <!-- 中游 -->
+  <div class="sector-section">
+    <h3 class="section-mid">中游：词元流通 — Token工厂/调度平台（核心受益）</h3>
+    <p style="color: var(--text-secondary); font-size: 0.82em; margin-bottom: 10px;">工作组核心任务：建立Token计量计费标准、Token服务质量监测平台。拥有自研Token调度平台的企业直接受益。</p>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="stock-name">东方国信</span>
+        <span class="stock-code">300166.SZ</span>
+        <span class="tag tag-red">A股Token平台标杆</span>
+        <span class="tag tag-cyan">电信中标</span>
+      </div>
+      <div class="stock-info">A股首个落地Token全生命周期运营平台的上市公司，MeshToken平台覆盖"生产-调度-计费-管控-分发"全流程，无缝适配国内外主流大模型。已中标中国电信Token工厂标包一（15%份额），是A股Token工厂核心标杆。</div>
+    </div>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="stock-name">润建股份</span>
+        <span class="stock-code">002929.SZ</span>
+        <span class="tag tag-red">Token工厂模式最纯</span>
+      </div>
+      <div class="stock-info">五象云谷小时产能千亿级Token，"曲尺"平台+Token计费，模式最纯、落地最快。工作组标准体系建立后，Token计费规范化将放大其先发优势。</div>
+    </div>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="stock-name">华胜天成</span>
+        <span class="stock-code">600410.SH</span>
+        <span class="tag tag-red">三大运营商核心供应链</span>
+      </div>
+      <div class="stock-info">三大运营商核心供应链企业，承接词元生成能力建设+出海落地。运营商Token集采（中国电信174亿宁夏项目）最直接受益方。</div>
+    </div>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="stock-name">南威软件</span>
+        <span class="stock-code">603636.SH</span>
+        <span class="tag tag-gold">政务Token龙头</span>
+      </div>
+      <div class="stock-info">政务Token龙头，北京智算中心每分钟1亿Token产能，政务/安防场景强绑定。工作组"政务赛道Token应用案例征集"最直接受益。</div>
+    </div>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="stock-name">云天励飞</span>
+        <span class="stock-code">688343.SH</span>
+        <span class="tag tag-gold">国芯+国模全栈</span>
+      </div>
+      <div class="stock-info">自研推理芯片+政务Token工厂标杆，"芯片+算力+场景"闭环。工作组"国产Token自主可控"方向核心受益。</div>
+    </div>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="stock-name">优刻得</span>
+        <span class="stock-code">688158.SH</span>
+        <span class="tag tag-gold">算力调度平台</span>
+      </div>
+      <div class="stock-info">GPU云动态定价，百万级词元并发。Token调度平台，工作组计量计费标准统一后，平台价值凸显。</div>
+    </div>
+  </div>
+
+  <!-- 下游 -->
+  <div class="sector-section">
+    <h3 class="section-down">下游：词元消费 — 大模型/AI应用</h3>
+    <p style="color: var(--text-secondary); font-size: 0.82em; margin-bottom: 10px;">工作组推动Token服务标准化后，AI应用按Token计费更加透明，利好头部大模型厂商。</p>
+
+    <div class="stock-card tier-3">
+      <div class="stock-header">
+        <span class="stock-name">科大讯飞</span>
+        <span class="stock-code">002230.SZ</span>
+        <span class="tag tag-blue">星火大模型</span>
+      </div>
+      <div class="stock-info">教育/医疗垂直龙头，按词元计费，调用量3万亿+。Token标准化计费后，变现路径更清晰。</div>
+    </div>
+
+    <div class="stock-card tier-3">
+      <div class="stock-header">
+        <span class="stock-name">昆仑万维</span>
+        <span class="stock-code">300418.SZ</span>
+        <span class="tag tag-blue">天工大模型</span>
+      </div>
+      <div class="stock-info">最早规模化盈利的大模型企业，日均调用1.2万亿Token，AIGC+游戏双轮驱动。</div>
+    </div>
+
+    <div class="stock-card tier-3">
+      <div class="stock-header">
+        <span class="stock-name">拓维信息</span>
+        <span class="stock-code">002261.SZ</span>
+        <span class="tag tag-blue">华为昇腾生态</span>
+      </div>
+      <div class="stock-info">华为昇腾生态核心伙伴，全国产化Token基地，中西部算力枢纽，产能扩张快。</div>
+    </div>
+
+    <div class="stock-card tier-3">
+      <div class="stock-header">
+        <span class="stock-name">万兴科技</span>
+        <span class="stock-code">300624.SZ</span>
+        <span class="tag tag-blue">消费级AI软件</span>
+      </div>
+      <div class="stock-info">视频/创意工具，Token消耗大户。标准化计费后用户付费意愿提升。</div>
+    </div>
+  </div>
+
+  <!-- 数据要素 -->
+  <div class="sector-section">
+    <h3 class="section-data">数据要素：词元原料 — 语料/版权/训练数据</h3>
+
+    <div class="stock-card tier-4">
+      <div class="stock-header">
+        <span class="stock-name">中文在线</span>
+        <span class="stock-code">300364.SZ</span>
+        <span class="tag tag-green">中文语料龙头</span>
+      </div>
+      <div class="stock-info">海量正版中文语料，大模型训练核心数据源。高质量Token离不开高质量训练数据。</div>
+    </div>
+
+    <div class="stock-card tier-4">
+      <div class="stock-header">
+        <span class="stock-name">拓尔思</span>
+        <span class="stock-code">300229.SZ</span>
+        <span class="tag tag-green">NLP+知识图谱</span>
+      </div>
+      <div class="stock-info">政务/金融语义数据服务，工作组"政务赛道Token应用"方向受益。</div>
+    </div>
+
+    <div class="stock-card tier-4">
+      <div class="stock-header">
+        <span class="stock-name">视觉中国</span>
+        <span class="stock-code">000681.SZ</span>
+        <span class="tag tag-green">多模态语料</span>
+      </div>
+      <div class="stock-info">图片/视频版权龙头，多模态训练关键语料。Token从文本向多模态扩展的核心受益方。</div>
+    </div>
+  </div>
+
+  <!-- 运营商 -->
+  <div class="sector-section">
+    <h3 class="section-op">运营商：词元渠道 — 套餐发行方</h3>
+
+    <div class="stock-card tier-5">
+      <div class="stock-header">
+        <span class="stock-name">中国电信</span>
+        <span class="stock-code">601728.SH</span>
+        <span class="tag tag-purple">Token工厂集采第一单</span>
+      </div>
+      <div class="stock-info">率先落地百亿级Token工厂集采（宁夏项目174.38亿元），"个人家庭尊享版"每百万Tokens仅0.62元。工作组22家发起单位之一，Token套餐发行方。</div>
+    </div>
+
+    <div class="stock-card tier-5">
+      <div class="stock-header">
+        <span class="stock-name">中国移动</span>
+        <span class="stock-code">600941.SH</span>
+        <span class="tag tag-purple">最大算力资源方</span>
+      </div>
+      <div class="stock-info">手握海量政企/C端用户，词元产品已全量上架中国算力平台。工作组22家发起单位之一。</div>
+    </div>
+
+    <div class="stock-card tier-5">
+      <div class="stock-header">
+        <span class="stock-name">中国联通</span>
+        <span class="stock-code">600050.SH</span>
+        <span class="tag tag-purple">Token集采跟进</span>
+      </div>
+      <div class="stock-info">继中国电信后跟进Token工厂集采，工作组22家发起单位之一。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 投资逻辑总结 -->
+<div class="card">
+  <h2>🧠 投资逻辑总结</h2>
+
+  <div class="bull-box">
+    <h4>核心逻辑：国家顶层设计→标准统一→规模化放量→产业链受益</h4>
+    <ul>
+      <li><strong>短期催化</strong>：AIIA词元服务工作组成立+6月16日"高质量Token服务研讨会"形成共振，政策密集落地期</li>
+      <li><strong>中期逻辑</strong>：Token计量计费标准统一后，AI商业化从"黑盒"变"透明"，Token消费量将持续爆发（当前140万亿/日→明年预计500万亿+）</li>
+      <li><strong>长期逻辑</strong>：国产Token自主可控（第七项工作方向）是国家级战略，国产芯片+国产大模型+国产Token工厂全链条受益</li>
+    </ul>
+  </div>
+
+  <div class="warn-box">
+    <h4>风险提示</h4>
+    <ul>
+      <li>今日AI板块整体走弱（新易盛-8%，澜起科技-6%，润泽科技-6%），新闻发布后板块可能高开低走</li>
+      <li>Token概念此前已有炒作，部分标的（润建股份、东方国信等）已有一定涨幅</li>
+      <li>工作组目前处于"筹备"阶段，标准落地和实际业绩兑现需要时间</li>
+      <li>算力价格波动、GPU供给受限、竞争加剧等风险</li>
+    </ul>
+  </div>
+
+  <div class="analysis-box">
+    <h4>优先级判断</h4>
+    <p><strong>第一梯队（最直接受益）</strong>：东方国信（Token平台标杆+电信中标）、华胜天成（运营商核心供应链）、中科曙光（国产算力国家队）、海光信息（国产DCU芯片）。</p>
+    <p><strong>第二梯队（产业逻辑受益）</strong>：润建股份（Token工厂模式）、浪潮信息（AI服务器）、首都在线（跨境Token）、南威软件（政务Token）。</p>
+    <p><strong>第三梯队（间接受益）</strong>：科大讯飞、昆仑万维（大模型厂商）、中文在线、拓尔思（数据要素）、三大运营商（渠道方）。</p>
+    <p><strong>注意</strong>：今日AI板块整体回调，如果下午板块企稳，则此消息可能成为板块止跌回升的催化剂；如果板块继续走弱，则需等待更好的介入时机。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>风险提示：本文基于公开信息进行产业链梳理，不构成任何投资建议。</p>
+  <p>股市有风险，投资需谨慎。数据来源：人民财讯、IT之家、经济参考报、科创板日报、东方财富</p>
+  <p>生成时间：2026年6月26日（北京时间）</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股连板股深度拆解 + 明日预判 — 2026年6月17日</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d;
+    --text: #c9d1d9; --text-muted: #8b949e;
+    --green: #3fb950; --red: #f85149; --blue: #58a6ff;
+    --orange: #d2991d; --purple: #a371f7; --cyan: #39d2c0; --gold: #e3b341;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    max-width: 1100px; margin: 0 auto; padding: 20px;
+  }
+  h1 { font-size: 1.8em; color: #fff; border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-bottom: 6px; }
+  h2 { font-size: 1.35em; color: var(--blue); margin: 28px 0 12px; padding-left: 10px; border-left: 3px solid var(--blue); }
+  h3 { font-size: 1.1em; color: var(--orange); margin: 18px 0 8px; }
+  .subtitle { color: var(--text-muted); font-size: 0.9em; margin-bottom: 24px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+  .card-title { font-size: 1em; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9em; margin: 10px 0; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #1c2433; color: var(--text-muted); font-weight: 600; font-size: 0.85em; }
+  .up { color: var(--red); } .down { color: var(--green); }
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em;
+    margin: 2px; font-weight: 600;
+  }
+  .tag-red { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-blue { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .tag-orange { background: rgba(210,153,29,0.15); color: var(--orange); }
+  .tag-purple { background: rgba(163,113,247,0.15); color: var(--purple); }
+  .tag-cyan { background: rgba(57,210,192,0.15); color: var(--cyan); }
+  .tag-gold { background: rgba(227,179,65,0.15); color: var(--gold); }
+  .highlight { color: var(--gold); font-weight: 700; }
+  .warn { background: rgba(248,81,73,0.08); border-left: 3px solid var(--red); padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .info { background: rgba(88,166,255,0.08); border-left: 3px solid var(--blue); padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .bull { background: rgba(63,185,80,0.08); border-left: 3px solid var(--green); padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+  .big-num { font-size: 1.4em; font-weight: 800; }
+  .small-label { font-size: 0.78em; color: var(--text-muted); }
+  .stock-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(48,54,61,0.4); }
+  .stock-row:hover { background: rgba(88,166,255,0.04); }
+  .stock-code { color: var(--text-muted); font-size: 0.82em; width: 70px; }
+  .stock-name { font-weight: 700; width: 90px; }
+  .stock-info { flex: 1; font-size: 0.85em; color: var(--text-muted); }
+  .stock-score { font-weight: 700; font-size: 0.9em; width: 60px; text-align: right; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
+  .prediction-box {
+    background: linear-gradient(135deg, rgba(63,185,80,0.06), rgba(88,166,255,0.06));
+    border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 20px 0;
+  }
+  .prediction-box h3 { color: var(--gold); margin-top: 0; }
+  .emoji { font-size: 1.2em; }
+  .rank-badge {
+    display: inline-block; width: 24px; height: 24px; line-height: 24px;
+    text-align: center; border-radius: 4px; font-weight: 800; font-size: 0.85em;
+    margin-right: 6px;
+  }
+  .rank-1 { background: var(--gold); color: #000; }
+  .rank-2 { background: #c0c0c0; color: #000; }
+  .rank-3 { background: #cd7f32; color: #000; }
+  .rank-n { background: var(--border); color: var(--text); }
+</style>
+</head>
+<body>
+
+<h1>连板股深度拆解 + 明日预判</h1>
+<div class="subtitle">2026年6月17日（周三）收盘 · 情绪周期：老周期退潮 → 新周期批量试错</div>
+
+<!-- 一、情绪周期定位 -->
+<h2>一、情绪周期定位：4板团灭，3板群雄逐鹿</h2>
+
+<div class="card">
+  <table>
+    <tr><th>指标</th><th>今日数据</th><th>昨日对比</th><th>信号解读</th></tr>
+    <tr><td>涨停家数</td><td>86家</td><td>117家 ↓</td><td>涨停数下降，但仍在高位</td></tr>
+    <tr><td>连板股总数</td><td>19只</td><td>29只 ↓</td><td>连板大幅收缩，分歧加大</td></tr>
+    <tr><td>连板晋级率</td><td>34.48%</td><td>—</td><td>偏低，高位接力意愿减弱</td></tr>
+    <tr><td>2进3晋级率</td><td class="highlight">40%</td><td>—</td><td>中位股接力热情仍然很高</td></tr>
+    <tr><td>最高连板</td><td class="highlight">3板（10只）</td><td>4板（4只）</td><td>高度砍回3板，旧周期龙全断</td></tr>
+    <tr><td>昨日4板股</td><td colspan="3">深桑达A(+1.44%)、盛龙股份(-2.5%)、逸豪新材(-2%)、安德利(断板) — 全部断板</td></tr>
+  </table>
+</div>
+
+<div class="info">
+  <strong>情绪周期判断：</strong> 旧高度龙全部"殉道"，连板天花板从4板砸回3板，但3板一口气挤了10只——这是标准的"老周期退潮→新周期批量试错"节点。明天3进4淘汰赛是情绪最关键的转折点：谁能晋级4板，谁就可能是下一阶段情绪总龙。
+</div>
+
+<!-- 二、连板梯队完整拆解 -->
+<h2>二、连板梯队完整拆解</h2>
+
+<h3>3连板（10只）— 明日3进4淘汰赛核心</h3>
+
+<div class="card">
+  <table>
+    <tr><th style="width:20px;">#</th><th>股票</th><th>代码</th><th>实际板数</th><th>核心概念</th><th>封板类型</th><th>炸板数</th><th>3进4概率</th><th>关键看点</th></tr>
+    <tr>
+      <td>1</td><td><strong>宏昌电子</strong></td><td>603002</td><td>7天5板</td><td><span class="tag tag-red">PCB/高频树脂</span></td><td>换手板</td><td>15次</td><td class="highlight">⭐⭐⭐⭐</td><td>全场总龙，PCB树脂已过下游CCL认证；7天5板已是高危区，明天面临5板魔咒</td>
+    </tr>
+    <tr>
+      <td>2</td><td><strong>华正新材</strong></td><td>603186</td><td>8天5板</td><td><span class="tag tag-red">AI覆铜板</span></td><td>爆量分歧</td><td>56次</td><td class="highlight">⭐⭐⭐</td><td>Extreme Low-loss覆铜板批量供货AI服务器；<span class="tag tag-red">⚠盘后：控股股东减持56.42万股</span></td>
+    </tr>
+    <tr>
+      <td>3</td><td><strong>诺德股份</strong></td><td>600110</td><td>3连板</td><td><span class="tag tag-orange">HVLP铜箔</span></td><td>一字板</td><td>2次</td><td class="highlight">⭐⭐⭐⭐</td><td>HVLP4代铜箔排产至2027下半年；封成比388全场最硬；一字缩量，首次开板是最大考验</td>
+    </tr>
+    <tr>
+      <td>4</td><td><strong>旗滨集团</strong></td><td>601636</td><td>3连板</td><td><span class="tag tag-cyan">高铝电子玻璃</span></td><td>一字板</td><td>0</td><td class="highlight">⭐⭐⭐</td><td>玻璃基板TGV先进封装核心材料；一字缩量越走越薄，首次开板是最大考验</td>
+    </tr>
+    <tr>
+      <td>5</td><td><strong>中材科技</strong></td><td>002080</td><td>3连板</td><td><span class="tag tag-red">玻纤/电子布</span></td><td>换手板</td><td>97次</td><td class="highlight">⭐⭐⭐⭐⭐</td><td>148万吨玻纤产能，PCB最上游瓶颈环节；极致分歧板，真换手、真需求</td>
+    </tr>
+    <tr>
+      <td>6</td><td><strong>旭光电子</strong></td><td>600353</td><td>10天5板</td><td><span class="tag tag-purple">氮化铝陶瓷</span></td><td>竞价高开</td><td>6次</td><td class="highlight">⭐⭐⭐</td><td>国内氮化铝产能第一；<span class="tag tag-green">盘后利好：定增申请获上交所受理</span>；偏独立走势</td>
+    </tr>
+    <tr>
+      <td>7</td><td><strong>光华科技</strong></td><td>002741</td><td>3连板</td><td><span class="tag tag-red">PCB化学品</span></td><td>秒板</td><td>0</td><td class="highlight">⭐⭐⭐</td><td>PCB化学品龙头+固态电池双题材；加速板，追高性价比不如等回调</td>
+    </tr>
+    <tr>
+      <td>8</td><td><strong>中核科技</strong></td><td>000777</td><td>3连板</td><td><span class="tag tag-blue">硅-28/核聚变</span></td><td>T字板</td><td>—</td><td class="highlight">⭐⭐⭐</td><td>硅-28同位素99.99%自主量产，大国重器叙事；国资+硬科技，讲故事属性>当期业绩</td>
+    </tr>
+    <tr>
+      <td>9</td><td><strong>海星股份</strong></td><td>603115</td><td>3连板</td><td><span class="tag tag-purple">AI电极箔</span></td><td>换手板</td><td>2次</td><td class="highlight">⭐⭐⭐</td><td>800V高压+GB300超级电容，全球电极箔核心供应商；走势稳健但不性感</td>
+    </tr>
+    <tr>
+      <td>10</td><td><strong>杭电股份</strong></td><td>603618</td><td>3连板</td><td><span class="tag tag-blue">光纤+铜箔</span></td><td>换手板</td><td>—</td><td class="highlight">⭐⭐</td><td>光纤涨价+铜箔+特高压多题材叠加，辨识度偏低</td>
+    </tr>
+  </table>
+</div>
+
+<h3>2连板（9只）</h3>
+
+<div class="card">
+  <table>
+    <tr><th>股票</th><th>核心概念</th><th>2进3概率</th><th>看点</th><th>股票</th><th>核心概念</th><th>2进3概率</th><th>看点</th></tr>
+    <tr>
+      <td><strong>沃格光电</strong></td><td><span class="tag tag-cyan">玻璃基板+先进封装</span></td><td class="highlight">⭐⭐⭐⭐</td><td>玻璃基板龙头，筹码结构好</td>
+      <td><strong>莲花控股</strong></td><td><span class="tag tag-purple">算力+阶跃星辰</span></td><td class="highlight">⭐⭐⭐</td><td>AI算力租赁+半导体材料</td>
+    </tr>
+    <tr>
+      <td><strong>贤丰控股</strong></td><td><span class="tag tag-red">覆铜板+PCB上游</span></td><td class="highlight">⭐⭐⭐</td><td>PCB链补涨，辨识度一般</td>
+      <td><strong>艾华集团</strong></td><td><span class="tag tag-purple">MLCC+AI服务器</span></td><td class="highlight">⭐⭐⭐</td><td>MLCC涨价+铝电解电容</td>
+    </tr>
+    <tr>
+      <td><strong>长城电工</strong></td><td><span class="tag tag-blue">AI算力+电力设备</span></td><td class="highlight">⭐⭐</td><td>输变电+核电+国企改革</td>
+      <td><strong>大连友谊</strong></td><td><span class="tag tag-green">新零售+AI购物</span></td><td class="highlight">⭐</td><td>非主线，独立逻辑</td>
+    </tr>
+    <tr>
+      <td><strong>江钨装备</strong></td><td><span class="tag tag-orange">钨钽铌+江西国资</span></td><td class="highlight">⭐⭐</td><td>战略小金属+并购</td>
+      <td><strong>鑫源智造</strong></td><td><span class="tag tag-blue">智能制造</span></td><td class="highlight">⭐⭐</td><td>独立题材</td>
+    </tr>
+    <tr>
+      <td><strong>中天精装</strong></td><td><span class="tag tag-green">装修+转型</span></td><td class="highlight">⭐</td><td>非主线</td><td></td><td></td><td></td><td></td>
+    </tr>
+  </table>
+</div>
+
+<h3>首板最强（明日潜在1进2候选）</h3>
+
+<div class="card">
+  <table>
+    <tr><th>股票</th><th>代码</th><th>封单金额</th><th>概念</th><th>1进2概率</th><th>看点</th></tr>
+    <tr><td><strong>京东方A</strong></td><td>000725</td><td class="highlight">14.41亿</td><td><span class="tag tag-cyan">玻璃基板+8.6代OLED</span></td><td>⭐⭐</td><td>千亿市值，2连板难度极大，但中军地位稳固</td></tr>
+    <tr><td><strong>兆易创新</strong></td><td>603986</td><td class="highlight">9.24亿</td><td><span class="tag tag-purple">存储芯片龙头</span></td><td>⭐⭐⭐</td><td>成交316亿全市场第一，中军型，2连板概率中等</td></tr>
+    <tr><td><strong>冰轮环境</strong></td><td>000811</td><td>3.11亿</td><td><span class="tag tag-blue">数据中心温控</span></td><td class="highlight">⭐⭐⭐⭐⭐</td><td>一字封死，封成比311.5，概念辨识度极强，明日大概率继续一字</td></tr>
+    <tr><td><strong>深南电路</strong></td><td>002916</td><td>4.94亿</td><td><span class="tag tag-red">IC载板龙头</span></td><td>⭐⭐⭐</td><td>涨停创历史新高，市值超3000亿，中军型</td></tr>
+    <tr><td><strong>香农芯创</strong></td><td>300475</td><td>4.70亿</td><td><span class="tag tag-purple">存储芯片代理</span></td><td>⭐⭐⭐</td><td>Q1净利暴增7835%，20CM涨停，辨识度高</td></tr>
+    <tr><td><strong>盛美上海</strong></td><td>688082</td><td>2.73亿</td><td><span class="tag tag-purple">半导体清洗设备</span></td><td>⭐⭐⭐</td><td>20CM涨停，市值突破1700亿，半导体设备龙头</td></tr>
+    <tr><td><strong>铂力特</strong></td><td>688333</td><td>0.81亿</td><td><span class="tag tag-blue">商业航天+3D打印</span></td><td class="highlight">⭐⭐⭐⭐</td><td>20CM秒板，商业航天+扭亏为盈，题材辨识度强</td></tr>
+    <tr><td><strong>中国巨石</strong></td><td>600176</td><td>—</td><td><span class="tag tag-red">玻纤龙头</span></td><td>⭐⭐⭐</td><td>2185亿市值涨停，玻纤全球龙头，中军型</td></tr>
+    <tr><td><strong>凯盛新能</strong></td><td>600876</td><td>0.98亿</td><td><span class="tag tag-cyan">玻璃玻纤</span></td><td class="highlight">⭐⭐⭐⭐</td><td>封成比167.1，换手板质量极高，玻璃方向补涨首选</td></tr>
+  </table>
+</div>
+
+<!-- 三、盘后催化 -->
+<h2>三、盘后晚间催化 — 决定明日方向的关键变量</h2>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title" style="color:var(--red);">利好催化</div>
+    <table>
+      <tr><td><span class="tag tag-purple">存储芯片</span></td><td>诚邦股份拟定增1亿用于嵌入式存储芯片扩产</td></tr>
+      <tr><td><span class="tag tag-purple">硅光芯片</span></td><td>东山精密：具备硅光CW激光芯片自研能力，与外部企业合作布局光模块</td></tr>
+      <tr><td><span class="tag tag-purple">MLCC涨价</span></td><td>利和兴：MLCC产品已实施价格调整；斯迪克5.65亿投建高端MLCC离型膜</td></tr>
+      <tr><td><span class="tag tag-red">PCB高端材料</span></td><td>沪电股份：数据通讯PCB高端材料紧缺，CoWoS/mSAP平台落地</td></tr>
+      <tr><td><span class="tag tag-purple">金刚石散热</span></td><td>中兵红箭：金刚石散热片实现小批量生产（芯片散热新方向）</td></tr>
+      <tr><td><span class="tag tag-cyan">TGV玻璃基板</span></td><td>海目星：TGV业务已有小批量激光改质、刻蚀设备订单</td></tr>
+      <tr><td><span class="tag tag-blue">算力运维</span></td><td>申昊科技：签订11.67亿元算力中心智能运维机器人订单</td></tr>
+      <tr><td><span class="tag tag-purple">电感/电容</span></td><td>顺络电子：TLVR电感批量供应AI服务器，钽电容小批量出货</td></tr>
+      <tr><td><span class="tag tag-blue">液冷</span></td><td>中航光电：交换机构液冷产品批量出货，布局液冷全产品线</td></tr>
+      <tr><td><span class="tag tag-purple">半导体材料</span></td><td>瑞华泰：半导体制程PI薄膜通过韩国头部企业评测，小批量供货</td></tr>
+      <tr><td><span class="tag tag-cyan">玻璃基板</span></td><td>新益昌：玻璃基板固晶设备批量交付显示面板厂商</td></tr>
+      <tr><td><span class="tag tag-blue">火箭发动机</span></td><td>尤洛卡：拟定增10亿用于火箭发动机核心零部件项目</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-title" style="color:var(--green);">利空/风险</div>
+    <table>
+      <tr><td><span class="tag tag-red">⚠减持</span></td><td>华正新材：控股股东减持56.42万股（8天5板高位减持，情绪冲击）</td></tr>
+      <tr><td><span class="tag tag-red">⚠减持</span></td><td>通用电梯：实控人6.16-6.17减持327.89万股</td></tr>
+      <tr><td><span class="tag tag-orange">⚠澄清</span></td><td>嘉元科技：HVLP铜箔处于研发阶段，没有形成批量销售（利空铜箔概念）</td></tr>
+      <tr><td><span class="tag tag-orange">⚠停牌</span></td><td>长盈通：PE超1130倍，17日起停牌核查（监管打压纯题材炒作信号）</td></tr>
+      <tr><td><span class="tag tag-orange">⚠外围</span></td><td>隔夜美股费城半导体大跌5.7%，今日A股走出独立行情，但连续背离不可持续</td></tr>
+      <tr><td><span class="tag tag-orange">⚠分化</span></td><td>PCB板块逾20股涨停，板块级别爆发后次日大概率分化</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 四、明日预判 -->
+<h2>四、明日（6月18日）炒作方向预判</h2>
+
+<div class="prediction-box">
+  <h3>核心判断：科技主线不变，但内部轮动加剧</h3>
+  <p>明天的核心矛盾是：<strong>PCB连续3日大涨后获利盘兑现压力 vs 存储芯片/MLCC/硅光/液冷等新方向的接力意愿</strong>。大概率出现"PCB高位分化、存储芯片延续强势、新细分方向（MLCC/硅光/散热/液冷）轮动补涨"的格局。</p>
+</div>
+
+<h3>方向一：3进4淘汰赛 — 明日最核心战场</h3>
+
+<div class="card">
+  <p><strong>最可能晋级4板：</strong></p>
+  <table>
+    <tr><th>排序</th><th>标的</th><th>理由</th></tr>
+    <tr><td><span class="rank-badge rank-1">1</span></td><td><strong>中材科技</strong>（3板，玻纤/电子布）</td><td>97次开板的极致换手板，筹码洗得最彻底，泰山玻纤140万吨产能是PCB产业链最硬的上游瓶颈，中国巨石今日首板涨停为同逻辑背书。属于"真换手+真需求+真博弈"的最优质板</td></tr>
+    <tr><td><span class="rank-badge rank-2">2</span></td><td><strong>诺德股份</strong>（3板，HVLP铜箔）</td><td>一字封死、封成比388全场最硬，HVLP4代铜箔排产至2027下半年，逻辑最硬的上游材料。但一字板需要一次健康的炸板回封来证明自己</td></tr>
+    <tr><td><span class="rank-badge rank-3">3</span></td><td><strong>宏昌电子</strong>（7天5板，PCB树脂）</td><td>全场总龙，PCB树脂已过下游CCL认证，7天5板辨识度最高。但面临5板魔咒+15次开板压力，需要爆量承接</td></tr>
+    <tr><td><span class="rank-badge rank-n">4</span></td><td><strong>旭光电子</strong>（10天5板，氮化铝）</td><td>国内氮化铝产能第一+盘后定增受理利好+光模块/HBM客户，独立逻辑+板块效应共振</td></tr>
+  </table>
+  <div class="warn" style="margin-top:10px;">
+    <strong>华正新材降级警告：</strong> 盘后控股股东减持56.42万股，8天5板高位减持是重大情绪利空，明日大概率低开，3进4概率大幅降低。
+  </div>
+</div>
+
+<h3>方向二：存储芯片 — 美光6.24财报前的持续催化窗口</h3>
+
+<div class="card">
+  <p>今天是存储芯片午后爆发第一天，距离6月24日美光财报还有<strong>4个交易日</strong>，这是天然的持续催化窗口。</p>
+  <ul style="margin-left:20px; color:var(--text-muted); line-height:2;">
+    <li>TD Cowen目标价1500美元、Aletheia目标价1600美元，华尔街一致看多</li>
+    <li>美光Q3指引营收335亿美元，毛利率81%，若兑现将创史上最大环比增速</li>
+    <li>2026全年HBM产能已售罄，供需缺口至少持续至2028年</li>
+    <li>盘后诚邦股份定增1亿用于嵌入式存储芯片扩产，板块催化持续</li>
+  </ul>
+  <p><strong>关注标的：</strong>兆易创新（中军）、香农芯创（20CM弹性）、普冉股份（20CM创历史新高）、深科技（封测）、澜起科技（内存接口）</p>
+</div>
+
+<h3>方向三：MLCC/被动元件 — 盘后新催化，可能成为明日新方向</h3>
+
+<div class="card">
+  <p>盘后多条MLCC相关利好集中释放：</p>
+  <ul style="margin-left:20px; color:var(--text-muted); line-height:2;">
+    <li><strong>利和兴：</strong>MLCC产品已实施价格调整，下游需求稳定（价格上调=行业景气信号）</li>
+    <li><strong>斯迪克：</strong>5.65亿投建高端MLCC离型膜项目（上游材料扩产）</li>
+    <li><strong>艾华集团：</strong>2连板，MLPC+AI服务器+铝电解电容+薄膜电容</li>
+    <li><strong>顺络电子：</strong>TLVR电感批量供应AI服务器，钽电容小批量出货</li>
+  </ul>
+  <p><strong>逻辑：</strong> MLCC是AI服务器中用量极大的被动元件，GB300单机MLCC用量超2万颗。涨价+扩产+AI需求三重共振，可能成为明日资金挖掘的新方向。</p>
+  <p><strong>关注标的：</strong>艾华集团（2连板MLCC）、风华高科（MLCC龙头）、三环集团（陶瓷电容）、利和兴（MLCC涨价）、斯迪克（MLCC离型膜）</p>
+</div>
+
+<h3>方向四：硅光芯片 / 光模块 — 东山精密引爆</h3>
+
+<div class="card">
+  <ul style="margin-left:20px; color:var(--text-muted); line-height:2;">
+    <li><strong>东山精密盘后公告：</strong>具备硅光CW激光芯片自研能力，与外部企业合作布局光模块</li>
+    <li>今日尾盘中际旭创、新易盛、天孚通信已获大幅抢筹</li>
+    <li>硅光是1.6T/3.2T光模块的核心技术路线，CPO（共封装光学）是AI算力下一阶段关键方向</li>
+  </ul>
+  <p><strong>关注标的：</strong>中际旭创（光模块龙头）、新易盛、天孚通信、东山精密、光迅科技</p>
+</div>
+
+<h3>方向五：芯片散热 — 金刚石散热片，新概念首秀</h3>
+
+<div class="card">
+  <ul style="margin-left:20px; color:var(--text-muted); line-height:2;">
+    <li><strong>中兵红箭盘后公告：</strong>金刚石散热片实现小批量生产</li>
+    <li>金刚石是已知导热率最高的材料（2000W/mK，是铜的5倍），是AI芯片散热终极方案</li>
+    <li>同时冰轮环境（数据中心液冷）一字封死，散热方向有板块效应</li>
+  </ul>
+  <p><strong>关注标的：</strong>中兵红箭（金刚石散热）、冰轮环境（液冷一字板）、英维克（液冷）、高澜股份（液冷）</p>
+</div>
+
+<h3>方向六：TGV玻璃基板 — 设备端开始兑现订单</h3>
+
+<div class="card">
+  <ul style="margin-left:20px; color:var(--text-muted); line-height:2;">
+    <li><strong>海目星盘后公告：</strong>TGV业务已有小批量激光改质、刻蚀设备订单</li>
+    <li><strong>新益昌：</strong>玻璃基板固晶设备批量交付显示面板厂商</li>
+    <li>玻璃基板从"概念"→"设备订单落地"，进入产业验证阶段</li>
+  </ul>
+  <p><strong>关注标的：</strong>沃格光电（2连板，玻璃基板龙头）、凯盛新能（封成比167，换手板极强）、凯盛科技、海目星、新益昌</p>
+</div>
+
+<h3>方向七：商业航天 — 延续性值得关注</h3>
+
+<div class="card">
+  <ul style="margin-left:20px; color:var(--text-muted); line-height:2;">
+    <li>SpaceX市值超亚马逊（2.65万亿美元），马斯克预言2030年营收万亿</li>
+    <li>航天驭星D轮融资近20亿，蓝箭航天IPO已受理</li>
+    <li>盘后尤洛卡拟定增10亿用于火箭发动机核心零部件</li>
+  </ul>
+  <p><strong>关注标的：</strong>铂力特（20CM秒板，商业航天+3D打印）、尤洛卡（火箭发动机）、科翔股份</p>
+</div>
+
+<!-- 五、综合结论 -->
+<h2>五、综合结论：明日策略框架</h2>
+
+<div class="prediction-box">
+  <h3>情绪周期：老周期退潮末期 → 新周期试错 → 明日是关键转折日</h3>
+  <table>
+    <tr><td style="width:100px;"><strong>最确定方向</strong></td><td>存储芯片（美光6.24财报前4天催化窗口，供需缺口逻辑最硬，兆易创新/香农芯创/普冉股份）</td></tr>
+    <tr><td><strong>3进4最强候选</strong></td><td>中材科技（分歧王，97次开板换手最充分）> 诺德股份（一字龙，铜箔逻辑最硬）> 宏昌电子（总龙，但面临5板魔咒）</td></tr>
+    <tr><td><strong>最可能新方向</strong></td><td>MLCC/被动元件（盘后利好集中释放，AI服务器MLCC用量暴增，可能成为明日新挖掘方向）</td></tr>
+    <tr><td><strong>暗线机会</strong></td><td>芯片散热（金刚石散热片+液冷，中兵红箭+冰轮环境）、硅光芯片（东山精密+光模块三剑客尾盘已抢筹）</td></tr>
+    <tr><td><strong>最大风险</strong></td><td>PCB连续3日大涨后高位分化，华正新材减持利空可能引发板块情绪退潮；3400+只个股下跌的极端分化不可持续</td></tr>
+    <tr><td><strong>操作节奏</strong></td><td>不追高连续大涨的PCB高位股，等回踩低吸；重点关注存储芯片的首次分歧机会；MLCC/散热/硅光等新方向首板可积极试错</td></tr>
+  </table>
+</div>
+
+<div class="warn">
+  <strong>核心风险提示：</strong>
+  <ol style="margin-left:20px; line-height:2;">
+    <li>科技股已连续3日大涨，积累大量获利盘，明日存在集中兑现风险</li>
+    <li>华正新材（8天5板）减持是重大情绪利空，可能引发PCB板块连锁反应</li>
+    <li>长盈通被停牌核查（PE 1130倍），监管层对纯题材炒作态度明确</li>
+    <li>嘉元科技澄清HVLP铜箔未量产，可能冲击铜箔概念</li>
+    <li>沪指4100-4130压力区，突破需3.2万亿以上成交，否则冲高回落</li>
+  </ol>
+</div>
+
+<hr>
+<div class="warn" style="margin-top:20px;">
+  <strong>免责声明：</strong> 本报告基于公开数据进行客观复盘与推演，所有分析均不构成投资建议。股市有风险，投资需谨慎。连板股操作属于高风险交易策略，请注意仓位控制与止损纪律。<br>
+  <span style="color:var(--text-muted);">报告生成时间：2026年6月17日盘后 | 数据来源：东方财富、证券时报、新浪财经、拾荒网等公开信息</span>
+</div>
+
+</body>
+</html>

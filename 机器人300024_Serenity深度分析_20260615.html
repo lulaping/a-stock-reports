@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>机器人（300024）Serenity 深度分析</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.7;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 {
+    text-align: center;
+    color: #58a6ff;
+    font-size: 26px;
+    padding: 24px 0 8px;
+    border-bottom: 2px solid #30363d;
+    margin-bottom: 16px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #8b949e;
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+  h2 {
+    color: #f0883e;
+    font-size: 19px;
+    margin: 28px 0 14px;
+    padding-left: 12px;
+    border-left: 4px solid #f0883e;
+  }
+  h3 {
+    color: #79c0ff;
+    font-size: 16px;
+    margin: 18px 0 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  th {
+    background: #21262d;
+    color: #58a6ff;
+    padding: 9px 10px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #30363d;
+    white-space: nowrap;
+  }
+  td {
+    padding: 7px 10px;
+    border: 1px solid #30363d;
+  }
+  tr:hover td { background: #1c2128; }
+  .section-box {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 18px;
+    margin: 14px 0;
+  }
+  .alert-box {
+    background: #1f1a1a;
+    border: 1px solid #da3633;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .alert-box h3 { color: #ff7b72; margin-top: 0; }
+  .info-box {
+    background: #0d1b2a;
+    border: 1px solid #1f6feb;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .highlight { color: #ff7b72; font-weight: 700; }
+  .green-text { color: #3fb950; }
+  .orange-text { color: #f0883e; }
+  .blue-text { color: #58a6ff; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-green { background: #238636; color: #fff; }
+  .badge-red { background: #da3633; color: #fff; }
+  .badge-yellow { background: #d29922; color: #000; }
+  .badge-blue { background: #1f6feb; color: #fff; }
+  .badge-fatal { background: #8b0000; color: #fff; font-size: 12px; font-weight: 700; }
+  .conclusion-box {
+    background: #1a1a2a;
+    border: 2px solid #da3633;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .conclusion-box h2 { color: #ff7b72; border-left-color: #ff7b72; margin-top: 0; }
+  .divider { border: none; border-top: 1px solid #30363d; margin: 20px 0; }
+  .star { color: #f0883e; }
+  .star-empty { color: #30363d; }
+  .footer {
+    text-align: center;
+    color: #484f58;
+    font-size: 11px;
+    margin-top: 36px;
+    padding: 16px;
+    border-top: 1px solid #30363d;
+  }
+  ul { margin: 6px 0 6px 18px; }
+  li { margin: 3px 0; }
+  .verdict-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 8px 0;
+  }
+  .verdict-tag.danger { background: #da3633; color: #fff; }
+  .warning-box {
+    background: #2a1a1a;
+    border: 2px solid #ff7b72;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .warning-box h3 { color: #ff7b72; margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>机器人（300024）Serenity 深度分析</h1>
+<p class="subtitle">分析日期：2026-06-15 | 收盘价：¥15.00 | 市值：~234.84亿 <span class="badge badge-fatal">持续亏损 PE失效</span> | 框架：Serenity Model 1</p>
+
+<!-- Scope Gate -->
+<h2>零、Scope Gate — 判定分析类型</h2>
+<div class="section-box">
+<table>
+  <tr><th style="width:120px;">判定维度</th><th>结论</th></tr>
+  <tr>
+    <td><strong>公司类型</strong></td>
+    <td><strong>工业机器人全产业链</strong> — 中科院系，中国机器人产业联盟理事长单位，覆盖核心零部件→本体→系统集成</td>
+  </tr>
+  <tr>
+    <td><strong>Serenity适用性</strong></td>
+    <td><span class="badge badge-red">不适用</span> 公司处于持续亏损状态，毛利率仅12.48%，不具备任何卡点属性。工业机器人是充分竞争的红海市场</td>
+  </tr>
+  <tr>
+    <td><strong>核心矛盾</strong></td>
+    <td><span class="highlight">"越卖越亏"的结构性困境</span> — 2025年机器人销量+65%达到13,676台，但亏损扩大1倍至3.98亿。这是典型的"有规模无利润"陷阱</td>
+  </tr>
+  <tr>
+    <td><strong>分析策略</strong></td>
+    <td>不适用Serenity卡点框架，转为<strong>风险警示型分析</strong></td>
+  </tr>
+</table>
+</div>
+
+<!-- 客观事实底座 -->
+<h2>一、客观事实底座</h2>
+
+<h3>1.1 基本数据</h3>
+<div class="section-box">
+<table>
+  <tr><th>指标</th><th>数值</th><th>指标</th><th>数值</th></tr>
+  <tr>
+    <td>6/12收盘价</td>
+    <td>¥15.00（周跌3.66%）</td>
+    <td>市值</td>
+    <td>~234.84亿</td>
+  </tr>
+  <tr>
+    <td>PE(TTM)</td>
+    <td class="highlight"><strong>亏损，失效</strong></td>
+    <td>PB</td>
+    <td class="highlight"><strong>~5.67x</strong>（每股净资产2.58元）</td>
+  </tr>
+  <tr>
+    <td>PS(TTM)</td>
+    <td class="highlight">~6.2x</td>
+    <td>总股本</td>
+    <td>15.66亿股</td>
+  </tr>
+  <tr>
+    <td>2025营收</td>
+    <td>41.22亿 -0.40%</td>
+    <td>2025归母净利</td>
+    <td class="highlight"><strong>-3.98亿 亏损扩大105.43%</strong></td>
+  </tr>
+  <tr>
+    <td>2025扣非净利</td>
+    <td class="highlight">-4.57亿 亏损扩大61.74%</td>
+    <td>2025经营现金流</td>
+    <td class="green-text">1.61亿（由负转正 +487%）</td>
+  </tr>
+  <tr>
+    <td>2025综合毛利率</td>
+    <td class="highlight"><strong>12.48%</strong>（2019年约30%+）</td>
+    <td>2025净利率</td>
+    <td class="highlight">-9.43%</td>
+  </tr>
+  <tr>
+    <td>2025资产负债率</td>
+    <td>63.47%</td>
+    <td>2025研发投入</td>
+    <td>2.25亿（占营收5.5%）</td>
+  </tr>
+  <tr>
+    <td>2025机器人销量</td>
+    <td class="green-text"><strong>13,676台 +65%</strong></td>
+    <td>未分配利润</td>
+    <td class="highlight">-6.17亿</td>
+  </tr>
+  <tr>
+    <td>2026Q1营收</td>
+    <td class="highlight">6.30亿 -8.42%</td>
+    <td>2026Q1归母净利</td>
+    <td class="highlight"><strong>-0.93亿 -84.02%</strong></td>
+  </tr>
+  <tr>
+    <td>2026Q1经营现金流</td>
+    <td class="highlight"><strong>-4.61亿 -92.01%</strong></td>
+    <td>2026Q1存货</td>
+    <td class="highlight">36.36亿（占资产30.6%）</td>
+  </tr>
+  <tr>
+    <td>2026Q1应收账款</td>
+    <td>14.85亿</td>
+    <td>2026Q1短期借款</td>
+    <td>5.82亿(+44.67%)</td>
+  </tr>
+</table>
+</div>
+
+<h3>1.2 业务结构（2025年）</h3>
+<div class="section-box">
+<table>
+  <tr><th>业务板块</th><th>2025营收</th><th>同比</th><th>占比</th></tr>
+  <tr><td>自动化装配与检测生产线</td><td>14.93亿</td><td class="green-text">+16.27%</td><td>36.2%</td></tr>
+  <tr><td>工业机器人</td><td>10.97亿</td><td class="highlight">-8.77%</td><td>26.6%</td></tr>
+  <tr><td>物流与仓储自动化</td><td>7.34亿</td><td class="highlight">-6.66%</td><td>17.8%</td></tr>
+  <tr><td>半导体装备</td><td>5.25亿</td><td class="highlight">-8.58%</td><td>12.7%</td></tr>
+  <tr><td>交通自动化系统</td><td>2.61亿</td><td class="highlight">-7.27%</td><td>6.3%</td></tr>
+</table>
+</div>
+
+<h3>1.3 核心矛盾：越卖越亏</h3>
+<div class="warning-box">
+<table>
+  <tr><th>指标</th><th>2023</th><th>2024</th><th>2025</th><th>趋势</th></tr>
+  <tr>
+    <td><strong>营收</strong></td>
+    <td>39.67亿</td>
+    <td>41.38亿</td>
+    <td>41.22亿</td>
+    <td><span class="badge badge-yellow">停滞</span></td>
+  </tr>
+  <tr>
+    <td><strong>归母净利</strong></td>
+    <td class="green-text">0.49亿</td>
+    <td class="highlight">-1.94亿</td>
+    <td class="highlight">-3.98亿</td>
+    <td><span class="badge badge-fatal">加速恶化</span></td>
+  </tr>
+  <tr>
+    <td><strong>扣非净利</strong></td>
+    <td class="highlight">-1.92亿</td>
+    <td class="highlight">-2.82亿</td>
+    <td class="highlight">-4.57亿</td>
+    <td><span class="badge badge-fatal">加速恶化</span></td>
+  </tr>
+  <tr>
+    <td><strong>毛利率</strong></td>
+    <td>13.88%</td>
+    <td>14.64%</td>
+    <td class="highlight">12.48%</td>
+    <td><span class="badge badge-fatal">历史新低</span></td>
+  </tr>
+  <tr>
+    <td><strong>净利率</strong></td>
+    <td>1.15%</td>
+    <td class="highlight">-4.69%</td>
+    <td class="highlight">-9.43%</td>
+    <td><span class="badge badge-fatal">加速恶化</span></td>
+  </tr>
+  <tr>
+    <td><strong>机器人销量</strong></td>
+    <td>—</td>
+    <td>—</td>
+    <td class="green-text">13,676台(+65%)</td>
+    <td><span class="badge badge-red">量增利减</span></td>
+  </tr>
+</table>
+</div>
+
+<!-- Serenity 框架评估 -->
+<h2>二、Serenity 框架评估</h2>
+
+<h3>2.1 卡点五问</h3>
+<div class="section-box">
+<table>
+  <tr><th style="width:30px;">#</th><th>问题</th><th>答案</th><th style="width:80px;">评分</th></tr>
+  <tr>
+    <td>①</td><td><strong>Single point of failure？</strong></td>
+    <td><span class="highlight">不是</span> — 工业机器人是充分竞争市场，ABB、发那科、库卡、埃斯顿、埃夫特等竞争对手众多</td>
+    <td><span class="star">★</span><span class="star-empty">★★★★</span></td>
+  </tr>
+  <tr>
+    <td>②</td><td><strong>市值 vs TAM？</strong></td>
+    <td><span class="highlight">不匹配</span> — 235亿 vs 中国工业机器人市场~500亿，市值已占TAM近50%</td>
+    <td><span class="star">★★</span><span class="star-empty">★★★</span></td>
+  </tr>
+  <tr>
+    <td>③</td><td><strong>Designed-in程度？</strong></td>
+    <td><span class="highlight">弱</span> — 工业机器人标准化程度高，客户切换成本低，价格战激烈</td>
+    <td><span class="star">★</span><span class="star-empty">★★★★</span></td>
+  </tr>
+  <tr>
+    <td>④</td><td><strong>放量时间？</strong></td>
+    <td><span class="highlight">不确定</span> — 销量+65%但利润恶化，放量不能转化为利润</td>
+    <td><span class="star">★</span><span class="star-empty">★★★★</span></td>
+  </tr>
+  <tr>
+    <td>⑤</td><td><strong>定价程度？</strong></td>
+    <td><span class="highlight">PB 5.67x，PS 6.2x，持续亏损</span> — 对于一个毛利率12%的亏损公司，极度高估</td>
+    <td><span class="star">★</span><span class="star-empty">★★★★</span></td>
+  </tr>
+</table>
+<p style="margin-top: 10px; text-align: center;"><strong>卡点总分：6/25 → 完全不满足Serenity卡点要求</strong></p>
+</div>
+
+<h3>2.2 好卡点判据</h3>
+<div class="section-box">
+<table>
+  <tr><th>判据</th><th>判定</th><th>分析</th></tr>
+  <tr><td>垄断/寡头</td><td><span class="badge badge-red">不通过</span></td><td>工业机器人CR5约50%，外资主导，新松非龙头</td></tr>
+  <tr><td>市值vs TAM</td><td><span class="badge badge-red">不通过</span></td><td>235亿 vs 500亿市场，市占率不足10%</td></tr>
+  <tr><td>Designed-in</td><td><span class="badge badge-red">不通过</span></td><td>标准化产品，客户切换成本低</td></tr>
+  <tr><td><strong>定价权(毛利率)</strong></td><td><span class="badge badge-fatal">致命</span></td><td>毛利率12.48%，且持续下滑</td></tr>
+  <tr><td>资产负债表</td><td><span class="badge badge-red">不通过</span></td><td>负债率63%，存货36亿，应收15亿，短借5.8亿</td></tr>
+</table>
+<p style="margin-top: 10px; color: #ff7b72; text-align: center;"><strong>Serenity判定：不在击球区，甚至不在球场内。</strong></p>
+</div>
+
+<h3>2.3 诚实门：为什么"越卖越亏"？</h3>
+<div class="warning-box">
+<table>
+  <tr><th>亏损驱动因素</th><th>2025年影响</th><th style="width:80px;">严重度</th></tr>
+  <tr>
+    <td><strong>毛利率持续下滑</strong></td>
+    <td>从30%+降至12.48%，累计下滑18个百分点</td>
+    <td><span class="badge badge-fatal">致命</span></td>
+  </tr>
+  <tr>
+    <td><strong>联营企业亏损</strong></td>
+    <td>权益法投资收益-2.23亿（上年-1.03亿），占亏损56%</td>
+    <td><span class="badge badge-red">高</span></td>
+  </tr>
+  <tr>
+    <td><strong>期间费用率31.33%</strong></td>
+    <td>同比飙升7个百分点，费用增速远超营收</td>
+    <td><span class="badge badge-red">高</span></td>
+  </tr>
+  <tr>
+    <td><strong>存货减值风险</strong></td>
+    <td>存货36.36亿，已计提2.54亿跌价准备</td>
+    <td><span class="badge badge-red">高</span></td>
+  </tr>
+  <tr>
+    <td><strong>应收账款风险</strong></td>
+    <td>14.85亿，信用减值损失冲回有粉饰嫌疑</td>
+    <td><span class="badge badge-yellow">中</span></td>
+  </tr>
+  <tr>
+    <td><strong>汇兑损失</strong></td>
+    <td>财务费用+290%，Q1达1885万</td>
+    <td><span class="badge badge-yellow">中</span></td>
+  </tr>
+</table>
+</div>
+
+<h3>2.4 红旗扫描</h3>
+<div class="alert-box">
+<table>
+  <tr><th>红旗</th><th style="width:70px;">严重度</th><th>详情</th></tr>
+  <tr>
+    <td><strong>连续亏损且加速恶化</strong></td>
+    <td><span class="badge badge-fatal">致命</span></td>
+    <td>2023微利→2024亏1.94亿→2025亏3.98亿→2026Q1亏0.93亿，趋势毫无改善</td>
+  </tr>
+  <tr>
+    <td><strong>毛利率断崖式下跌</strong></td>
+    <td><span class="badge badge-fatal">致命</span></td>
+    <td>从30%+降至12.48%，意味着产品从"有附加值"变成了"卖铁价"</td>
+  </tr>
+  <tr>
+    <td><strong>经营性现金流Q1再转负</strong></td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>2025全年勉强转正，Q1又-4.61亿，现金流极不稳定</td>
+  </tr>
+  <tr>
+    <td><strong>存货积压36.36亿</strong></td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>占总资产30.6%，但Q1营收仅6.3亿，存货周转极度缓慢</td>
+  </tr>
+  <tr>
+    <td><strong>负债率63.47%</strong></td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>短借5.82亿+一年内到期非流动负债7.53亿，偿债压力大</td>
+  </tr>
+  <tr>
+    <td><strong>未分配利润-6.17亿</strong></td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>累计亏损，无法分红，若持续亏损可能触发ST</td>
+  </tr>
+  <tr>
+    <td><strong>联营企业持续拖累</strong></td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>投资收益-2.23亿，占亏损56%，联营企业质量差</td>
+  </tr>
+  <tr>
+    <td><strong>散户集中营</strong></td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>股东户数多，散户占比高，容易成为主力收割对象</td>
+  </tr>
+  <tr>
+    <td><strong>政策叙事最强但业绩最差</strong></td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>"人形机器人""具身智能"概念加持，但公司基本面与之严重脱节</td>
+  </tr>
+</table>
+</div>
+
+<!-- 估值分析 -->
+<h2>三、估值分析</h2>
+<div class="section-box">
+<table>
+  <tr><th>估值方法</th><th>结果</th><th>说明</th></tr>
+  <tr>
+    <td><strong>PE</strong></td>
+    <td><span class="badge badge-fatal">失效</span></td>
+    <td>持续亏损，无市盈率</td>
+  </tr>
+  <tr>
+    <td><strong>PB</strong></td>
+    <td><span class="highlight">5.67x</span></td>
+    <td>每股净资产2.58元，PB 5.67x，对于亏损公司极度高估</td>
+  </tr>
+  <tr>
+    <td><strong>PS</strong></td>
+    <td><span class="highlight">6.2x</span></td>
+    <td>235亿 vs 41亿营收，对于毛利率12%的公司极度高估</td>
+  </tr>
+  <tr>
+    <td><strong>行业对比</strong></td>
+    <td>自动化设备中位PE 48x</td>
+    <td>同业盈利公司PE 48x，新松亏损却享受PB 5.67x，不合理</td>
+  </tr>
+  <tr style="background:#1a2a1a;">
+    <td><strong>合理估值</strong></td>
+    <td><strong>PB 1.5-2x → 60-80亿</strong></td>
+    <td>考虑品牌溢价，但亏损公司合理PB不应超过2x</td>
+  </tr>
+  <tr style="background:#1f1a1a;">
+    <td></td>
+    <td><strong>当前234亿 vs 合理80亿</strong></td>
+    <td><strong>溢价193%</strong></td>
+  </tr>
+</table>
+</div>
+
+<!-- 综合判定 -->
+<h2>四、综合判定</h2>
+<div class="section-box">
+<table>
+  <tr><th style="width:140px;">维度</th><th>机器人 300024</th></tr>
+  <tr>
+    <td><strong>Serenity卡点纯度</strong></td>
+    <td><span class="star">★</span><span class="star-empty">★★★★</span> — 无任何卡点，工业机器人是比汽车零部件更卷的红海</td>
+  </tr>
+  <tr>
+    <td><strong>最大亮点</strong></td>
+    <td>中国机器人第一品牌，中科院背景，品牌知名度极高，政策叙事最强</td>
+  </tr>
+  <tr>
+    <td><strong>致命缺陷</strong></td>
+    <td class="highlight">毛利率从30%+跌至12.48%，"越卖越亏"的结构性困境，联营企业持续拖累</td>
+  </tr>
+  <tr>
+    <td><strong>当前催化剂</strong></td>
+    <td>6/10工信部"人形机器人实景实训"政策+6/5华为云大会+机器人板块整体走强</td>
+  </tr>
+  <tr>
+    <td><strong>估值合理性</strong></td>
+    <td class="highlight">234亿 vs 合理估值80亿，溢价193%，严重高估</td>
+  </tr>
+</table>
+</div>
+
+<!-- 结论 -->
+<div class="conclusion-box">
+<h2>五、结论</h2>
+
+<div style="text-align: center; margin: 16px 0;">
+  <span class="verdict-tag danger">不在 Serenity 击球区</span>
+  <p style="color: #ff7b72; margin-top: 8px; font-weight: 700;">典型"政策叙事最强、基本面最差"的背离型标的</p>
+</div>
+
+<table>
+  <tr><th style="width:120px;">定档</th><td><strong>不在Serenity击球区 — 典型"政策叙事最强、基本面最差"的背离型标的</strong></td></tr>
+  <tr>
+    <td><strong>核心矛盾</strong></td>
+    <td>新松机器人是中国机器人行业的一面旗帜，但旗帜之下是持续恶化的基本面。毛利率从30%+跌至12.48%，意味着公司从"卖技术"变成了"卖铁"。机器人销量+65%但亏损扩大1倍，这是典型的"增收不增利"，而且是"增量不增收、增亏"。</td>
+  </tr>
+  <tr>
+    <td><strong>为什么还有人买？</strong></td>
+    <td>① "机器人"这个名字本身就是A股最好的概念标签 ② 中科院背景+国家队光环 ③ 人形机器人+具身智能政策催化不断 ④ 大量ETF被动配置（机器人ETF规模137亿）。但这是<strong>情绪和流动性驱动，而非基本面驱动</strong>。</td>
+  </tr>
+  <tr>
+    <td><strong>最大风险</strong></td>
+    <td>① 若持续亏损，可能在2026年或2027年触发ST ② 存货36亿若大幅减值，将一次性击穿净资产 ③ 联营企业若继续恶化，亏损可能进一步扩大 ④ 当前PB 5.67x，一旦市场风格切换，估值回归空间巨大</td>
+  </tr>
+  <tr>
+    <td><strong>如果一定要交易</strong></td>
+    <td>这不是一个适合持有的标的。如果参与，只能作为<strong>短线情绪博弈</strong>，博弈政策催化+板块共振，严格止损，不恋战。</td>
+  </tr>
+</table>
+
+<div style="background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 16px; margin-top: 16px; text-align: center;">
+  <p style="color: #58a6ff; font-size: 15px; font-weight: 700; margin-bottom: 6px;">Serenity框架下的一句话总结</p>
+  <p style="color: #c9d1d9; font-size: 14px;">"新松机器人有中国最好的机器人品牌故事，但也有最差的机器人财务现实——这不是一个投资标的，而是一个'政策期权'，赌的是国家什么时候出手拯救这个'国家队'。"</p>
+</div>
+</div>
+
+<div class="footer">
+  <p>机器人（300024）Serenity 深度分析 | 分析日期：2026-06-15 | 框架：Serenity Model 1</p>
+  <p>免责声明：本文仅为基于Serenity投资方法论的框架性分析，不构成任何投资建议。股市有风险，投资需谨慎。</p>
+</div>
+
+</div>
+</body>
+</html>

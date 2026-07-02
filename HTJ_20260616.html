@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钙钛矿光伏产业链 · Serenity 赛道深度分析（Nature 26.2% 纪录）— 2026.06.16</title>
+    <style>
+        :root {
+            --bg: #0f1117;
+            --card: #161822;
+            --border: #2a2d3a;
+            --text: #e4e6eb;
+            --text-muted: #8b8fa3;
+            --accent: #f0b90b;
+            --green: #0ecb81;
+            --red: #f6465d;
+            --blue: #1e80ff;
+            --purple: #a855f7;
+            --cyan: #06b6d4;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.75;
+            padding: 0;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px; }
+
+        .header {
+            text-align: center;
+            padding: 48px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 27px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+        .header .subtitle { color: var(--text-muted); font-size: 14px; }
+        .header .badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.12);
+            color: var(--cyan);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+
+        .section { margin-bottom: 36px; }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--cyan);
+            display: inline-block;
+        }
+        .section-subtitle {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 20px 0 10px;
+            color: var(--cyan);
+        }
+
+        .verdict-box {
+            background: linear-gradient(135deg, rgba(14,203,129,0.08), rgba(14,203,129,0.02));
+            border: 1px solid rgba(14,203,129,0.25);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+        }
+        .verdict-box .label { font-size: 12px; text-transform: uppercase; color: var(--green); font-weight: 600; letter-spacing: 1px; }
+        .verdict-box .verdict-text { font-size: 16px; margin-top: 6px; }
+        .stars { color: var(--accent); font-size: 18px; }
+
+        .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 10px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 700px; }
+        th { background: #1e2030; color: var(--text-muted); font-weight: 600; padding: 10px 12px; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--border); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+        .ticker { color: var(--accent); font-weight: 600; }
+        .green-text { color: var(--green); }
+        .red-text { color: var(--red); }
+        .blue-text { color: var(--blue); }
+        .purple-text { color: var(--purple); }
+        .cyan-text { color: var(--cyan); }
+
+        .stock-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+        }
+        .stock-card .stock-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;
+        }
+        .stock-card .stock-name { font-size: 17px; font-weight: 700; }
+        .stock-card .stock-tag { font-size: 12px; padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+        .tag-buy { background: rgba(14,203,129,0.15); color: var(--green); border: 1px solid rgba(14,203,129,0.3); }
+        .tag-hold { background: rgba(30,128,255,0.15); color: var(--blue); border: 1px solid rgba(30,128,255,0.3); }
+        .tag-fire { background: rgba(240,185,11,0.15); color: var(--accent); border: 1px solid rgba(240,185,11,0.3); }
+
+        .stock-card .data-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; margin-top: 10px;
+        }
+        .stock-card .data-item { font-size: 13px; }
+        .stock-card .data-item .data-label { color: var(--text-muted); font-size: 11px; }
+        .stock-card .data-item .data-value { font-weight: 600; }
+        .stock-card .risk-flags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .stock-card .risk-flag {
+            font-size: 11px; padding: 2px 8px; border-radius: 4px;
+            background: rgba(246,70,93,0.1); color: var(--red); border: 1px solid rgba(246,70,93,0.2);
+        }
+
+        .risk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin: 16px 0; }
+        .risk-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; }
+        .risk-high { background: rgba(246,70,93,0.2); color: var(--red); }
+        .risk-mid { background: rgba(240,185,11,0.2); color: var(--accent); }
+        .risk-low { background: rgba(30,128,255,0.2); color: var(--blue); }
+        .risk-level { font-size: 11px; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
+
+        .catalyst-list { list-style: none; }
+        .catalyst-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+        .catalyst-list li:last-child { border-bottom: none; }
+        .catalyst-date { display: inline-block; background: rgba(6,182,212,0.1); color: var(--cyan); padding: 1px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px; }
+
+        .highlight-box {
+            background: rgba(6, 182, 212, 0.06);
+            border-left: 3px solid var(--cyan);
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .news-box {
+            background: rgba(240, 185, 11, 0.06);
+            border: 1px solid rgba(240, 185, 11, 0.2);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+        .news-box h3 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
+
+        .footer {
+            text-align: center; color: var(--text-muted); font-size: 12px;
+            padding: 40px 0 20px; border-top: 1px solid var(--border); margin-top: 40px;
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 20px 16px; }
+            .header h1 { font-size: 22px; }
+            .stock-card .data-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>钙钛矿光伏产业链 · Serenity 赛道深度分析</h1>
+        <div class="subtitle">基于南京大学 + 仁烁光能 Nature 26.2% 全钙钛矿叠层世界纪录事件 | 2026年6月16日</div>
+        <div class="badge">Nature 论文 · 纳米晶 In₂O₃ 替代贵金属 · GW 级量产元年</div>
+    </div>
+
+    <!-- News Summary -->
+    <div class="news-box">
+        <h3>核心事件</h3>
+        <p style="font-size:14px;line-height:1.8;">
+            南京大学谭海仁教授团队联合<strong>仁烁光能（苏州）</strong>研制出<strong>65cm² 全钙钛矿叠层光伏组件</strong>，经日本 JET 认证光电转换效率达 <strong class="green-text">26.2%</strong>，刷新世界纪录。<br>
+            核心技术突破：用<strong>In₂O₃ 纳米晶功能层</strong>替代传统 Au/PEDOT-PSS 隧穿复合结——<strong>消除贵金属寄生吸收 + 提升热稳定性</strong>。研究成果以快速预览形式在线发表于《Nature》。<br>
+            <span style="color:var(--text-muted);font-size:12px;">来源：科技日报 2026年6月16日</span>
+        </p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section">
+        <h2 class="section-title">一、赛道判定——值不值得找仓位</h2>
+        <div class="verdict-box">
+            <div class="label">Verdict</div>
+            <div class="verdict-text">
+                <span class="stars">⭐⭐⭐⭐</span>
+                <strong>钙钛矿正处于"实验室→GW级量产"的历史拐点，设备层（卖铲子）是当下最确定的卡点。</strong>
+            </div>
+        </div>
+        <table>
+            <tr><th>维度</th><th>判定</th></tr>
+            <tr><td>周期位置</td><td>从"中试验证"→"GW级量产元年"的过渡期，2026年国内规划产能超25GW</td></tr>
+            <tr><td>超级周期终端</td><td>全钙钛矿叠层组件（效率26.2%+），Target：BIPV、太空光伏、分布式电站</td></tr>
+            <tr><td>触发事件</td><td>南大谭海仁+仁烁光能 Nature 论文：65cm² 全钙钛矿叠层效率 26.2%（JET认证），刷新世界纪录</td></tr>
+            <tr><td>技术突破核心</td><td><strong>纳米晶 In₂O₃ 替代传统 Au/PEDOT-PSS 隧穿复合结</strong>——消除了产业化最大瓶颈（寄生吸收+界面不稳定）</td></tr>
+            <tr><td>卡点在哪层</td><td><strong>设备层（涂布/镀膜/激光）> 材料层（靶材/传输材料）> 电池/组件层</strong></td></tr>
+            <tr><td>确定度评级</td><td><strong class="green-text">较高</strong>——技术路线清晰，GW级产线已投产，但长期稳定性仍待验证</td></tr>
+        </table>
+
+        <div class="highlight-box">
+            <strong>Serenity 视角一句话：</strong>这不是又一次"实验室效率刷榜"，而是用<strong>可量产的纳米晶涂布工艺替代了贵金属真空蒸镀</strong>——直接降低了 GW 级产线的设备投资和材料成本。这是从"能做出来"到"能便宜地做出来"的质变。
+        </div>
+        <div class="highlight-box">
+            <strong>技术突破本质：</strong>全钙钛矿叠层电池的核心瓶颈在<strong>隧穿复合结（TRJ）</strong>——传统 Au/PEDOT-PSS 结构导致近红外寄生吸收和界面不稳定。新方案用 In₂O₃ 纳米晶替代，<strong>消除金层、消除 PEDOT-PSS</strong>，实现了界面连接层的结构重构。热稳定性测试：200h 仍保持 75% vs 传统 50h 衰减到 50%以下。
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+        <h2 class="section-title">二、供应链栈分层图（钙钛矿叠层产业链）</h2>
+        <div class="table-wrap">
+            <table>
+                <tr><th>层级</th><th>角色</th><th>A股核心标的</th><th>市值参考</th><th>卡点强度</th><th>与本次事件关联度</th></tr>
+                <tr>
+                    <td><strong>L0</strong><br>设备层</td>
+                    <td>涂布/镀膜/激光/封装</td>
+                    <td><span class="ticker">捷佳伟创(300724)</span><br><span class="ticker">迈为股份(300751)</span><br><span class="ticker">京山轻机(000821)</span><br><span class="ticker">帝尔激光(300776)</span></td>
+                    <td>~245亿<br>~615亿<br>~80亿<br>~120亿</td>
+                    <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
+                    <td class="green-text">钙钛矿整线设备已出货<br>HJT+钙钛矿叠层方案<br>蒸镀设备量产交付<br>激光刻蚀核心设备</td>
+                </tr>
+                <tr>
+                    <td><strong>L1</strong><br>材料层</td>
+                    <td>靶材/传输材料/前驱体</td>
+                    <td><span class="ticker">隆华科技(300263)</span><br><span class="ticker">万润股份(002643)</span><br><span class="ticker">金晶科技(600586)</span><br><span class="ticker">中矿资源(002738)</span></td>
+                    <td>~120亿<br>~136亿<br>~50亿<br>~200亿</td>
+                    <td><span class="stars">⭐⭐⭐⭐⭐</span><br><span class="stars">⭐⭐⭐⭐</span></td>
+                    <td class="green-text">靶材市占率>90%<br>空穴传输材料市占率80-90%<br>TCO导电玻璃首家量产<br>铯铷盐添加剂</td>
+                </tr>
+                <tr>
+                    <td><strong>L2</strong><br>电池/组件</td>
+                    <td>钙钛矿电池制造</td>
+                    <td><span class="ticker">京东方A(000725)</span><br><span class="ticker">协鑫集成(002506)</span></td>
+                    <td>~1000亿<br>~180亿</td>
+                    <td><span class="stars">⭐⭐⭐⭐</span></td>
+                    <td>1.2×2.4m大面积组件，GW级在建<br>协鑫光电GW级已投产</td>
+                </tr>
+                <tr>
+                    <td><strong>L3</strong><br>技术源头</td>
+                    <td>研发成果转化</td>
+                    <td><span class="ticker">南大环境(300864)</span></td>
+                    <td><strong class="purple-text">~34亿</strong></td>
+                    <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
+                    <td class="cyan-text"><strong>参股仁烁光能A+轮，本次Nature唯一A股直接关联方</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>L4</strong><br>终端应用</td>
+                    <td>BIPV/太空/分布式</td>
+                    <td><span class="ticker">隆基绿能(601012)</span></td>
+                    <td>~2000亿</td>
+                    <td><span class="stars">⭐⭐</span></td>
+                    <td>晶硅-钙钛矿叠层储备</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <strong>隐藏关系链（OSINT 线索）：</strong><br>
+            · <strong>南大环境(300864) ↔ 仁烁光能</strong>：2025年11月参股仁烁光能A+轮融资，是仁烁光能（谭海仁教授技术成果转化唯一载体）的<strong>A股唯一直接关联上市公司</strong>。仁烁光能已建成150MW量产线，GW级产线在建。<br>
+            · <strong>捷佳伟创 + 仁烁光能</strong>：捷佳伟创的涂布/镀膜设备是仁烁光能150MW产线的核心设备供应商（<em>我的推断</em>）。<br>
+            · <strong>隆华科技 + 全产业链</strong>：靶材国内市占率>90%，株洲基地扩产至800吨，可支撑20GW组件需求——钙钛矿GW级量产的"卖铲子中的卖铲子"。
+        </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section">
+        <h2 class="section-title">三、卡点层定位——真 single-point-of-failure</h2>
+
+        <div class="stock-card">
+            <div class="section-subtitle">卡点层1：设备层（L0）——最确定性</div>
+            <p>无论哪家钙钛矿企业胜出，都需要买设备。钙钛矿量产四大核心设备（涂布、镀膜、激光、封装）占产线投资70%+。当前单GW设备投资约5-6亿元，2026年25GW规划产能对应设备市场空间<strong>125-150亿元</strong>。<br>
+            <strong>卡点强度：</strong>★★★★★（不论技术路线谁赢，设备商都赚钱——标准"卖铲子"逻辑）<br>
+            <strong>本次事件催化：</strong>纳米晶涂布工艺替代真空蒸镀 → 涂布设备需求上升，捷佳伟创的涂布+闪蒸炉（VCD）方案直接受益</p>
+        </div>
+        <div class="stock-card">
+            <div class="section-subtitle">卡点层2：靶材/传输材料（L1-材料）——国产垄断</div>
+            <p>隆华科技靶材市占率>90%，万润股份空穴传输材料市占率80-90%。两者都在各自细分领域形成<strong>事实垄断</strong>。<br>
+            <strong>卡点强度：</strong>★★★★（国产替代已完成，形成垄断格局）<br>
+            <strong>本次事件催化：</strong>In₂O₃ 纳米晶替代 Au → 氧化铟靶材需求提升 → 隆华科技直接受益</p>
+        </div>
+        <div class="stock-card" style="border-color: rgba(6,182,212,0.4);">
+            <div class="section-subtitle">卡点层3：技术源头（L3）——最大信息不对称</div>
+            <p>南大环境(300864)市值仅<strong>34亿</strong>，参股仁烁光能A+轮。仁烁光能连续11次刷新钙钛矿效率世界纪录，是<strong>全球钙钛矿技术最领先的初创公司之一</strong>。但市场对南大环境与仁烁光能的关系认知严重不足。<br>
+            <strong>卡点强度：</strong>★★★★★（信息不对称极高，本次Nature论文是市场重估的催化剂）<br>
+            <strong>信息不对称：</strong><span class="cyan-text">极高</span>——仁烁光能估值至少30-50亿，南大环境34亿市值几乎未定价此参股价值</p>
+        </div>
+    </div>
+
+    <!-- Section 4: Core Stocks -->
+    <div class="section">
+        <h2 class="section-title">四、核心标的一页式清单（Serenity 视角）</h2>
+
+        <!-- 南大环境 -->
+        <div class="stock-card" style="border-color: rgba(6,182,212,0.4);">
+            <div class="stock-header">
+                <span class="stock-name">🔥 南大环境（300864）— A股最纯正的 Nature 论文关联标的</span>
+                <span class="stock-tag tag-fire">🔥 Fire Sale</span>
+            </div>
+            <div class="data-grid">
+                <div class="data-item"><span class="data-label">核心关联</span><div class="data-value cyan-text">参股仁烁光能A+轮（2025.11）</div></div>
+                <div class="data-item"><span class="data-label">主业</span><div class="data-value">环境咨询与治理（南京大学旗下）</div></div>
+                <div class="data-item"><span class="data-label">2025营收/净利</span><div class="data-value">8.01亿/1.51亿（-4%/-9.6%）</div></div>
+                <div class="data-item"><span class="data-label">2026Q1营收/净利</span><div class="data-value">2.09亿/0.46亿（+4.9%/+2.8%）</div></div>
+                <div class="data-item"><span class="data-label">毛利率/净利率</span><div class="data-value">36.2%/19.5%</div></div>
+                <div class="data-item"><span class="data-label">市值</span><div class="data-value purple-text"><strong>~34亿（极小市值）</strong></div></div>
+                <div class="data-item"><span class="data-label">PE(TTM)</span><div class="data-value green-text">~19x（动态，全板块最低）</div></div>
+                <div class="data-item"><span class="data-label">现金+金融资产</span><div class="data-value green-text">~8亿，零有息负债</div></div>
+            </div>
+            <p style="margin-top:10px;font-size:13px;">
+                <strong>Serenity 判定：</strong>这是全产业链<strong>最被低估的标的</strong>。理由：① 极小市值(~34亿) + 零有息负债 + 8亿现金 = 主业估值仅~26亿；② 仁烁光能已融资数亿元，参股价值被完全忽视；③ 本次Nature论文直接关联——仁烁光能是共同完成单位；④ PE 19x 在A股钙钛矿概念中最低，主业1.5亿利润提供安全底。
+            </p>
+            <div class="risk-flags">
+                <span class="risk-flag">🚩 仁烁光能参股比例未披露，可能极小</span>
+                <span class="risk-flag">🚩 主业增长停滞，应收账款占利润122%</span>
+                <span class="risk-flag">🚩 股东减持公告（2026.3，合计2.73%）</span>
+            </div>
+        </div>
+
+        <!-- 捷佳伟创 -->
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">捷佳伟创（300724）— 钙钛矿设备整线之王</span>
+                <span class="stock-tag tag-buy">✅ Buy</span>
+            </div>
+            <div class="data-grid">
+                <div class="data-item"><span class="data-label">核心产品</span><div class="data-value">钙钛矿涂布/闪蒸炉/PVD/RPD整线</div></div>
+                <div class="data-item"><span class="data-label">钙钛矿进展</span><div class="data-value green-text">中试线已投产，PVD/RPD中标头部客户</div></div>
+                <div class="data-item"><span class="data-label">2025营收/净利</span><div class="data-value">154.7亿/26.2亿（-18%/-5.3%）</div></div>
+                <div class="data-item"><span class="data-label">2026Q1营收/净利</span><div class="data-value">14.95亿/2.70亿（-63.5%/-61.8%）</div></div>
+                <div class="data-item"><span class="data-label">毛利率</span><div class="data-value">28.3%（2025），34.6%（2026Q1）</div></div>
+                <div class="data-item"><span class="data-label">市值</span><div class="data-value">~245亿</div></div>
+                <div class="data-item"><span class="data-label">PE(TTM)</span><div class="data-value green-text">~22.7x（动态）</div></div>
+                <div class="data-item"><span class="data-label">2026E PE</span><div class="data-value">~33x（机构一致预期）</div></div>
+            </div>
+            <p style="margin-top:10px;font-size:13px;">
+                <strong>Serenity 判定：</strong>钙钛矿设备整线方案最全，涂布+镀膜+封装全链条覆盖。2026Q1业绩大幅下滑（光伏周期低谷），但2026E PE 33x 在光伏设备中具有性价比。钙钛矿是公司第二增长曲线，当前估值尚未充分定价钙钛矿设备弹性。<strong>本次事件：</strong>纳米晶涂布替代真空蒸镀 → 涂布设备核心受益。
+            </p>
+            <div class="risk-flags">
+                <span class="risk-flag">🚩 光伏周期低谷，2026E净利下降34%</span>
+                <span class="risk-flag">🚩 存货57亿+合同负债46亿，订单可见性下降</span>
+            </div>
+        </div>
+
+        <!-- 隆华科技 -->
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">隆华科技（300263）— 靶材垄断者</span>
+                <span class="stock-tag tag-hold">⚠️ Hold</span>
+            </div>
+            <div class="data-grid">
+                <div class="data-item"><span class="data-label">核心产品</span><div class="data-value">钙钛矿靶材（国内市占率>90%）</div></div>
+                <div class="data-item"><span class="data-label">产能</span><div class="data-value green-text">株洲800吨，可支撑20GW组件</div></div>
+                <div class="data-item"><span class="data-label">2025营收/净利</span><div class="data-value">30.7亿/1.9亿（+13.4%/+45%）</div></div>
+                <div class="data-item"><span class="data-label">市值</span><div class="data-value">~120亿</div></div>
+                <div class="data-item"><span class="data-label">PE(TTM)</span><div class="data-value">~61x</div></div>
+            </div>
+            <p style="margin-top:10px;font-size:13px;">
+                <strong>Serenity 判定：</strong>靶材市占率>90%是事实垄断，但PE 61x偏高，且业务结构复杂（电子新材料+高分子复合材料+环保水处理），钙钛矿靶材占比尚小。<strong>本次事件：</strong>In₂O₃ 纳米晶替代 Au → 氧化铟靶材需求提升。
+            </p>
+            <div class="risk-flags">
+                <span class="risk-flag">🚩 PE 61x 偏高</span>
+                <span class="risk-flag">🚩 业务结构复杂，纯钙钛矿弹性有限</span>
+            </div>
+        </div>
+
+        <!-- 万润股份 -->
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">万润股份（002643）— 空穴传输材料国产替代</span>
+                <span class="stock-tag tag-hold">⚠️ Hold</span>
+            </div>
+            <div class="data-grid">
+                <div class="data-item"><span class="data-label">核心产品</span><div class="data-value">空穴传输材料（市占率80-90%）</div></div>
+                <div class="data-item"><span class="data-label">产能</span><div class="data-value">300吨扩产匹配GW级量产</div></div>
+                <div class="data-item"><span class="data-label">2025营收/净利</span><div class="data-value">37.2亿/2.84亿（+0.6%/+15.5%）</div></div>
+                <div class="data-item"><span class="data-label">2026Q1营收/净利</span><div class="data-value">10.15亿/0.88亿（+17.9%/+10%）</div></div>
+                <div class="data-item"><span class="data-label">毛利率</span><div class="data-value">39.6%</div></div>
+                <div class="data-item"><span class="data-label">市值</span><div class="data-value">~136亿</div></div>
+                <div class="data-item"><span class="data-label">PE(TTM)</span><div class="data-value">~47x</div></div>
+            </div>
+            <p style="margin-top:10px;font-size:13px;">
+                <strong>Serenity 判定：</strong>空穴传输材料打破进口垄断，但PE 47x 不便宜，主业增速缓慢（0.6%），钙钛矿业务占比尚小。
+            </p>
+        </div>
+
+        <!-- 京山轻机 -->
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">京山轻机（000821）— 蒸镀设备小而美</span>
+                <span class="stock-tag tag-buy">✅ Buy</span>
+            </div>
+            <div class="data-grid">
+                <div class="data-item"><span class="data-label">核心产品</span><div class="data-value">钙钛矿大幅宽线性蒸镀设备（600mm）</div></div>
+                <div class="data-item"><span class="data-label">竞争优势</span><div class="data-value green-text">解决大面积蒸镀均匀性难题</div></div>
+                <div class="data-item"><span class="data-label">市值</span><div class="data-value purple-text">~80亿（小市值，弹性大）</div></div>
+            </div>
+            <p style="margin-top:10px;font-size:13px;">
+                <strong>Serenity 判定：</strong>蒸镀设备在钙钛矿+叠层路线中不可或缺，80亿市值弹性大，是设备层中"小市值×大TAM"的代表。
+            </p>
+        </div>
+    </div>
+
+    <!-- Section 5: Asymmetry -->
+    <div class="section">
+        <h2 class="section-title">五、剩余不对称——市场尚未充分定价的方向</h2>
+        <div class="stock-card">
+            <p><strong>1️⃣ 南大环境(300864)的仁烁光能参股价值</strong> — 34亿市值，仁烁光能是Nature论文共同完成单位，市场对此认知近乎为零。<span class="cyan-text">不对称程度：⭐⭐⭐⭐⭐</span></p>
+        </div>
+        <div class="stock-card">
+            <p><strong>2️⃣ 设备层的钙钛矿业务弹性</strong> — 25GW产能规划=125-150亿设备市场，但当前设备商业绩都在低谷，钙钛矿弹性被光伏周期恐慌掩盖。<span class="cyan-text">不对称程度：⭐⭐⭐⭐</span></p>
+        </div>
+        <div class="stock-card">
+            <p><strong>3️⃣ 纳米晶材料替代传统贵金属</strong> — In₂O₃ 纳米晶替代 Au → 氧化铟需求暴增，隆华科技直接受益。但市场尚未充分认知这一材料替代的产业意义。<span class="cyan-text">不对称程度：⭐⭐⭐⭐⭐</span></p>
+        </div>
+        <div class="stock-card">
+            <p><strong>4️⃣ GW级量产良率提升</strong> — 头部企业良率已达95%+，但行业平均仍在爬坡，良率每提升1%贡献巨大。伴随良率提升，设备商的订单确定性和毛利率都会提升。<span class="cyan-text">不对称程度：⭐⭐⭐</span></p>
+        </div>
+    </div>
+
+    <!-- Section 6: Catalysts -->
+    <div class="section">
+        <h2 class="section-title">六、催化剂/先行信号</h2>
+        <ul class="catalyst-list">
+            <li><span class="catalyst-date">2026.06.16</span> <strong>Nature 论文正式发表（本次事件）</strong> — 南大环境、全产业链</li>
+            <li><span class="catalyst-date">2026年H2</span> 仁烁光能GW级产线设备招标 — 捷佳伟创、京山轻机</li>
+            <li><span class="catalyst-date">2026年Q3-Q4</span> 京东方钙钛矿GW级产线投产 — 京东方A、设备商</li>
+            <li><span class="catalyst-date">2026年</span> 协鑫光电GW线满产数据披露 — 协鑫集成、设备商</li>
+            <li><span class="catalyst-date">持续</span> 钙钛矿组件通过IEC 61215/61730 全套认证 — 全产业链</li>
+            <li><span class="catalyst-date">持续</span> 国家钙钛矿专项政策（十五五规划） — 全板块</li>
+            <li><span class="catalyst-date">持续</span> 神舟二十三号搭载钙钛矿电池太空在轨测试数据发布 — 太空光伏方向</li>
+        </ul>
+    </div>
+
+    <!-- Section 7: Red Flags -->
+    <div class="section">
+        <h2 class="section-title">七、红旗扫描（12项评估）</h2>
+        <div class="risk-grid">
+            <div class="risk-item"><span class="risk-level risk-high">高</span> <strong>技术路线不确定性</strong><br><span style="font-size:12px;color:var(--text-muted);">单结/叠层/全钙钛矿/钙钛矿-晶硅多种路线并存，设备方案可能变化</span></div>
+            <div class="risk-item"><span class="risk-level risk-high">高</span> <strong>稳定性待验证</strong><br><span style="font-size:12px;color:var(--text-muted);">大面积组件户外实证最长仅2年，晶硅25年寿命是硬标杆</span></div>
+            <div class="risk-item"><span class="risk-level risk-mid">中</span> <strong>光伏周期低谷</strong><br><span style="font-size:12px;color:var(--text-muted);">设备商2026Q1业绩大幅下滑，传统光伏业务拖累</span></div>
+            <div class="risk-item"><span class="risk-level risk-mid">中</span> <strong>估值分化严重</strong><br><span style="font-size:12px;color:var(--text-muted);">南大PE 19x vs 隆华PE 61x，市场对钙钛矿定价混乱</span></div>
+            <div class="risk-item"><span class="risk-level risk-mid">中</span> <strong>初创公司未上市</strong><br><span style="font-size:12px;color:var(--text-muted);">仁烁光能、极电光能、纤纳光电等核心企业未上市</span></div>
+            <div class="risk-item"><span class="risk-level risk-mid">中</span> <strong>金晶科技亏损</strong><br><span style="font-size:12px;color:var(--text-muted);">TCO玻璃龙头2025年净亏5.85亿，财务状况堪忧</span></div>
+        </div>
+    </div>
+
+    <!-- Section 8: Portfolio -->
+    <div class="section">
+        <h2 class="section-title">八、综合组合策略建议</h2>
+        <div class="stock-card">
+            <h3 style="margin-bottom:12px;">核心仓位（50%）——卖铲子，确定性最强</h3>
+            <p>▪ <strong class="ticker">捷佳伟创（300724）</strong> 25% — 钙钛矿整线设备最全，PE 22.7x 低估</p>
+            <p>▪ <strong class="ticker">京山轻机（000821）</strong> 25% — 蒸镀设备小而美，80亿市值弹性大</p>
+        </div>
+        <div class="stock-card" style="border-color: rgba(6,182,212,0.4);">
+            <h3 style="margin-bottom:12px;">事件驱动仓位（30%）——Nature 论文直接催化</h3>
+            <p>▪ <strong class="ticker">南大环境（300864）</strong> 30% — <strong>最小市值+最大信息不对称</strong>，仁烁光能参股价值被完全忽视</p>
+        </div>
+        <div class="stock-card">
+            <h3 style="margin-bottom:12px;">材料仓位（20%）——国产替代垄断</h3>
+            <p>▪ <strong class="ticker">隆华科技（300263）</strong> 10% — 靶材90%市占率，In₂O₃ 纳米晶路线直接受益</p>
+            <p>▪ <strong class="ticker">万润股份（002643）</strong> 10% — 空穴传输材料80-90%市占率</p>
+        </div>
+    </div>
+
+    <!-- Section 9: Honesty Gate -->
+    <div class="section">
+        <h2 class="section-title">九、诚实门——关键假设与边界</h2>
+        <div class="highlight-box">
+            <p><strong>1. 南大环境参股比例未核实：</strong>仁烁光能A+轮融资由南大环境、常熟国发创投、江苏沿海基金等联合投资，<strong>南大环境的参股比例未公开披露</strong>。若仅占极小比例（<5%），则催化效应有限。这是本分析最大的不确定性。</p>
+            <p><strong>2. 技术路线假设：</strong>本分析假设纳米晶In₂O₃路线将成为主流——但钙钛矿技术仍在快速迭代，其他路线可能后来居上。</p>
+            <p><strong>3. 估值方法限制：</strong>钙钛矿产业链多数标的的钙钛矿业务占比极低（<5%），传统PE估值基本不反映钙钛矿弹性。本分析更关注"事件催化×信息不对称"而非传统估值。</p>
+            <p><strong>4. 数据来源标注：</strong>产业链份额数据来自产业调研/券商研报/公司公告，仁烁光能融资信息来自公开报道。所有涉及"可能"、"推断"的判断已标注。</p>
+            <p><strong>5. 最大风险：</strong>如果钙钛矿大规模量产因稳定性问题推迟至2028年以后，当前所有GW级产线规划将面临产能利用率不足风险。</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>免责声明：本报告基于公开信息和产业链调研数据生成，不构成投资建议。</p>
+        <p>报告生成时间：2026-06-16 | 数据截至：2026-06-16 收盘</p>
+        <p>Powered by Serenity 投资分析引擎 · 供应链卡点逆向方法论</p>
+    </div>
+
+</div>
+</body>
+</html>

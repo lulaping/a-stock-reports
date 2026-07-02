@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>恒立液压（601100）Serenity 深度分析</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.7;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 {
+    text-align: center;
+    color: #58a6ff;
+    font-size: 26px;
+    padding: 24px 0 8px;
+    border-bottom: 2px solid #30363d;
+    margin-bottom: 16px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #8b949e;
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+  h2 {
+    color: #f0883e;
+    font-size: 19px;
+    margin: 28px 0 14px;
+    padding-left: 12px;
+    border-left: 4px solid #f0883e;
+  }
+  h3 {
+    color: #79c0ff;
+    font-size: 16px;
+    margin: 18px 0 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  th {
+    background: #21262d;
+    color: #58a6ff;
+    padding: 9px 10px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #30363d;
+    white-space: nowrap;
+  }
+  td {
+    padding: 7px 10px;
+    border: 1px solid #30363d;
+  }
+  tr:hover td { background: #1c2128; }
+  .section-box {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 18px;
+    margin: 14px 0;
+  }
+  .alert-box {
+    background: #1f1a1a;
+    border: 1px solid #da3633;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .alert-box h3 { color: #ff7b72; margin-top: 0; }
+  .info-box {
+    background: #0d1b2a;
+    border: 1px solid #1f6feb;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .highlight { color: #ff7b72; font-weight: 700; }
+  .green-text { color: #3fb950; }
+  .orange-text { color: #f0883e; }
+  .blue-text { color: #58a6ff; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 1px;
+  }
+  .badge-green { background: #238636; color: #fff; }
+  .badge-red { background: #da3633; color: #fff; }
+  .badge-yellow { background: #d29922; color: #000; }
+  .badge-blue { background: #1f6feb; color: #fff; }
+  .badge-purple { background: #8250df; color: #fff; }
+  .badge-fatal { background: #8b0000; color: #fff; }
+  .star { color: #f0883e; }
+  .star-empty { color: #30363d; }
+  .conclusion-box {
+    background: #1a1a2a;
+    border: 2px solid #58a6ff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .conclusion-box h2 { color: #58a6ff; border-left-color: #58a6ff; margin-top: 0; }
+  .divider { border: none; border-top: 1px solid #30363d; margin: 20px 0; }
+  .footer {
+    text-align: center;
+    color: #484f58;
+    font-size: 11px;
+    margin-top: 36px;
+    padding: 16px;
+    border-top: 1px solid #30363d;
+  }
+  ul { margin: 6px 0 6px 18px; }
+  li { margin: 3px 0; }
+  .verdict-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 8px 0;
+  }
+  .verdict-tag.pass { background: #238636; color: #fff; }
+  .verdict-tag.caution { background: #d29922; color: #000; }
+  .market-card {
+    display: inline-block;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 4px;
+    text-align: center;
+    min-width: 100px;
+  }
+  .market-card .name { font-size: 11px; color: #8b949e; }
+  .market-card .value { font-size: 16px; font-weight: 700; }
+  .curve-box {
+    background: #0d1b2a;
+    border: 1px solid #1f6feb;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 8px 0;
+  }
+  .curve-box h4 { color: #79c0ff; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>恒立液压（601100）Serenity 深度分析</h1>
+<p class="subtitle">分析日期：2026-06-16 | 收盘价：~¥115.18 | 市值：~1488亿 | PE(TTM)：~54x | 框架：Serenity Model 1</p>
+
+<!-- Scope Gate -->
+<h2>零、Scope Gate — 判定分析类型</h2>
+<div class="section-box">
+<table>
+  <tr><th style="width:120px;">判定维度</th><th>结论</th></tr>
+  <tr>
+    <td><strong>公司类型</strong></td>
+    <td><strong>高端液压件龙头 + 精密传动平台</strong> — 国内绝对龙头，全球前三。产品覆盖油缸、泵阀、马达、丝杠，下游横跨工程机械、农机、工业工程、人形机器人</td>
+  </tr>
+  <tr>
+    <td><strong>Serenity适用性</strong></td>
+    <td><span class="badge badge-green">适用</span> — 液压件是行走机械的"关节"，具有较高的技术壁垒和客户粘性，但不同于芯片等"绝对卡点"。更适合归类为<strong>"制造业核心资产"（模式2）</strong>而非纯卡点模式</td>
+  </tr>
+  <tr>
+    <td><strong>核心矛盾</strong></td>
+    <td><strong>卓越的基本面 vs 高估值</strong> — 公司是A股稀缺的"三次成长曲线"清晰可见的制造业龙头，2026Q1营收增速创21Q2以来新高。但PE(TTM) 54x、PB 8.3x，市场对其"人形机器人"和"丝杠放量"给予了充分的乐观定价</td>
+  </tr>
+</table>
+</div>
+
+<!-- 客观事实底座 -->
+<h2>一、客观事实底座</h2>
+
+<h3>1.1 基本数据</h3>
+<div class="section-box">
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;">
+  <div class="market-card"><div class="name">最新收盘</div><div class="value">~¥115.18</div></div>
+  <div class="market-card"><div class="name">总市值</div><div class="value">~1488亿</div></div>
+  <div class="market-card"><div class="name">PE(TTM)</div><div class="value highlight">~54x</div></div>
+  <div class="market-card"><div class="name">PB</div><div class="value highlight">~8.3x</div></div>
+  <div class="market-card"><div class="name">PS(TTM)</div><div class="value">~13.6x</div></div>
+  <div class="market-card"><div class="name">总股本</div><div class="value">13.41亿股</div></div>
+</div>
+
+<table>
+  <tr><th>财务指标</th><th>2025年报</th><th>2026Q1</th><th>同比变化</th></tr>
+  <tr><td><strong>营业收入</strong></td><td>109.41亿</td><td>32.10亿</td><td class="green-text"><strong>+32.52%</strong>（Q1增速创2021Q2以来新高）</td></tr>
+  <tr><td><strong>归母净利润</strong></td><td>27.34亿 <span class="green-text">+8.99%</span></td><td>6.52亿</td><td class="green-text">+5.59%（若加回汇兑，经营性净利同比+80%）</td></tr>
+  <tr><td><strong>扣非净利润</strong></td><td>—</td><td>5.57亿</td><td class="highlight">-18.33%（汇兑损失影响显著）</td></tr>
+  <tr><td><strong>毛利率</strong></td><td><strong>41.15%</strong>（-1.32pct）</td><td><strong>38.57%</strong></td><td class="highlight">-0.83pct（产品结构变化）</td></tr>
+  <tr><td><strong>净利率</strong></td><td>24.98%</td><td>20.31%</td><td class="highlight">-5.2pct（汇兑影响）</td></tr>
+  <tr><td><strong>资产负债率</strong></td><td>19.99%</td><td><strong>20.43%</strong></td><td class="green-text">极低负债，几乎零有息负债</td></tr>
+  <tr><td><strong>经营现金流</strong></td><td>—</td><td>5.18亿</td><td>健康</td></tr>
+  <tr><td><strong>研发投入</strong></td><td>7.05亿（占营收6.44%）</td><td>—</td><td>持续高研发投入</td></tr>
+  <tr><td><strong>每股净资产</strong></td><td>—</td><td>13.34元</td><td>每股未分配利润9.32元</td></tr>
+</table>
+</div>
+
+<h3>1.2 业务结构（2025年）</h3>
+<div class="section-box">
+<table>
+  <tr><th>业务板块</th><th>2025营收</th><th>同比</th><th>占比</th><th>毛利率</th></tr>
+  <tr><td><strong>液压油缸</strong></td><td>52.54亿</td><td class="green-text">+10.36%</td><td>48%</td><td>39.71%</td></tr>
+  <tr><td><strong>液压泵阀及马达</strong></td><td>43.26亿</td><td class="green-text"><strong>+20.72%</strong></td><td>40%</td><td><strong>48.83%</strong></td></tr>
+  <tr><td><strong>液压系统</strong></td><td>3.85亿</td><td class="green-text">+30.00%</td><td>3.5%</td><td>—</td></tr>
+  <tr><td><strong>其他（含线性驱动）</strong></td><td>~9.76亿</td><td>—</td><td>~8.5%</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>1.3 三条成长曲线</h3>
+<div class="curve-box">
+  <h4>📈 第一曲线：液压油缸 — 中期潜在收入空间 100亿</h4>
+  <ul>
+    <li><strong>挖机油缸</strong>：全球市占率~19%，若达30%+→40亿空间（5年CAGR~9.5%）</li>
+    <li><strong>非标油缸</strong>：全球市场350亿，公司份额极低→60亿空间（5年CAGR~17%）</li>
+    <li>墨西哥工厂投产→加速卡特彼勒等北美客户突破</li>
+  </ul>
+</div>
+<div class="curve-box">
+  <h4>📈 第二曲线：液压泵阀 — 中期潜在收入空间 120亿</h4>
+  <ul>
+    <li><strong>挖机泵阀</strong>：全球市场325亿，国内市占率~31%→50%+目标</li>
+    <li><strong>非标泵阀</strong>：全球市场700亿，公司几乎空白→70亿空间</li>
+    <li>中大挖泵阀市占率持续提升（2025年同比增长46%/43%）</li>
+  </ul>
+</div>
+<div class="curve-box">
+  <h4>📈 第三曲线：线性驱动器（丝杠/导轨）— 中期潜在收入空间 100亿</h4>
+  <ul>
+    <li><strong>传统场景</strong>：数控机床国产替代→~25亿空间</li>
+    <li><strong>新兴场景</strong>：人形机器人滚柱丝杠→~75亿空间</li>
+    <li>已具备年产导轨36万米、滚珠丝杠7万套产能，300+客户</li>
+    <li><strong>行星滚柱丝杠已完成送样和初步量产</strong></li>
+  </ul>
+</div>
+
+<!-- 竞争力分析 -->
+<h2>二、竞争力与护城河</h2>
+<div class="section-box">
+<table>
+  <tr><th style="width:120px;">维度</th><th>评估</th></tr>
+  <tr>
+    <td><strong>行业地位</strong></td>
+    <td><span class="badge badge-green">国内绝对龙头</span> 挖机油缸国内市占率>60%，泵阀>30%。全球角度看，油缸市占率~20%，泵阀<10%，全球化尚在早期</td>
+  </tr>
+  <tr>
+    <td><strong>技术壁垒</strong></td>
+    <td>液压件制造涉及精密铸造、热处理、超精加工、密封技术等多学科交叉，新进入者需要5-10年积累。全球具备规模化供应能力的玩家不超过5家（博世力士乐、川崎重工、恒立、伊顿等）</td>
+  </tr>
+  <tr>
+    <td><strong>客户粘性</strong></td>
+    <td>深度绑定卡特彼勒、三一重工、徐工等全球头部主机厂。主机厂的泵阀认证周期一般2-3年，一旦切入难以替换</td>
+  </tr>
+  <tr>
+    <td><strong>成本优势</strong></td>
+    <td>中国制造+规模效应，同类产品价格比外资低20-30%。同时自建铸件产能，垂直整合进一步压低成本</td>
+  </tr>
+  <tr>
+    <td><strong>平台化能力</strong></td>
+    <td>油缸→泵阀→丝杠，三次跨界均基于"精密加工"和"直线/旋转传动"的技术同源性。公司证明了极强的技术迁移能力</td>
+  </tr>
+</table>
+</div>
+
+<!-- 财务深度 -->
+<h2>三、财务深度分析</h2>
+<div class="section-box">
+<h3>3.1 历史增长轨迹</h3>
+<table>
+  <tr><th>年份</th><th>营收</th><th>增速</th><th>归母净利</th><th>增速</th><th>毛利率</th></tr>
+  <tr><td>2021</td><td>93.10亿</td><td class="green-text">+18.5%</td><td>26.94亿</td><td class="green-text">+19.5%</td><td>~45%</td></tr>
+  <tr><td>2022</td><td>85.40亿</td><td class="highlight">-8.3%</td><td>23.43亿</td><td class="highlight">-13.0%</td><td>~42%</td></tr>
+  <tr><td>2023</td><td>89.85亿</td><td class="green-text">+5.2%</td><td>24.99亿</td><td class="green-text">+6.7%</td><td>~42%</td></tr>
+  <tr><td>2024</td><td>93.90亿</td><td class="green-text">+4.5%</td><td>25.09亿</td><td class="green-text">+0.4%</td><td>~42%</td></tr>
+  <tr><td>2025</td><td>109.41亿</td><td class="green-text"><strong>+16.5%</strong></td><td>27.34亿</td><td class="green-text"><strong>+9.0%</strong></td><td>41.15%</td></tr>
+  <tr><td>2026Q1</td><td>32.10亿</td><td class="green-text"><strong>+32.5%</strong></td><td>6.52亿</td><td class="green-text">+5.6%</td><td>38.57%</td></tr>
+</table>
+<p style="margin-top: 8px; color: #8b949e; font-size: 12px;">注：2022年受工程机械行业下行周期影响，营收利润双降。2025年起进入新一轮上行周期。2012-2025年营收/净利CAGR分别为19.8%/19.3%。</p>
+</div>
+
+<div class="section-box">
+<h3>3.2 财务健康度</h3>
+<table>
+  <tr><th style="width:140px;">指标</th><th>数值</th><th>评价</th></tr>
+  <tr><td>资产负债率</td><td>20.43%</td><td><span class="badge badge-green">极低</span> 几乎零有息负债</td></tr>
+  <tr><td>货币资金</td><td>92.16亿（2025年报）</td><td><span class="badge badge-green">现金充裕</span></td></tr>
+  <tr><td>存货</td><td>21.54亿</td><td>占营收约20%，合理</td></tr>
+  <tr><td>应收账款</td><td>35.22亿</td><td>占营收约32%，偏高但可控（客户为头部主机厂）</td></tr>
+  <tr><td>经营现金流</td><td>持续为正</td><td><span class="badge badge-green">造血能力优秀</span></td></tr>
+  <tr><td>分红</td><td>10派5.6元（2025年）</td><td>分红率27.5%，持续稳定回报</td></tr>
+</table>
+</div>
+
+<!-- Serenity 框架评估 -->
+<h2>四、Serenity 框架评估</h2>
+
+<h3>4.1 卡点五问</h3>
+<div class="section-box">
+<table>
+  <tr><th style="width:30px;">#</th><th>问题</th><th>答案</th><th style="width:80px;">评分</th></tr>
+  <tr>
+    <td>①</td><td><strong>Single point of failure？</strong></td>
+    <td><strong>部分是的</strong> — 高端液压件是工程机械的"关节"，国产替代的核心环节。但全球仍有博世力士乐、川崎等替代供应商，不是唯一卡点</td>
+    <td><span class="star">★★★</span><span class="star-empty">★★</span></td>
+  </tr>
+  <tr>
+    <td>②</td><td><strong>市值 vs TAM？</strong></td>
+    <td><span class="green-text"><strong>合理</strong></span> — 招商证券估算中期潜在收入超300亿（油缸100亿+泵阀120亿+丝杠100亿）。当前1488亿对应5x PS(300亿)，对于一个40%毛利率的制造业龙头，合理</td>
+    <td><span class="star">★★★★</span><span class="star-empty">★</span></td>
+  </tr>
+  <tr>
+    <td>③</td><td><strong>Designed-in程度？</strong></td>
+    <td><span class="green-text"><strong>高</strong></span> — 泵阀认证周期2-3年，一旦切入主机厂供应链，替换成本极高。卡特彼勒和三一重工都是超过10年的深度合作伙伴</td>
+    <td><span class="star">★★★★</span><span class="star-empty">★</span></td>
+  </tr>
+  <tr>
+    <td>④</td><td><strong>放量时间？</strong></td>
+    <td><span class="green-text"><strong>明确可见</strong></span> — 三条曲线节奏清晰：油缸稳健（现在→未来3年）、泵阀高增（现在→未来5年）、丝杠放量（2026年开始贡献实质性收入）</td>
+    <td><span class="star">★★★★</span><span class="star-empty">★</span></td>
+  </tr>
+  <tr>
+    <td>⑤</td><td><strong>定价程度？</strong></td>
+    <td><span class="highlight"><strong>偏高</strong></span> — PE(TTM) 54x，对应2026E PE ~42x（24家机构均值35.1亿净利）。对于一个25-30%净利的制造业公司，估值处于历史高分位</td>
+    <td><span class="star">★★</span><span class="star-empty">★★★</span></td>
+  </tr>
+</table>
+<p style="margin-top: 10px; text-align: center;"><strong>卡点总分：17/25 → 中度卡点，但更偏向"优质复合增长"而非"单一瓶颈"</strong></p>
+</div>
+
+<h3>4.2 好卡点判据</h3>
+<div class="section-box">
+<table>
+  <tr><th>判据</th><th>判定</th><th>分析</th></tr>
+  <tr><td>垄断/寡头</td><td><span class="badge badge-yellow">部分成立</span></td><td>国内垄断（油缸60%+），全球寡头竞争（前5名占~70%）</td></tr>
+  <tr><td>市值 vs TAM</td><td><span class="badge badge-green">合理区间</span></td><td>1488亿 vs 中期潜在收入300亿+，成长空间充分</td></tr>
+  <tr><td>Designed-in</td><td><span class="badge badge-green">强</span></td><td>2-3年认证周期，一旦进入很难替换</td></tr>
+  <tr><td>定价权（毛利率）</td><td><span class="badge badge-green">较强</span></td><td>41%毛利率，泵阀板块49%，且有持续提升能力（产品结构升级）</td></tr>
+  <tr><td>资产负债表</td><td><span class="badge badge-green">极强</span></td><td>20%负债率，92亿现金，几乎没有有息负债</td></tr>
+  <tr><td>可预见性</td><td><span class="badge badge-green">强</span></td><td>三条曲线清晰，24家机构覆盖，业绩可见度高</td></tr>
+  <tr><td>人形机器人期权</td><td><span class="badge badge-blue">增量期权</span></td><td>滚柱丝杠是人形机器人核心执行部件，给予额外估值溢价</td></tr>
+</table>
+</div>
+
+<h3>4.3 诚实门 — 估值为何这么高？</h3>
+<div class="section-box">
+<table>
+  <tr><th>估值溢价来源</th><th>合理性</th><th>程度</th></tr>
+  <tr>
+    <td><strong>周期复苏溢价</strong></td>
+    <td>2026Q1营收+32.5%创21Q2以来新高，工程机械进入新一轮上行周期。但工程机械是强周期行业，市场给的溢价往往过高</td>
+    <td><span class="badge badge-yellow">部分合理</span></td>
+  </tr>
+  <tr>
+    <td><strong>丝杠/机器人期权</strong></td>
+    <td>滚柱丝杠2026年开始放量，但规模尚小。市场已按"人形机器人执行器核心供应商"定价，这部分溢价很难证伪但也很难量化</td>
+    <td><span class="badge badge-yellow">存在泡沫风险</span></td>
+  </tr>
+  <tr>
+    <td><strong>核心资产溢价</strong></td>
+    <td>A股"核心资产"标签带来的流动性溢价。恒立是外资重仓股（沪股通持股11.8%），有较强的增量资金支撑</td>
+    <td><span class="badge badge-green">合理</span></td>
+  </tr>
+  <tr>
+    <td><strong>汇兑损失压制利润</strong></td>
+    <td>2026Q1汇兑损失1.6亿，若剔除，经营性净利润同比+80%。但汇兑是双向波动，不能线性外推</td>
+    <td><span class="badge badge-green">短期错杀</span></td>
+  </tr>
+</table>
+</div>
+
+<h3>4.4 红旗扫描</h3>
+<div class="alert-box">
+<table>
+  <tr><th>红旗</th><th style="width:70px;">严重度</th><th>详情</th></tr>
+  <tr>
+    <td><strong>PE 54x，位于历史高分位</strong></td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>PE(TTM) 54x，接近历史高位（5年区间约25-65x）。即使按2026E 35.1亿利润算，PE仍达~42x。如果周期下行或机器人预期落空，估值有30%+的下行风险</td>
+  </tr>
+  <tr>
+    <td><strong>PB 8.3x，对制造业公司偏高</strong></td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>对于一家净资产收益率（ROE）约20%的制造业公司，PB 8.3x意味着市场给出了极高的"无形资产"溢价</td>
+  </tr>
+  <tr>
+    <td><strong>毛利率持续下滑趋势</strong></td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>从2021年~45%降至2026Q1 38.57%，累计下降6.4个百分点。虽然部分受产品结构影响（低毛利非标占比提升），但仍需关注</td>
+  </tr>
+  <tr>
+    <td><strong>汇兑风险敞口大</strong></td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>2025Q4汇兑损失2.4亿，2026Q1汇兑损失1.6亿。海外收入占比提升+墨西哥工厂投产，汇率波动对利润影响持续存在</td>
+  </tr>
+  <tr>
+    <td><strong>工程机械周期属性</strong></td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>虽然泵阀和非标业务正逐步降低对挖掘机的依赖，但2025年挖机相关收入仍占~50%。若国内挖机需求再次下行，业绩将承压</td>
+  </tr>
+  <tr>
+    <td><strong>墨西哥地缘风险</strong></td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>墨西哥工厂投产是全球化关键一步，但中美贸易摩擦背景下，墨西哥制造可能面临美国政策变动风险</td>
+  </tr>
+  <tr>
+    <td><strong>机器人预期过高</strong></td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>市场已按"人形机器人核心供应商"给予估值溢价。但人形机器人产业化时间表存在不确定性，若低于预期，估值将面临回调</td>
+  </tr>
+</table>
+</div>
+
+<!-- 估值分析 -->
+<h2>五、估值分析</h2>
+<div class="section-box">
+<h3>5.1 机构一致预期</h3>
+<table>
+  <tr><th>年度</th><th>预测营收（均值）</th><th>增速</th><th>预测净利（均值）</th><th>增速</th><th>对应PE</th></tr>
+  <tr><td>2026E</td><td>134.05亿</td><td class="green-text">+22.5%</td><td><strong>35.10亿</strong></td><td class="green-text">+28.4%</td><td><strong>~42x</strong></td></tr>
+  <tr><td>2027E</td><td>159.85亿</td><td class="green-text">+19.2%</td><td><strong>43.13亿</strong></td><td class="green-text">+22.9%</td><td><strong>~35x</strong></td></tr>
+  <tr><td>2028E</td><td>187.77亿</td><td class="green-text">+17.5%</td><td><strong>52.05亿</strong></td><td class="green-text">+20.7%</td><td><strong>~29x</strong></td></tr>
+</table>
+<p style="margin-top: 6px; color: #8b949e; font-size: 12px;">来源：24家机构一致预期（截至2026-06-12）。机构目标均价~139元，较当前115元有21%上行空间</p>
+
+<h3>5.2 分部估值法</h3>
+<table>
+  <tr><th>业务板块</th><th>2026E收入</th><th>合理PS</th><th>估值</th></tr>
+  <tr><td>油缸（稳健增长）</td><td>~60亿</td><td>4x</td><td>240亿</td></tr>
+  <tr><td>泵阀（高增长）</td><td>~55亿</td><td>8x</td><td>440亿</td></tr>
+  <tr><td>丝杠/线性驱动（期权）</td><td>~5-8亿</td><td>15-20x</td><td>100-150亿</td></tr>
+  <tr><td>其他</td><td>~15亿</td><td>3x</td><td>45亿</td></tr>
+  <tr style="background: #1f2a1f;"><td><strong>合计</strong></td><td><strong>~135-138亿</strong></td><td></td><td><strong>~825-875亿</strong></td></tr>
+  <tr><td colspan="3">当前市值</td><td><strong>~1488亿</strong></td></tr>
+  <tr style="background: #2a1a1a;"><td colspan="3"><strong>溢价率</strong></td><td class="highlight"><strong>~70-80%</strong></td></tr>
+</table>
+<p style="margin-top: 6px; color: #8b949e; font-size: 12px;">注：分部估值法适用于成熟业务线，对于成长性公司可能低估。当前溢价主要来自：① 周期向上弹性 ② 人形机器人期权溢价 ③ 核心资产流动性溢价</p>
+
+<h3>5.3 估值区间推演</h3>
+<table>
+  <tr><th>情景</th><th>假设</th><th>合理PE</th><th>对应市值</th><th>对应股价</th></tr>
+  <tr>
+    <td><strong>保守</strong></td>
+    <td>周期见顶，无机器人放量</td>
+    <td>25-30x</td>
+    <td>875-1050亿</td>
+    <td>65-78元（↓32%-44%）</td>
+  </tr>
+  <tr>
+    <td><strong>中性</strong></td>
+    <td>2026E净利35亿，PEG 1.2x</td>
+    <td>30-35x</td>
+    <td>1050-1225亿</td>
+    <td>78-91元（↓21%-32%）</td>
+  </tr>
+  <tr style="background: #1f2a1f;">
+    <td><strong>当前定价</strong></td>
+    <td>市场当前定价</td>
+    <td>~42x(2026E)</td>
+    <td>~1488亿</td>
+    <td>~115元</td>
+  </tr>
+  <tr>
+    <td><strong>乐观</strong></td>
+    <td>机器人放量超预期+周期持续上行</td>
+    <td>45-50x</td>
+    <td>1575-1750亿</td>
+    <td>117-131元（↑2%-14%）</td>
+  </tr>
+</table>
+</div>
+
+<!-- 综合判定 -->
+<h2>六、综合判定</h2>
+<div class="section-box">
+<table>
+  <tr><th style="width:140px;">维度</th><th>恒立液压 601100</th></tr>
+  <tr>
+    <td><strong>Serenity卡点纯度</strong></td>
+    <td><span class="star">★★★</span><span class="star-empty">★★</span> — 不是纯卡点，但具有"受限竞争+高壁垒+强粘性"三重护城河。更适合归类为<strong>制造业核心资产</strong></td>
+  </tr>
+  <tr>
+    <td><strong>最大亮点</strong></td>
+    <td>三条成长曲线清晰可见（油缸→泵阀→丝杠），全球化+机器人双轮驱动，管理层战略执行力被历史反复验证</td>
+  </tr>
+  <tr>
+    <td><strong>最弱环节</strong></td>
+    <td class="highlight">估值 — PE 54x(TTM)/42x(2026E)，PB 8.3x，位于历史高分位。对于25%净利率的制造业公司，安全边际不足</td>
+  </tr>
+  <tr>
+    <td><strong>最超预期潜力</strong></td>
+    <td class="green-text">人形机器人滚柱丝杠 — 如果产业化进度超预期，将打开全新增长维度，远期收入空间可能超过油缸+泵阀的总和</td>
+  </tr>
+  <tr>
+    <td><strong>最大风险</strong></td>
+    <td>① 工程机械周期下行 ② 机器人预期落空 ③ 汇兑持续拖累 ④ 毛利率趋势性下滑</td>
+  </tr>
+  <tr>
+    <td><strong>机构共识</strong></td>
+    <td><span class="green-text">高度一致</span> — 23家机构覆盖，18家买入/5家增持，目标均价139元（上行21%）</td>
+  </tr>
+</table>
+</div>
+
+<!-- 结论 -->
+<div class="conclusion-box">
+<h2>七、结论</h2>
+
+<div style="text-align: center; margin: 16px 0;">
+  <span class="verdict-tag caution">Serenity 模式2 — 制造业核心资产</span>
+  <p style="color: #d29922; margin-top: 8px; font-weight: 700;">好公司，但需要好价格</p>
+</div>
+
+<table>
+  <tr><th style="width:120px;">定档</th><td><strong>Serenity 模式2 — 制造业核心资产</strong>：恒立液压是中国制造业中非常稀缺的"三次成长曲线清晰+全球化空间广阔+人形机器人大期权"的复合增长型标的。其核心竞争力（技术壁垒+客户粘性+成本优势+平台迁移能力）很少被质疑。</td></tr>
+  <tr>
+    <td><strong>核心矛盾</strong></td>
+    <td>恒立液压的核心矛盾不在基本面（基本面几乎无可挑剔），而在<strong>估值</strong>。PE 54x(TTM)意味着市场已经对以下预期充分定价：① 工程机械周期持续上行 ② 泵阀全球市占率快速提升 ③ 丝杠/机器人放量。任何一项预期低于预期，都可能引发估值回归。</td>
+  </tr>
+  <tr>
+    <td><strong>什么情况下可以买？</strong></td>
+    <td>① 估值回调至PE 25-30x（对应股价70-85元），提供足够安全边际 ② 人形机器人产业出现明确的批量订单（催化的质变信号） ③ 市场系统性调整带来的错杀机会。最好的策略是<strong>等好价格</strong>，而非追高。</td>
+  </tr>
+  <tr>
+    <td><strong>什么情况下应该警惕？</strong></td>
+    <td>① 工程机械内销连续2个月同比负增长 ② 丝杠送样/量产进度连续低于预期 ③ 毛利率跌破35% ④ PE突破60x（情绪极端化信号）</td>
+  </tr>
+  <tr>
+    <td><strong>相比同行的优势</strong></td>
+    <td>A股工程机械板块中，恒立的"技术壁垒+成长确定性+机器人期权"的组合具有独特性。三一重工更偏向周期β，而恒立既有β（工程机械复苏）又有α（市占率提升+品类扩张）。</td>
+  </tr>
+</table>
+
+<div style="background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 16px; margin-top: 16px; text-align: center;">
+  <p style="color: #58a6ff; font-size: 15px; font-weight: 700; margin-bottom: 6px;">Serenity框架下的一句话总结</p>
+  <p style="color: #c9d1d9; font-size: 14px;">"恒立液压是A股制造业核心资产的标杆——三次成长曲线清晰、全球化和机器人双轮驱动、管理层执行力被反复验证。但在PE 54x的位置，市场已经把所有的好消息都定价进去了。好公司不等于好股票——尤其是在已经贵了的时候。"</p>
+</div>
+</div>
+
+<div class="footer">
+  <p>恒立液压（601100）Serenity 深度分析 | 分析日期：2026-06-16 | 框架：Serenity Model 1</p>
+  <p>免责声明：本文仅为基于Serenity投资方法论的框架性分析，不构成任何投资建议。股市有风险，投资需谨慎。</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本断供高纯红磷：新闻解读与A股标的梳理</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-secondary: #8b949e;
+  --red: #ff6b6b;
+  --green: #3fb950;
+  --gold: #d2991d;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+h1 {
+  text-align: center;
+  font-size: 1.8em;
+  padding: 30px 0 10px;
+  background: linear-gradient(135deg, #da3633, #f0883e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95em; }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card h2 {
+  font-size: 1.3em;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin: 0 2px;
+}
+.tag-red { background: rgba(218,54,51,0.2); color: #ff7b72; }
+.tag-green { background: rgba(63,185,80,0.2); color: #56d364; }
+.tag-blue { background: rgba(88,166,255,0.2); color: #79c0ff; }
+.tag-gold { background: rgba(210,153,29,0.2); color: #d2991d; }
+.tag-purple { background: rgba(188,140,255,0.2); color: #bc8cff; }
+.tag-orange { background: rgba(240,136,62,0.2); color: #f0883e; }
+
+.news-box {
+  background: rgba(218,54,51,0.08);
+  border: 2px solid rgba(218,54,51,0.4);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.news-box h3 { color: #ff7b72; font-size: 1.1em; margin-bottom: 10px; }
+.news-box p { font-size: 0.92em; line-height: 1.8; }
+
+.chain-diagram {
+  text-align: center;
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 16px 0;
+  font-size: 0.88em;
+}
+.chain-diagram .arrow { color: var(--red); font-weight: 700; margin: 0 8px; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.info-card {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.info-card .label { font-size: 0.8em; color: var(--text-secondary); }
+.info-card .val { font-size: 1.15em; font-weight: 700; margin-top: 4px; color: var(--gold); }
+
+.stock-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+}
+.stock-card.tier-1 { border-left-color: #da3633; }
+.stock-card.tier-2 { border-left-color: var(--orange); }
+.stock-card.tier-3 { border-left-color: var(--purple); }
+.stock-card.tier-4 { border-left-color: var(--text-secondary); }
+.stock-card.warn { border-left-color: var(--text-secondary); opacity: 0.75; }
+.stock-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.stock-name { font-size: 1.1em; font-weight: 700; }
+.stock-code { color: var(--text-secondary); font-size: 0.85em; }
+.stock-info { font-size: 0.88em; margin-bottom: 6px; }
+.stock-meta { font-size: 0.82em; color: var(--text-secondary); }
+
+.key-point {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 0.88em;
+}
+.key-point .bullet { color: var(--red); font-weight: 700; }
+
+.warn-box {
+  background: rgba(218,54,51,0.08);
+  border: 1px solid rgba(218,54,51,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.warn-box h4 { color: var(--red); margin-bottom: 8px; font-size: 0.95em; }
+.warn-box ul { margin-left: 20px; font-size: 0.88em; }
+.warn-box li { margin-bottom: 4px; }
+
+.analysis-box {
+  background: rgba(210,153,29,0.08);
+  border: 1px solid rgba(210,153,29,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.analysis-box h4 { color: var(--gold); margin-bottom: 8px; }
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85em;
+}
+th {
+  background: var(--bg);
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+  white-space: nowrap;
+}
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:hover td { background: rgba(255,255,255,0.02); }
+.td-up { color: var(--red); font-weight: 600; }
+.td-down { color: var(--green); font-weight: 600; }
+
+.footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>日本断供高纯红磷：新闻解读与A股标的梳理</h1>
+<p class="subtitle">日本长濑化学 & RASA工业宣布7月1日起停止向中国大陆供应高纯度红磷 | 2026年6月</p>
+
+<!-- 新闻核心 -->
+<div class="news-box">
+  <h3>📰 新闻核心</h3>
+  <p><strong>日本长濑化学（NCI）与RASA工业</strong>联合宣布：<strong>自2026年7月1日起，全面停止向中国大陆地区供应高纯度电子级红磷（6N/7N级）</strong>。两家企业合计垄断全球<strong>85%以上的7N高端产能</strong>，此举意味着中国半导体光芯片产业链最上游的"磷源"面临全面断供。</p>
+  <p style="margin-top: 8px;">背景：中国已于2026年1月6日发布公告，全面禁止两用物项（含电子级红磷、磷化铟、铟、镓、锗等）对日本军事用户出口，民用许可通过率不足20%。日本此次断供可视为<strong>反制升级</strong>。</p>
+</div>
+
+<!-- 行业背景 -->
+<div class="card">
+  <h2>🔬 行业认知：普通红磷 ≠ 电子级高纯红磷</h2>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; border: 1px solid var(--border);">
+      <strong style="color: var(--text-secondary);">工业级红磷（无关）</strong>
+      <p style="font-size: 0.85em; margin-top: 4px;">纯度＜95%，用于阻燃剂、农药、火柴原料，市价几千元/吨，产能过剩，<strong>与半导体赛道完全无关</strong>。</p>
+    </div>
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; border: 1px solid var(--red);">
+      <strong style="color: var(--red);">电子级高纯红磷（本次断供对象）</strong>
+      <p style="font-size: 0.85em; margin-top: 4px;">6N(99.9999%)和7N(99.99999%)，ppb级杂质控制，是磷化铟光芯片<strong>唯一不可替代的固态磷源</strong>。两年涨幅450%（4万→22万/吨），有价无货。</p>
+    </div>
+  </div>
+
+  <div class="chain-diagram">
+    <strong>完整产业链传导逻辑：</strong><br>
+    磷矿 <span class="arrow">→</span> 工业黄磷 <span class="arrow">→</span> <span style="color: var(--red); font-weight: 700;">高纯红磷（断供点）</span> <span class="arrow">→</span> 磷化铟衬底 <span class="arrow">→</span> 光芯片 <span class="arrow">→</span> 高速光模块 <span class="arrow">→</span> AI数据中心
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">全球7N有效产能</div>
+      <div class="val">400-450吨</div>
+    </div>
+    <div class="info-card">
+      <div class="label">日系合计占比</div>
+      <div class="val" style="color: var(--red);">85%+</div>
+    </div>
+    <div class="info-card">
+      <div class="label">国产有效7N产能</div>
+      <div class="val" style="color: var(--green);">不足40吨</div>
+    </div>
+    <div class="info-card">
+      <div class="label">高端国产化率</div>
+      <div class="val" style="color: var(--green);">＜5%</div>
+    </div>
+    <div class="info-card">
+      <div class="label">7N红磷两年涨幅</div>
+      <div class="val" style="color: var(--red);">+450%</div>
+    </div>
+    <div class="info-card">
+      <div class="label">磷化铟衬底缺口</div>
+      <div class="val" style="color: var(--red);">超70%</div>
+    </div>
+  </div>
+</div>
+
+<!-- 日企格局 -->
+<div class="card">
+  <h2>🇯🇵 断供方：日本双寡头垄断格局</h2>
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>企业</th>
+        <th>全球市占</th>
+        <th>产品等级</th>
+        <th>对华供应状态</th>
+        <th>核心特征</th>
+      </tr>
+      <tr>
+        <td><strong>日本长濑化学（NCI）</strong></td>
+        <td class="td-up">55%-60%</td>
+        <td>7N旗舰</td>
+        <td class="td-down">7月1日起停供</td>
+        <td>产能100%被住友电工等长协锁单，早已不再新增国内客户</td>
+      </tr>
+      <tr>
+        <td><strong>RASA工业</strong></td>
+        <td class="td-up">25%-30%</td>
+        <td>6N5主力</td>
+        <td class="td-down">7月1日起停供</td>
+        <td>配额制供给，对华配额逐年收缩，增量不超过10%/年</td>
+      </tr>
+      <tr>
+        <td><strong>德国巴斯夫</strong></td>
+        <td>＜5%</td>
+        <td>6N</td>
+        <td>基本不供给中国</td>
+        <td>仅少量供给欧洲本地企业，无大规模对外供货能力</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="warn-box">
+    <h4>断供的致命性</h4>
+    <ul>
+      <li>长濑化学产能<strong>100%被长协锁单</strong>，即使愿意加价采购也拿不到新增配额</li>
+      <li>RASA工业对华配额<strong>本来就在逐年收缩</strong>，此次直接清零</li>
+      <li>巴斯夫基本不供给中国，<strong>海外三大供应商全部对中国关闭</strong></li>
+      <li>7N红磷扩产周期3-5年，短期<strong>全球无任何新增产能可以填补缺口</strong></li>
+      <li>下游磷化铟衬底缺口已超70%，断供将<strong>雪上加霜</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- A股标的梳理 -->
+<div class="card">
+  <h2>📊 A股相关标的梳理（按受益层级排序）</h2>
+
+  <!-- 第一梯队 -->
+  <div style="margin-bottom: 20px;">
+    <h3 style="color: #da3633; font-size: 1em; margin-bottom: 12px;">第一梯队：核心受益，国产替代直接兑现</h3>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="tag tag-red">7N量产</span>
+        <span class="stock-name">至纯科技</span>
+        <span class="stock-code">603690.SH</span>
+        <span class="tag tag-gold">唯一绑定国产7N真量产</span>
+      </div>
+      <div class="stock-info">参股<strong>威顿晶磷13.65%</strong>，威顿晶磷是<strong>国内唯一稳定量产7N低硫高纯红磷</strong>的企业，通过SEMI认证，产品已出口德国替代日系。现有产能35吨/年（满产），规划扩至100吨。核心客户：云南锗业鑫耀、华为产业链。</div>
+      <div class="stock-meta">2025H1电子材料业务收入1.33亿（+146%），磷材料是增长引擎。7N报价1.2-1.5万/kg，比进口便宜30-40%。</div>
+    </div>
+
+    <div class="stock-card tier-1">
+      <div class="stock-header">
+        <span class="tag tag-red">6N龙头</span>
+        <span class="stock-name">兴发集团</span>
+        <span class="stock-code">600141.SH</span>
+        <span class="tag tag-gold">全产业链最强</span>
+      </div>
+      <div class="stock-info">A股唯一打通<strong>"磷矿→9N高纯黄磷→6N/7N电子级红磷"</strong>完整闭环的企业。6N产能850吨（国内市占超70%），7N送样验证中。全产业链自给，原材料成本优势最强。2026Q1营收74.52亿，净利润2.57亿。二期5.8亿扩产项目在建。</div>
+      <div class="stock-meta">7N纯度、硫杂质指标尚不及威顿晶磷，目前无法供给6英寸高端磷化铟衬底。但6N产能断层领先，中端市场绝对龙头。</div>
+    </div>
+  </div>
+
+  <!-- 第二梯队 -->
+  <div style="margin-bottom: 20px;">
+    <h3 style="color: var(--orange); font-size: 1em; margin-bottom: 12px;">第二梯队：下游磷化铟衬底，间接受益</h3>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="tag tag-orange">衬底龙头</span>
+        <span class="stock-name">云南锗业</span>
+        <span class="stock-code">002428.SZ</span>
+        <span class="tag tag-purple">华为哈勃投资</span>
+      </div>
+      <div class="stock-info">A股磷化铟衬底绝对龙头，子公司鑫耀半导体获<strong>华为哈勃投资</strong>，国内独家实现<strong>6英寸磷化铟衬底量产</strong>，市占率超80%。订单排至2027年后，直接承接1.6T光模块爆发需求。自产金属铟，原料端有保障。</div>
+      <div class="stock-meta">逻辑：进口红磷断供→国产红磷涨价→衬底厂需转向威顿/兴发采购→衬底涨价传导。衬底缺口超70%，涨价逻辑顺畅。</div>
+    </div>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="tag tag-blue">衬底相关</span>
+        <span class="stock-name">三安光电</span>
+        <span class="stock-code">600703.SH</span>
+      </div>
+      <div class="stock-info">化合物半导体龙头，布局磷化铟衬底及光芯片，产业链纵向整合。</div>
+    </div>
+
+    <div class="stock-card tier-2">
+      <div class="stock-header">
+        <span class="tag tag-blue">衬底相关</span>
+        <span class="stock-name">光智科技</span>
+        <span class="stock-code">300489.SZ</span>
+      </div>
+      <div class="stock-info">磷化铟衬底领域布局，红外光学+半导体材料双轮驱动。</div>
+    </div>
+  </div>
+
+  <!-- 第三梯队 -->
+  <div style="margin-bottom: 20px;">
+    <h3 style="color: var(--purple); font-size: 1em; margin-bottom: 12px;">第三梯队：远期技术预期，短期无业绩兑现</h3>
+
+    <div class="stock-card tier-3">
+      <div class="stock-header">
+        <span class="tag tag-purple">技术预期</span>
+        <span class="stock-name">澄星股份</span>
+        <span class="stock-code">600078.SH</span>
+      </div>
+      <div class="stock-info">黄磷龙头，可产9N高纯黄磷，技术可做7N样品。但<strong>仅小试送样、无稳定产线、无头部认证、无批量出货</strong>。远期技术预期，短期无业绩兑现。</div>
+    </div>
+
+    <div class="stock-card tier-3">
+      <div class="stock-header">
+        <span class="tag tag-purple">研发中</span>
+        <span class="stock-name">兴福电子</span>
+        <span class="stock-code">688545.SH</span>
+      </div>
+      <div class="stock-info">兴发集团子公司（持股39.93%），湿电子化学品龙头（电子级磷酸国内市占超60%）。2026Q2完成高纯红磷小试，年底推进中试。<strong>当前无红磷产能</strong>，仅为远期预期。国家大基金二期持股6.94%，SK海力士/长江存储为股东兼客户。</div>
+    </div>
+  </div>
+
+  <!-- 上游原料 -->
+  <div style="margin-bottom: 20px;">
+    <h3 style="color: var(--blue); font-size: 1em; margin-bottom: 12px;">第四梯队：上游原料（铟）及终端光模块</h3>
+
+    <div class="stock-card tier-4">
+      <div class="stock-header">
+        <span class="tag tag-blue">铟原料</span>
+        <span class="stock-name">锡业股份 / 豫光金铅 / 株冶集团</span>
+      </div>
+      <div class="stock-info">磷化铟由铟和磷按1:1构成。中国生产全球近70%铟，中国已加强对铟出口审查。锡业股份为全球铟资源龙头，豫光金铅为7N高纯铟稳定量产企业。铟与红磷同为磷化铟核心原料，铟的管制逻辑与红磷断供逻辑形成共振。</div>
+    </div>
+
+    <div class="stock-card tier-4">
+      <div class="stock-header">
+        <span class="tag tag-blue">光模块</span>
+        <span class="stock-name">中际旭创/新易盛/光迅科技</span>
+      </div>
+      <div class="stock-info">全球光模块龙头，800G/1.6T光模块核心供应商。红磷断供→磷化铟衬底紧缺→光芯片成本上升→光模块成本传导。逻辑偏间接受益（涨价传导），而非直接受益。</div>
+    </div>
+
+    <div class="stock-card tier-4">
+      <div class="stock-header">
+        <span class="tag tag-blue">光芯片</span>
+        <span class="stock-name">源杰科技/长光华芯</span>
+      </div>
+      <div class="stock-info">光芯片设计企业，磷化铟衬底为核心原材料。红磷断供将直接推高其原材料成本，短期偏利空（成本压力），中长期利好国产替代。</div>
+    </div>
+  </div>
+
+  <!-- 避雷 -->
+  <div style="margin-bottom: 20px;">
+    <h3 style="color: var(--text-secondary); font-size: 1em; margin-bottom: 12px;">避雷：被误炒但无实际关联的标的</h3>
+
+    <div class="stock-card warn">
+      <div class="stock-header">
+        <span class="tag" style="background: rgba(139,148,158,0.2); color: #8b949e;">无产能</span>
+        <span class="stock-name">云天化 / 川发龙蟒</span>
+      </div>
+      <div class="stock-info">大型磷化工企业，但<strong>完全无高纯红磷产能与技术</strong>。普通磷化工≠电子级红磷，二者工艺、资质、客户完全隔离，不可混淆。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 供需数据 -->
+<div class="card">
+  <h2>📈 供需失衡全景</h2>
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>指标</th>
+        <th>数据</th>
+        <th>趋势</th>
+      </tr>
+      <tr>
+        <td>7N红磷全球总需求</td>
+        <td>800-1000吨/年</td>
+        <td class="td-up">年增30%+</td>
+      </tr>
+      <tr>
+        <td>海外有效7N产能</td>
+        <td>400-450吨/年</td>
+        <td class="td-down">7月1日后对华归零</td>
+      </tr>
+      <tr>
+        <td>国产有效7N产能</td>
+        <td>不足40吨/年</td>
+        <td class="td-up">威顿规划扩至100吨</td>
+      </tr>
+      <tr>
+        <td>7N红磷价格（2024初→2026.6）</td>
+        <td>4万→22万/吨</td>
+        <td class="td-up">+450%</td>
+      </tr>
+      <tr>
+        <td>6N红磷价格（2024初→2026.6）</td>
+        <td>8.6万→15万/吨</td>
+        <td class="td-up">+74%</td>
+      </tr>
+      <tr>
+        <td>磷化铟衬底缺口</td>
+        <td>超70%</td>
+        <td class="td-up">订单排至2027-2028</td>
+      </tr>
+      <tr>
+        <td>6英寸InP衬底价格</td>
+        <td>1400→5000美元/片</td>
+        <td class="td-up">+257%</td>
+      </tr>
+      <tr>
+        <td>扩产周期</td>
+        <td>3-5年</td>
+        <td>2028年前无大规模新增产能</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="analysis-box">
+    <h4>断供后的供需推演</h4>
+    <p><strong>短期（7-9月）</strong>：国内磷化铟衬底厂商库存约1-2个月，断供后9月前后将出现实质性红磷短缺。威顿晶磷35吨产能满产长协锁定，新客户无法获得配额。兴发集团6N产能可部分填补中低端缺口，但7N高端仍存在巨大空白。</p>
+    <p><strong>中期（Q4-2027H1）</strong>：7N红磷现货价格可能突破30万/吨，散单有价无货。下游光芯片企业被迫接受国产替代或减产。磷化铟衬底涨价传导至光模块，AI算力建设成本上升。</p>
+    <p><strong>长期（2027-2028）</strong>：威顿晶磷扩产至100吨、兴发集团7N量产突破、拓材科技30吨产线投产，国产7N产能有望从40吨提升至200吨+，国产化率从5%提升至30%+。</p>
+  </div>
+</div>
+
+<!-- 核心逻辑 -->
+<div class="card">
+  <h2>🎯 投资逻辑总结</h2>
+
+  <div class="key-point"><span class="bullet">1.</span> <strong>最直接受益</strong>：至纯科技（参股威顿晶磷，国内唯一7N量产，35吨满产，华为长协锁定）</div>
+  <div class="key-point"><span class="bullet">2.</span> <strong>全产业链最强</strong>：兴发集团（6N国内市占超70%，磷矿→黄磷→红磷全自给，7N送样验证中）</div>
+  <div class="key-point"><span class="bullet">3.</span> <strong>下游衬底龙头</strong>：云南锗业（磷化铟衬底市占80%+，华为哈勃投资，订单排至2027年）</div>
+  <div class="key-point"><span class="bullet">4.</span> <strong>原料共振</strong>：铟（锡业股份、豫光金铅）+ 红磷双重管制，磷化铟全链条国产替代提速</div>
+
+  <div class="warn-box" style="margin-top: 16px;">
+    <h4>风险提示</h4>
+    <ul>
+      <li><strong>国产替代进度不及预期</strong>：威顿晶磷35吨产能远不能满足国内需求，兴发集团7N量产时间不确定</li>
+      <li><strong>估值透支风险</strong>：板块已提前炒作，部分标的短期涨幅过大，需警惕"利好兑现即利空"</li>
+      <li><strong>政策风险</strong>：中日贸易摩擦若缓和，断供可能取消</li>
+      <li><strong>需求风险</strong>：若AI算力投资放缓，光模块需求不及预期，红磷涨价逻辑将减弱</li>
+      <li><strong>普通磷化工≠电子级红磷</strong>：切勿将云天化、川发龙蟒等普通磷化工企业当作高纯红磷标的炒作</li>
+      <li><strong>澄星股份/兴福电子短期无业绩</strong>：仅技术预期，无批量出货，追高风险极大</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <p>风险提示：本文基于公开信息进行产业逻辑梳理，不构成任何投资建议。股市有风险，投资需谨慎。</p>
+  <p>数据来源：财联社、东方财富、SEMI、Yole、上海有色网、上市公司公告及互动平台</p>
+  <p>生成时间：2026年6月24日</p>
+</div>
+
+</div>
+</body>
+</html>

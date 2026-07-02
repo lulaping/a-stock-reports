@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月23日 A股午评</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-secondary: #8b949e;
+  --red: #ff6b6b;
+  --green: #3fb950;
+  --gold: #d2991d;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+h1 {
+  text-align: center;
+  font-size: 2em;
+  padding: 30px 0 10px;
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95em; }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card h2 {
+  font-size: 1.3em;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.index-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.index-card .name { color: var(--text-secondary); font-size: 0.85em; margin-bottom: 4px; }
+.index-card .value { font-size: 1.4em; font-weight: 700; }
+.index-card .change { font-size: 1em; font-weight: 600; }
+.up { color: var(--red); }
+.down { color: var(--green); }
+
+.market-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.stat-item {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.stat-item .label { font-size: 0.78em; color: var(--text-secondary); }
+.stat-item .val { font-size: 1.1em; font-weight: 700; color: var(--gold); margin-top: 3px; }
+
+.sector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.sector-section h3 { font-size: 0.95em; margin-bottom: 10px; }
+.sector-section .hot h3 { color: var(--red); }
+.sector-section .cold h3 { color: var(--green); }
+.sector-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(48,54,61,0.4);
+  font-size: 0.88em;
+}
+.sector-item:last-child { border-bottom: none; }
+.sector-up { color: var(--red); font-weight: 600; }
+.sector-down { color: var(--green); font-weight: 600; }
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.flow-section h3 { color: var(--text-secondary); margin-bottom: 10px; font-size: 0.9em; }
+.flow-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(48,54,61,0.4);
+  font-size: 0.88em;
+}
+.flow-item:last-child { border-bottom: none; }
+.flow-in { color: var(--red); }
+.flow-out { color: var(--green); }
+
+.analysis-box {
+  background: rgba(210,153,29,0.08);
+  border: 1px solid rgba(210,153,29,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.analysis-box h4 { color: var(--gold); margin-bottom: 8px; }
+.analysis-box p { font-size: 0.9em; margin-bottom: 4px; }
+
+.warn-box {
+  background: rgba(218,54,51,0.08);
+  border: 1px solid rgba(218,54,51,0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.warn-box h4 { color: var(--red); margin-bottom: 8px; }
+.warn-box ul { margin-left: 20px; font-size: 0.88em; }
+.warn-box li { margin-bottom: 4px; }
+
+.afternoon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.afternoon-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+.afternoon-card h3 { font-size: 1em; margin-bottom: 10px; }
+.afternoon-card ul { margin-left: 20px; font-size: 0.88em; }
+.afternoon-card li { margin-bottom: 4px; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin: 0 3px;
+}
+.tag-red { background: rgba(218,54,51,0.2); color: #ff7b72; }
+.tag-green { background: rgba(63,185,80,0.2); color: #56d364; }
+.tag-blue { background: rgba(88,166,255,0.2); color: #79c0ff; }
+.tag-gold { background: rgba(210,153,29,0.2); color: #d2991d; }
+
+.footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .sector-grid, .flow-grid { grid-template-columns: 1fr; }
+  .afternoon-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>2026年6月23日 A股午评</h1>
+<p class="subtitle">午间收盘 11:30 | 数据来源：财联社、东方财富、新浪财经 | 2026年6月23日 星期二</p>
+
+<!-- 指数概览 -->
+<div class="card">
+  <h2>📊 指数概览：指数齐跌，但个股涨多跌少</h2>
+  <div class="index-grid">
+    <div class="index-card">
+      <div class="name">上证指数</div>
+      <div class="value">4147.55</div>
+      <div class="change down">-0.37%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">深证成指</div>
+      <div class="value">16072.11</div>
+      <div class="change down">-1.83%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">创业板指</div>
+      <div class="value">4260.49</div>
+      <div class="change down">-2.27%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">科创50</div>
+      <div class="value">1940.65</div>
+      <div class="change down">-0.42%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">沪深300</div>
+      <div class="value">4982.18</div>
+      <div class="change down">-1.53%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">上证50</div>
+      <div class="value">2968.50</div>
+      <div class="change down">-1.47%</div>
+    </div>
+  </div>
+
+  <div class="market-stats">
+    <div class="stat-item">
+      <div class="label">半日成交额</div>
+      <div class="val">约2.32万亿</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">较上日缩量</div>
+      <div class="val" style="color:var(--green);">-1870亿</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">上涨家数</div>
+      <div class="val" style="color:var(--red);">3386</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">下跌家数</div>
+      <div class="val" style="color:var(--green);">2027</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">涨停</div>
+      <div class="val">101</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">跌停</div>
+      <div class="val" style="color:var(--green);">17</div>
+    </div>
+  </div>
+
+  <div class="analysis-box">
+    <h4>盘面核心特征：指数跌但赚钱效应不差</h4>
+    <p>在指数全面飘绿的表象之下，<strong>上涨个股3386家，远超下跌的2027家</strong>，涨停101家，涨跌中位数明显为正。黄白线大幅分化，中小盘股走势显著强于大盘权重。这并非系统性风险释放，而是典型的<strong>"权重股获利回吐 + 中小盘股补涨"</strong>的结构性行情。</p>
+    <p>昨日暴涨的大金融（券商+6.84%）、有色金属（+4.67%）等权重板块今日集中回调，拖累指数下行；而前期被压制的医药、中小市值方向则逆势走强。</p>
+  </div>
+</div>
+
+<!-- 板块表现 -->
+<div class="card">
+  <h2>🔥 板块表现：医药全面爆发，有色贵金属暴跌</h2>
+  <div class="sector-grid">
+    <div class="sector-section hot">
+      <h3>领涨板块 TOP5</h3>
+      <div class="sector-item"><span>氨纶</span><span class="sector-up">+5.06%</span></div>
+      <div class="sector-item"><span>其他生物制品</span><span class="sector-up">+4.64%</span></div>
+      <div class="sector-item"><span>辅料</span><span class="sector-up">+4.45%</span></div>
+      <div class="sector-item"><span>原料药</span><span class="sector-up">+4.45%</span></div>
+      <div class="sector-item"><span>化学制药</span><span class="sector-up">+3.99%</span></div>
+    </div>
+    <div class="sector-section cold">
+      <h3>领跌板块 TOP5</h3>
+      <div class="sector-item"><span>白银</span><span class="sector-down">-8.73%</span></div>
+      <div class="sector-item"><span>钼</span><span class="sector-down">-8.08%</span></div>
+      <div class="sector-item"><span>贵金属</span><span class="sector-down">-7.96%</span></div>
+      <div class="sector-item"><span>黄金</span><span class="sector-down">-7.73%</span></div>
+      <div class="sector-item"><span>稀土</span><span class="sector-down">-7.56%</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 16px;">
+    <h3 style="color: var(--gold); margin-bottom: 10px; font-size: 0.95em;">三大核心看点</h3>
+
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; margin-bottom: 10px; border: 1px solid var(--border);">
+      <strong style="color: var(--red);">1. 医药板块全面爆发，涨停潮</strong>
+      <p style="font-size: 0.88em; margin-top: 4px;">申万医药生物指数半日大涨超2%，<span class="tag tag-red">新华制药</span><span class="tag tag-red">海南海药</span><span class="tag tag-red">亨迪药业</span><span class="tag tag-red">特一药业</span>等十余只涨停，<span class="tag tag-purple">皓元医药20cm涨停</span>。逻辑：①市场调整期防御属性凸显 ②医药估值处于近五年35%分位 ③创新药定价机制松绑 ④中报业绩预期向好。主力资金半日净流入逾35亿。</p>
+    </div>
+
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; margin-bottom: 10px; border: 1px solid var(--border);">
+      <strong style="color: var(--blue);">2. 芯片探底回升，功率半导体逆势突围</strong>
+      <p style="font-size: 0.88em; margin-top: 4px;">半导体指数早盘一度跌1.5%，随后快速拉升翻红。<span class="tag tag-purple">国民技术20cm涨停</span><span class="tag tag-red">上海贝岭封板</span><span class="tag tag-red">新洁能</span>触及涨停。AI算力需求扩散+国产替代逻辑深化，功率半导体、MCU方向成为板块内部结构性亮点。</p>
+    </div>
+
+    <div style="background: var(--bg); border-radius: 8px; padding: 14px; border: 1px solid var(--border);">
+      <strong style="color: var(--green);">3. 有色/贵金属全线暴跌，昨日最强今日最惨</strong>
+      <p style="font-size: 0.88em; margin-top: 4px;">昨日领涨的有色金属今天全面崩塌：白银-8.73%、钼-8.08%、贵金属-7.96%、稀土-7.56%。<span class="tag tag-green">中稀有色跌停</span><span class="tag tag-green">光华科技跌停</span>。典型的"一日游"行情——昨日爆量涨停，今日直接闷杀，追高风险极大。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 资金流向 -->
+<div class="card">
+  <h2>💵 资金流向：高低切换加速</h2>
+  <div class="flow-grid">
+    <div class="flow-section">
+      <h3>主力净流入板块</h3>
+      <div class="flow-item"><span>非银金融</span><span class="flow-in">（主力加仓）</span></div>
+      <div class="flow-item"><span>医药生物</span><span class="flow-in">净流入逾35亿</span></div>
+      <div class="flow-item"><span>银行</span><span class="flow-in">（防御配置）</span></div>
+    </div>
+    <div class="flow-section">
+      <h3>主力净流出板块</h3>
+      <div class="flow-item"><span>有色金属</span><span class="flow-out">（获利兑现）</span></div>
+      <div class="flow-item"><span>电力设备</span><span class="flow-out">（高位止盈）</span></div>
+      <div class="flow-item"><span>MLCC</span><span class="flow-out">（前期强势回调）</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 16px;">
+    <h3 style="color: var(--text-secondary); margin-bottom: 10px; font-size: 0.9em;">个股资金 TOP3</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div style="font-size: 0.8em; color: var(--red); margin-bottom: 6px;">净流入</div>
+        <div class="flow-item"><span>大族激光</span><span class="flow-in">+26.89亿</span></div>
+        <div class="flow-item"><span>长飞光纤</span><span class="flow-in">+25.09亿</span></div>
+        <div class="flow-item"><span>东方财富</span><span class="flow-in">+21.22亿</span></div>
+      </div>
+      <div>
+        <div style="font-size: 0.8em; color: var(--green); margin-bottom: 6px;">净流出</div>
+        <div class="flow-item"><span>工业富联</span><span class="flow-out">-21.14亿</span></div>
+        <div class="flow-item"><span>胜宏科技</span><span class="flow-out">-20.55亿</span></div>
+        <div class="flow-item"><span>兆易创新</span><span class="flow-out">-19.66亿</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 技术面 -->
+<div class="card">
+  <h2>📐 技术面：短期转弱，关注关键支撑</h2>
+  <div class="market-stats" style="margin-bottom: 16px;">
+    <div class="stat-item">
+      <div class="label">沪指MACD</div>
+      <div class="val" style="color:var(--gold);">红柱收窄</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">沪指KDJ</div>
+      <div class="val" style="color:var(--green);">高位死叉向下</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">创业板均线</div>
+      <div class="val" style="color:var(--green);">短期空头排列</div>
+    </div>
+    <div class="stat-item">
+      <div class="label">沪指均线</div>
+      <div class="val" style="color:var(--gold);">5日/10日交汇处</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <h4>关键点位</h4>
+    <ul>
+      <li><strong>上证支撑</strong>：4140（今日盘中低点承接）→ 4120（昨日突破位）→ 4080（强支撑）</li>
+      <li><strong>上证压力</strong>：4160（昨日收盘）→ 4200（短期目标）</li>
+      <li><strong>创业板指</strong>：4200整数关口获支撑，若午后无法收复4300，则可能下探4150</li>
+      <li><strong>深证成指</strong>：16000点心理关口面临考验</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 午后展望 -->
+<div class="card">
+  <h2>🔮 午后关键观察点</h2>
+  <div class="afternoon-grid">
+    <div class="afternoon-card">
+      <h3 style="color: var(--red);">需要关注</h3>
+      <ul>
+        <li><strong>医药能否持续领涨</strong>：半日涨停潮后，午后若出现炸板潮则说明资金一日游</li>
+        <li><strong>有色是否继续杀跌</strong>：白银-8.73%已属极端波动，午后若继续放量下行，可能引发恐慌</li>
+        <li><strong>创业板上证4300</strong>：若午后无法收复，短期空头排列将确认</li>
+        <li><strong>证券板块能否稳住</strong>：昨日暴涨后今日回调，若午后继续走弱，指数承压加重</li>
+        <li><strong>跌停是否扩散</strong>：当前17家跌停，若午后扩大至30+，情绪将恶化</li>
+      </ul>
+    </div>
+    <div class="afternoon-card">
+      <h3 style="color: var(--green);">相对乐观的信号</h3>
+      <ul>
+        <li><strong>上涨家数维持3300+</strong>：指数跌但赚钱效应尚可，不是系统性风险</li>
+        <li><strong>芯片探底回升</strong>：科技主线没有崩，只是内部切换</li>
+        <li><strong>半日缩量1870亿</strong>：缩量调整是健康的，说明不是恐慌性抛售</li>
+        <li><strong>涨停101家</strong>：短线热钱未退场，只是在换方向</li>
+        <li><strong>大族激光/长飞光纤获大额流入</strong>：激光、光纤方向有资金持续布局</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="analysis-box" style="margin-top: 16px;">
+    <h4>午后预判</h4>
+    <p>预计午后维持<strong>窄幅震荡</strong>格局。上证在4140-4160区间整理，深成指围绕16000点博弈。医药板块大概率维持强势，但涨停股可能出现分化。有色/贵金属午后跌幅可能收窄（已属极端超卖），但反转概率低。证券板块午后表现决定指数能否企稳——若证券午后拉升，指数有望收窄跌幅；若证券继续走弱，则指数承压。</p>
+    <p>全天成交额预计在<strong>3.2-3.5万亿</strong>区间，较昨日缩量但仍属活跃水平。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>风险提示：本文基于公开市场数据进行午间分析，不构成任何投资建议。</p>
+  <p>股市有风险，投资需谨慎。数据来源：财联社、东方财富、新浪财经、36氪</p>
+  <p>生成时间：2026年6月23日 午间</p>
+</div>
+
+</div>
+</body>
+</html>

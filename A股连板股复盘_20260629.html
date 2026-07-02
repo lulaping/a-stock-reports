@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月29日 A股连板股复盘</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #1a1a3e, #0d0d2b); border-radius: 16px; margin-bottom: 24px; border: 1px solid #2a2a4a; }
+.header h1 { font-size: 28px; color: #fff; margin-bottom: 8px; }
+.header .date { font-size: 14px; color: #888; }
+.header .subtitle { font-size: 14px; color: #ff6666; margin-top: 6px; }
+.section { background: #16162a; border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2a4a; }
+.section h2 { font-size: 20px; color: #ffd700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #2a2a4a; display: flex; align-items: center; gap: 8px; }
+.section h2 .icon { font-size: 22px; }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.summary-card { background: #1e1e3a; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #2a2a4a; }
+.summary-card .label { font-size: 12px; color: #888; margin-bottom: 6px; }
+.summary-card .number { font-size: 24px; font-weight: bold; }
+.summary-card .number.red { color: #ff4444; }
+.summary-card .number.green { color: #00cc66; }
+.summary-card .number.gold { color: #ffd700; }
+.summary-card .sub { font-size: 12px; color: #aaa; margin-top: 4px; }
+.ladder-card { background: #1e1e3a; border-radius: 12px; padding: 20px; margin-bottom: 14px; border: 1px solid #2a2a4a; border-left: 4px solid #ffd700; }
+.ladder-card.l3 { border-left-color: #ff9800; }
+.ladder-card.l2 { border-left-color: #2196f3; }
+.ladder-card.break { border-left-color: #f44336; background: rgba(244,67,54,0.05); }
+.ladder-header { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.ladder-badge { padding: 3px 10px; border-radius: 4px; font-size: 13px; font-weight: bold; color: #fff; }
+.badge-7 { background: #9c27b0; }
+.badge-4 { background: #ff9800; }
+.badge-3 { background: #2196f3; }
+.badge-2 { background: #4caf50; }
+.badge-break { background: #f44336; }
+.stock-name { font-size: 17px; font-weight: bold; color: #fff; }
+.stock-code { font-size: 13px; color: #999; }
+.stock-info { font-size: 14px; color: #ccc; line-height: 1.8; margin-bottom: 8px; }
+.stock-meta { font-size: 12px; color: #888; padding: 8px; background: rgba(255,215,0,0.05); border-radius: 6px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+.tag-red { background: rgba(255,68,68,0.2); color: #ff6666; }
+.tag-green { background: rgba(0,204,102,0.15); color: #33cc77; }
+.tag-gold { background: rgba(255,215,0,0.2); color: #ffd700; }
+.tag-blue { background: rgba(66,133,244,0.2); color: #6699ff; }
+.tag-purple { background: rgba(156,39,176,0.2); color: #ce93d8; }
+.tag-cyan { background: rgba(0,188,212,0.2); color: #4dd0e1; }
+.analysis-block { background: #1e1e3a; border-radius: 10px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #ffd700; }
+.analysis-block h3 { font-size: 16px; color: #ffd700; margin-bottom: 10px; }
+.analysis-block p { font-size: 14px; color: #ccc; line-height: 1.8; }
+.analysis-block ul { margin: 8px 0 0 20px; color: #bbb; }
+.analysis-block ul li { margin-bottom: 6px; line-height: 1.7; }
+.emotion-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.emotion-bar .label { font-size: 13px; color: #888; min-width: 80px; }
+.emotion-bar .bar-track { flex: 1; height: 8px; background: #2a2a4a; border-radius: 4px; overflow: hidden; }
+.emotion-bar .bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+.emotion-bar .bar-fill.hot { background: linear-gradient(90deg, #ff6b6b, #ff4444); }
+.emotion-bar .bar-fill.warm { background: linear-gradient(90deg, #ffd700, #ff9800); }
+.emotion-bar .bar-fill.cold { background: linear-gradient(90deg, #4fc3f7, #2196f3); }
+.emotion-bar .bar-fill.frozen { background: linear-gradient(90deg, #81d4fa, #4fc3f7); }
+.emotion-bar .value { font-size: 13px; color: #fff; min-width: 40px; text-align: right; }
+.heatmap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.heat-tag { padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; }
+.heat-tag.lead { background: rgba(255,68,68,0.2); color: #ff6666; border: 1px solid rgba(255,68,68,0.4); }
+.heat-tag.fall { background: rgba(0,204,102,0.15); color: #33cc77; border: 1px solid rgba(0,204,102,0.3); }
+.heat-tag.neutral { background: rgba(255,215,0,0.15); color: #ffd700; border: 1px solid rgba(255,215,0,0.3); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #1e1e3a; color: #ffd700; padding: 10px 12px; text-align: left; border-bottom: 2px solid #2a2a4a; }
+td { padding: 10px 12px; border-bottom: 1px solid #2a2a4a; color: #ccc; }
+tr:hover td { background: rgba(255,215,0,0.03); }
+.outlook { background: linear-gradient(135deg, #1a1a3e, #1a2a1a); border-radius: 12px; padding: 24px; margin-top: 16px; border: 1px solid #2a4a2a; }
+.outlook h3 { font-size: 18px; color: #ffd700; margin-bottom: 12px; }
+.outlook p { color: #ccc; font-size: 14px; line-height: 1.8; }
+.disclaimer { font-size: 11px; color: #666; text-align: center; margin-top: 30px; padding: 16px; border-top: 1px solid #2a2a4a; }
+.tier-title { font-size: 17px; color: #fff; margin: 20px 0 12px; padding: 10px 16px; background: #1a1a3e; border-radius: 8px; border-left: 4px solid #ffd700; }
+.tier-title.break { border-left-color: #f44336; color: #ff6666; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>2026年6月29日 A股连板股复盘</h1>
+    <div class="date">北京时间 · 涨停106只 · 跌停37只 · 封板率74%</div>
+    <div class="subtitle">连板股晋级率12.5% ｜ 高位断板潮 ｜ 连板高度骤降至3板</div>
+</div>
+
+<!-- 核心数据 -->
+<div class="section">
+    <h2><span class="icon">📊</span>连板核心数据</h2>
+    <div class="summary-grid">
+        <div class="summary-card">
+            <div class="label">涨停总数</div>
+            <div class="number red">106只</div>
+            <div class="sub">不含ST/退市</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">连板股总数</div>
+            <div class="number gold">9只</div>
+            <div class="sub">较前日+1只</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">连板晋级率</div>
+            <div class="number" style="color:#ff9800;">12.5%</div>
+            <div class="sub">8只→1只晋级</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">封板未遂</div>
+            <div class="number" style="color:#ff9800;">38只</div>
+            <div class="sub">封板率74%</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">最高连板</div>
+            <div class="number gold">3板</div>
+            <div class="sub">威派格7天4板</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">跌停家数</div>
+            <div class="number green">37只</div>
+            <div class="sub">高位股批量跌停</div>
+        </div>
+    </div>
+</div>
+
+<!-- 市场情绪 -->
+<div class="section">
+    <h2><span class="icon">🌡️</span>市场情绪温度计</h2>
+    <div class="emotion-bar">
+        <span class="label">连板情绪</span>
+        <div class="bar-track"><div class="bar-fill frozen" style="width:18%;"></div></div>
+        <span class="value">冰点</span>
+    </div>
+    <div class="emotion-bar">
+        <span class="label">封板质量</span>
+        <div class="bar-track"><div class="bar-fill cold" style="width:55%;"></div></div>
+        <span class="value">中等</span>
+    </div>
+    <div class="emotion-bar">
+        <span class="label">赚钱效应</span>
+        <div class="bar-track"><div class="bar-fill cold" style="width:35%;"></div></div>
+        <span class="value">分化</span>
+    </div>
+    <div class="emotion-bar">
+        <span class="label">板块轮动</span>
+        <div class="bar-track"><div class="bar-fill warm" style="width:75%;"></div></div>
+        <span class="value">剧烈</span>
+    </div>
+    <p style="margin-top:16px; font-size:14px; color:#ccc; line-height:1.8;">
+        <strong>情绪解读：</strong>今日连板情绪降至冰点。上一交易日8只连板股仅1只成功晋级（晋级率12.5%），兴业科技（6连板）和宏柏新材（4连板）双双断板，超声电子一度跌停。高位连板股断板潮意味着短线投机资金大幅撤退，但与此同时，涨停家数仍达106只，说明资金并非离场，而是从"连板接力"模式切换至"板块首板"模式——医药板块超60只首板涨停、半导体超20只涨停，新生力量充沛。
+    </p>
+</div>
+
+<!-- 连板梯队 -->
+<div class="section">
+    <h2><span class="icon">🏗️</span>连板梯队</h2>
+
+    <div class="tier-title">高位连板（3板及以上）</div>
+
+    <div class="ladder-card l3">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-3">7天4板</span>
+            <span class="stock-name">威派格</span>
+            <span class="stock-code">603956.SH</span>
+            <span class="tag tag-cyan">液冷概念</span>
+            <span class="tag tag-gold">市场最高标</span>
+        </div>
+        <div class="stock-info">液冷概念股，7天4板成为今日市场最高连板标的。在算力硬件全面退潮的背景下，液冷作为AI基础设施中相对独立的细分方向，仍有资金坚守。但连板节奏不连续（非连续一字板），显示资金分歧较大。</div>
+        <div class="stock-meta">明日关注：能否突破5板高度成为情绪风向标。若继续晋级，可能带动液冷/散热方向补涨；若断板，则连板高度将进一步压缩。</div>
+    </div>
+
+    <div class="ladder-card l3">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-3">4天3板</span>
+            <span class="stock-name">柏诚股份</span>
+            <span class="stock-code">601133.SH</span>
+            <span class="tag tag-red">芯片/洁净室</span>
+            <span class="tag tag-blue">半导体核心</span>
+        </div>
+        <div class="stock-info">芯片产业链洁净室概念，4天3板。洁净室是半导体制造的关键基础设施，受益于全球半导体资本开支扩张和国内晶圆厂建设加速。今日半导体板块午后爆发，柏诚股份作为洁净室龙头获得资金持续追捧。</div>
+        <div class="stock-meta">半导体内核方向，逻辑硬、产业趋势明确，但4天3板后短线获利盘积累，需关注换手情况和封板强度。</div>
+    </div>
+
+    <div class="ladder-card l3">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-3">4天3板</span>
+            <span class="stock-name">彤程新材</span>
+            <span class="stock-code">603650.SH</span>
+            <span class="tag tag-red">半导体材料</span>
+            <span class="tag tag-blue">光刻胶</span>
+        </div>
+        <div class="stock-info">半导体材料（光刻胶）概念，4天3板。半导体材料涨价预期持续发酵，6N级六氟化钨涨幅超190%，电子特气、光刻胶等材料环节全面受益。彤程新材作为光刻胶核心标的，在半导体板块全面爆发中持续走强。</div>
+        <div class="stock-meta">半导体材料方向持续性取决于涨价逻辑能否兑现，中报业绩将是关键验证节点。</div>
+    </div>
+
+    <div class="ladder-card l3">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-3">5天3板</span>
+            <span class="stock-name">海南海药</span>
+            <span class="stock-code">000566.SZ</span>
+            <span class="tag tag-red">医药/创新药</span>
+            <span class="tag tag-purple">医药龙头</span>
+        </div>
+        <div class="stock-info">医药板块连板龙头，5天3板。受益于医保"双目录"政策催化，医药板块今日爆发涨停潮（超60股涨停），海南海药作为板块内连板高度最高的标的，具有较强的辨识度和市场号召力。</div>
+        <div class="stock-meta">医药板块今日大量首板涨停，明日面临分化考验。海南海药能否继续晋级将决定医药方向的持续性。</div>
+    </div>
+
+    <div class="ladder-card l3">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-3">6天3板</span>
+            <span class="stock-name">雅克科技</span>
+            <span class="stock-code">002409.SZ</span>
+            <span class="tag tag-red">半导体材料</span>
+            <span class="tag tag-blue">电子特气</span>
+        </div>
+        <div class="stock-info">半导体材料（电子特气/前驱体）概念，6天3板。雅克科技在电子特气、前驱体材料领域布局深厚，直接受益于半导体材料涨价周期。6N级六氟化钨价格暴涨为公司带来显著业绩弹性预期。</div>
+        <div class="stock-meta">趋势型标的，连板节奏不连续，适合趋势跟踪而非追板操作。</div>
+    </div>
+
+    <div class="tier-title">2连板梯队（7只，均为半导体方向）</div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>股票</th>
+                    <th>代码</th>
+                    <th>连板数</th>
+                    <th>所属方向</th>
+                    <th>核心逻辑</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>圣晖集成</strong></td>
+                    <td>603163.SH</td>
+                    <td>2连板</td>
+                    <td><span class="tag tag-red">洁净室</span></td>
+                    <td>半导体洁净室工程，与柏诚股份同方向，受益晶圆厂建设</td>
+                </tr>
+                <tr>
+                    <td><strong>奔图科技</strong></td>
+                    <td>--</td>
+                    <td>2连板</td>
+                    <td><span class="tag tag-red">半导体</span></td>
+                    <td>半导体产业链相关</td>
+                </tr>
+                <tr>
+                    <td><strong>新亚强</strong></td>
+                    <td>603155.SH</td>
+                    <td>2连板</td>
+                    <td><span class="tag tag-red">半导体材料</span></td>
+                    <td>电子级化学品，受益半导体材料涨价</td>
+                </tr>
+                <tr>
+                    <td><strong>兴业股份</strong></td>
+                    <td>--</td>
+                    <td>2连板</td>
+                    <td><span class="tag tag-red">半导体材料</span></td>
+                    <td>半导体封装材料</td>
+                </tr>
+                <tr>
+                    <td><strong>有研硅</strong></td>
+                    <td>688432.SH</td>
+                    <td>2连板</td>
+                    <td><span class="tag tag-red">硅片</span></td>
+                    <td>半导体硅片，20CM涨停，科创50权重</td>
+                </tr>
+                <tr>
+                    <td><strong>金海通</strong></td>
+                    <td>--</td>
+                    <td>2连板</td>
+                    <td><span class="tag tag-red">半导体设备</span></td>
+                    <td>半导体测试分选设备</td>
+                </tr>
+                <tr>
+                    <td><strong>红板科技</strong></td>
+                    <td>--</td>
+                    <td>3天2板</td>
+                    <td><span class="tag tag-red">半导体</span></td>
+                    <td>半导体产业链</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="margin-top:14px; font-size:14px; color:#ccc; line-height:1.8;">
+        <strong>关键特征：</strong>今日9只连板股中，<strong>7只为半导体概念股</strong>（占比78%），高位科技股向半导体方向"缩圈"趋势明确。光通信、PCB方向的连板股全部断板或跌停，半导体成为高位科技股最后的聚集地。
+    </p>
+
+    <div class="tier-title break">断板重灾区（前连板股）</div>
+
+    <div class="ladder-card break">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-break">断板</span>
+            <span class="stock-name">兴业科技</span>
+            <span class="stock-code">（前6连板）</span>
+            <span class="tag tag-red">电子皮肤</span>
+            <span class="tag tag-gold">前市场最高标</span>
+        </div>
+        <div class="stock-info">人形机器人电子皮肤概念，此前从3板一字到6板一字，是连板梯队中封板质量最高的个股。今日断板，意味着机器人方向的高标旗帜倒下，短线情绪遭到重创。一字板开板后往往伴随巨量分歧，后续走势需观察换手后能否企稳。</div>
+        <div class="stock-meta">断板性质：一字板开板断板，杀伤力较大。关注明日是否有反包机会。</div>
+    </div>
+
+    <div class="ladder-card break">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-break">断板</span>
+            <span class="stock-name">宏柏新材</span>
+            <span class="stock-code">（前4连板）</span>
+            <span class="tag tag-green">化工/新材料</span>
+        </div>
+        <div class="stock-info">前4连板化工股，今日断板。化工/新材料方向在半导体材料爆发中未能延续强势，资金被半导体设备和医药板块虹吸。</div>
+    </div>
+
+    <div class="ladder-card break">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-break">一度跌停</span>
+            <span class="stock-name">超声电子</span>
+            <span class="stock-code">（前3连板）</span>
+            <span class="tag tag-green">PCB/电子</span>
+        </div>
+        <div class="stock-info">PCB概念前3连板股，今日一度跌停。PCB板块今日领跌全市场，宏和科技、鹏鼎控股、宝鼎科技等多股跌停，PCB概念主力资金净流出160亿元。超声电子作为前连板股，在板块全面退潮中首当其冲。</div>
+    </div>
+
+    <div class="ladder-card break">
+        <div class="ladder-header">
+            <span class="ladder-badge badge-break">2连板断板</span>
+            <span class="stock-name">祥鑫科技 / 天娱数科</span>
+            <span class="stock-code">（前2连板）</span>
+        </div>
+        <div class="stock-info">前交易日2连板的祥鑫科技、天娱数科今日均未能晋级。连板梯队断层严重，从6板→4板→3板→2板的完整梯队结构被打散，市场仅剩3板高度，短线追板风险收益比极差。</div>
+    </div>
+</div>
+
+<!-- 涨停板块分布 -->
+<div class="section">
+    <h2><span class="icon">🗺️</span>涨停板块分布</h2>
+    <div class="analysis-block">
+        <h3>医药生物（超60只涨停）—— 政策催化+超跌反弹</h3>
+        <div class="heatmap" style="margin-bottom:12px;">
+            <span class="heat-tag lead">创新药</span>
+            <span class="heat-tag lead">CRO/CMO</span>
+            <span class="heat-tag lead">减肥药</span>
+            <span class="heat-tag lead">重组蛋白</span>
+            <span class="heat-tag lead">生物制品</span>
+        </div>
+        <p>核心驱动：国家医保局公示2026年目录初审药品名单，557+54个药品通过双目录初审。代表性涨停：广生堂（20CM）、万邦医药（20CM）、三生国健（20CM）、舒泰神（20CM）、百奥赛图（20CM）、荣昌生物（20CM）、海南海药（5天3板）、凯莱英（4天2板）、北交所新赣江（30CM）。</p>
+        <p style="margin-top:8px;">特征：<strong>大量首板涨停</strong>，连板结构薄弱。明日面临严重分化，关注海南海药、凯莱英能否连板，以及板块是否出现2连板标的。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>半导体（超20只涨停）—— 产业链多点开花</h3>
+        <div class="heatmap" style="margin-bottom:12px;">
+            <span class="heat-tag lead">半导体设备</span>
+            <span class="heat-tag lead">半导体材料</span>
+            <span class="heat-tag lead">硅片</span>
+            <span class="heat-tag lead">洁净室</span>
+            <span class="heat-tag lead">电子特气</span>
+            <span class="heat-tag lead">功率半导体</span>
+        </div>
+        <p>核心驱动：半导体材料涨价（6N六氟化钨涨幅190%）、三星10年1000万亿韩元投资计划、国产替代加速。代表性涨停：有研硅（20CM/2连板）、银河微电（20CM）、华海清科、中巨芯、神工股份、聚和材料、金海通、柏诚股份（4天3板）、彤程新材（4天3板）。</p>
+        <p style="margin-top:8px;">特征：<strong>连板结构最完整</strong>，9只连板股中占7只。2连板梯队全部为半导体方向，具备板块性持续走强的基础。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>大消费 / 其他方向</h3>
+        <div class="heatmap" style="margin-bottom:12px;">
+            <span class="heat-tag neutral">白酒</span>
+            <span class="heat-tag neutral">食品饮料</span>
+            <span class="heat-tag neutral">可控核聚变</span>
+            <span class="heat-tag neutral">猪肉/养殖</span>
+            <span class="heat-tag neutral">游戏</span>
+        </div>
+        <p>代表性涨停：东鹏饮料、佳禾食品、百润股份、宁波中百（3天2板）、巨星农牧。大消费方向以防御属性为主，连板强度有限，更适合趋势配置而非短线接力。</p>
+    </div>
+</div>
+
+<!-- 核心分析 -->
+<div class="section">
+    <h2><span class="icon">🔍</span>连板生态深度分析</h2>
+    <div class="analysis-block">
+        <h3>一、连板高度断崖式下跌</h3>
+        <p>从6月26日的6连板（兴业科技）→ 今日骤降至3板（威派格7天4板），连板高度在短短2个交易日内腰斩。兴业科技（6板）、宏柏新材（4板）、超声电子（3板）全部断板，连板梯队从"6-4-3-2"完整结构被打散为"3-2"的扁平结构。这是6月以来连板生态最差的一天。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>二、科技内部"缩圈"：从算力硬件到半导体</h3>
+        <p>前期连板股集中在CPO、光模块、PCB等算力硬件方向，今日这些方向全面退潮——宏和科技、贤丰控股、旭光电子、宿迁联盛等一批人气股跌停。资金从算力硬件撤退后，并未完全离开科技赛道，而是向半导体设备、材料、洁净室方向"缩圈"。2连板7只全部为半导体股，说明半导体已成为高位科技股最后的堡垒。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>三、医药涨停潮：首板为主，连板待验证</h3>
+        <p>医药板块超60只涨停，但绝大多数为首板，连板结构薄弱。这种"政策催化→板块集体爆发→次日分化"的模式在A股屡见不鲜。明日医药板块能否出现批量2连板，是判断该方向持续性的核心指标。海南海药（5天3板）和凯莱英（4天2板）是板块连板旗帜。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>四、短线生态切换：从"接力"到"首板"</h3>
+        <p>连板股晋级率仅12.5%，但涨停总数仍达106只，说明资金并未离场，而是改变了操作模式——高位连板股断板潮意味着追板资金大面积亏损，短线资金转向低位的板块首板博弈（医药、半导体）。这种模式切换通常发生在市场情绪退潮期，连板接力风险收益比恶化，资金更倾向于"打首板、次日冲高卖"的快进快出策略。</p>
+    </div>
+</div>
+
+<!-- 后市展望 -->
+<div class="outlook">
+    <h3>明日连板博弈展望</h3>
+    <p><strong>1. 最高标争夺：</strong>威派格（7天4板）是当前市场唯一3板以上标的，明日能否晋级5板（按交易日算）成为情绪风向标。若晋级，可能带动液冷方向补涨；若断板，连板高度将被压缩至3板以下，市场进入"无高标"状态。</p>
+    <p style="margin-top:10px;"><strong>2. 半导体2进3：</strong>7只半导体2连板股明日面临2进3淘汰赛。圣晖集成、有研硅、彤程新材辨识度最高，晋级概率相对较大。但需注意：半导体板块今日爆发后，明日存在获利盘兑现压力，2进3的成功率取决于板块整体能否持续走强。</p>
+    <p style="margin-top:10px;"><strong>3. 医药1进2：</strong>医药板块超60只首板，明日必然大幅分化。关注海南海药能否继续晋级、以及是否出现批量2连板标的。若医药板块出现3只以上2连板，则该方向持续性可期；若仅海南海药一枝独秀，则大概率是政策催化下的一日游行情。</p>
+    <p style="margin-top:10px;"><strong>4. 断板修复：</strong>兴业科技（前6连板）一字板开板断板，若明日出现反包，则短线情绪有望修复；若继续大跌，则确认高位股退潮趋势，连板生态将进一步恶化。</p>
+    <p style="margin-top:10px;"><strong>5. 策略建议：</strong>当前连板生态处于退潮期，追板风险收益比极差。建议：①减少高位连板接力，回避3板以上追涨；②关注半导体2进3的晋级机会，但需控制仓位；③医药板块等待分歧后再判断持续性，不宜首日追涨；④断板反包模式可小仓位博弈，但需严格止损。</p>
+</div>
+
+<div class="disclaimer">
+    免责声明：本文仅基于公开市场数据进行客观整理与分享，不构成任何证券投资建议。市场有风险，投资需谨慎。数据来源：沪深交易所、财联社、东方财富、同花顺。<br>
+    生成时间：2026年6月29日 北京时间
+</div>
+
+</div>
+</body>
+</html>

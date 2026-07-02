@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>688432 有研硅 — Serenity 分析</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #1a1a2e; line-height: 1.7; padding: 20px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .header { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: #fff; padding: 32px; border-radius: 16px; margin-bottom: 24px; }
+  .header h1 { font-size: 26px; font-weight: 700; }
+  .header .sub { font-size: 13px; opacity: 0.6; margin-top: 6px; }
+  .nav { text-align: right; margin-bottom: 12px; }
+  .nav a { color: #302b63; font-size: 13px; text-decoration: none; }
+  .nav a:hover { text-decoration: underline; }
+  .section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .section h2 { font-size: 22px; font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #302b63; color: #302b63; }
+  .section h3 { font-size: 17px; font-weight: 600; margin: 18px 0 10px; color: #444; }
+  .section h4 { font-size: 15px; font-weight: 600; margin: 14px 0 6px; color: #555; }
+  .section p { margin-bottom: 10px; font-size: 14.5px; }
+  .conclusion-box { background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-left: 4px solid #302b63; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+  .conclusion-box strong { color: #302b63; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e9ecef; }
+  th { background: #f8f9fa; font-weight: 600; color: #495057; }
+  tr:hover { background: #f8f9fa; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 12px 0; }
+  .card { background: #f8f9fa; border-radius: 10px; padding: 18px; border: 1px solid #e9ecef; }
+  .card h4 { margin: 0 0 8px; font-size: 15px; color: #302b63; }
+  .card p { font-size: 13.5px; margin: 0; color: #555; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 4px; }
+  .tag-buy { background: #d4edda; color: #155724; }
+  .tag-hold { background: #fff3cd; color: #856404; }
+  .tag-sell { background: #f8d7da; color: #721c24; }
+  .tag-warn { background: #fff3cd; color: #856404; }
+  .tag-info { background: #d1ecf1; color: #0c5460; }
+  .signal { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; padding: 3px 10px; border-radius: 4px; }
+  .signal-green { background: #d4edda; color: #155724; }
+  .signal-yellow { background: #fff3cd; color: #856404; }
+  .signal-red { background: #f8d7da; color: #721c24; }
+  .alert-box { background: #fff8f8; border: 1px solid #f5c6cb; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .alert-box h4 { color: #721c24; margin: 0 0 6px; }
+  .alert-box p { color: #721c24; font-size: 14px; margin: 0; }
+  .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
+  .stock-code { font-size: 14px; color: #666; font-weight: 400; }
+  .policy-s1 { background: #d4edda; color: #155724; padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+  @media (max-width: 640px) { .section { padding: 20px 16px; } .header { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav"><a href="serenity_index.html">← 返回目录</a></div>
+  <div class="header">
+    <h1>688432 有研硅 <span class="stock-code">SH · 科创板</span></h1>
+    <div class="sub">报告日期：2026-06-17 · 6/15涨停+19.62%报¥25.12 · 总市值~¥314亿</div>
+  </div>
+
+<div class="section">
+  <div class="conclusion-box">
+    <p><strong>客观框架：</strong> Bear ¥18（仅8英寸硅片主业）/ Base ¥28（硅片+DGT并表）/ Bull ¥40（涨价+晶隆+12英寸放量） → 当前¥25.12处于Base附近，Bull有+59%空间，<strong>不过翻倍门槛</strong></p>
+    <p><strong>Serenity 视角：</strong> <span class="tag tag-buy">Buy（谨慎）</span> — 区熔硅国内唯一（军工卡点）、刻蚀硅全球第二（设备耗材卡点），两个真卡点叠加硅片行业涨价周期。但实控人日本籍+日资控股构成独特红旗，PE 150x已提前price in大量预期。<strong>这是"卡点+周期"而非"纯卡点"标的。</strong></p>
+  </div>
+
+  <h3>L0 - 客观事实底座</h3>
+  <table>
+    <tr><th>指标</th><th>2025全年</th><th>2026Q1</th><th>解读</th></tr>
+    <tr><td>营收</td><td>¥10.05亿（+0.93%）</td><td>¥3.14亿（<strong>+18.04%</strong>）</td><td>营收拐点确认，Q1加速</td></tr>
+    <tr><td>归母净利</td><td>¥2.09亿（-10.14%）</td><td>¥5,018万（-1.24%）</td><td>降幅收窄，Q4单季+39%已拐点</td></tr>
+    <tr><td>毛利率</td><td>36.72%</td><td>31.58%</td><td>高毛利特征，Q1季节性回落</td></tr>
+    <tr><td>净利率</td><td>24.47%</td><td>15.98%</td><td>高附加值，远优于同业</td></tr>
+    <tr><td>资产负债率</td><td>10.91%</td><td>10.91%</td><td><strong>极低杠杆，零财务风险</strong></td></tr>
+    <tr><td>研发投入</td><td>¥1.12亿</td><td>—</td><td>研发强度 11.14%，行业领先</td></tr>
+    <tr><td>应收账款</td><td colspan="2">应收/利润≈139%</td><td>偏高但可控</td></tr>
+    <tr><td>EPS</td><td>¥0.17</td><td>¥0.04</td><td>稳定</td></tr>
+  </table>
+  <p style="font-size:13px;color:#888;">数据来源：公司2025年报/2026一季报。总市值~¥314亿，PE(TTM) 150.53x，PB ~7x。机构一致预期2026E净利¥2.6亿。</p>
+  <p>营收仅10亿但净利2亿、净利率24%，是典型的<strong>小而美高附加值</strong>半导体材料公司。2025年利润下滑主因是行业周期低谷+研发投入加大+股权激励费用，但Q4单季利润+39%已确认拐点。2026Q1营收+18%确认加速。</p>
+
+  <div class="alert-box">
+    <h4>⚠️ 股权结构·独特风险</h4>
+    <p><strong>控股股东：株式会社RS Technologies</strong>（日本上市公司，持股26.16%）｜<strong>实际控制人：方永义（日本籍）</strong>，通过RST+有研艾斯合计控制59.19%｜央企参股：中国有研科技集团（21.73%）</p>
+    <p>中日合资基因：既是半导体国产替代核心标的，又是日资控股企业——在国产替代叙事中存在天然悖论。</p>
+  </div>
+
+  <h3>业务四层架构 — "材料+部件"双轮驱动</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h4>① 8英寸硅抛光片</h4>
+      <p>月产能<b>25万片</b>，稼动率>95%。重掺占比60-65%，客户包括士兰微/华润微/斯达半导。行业涨价直接受益，预计月底前涨价10-15%。</p>
+      <span class="tag tag-info">成熟期·量价齐升</span>
+    </div>
+    <div class="card">
+      <h4>② 区熔硅单晶</h4>
+      <p><b>国内唯一</b>8英寸量产，高端市占率<b>>65%</b>。13N超高纯硅，用于航天军工/高压IGBT/核电。毛利率~45%，更换供应商需3-5年认证。</p>
+      <span class="tag tag-buy">军工卡点·不可替代</span>
+    </div>
+    <div class="card">
+      <h4>③ 刻蚀硅材料+部件</h4>
+      <p>全球市占率<b>16%排名第二</b>，国内第一。毛利率<b>52.23%</b>。DGT（2026年1月并表）打通硅单晶→刻蚀部件全链条，直供台积电/东京电子/美光。</p>
+      <span class="tag tag-buy">高毛利卡点·并表增厚</span>
+    </div>
+    <div class="card">
+      <h4>④ 12英寸硅片（参股）</h4>
+      <p>山东有研艾斯<b>15万片/月</b>，规划→30万片。轻掺通过<b>长江存储</b>认证，重掺/超低氧已批量交付。Q1收入同比+62%，出货33万片。</p>
+      <span class="tag tag-warn">成长期权·不并表</span>
+    </div>
+  </div>
+
+  <h3>三重并购成长路径</h3>
+  <table>
+    <tr><th>项目</th><th>状态</th><th>对价</th><th>利润贡献预期</th></tr>
+    <tr><td>日本DGT 70%股权</td><td><span class="tag tag-buy">✅ 2026年1月已完成</span></td><td>¥5,847万</td><td>2026年¥3,000-3,500万；2027年¥6,000-7,000万</td></tr>
+    <tr><td>安徽晶隆半导体60%</td><td><span class="tag tag-warn">⏳ 6月25日股东会表决</span></td><td>¥4.51亿</td><td>8英寸车规外延45万片/月+SiC外延，2027年起贡献</td></tr>
+    <tr><td>包头1000吨硅单晶项目</td><td><span class="tag tag-info">🔧 2027年底投产</span></td><td>¥4亿</td><td>自供硅棒降本15-25%，2029年满产贡献¥5,000-6,000万</td></tr>
+  </table>
+
+  <h3>Serenity 卡点五连判</h3>
+  <table>
+    <tr><th>判据</th><th>判定</th><th>详情</th></tr>
+    <tr><td>1. Single Point of Failure？</td><td><span class="signal signal-green">🟢 区熔硅+刻蚀部件</span></td><td>区熔硅国内唯一8英寸量产（军工航天不可替代）；DGT刻蚀部件0.3-0.7μm微孔加工国内空白。8英寸硅片/12英寸硅片非卡点</td></tr>
+    <tr><td>2. 市值 vs TAM 不对称？</td><td><span class="signal signal-yellow">⚠️ 部分不对称</span></td><td>市值314亿 vs 区熔TAM ~30亿 + 刻蚀耗材全球TAM ~500亿。单一赛道偏小，但多赛道叠加有效</td></tr>
+    <tr><td>3. Designed-in 程度？</td><td><span class="signal signal-green">🟢 极强</span></td><td>区熔硅军工列装（更换需3-5年认证）；DGT直供台积电/美光/东京电子十余年；8英寸深度绑定功率半导体客户</td></tr>
+    <tr><td>4. 认证/放量时间？</td><td><span class="signal signal-green">🟢 当下-中期</span></td><td>硅片涨价本月落地；DGT已并表；晶隆Q3交割；12英寸认证通过；包头2027底</td></tr>
+    <tr><td>5. 表层被定价程度？</td><td><span class="signal signal-yellow">⚠️ 偏贵但未离谱</span></td><td>PE 150x。若2027年利润4.5亿→forward PE 70x；2028年6-7亿→45-52x。涨价周期中并非不可达到</td></tr>
+  </table>
+
+  <h3>红旗扫描（12项）</h3>
+  <table>
+    <tr><th>红旗</th><th>状态</th><th>判定</th></tr>
+    <tr><td><strong>实控人日本籍+日资控股</strong></td><td>RS Technologies控股26.16%，方永义日本籍</td><td><span class="tag tag-sell">🔴 独特红旗：地缘政治风险</span></td></tr>
+    <tr><td>大股东质押>50%</td><td>未触发</td><td><span class="tag tag-buy">✅</span></td></tr>
+    <tr><td>资产负债表toxic</td><td>负债率10.91%，货币资金充裕</td><td><span class="tag tag-buy">✅ 极健康</span></td></tr>
+    <tr><td>单一客户集中度>50%</td><td>前五大客户分散</td><td><span class="tag tag-buy">✅</span></td></tr>
+    <tr><td>技术太远/科学项目</td><td>12英寸/包头项目2027-2029</td><td><span class="tag tag-warn">⚠️ 远期</span></td></tr>
+    <tr><td>商誉/净资产>50%</td><td>DGT并购产生商誉</td><td>[未核实]</td></tr>
+    <tr><td>海外核心技术依赖</td><td>日本DGT技术、部分设备进口</td><td><span class="tag tag-warn">⚠️ 有但可控</span></td></tr>
+    <tr><td>无限ATM/增发稀释</td><td>未触发</td><td><span class="tag tag-buy">✅</span></td></tr>
+    <tr><td>政府补助/净利润>30%</td><td>需核实</td><td>[未核实]</td></tr>
+    <tr><td>纯软件/SaaS</td><td>不适用</td><td><span class="tag tag-buy">✅</span></td></tr>
+    <tr><td>零收入纯炒作</td><td>不适用（10亿营收）</td><td><span class="tag tag-buy">✅</span></td></tr>
+    <tr><td>政策依赖风险</td><td>半导体国产替代政策受益</td><td><span class="tag tag-info">✅ 正面</span></td></tr>
+  </table>
+
+  <h3>估值</h3>
+  <table>
+    <tr><th>估值方法</th><th>结果</th></tr>
+    <tr><td>PE(TTM)</td><td>150.53x（行业半导体材料中位95x）</td></tr>
+    <tr><td>2026E PE（一致预期2.6亿+DGT 0.3亿=2.9亿）</td><td>108x</td></tr>
+    <tr><td>2027E PE（硅片涨价+30%+晶隆并表+DGT爬坡，乐观4.5亿）</td><td>70x</td></tr>
+    <tr><td>2028E PE（包头+12英寸+全链条，乐观6-7亿）</td><td>45-52x</td></tr>
+    <tr><td>PB</td><td>~7x（偏高但半导体材料行业合理）</td></tr>
+  </table>
+
+  <h3>行业对标</h3>
+  <table>
+    <tr><th>标的</th><th>PE</th><th>净利率</th><th>核心定位</th></tr>
+    <tr><td><strong>有研硅 688432</strong></td><td><strong>150x</strong></td><td><strong>24.5%（最优）</strong></td><td>硅片+区熔+刻蚀材料+部件，最全</td></tr>
+    <tr><td>沪硅产业 688126</td><td>亏损</td><td>亏损</td><td>12英寸硅片龙头，体量最大</td></tr>
+    <tr><td>立昂微 605358</td><td>200x+</td><td>~5%</td><td>重掺硅片龙头，涨价弹性最大</td></tr>
+    <tr><td>神工股份 688233</td><td>120x</td><td>~15%</td><td>刻蚀硅材料，直接竞对</td></tr>
+  </table>
+
+  <h3>催化剂时点</h3>
+  <div class="card-grid">
+    <div class="card"><h4>近期（2026年6月）</h4><p>硅片涨价月底前落地（10-15%）；6月25日股东会表决晶隆收购；DGT并表后首个完整季度财报</p></div>
+    <div class="card"><h4>中期（2026H2-2027）</h4><p>晶隆Q3并表贡献；12英寸硅片扩产至30万片/月；硅片涨价在财报中体现</p></div>
+    <div class="card"><h4>远期（2027-2028+）</h4><p>包头1000吨硅单晶投产；12英寸放量；全链条协同效应释放；利润6-7亿</p></div>
+  </div>
+
+  <h3>先行信号</h3>
+  <table>
+    <tr><th>日期</th><th>信号</th></tr>
+    <tr><td>6/15</td><td>涨停+19.62%，成交额18.29亿，明显放量</td></tr>
+    <tr><td>6月初</td><td>机构调研：订单饱满，产能稼动率高位</td></tr>
+    <tr><td>5月-6月</td><td>胜高/环球晶圆涨幅60-148%，A股硅片板块联动</td></tr>
+    <tr><td>6/11</td><td>中信证券：把握6月硅片核心交易节点，板块行情加速</td></tr>
+    <tr><td>6/1</td><td>山东有研艾斯12英寸轻掺通过长江存储认证</td></tr>
+    <tr><td>6月中</td><td>立昂微涨价10-15%落地，有研硅月底前跟进</td></tr>
+  </table>
+
+  <h3>Serenity 综合判定</h3>
+  <div class="conclusion-box" style="border-left-color: #1a7a2e;">
+    <p><strong>这是A股半导体材料中最接近Serenity"卡点"定义的标的之一。</strong></p>
+    <p>1. <strong>区熔硅国内唯一</strong> — 军工航天不可替代，这是真卡点</p>
+    <p>2. <strong>刻蚀硅全球第二+DGT全链条</strong> — 台积电/东京电子/美光直接供应商，0.3-0.7μm微孔加工国内空白</p>
+    <p>3. <strong>硅片涨价周期启动</strong> — 立昂微已涨10-15%，有研硅月底前跟进，弹性大</p>
+    <p>4. <strong>净利率24.5%行业最优</strong> — 比沪硅产业（亏损）和立昂微（~5%）高出一个量级</p>
+    <p>5. <strong>负债率11%极健康</strong> — 无财务风险，可以支撑三重并购</p>
+    <p style="color:#721c24;margin-top:12px;"><strong>但是：实控人日本籍+日资控股是致命伤。</strong>在国产替代叙事中，一个日资控股的"国产替代核心标的"存在天然矛盾。如果你相信"技术无国界"且地缘政治不会极端恶化，这个标的有卡点+周期双击；如果你担心脱钩升级，日资背景是硬伤。</p>
+  </div>
+
+  <h3>优势 vs 风险</h3>
+  <table>
+    <tr><th>优势</th><th>风险</th></tr>
+    <tr><td>区熔硅国内唯一，军工航天卡点</td><td><strong>实控人日本籍+日资控股→地缘政治风险</strong></td></tr>
+    <tr><td>刻蚀硅全球第二，DGT打通全链条</td><td>PE 150x，已提前price in大量利好</td></tr>
+    <tr><td>净利率24%，盈利能力行业最优</td><td>营收仅10亿，体量小，单一赛道TAM偏小</td></tr>
+    <tr><td>硅片涨价周期启动，涨价弹性释放</td><td>12英寸硅片在参股公司，不并表</td></tr>
+    <tr><td>晶隆收购+包头项目，成长路径清晰</td><td>晶隆收购尚未完成（6月25日股东会）</td></tr>
+    <tr><td>负债率11%，资产负债表极健康</td><td>应收账款/利润139%，偏高</td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  <p>Powered by Serenity Investment Analysis Engine · Trae IDE</p>
+  <p>以上分析仅供研究参考，不构成投资建议</p>
+</div>
+</div>
+</body>
+</html>

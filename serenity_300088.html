@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>300088 长信科技 — Serenity 分析</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #1a1a2e; line-height: 1.7; padding: 20px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .header { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: #fff; padding: 32px; border-radius: 16px; margin-bottom: 24px; }
+  .header h1 { font-size: 26px; font-weight: 700; }
+  .header .sub { font-size: 13px; opacity: 0.6; margin-top: 6px; }
+  .nav { text-align: right; margin-bottom: 12px; }
+  .nav a { color: #302b63; font-size: 13px; text-decoration: none; }
+  .nav a:hover { text-decoration: underline; }
+  .section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .section h2 { font-size: 22px; font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #302b63; color: #302b63; }
+  .section h3 { font-size: 17px; font-weight: 600; margin: 18px 0 10px; color: #444; }
+  .section p { margin-bottom: 10px; font-size: 14.5px; }
+  .conclusion-box { background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-left: 4px solid #302b63; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+  .conclusion-box strong { color: #302b63; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e9ecef; }
+  th { background: #f8f9fa; font-weight: 600; color: #495057; }
+  tr:hover { background: #f8f9fa; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 12px 0; }
+  .card { background: #f8f9fa; border-radius: 10px; padding: 18px; border: 1px solid #e9ecef; }
+  .card h4 { margin: 0 0 8px; font-size: 15px; color: #302b63; }
+  .card p { font-size: 13.5px; margin: 0; color: #555; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 4px; }
+  .tag-buy { background: #d4edda; color: #155724; }
+  .tag-hold { background: #fff3cd; color: #856404; }
+  .tag-sell { background: #f8d7da; color: #721c24; }
+  .tag-warn { background: #fff3cd; color: #856404; }
+  .tag-info { background: #d1ecf1; color: #0c5460; }
+  .signal { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; padding: 3px 10px; border-radius: 4px; }
+  .signal-green { background: #d4edda; color: #155724; }
+  .signal-yellow { background: #fff3cd; color: #856404; }
+  .signal-red { background: #f8d7da; color: #721c24; }
+  .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
+  .stock-code { font-size: 14px; color: #666; font-weight: 400; }
+  @media (max-width: 640px) { .section { padding: 20px 16px; } .header { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav"><a href="serenity_index.html">← 返回目录</a></div>
+  <div class="header">
+    <h1>300088 长信科技 <span class="stock-code">SZ</span></h1>
+    <div class="sub">报告日期：2026-06-17 · 当日涨停+19.98%报¥10.57</div>
+  </div>
+
+<div class="section">
+  <div class="conclusion-box" style="border-left-color: #721c24;">
+    <p><strong>客观框架：</strong> Bear ¥5.5 / Base ¥7.5 / Bull ¥10.5（当前 ¥10.57 已达 Bull 上限，<strong>不过翻倍门槛</strong>）</p>
+    <p><strong>Serenity 视角：</strong> <span class="tag tag-sell">Hold → Sell</span> — 五面红旗命中（大股东质押52.9%→硬否决），PE 153x 透支四重叙事（车载+UTG+TGV+算力），低毛利代工本质未变，算力30亿投入属"国资豪赌"而非产业卡点。</p>
+  </div>
+
+  <h3>L0 - 客观事实底座</h3>
+  <table>
+    <tr><th>指标</th><th>2025全年</th><th>2026Q1</th><th>解读</th></tr>
+    <tr><td>营收</td><td>¥115.73亿（+4.66%）</td><td>¥24.64亿（-11.78%）</td><td>营收百亿级但Q1加速下滑</td></tr>
+    <tr><td>归母净利</td><td>¥2.04亿（-42.94%）</td><td>¥0.48亿（-39.88%）</td><td>利润持续暴跌，净利率仅2%</td></tr>
+    <tr><td>毛利率</td><td>10.76%</td><td>9.46%</td><td>低毛利代工特征，持续恶化</td></tr>
+    <tr><td>ROE</td><td>2.36%</td><td>0.55%</td><td>极低资本回报率</td></tr>
+    <tr><td>经营现金流</td><td>+¥7.99亿（扭正）</td><td>+¥1.00亿（-54%）</td><td>改善但Q1再度恶化</td></tr>
+    <tr><td>资产负债率</td><td>51.48%</td><td>50.43%</td><td>中等偏高</td></tr>
+    <tr><td>应收账款</td><td colspan="2">¥32.24亿（应收/利润≈1583%）</td><td>利润含金量极低</td></tr>
+    <tr><td>短期借款</td><td colspan="2">¥29.42亿</td><td>有息负债率22.81%，资金链紧绷</td></tr>
+    <tr><td>EPS</td><td>¥0.08</td><td>¥0.02</td><td>同比-46.67%/-40.43%</td></tr>
+  </table>
+  <p style="font-size:13px;color:#888;">数据来源：公司2025年报/2026一季报。股价¥10.57（6/17盘中），总市值~¥264亿，PE(TTM) 153.66x，PB 3.00x。机构目标价¥6.44。</p>
+
+  <h3>业务五层拼图</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h4>① 车载触显模组</h4>
+      <p>全球市占<b>32%，全球第一</b>。特斯拉65%份额，比亚迪/理想/蔚来核心供应商。56英寸超大曲面屏国内独家量产。但行业价格战加剧，增收不增利。</p>
+      <span class="tag tag-info">成熟期·低毛利</span>
+    </div>
+    <div class="card">
+      <h4>② UTG超薄折叠玻璃</h4>
+      <p>国内市占<b>58%，国内唯一全链条量产</b>。良率85%（行业均值65%），华为45-70%份额，OPPO折叠独家。单机价值80-150元，高毛利。</p>
+      <span class="tag tag-buy">成长期·核心壁垒</span>
+    </div>
+    <div class="card">
+      <h4>③ ITO导电玻璃+减薄</h4>
+      <p>全球减薄市占<b>50%</b>，中国大陆<b>唯一获苹果认证</b>减薄供应商。全球中小尺寸ITO龙头，提供稳定现金流但毛利率偏低。</p>
+      <span class="tag tag-info">成熟期·基本盘</span>
+    </div>
+    <div class="card">
+      <h4>④ TGV玻璃基板</h4>
+      <p>中试线阶段，送样华为/京东方/群创/沐曦。全制程十步自研闭环，群创唯一TGV供应商（台积电Tier2），2026年底小批量，2027规模化。</p>
+      <span class="tag tag-warn">导入期·0营收</span>
+    </div>
+    <div class="card">
+      <h4>⑤ 算力租赁</h4>
+      <p>子公司长信智算<b>30亿</b>采购B系列服务器，已签联通2.62亿5年合同。2026年目标2个万卡集群，预计收入>10亿。青海算力中心6月底交付。</p>
+      <span class="tag tag-warn">烧钱期·财务承压</span>
+    </div>
+  </div>
+
+  <h3>Serenity 卡点五连判</h3>
+  <table>
+    <tr><th>判据</th><th>判定</th><th>详情</th></tr>
+    <tr><td>1. Single Point of Failure？</td><td><span class="signal signal-yellow">半卡点</span></td><td>车载全球第一但非垄断（天马22%、京东方18%）；UTG国内唯一全链条但凯盛已起步；TGV/算力均非卡点</td></tr>
+    <tr><td>2. 市值 vs TAM 不对称？</td><td><span class="signal signal-red">不对称太远</span></td><td>市值264亿 vs 年利润2亿。TGV远期TAM 2030年全球505亿美元但国产化率<5%，长信尚未量产</td></tr>
+    <tr><td>3. Designed-in 程度？</td><td><span class="signal signal-green">车载/UTG强</span></td><td>车载绑定特斯拉/比亚迪，UTG绑定华为/OPPO。TGV仅送样未定点，算力初步designed-in</td></tr>
+    <tr><td>4. 认证/放量时间？</td><td><span class="signal signal-yellow">至少1-2年</span></td><td>TGV 2026底小批量→2027规模化；算力2026H2开始贡献。传统主业利润持续下滑，业绩真空期至2027</td></tr>
+    <tr><td>5. 表层被定价程度？</td><td><span class="signal signal-red">过度定价</span></td><td>PE 153x，远超行业中位95x。机构目标价¥6.44，当前¥10.57溢价64%。四重叙事已全部price in</td></tr>
+  </table>
+
+  <h3>红旗扫描（12项）</h3>
+  <table>
+    <tr><th>红旗</th><th>状态</th><th>判定</th></tr>
+    <tr><td>大股东质押>50%</td><td>新疆润丰质押52.9%</td><td><span class="tag tag-sell">🔴 硬否决</span></td></tr>
+    <tr><td>资产负债表toxic</td><td>短期借款29.42亿，有息负债率22.81%</td><td><span class="tag tag-warn">⚠️ 降级</span></td></tr>
+    <tr><td>技术太远/科学项目</td><td>TGV量产2027+，算力回收期5年+</td><td><span class="tag tag-warn">⚠️ 降级</span></td></tr>
+    <tr><td>海外核心技术依赖</td><td>UTG原片依赖康宁/旭硝子</td><td><span class="tag tag-warn">⚠️ 降级</span></td></tr>
+    <tr><td>管理层异动</td><td>副总邹蓁2025年7月被免职</td><td><span class="tag tag-warn">⚠️ 关注</span></td></tr>
+    <tr><td>商誉/净资产>50%</td><td>24.59亿/86.32亿=2.85%</td><td><span class="tag tag-buy">✅ 通过</span></td></tr>
+    <tr><td>单一客户集中度>50%</td><td>前五大客户分散</td><td><span class="tag tag-buy">✅ 通过</span></td></tr>
+    <tr><td>无限ATM/增发稀释</td><td>未触发</td><td><span class="tag tag-buy">✅ 通过</span></td></tr>
+  </table>
+  <p style="font-size:13px;color:#888;">政府补助/净利润占比未核实，标注 [未核实]。</p>
+
+  <h3>比克动力——持续十年的"利润黑洞"</h3>
+  <p>2016年斥资8亿参股比克动力10%，累计计提减值<strong>¥4.58亿</strong>。原股东业绩补偿（1.16亿现金+股权）至今未完全履行，相关股权全部处于质押/冻结状态。公司称正推动比克动力IPO/重组，但动力电池行业已进入淘汰赛深水区，该资产持续拖累利润。</p>
+
+  <h3>估值</h3>
+  <table>
+    <tr><th>估值方法</th><th>结果</th></tr>
+    <tr><td>PE(TTM)</td><td>153.66x（行业计算机通信电子中位PE 95.41x）</td></tr>
+    <tr><td>2026E forward PE（乐观3.7亿）</td><td>71x</td></tr>
+    <tr><td>2027E forward PE（乐观5.5亿）</td><td>48x</td></tr>
+    <tr><td>机构目标价</td><td>¥6.44（当前溢价64%）</td></tr>
+    <tr><td>PB</td><td>3.00x（合理但利润太低）</td></tr>
+  </table>
+  <p>对于一个净利率仅2%的制造业公司，即便按最乐观的2027年5.5亿净利润，forward PE仍高达48x——<strong>极度昂贵</strong>。</p>
+
+  <h3>催化剂时点</h3>
+  <div class="card-grid">
+    <div class="card"><h4>近期（2026Q3）</h4><p>TGV中试线7-8月落地，9月推出800G光模块产品；B300服务器6月底到货；青海算力中心6月底交付</p></div>
+    <div class="card"><h4>中期（2026H2-2027）</h4><p>TGV小批量量产；算力业务2026目标收入>10亿；华为玻璃基封装2028上半年量产</p></div>
+    <div class="card"><h4>远期（2028+）</h4><p>3.2T光模块量产；TGV规模化放量；比克动力IPO/重组</p></div>
+  </div>
+
+  <h3>Serenity 综合判定</h3>
+  <div class="conclusion-box" style="border-left-color: #721c24;">
+    <p><strong>这不是一个"卡点"标的，而是一个"故事拼盘"。</strong>四个叙事（车载+UTG+TGV+算力）打包在一起，当前153x PE已经把最乐观预期全部定价。核心矛盾：</p>
+    <p>1. <strong>净利率2%的低毛利代工本质</strong>，与264亿市值不匹配</p>
+    <p>2. <strong>大股东质押52.9%触发硬否决</strong>，第二大股东持续减持</p>
+    <p>3. 比克动力累计减值4.58亿，业绩补偿8年未落实</p>
+    <p>4. 30亿算力投入 vs 年利润仅2亿，财务费用已暴增223%</p>
+    <p>5. <strong>如果一定要找卡点，UTG是最接近的，但它是整个业务拼盘里最小的一块</strong></p>
+  </div>
+
+  <h3>优势 vs 风险</h3>
+  <table>
+    <tr><th>优势</th><th>风险</th></tr>
+    <tr><td>车载触显全球第一，客户壁垒深</td><td>净利率2%，低毛利代工本质</td></tr>
+    <tr><td>UTG国内唯一全链条量产</td><td><strong>大股东质押52.9%→硬否决</strong></td></tr>
+    <tr><td>TGV技术底蕴深厚，送样华为/京东方/群创</td><td>PE 153x，远超机构目标价¥6.44</td></tr>
+    <tr><td>安徽国资背书，算力政策红利</td><td>比克动力累计减值4.58亿，持续拖累</td></tr>
+    <tr><td>苹果唯一认证减薄供应商</td><td>30亿算力投资 vs 2亿年利润，财务承压</td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  <p>Powered by Serenity Investment Analysis Engine · Trae IDE</p>
+  <p>以上分析仅供研究参考，不构成投资建议</p>
+</div>
+</div>
+</body>
+</html>

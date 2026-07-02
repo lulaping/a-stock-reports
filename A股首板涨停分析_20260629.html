@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月29日 A股首板涨停股分析</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #1a1a3e, #0d0d2b); border-radius: 16px; margin-bottom: 24px; border: 1px solid #2a2a4a; }
+.header h1 { font-size: 28px; color: #fff; margin-bottom: 8px; }
+.header .date { font-size: 14px; color: #888; }
+.header .subtitle { font-size: 14px; color: #ffd700; margin-top: 6px; }
+.section { background: #16162a; border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2a4a; }
+.section h2 { font-size: 20px; color: #ffd700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #2a2a4a; display: flex; align-items: center; gap: 8px; }
+.section h2 .icon { font-size: 22px; }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.summary-card { background: #1e1e3a; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #2a2a4a; }
+.summary-card .label { font-size: 12px; color: #888; margin-bottom: 6px; }
+.summary-card .number { font-size: 24px; font-weight: bold; }
+.summary-card .number.red { color: #ff4444; }
+.summary-card .number.gold { color: #ffd700; }
+.summary-card .number.blue { color: #6699ff; }
+.summary-card .sub { font-size: 12px; color: #aaa; margin-top: 4px; }
+.category-block { background: #1e1e3a; border-radius: 12px; padding: 20px; margin-bottom: 16px; border: 1px solid #2a2a4a; }
+.category-block h3 { font-size: 17px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.category-block h3 .badge { padding: 4px 12px; border-radius: 4px; font-size: 13px; color: #fff; }
+.badge-med { background: #e91e63; }
+.badge-semi { background: #ff9800; }
+.badge-nuclear { background: #9c27b0; }
+.badge-consume { background: #4caf50; }
+.badge-metal { background: #ffc107; color: #333 !important; }
+.badge-other { background: #607d8b; }
+.category-block .driver { font-size: 13px; color: #ffd700; margin-bottom: 12px; padding: 8px 12px; background: rgba(255,215,0,0.08); border-radius: 6px; }
+.stock-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+.stock-table th { background: #252540; color: #aaa; padding: 8px 10px; text-align: left; border-bottom: 2px solid #2a2a4a; font-weight: normal; font-size: 12px; }
+.stock-table td { padding: 8px 10px; border-bottom: 1px solid #2a2a4a; color: #ccc; }
+.stock-table tr:hover td { background: rgba(255,215,0,0.03); }
+.stock-table .name { color: #fff; font-weight: bold; }
+.stock-table .code { color: #888; font-size: 12px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+.tag-red { background: rgba(255,68,68,0.2); color: #ff6666; }
+.tag-green { background: rgba(0,204,102,0.15); color: #33cc77; }
+.tag-gold { background: rgba(255,215,0,0.2); color: #ffd700; }
+.tag-blue { background: rgba(66,133,244,0.2); color: #6699ff; }
+.tag-purple { background: rgba(156,39,176,0.2); color: #ce93d8; }
+.tag-orange { background: rgba(255,152,0,0.2); color: #ffb74d; }
+.analysis-block { background: #1e1e3a; border-radius: 10px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #ffd700; }
+.analysis-block h3 { font-size: 16px; color: #ffd700; margin-bottom: 10px; }
+.analysis-block p { font-size: 14px; color: #ccc; line-height: 1.8; }
+.analysis-block ul { margin: 8px 0 0 20px; color: #bbb; }
+.analysis-block ul li { margin-bottom: 6px; line-height: 1.7; }
+.pie-container { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
+.pie-card { flex: 1; min-width: 200px; text-align: center; background: #1e1e3a; border-radius: 10px; padding: 16px; border: 1px solid #2a2a4a; }
+.pie-card .pie-label { font-size: 13px; color: #aaa; margin-bottom: 4px; }
+.pie-card .pie-num { font-size: 28px; font-weight: bold; }
+.pie-card .pie-pct { font-size: 14px; color: #ffd700; }
+.highlight-box { background: linear-gradient(135deg, rgba(255,68,68,0.08), rgba(255,152,0,0.08)); border: 1px solid rgba(255,68,68,0.3); border-radius: 10px; padding: 16px; margin-top: 12px; }
+.highlight-box h4 { font-size: 14px; color: #ff6666; margin-bottom: 8px; }
+.highlight-box p { font-size: 13px; color: #ccc; line-height: 1.7; }
+.heatmap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.heat-tag { padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; }
+.heat-tag.lead { background: rgba(255,68,68,0.2); color: #ff6666; border: 1px solid rgba(255,68,68,0.4); }
+.heat-tag.neutral { background: rgba(255,215,0,0.15); color: #ffd700; border: 1px solid rgba(255,215,0,0.3); }
+.outlook { background: linear-gradient(135deg, #1a1a3e, #1a2a1a); border-radius: 12px; padding: 24px; margin-top: 16px; border: 1px solid #2a4a2a; }
+.outlook h3 { font-size: 18px; color: #ffd700; margin-bottom: 12px; }
+.outlook p { color: #ccc; font-size: 14px; line-height: 1.8; }
+.disclaimer { font-size: 11px; color: #666; text-align: center; margin-top: 30px; padding: 16px; border-top: 1px solid #2a2a4a; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>2026年6月29日 A股首板涨停股分析</h1>
+    <div class="date">北京时间 · 涨停106只 · 其中首板约97只（占比91.5%）</div>
+    <div class="subtitle">医药超60只涨停领衔 ｜ 半导体首板接力 ｜ 核聚变批量封板</div>
+</div>
+
+<!-- 首板概览 -->
+<div class="section">
+    <h2><span class="icon">📊</span>首板概览</h2>
+    <div class="summary-grid">
+        <div class="summary-card">
+            <div class="label">今日涨停总数</div>
+            <div class="number red">106只</div>
+            <div class="sub">不含ST/退市</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">首板数量（估算）</div>
+            <div class="number gold">~97只</div>
+            <div class="sub">占比约91.5%</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">连板数量</div>
+            <div class="number blue">9只</div>
+            <div class="sub">占比约8.5%</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">封板率</div>
+            <div class="number" style="color:#ff9800;">74%</div>
+            <div class="sub">38只封板未遂</div>
+        </div>
+    </div>
+    <div class="pie-container">
+        <div class="pie-card">
+            <div class="pie-label">医药生物首板</div>
+            <div class="pie-num" style="color:#e91e63;">~55只</div>
+            <div class="pie-pct">约57%</div>
+        </div>
+        <div class="pie-card">
+            <div class="pie-label">半导体首板</div>
+            <div class="pie-num" style="color:#ff9800;">~18只</div>
+            <div class="pie-pct">约19%</div>
+        </div>
+        <div class="pie-card">
+            <div class="pie-label">核聚变首板</div>
+            <div class="pie-num" style="color:#9c27b0;">7只</div>
+            <div class="pie-pct">约7%</div>
+        </div>
+        <div class="pie-card">
+            <div class="pie-label">大消费/其他</div>
+            <div class="pie-num" style="color:#4caf50;">~17只</div>
+            <div class="pie-pct">约17%</div>
+        </div>
+    </div>
+    <p style="font-size:14px; color:#ccc; line-height:1.8;">
+        <strong>核心特征：</strong>今日涨停结构呈现"<strong>首板为王、连板崩塌</strong>"的极端格局。连板晋级率仅12.5%，但首板涨停高达97只，说明短线资金从高位接力全面转向低位首板博弈。医药板块一支独大，贡献超半数首板涨停，形成罕见的"板块涨停潮"。
+    </p>
+</div>
+
+<!-- 医药生物首板 -->
+<div class="section">
+    <h2><span class="icon">💊</span>主线一：医药生物（首板约55只，占比57%）</h2>
+    <div class="category-block">
+        <h3><span class="badge badge-med">医药</span> 创新药 / CRO / 减肥药 / 生物制品</h3>
+        <div class="driver">核心驱动：国家医保局公示2026年"医保+商保"双目录初审名单，557个药品通过基本医保目录初审，54个通过商保创新药目录初审，形式审查通过率92%创历史新高。板块前期调整充分、估值处历史低位，政策催化+超跌反弹形成共振。</div>
+        <div class="heatmap" style="margin-bottom:14px;">
+            <span class="heat-tag lead">创新药</span>
+            <span class="heat-tag lead">CRO/CMO</span>
+            <span class="heat-tag lead">减肥药</span>
+            <span class="heat-tag lead">重组蛋白</span>
+            <span class="heat-tag lead">生物制品</span>
+            <span class="heat-tag lead">原料药</span>
+            <span class="heat-tag lead">中药</span>
+        </div>
+        <table class="stock-table">
+            <thead>
+                <tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="name">三生国健</td><td class="code">688336</td><td>创新药/生物制品</td><td><span class="tag tag-red">20CM</span></td><td>创一个半月新高</td></tr>
+                <tr><td class="name">广生堂</td><td class="code">300436</td><td>创新药/肝病</td><td><span class="tag tag-red">20CM</span></td><td>创业板权重</td></tr>
+                <tr><td class="name">舒泰神</td><td class="code">300204</td><td>创新药</td><td><span class="tag tag-red">20CM</span></td><td></td></tr>
+                <tr><td class="name">万邦医药</td><td class="code">301520</td><td>减肥药/创新药</td><td><span class="tag tag-red">20CM</span></td><td>并购重组叠加</td></tr>
+                <tr><td class="name">百奥赛图</td><td class="code">688796</td><td>CRO/抗体</td><td><span class="tag tag-red">20CM</span></td><td>科创板</td></tr>
+                <tr><td class="name">荣昌生物</td><td class="code">688331</td><td>ADC/创新药</td><td><span class="tag tag-red">涨超16%</span></td><td>ADC龙头</td></tr>
+                <tr><td class="name">佰仁医疗</td><td class="code">688798</td><td>医疗器械</td><td><span class="tag tag-red">20CM</span></td><td></td></tr>
+                <tr><td class="name">迈普医学</td><td class="code">--</td><td>医疗器械</td><td><span class="tag tag-red">20CM</span></td><td></td></tr>
+                <tr><td class="name">新赣江</td><td class="code">--</td><td>医药</td><td><span class="tag tag-purple">北交所30CM</span></td><td>北交所医药龙头</td></tr>
+                <tr><td class="name">科伦药业</td><td class="code">002422</td><td>创新药/输液</td><td>主板涨停</td><td>大市值</td></tr>
+                <tr><td class="name">新华制药</td><td class="code">000756</td><td>原料药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">太龙药业</td><td class="code">600222</td><td>中药/减肥药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">济民健康</td><td class="code">603222</td><td>医药/干细胞</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">特一药业</td><td class="code">002728</td><td>中药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">海思科</td><td class="code">002653</td><td>创新药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">双鹭药业</td><td class="code">002038</td><td>创新药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">双成药业</td><td class="code">002693</td><td>化学制药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">亚太药业</td><td class="code">002370</td><td>化学制药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">康缘药业</td><td class="code">600557</td><td>中药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">津药药业</td><td class="code">600488</td><td>化学制药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">太极集团</td><td class="code">600129</td><td>中药</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">誉衡药业</td><td class="code">002437</td><td>化学制药</td><td>主板涨停</td><td></td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:12px; color:#888; margin-top:8px;">* 医药板块实际涨停超60只，此处仅列代表性标的。恒瑞医药（3400亿市值）涨8.1%、百利天恒涨12.69%、君实生物涨超10%、百济神州涨10.41%，虽未涨停但涨幅巨大。</p>
+    </div>
+    <div class="highlight-box">
+        <h4>医药首板明日关键看点</h4>
+        <p>① 超50只首板明日面临严重分化，需关注1进2成功率——若出现5只以上医药2连板，则该方向持续性确立；若仅海南海药/凯莱英等有连板基础的标的晋级，则大概率是政策催化下的脉冲行情。<br>② 20CM标的（三生国健、广生堂、舒泰神等）的次日溢价是判断板块强度的关键信号，高开高走则强，低开低走则弱。<br>③ 恒瑞医药等大市值龙头能否继续放量上涨，决定机构资金是否在系统性回补医药仓位。</p>
+    </div>
+</div>
+
+<!-- 半导体首板 -->
+<div class="section">
+    <h2><span class="icon">💻</span>主线二：半导体（首板约18只，占比19%）</h2>
+    <div class="category-block">
+        <h3><span class="badge badge-semi">半导体</span> 设备 / 材料 / 硅片 / 电子特气 / 洁净室</h3>
+        <div class="driver">核心驱动：①6N级六氟化钨价格较4月初涨幅超190%，电子特气涨价预期强烈；②三星宣布未来十年超1000万亿韩元投资计划，强化全球半导体资本开支扩张逻辑；③国产替代加速，EDA及设备厂商从单点工具走向流程级解决方案。高位科技股向半导体方向"缩圈"。</div>
+        <div class="heatmap" style="margin-bottom:14px;">
+            <span class="heat-tag lead">半导体设备</span>
+            <span class="heat-tag lead">电子特气</span>
+            <span class="heat-tag lead">硅片</span>
+            <span class="heat-tag lead">洁净室</span>
+            <span class="heat-tag lead">光刻胶</span>
+            <span class="heat-tag lead">功率半导体</span>
+            <span class="heat-tag lead">HBM</span>
+        </div>
+        <table class="stock-table">
+            <thead>
+                <tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="name">有研硅</td><td class="code">688432</td><td>半导体硅片</td><td><span class="tag tag-red">20CM</span> <span class="tag tag-blue">2连板</span></td><td>科创50权重</td></tr>
+                <tr><td class="name">银河微电</td><td class="code">688689</td><td>功率半导体</td><td><span class="tag tag-red">20CM</span></td><td>并购重组</td></tr>
+                <tr><td class="name">华海清科</td><td class="code">688120</td><td>半导体设备/CMP</td><td><span class="tag tag-red">20CM</span></td><td>设备龙头</td></tr>
+                <tr><td class="name">中巨芯</td><td class="code">688549</td><td>电子特气/湿电子化学品</td><td><span class="tag tag-red">20CM</span></td><td></td></tr>
+                <tr><td class="name">神工股份</td><td class="code">688233</td><td>半导体硅材料</td><td><span class="tag tag-red">20CM</span></td><td></td></tr>
+                <tr><td class="name">聚和材料</td><td class="code">688503</td><td>半导体材料</td><td><span class="tag tag-red">20CM</span></td><td></td></tr>
+                <tr><td class="name">昊华科技</td><td class="code">600378</td><td>电子特气/氟化工</td><td>主板涨停</td><td>电子特气龙头</td></tr>
+                <tr><td class="name">凯美特气</td><td class="code">002549</td><td>电子特气/光刻气</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">广钢气体</td><td class="code">688548</td><td>电子特气</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">多氟多</td><td class="code">002407</td><td>电子特气/氟化工</td><td>主板涨停</td><td>电子级氢氟酸</td></tr>
+                <tr><td class="name">水发燃气</td><td class="code">603318</td><td>电子特气</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">中欣氟材</td><td class="code">002915</td><td>氟化工/制冷剂</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">华工科技</td><td class="code">000988</td><td>半导体/激光</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">深科技</td><td class="code">000021</td><td>半导体/HBM</td><td>主板涨停</td><td>大基金概念</td></tr>
+                <tr><td class="name">旗滨集团</td><td class="code">601636</td><td>玻璃基板/光伏</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">淳中科技</td><td class="code">603516</td><td>芯片/显控</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">朗迪集团</td><td class="code">603726</td><td>半导体/家电</td><td>主板涨停</td><td></td></tr>
+                <tr><td class="name">时空科技</td><td class="code">605178</td><td>存储/内存</td><td>主板涨停</td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="highlight-box">
+        <h4>半导体首板明日关键看点</h4>
+        <p>① 半导体板块连板结构最完整（9只连板中占7只），首板+连板形成梯队进攻态势。重点关注电子特气方向（昊华科技、凯美特气、广钢气体、多氟多、水发燃气、中欣氟材）能否出现批量1进2。<br>② 20CM首板（有研硅、华海清科、中巨芯等）的溢价情况是判断板块持续性的核心指标。<br>③ 注意：半导体午后拉升、尾盘加速，存在"尾盘偷鸡"嫌疑，明日早盘需验证资金是否继续跟进，谨防冲高回落。</p>
+    </div>
+</div>
+
+<!-- 核聚变首板 -->
+<div class="section">
+    <h2><span class="icon">⚛️</span>支线：可控核聚变（首板7只，占比7%）</h2>
+    <div class="category-block">
+        <h3><span class="badge badge-nuclear">核聚变</span> 超导磁体 / 核电设备 / 阀门</h3>
+        <div class="driver">核心驱动：我国"人造太阳"项目取得最新进展——两款自主研制的核聚变堆超导磁体分别完成技术验收和满工况参数测试，核心性能达到国际领先水准。中金公司指出2026年为国内核聚变产业工程验证的关键之年。</div>
+        <table class="stock-table">
+            <thead>
+                <tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="name">百利电气</td><td class="code">600468</td><td>超导/核聚变</td><td>主板涨停</td></tr>
+                <tr><td class="name">联创光电</td><td class="code">600363</td><td>超导/核聚变/光伏</td><td>主板涨停</td></tr>
+                <tr><td class="name">雪人集团</td><td class="code">002639</td><td>核聚变/热泵</td><td>主板涨停</td></tr>
+                <tr><td class="name">中核科技</td><td class="code">000777</td><td>核聚变/核电阀门</td><td>主板涨停</td></tr>
+                <tr><td class="name">海陆重工</td><td class="code">002255</td><td>核聚变/氮化镓</td><td>主板涨停</td></tr>
+                <tr><td class="name">中国核建</td><td class="code">601611</td><td>核电工程</td><td>主板涨停</td></tr>
+                <tr><td class="name">融发核电</td><td class="code">002366</td><td>核电设备</td><td>主板涨停</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="highlight-box">
+        <h4>核聚变首板明日关键看点</h4>
+        <p>① 7只首板均为10CM主板涨停，无20CM标的，板块弹性相对有限。<br>② 核聚变属于主题投资，短期靠事件催化，持续性取决于后续是否有更多产业进展催化。<br>③ 关注是否有1进2标的出现，若能出现2只以上2连板，则板块短线可看高一线。</p>
+    </div>
+</div>
+
+<!-- 大消费及其他 -->
+<div class="section">
+    <h2><span class="icon">🛒</span>支线：大消费及其他（首板约17只）</h2>
+    <div class="category-block">
+        <h3><span class="badge badge-consume">消费</span> 食品饮料 / 零售 / 养殖 / 游戏</h3>
+        <div class="driver">核心驱动：半年末机构调仓"再平衡"——高位科技股兑现后，部分资金回流业绩确定性高、分红稳定的消费蓝筹。618数据显示酒类销售同比增长25%，飞天茅台批价企稳。</div>
+        <table class="stock-table">
+            <thead>
+                <tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="name">东鹏饮料</td><td class="code">605499</td><td>食品饮料</td><td>主板涨停</td></tr>
+                <tr><td class="name">百润股份</td><td class="code">002568</td><td>预调酒</td><td>主板涨停</td></tr>
+                <tr><td class="name">佳禾食品</td><td class="code">605300</td><td>植物奶/饮料</td><td>3天2板</td></tr>
+                <tr><td class="name">中百集团</td><td class="code">000759</td><td>零售</td><td>主板涨停</td></tr>
+                <tr><td class="name">浙江东日</td><td class="code">600113</td><td>零售</td><td>主板涨停</td></tr>
+                <tr><td class="name">巨星农牧</td><td class="code">603477</td><td>猪肉/养殖</td><td>主板涨停</td></tr>
+                <tr><td class="name">完美世界</td><td class="code">002624</td><td>游戏</td><td>主板涨停</td></tr>
+                <tr><td class="name">丸美生物</td><td class="code">603983</td><td>化妆品</td><td>主板涨停</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category-block" style="margin-top:16px;">
+        <h3><span class="badge badge-metal">有色</span> 有色金属（3只）</h3>
+        <div class="driver">核心驱动：黄金/锌等金属价格波动，叠加核电概念联动。</div>
+        <table class="stock-table">
+            <thead>
+                <tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="name">恒邦股份</td><td class="code">002237</td><td>黄金</td><td>主板涨停</td></tr>
+                <tr><td class="name">锌业股份</td><td class="code">000751</td><td>锌/铜</td><td>主板涨停</td></tr>
+                <tr><td class="name">罗平锌电</td><td class="code">002114</td><td>锌</td><td>主板涨停</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category-block" style="margin-top:16px;">
+        <h3><span class="badge badge-other">其他</span> 零散首板（约8只）</h3>
+        <table class="stock-table">
+            <thead>
+                <tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停原因</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="name">红板科技</td><td class="code">603459</td><td>PCB/汽车电子</td><td>收购智能座舱PCB企业+AI服务器板验证</td></tr>
+                <tr><td class="name">洁美科技</td><td class="code">002859</td><td>元器件/固态电池</td><td>PET铜箔+被动元件</td></tr>
+                <tr><td class="name">嘉德利</td><td class="code">--</td><td>特高压</td><td>特高压+PET铜箔</td></tr>
+                <tr><td class="name">长虹美菱</td><td class="code">000521</td><td>家电/医疗器械</td><td>生物安全+医疗器械</td></tr>
+                <tr><td class="name">惠康科技</td><td class="code">--</td><td>白色家电</td><td>家电</td></tr>
+                <tr><td class="name">成都路桥</td><td class="code">002628</td><td>机器人/基建</td><td>机器人大基建</td></tr>
+                <tr><td class="name">合肥城建</td><td class="code">002208</td><td>房地产/AMC</td><td>债转股+蚂蚁概念</td></tr>
+                <tr><td class="name">贝肯能源</td><td class="code">002828</td><td>能源/天然气</td><td>新疆+天然气</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 深度分析 -->
+<div class="section">
+    <h2><span class="icon">🔍</span>首板生态深度分析</h2>
+    <div class="analysis-block">
+        <h3>一、首板占比极高（91.5%），连板生态崩塌</h3>
+        <p>今日涨停106只中首板约97只，占比高达91.5%，创近期新高。连板股仅9只，且高度骤降至3板。这一数据说明：<strong>①高位连板股大面积断板（兴业科技6板→断板、宏柏新材4板→断板），追板资金亏损严重；②资金转向低位首板博弈，快进快出、不愿锁仓；③市场进入"打首板、次日冲高卖"的短线模式。</strong>这种模式通常出现在情绪退潮期，短线风险收益比恶化。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>二、医药首板"一枝独大"的隐忧</h3>
+        <p>医药板块超60只涨停（含连板），但绝大多数为首板。历史上A股"板块涨停潮"次日分化率极高——通常70%以上的首板次日无法连板，甚至出现低开闷杀。医药板块今日爆发的原因是"政策催化+超跌反弹"，二者共振力度大，但持续性存疑：<br>① 医保目录纳入是中长期利好，但短期股价反应已经过度；<br>② 板块内大量标的为超跌反弹，上方套牢盘密集，连续拉升难度大；<br>③ 明日医药1进2成功率是核心观察指标，若低于20%，则板块大概率一日游。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>三、半导体首板：电子特气方向最值得关注</h3>
+        <p>半导体首板中，<strong>电子特气/氟化工</strong>方向最集中（昊华科技、凯美特气、广钢气体、多氟多、水发燃气、中欣氟材共6只），叠加此前的雅克科技（6天3板），形成清晰的板块效应。核心逻辑是6N级六氟化钨价格暴涨190%，涨价逻辑有产业数据支撑，比纯主题炒作更扎实。但需注意：<br>① 半导体板块午后拉升、尾盘加速，存在机构半年末做净值的"粉饰橱窗"效应；<br>② 7月进入中报业绩期，涨价能否转化为业绩是核心验证点。</p>
+    </div>
+    <div class="analysis-block">
+        <h3>四、核聚变：主题性脉冲，持续性待考</h3>
+        <p>核聚变7只涨停均为首板，属于典型的"事件驱动型"主题炒作。我国超导磁体技术突破是实质性利好，但核聚变商业化尚需10年以上，短期难以贡献业绩。这类主题通常走出"首日涨停潮→次日分化→第三日退潮"的节奏，追高风险较大。</p>
+    </div>
+</div>
+
+<!-- 明日1进2展望 -->
+<div class="outlook">
+    <h3>明日首板1进2博弈展望</h3>
+    <p><strong>1. 医药方向（1进2重点观察）：</strong></p>
+    <p>海南海药（5天3板）和凯莱英（4天2板）已有连板基础，辨识度最高，1进2概率相对较大。20CM标的中，广生堂、三生国健、万邦医药关注度最高。但由于首板数量过大（超50只），板块内部分流严重，预计1进2成功率不超过20%（即不超过10只医药股能连板）。<strong>不建议追涨首日涨停的医药股，等待分歧后再判断。</strong></p>
+    <p style="margin-top:12px;"><strong>2. 半导体方向（1进2最具潜力）：</strong></p>
+    <p>电子特气方向（昊华科技、凯美特气、广钢气体）封板时间较早、逻辑最强，1进2概率最高。华海清科（20CM设备龙头）若有溢价，则半导体设备方向可看高一线。有研硅（20CM/2连板）继续晋级3连板的概率值得关注。半导体方向首板+连板形成梯队，板块效应最强。</p>
+    <p style="margin-top:12px;"><strong>3. 核聚变方向（1进2概率较低）：</strong></p>
+    <p>7只首板均为10CM，辨识度一般。若出现1-2只2连板，可小仓位关注；若全部断板，则确认为脉冲行情。</p>
+    <p style="margin-top:12px;"><strong>4. 策略建议：</strong></p>
+    <p>① 当前市场处于连板情绪退潮期，首板次日溢价不确定性大，控制仓位优先；② 重点关注半导体方向（尤其是电子特气）的1进2机会，逻辑最硬、板块效应最强；③ 医药方向等待分歧后再判断持续性，不宜首日追涨；④ 回避纯主题炒作（核聚变、零散首板），溢价确定性差。</p>
+</div>
+
+<div class="disclaimer">
+    免责声明：本文仅基于公开市场数据进行客观整理与分享，不构成任何证券投资建议。市场有风险，投资需谨慎。数据来源：沪深交易所、财联社、东方财富、证券之星、同花顺。<br>
+    生成时间：2026年6月29日 北京时间
+</div>
+
+</div>
+</body>
+</html>
