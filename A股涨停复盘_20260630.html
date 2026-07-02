@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股涨停复盘 2026年6月30日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.7; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; padding: 36px 20px; background: linear-gradient(135deg, #1a1a3e, #0d0d2b); border-radius: 16px; margin-bottom: 24px; border: 1px solid #2a2a4a; }
+.header h1 { font-size: 26px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #888; }
+.section { background: #16162a; border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2a4a; }
+.section h2 { font-size: 19px; color: #ffd700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #2a2a4a; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.stat-card { background: #1e1e3a; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #2a2a4a; }
+.stat-card .lbl { font-size: 11px; color: #888; margin-bottom: 4px; }
+.stat-card .val { font-size: 24px; font-weight: bold; color: #fff; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+.tag-red { background: rgba(255,68,68,0.2); color: #ff6666; }
+.tag-green { background: rgba(0,204,102,0.15); color: #33cc77; }
+.tag-gold { background: rgba(255,215,0,0.2); color: #ffd700; }
+.tag-blue { background: rgba(66,133,244,0.2); color: #6699ff; }
+.tag-purple { background: rgba(156,39,176,0.2); color: #ce93d8; }
+.tag-orange { background: rgba(255,152,0,0.2); color: #ffb74d; }
+.tag-cyan { background: rgba(0,188,212,0.2); color: #4dd0e1; }
+.ladder-card { background: #1e1e3a; border-radius: 10px; padding: 18px; margin-bottom: 12px; border: 1px solid #2a2a4a; }
+.ladder-card.l4 { border-left: 4px solid #ff4444; }
+.ladder-card.l3 { border-left: 4px solid #ff9800; }
+.ladder-card.l2 { border-left: 4px solid #ffd700; }
+.ladder-card .lh { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+.ladder-card .lh .badge { padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; }
+.badge-4 { background: rgba(255,68,68,0.3); color: #ff6666; }
+.badge-3 { background: rgba(255,152,0,0.3); color: #ffb74d; }
+.badge-2 { background: rgba(255,215,0,0.3); color: #ffd700; }
+.ladder-card .stock-name { font-size: 17px; font-weight: bold; color: #fff; }
+.ladder-card .stock-code { font-size: 12px; color: #888; }
+.ladder-card .stock-info { font-size: 13px; color: #ccc; line-height: 1.7; margin-top: 6px; }
+.ladder-card .stock-meta { font-size: 12px; color: #aaa; margin-top: 4px; }
+.two-stock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+.category-block { background: #1e1e3a; border-radius: 10px; padding: 18px; margin-bottom: 14px; border: 1px solid #2a2a4a; }
+.category-block h3 { font-size: 15px; color: #ffd700; margin-bottom: 8px; }
+.category-block .driver { font-size: 13px; color: #aaa; margin-bottom: 10px; line-height: 1.6; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #252540; color: #aaa; padding: 8px 10px; text-align: left; border-bottom: 2px solid #2a2a4a; font-weight: normal; font-size: 12px; }
+td { padding: 8px 10px; border-bottom: 1px solid #2a2a4a; color: #ccc; }
+tr:hover td { background: rgba(255,215,0,0.03); }
+td.name { color: #fff; font-weight: bold; }
+td.code { color: #888; font-size: 12px; }
+.heatmap { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.heat-tag { padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 500; }
+.heat-tag.lead { background: rgba(255,68,68,0.2); color: #ff6666; border: 1px solid rgba(255,68,68,0.4); }
+.heat-tag.fall { background: rgba(0,204,102,0.15); color: #33cc77; border: 1px solid rgba(0,204,102,0.3); }
+.ab { background: #1e1e3a; border-radius: 10px; padding: 20px; margin-bottom: 14px; border-left: 4px solid #ffd700; }
+.ab h3 { font-size: 15px; color: #ffd700; margin-bottom: 10px; }
+.ab p { font-size: 14px; color: #ccc; line-height: 1.8; }
+.ab ul { margin: 6px 0 0 20px; color: #bbb; }
+.ab ul li { margin-bottom: 5px; line-height: 1.7; }
+.outlook { background: linear-gradient(135deg, #1a1a3e, #1a2a1a); border-radius: 12px; padding: 24px; margin-top: 16px; border: 1px solid #2a4a2a; }
+.outlook h3 { font-size: 18px; color: #ffd700; margin-bottom: 12px; }
+.outlook p { color: #ccc; font-size: 14px; line-height: 1.8; }
+.disclaimer { font-size: 11px; color: #666; text-align: center; margin-top: 30px; padding: 16px; border-top: 1px solid #2a2a4a; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>A股涨停复盘 —— 2026年6月30日</h1>
+    <div class="sub">全市场138股涨停（不含ST） · 连板股19只 · 封板率85% · 电子板块近90股涨停</div>
+</div>
+
+<!-- 涨停概览 -->
+<div class="section">
+    <h2>涨停概览</h2>
+    <div class="stat-grid">
+        <div class="stat-card"><div class="lbl">涨停总数</div><div class="val" style="color:#ff6666;">138</div><div class="lbl" style="margin-top:2px;">不含ST/退市</div></div>
+        <div class="stat-card"><div class="lbl">含ST涨停</div><div class="val" style="color:#ff4444;">170</div></div>
+        <div class="stat-card"><div class="lbl">连板股总数</div><div class="val" style="color:#ff9800;">19</div></div>
+        <div class="stat-card"><div class="lbl">封板率</div><div class="val" style="color:#33cc77;">85%</div></div>
+        <div class="stat-card"><div class="lbl">炸板未遂</div><div class="val">25</div></div>
+        <div class="stat-card"><div class="lbl">跌停股</div><div class="val" style="color:#33cc77;">20</div></div>
+    </div>
+    <div class="ab">
+        <p>今日涨停规模创近期之最，电子板块<strong>近90股涨停或涨超10%</strong>，机械设备近40股，商业航天近40股，军工近10股。<strong>核心驱动：</strong>半导体国产替代持续催化 + 商业航天双重利好消息（朱雀三号静态点火成功 + SpaceX大涨7.15%）+ 半年末机构调仓布局中报预增方向。</p>
+    </div>
+</div>
+
+<!-- 连板梯队 -->
+<div class="section">
+    <h2>连板梯队</h2>
+
+    <!-- 市场最高标 -->
+    <div class="ladder-card l4">
+        <div class="lh">
+            <span class="badge badge-4">11天6板</span>
+            <span class="stock-name">冰轮环境</span>
+            <span class="stock-code">000811.SZ</span>
+            <span class="tag tag-cyan">液冷概念</span>
+            <span class="tag tag-gold">市场最高标</span>
+        </div>
+        <div class="stock-info">液冷概念股，11天6板成为今日市场最高连板标的。在算力硬件持续强势的背景下，液冷作为AI基础设施中不可或缺的散热环节，仍有资金持续坚守。该股走势为典型的"趋势+涨停"模式，非纯连板，体现资金对该方向的持续性认可。</div>
+        <div class="stock-meta">明日关注：能否突破到7板高度成为情绪风向标。若继续晋级，可能带动液冷/散热方向全线补涨。</div>
+    </div>
+
+    <!-- 8天5板 -->
+    <div class="ladder-card l3">
+        <div class="lh">
+            <span class="badge badge-3">8天5板</span>
+            <span class="stock-name">东方锆业</span>
+            <span class="stock-code">002167.SZ</span>
+            <span class="tag tag-purple">锆金属概念</span>
+        </div>
+        <div class="stock-info">锆金属概念股，8天5板。锆作为核级材料和固态电池电解质的重要原料，受到新能源产业链上游资源品涨价逻辑驱动。资源品涨价行情中，小金属弹性最大。</div>
+        <div class="stock-meta">明日关注：资源品涨价逻辑能否持续，关注锆英砂现货价格走势。</div>
+    </div>
+
+    <!-- 6天4板 -->
+    <div class="ladder-card l3">
+        <div class="lh">
+            <span class="badge badge-3">6天4板</span>
+            <span class="stock-name">海南海药</span>
+            <span class="stock-code">000566.SZ</span>
+            <span class="tag tag-green">创新药概念</span>
+        </div>
+        <div class="stock-info">创新药概念股，6天4板。医药板块整体走弱但创新药细分方向仍有资金博弈，受益于医保+商保双目录政策预期。该股走独立行情，与板块整体走势形成背离。</div>
+        <div class="stock-meta">明日关注：板块整体走弱背景下独苗能否持续。若板块企稳，有望加速；若板块继续走弱，独苗难撑。</div>
+    </div>
+
+    <!-- 3连板 -->
+    <div class="ladder-card l2">
+        <div class="lh">
+            <span class="badge badge-2">3连板</span>
+            <span class="stock-name">兴业股份</span>
+            <span class="stock-code">603928.SH</span>
+            <span class="tag tag-red">光刻胶概念</span>
+            <span class="tag tag-gold">最高连板</span>
+        </div>
+        <div class="stock-info">光刻胶概念股，3连板成为今日最高纯连板标的。半导体材料国产替代逻辑持续强化，光刻胶作为核心卡脖子环节，市场关注度极高。公司光刻胶产品已进入多家晶圆厂验证阶段。</div>
+        <div class="stock-meta">明日关注：3进4是连板股的重要关口。若成功晋级4板，将打开连板空间，对半导体材料方向形成强示范效应。</div>
+    </div>
+
+    <!-- 2连板梯队 -->
+    <div class="ladder-card l2">
+        <div class="lh">
+            <span class="badge badge-2">2连板</span>
+            <span style="color:#fff;font-size:15px;">18只</span>
+        </div>
+        <div class="two-stock-grid">
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">深中华A</span> <span style="color:#888;font-size:11px;">000017</span> <span class="tag tag-blue">消费</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">魅视科技</span> <span style="color:#888;font-size:11px;">001229</span> <span class="tag tag-cyan">商业航天</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">惠康科技</span> <span style="color:#888;font-size:11px;">--</span> <span class="tag tag-red">科技</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">合肥城建</span> <span style="color:#888;font-size:11px;">002208</span> <span class="tag tag-orange">地产</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">多氟多</span> <span style="color:#888;font-size:11px;">002407</span> <span class="tag tag-purple">固态电池</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">成都路桥</span> <span style="color:#888;font-size:11px;">002628</span> <span class="tag tag-orange">基建</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">勤上股份</span> <span style="color:#888;font-size:11px;">002638</span> <span class="tag tag-blue">教育</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">华亚智能</span> <span style="color:#888;font-size:11px;">003043</span> <span class="tag tag-red">半导体</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">浙江东日</span> <span style="color:#888;font-size:11px;">600113</span> <span class="tag tag-blue">消费</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">联创光电</span> <span style="color:#888;font-size:11px;">600363</span> <span class="tag tag-red">商业航天</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">昊华科技</span> <span style="color:#888;font-size:11px;">600378</span> <span class="tag tag-purple">化工</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">三维股份</span> <span style="color:#888;font-size:11px;">603033</span> <span class="tag tag-purple">化工</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">金海通</span> <span style="color:#888;font-size:11px;">603061</span> <span class="tag tag-red">半导体</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">济民健康</span> <span style="color:#888;font-size:11px;">603222</span> <span class="tag tag-green">医药</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">红板科技</span> <span style="color:#888;font-size:11px;">--</span> <span class="tag tag-red">PCB</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">长源东谷</span> <span style="color:#888;font-size:11px;">603950</span> <span class="tag tag-blue">汽车</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">丸美生物</span> <span style="color:#888;font-size:11px;">603983</span> <span class="tag tag-blue">消费</span></div>
+            <div style="padding:6px 0;"><span style="color:#fff;">万润科技</span> <span style="color:#888;font-size:11px;">002654</span> <span class="tag tag-red">MLED</span></div>
+        </div>
+    </div>
+
+    <!-- 反包/趋势板 -->
+    <div class="ladder-card" style="border-left: 4px solid #2196f3;">
+        <div class="lh">
+            <span class="badge" style="background:rgba(33,150,243,0.3);color:#6699ff;">反包/趋势</span>
+            <span style="color:#fff;font-size:15px;">多只辨识度个股</span>
+        </div>
+        <div class="two-stock-grid">
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">TCL科技</span> <span style="color:#888;font-size:11px;">000100</span> <span class="tag tag-red">4天2板</span> <span class="tag tag-red">面板</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">莱宝高科</span> <span style="color:#888;font-size:11px;">002106</span> <span class="tag tag-red">3天2板</span> <span class="tag tag-red">消费电子</span></div>
+            <div style="padding:6px 0;border-bottom:1px solid #2a2a4a;"><span style="color:#fff;">中科曙光</span> <span style="color:#888;font-size:11px;">603019</span> <span class="tag tag-orange">涨停</span> <span class="tag tag-red">算力</span></div>
+            <div style="padding:6px 0;"><span style="color:#fff;">联得装备</span> <span style="color:#888;font-size:11px;">300545</span> <span class="tag tag-orange">涨停</span> <span class="tag tag-red">折叠屏/UTG</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- 板块分布 -->
+<div class="section">
+    <h2>涨停股板块分布</h2>
+    <div class="category-block">
+        <h3><span class="tag tag-red">电子/半导体</span> 近90股涨停或涨超10%</h3>
+        <div class="driver">核心驱动：国产替代持续推进 + 中报预增预期 + SEMI上修全球设备市场增速至23.5%。半导体产业链全线爆发，从功率半导体到CPU到先进封装到存储芯片，形成全产业链共振。</div>
+        <table>
+            <thead><tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th></tr></thead>
+            <tbody>
+                <tr><td class="name">联建光电</td><td class="code">300269</td><td>MLED</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">格科微</td><td class="code">688728</td><td>CIS芯片</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">长光华芯</td><td class="code">688048</td><td>光芯片</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">敏芯股份</td><td class="code">688286</td><td>MEMS传感器</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">力合微</td><td class="code">688589</td><td>物联网芯片</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">安凯微</td><td class="code">688620</td><td>SoC芯片</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">天禄科技</td><td class="code">301045</td><td>导光板</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">天山电子</td><td class="code">301379</td><td>显示模组</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">联得装备</td><td class="code">300545</td><td>UTG贴合/半导体设备</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">晶方科技</td><td class="code">603005</td><td>先进封装</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">康强电子</td><td class="code">002119</td><td>引线框架</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">TCL科技</td><td class="code">000100</td><td>面板龙头</td><td><span class="tag tag-orange">4天2板</span></td></tr>
+                <tr><td class="name">万润科技</td><td class="code">002654</td><td>MLED</td><td><span class="tag tag-orange">4天2板</span></td></tr>
+                <tr><td class="name">兴业股份</td><td class="code">603928</td><td>光刻胶</td><td><span class="tag tag-gold">3连板</span></td></tr>
+                <tr><td class="name">金海通</td><td class="code">603061</td><td>半导体测试</td><td><span class="tag tag-orange">2连板</span></td></tr>
+                <tr><td class="name">华亚智能</td><td class="code">003043</td><td>半导体设备</td><td><span class="tag tag-orange">2连板</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category-block">
+        <h3><span class="tag tag-cyan">商业航天</span> 近40股涨停或涨超10%</h3>
+        <div class="driver">核心驱动：朱雀三号成功完成静态点火试验 + SpaceX隔夜大涨7.15%（纳入罗素1000指数）。2026年中国商业航天市场规模预计达3.5万亿，增速25%。</div>
+        <table>
+            <thead><tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th></tr></thead>
+            <tbody>
+                <tr><td class="name">中天火箭</td><td class="code">003009</td><td>固体火箭</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">盛路通信</td><td class="code">002446</td><td>卫星通信</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">四川九洲</td><td class="code">000801</td><td>空管系统</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">移远通信</td><td class="code">603236</td><td>卫星物联网</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">魅视科技</td><td class="code">001229</td><td>航天显控</td><td><span class="tag tag-orange">2连板</span></td></tr>
+                <tr><td class="name">联创光电</td><td class="code">600363</td><td>激光通信</td><td><span class="tag tag-orange">2连板</span></td></tr>
+                <tr><td class="name">昊华科技</td><td class="code">600378</td><td>航天材料</td><td><span class="tag tag-orange">2连板</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category-block">
+        <h3><span class="tag tag-purple">国防军工</span> 近10股涨停或涨超10%</h3>
+        <div class="driver">核心驱动：军工电子与半导体形成共振，叠加商业航天带动，中兵系/成飞链资金抱团。</div>
+        <table>
+            <thead><tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th></tr></thead>
+            <tbody>
+                <tr><td class="name">景嘉微</td><td class="code">300474</td><td>军用GPU</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">富吉瑞</td><td class="code">688272</td><td>红外热成像</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">晶品特装</td><td class="code">688084</td><td>特种装备</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">新光光电</td><td class="code">688011</td><td>光学制导</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">振芯科技</td><td class="code">300101</td><td>北斗导航</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">航发科技</td><td class="code">600391</td><td>航空发动机</td><td><span class="tag tag-orange">涨停</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category-block">
+        <h3><span class="tag tag-orange">机械设备</span> 近40股涨停或涨超10%</h3>
+        <div class="driver">核心驱动：人形机器人 + 工业母机 + 半导体设备三重共振，高端制造板块资金持续涌入。</div>
+        <table>
+            <thead><tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th></tr></thead>
+            <tbody>
+                <tr><td class="name">昊志机电</td><td class="code">300503</td><td>机器人/主轴</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">深科达</td><td class="code">688328</td><td>半导体设备</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">明志科技</td><td class="code">688355</td><td>精密铸造</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">蜀道装备</td><td class="code">300540</td><td>氢能装备</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">正帆科技</td><td class="code">688596</td><td>电子特气设备</td><td><span class="tag tag-red">20CM</span></td></tr>
+                <tr><td class="name">乔峰智能</td><td class="code">301603</td><td>数控机床</td><td><span class="tag tag-red">20CM</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category-block">
+        <h3><span class="tag tag-green">其他方向</span> 分散涨停</h3>
+        <table>
+            <thead><tr><th>股票</th><th>代码</th><th>细分方向</th><th>涨停特征</th></tr></thead>
+            <tbody>
+                <tr><td class="name">冰轮环境</td><td class="code">000811</td><td>液冷</td><td><span class="tag tag-gold">11天6板</span></td></tr>
+                <tr><td class="name">东方锆业</td><td class="code">002167</td><td>锆金属/固态电池</td><td><span class="tag tag-gold">8天5板</span></td></tr>
+                <tr><td class="name">海南海药</td><td class="code">000566</td><td>创新药</td><td><span class="tag tag-gold">6天4板</span></td></tr>
+                <tr><td class="name">多氟多</td><td class="code">002407</td><td>固态电池/电解液</td><td><span class="tag tag-orange">2连板</span></td></tr>
+                <tr><td class="name">中科曙光</td><td class="code">603019</td><td>算力/服务器</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">红板科技</td><td class="code">--</td><td>PCB</td><td><span class="tag tag-orange">2连板</span></td></tr>
+                <tr><td class="name">丸美生物</td><td class="code">603983</td><td>化妆品</td><td><span class="tag tag-orange">2连板</span></td></tr>
+                <tr><td class="name">金风科技</td><td class="code">002202</td><td>风电+商业航天</td><td><span class="tag tag-orange">涨停</span></td></tr>
+                <tr><td class="name">风华高科</td><td class="code">000636</td><td>MLCC</td><td><span class="tag tag-green">一字跌停</span></td></tr>
+                <tr><td class="name">兴业科技</td><td class="code">002674</td><td>皮革</td><td><span class="tag tag-green">跌停</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 市场情绪分析 -->
+<div class="section">
+    <h2>市场情绪与亏钱效应分析</h2>
+    <div class="ab">
+        <h3>情绪指标</h3>
+        <ul>
+            <li><strong>涨停138只（不含ST），封板率85%：</strong>涨停规模创近期新高，封板率处于健康水平，市场做多情绪高涨</li>
+            <li><strong>连板股19只，最高连板3板：</strong>连板高度偏低但数量充足，说明市场更偏好"趋势+涨停"模式而非纯连板博弈</li>
+            <li><strong>2连板18只，3连板1只：</strong>2进3晋级率仅5.5%，说明连板接力难度大，涨停以首板爆发为主</li>
+            <li><strong>跌停20只：</strong>风华高科一字跌停（严重异常波动停牌），技源集团、通化金马、京能置业、兴业科技等跌停</li>
+        </ul>
+    </div>
+    <div class="ab red">
+        <h3>亏钱效应警示</h3>
+        <ul>
+            <li><strong>风华高科（000636）一字跌停：</strong>800亿市值MLCC龙头，连续30个交易日涨幅偏离值达200%，属于严重异常波动。昨日追高资金全部闷杀，警示高位题材的流动性风险</li>
+            <li><strong>高位AI小票分化：</strong>部分存储芯片、光模块高位小票冲高回落，反弹即兑现窗口，资金从题材炒作转向业绩驱动</li>
+            <li><strong>煤炭/银行/石油持续阴跌：</strong>传统周期板块被资金持续抛弃，持仓者面临"牛市亏钱"的尴尬</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 总结 -->
+<div class="outlook">
+    <h3>涨停复盘总结</h3>
+    <p><strong>今日涨停三大特征：</strong></p>
+    <p>① <strong>电子板块一家独大（近90股涨停）：</strong>半导体产业链全线爆发，从芯片设计到设备到材料到封测，形成全产业链共振。这是国产替代逻辑从"点状炒作"升级为"面状爆发"的标志性信号。</p>
+    <p style="margin-top:8px;">② <strong>商业航天异军突起（近40股涨停）：</strong>朱雀三号静态点火成功 + SpaceX大涨，双重催化下商业航天成为新主线。2026年被视为中国商业航天规模化元年，3.5万亿市场空间，值得持续跟踪。</p>
+    <p style="margin-top:8px;">③ <strong>连板高度压缩但宽度扩张：</strong>最高纯连板仅3板（兴业股份），但2连板多达18只，涨停总数138只。说明市场情绪好但资金更偏好"首板+趋势"模式，纯连板博弈退潮。</p>
+    <p style="margin-top:12px;"><strong>明日（7月1日）1进2/2进3博弈展望：</strong></p>
+    <p>① 兴业股份3进4是明日连板风向标，若成功晋级将打开情绪空间；② 电子板块2连板中，半导体设备（华亚智能、金海通）和光刻胶（兴业股份）方向最值得关注；③ 商业航天2连板（魅视科技、联创光电、昊华科技）能否继续晋级，决定该板块能否成为7月新主线。</p>
+</div>
+
+<div class="disclaimer">
+    免责声明：本文基于公开信息整理，不构成任何投资建议。市场有风险，投资需谨慎。数据来源：财联社、澎湃新闻、Wind、东方财富。<br>
+    生成时间：2026年6月30日 北京时间
+</div>
+
+</div>
+</body>
+</html>

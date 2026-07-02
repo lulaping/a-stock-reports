@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股收盘复盘 2026年6月30日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.7; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; padding: 36px 20px; background: linear-gradient(135deg, #1a1a3e, #0d0d2b); border-radius: 16px; margin-bottom: 24px; border: 1px solid #2a2a4a; }
+.header h1 { font-size: 26px; color: #fff; margin-bottom: 6px; }
+.header .sub { font-size: 14px; color: #888; }
+.section { background: #16162a; border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2a4a; }
+.section h2 { font-size: 19px; color: #ffd700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #2a2a4a; }
+.idx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.idx-card { background: #1e1e3a; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #2a2a4a; }
+.idx-card .name { font-size: 12px; color: #888; margin-bottom: 4px; }
+.idx-card .value { font-size: 22px; font-weight: bold; color: #fff; }
+.idx-card .change { font-size: 14px; margin-top: 2px; }
+.up { color: #ff4444; }
+.down { color: #00cc66; }
+.idx-card.hl { border-color: rgba(255,68,68,0.4); }
+.info-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.info-card { background: #1e1e3a; border-radius: 8px; padding: 12px 16px; border: 1px solid #2a2a4a; }
+.info-card .lbl { font-size: 11px; color: #888; }
+.info-card .val { font-size: 18px; font-weight: bold; color: #fff; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+.tag-red { background: rgba(255,68,68,0.2); color: #ff6666; }
+.tag-green { background: rgba(0,204,102,0.15); color: #33cc77; }
+.tag-gold { background: rgba(255,215,0,0.2); color: #ffd700; }
+.tag-blue { background: rgba(66,133,244,0.2); color: #6699ff; }
+.heatmap { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.heat-tag { padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 500; }
+.heat-tag.lead { background: rgba(255,68,68,0.2); color: #ff6666; border: 1px solid rgba(255,68,68,0.4); }
+.heat-tag.fall { background: rgba(0,204,102,0.15); color: #33cc77; border: 1px solid rgba(0,204,102,0.3); }
+.heat-tag.neutral { background: rgba(255,215,0,0.15); color: #ffd700; border: 1px solid rgba(255,215,0,0.3); }
+.ab { background: #1e1e3a; border-radius: 10px; padding: 20px; margin-bottom: 14px; border-left: 4px solid #ffd700; }
+.ab h3 { font-size: 15px; color: #ffd700; margin-bottom: 10px; }
+.ab p { font-size: 14px; color: #ccc; line-height: 1.8; }
+.ab ul { margin: 6px 0 0 20px; color: #bbb; }
+.ab ul li { margin-bottom: 5px; line-height: 1.7; }
+.ab.red { border-left-color: #ff4444; }
+.ab.red h3 { color: #ff6666; }
+.ab.green { border-left-color: #00cc66; }
+.ab.green h3 { color: #33cc77; }
+.quote { background: #1a1a30; border-radius: 8px; padding: 14px 18px; margin: 10px 0; font-size: 13px; color: #aaa; border-left: 3px solid #333; }
+.quote strong { color: #ddd; }
+.summary-table { background: linear-gradient(135deg, #1a1a3e, #1a2a1a); border-radius: 12px; padding: 20px; margin-top: 16px; border: 1px solid #2a4a2a; }
+.summary-table h3 { font-size: 18px; color: #ffd700; margin-bottom: 12px; }
+.summary-table p { color: #ccc; font-size: 14px; line-height: 1.8; }
+.half-year { background: #1e1e3a; border-radius: 10px; padding: 16px; margin: 12px 0; border: 1px solid #2a2a4a; }
+.half-year .row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #2a2a4a; }
+.half-year .row:last-child { border-bottom: none; }
+.half-year .label { font-size: 13px; color: #aaa; }
+.half-year .val { font-size: 16px; font-weight: bold; }
+.disclaimer { font-size: 11px; color: #666; text-align: center; margin-top: 30px; padding: 16px; border-top: 1px solid #2a2a4a; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>A股收盘复盘 —— 2026年6月30日（上半年收官）</h1>
+    <div class="sub">沪弱深强收官 · 科创50涨3.85% · 电子板块近90股涨停 · 上半年科创50暴涨64.25%</div>
+</div>
+
+<!-- 指数收盘 -->
+<div class="section">
+    <h2>指数收盘数据</h2>
+    <div class="idx-grid">
+        <div class="idx-card">
+            <div class="name">上证综指</div>
+            <div class="value">4094.40</div>
+            <div class="change up">+0.50%</div>
+        </div>
+        <div class="idx-card hl">
+            <div class="name">深证成指</div>
+            <div class="value">16205.56</div>
+            <div class="change up">+2.48%</div>
+        </div>
+        <div class="idx-card hl">
+            <div class="name">创业板指</div>
+            <div class="value">4342.71</div>
+            <div class="change up">+2.99%</div>
+        </div>
+        <div class="idx-card hl">
+            <div class="name">科创50 <span class="tag tag-red">领涨</span></div>
+            <div class="value">--</div>
+            <div class="change up">+3.85%</div>
+        </div>
+        <div class="idx-card">
+            <div class="name">北证50</div>
+            <div class="value">--</div>
+            <div class="change up">+2.10%</div>
+        </div>
+    </div>
+    <div class="info-row">
+        <div class="info-card"><div class="lbl">上涨家数</div><div class="val" style="color:#ff6666;">3051</div></div>
+        <div class="info-card"><div class="lbl">下跌家数</div><div class="val" style="color:#33cc77;">2363</div></div>
+        <div class="info-card"><div class="lbl">全天成交额</div><div class="val">32737亿</div></div>
+        <div class="info-card"><div class="lbl">较昨日缩量</div><div class="val" style="color:#33cc77;">-2440亿</div></div>
+        <div class="info-card"><div class="lbl">涨幅>9%</div><div class="val" style="color:#ff6666;">309只</div></div>
+        <div class="info-card"><div class="lbl">跌幅>9%</div><div class="val" style="color:#33cc77;">16只</div></div>
+    </div>
+    <div class="info-row">
+        <div class="info-card"><div class="lbl">沪市成交</div><div class="val">15303亿</div></div>
+        <div class="info-card"><div class="lbl">深市成交</div><div class="val">17434亿</div></div>
+        <div class="info-card"><div class="lbl">内资主力净买入</div><div class="val" style="color:#ff6666;">+410.5亿</div></div>
+        <div class="info-card"><div class="lbl">涨跌中位数</div><div class="val" style="color:#ff6666;">+0.49%</div></div>
+    </div>
+</div>
+
+<!-- 上半年收益 -->
+<div class="section">
+    <h2>上半年收官成绩单</h2>
+    <div class="half-year">
+        <div class="row"><span class="label">上证综指</span><span class="val up">+3.16%</span></div>
+        <div class="row"><span class="label">深证成指</span><span class="val up">+19.82%</span></div>
+        <div class="row"><span class="label">创业板指</span><span class="val up" style="color:#ff4444;font-size:20px;">+35.58%</span></div>
+        <div class="row"><span class="label">科创50</span><span class="val up" style="color:#ff4444;font-size:22px;">+64.25%</span></div>
+    </div>
+    <p style="color:#aaa;font-size:13px;margin-top:8px;">银河证券总结：2026年上半年A股呈现"科技领涨、指数震荡抬升"的结构性行情，小盘和成长风格相对占优，通信、电子、建筑材料行业领涨，金融、消费板块表现偏弱。</p>
+</div>
+
+<!-- 板块涨跌 -->
+<div class="section">
+    <h2>板块涨跌全景</h2>
+    <div class="ab red">
+        <h3>领涨方向 —— 科技成长全面爆发</h3>
+        <div class="heatmap">
+            <span class="heat-tag lead">半导体</span>
+            <span class="heat-tag lead">CPO/光模块</span>
+            <span class="heat-tag lead">光芯片</span>
+            <span class="heat-tag lead">光刻机</span>
+            <span class="heat-tag lead">军工电子</span>
+            <span class="heat-tag lead">商业航天</span>
+            <span class="heat-tag lead">人形机器人</span>
+            <span class="heat-tag lead">消费电子</span>
+            <span class="heat-tag lead">固态电池</span>
+            <span class="heat-tag lead">光学光电子</span>
+            <span class="heat-tag lead">通信设备</span>
+            <span class="heat-tag lead">机械设备</span>
+        </div>
+        <p style="margin-top:10px;"><strong>电子板块</strong>掀起涨停潮，联建光电、格科微、天禄科技、联得装备、力合微、天山电子等<strong>近90股涨停或涨超10%</strong>。半导体产业链（功率半导体、CPU、先进封装、存储芯片）全线爆发。</p>
+        <p style="margin-top:6px;"><strong>国防军工</strong>涨幅居前，景嘉微、富吉瑞、晶品特装、新光光电、振芯科技、盛路通信、航发科技等<strong>近10股涨停或涨超10%</strong>。</p>
+        <p style="margin-top:6px;"><strong>机械设备</strong>表现抢眼，蜀道装备、深科达、明志科技、昊志机电、正帆科技、乔峰智能等<strong>近40股涨停或涨超10%</strong>。</p>
+        <p style="margin-top:6px;"><strong>商业航天</strong>概念集体爆发，中天火箭、金风科技、联建光电、盛路通信、四川九洲、移远通信、魅视科技等涨停，板块内涨停或涨超10%个股接近40只。催化剂：朱雀三号成功完成静态点火试验 + SpaceX隔夜大涨7.15%。</p>
+    </div>
+    <div class="ab green">
+        <h3>领跌方向 —— 传统周期与防御板块全面承压</h3>
+        <div class="heatmap">
+            <span class="heat-tag fall">石油石化</span>
+            <span class="heat-tag fall">煤炭</span>
+            <span class="heat-tag fall">银行</span>
+            <span class="heat-tag fall">保险</span>
+            <span class="heat-tag fall">医药</span>
+            <span class="heat-tag fall">海运</span>
+        </div>
+        <p style="margin-top:10px;">石油石化领跌：恒逸石化一度跌停，桐昆股份、恒力石化跌超5%，荣盛石化、中国石化跌超3%。煤炭股跌幅靠前：晋控煤业、大有能源、淮北矿业、中煤能源等跌超4%。银行股逆势下挫：沪农商行、浙商银行、渝农商行、南京银行等跌超3%。</p>
+    </div>
+</div>
+
+<!-- 资金流向 -->
+<div class="section">
+    <h2>资金流向分析</h2>
+    <div class="ab">
+        <h3>主力资金净流入方向</h3>
+        <ul>
+            <li><strong>电子/半导体：净流入226.57亿</strong> — 设备、光刻胶、电子特气、先进封测领涨，国产替代+中报预增催化</li>
+            <li><strong>通信/光学光电子/计算机：</strong>京东方A净流入44.71亿，新易盛42亿，AI硬件业绩兑现逻辑支撑</li>
+            <li><strong>军工/机器人/低空经济：</strong>政策催化短线脉冲，机构小幅布局三季度景气赛道</li>
+        </ul>
+    </div>
+    <div class="ab green">
+        <h3>主力资金净流出方向</h3>
+        <ul>
+            <li><strong>医药生物：-35.55亿</strong> — 创新药、CXO早盘冲高后资金兑现</li>
+            <li><strong>有色/工业金属/银行/基建地产：</strong>低位顺周期板块冲高回落，仅短线套利行情</li>
+        </ul>
+    </div>
+    <div class="ab">
+        <h3>资金面核心特征</h3>
+        <p><strong>半年末做账行情特征明显。</strong>机构抛售上半年翻倍高位题材，加仓低位、中报预喜硬件龙头。高位AI小票、存储芯片冲高回落。内资主力净买入410.5亿，说明资金以内部调仓为主，并未大规模离场。<strong>行情正从题材炒作转向业绩驱动。</strong></p>
+    </div>
+</div>
+
+<!-- 盘面特征 -->
+<div class="section">
+    <h2>今日盘面核心特征</h2>
+    <div class="ab">
+        <h3>1. 沪弱深强极端分化延续</h3>
+        <p>上证仅涨0.50%，深成指涨2.48%，创业板涨2.99%，科创50涨3.85%。煤炭、银行、石油、保险等传统权重全面拖累沪指，半导体、军工、CPO等科技成长驱动深市。这种分化本质上是<strong>资金从传统经济向新质生产力的大迁移</strong>。</p>
+    </div>
+    <div class="ab">
+        <h3>2. 电子板块涨停潮：近90股涨停</h3>
+        <p>电子板块涨停规模创近期之最，联得装备（300545）也位列其中。半导体产业链从功率半导体到CPU到先进封装到存储芯片，全线爆发，说明市场对"国产替代+AI算力产业链"的共识正在加速凝聚。</p>
+    </div>
+    <div class="ab">
+        <h3>3. 商业航天成新主线</h3>
+        <p>朱雀三号静态点火成功 + SpaceX纳入罗素1000指数大涨7.15%，双重催化下商业航天板块近40股涨停或涨超10%。赛迪智库预测2026年中国商业航天市场规模达3.5万亿，增速25%。</p>
+    </div>
+    <div class="ab">
+        <h3>4. 缩量2440亿但结构健康</h3>
+        <p>成交32737亿较昨日缩量2440亿，但涨跌比3051:2363，赚钱效应尚可。缩量主因是半年末机构调仓进入尾声，而非资金出逃。内资主力净买入410.5亿印证了这一判断。</p>
+    </div>
+</div>
+
+<!-- 机构观点 -->
+<div class="section">
+    <h2>机构下半年展望</h2>
+    <div class="quote">
+        <strong>中信证券：</strong>当前AI相当于2021年中旬的电新，偏上游的动态PE还没有坍缩、业绩预期刚开始上调。AI算力硬件（光通信、半导体、PCB）仍是最强景气度共识。见顶信号是"最不紧缺"商品的价格见顶。
+    </div>
+    <div class="quote">
+        <strong>招商证券：</strong>板块分化会进一步加剧，AI仍会是最大主线。概念炒作将被舍弃，资金切换至业绩确定且产业趋势持续的方向。下半年主要机会集中在海外算力、国产算力、资源品涨价、商业航天。
+    </div>
+    <div class="quote">
+        <strong>中信建投：</strong>下半年演绎结构性慢牛，"算力牛"和"复苏牛"两大景气主线。AI算力主线远未到全面泡沫化阶段。
+    </div>
+    <div class="quote">
+        <strong>财信证券：</strong>7月份处于市场过渡阶段，资金面逻辑将逐步让位于产业逻辑，流动性驱动走向业绩驱动。建议均衡配置。
+    </div>
+</div>
+
+<!-- 总结与展望 -->
+<div class="summary-table">
+    <h3>总结与后市展望</h3>
+    <p><strong>6月30日作为上半年收官日，A股交出了一份"科技牛"的成绩单：</strong>科创50半年暴涨64.25%，创指涨35.58%，深成指涨19.82%，上证仅涨3.16%。市场用半年的时间证明了"科技成长>传统价值"的结构性趋势。</p>
+    <p style="margin-top:10px;"><strong>短期（7月初）：</strong>半年末调仓压力释放后，7月进入中报预告密集期。资金将从"题材炒作"转向"业绩验证"，没有业绩支撑的高位题材股将面临较大压力。沪指短期压力4090-4100点，支撑4050点。</p>
+    <p style="margin-top:10px;"><strong>中期（7月）：</strong>核心观察变量：① 中报业绩预告；② 美联储7月议息；③ 政治局会议政策信号。AI算力、半导体设备、商业航天三条主线最值得关注。</p>
+    <p style="margin-top:10px;"><strong>风险提示：</strong>科技方向短期涨幅巨大，7月中报季若业绩不及预期，高位科技股将面临较大回调压力。今日电子板块近90股涨停，情绪偏热，需警惕短期分化。</p>
+</div>
+
+<div class="disclaimer">
+    免责声明：本文基于公开信息整理，不构成任何投资建议。市场有风险，投资需谨慎。数据来源：澎湃新闻、Wind、财联社、中新经纬、华夏时报。<br>
+    生成时间：2026年6月30日 北京时间
+</div>
+
+</div>
+</body>
+</html>

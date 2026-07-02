@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股隔夜利好利空消息梳理 | 2026年7月1日盘前</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.7; padding: 20px; }
+.container { max-width: 1100px; margin: 0 auto; }
+h1 { color: #58a6ff; font-size: 24px; margin-bottom: 4px; }
+h2 { font-size: 19px; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #30363d; }
+h2.bull { color: #3fb950; border-color: #238636; }
+h2.bear { color: #da3633; border-color: #da3633; }
+.subtitle { color: #8b949e; font-size: 13px; margin-bottom: 20px; }
+
+.scoreboard { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.sc-card { border-radius: 12px; padding: 20px; text-align: center; }
+.sc-bull { background: linear-gradient(135deg, #033a16, #0d4421); border: 1px solid #238636; }
+.sc-bear { background: linear-gradient(135deg, #3d1111, #4a1515); border: 1px solid #da3633; }
+.sc-card .sc-num { font-size: 48px; font-weight: 800; margin: 8px 0; }
+.sc-bull .sc-num { color: #3fb950; }
+.sc-bear .sc-num { color: #f85149; }
+.sc-card .sc-label { font-size: 14px; font-weight: 600; }
+.sc-bull .sc-label { color: #7ee787; }
+.sc-bear .sc-label { color: #ff7b72; }
+.sc-verdict { grid-column: 1 / -1; text-align: center; padding: 14px; border-radius: 10px; background: #161b22; border: 1px solid #d2991d; font-size: 15px; font-weight: 600; color: #d2991d; }
+
+.news-section { margin-bottom: 28px; }
+.news-item { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; display: flex; gap: 14px; align-items: flex-start; }
+.news-item.bull { border-left: 3px solid #238636; }
+.news-item.bear { border-left: 3px solid #da3633; }
+.news-item.neutral { border-left: 3px solid #6e7681; }
+.news-item .icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
+.news-item .body { flex: 1; }
+.news-item .title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+.news-item .desc { font-size: 13px; color: #8b949e; }
+.news-item .impact { margin-top: 6px; }
+.news-item .impact span { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 11px; margin-right: 4px; }
+.tag-bull { background: #033a16; color: #3fb950; }
+.tag-bear { background: #3d1111; color: #f85149; }
+.tag-warn { background: #3e2a00; color: #d2991d; }
+.tag-info { background: #0c2d6b; color: #79c0ff; }
+.tag-hot { background: #551a8b; color: #d2a8ff; }
+
+.star { color: #d2991d; }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.section-header .section-icon { font-size: 22px; }
+
+.overseas-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+.overseas-table th { background: #21262d; color: #8b949e; padding: 8px 12px; text-align: left; font-weight: 600; border-bottom: 1px solid #30363d; }
+.overseas-table td { padding: 7px 12px; border-bottom: 1px solid #21262d; }
+.up { color: #3fb950; }
+.down { color: #da3633; }
+
+.summary-box { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 18px 22px; margin: 20px 0; }
+.summary-box h3 { font-size: 15px; margin-bottom: 10px; }
+.summary-box ul { margin-left: 18px; font-size: 13px; line-height: 1.9; }
+.summary-box ul li { margin-bottom: 2px; }
+
+.vane { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0; }
+.vane-item { background: #0d1117; border: 1px solid #21262d; border-radius: 8px; padding: 14px; text-align: center; }
+.vane-item .v-name { font-size: 12px; color: #8b949e; }
+.vane-item .v-val { font-size: 20px; font-weight: 700; margin: 4px 0; }
+.vane-item .v-sub { font-size: 11px; color: #6e7681; }
+
+.divider { border: none; border-top: 1px solid #21262d; margin: 20px 0; }
+.small { font-size: 11px; color: #484f58; }
+.footer { text-align: center; margin-top: 30px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>A股隔夜利好利空消息全梳理</h1>
+<div class="subtitle">数据截至 2026年7月1日盘前 | 美股6月30日收盘 — 隔夜至盘前重大消息汇编</div>
+
+<!-- ====== 多空比分 ====== -->
+<div class="scoreboard">
+  <div class="sc-card sc-bull">
+    <div class="sc-label">🟢 利好信号</div>
+    <div class="sc-num">21</div>
+    <div style="color:#7ee787; font-size:12px;">条重大正面消息</div>
+  </div>
+  <div class="sc-card sc-bear">
+    <div class="sc-label">🔴 利空/警示</div>
+    <div class="sc-num">11</div>
+    <div style="color:#ff7b72; font-size:12px;">条负面/风险信号</div>
+  </div>
+  <div class="sc-verdict">⚖ 综合研判：利多占优但非压倒性，结构性分化是主基调 — 半导体/算力早盘高开，但官媒降温+成交缩量+国债分流制约反弹高度</div>
+</div>
+
+<!-- ====== 隔夜美股 ====== -->
+<h2>一、隔夜海外市场全景</h2>
+
+<table class="overseas-table">
+  <tr><th>市场</th><th>收盘点位</th><th>涨跌幅</th><th>要点</th></tr>
+  <tr><td>道琼斯</td><td>52319.20</td><td class="up">+0.26%</td><td>再创历史收盘新高，传统蓝筹托底</td></tr>
+  <tr><td>标普500</td><td>7499.36</td><td class="up">+0.79%</td><td>Q2累涨14.87%，创2020年后最佳单季</td></tr>
+  <tr><td>纳斯达克</td><td>26213.72</td><td class="up">+1.52%</td><td>科技全线领涨，AI硬件最强主线</td></tr>
+  <tr><td style="color:#3fb950;">费城半导体</td><td style="color:#3fb950;">14247</td><td class="up" style="color:#3fb950;">+3.90%</td><td>Q2累涨88%创史上最佳季度，H1翻倍（+101%）</td></tr>
+  <tr><td>金龙指数</td><td>--</td><td class="up">+1.42%</td><td>中概回暖，百度+7.64%，小鹏/迅雷+3%</td></tr>
+  <tr><td>10Y美债</td><td>4.37%</td><td class="down">-6bp</td><td>收益率小幅下行，风险偏好提升</td></tr>
+  <tr><td>离岸人民币</td><td>--</td><td class="up">小幅升值</td><td>北向回流门槛降低</td></tr>
+  <tr><td>现货黄金</td><td>$4009</td><td class="down">-0.18%</td><td>6月累跌10.65%，避险资金流出</td></tr>
+  <tr><td>WTI原油</td><td>$69.50</td><td class="down">-1.77%</td><td>6月累跌18.52%</td></tr>
+</table>
+
+<div class="vane">
+  <div class="vane-item"><div class="v-name">费城半导体 H1涨幅</div><div class="v-val up">+101%</div><div class="v-sub">半年翻倍</div></div>
+  <div class="vane-item"><div class="v-name">科磊 单日</div><div class="v-val up">+11.97%</div><div class="v-sub">设备龙头领涨</div></div>
+  <div class="vane-item"><div class="v-name">应用材料 单日</div><div class="v-val up">+10.42%</div><div class="v-sub">创历史新高</div></div>
+  <div class="vane-item"><div class="v-name">康宁 单日</div><div class="v-val up">+15.64%</div><div class="v-sub">玻璃基板光组件落地</div></div>
+  <div class="vane-item"><div class="v-name">闪迪 年内</div><div class="v-val up">+858%</div><div class="v-sub">伯恩斯坦目标价$3000</div></div>
+  <div class="vane-item"><div class="v-name">日元</div><div class="v-val down">162</div><div class="v-sub">创1986年以来新低</div></div>
+</div>
+
+<div class="summary-box">
+  <h3 style="color:#d2991d;">⚠️ 关键定性：美股大涨是"季末做账行情"还是"真反转"？</h3>
+  <ul>
+    <li>上涨核心驱动力：①美伊冲突暂缓→风险偏好回升 ②半年末机构净值做账→被动拉升重仓科技股 ③逢低买盘涌入超跌科技</li>
+    <li><strong>隐忧：季度末脉冲行情次交易日普遍存在资金兑现离场动作</strong>——历史规律显示高度不确定性</li>
+    <li>对A股传导：<strong>只影响开盘30分钟情绪</strong>，盘中回归A股自身逻辑</li>
+  </ul>
+</div>
+
+<!-- ====== 利好 ====== -->
+<h2 class="bull">二、重大利好（21条）</h2>
+
+<div class="news-section">
+
+  <div class="news-item bull">
+    <div class="icon">🌐</div>
+    <div class="body">
+      <div class="title"><span class="star">★★★</span> 美股科技全线大涨，费城半导体H1翻倍</div>
+      <div class="desc">纳指+1.52%，费城半导体+3.90%，Q2累涨88%创史上最佳季度。科磊+12%，应用材料+10%，阿斯麦+5%，AMD+7%。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">半导体设备/材料</span><span class="tag-info">AI算力</span><span class="tag-info">科创50</span><span class="tag-warn">仅限早盘情绪</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🏛️</div>
+    <div class="body">
+      <div class="title"><span class="star">★★★</span> 国常会专题部署人工智能，三大方向定调</div>
+      <div class="desc">6/29李强主持国常会：①加快AI底层核心技术自主攻关，统筹超大规模智算集群建设 ②全面推进"人工智能+"产业融合 ③科创板第五套标准拓展至大模型创新企业。同步审议"十五五"碳达峰行动方案、国民健康规划。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">AI全产业链</span><span class="tag-info">算力基建</span><span class="tag-info">半导体</span><span class="tag-info">绿电</span><span class="tag-info">创新药</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">📊</div>
+    <div class="body">
+      <div class="title"><span class="star">★★★</span> 6月制造业PMI 50.3%，重返扩张区间</div>
+      <div class="desc">四个月来首次回到荣枯线上方。大型企业50.7%，中型企业50.5%（刚转正），小型企业48.2%（仍收缩）。新订单指数明显改善是主要驱动力。</div>
+      <div class="impact"><span class="tag-bull">宏观利好</span><span class="tag-info">经济底确认</span><span class="tag-warn">K型分化未改</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">💧</div>
+    <div class="body">
+      <div class="title"><span class="star">★★★</span> 央行隔夜逆回购翻倍至6000亿，精准呵护跨季流动性</div>
+      <div class="desc">6/29投放3000亿，6/30加码至6000亿；7天逆回购从1575亿缩减至695亿。"一增一减"精准熨平跨季资金面。DR001波动显著降低。</div>
+      <div class="impact"><span class="tag-bull">流动性利好</span><span class="tag-info">大盘托底</span><span class="tag-warn">非全面放水</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">💾</div>
+    <div class="body">
+      <div class="title"><span class="star">★★★</span> 腾讯×长鑫签超200亿3-5年服务器DRAM长期协议</div>
+      <div class="desc">国产存储从"替代"跨到"锁定"。长鑫科技IPO在即，H1预计营收1100-1200亿（+612%~677%），净利润500-570亿（+2244%~2544%），12日已获批注册。</div>
+      <div class="impact"><span class="tag-bull">超强利好</span><span class="tag-info">存储芯片</span><span class="tag-info">国产替代</span><span class="tag-hot">里程碑事件</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🔺</div>
+    <div class="body">
+      <div class="title"><span class="star">★★★</span> 近20家半导体企业7月1日集体涨价</div>
+      <div class="desc">全球模拟及功率半导体企业7/1启动新一轮涨价，年内已多批次阶梯式调价。MLCC AI服务器/车规级涨幅10-40%，部分高容产品价格翻3-5倍。成熟制程涨价效应或延续至2027年。</div>
+      <div class="impact"><span class="tag-bull">强利好</span><span class="tag-info">半导体</span><span class="tag-info">MLCC</span><span class="tag-info">元件</span><span class="tag-info">模拟芯片</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🏗️</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 八部门发布工业互联网高质量发展文件</div>
+      <div class="desc">到2030年核心产业增加值达2.5万亿，建5万张工业5G专网。统筹工业算力、智算、超算设施一体化建设。叠加国常会AI部署形成共振。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">工业互联网</span><span class="tag-info">智算中心</span><span class="tag-info">5G</span><span class="tag-warn">缺龙头标杆</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🤖</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 优必选超仿生人形机器人订单突破一万台</div>
+      <div class="desc">全球首款具备规模化量产能力的全尺寸人形机器人产品，年内集中交付，从工业场景向消费级延伸。售价最高99万元。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">人形机器人</span><span class="tag-info">关节模组</span><span class="tag-info">减速器</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">💻</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 鹏城云脑III超算存储IO500双榜第一</div>
+      <div class="desc">在ISC26超算大会刷新全球存储性能纪录，可支撑万亿参数大模型研发。国产超算存储技术全球突破。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">超算</span><span class="tag-info">存储</span><span class="tag-info">算力国产化</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🧠</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> DeepSeek V4正式版7月中旬上线，引入峰谷定价</div>
+      <div class="desc">多位开发者已收到升级邮件。V4 Pro/Flash平时价格不变，高峰时段API价格调整为2倍，侧面印证算力需求极度旺盛。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">AI应用</span><span class="tag-info">算力需求</span><span class="tag-info">模型服务</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">📦</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 全球首只存储ETF纳入A股兆易创新为第八大重仓</div>
+      <div class="desc">Roundhill Memory ETF（DRAM）首次将A股存储龙头纳入组合，被动外资长线持续流入。海外资金认可国内存储产业链价值。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">存储芯片</span><span class="tag-info">兆易创新</span><span class="tag-info">外资流入</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🔬</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 第四代半导体材料基地落户郑州</div>
+      <div class="desc">中科粉研签约郑州高新区，国内首个第四代半导体（金刚石）全产业链项目落地。LPPHT微纳米金刚石产线全球首条。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">第四代半导体</span><span class="tag-info">金刚石材料</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">⚡</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 欧盟签署《储能三方协议》锚定储能高增</div>
+      <div class="desc">欧盟委员会+成员国+行业+消费者四方联合推进储能部署。华泰证券看好具备渠道研发优势的储能出海公司。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">储能出海</span><span class="tag-info">逆变器</span><span class="tag-info">宁德时代</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">💊</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 国家医保局+卫健委联合印发创新药支持措施</div>
+      <div class="desc">从加大研发支持、鼓励商业保险扩大投资、加强目录准入指导四方面送出政策礼包。叠加"十五五"国民健康规划。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">创新药</span><span class="tag-info">CRO</span><span class="tag-info">生物制品</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🚀</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 朱雀三号可复用火箭完成静态点火试验</div>
+      <div class="desc">在东风商业航天创新试验区顺利完成，后续将为飞行试验做准备。国家航天局提出搭建天地协同近地小行星监测体系。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">商业航天</span><span class="tag-info">卫星组网</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">📋</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 15家ST公司7月1日摘帽复牌</div>
+      <div class="desc">*ST大晟→大晟文化、*ST亚振→亚振家居、*ST艾艾→艾艾精工等集中撤销退市风险警示。ST易购获法院判万达支付17.47亿。</div>
+      <div class="impact"><span class="tag-bull">个股利好</span><span class="tag-info">摘帽概念</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">📈</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 业绩预增潮：益生股份预增4287-4774%，盛达资源预增399-471%</div>
+      <div class="desc">益生股份H1净利预增42-47倍；盛达资源H1净利润3.5-4.0亿。永太科技预增350-461%，广汇能源预增37-55%。7月中报季正式开启。</div>
+      <div class="impact"><span class="tag-bull">个股利好</span><span class="tag-info">中报业绩线</span><span class="tag-info">养殖</span><span class="tag-info">有色</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🏭</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 多家公司业务突破性公告</div>
+      <div class="desc">龙蟠科技液冷冷却液通过华为认证纳入配套名录；金宏气体高纯二氧化碳通过海力士测试进入批量供货；斯迪克MLCC离型膜进入海外龙头供应链；迈信林签署8.9亿算力服务器采购合同。</div>
+      <div class="impact"><span class="tag-bull">个股利好</span><span class="tag-info">液冷</span><span class="tag-info">半导体材料</span><span class="tag-info">算力</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🔋</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 宁德时代喀麦隆矿获安全生产许可证，即将复产</div>
+      <div class="desc">所有生产相关证件已拿齐，当地居民接受培训准备复工。碳酸锂供应增加有助于缓解上游成本压力。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">锂电</span><span class="tag-info">碳酸锂</span><span class="tag-info">宁德时代</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">🇰🇷</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> SK海力士启动新工厂设备采购，拟购约200台检测设备</div>
+      <div class="desc">包含HBM4测试设备，每台15-20亿韩元，总订单最高4000亿韩元。韩国公布史上最大规模半导体+AI投资计划。</div>
+      <div class="impact"><span class="tag-bull">利好</span><span class="tag-info">半导体设备</span><span class="tag-info">检测设备</span><span class="tag-info">HBM</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bull">
+    <div class="icon">☀️</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 防汛抗旱部署+水利基建催化</div>
+      <div class="desc">政治局会议要求各地落实防汛抗旱、防台风工作。主汛期极端天气偏多，旱涝并重。</div>
+      <div class="impact"><span class="tag-bull">事件催化</span><span class="tag-info">水利基建</span><span class="tag-info">应急设备</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== 利空 ====== -->
+<h2 class="bear">三、重大利空与风险警示（11条）</h2>
+
+<div class="news-section">
+
+  <div class="news-item bear">
+    <div class="icon">📺</div>
+    <div class="body">
+      <div class="title"><span class="star">★★★</span> 央视点名寒武纪：万亿市值需要"清醒定力"</div>
+      <div class="desc">央视评论员文章指出科创板"一哥"寒武纪市值破万亿后，需对估值与业绩的匹配压力保持清醒。历史上类似"清醒定力"措辞发布后一周内方向会震荡消化。寒武纪随后发风险警示称上游原材料涨价可能影响业绩。</div>
+      <div class="impact"><span class="tag-bear">情绪降温</span><span class="tag-warn">定向调控</span><span class="tag-info">高位科技</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">⚖️</div>
+    <div class="body">
+      <div class="title"><span class="star">★★★</span> 证监会对造假"零容忍"：累计罚没90亿，21家强制退市</div>
+      <div class="desc">6/30吴清主持召开央地协同工作会议，通报2024年7月以来：查办财务造假247起，行政处罚156起，罚没90.51亿，21家退市。建立AI大数据常态化筛查，7月中报季将集中核查。</div>
+      <div class="impact"><span class="tag-bear">监管收紧</span><span class="tag-info">绩差股</span><span class="tag-info">ST板块</span><span class="tag-warn">纯炒作退潮</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">📉</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 近50家高位科技股集中发布风险提示+减持公告</div>
+      <div class="desc">超50只年内翻倍科技股发异动澄清：股价短期涨幅严重超业绩增速，不存在未披露大额订单。20余家高位龙头发布大额减持计划，减持窗口期集中在7月上旬。兴业股份第三大股东减持，正帆科技高管减持。</div>
+      <div class="impact"><span class="tag-bear">短线利空</span><span class="tag-info">高位科技</span><span class="tag-warn">减持兑现压力</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">📊</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 成交额三连缩：32737亿→缩量2455亿</div>
+      <div class="desc">6/30全天成交3.29万亿较前日缩2400+亿，连续三日缩量。量价持续劈叉——指数创新高但参与资金在减少。"缩量上涨在多数情况下3-5日内酝酿回踩"。</div>
+      <div class="impact"><span class="tag-bear">技术利空</span><span class="tag-warn">反弹持续性存疑</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">💵</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 7月7000亿超长期特别国债集中发行</div>
+      <div class="desc">剩余专项债额度全部安排在7月投放，中长期资金将从股市分流至债市。对冲月初流动性宽松带来的资金增量，沪指4100点上方突破力度受压制。</div>
+      <div class="impact"><span class="tag-bear">流动性分流</span><span class="tag-info">压制指数上行空间</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">⚖️</div>
+    <div class="body">
+      <div class="title"><span class="star">★★☆</span> 三大存储巨头在美遭DRAM价格操纵集体诉讼</div>
+      <div class="desc">三星、SK海力士、美光被指控操纵内存价格并限制全球供应，四年累涨700%。诉讼扰动海外半导体估值，情绪传导A股存储板块。</div>
+      <div class="impact"><span class="tag-bear">利空</span><span class="tag-info">存储芯片</span><span class="tag-warn">情绪传导</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">🏦</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 大摩Wilson类比白银称半导体"最后狂欢"</div>
+      <div class="desc">摩根士丹利策略师Wilson将当前半导体行情类比白银，暗示泡沫风险。兴证调查显示AI泡沫担忧再起。海外机构对高位半导体分歧加大。</div>
+      <div class="impact"><span class="tag-bear">情绪利空</span><span class="tag-warn">外资谨慎信号</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">💴</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 日元跌破162创40年新低</div>
+      <div class="desc">日元6/30跌穿162关口，创1986年以来最低。日本财长措辞克制、干预信号暂未升温。亚太汇率波动风险外溢。</div>
+      <div class="impact"><span class="tag-bear">外部风险</span><span class="tag-info">亚太市场波动</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">🛢️</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 黄金6月累跌10.65%，WTI原油6月累跌18.52%</div>
+      <div class="desc">大宗商品二季度整体走弱。黄金$4009跌破关键支撑。原油$69.50/桶，布伦特6月跌近20%。</div>
+      <div class="impact"><span class="tag-bear">利空</span><span class="tag-info">有色</span><span class="tag-info">油气</span><span class="tag-info">资源股</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">📊</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> PMI K型分化：小型企业PMI 48.2%仍在收缩</div>
+      <div class="desc">虽然整体PMI重返扩张（50.3%），但大型50.7%/中型50.5%转正，小型企业48.2%仍在荣枯线下方。经济复苏不均衡，涨的不是雨露均沾。</div>
+      <div class="impact"><span class="tag-bear">结构性利空</span><span class="tag-info">小盘股</span></div>
+    </div>
+  </div>
+
+  <div class="news-item bear">
+    <div class="icon">🌏</div>
+    <div class="body">
+      <div class="title"><span class="star">★☆☆</span> 中概反弹量能不足，金龙指数涨1.42%但成交量萎缩</div>
+      <div class="desc">中概股虽止跌反弹站上5日线，但成交量明显萎缩，属于超跌情绪修复，非增量资金大规模进场。持续性不能等同于反转。</div>
+      <div class="impact"><span class="tag-bear">偏负面</span><span class="tag-info">互联网</span><span class="tag-info">中概联动</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== 综合研判 ====== -->
+<h2>四、综合研判与盘面预判</h2>
+
+<div class="summary-box">
+  <h3 style="color:#58a6ff;">🟡 利多因子汇总</h3>
+  <div class="grid2" style="grid-template-columns:1fr 1fr;">
+    <div>
+      <strong style="color:#3fb950;">外围情绪面：</strong>
+      <ul>
+        <li>美股科技大涨 → 科创50/创业板高开</li>
+        <li>中概回暖 → 北向小幅回流</li>
+        <li>费城半导体H1翻倍 → 估值锚上移</li>
+      </ul>
+    </div>
+    <div>
+      <strong style="color:#3fb950;">国内政策面：</strong>
+      <ul>
+        <li>国常会AI定调 → 半导体/AI主线焊死</li>
+        <li>八部门智算基建 → 算力/光通信受益</li>
+        <li>创新药政策 → 医药底部确认</li>
+      </ul>
+    </div>
+    <div>
+      <strong style="color:#3fb950;">产业催化剂：</strong>
+      <ul>
+        <li>近20家半导体7/1集体涨价</li>
+        <li>腾讯×长鑫200亿DRAM大单</li>
+        <li>MLCC价格翻3-5倍</li>
+        <li>优必选机器人订单破万</li>
+      </ul>
+    </div>
+    <div>
+      <strong style="color:#3fb950;">流动性：</strong>
+      <ul>
+        <li>央行隔夜逆回购6000亿护航</li>
+        <li>PMI 50.3%重返扩张</li>
+        <li>季末考核结束→资金面宽松</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="summary-box" style="border-color:#da3633;">
+  <h3 style="color:#f85149;">🔴 利空因子汇总</h3>
+  <div class="grid2" style="grid-template-columns:1fr 1fr;">
+    <div>
+      <strong style="color:#f85149;">监管降温：</strong>
+      <ul>
+        <li>央视点名寒武纪"清醒定力"</li>
+        <li>近50家高位股集中发异动+减持公告</li>
+        <li>证监会严监管→绩差股承压</li>
+      </ul>
+    </div>
+    <div>
+      <strong style="color:#f85149;">资金面压力：</strong>
+      <ul>
+        <li>成交三连缩→参与资金减少</li>
+        <li>7月7000亿特别国债分流</li>
+        <li>美股季末脉冲→次交易日兑现风险</li>
+      </ul>
+    </div>
+    <div>
+      <strong style="color:#f85149;">外部扰动：</strong>
+      <ul>
+        <li>存储三巨头遭集体诉讼</li>
+        <li>大摩称半导体"最后狂欢"</li>
+        <li>日元40年新低</li>
+      </ul>
+    </div>
+    <div>
+      <strong style="color:#f85149;">内部结构性：</strong>
+      <ul>
+        <li>PMI K型分化未改</li>
+        <li>黄金/原油6月大跌</li>
+        <li>缩量上涨容易酝酿回踩</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>五、7月1日盘面风向前瞻</h2>
+
+<div class="grid2">
+  <div class="card" style="border-left: 3px solid #238636;">
+    <h3 style="color:#3fb950; font-size:15px; margin-bottom:10px;">高确定性受益方向</h3>
+    <table style="font-size:12px;">
+      <tr><th style="width:40px;">优先级</th><th>板块</th><th>逻辑</th></tr>
+      <tr><td><span class="tag tag-red">S</span></td><td>半导体设备/材料</td><td>费城半导体映射+涨价+国产替代</td></tr>
+      <tr><td><span class="tag tag-red">S</span></td><td>MLCC/被动元件</td><td>7/1集体涨价+AI服务器10倍需求</td></tr>
+      <tr><td><span class="tag tag-orange">A</span></td><td>存储芯片</td><td>腾讯×长鑫大单+ETF纳入+涨价周期</td></tr>
+      <tr><td><span class="tag tag-orange">A</span></td><td>算力/液冷</td><td>国常会AI定调+八部门智算基建</td></tr>
+      <tr><td><span class="tag tag-yellow">B</span></td><td>创新药/CRO</td><td>政策底焊死+超跌修复</td></tr>
+      <tr><td><span class="tag tag-yellow">B</span></td><td>光通信/光模块</td><td>美股映射+智算基建受益</td></tr>
+      <tr><td><span class="tag tag-yellow">B</span></td><td>人形机器人</td><td>优必选万单催化+工业互联网文件</td></tr>
+      <tr><td><span class="tag tag-blue">C</span></td><td>绿电/储能</td><td>欧盟储能协议+十五五碳达峰</td></tr>
+      <tr><td><span class="tag tag-blue">C</span></td><td>商业航天</td><td>朱雀三号试验+监测体系建设</td></tr>
+    </table>
+  </div>
+  <div class="card" style="border-left: 3px solid #da3633;">
+    <h3 style="color:#f85149; font-size:15px; margin-bottom:10px;">需规避/谨慎方向</h3>
+    <table style="font-size:12px;">
+      <tr><th style="width:40px;">级别</th><th>板块/标的</th><th>原因</th></tr>
+      <tr><td><span class="tag tag-red">回避</span></td><td>纯炒作无业绩科技小票</td><td>异动公告+减持潮+监管降温</td></tr>
+      <tr><td><span class="tag tag-red">回避</span></td><td>年内涨3倍以上高位股</td><td>中央电视台降温+机构调仓</td></tr>
+      <tr><td><span class="tag tag-orange">谨慎</span></td><td>ST/绩差股</td><td>证监会严监管+中报暴雷风险</td></tr>
+      <tr><td><span class="tag tag-orange">谨慎</span></td><td>黄金/油气资源股</td><td>商品6月大跌+地缘缓和</td></tr>
+      <tr><td><span class="tag tag-yellow">观望</span></td><td>互联网/中概联动</td><td>中概反弹缩量，持续性不确定</td></tr>
+      <tr><td><span class="tag tag-yellow">观望</span></td><td>工业互联网</td><td>缺龙头标杆，技术面压20日线</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="summary-box">
+  <h3 style="color:#d2991d;">⏱ 分时节奏预判</h3>
+  <table style="font-size:13px;">
+    <tr><th>时段</th><th>预判走势</th><th>操作建议</th></tr>
+    <tr><td>9:15-9:25 集合竞价</td><td>半导体/算力高开，科创50领涨，沪指小幅高开</td><td>不挂高价追单</td></tr>
+    <tr><td>9:30-10:00 开盘</td><td>情绪集中释放，半导体冲高，高位科技可能出现获利兑现</td><td><strong>绝对不追高</strong></td></tr>
+    <tr><td>10:00-11:30 分歧</td><td>分歧加大，高位科技震荡，资金向低位补涨扩散（MLCC/设备材料/创新药）</td><td>回踩企稳后分批低吸</td></tr>
+    <tr><td>13:00-15:00 尾盘</td><td>若成交守住2.8万亿→偏强震荡；若缩至2.5万亿以下→回落风险加大</td><td>观察成交额定仓位</td></tr>
+  </table>
+</div>
+
+<div class="summary-box" style="border-color:#58a6ff;">
+  <h3 style="color:#58a6ff;">📌 核心观察指标</h3>
+  <div class="grid3" style="grid-template-columns:1fr 1fr 1fr;">
+    <div>
+      <strong>🔴 红色警戒：</strong>
+      <ul style="font-size:12px;">
+        <li>成交能否守住<strong>2.8万亿</strong></li>
+        <li>央视降温后高位科技是否放量分歧</li>
+        <li>北向资金能否转为净流入</li>
+      </ul>
+    </div>
+    <div>
+      <strong>🟢 强势确认：</strong>
+      <ul style="font-size:12px;">
+        <li>MLCC/半导体设备能否延续强势</li>
+        <li>创新药是否接力成为新主线</li>
+        <li>PMI权重股是否补涨分流科技</li>
+      </ul>
+    </div>
+    <div>
+      <strong>⚡ 变盘信号：</strong>
+      <ul style="font-size:12px;">
+        <li>科创50能否守住5日线</li>
+        <li>中报预增标的是否独立走强</li>
+        <li>减持公告后相关标的走势</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="footer">
+  <p class="small">免责声明：以上分析基于公开信息整理，仅供参考，不构成任何投资建议。股市有风险，投资需谨慎。</p>
+  <p class="small">数据来源：人民网、证券日报、新浪财经、东方财富、华尔街见闻、雪球、各券商研报 | 整理时间：2026-07-01 北京时间</p>
+</div>
+
+</div>
+</body>
+</html>

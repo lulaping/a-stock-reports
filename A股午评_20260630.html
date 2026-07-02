@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股午评 2026年6月30日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.7; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; padding: 36px 20px; background: linear-gradient(135deg, #1a1a3e, #0d0d2b); border-radius: 16px; margin-bottom: 24px; border: 1px solid #2a2a4a; }
+.header h1 { font-size: 26px; color: #fff; margin-bottom: 6px; }
+.header .date { font-size: 14px; color: #888; }
+.section { background: #16162a; border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2a4a; }
+.section h2 { font-size: 19px; color: #ffd700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #2a2a4a; }
+.index-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.idx-card { background: #1e1e3a; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #2a2a4a; }
+.idx-card .name { font-size: 12px; color: #888; margin-bottom: 4px; }
+.idx-card .value { font-size: 22px; font-weight: bold; color: #fff; }
+.idx-card .change { font-size: 14px; margin-top: 2px; }
+.change.up { color: #ff4444; }
+.change.down { color: #00cc66; }
+.idx-card.highlight { border-color: rgba(255,68,68,0.4); background: linear-gradient(135deg, #1e1e3a, #1a1a1a); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+.tag-red { background: rgba(255,68,68,0.2); color: #ff6666; }
+.tag-green { background: rgba(0,204,102,0.15); color: #33cc77; }
+.tag-gold { background: rgba(255,215,0,0.2); color: #ffd700; }
+.tag-blue { background: rgba(66,133,244,0.2); color: #6699ff; }
+.tag-orange { background: rgba(255,152,0,0.2); color: #ffb74d; }
+.info-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.info-card { background: #1e1e3a; border-radius: 8px; padding: 12px 16px; border: 1px solid #2a2a4a; }
+.info-card .lbl { font-size: 11px; color: #888; }
+.info-card .val { font-size: 18px; font-weight: bold; color: #fff; }
+.analysis-block { background: #1e1e3a; border-radius: 10px; padding: 20px; margin-bottom: 14px; border-left: 4px solid #ffd700; }
+.analysis-block h3 { font-size: 15px; color: #ffd700; margin-bottom: 10px; }
+.analysis-block p { font-size: 14px; color: #ccc; line-height: 1.8; }
+.analysis-block ul { margin: 6px 0 0 20px; color: #bbb; }
+.analysis-block ul li { margin-bottom: 5px; line-height: 1.7; }
+.analysis-block.red { border-left-color: #ff4444; }
+.analysis-block.red h3 { color: #ff6666; }
+.analysis-block.green { border-left-color: #00cc66; }
+.analysis-block.green h3 { color: #33cc77; }
+.heatmap { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.heat-tag { padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 500; }
+.heat-tag.lead { background: rgba(255,68,68,0.2); color: #ff6666; border: 1px solid rgba(255,68,68,0.4); }
+.heat-tag.fall { background: rgba(0,204,102,0.15); color: #33cc77; border: 1px solid rgba(0,204,102,0.3); }
+.heat-tag.neutral { background: rgba(255,215,0,0.15); color: #ffd700; border: 1px solid rgba(255,215,0,0.3); }
+.divider { border: none; border-top: 1px solid #2a2a4a; margin: 16px 0; }
+.outlook { background: linear-gradient(135deg, #1a1a3e, #1a2a1a); border-radius: 12px; padding: 24px; margin-top: 16px; border: 1px solid #2a4a2a; }
+.outlook h3 { font-size: 18px; color: #ffd700; margin-bottom: 12px; }
+.outlook p { color: #ccc; font-size: 14px; line-height: 1.8; }
+.quote { background: #1a1a30; border-radius: 8px; padding: 14px 18px; margin: 10px 0; font-size: 13px; color: #aaa; border-left: 3px solid #444; }
+.disclaimer { font-size: 11px; color: #666; text-align: center; margin-top: 30px; padding: 16px; border-top: 1px solid #2a2a4a; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>A股午评 —— 2026年6月30日</h1>
+    <div class="date">沪弱深强极端分化 · 创指+3.06% · 科创50+3%+ · 寒武纪市值破万亿 · 半日成交2.1万亿</div>
+</div>
+
+<!-- 指数概览 -->
+<div class="section">
+    <h2>指数概览</h2>
+    <div class="index-grid">
+        <div class="idx-card">
+            <div class="name">上证综指</div>
+            <div class="value">4082.13</div>
+            <div class="change up">+0.20%</div>
+        </div>
+        <div class="idx-card highlight">
+            <div class="name">深证成指</div>
+            <div class="value">16202.90</div>
+            <div class="change up">+2.47%</div>
+        </div>
+        <div class="idx-card highlight">
+            <div class="name">创业板指</div>
+            <div class="value">4345.84</div>
+            <div class="change up">+3.06%</div>
+        </div>
+        <div class="idx-card highlight">
+            <div class="name">科创50 <span class="tag tag-red">大涨</span></div>
+            <div class="value">--</div>
+            <div class="change up">+3%+</div>
+        </div>
+        <div class="idx-card highlight">
+            <div class="name">北证50</div>
+            <div class="value">--</div>
+            <div class="change up">+3%+</div>
+        </div>
+    </div>
+    <div class="info-row">
+        <div class="info-card">
+            <div class="lbl">上涨家数</div>
+            <div class="val" style="color:#ff6666;">2764</div>
+        </div>
+        <div class="info-card">
+            <div class="lbl">下跌家数</div>
+            <div class="val" style="color:#33cc77;">2647</div>
+        </div>
+        <div class="info-card">
+            <div class="lbl">半日成交额</div>
+            <div class="val">21048亿</div>
+        </div>
+        <div class="info-card">
+            <div class="lbl">涨幅>9%</div>
+            <div class="val" style="color:#ff6666;">198只</div>
+        </div>
+        <div class="info-card">
+            <div class="lbl">跌幅>9%</div>
+            <div class="val" style="color:#33cc77;">13只</div>
+        </div>
+    </div>
+</div>
+
+<!-- 盘面特征 -->
+<div class="section">
+    <h2>盘面特征：极端结构分化，科技成长碾压传统权重</h2>
+
+    <div class="analysis-block red">
+        <h3>领涨方向 —— 科技成长全面爆发</h3>
+        <div class="heatmap">
+            <span class="heat-tag lead">CPO/光模块</span>
+            <span class="heat-tag lead">半导体</span>
+            <span class="heat-tag lead">光纤概念</span>
+            <span class="heat-tag lead">国防军工</span>
+            <span class="heat-tag lead">人形机器人</span>
+            <span class="heat-tag lead">消费电子</span>
+            <span class="heat-tag lead">光刻机</span>
+            <span class="heat-tag lead">存储器</span>
+            <span class="heat-tag lead">培育钻石</span>
+            <span class="heat-tag lead">稀土永磁</span>
+            <span class="heat-tag lead">固态电池</span>
+        </div>
+        <p style="margin-top:12px;"><strong>半导体</strong>延续昨日强势，格科微、敏芯股份、长光华芯、力合微、安凯微等超10股涨停或涨超10%。<strong>CPO/光模块</strong>再度爆发，长光华芯、源杰科技、胜宏科技涨超10%，新易盛涨超9%，<strong>寒武纪涨超8%市值突破万亿</strong>大关。</p>
+        <p style="margin-top:6px;"><strong>国防军工</strong>同步飙升，景嘉微、六九一二、科思科技、振芯科技、晶品特装、富吉瑞等超10股涨停或涨超10%。</p>
+    </div>
+
+    <div class="analysis-block green">
+        <h3>领跌方向 —— 传统周期与防御板块全面承压</h3>
+        <div class="heatmap">
+            <span class="heat-tag fall">煤炭</span>
+            <span class="heat-tag fall">石油石化</span>
+            <span class="heat-tag fall">黄金</span>
+            <span class="heat-tag fall">银行</span>
+            <span class="heat-tag fall">保险</span>
+            <span class="heat-tag fall">医药</span>
+            <span class="heat-tag fall">白酒</span>
+            <span class="heat-tag fall">电力</span>
+        </div>
+        <p style="margin-top:12px;"><strong>煤炭</strong>领跌，中煤能源、大有能源、兖矿能源、晋控煤业、淮北矿业、陕西煤业等跌超4%。<strong>石油石化</strong>走弱，恒逸石化跌超8%，桐昆股份、恒力石化、东方盛虹、荣盛石化等跌超4%。银行、保险、白酒、电力等传统权重板块也集体走弱，成为拖累上证综指的主因。</p>
+    </div>
+</div>
+
+<!-- 深层解读 -->
+<div class="section">
+    <h2>深层解读</h2>
+
+    <div class="analysis-block">
+        <h3>1. 沪弱深强的极端分化：资金在"用脚投票"</h3>
+        <p>上证综指仅涨0.2%，而创业板指涨3.06%、深成指涨2.47%，分化程度为近期之最。<strong>核心原因是上证综指被煤炭、银行、保险、白酒、电力等传统权重板块拖累</strong>，而深成指和创业板受益于半导体、军工、CPO等科技成长板块的集中爆发。这种"沪弱深强"格局本质上是资金从传统周期/防御板块撤离，加速涌入科技成长方向的信号。</p>
+    </div>
+
+    <div class="analysis-block">
+        <h3>2. 寒武纪市值破万亿：AI算力信仰的里程碑</h3>
+        <p>寒武纪涨超8%，市值突破万亿大关，成为A股AI算力板块的标志性事件。这不仅是寒武纪自身的里程碑，更意味着市场对"国产AI芯片"的定价逻辑正在重塑——从"能否替代英伟达"转向"国产算力生态的独立价值"。配合CPO/光模块（新易盛+9%、源杰科技+10%）、半导体设备（长光华芯+10%+）的全面爆发，AI算力产业链正在形成"芯片+光模块+设备"的共振效应。</p>
+    </div>
+
+    <div class="analysis-block">
+        <h3>3. 中信证券下半年展望："AI+能化"新杠铃结构</h3>
+        <p>中信证券今日提出，下半年A股应<strong>用K型思维替代牛熊思维</strong>，"AI+能化"将构成新杠铃结构。AI投资将从"建造AI"向"适应AI"过渡，核心是比较优势的不断做实。同时强调人民币升值和CPI-PPI剪刀差是影响企业盈利的两大因素，中国优质资产的"全球化定价"是长线机会。今日盘面——科技暴涨、周期暴跌——正是这种"K型分化"的极致演绎。</p>
+    </div>
+
+    <div class="analysis-block">
+        <h3>4. 半日成交2.1万亿：量能充沛但分歧巨大</h3>
+        <p>半日成交超2.1万亿，量能充沛，但涨跌家数几乎持平（2764:2647），说明<strong>市场不是普涨，而是剧烈的结构性轮动</strong>。资金在科技和周期之间做极端切换，煤炭、石油、银行等板块的资金被大量抽取到半导体、军工、CPO方向。这种级别的资金腾挪，通常意味着市场正在经历一次"风格切换"而非简单的"板块轮动"。</p>
+    </div>
+</div>
+
+<!-- 机构观点 -->
+<div class="section">
+    <h2>机构观点速览</h2>
+    <div class="quote">
+        <strong>中信证券：</strong>中国资产需站在全球视角下定价，"AI+能化"将构成下半年新的杠铃结构。AI投资热将从"建造AI"向"适应AI"过渡。
+    </div>
+    <div class="quote">
+        <strong>中原证券：</strong>美伊阶段性协议落定、陆家嘴论坛政策落地、美联储议息落地，外部不确定性显著下降，有利于成长板块情绪修复和估值回补。
+    </div>
+    <div class="quote">
+        <strong>中信建投：</strong>半导体产业链的定价权正从芯片终端向设备与零部件环节结构性上移。SEMI将2026年全球前端设备市场规模增速从16.5%上调至23.5%，达1522亿美元。
+    </div>
+</div>
+
+<!-- 午后展望 -->
+<div class="outlook">
+    <h3>午后展望</h3>
+    <p><strong>核心看点：</strong>① 创业板指能否守住3%涨幅，关注午后是否出现获利回吐；② 寒武纪万亿市值能否站稳，这是AI算力板块的情绪锚；③ 沪指能否在科技带动下收窄与深市的差距，还是继续被传统权重拖累；④ 半日2.1万亿，午后若缩量则需警惕冲高回落。</p>
+    <p style="margin-top:10px;"><strong>操作策略：</strong>今日是典型的结构性行情——不是"买不买"的问题，而是<strong>"买什么"</strong>的问题。科技成长方向（半导体/CPO/军工/机器人）趋势明确但短期涨幅已大，追高需谨慎；传统周期（煤炭/石油/银行）被资金抛弃，短期回避。建议关注：① 半导体设备/材料中尚未大涨的补涨标的；② 人形机器人板块的回踩机会；③ 军工中低位品种的轮动。</p>
+    <p style="margin-top:10px;"><strong>风险提示：</strong>今日科技方向涨幅过大，午后若出现获利盘集中兑现，可能引发高标股回落。寒武纪万亿市值、CPO多股涨超10%，短期情绪已过热，需防范尾盘跳水。</p>
+</div>
+
+<div class="disclaimer">
+    免责声明：本文基于公开信息整理，不构成任何投资建议。市场有风险，投资需谨慎。数据来源：澎湃新闻、Wind、36氪、凤凰网财经。<br>
+    生成时间：2026年6月30日 北京时间
+</div>
+
+</div>
+</body>
+</html>
