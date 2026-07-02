@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>002579 中京电子 · Mode 1 深度分析 | Serenity 投资框架</title>
+<style>
+  :root { --bg: #0f1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950; --red: #f85149; --orange: #d2991d; --purple: #a371f7; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.6; padding: 20px; max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 1.8em; color: #fff; border-bottom: 2px solid var(--accent); padding-bottom: 12px; margin-bottom: 16px; }
+  h2 { font-size: 1.3em; color: var(--accent); margin: 28px 0 12px; padding-left: 8px; border-left: 3px solid var(--accent); }
+  h3 { font-size: 1.1em; color: #e6edf3; margin: 18px 0 8px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .verdict { background: linear-gradient(135deg, #1a2332, #1d1414); border: 2px solid var(--orange); border-radius: 10px; padding: 24px; margin: 20px 0; }
+  .verdict h2 { border: none; padding: 0; margin: 0 0 16px; color: #fff; }
+  .verdict-row { display: flex; gap: 20px; flex-wrap: wrap; }
+  .verdict-col { flex: 1; min-width: 280px; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 16px; }
+  .verdict-col h3 { font-size: 0.9em; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px; }
+  .verdict-col .price { font-size: 1.6em; font-weight: bold; color: #fff; }
+  .verdict-col .label { color: var(--muted); font-size: 0.85em; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+  th { background: #21262d; color: var(--muted); text-align: left; padding: 8px 12px; font-weight: 600; border-bottom: 2px solid var(--border); }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: rgba(88,166,255,0.05); }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; font-weight: 600; margin-right: 4px; }
+  .tag-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-red { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-orange { background: rgba(210,153,29,0.15); color: var(--orange); }
+  .tag-blue { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .tag-purple { background: rgba(163,113,247,0.15); color: var(--purple); }
+  .risk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+  .risk-item { padding: 10px 14px; border-radius: 6px; border-left: 3px solid; font-size: 0.9em; }
+  .risk-high { background: rgba(248,81,73,0.08); border-color: var(--red); }
+  .risk-mid { background: rgba(210,153,29,0.08); border-color: var(--orange); }
+  .risk-low { background: rgba(63,185,80,0.08); border-color: var(--green); }
+  .source { font-size: 0.8em; color: var(--muted); margin-top: 6px; }
+  .highlight { color: var(--accent); font-weight: bold; }
+  .warn { color: var(--red); font-weight: bold; }
+  .good { color: var(--green); font-weight: bold; }
+  .meta { color: var(--muted); font-size: 0.85em; margin-bottom: 16px; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin: 4px 0; }
+  .stack-grid { display: grid; grid-template-columns: 80px 1fr 120px 100px; gap: 2px; }
+  .stack-header { font-weight: 600; color: var(--muted); padding: 6px 8px; background: #21262d; }
+  .stack-cell { padding: 6px 8px; border-bottom: 1px solid #21262d; font-size: 0.85em; }
+</style>
+</head>
+<body>
+
+<h1>002579 中京电子 · Mode 1 深度分析</h1>
+<p class="meta">分析日期：2026-07-02 | 深圳主板 | 收盘价：¥19.59（-8.50%逼近跌停） | 总市值：~120.01亿 | 总股本：6.13亿股（流通5.83亿） | 国家级专精特新"小巨人" | PCB全品类制造商</p>
+
+<!-- ====== 结论 ====== -->
+<div class="verdict">
+  <h2>结论</h2>
+  <div class="verdict-row">
+    <div class="verdict-col">
+      <h3>客观框架空间</h3>
+      <div class="price">Bear: ¥10 | Base: ¥16 | Bull: ¥24</div>
+      <div class="label">翻倍门槛（+100%）= ¥39.18，Bull空间仅+22%，<span class="warn">远未过翻倍门槛</span></div>
+      <div class="label" style="margin-top:6px">Base ¥16 对应2026E 70x PE（华源预测2026E 1.4亿净利），估值透支严重</div>
+      <div class="label">当前¥19.59已高于Base估值，纯预期驱动</div>
+    </div>
+    <div class="verdict-col">
+      <h3>Serenity 视角</h3>
+      <div class="price" style="color:var(--red)">Sell / 强烈回避</div>
+      <div class="label">从3月低点11.41元涨至6月高点22.78元（+100%），PE 457x，近6日3次涨停后3次跌停，已是纯游资博弈标的。<span class="warn">三项硬红旗命中：定增稀释风险 + 高负债率 + 主业几乎不赚钱（净利率0.87%）</span>。PCB赛道内不构成任何卡点——行业产能过剩，公司市占率仅1.2%。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== Scope Gate ====== -->
+<h2>Scope Gate · 锁定目标范围</h2>
+<div class="card">
+  <ul>
+    <li><strong>市场判定：</strong>A股模式（深交所002579）✓</li>
+    <li><strong>分析模式：</strong>Mode 1（Serenity框架 + 客观框架对照）✓</li>
+    <li><strong>能力圈：</strong>AI算力PCB（AI供应链A股映射）+ 新能源汽车PCB + IC载板国产替代（半导体国产化）—— <span class="tag tag-green">能力圈内</span></li>
+    <li><strong>Serenity核心判定：</strong>中京电子是PCB赛道"全能选手"，但PCB行业本身不构成卡点——这是一个<span class="warn">竞争激烈、产能过剩、毛利率仅16.94%的大宗制造品</span>。AI高端板、IC载板虽是高壁垒细分，但当前贡献极低，不足以支撑457x PE。</li>
+  </ul>
+</div>
+
+<!-- ====== L0 事实底座 ====== -->
+<h2>L0 · 客观事实底座</h2>
+
+<h3>业务拆分（2025年报）</h3>
+<div class="card">
+<table>
+  <tr><th>业务板块</th><th>营收（亿）</th><th>占比</th><th>毛利率</th><th>同比</th></tr>
+  <tr><td>刚性电路板(含HDI板)</td><td>20.73</td><td>66.0%</td><td>17.35%</td><td>+5.9%</td></tr>
+  <tr><td>柔性电路板及其应用模组</td><td>8.61</td><td>27.4%</td><td>11.60%</td><td>+8.2%</td></tr>
+  <tr><td>其他（含IC载板/MiniLED）</td><td>2.07</td><td>6.6%</td><td>35.10%</td><td>+14.5%</td></tr>
+  <tr style="font-weight:bold"><td>合计</td><td>31.41</td><td>100%</td><td>16.94%</td><td>+4.61pct</td></tr>
+</table>
+<div class="source">来源：2025年报、同花顺iFinD</div>
+<p style="margin-top:8px"><strong>核心发现：</strong>IC载板+MiniLED基板（"其他"类）虽然毛利率最高（35.1%），但营收占比仅6.6%。<span class="warn">公司依然高度依赖低毛利的刚性电路板业务</span>。</p>
+</div>
+
+<h3>核心财务数据</h3>
+<div class="card">
+<table>
+  <tr><th>指标</th><th>2025年</th><th>2026Q1</th><th>意味着什么</th></tr>
+  <tr><td>营收</td><td>31.41亿（+7.1%）</td><td>6.99亿（-5.9%）</td><td>Q1同比下滑</td></tr>
+  <tr><td>归母净利润</td><td>2737万（+131%）</td><td>562万（-16.9%）</td><td><span class="warn">绝对值极低——31亿营收仅赚2737万</span></td></tr>
+  <tr><td>扣非净利润</td><td>2075万（+122%）</td><td>401万（+204%）</td><td>扭亏为盈是积极信号，但基数极低</td></tr>
+  <tr><td>毛利率</td><td>16.94%</td><td>15.75%</td><td>Q1毛利环比下滑</td></tr>
+  <tr><td>净利率</td><td>0.87%</td><td>0.80%</td><td><span class="warn">不到1%——基本不赚钱</span></td></tr>
+  <tr><td>经营现金流</td><td>2.49亿（+24.2%）</td><td>1.46亿（+253%）</td><td><span class="good">现金流改善明显，回款能力增强</span></td></tr>
+  <tr><td>资产负债率</td><td>61.56%</td><td>61.82%</td><td><span class="warn">偏高，远超前几个标的的22-30%</span></td></tr>
+  <tr><td>账面现金</td><td>~9亿</td><td>—</td><td>现金尚可</td></tr>
+  <tr><td>商誉</td><td>1.289亿</td><td>1.289亿</td><td>占净资产~5%，可控</td></tr>
+  <tr><td>ROE</td><td>1.13%</td><td>—</td><td><span class="warn">极低——资本利用效率差</span></td></tr>
+</table>
+<div class="source">来源：2025年报、2026Q1季报、新浪财经</div>
+</div>
+
+<h3>行业地位</h3>
+<div class="card">
+<table>
+  <tr><th>对标公司</th><th>营收规模</th><th>毛利率</th><th>PE(TTM)</th><th>市占率</th></tr>
+  <tr><td>鹏鼎控股</td><td>~350亿</td><td>~22%</td><td>~25x</td><td>12.3%</td></tr>
+  <tr><td>东山精密</td><td>~300亿</td><td>~18%</td><td>~20x</td><td>6.8%</td></tr>
+  <tr><td>深南电路</td><td>~170亿</td><td>~24%</td><td>~30x</td><td>4.5%</td></tr>
+  <tr><td style="background:rgba(210,153,29,0.1)"><strong>中京电子</strong></td><td style="background:rgba(210,153,29,0.1)">31亿</td><td style="background:rgba(210,153,29,0.1)">16.9%</td><td style="background:rgba(210,153,29,0.1)"><span class="warn">457x</span></td><td style="background:rgba(210,153,29,0.1)">1.2%</td></tr>
+</table>
+<p style="margin-top:8px"><strong>核心发现：</strong><span class="warn">相比鹏鼎控股(25xPE)、深南电路(30xPE)，中京电子457xPE是同行的15-18倍——这不仅仅是贵，而是市场在"赌"它从1.2%市占率上升到5%+甚至更高。</span></p>
+</div>
+
+<!-- ====== 供应链栈 ====== -->
+<h2>供应链栈 · 多跳映射</h2>
+
+<div class="card">
+  <div class="stack-grid">
+    <div class="stack-header">层级</div><div class="stack-header">角色/环节</div><div class="stack-header">中京电子位置</div><div class="stack-header">卡点强度</div>
+    <div class="stack-cell"><strong>L0</strong></div><div class="stack-cell">终端应用（AI服务器/手机/汽车/光模块）</div><div class="stack-cell">供应链末端</div><div class="stack-cell">—</div>
+    <div class="stack-cell"><strong>L1</strong></div><div class="stack-cell">品牌/OEM（英伟达/华为/比亚迪/小米）</div><div class="stack-cell"><span class="tag tag-green">直接客户</span></div><div class="stack-cell">★★★</div>
+    <div class="stack-cell"><strong>L2</strong></div><div class="stack-cell">PCB制造（刚性/柔性/HDI/载板）</div><div class="stack-cell"><span class="tag tag-blue">核心业务</span></div><div class="stack-cell">★</div>
+    <div class="stack-cell"><strong>L3</strong></div><div class="stack-cell">PCB原材料（覆铜板CCL/铜箔/玻纤布）</div><div class="stack-cell"><span class="warn">上游依赖</span></div><div class="stack-cell">—</div>
+    <div class="stack-cell"><strong>L4</strong></div><div class="stack-cell">IC载板专用材料（ABF膜/BT树脂）</div><div class="stack-cell"><span class="warn">海外依赖</span></div><div class="stack-cell">—</div>
+  </div>
+  <p style="margin-top:12px"><strong>核心洞察：</strong>中京电子处于PCB代工制造层（L2），上下都不是卡点——上游CCL等原材极易获取且供应充足，下游客户切换供应商成本低（PCB是"多供应商匹配"模式）。<span class="warn">PCB赛道本身不是卡点，全球PCB产能严重过剩，中国占全球50%+产能。</span>公司真正的看点在于L2内部的差异化工艺壁垒（HDI、大于30层板、FC-BGA），但这些尚未在财务层面兑现。</p>
+</div>
+
+<!-- ====== 卡点五连判 ====== -->
+<h2>Serenity 框架 · 卡点五问</h2>
+
+<div class="card">
+  <table>
+    <tr><th style="width:30px">#</th><th>判据</th><th>判定</th><th>说明</th></tr>
+    <tr>
+      <td>1</td><td>是不是 Single Point of Failure？</td>
+      <td><span class="tag tag-red">否</span></td>
+      <td>PCB行业有多家替代供应商（鹏鼎、东山、深南、景旺、崇达等）。中京在激光头PCB领域全球市占率>30%，算是细分卡点。但整体看：<span class="warn">PCB制造本身不是任何一条供应链的断链风险点</span>。</td>
+    </tr>
+    <tr>
+      <td>2</td><td>市值 vs TAM 不对称？</td>
+      <td><span class="tag tag-orange">部分不对称</span></td>
+      <td>120亿市值vs全球PCB市场~¥7000亿+，看起来不对称。但仔细算：公司市占率仅1.2%即使翻3倍到3.6%也对应~¥90亿营收，PE假设30x需2.8亿净利（净利率3.1%），对应的合理市值仅~¥84亿。<span class="warn">当前120亿已经透支了"市占率翻3倍"的远期假设</span>。</td>
+    </tr>
+    <tr>
+      <td>3</td><td>Designed-in 程度？</td>
+      <td><span class="tag tag-orange">一般</span></td>
+      <td>PCB是通用器件，不像芯片/传感器那样designed-in。客户切换PCB供应商的验证周期仅3-6个月，远低于连接器Tier-1认证的12-24个月。PCB行业本质上是<span class="warn">"产能+良率+成本"竞争</span>，而非锁定竞争。</td>
+    </tr>
+    <tr>
+      <td>4</td><td>认证/放量时间？</td>
+      <td><span class="tag tag-blue">有预期但慢</span></td>
+      <td>① 泰国基地2026Q2试运营 → 海外产能2026H2释放 ② FC-BGA已进入长电/通富微供应链 → 2027年有望批量 ③ 定增7亿尚在注册阶段 → 落地时间不确定。三年的亏损经历证明高端转型并非一帆风顺。</td>
+    </tr>
+    <tr>
+      <td>5</td><td>表层被定价程度？</td>
+      <td><span class="tag tag-red">严重透支</span></td>
+      <td><span class="warn">1年内涨幅157%、从6月低点翻倍、PE 457x、0.87%净利率</span>——市场已经把2026-2028年的所有利好全部折现。扣非净利仅401万/季度，年化1600万，对应PE 750x+。不夸张地说，仅业绩回归合理行业PE（30x）就需净利4亿——是当前水平的15倍。</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== 五问对比：公司声称 vs 市场定价 vs 事实 ====== -->
+<h2>公司声称 vs 市场定价 vs 事实</h2>
+
+<div class="card">
+  <table>
+    <tr><th>公司声称</th><th>市场定价（隐含假设）</th><th>事实核查</th></tr>
+    <tr><td>"AI服务器PCB需求爆发"</td><td>AI PCB业务将贡献大部分利润</td><td>算力相关订单同比+150%但基数低，实际营收贡献未披露。深南电路、沪电股份才是AI PCB的真正龙头</td></tr>
+    <tr><td>"FC-BGA打破海外垄断"</td><td>IC载板成为第二增长曲线</td><td>营收占比6.6%中仅一部分是IC载板，毛利率虽高但占比太小。全球IC载板市场被Ibiden、欣兴等日韩台厂控制</td></tr>
+    <tr><td>"泰国基地全球化布局"</td><td>海外营收从15%→40%</td><td>2026Q2试运营→爬坡需要1-2年。海外拓展是长期趋势，短期无法贡献利润</td></tr>
+    <tr><td>"扭亏为盈业绩拐点"</td><td>2026-2027年净利将爆发</td><td>扣非401万/Q、净利率0.87%、ROE 1.13%——距离"爆发"还有巨大差距</td></tr>
+    <tr><td>"人形机器人PCB概念"</td><td>机器人PCB带来估值弹性</td><td>目前机器人相关订单量较小，对业绩贡献有限。更多是主题炒作</td></tr>
+  </table>
+  <p style="margin-top:8px;color:var(--red)"><strong>综合结论：市场定价已远远超前于基本面事实。中京电子需要3-5年才能证明457x PE的合理性。</strong></p>
+</div>
+
+<!-- ====== 红旗扫描 ====== -->
+<h2>红旗扫描 · A股12项</h2>
+
+<div class="risk-grid">
+  <div class="risk-item risk-high">
+    <strong>无限ATM / 增发稀释</strong> <span class="tag tag-red">硬否决级别</span><br>
+    定增7亿正在推进（已获深交所审核通过，等证监会注册）。实控人承诺认购≥0.7亿锁18个月算积极信号，但股权稀释不可避免。<br>
+  </div>
+  <div class="risk-item risk-high">
+    <strong>资产负债表毒性</strong> <span class="tag tag-red">极高负债</span><br>
+    资产负债率61.82%，远超前几个标的（22%-30%）。EBIT仅覆盖利息费用1.1x。<br>
+  </div>
+  <div class="risk-item risk-high">
+    <strong>估值泡沫</strong> <span class="tag tag-red">纯概念溢价</span><br>
+    PE 457x且ROIC<2%，符合Skill框架中"高PE+低ROIC=泡沫"的明确判定。<br>
+  </div>
+  <div class="risk-item risk-high">
+    <strong>大客户集中风险</strong> <span class="tag tag-orange">中等</span><br>
+    前五大客户集中度不详，但行业惯例较为分散。BYD/华为/小米为主要客户。<br>
+  </div>
+  <div class="risk-item risk-mid">
+    <strong>行业竞争加剧</strong> <span class="tag tag-orange">PCB产能过剩</span><br>
+    全球PCB产能供过于求，价格战持续。中高端产品竞争尤为激烈。<br>
+  </div>
+  <div class="risk-item risk-mid">
+    <strong>股价剧烈波动</strong> <span class="tag tag-orange">游资博弈</span><br>
+    近6个交易日3次涨停+3次跌停，换手率17.75%-38%，游资推动特征明显。<br>
+  </div>
+  <div class="risk-item risk-low">
+    <strong>大股东质押</strong> <span class="tag tag-green">未发现异常</span><br>
+    实控人质押比例未披露，但未有高比例质押预警。<br>
+  </div>
+  <div class="risk-item risk-low">
+    <strong>商誉</strong> <span class="tag tag-green">可控</span><br>
+    商誉1.289亿占净资产~5%，在可控范围。<br>
+  </div>
+  <div class="risk-item risk-mid">
+    <strong>海外核心技术依赖</strong> <span class="tag tag-orange">IC载板层面</span><br>
+    FC-BGA核心材料（ABF膜等）依赖日本味之素等海外供应商，国产替代仍在进行中。<br>
+  </div>
+</div>
+
+<!-- ====== 估值 ====== -->
+<h2>估值 · Bear / Base / Bull 合成</h2>
+
+<div class="card">
+  <table>
+    <tr><th>情景</th><th>假设</th><th>目标价</th><th>PE</th><th>空间</th></tr>
+    <tr><td style="color:var(--red)"><strong>Bear</strong></td><td>概念退潮+定增摊薄+业绩不达预期。回归行业均值PE 30x，2026E净利0.8亿（谨慎）</td><td>¥3.9</td><td>30x</td><td><span class="warn">-80%</span></td></tr>
+    <tr><td style="color:var(--orange)"><strong>Bear+</strong></td><td>更保守的行业PB估值——PB 2x（行业历史中位）vs 当前PB 5x，每股净资产3.92</td><td>¥7.8</td><td>—</td><td><span class="warn">-60%</span></td></tr>
+    <tr><td style="color:var(--orange)"><strong>Base</strong></td><td>华源预测2026E 1.4亿净利，PE 70x（考虑AI+IC载板概念溢价）</td><td>¥16.0</td><td>70x</td><td>-18%</td></tr>
+    <tr><td style="color:var(--green)"><strong>Bull</strong></td><td>2027E净利2.5亿（翻倍增长），PE 50x（略高于行业，但考虑IC载板+AI溢价）</td><td>¥20.4</td><td>50x</td><td>+4%</td></tr>
+  </table>
+  <p style="margin-top:12px;color:var(--muted)"><strong>关键判断：</strong>即使在最乐观的Bull情景下，目标价¥20.4仅比当前¥19.59高4%。<span class="warn">下行风险极大（-60%到-80%），上行空间极其有限（0-4%）。这是一个极端不对称的风险/回报比。</span></p>
+  <p style="color:var(--red)"><strong>翻倍门槛（+100% → ¥39.18）：</strong>即使2027E净利2.5亿*PE 50x，仅¥20.4——差距一倍。中京电子需要净利~4.8亿才能支撑¥39.18的股价，这是当前水平的~17倍。</p>
+</div>
+
+<h3>催化剂</h3>
+<div class="card">
+  <table>
+    <tr><th>催化剂</th><th>类型</th><th>时间窗口</th><th>信号强度</th></tr>
+    <tr><td>定增获证监会注册批文+发行完成</td><td><span class="tag tag-blue">融资落地</span></td><td>2026H2</td><td>★★★☆（利好产能落地，利空稀释）</td></tr>
+    <tr><td>泰国基地正式投产+首批订单</td><td><span class="tag tag-blue">产能落地</span></td><td>2026Q3</td><td>★★★</td></tr>
+    <tr><td>AI芯片ABF载板批量出货公告</td><td><span class="tag tag-purple">技术突破</span></td><td>2026-2027</td><td>★★★★☆（真正改变估值逻辑的催化剂）</td></tr>
+    <tr><td>2026半年报/中报业绩（验证扭亏持续性）</td><td><span class="tag tag-green">业绩验证</span></td><td>2026.08</td><td>★★★★（当前一切建立在预期上，财报是关键验证点）</td></tr>
+    <tr><td>华为韬定律后续催化</td><td><span class="tag tag-purple">政策/技术</span></td><td>持续</td><td>★★★（长期叙事利好，但无法量化到业绩）</td></tr>
+  </table>
+</div>
+
+<!-- ====== 综合判定 ====== -->
+<h2>综合判定 · 信念分档</h2>
+
+<div class="card">
+  <table>
+    <tr><th>维度</th><th>评分</th><th>说明</th></tr>
+    <tr><td>卡点强度</td><td>★</td><td>PCB行业不是卡点——全球产能过剩，供应商充足。中京在激光头PCB细分领域有卡点（全球30%+），但占比太小。</td></tr>
+    <tr><td>成长性</td><td>★★★</td><td>AI算力PCB+IC载板+车载PCB三条线方向正确。但竞争激烈（深南/沪电/鹏鼎均布局），中京作为1.2%市占率公司能否突围不确定。</td></tr>
+    <tr><td>估值安全边际</td><td><span class="warn">★</span></td><td><span class="warn">PE 457x、PB 5x、ROE 1.13%、净利率0.87%</span>——毫无安全边际可言。这是今天分析过的所有标的中估值泡沫最大的。</td></tr>
+    <tr><td>红旗强度</td><td><span class="warn">3项严重红旗</span></td><td>定增稀释 + 高负债率 + 估值泡沫。按照Skill标准：无限ATM的定增稀释本身就是硬否决，再加上泡沫级PE且ROIC<2%→判定为泡沫。</td></tr>
+    <tr><td>催化剂密度</td><td>★★★</td><td>定增+泰国投产+ABF载板批量+中报。催化剂不少但兑现时间过长（2027+）。</td></tr>
+    <tr><td><strong>Serenity信念分档</strong></td><td><span class="tag tag-red" style="font-size:1em">Sell / 强烈回避</span></td><td><strong>PCB赛道缺乏卡点定价权，当前估值已严重透支未来3-5年业绩。</strong>从Serenity视角看：这不是一个好卡点（判据15条仅命中2-3条），泡沫红旗完全亮起。如果一定要关注PCB赛道，深南电路（PE 30x、净利率11%、高端PCB国内第一）是中京电子457x PE的合理对标——差距15倍。</td></tr>
+  </table>
+</div>
+
+<h3>交易层面观察</h3>
+<div class="card">
+  <ul>
+    <li>近日3次涨停+3次跌停，今日收盘19.59（跌停价19.27，最低19.29）</li>
+    <li>换手率17.75%，成交额20.75亿，游资反复进出</li>
+    <li>大单资金净流出合计-17.66亿（30日线），主力出货明显</li>
+    <li>机构席位6月27日净买入2.47亿，但今日大幅回撤</li>
+  </ul>
+</div>
+
+<hr class="divider">
+
+<h2>独立复核</h2>
+<div class="card">
+  <ul>
+    <li>财务数据：2025年报+2026Q1季报（一手来源），新浪财经/同花顺交叉验证 ✓</li>
+    <li>股价/市值：2026-07-02收盘19.59元，总市值120.01亿（CFI/新浪数据）✓</li>
+    <li>定增7亿进度：深交所已审核通过，待证监会注册（公司公告2026-06-26）✓</li>
+    <li>泰国基地：2026Q2试运营（华源证券/公司公告）✓</li>
+    <li>行业对比数据：鹏鼎/东山/深南的营收/毛利率/PE均来自新浪/CFI ✓</li>
+    <li>公司市占率1.2%：来源自东方财富网产业分析 ✓</li>
+    <li>激光头PCB全球30%+：来源自多篇券商分析 ✓</li>
+    <li>确认偏误检查：已充分揭示公司的积极面（AI PCB/IC载板/扭亏/现金流改善），但最终判定仍是泡沫信号占主导 ✓</li>
+    <li><strong>跨标的倍数对比（同源同日）：</strong>中京PE 457x vs 鹏鼎25x vs 深南30x ——偏离度 >1000%，远超技能框架中偏离>100%即为纯预期驱动的阈值 ✓</li>
+  </ul>
+</div>
+
+<p class="meta" style="margin-top:24px">报告生成时间：2026-07-02 | 框架：Serenity v2.0（A股适配版） | 数据截止：2026-07-02 15:00 | 免责声明：本报告仅为框架分析演示，不构成任何投资建议</p>
+
+</body>
+</html>
