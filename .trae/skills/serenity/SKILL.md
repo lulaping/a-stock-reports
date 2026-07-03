@@ -230,60 +230,10 @@ git push
 #### 5.5 前置条件备忘
 
 - 仓库根目录需有 `.nojekyll` 空文件（禁用 Jekyll 构建），如不存在需手动创建
-- **Pages 部署方式（一次性设置）**：仓库 Settings → Pages → Source 设为 **"GitHub Actions"**。工作流文件 `.github/workflows/deploy.yml` 已配置好自动部署，详见下方 `5.6`
+- **Pages 部署方式（一次性设置）**：仓库 Settings → Pages → Source 设为 **"Deploy from a branch"**，Branch 选 `main`，目录选 **`/ (root)`**，点击 Save
+- **不要使用 "GitHub Actions" 方式**——纯静态 HTML 无需任何构建步骤，使用 Actions 反而会因为 Node.js 版本弃用导致部署失败
 - 首次使用前确认已 clone 仓库到 `e:\Trae` 且 `git remote -v` 指向正确地址
-- 推送后约 1-2 分钟刷新 Pages 地址即可看到更新；若长时间未更新，检查仓库 Actions 页面（`https://github.com/lulaping/a-stock-reports/actions`）是否有失败工作流
-
-#### 5.6 GitHub Actions 工作流说明
-
-> 以下为一次性初始化步骤，首次使用本 Skill 前完成即可。
-
-**工作流文件路径：** `.github/workflows/deploy.yml`
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    concurrency:
-      group: pages
-      cancel-in-progress: false
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - name: Deploy to Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-**工作原理：**
-
-- 每次 `git push` 到 `main` 分支时自动触发
-- 工作流将仓库根目录所有文件上传为 Pages artifact，然后部署
-- 使用 GitHub 官方 `actions/deploy-pages@v4` 代替旧版 Node.js 20 依赖
-
-**若推送后 Pages 未更新：**
-1. 打开 `https://github.com/lulaping/a-stock-reports/actions` 查看最新工作流运行状态
-2. 若有 ❌ 标记，点进去查看具体错误日志
-3. 常见问题：`.github/workflows/deploy.yml` 文件未被暂存（忘记 `git add`）
+- 推送后约 30-60 秒刷新 Pages 地址即可看到更新；若长时间未更新，确认 Settings → Pages 顶部无错误提示，必要时点击 Retry deployment
 
 ## DeepSeek 在 A 股分析中的原生优势
 
