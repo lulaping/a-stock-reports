@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股板块资金流向分析 2026-07-03</title>
+    <style>
+        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #333; line-height: 1.8; }
+        h1 { color: #1a1a2e; border-bottom: 3px solid #e94560; padding-bottom: 12px; }
+        h2 { color: #16213e; margin-top: 30px; border-left: 4px solid #e94560; padding-left: 12px; }
+        h3 { color: #0f3460; margin-top: 20px; }
+        .box { background: white; border-radius: 10px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th { background: #16213e; color: white; padding: 10px 14px; text-align: left; }
+        td { padding: 8px 14px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f8f9fa; }
+        .verdict { background: linear-gradient(135deg,#1a1a2e,#16213e); color: white; padding: 20px 24px; border-radius: 12px; margin: 16px 0; }
+        .verdict p { margin: 6px 0; }
+        .tag-up { color:#dc3545; font-weight:bold; }
+        .tag-down { color:#28a745; font-weight:bold; }
+        .tag-neutral { color:#6c757d; }
+        .highlight { background:#e8f4fd; border:2px solid #2196F3; border-radius:12px; padding:16px 20px; margin:16px 0; }
+        .footer { text-align:center; color:#888; font-size:13px; margin-top:40px; padding-top:20px; border-top:1px solid #ddd; }
+        .bar-bg { background:#eee; border-radius:6px; height:22px; width:100%; overflow:hidden; margin:2px 0; }
+        .bar-in { background:#dc3545; height:22px; border-radius:6px; }
+        .bar-out { background:#28a745; height:22px; border-radius:6px; }
+        .flow-item { display:flex; align-items:center; padding:4px 0; }
+        .flow-name { width:160px; font-weight:500; }
+        .flow-val { width:120px; text-align:right; font-weight:600; font-size:14px; }
+        .flow-bar-wrap { flex:1; margin:0 10px; }
+    </style>
+</head>
+<body>
+
+<h1>A股板块资金流向全景分析 — 2026-07-03（周五收盘）</h1>
+<p style="color:#888;">数据来源：交易所数据/东方财富/金融界 | 含板块/题材/个股三层次资金流向</p>
+
+<div class="verdict">
+    <p><strong>📊 全天资金全景</strong></p>
+    <p>大盘主力资金全天净流出 <strong style="color:#ffd700;">175.91亿元</strong>（较昨日的超500亿大幅收窄）。市场缩量至3.18万亿（-2680亿），呈缩量修复格局。</p>
+    <p><strong>四个关键特征：</strong></p>
+    <p>① 资金从半导体/电子集中流出 → 流向汽车/PCB/机器人/黄金——<strong>明确的高低切换</strong>，非全面离场<br>
+    ② 机器人在题材端吸金143.74亿——所有题材中净流入最大，是今日最强主线<br>
+    ③ 北向资金结束连续单边流出，盘中逆势回流——<strong>边际改善明显</strong><br>
+    ④ 尾盘涨幅收窄 + 缩量——说明场外增量资金仍未大规模入场</p>
+</div>
+
+<h2>一、板块维度：主力资金流向</h2>
+
+<div class="box">
+    <h3 style="color:#dc3545;">🟥 净流入 TOP 10 板块（截至午后/收盘）</h3>
+    <table>
+        <tr><th style="width:30px;">#</th><th>板块</th><th style="width:130px;">主力净流入</th><th style="width:80px;">板块涨幅</th><th>核心驱动</th></tr>
+        <tr><td>1</td><td><strong>汽车</strong></td><td class="tag-up">+68.19亿</td><td class="tag-up">+4%</td><td>新能源汽车销量超预期+智能化渗透加速，估值偏低</td></tr>
+        <tr><td>2</td><td><strong>印制电路板(PCB)</strong></td><td class="tag-up">+65.93亿</td><td>+2.19%</td><td>富乔工业电子布涨价+AI数据中心交换机需求爆发</td></tr>
+        <tr><td>3</td><td><strong>汽车零部件</strong></td><td class="tag-up">+61.77亿</td><td class="tag-up">+4.03%</td><td>汽车+机器人双概念共振，多股涨停</td></tr>
+        <tr><td>4</td><td><strong>机械设备</strong></td><td class="tag-up">+54.72亿</td><td class="tag-up">+2.9%</td><td>机器人产业链扩散，减速器/丝杠等零部件需求提升</td></tr>
+        <tr><td>5</td><td><strong>元件</strong></td><td class="tag-up">+48.21亿</td><td>+1.97%</td><td>PCB+电子元件持续获资金回补</td></tr>
+        <tr><td>6</td><td><strong>消费电子</strong></td><td class="tag-up">+41.76亿</td><td>+2.46%</td><td>苹果新机预期+AI终端渗透</td></tr>
+        <tr><td>7</td><td><strong>国防军工</strong></td><td class="tag-up">+40.39亿</td><td class="tag-up">+1.8%</td><td>机器人+商业航天双主线拉动</td></tr>
+        <tr><td>8</td><td><strong>电力设备</strong></td><td class="tag-up">+30.68亿</td><td class="tag-up">+1.5%</td><td>电网投资加速+光伏玻璃减产提价</td></tr>
+        <tr><td>9</td><td><strong>贵金属</strong></td><td class="tag-up">+32.76亿</td><td class="tag-up">+6.92%</td><td>金价突破4193美元，非农爆冷降息预期升温</td></tr>
+        <tr><td>10</td><td><strong>通信设备</strong></td><td class="tag-up">~30亿</td><td class="tag-up">+2.1%</td><td>光模块/光通信龙头持续获资金抱团</td></tr>
+    </table>
+</div>
+
+<div class="box">
+    <h3 style="color:#28a745;">🟩 净流出 TOP 10 板块（收盘）</h3>
+    <table>
+        <tr><th style="width:30px;">#</th><th>板块</th><th style="width:130px;">主力净流出</th><th>核心驱动</th></tr>
+        <tr><td>1</td><td><strong>电子（整体）</strong></td><td class="tag-down"><strong>-299.13亿</strong></td><td>高位科技全面退潮，资金集中兑现</td></tr>
+        <tr><td>2</td><td><strong>半导体</strong></td><td class="tag-down"><strong>-194.77亿</strong></td><td>电子特气/光刻胶/设备全线杀跌</td></tr>
+        <tr><td>3</td><td><strong>光学光电子</strong></td><td class="tag-down">-95.87亿</td><td>京东方A单股流出39.62亿为全市场之最</td></tr>
+        <tr><td>4</td><td><strong>基础化工</strong></td><td class="tag-down">-72.64亿</td><td>氟化工/磷化工跟跌</td></tr>
+        <tr><td>5</td><td><strong>半导体材料</strong></td><td class="tag-down">-71.91亿</td><td>多氟多跌停拖累整个板块</td></tr>
+        <tr><td>6</td><td><strong>面板</strong></td><td class="tag-down">-69.76亿</td><td>京东方A+深天马等持续流出</td></tr>
+        <tr><td>7</td><td><strong>电子化学品</strong></td><td class="tag-down">-66.14亿</td><td>南大光电/飞凯材料大幅流出</td></tr>
+        <tr><td>8</td><td><strong>化学制品</strong></td><td class="tag-down">-41.68亿</td><td>多氟多+巨化股份双杀</td></tr>
+        <tr><td>9</td><td><strong>数字芯片设计</strong></td><td class="tag-down">-35.56亿</td><td>兆易创新单股流出17.83亿</td></tr>
+        <tr><td>10</td><td><strong>广告营销</strong></td><td class="tag-down">-12亿+</td><td>蓝色光标+天娱数科大幅出逃</td></tr>
+    </table>
+    <p style="font-size:13px;color:#888;margin-top:8px;">⚠️ 半导体/电子合计流出近500亿——是今日资金"高低切换"的卖出端</p>
+</div>
+
+<h2>二、题材维度：主题资金流向</h2>
+
+<div class="box">
+    <h3 style="color:#dc3545;">🟥 题材净流入 TOP 5（收盘）</h3>
+    <table>
+        <tr><th>#</th><th>题材</th><th style="width:150px;">主力净流入</th><th>说明</th></tr>
+        <tr><td>1</td><td><strong>机器人概念</strong></td><td class="tag-up"><strong>+143.74亿</strong></td><td>40余只涨停，宇树IPO+Optimus量产催化，板块涨停潮</td></tr>
+        <tr><td>2</td><td><strong>人形机器人</strong></td><td class="tag-up">+113.78亿</td><td>机器人产业链向人形方向延伸</td></tr>
+        <tr><td>3</td><td><strong>特斯拉概念</strong></td><td class="tag-up">+84.39亿</td><td>Optimus量产预期+马斯克推文发酵</td></tr>
+        <tr><td>4</td><td><strong>低空经济</strong></td><td class="tag-up">+80.74亿</td><td>政策持续催化+商业航天联动</td></tr>
+        <tr><td>5</td><td><strong>机器人执行器</strong></td><td class="tag-up">+64.73亿</td><td>减速器/丝杠等核心执行器获集中买入</td></tr>
+    </table>
+    <p style="font-size:13px;color:#888;">🔥 机器人是今日绝对主线——题材端吸金143.74亿，遥居所有题材第一</p>
+</div>
+
+<h2>三、个股维度：资金抢筹 vs 出逃</h2>
+
+<div class="box">
+    <h3 style="color:#dc3545;">🟥 主力净流入 TOP 10（午间+午后合并）</h3>
+    <table>
+        <tr><th>#</th><th>个股</th><th>代码</th><th>净流入</th><th>所属赛道</th></tr>
+        <tr><td>1</td><td><strong>新易盛</strong></td><td>300502</td><td class="tag-up">+20.31亿</td><td>🟦 通信设备/光模块</td></tr>
+        <tr><td>2</td><td><strong>中国巨石</strong></td><td>600176</td><td class="tag-up">+16.81亿</td><td>🟦 玻璃玻纤</td></tr>
+        <tr><td>3</td><td><strong>立讯精密</strong></td><td>002475</td><td class="tag-up">+12.36亿</td><td>🟦 消费电子</td></tr>
+        <tr><td>4</td><td><strong>紫金矿业</strong></td><td>601899</td><td class="tag-up">+11.31亿</td><td>🟦 工业金属/黄金</td></tr>
+        <tr><td>5</td><td><strong>沪电股份</strong></td><td>002463</td><td class="tag-up">+9.01亿</td><td>🟦 PCB/元件</td></tr>
+        <tr><td>6</td><td><strong>三花智控</strong></td><td>002050</td><td class="tag-up">+8.74亿</td><td>🟦 机器人+家电零部件</td></tr>
+        <tr><td>7</td><td><strong>浪潮信息</strong></td><td>000977</td><td class="tag-up">+8.12亿</td><td>🟦 计算机设备</td></tr>
+        <tr><td>8</td><td><strong>国际复材</strong></td><td>301526</td><td class="tag-up">+7.57亿</td><td>🟦 玻璃玻纤</td></tr>
+        <tr><td>9</td><td><strong>紫光股份</strong></td><td>000938</td><td class="tag-up">+7.39亿</td><td>🟦 IT服务</td></tr>
+        <tr><td>10</td><td><strong>卧龙电驱</strong></td><td>600580</td><td class="tag-up">+7.02亿</td><td>🟦 机器人/电机</td></tr>
+    </table>
+</div>
+
+<div class="box">
+    <h3 style="color:#28a745;">🟩 主力净流出 TOP 10</h3>
+    <table>
+        <tr><th>#</th><th>个股</th><th>代码</th><th style="width:130px;">净流出</th><th>所属赛道</th></tr>
+        <tr><td>1</td><td><strong>京东方A</strong></td><td>000725</td><td class="tag-down"><strong>-39.62亿</strong></td><td>⚠️ 全市场流出王</td></tr>
+        <tr><td>2</td><td><strong>兆易创新</strong></td><td>603986</td><td class="tag-down">-17.83亿</td><td>⚠️ 存储芯片龙头</td></tr>
+        <tr><td>3</td><td><strong>南大光电</strong></td><td>300346</td><td class="tag-down">-7.41亿</td><td>⚠️ 电子特气</td></tr>
+        <tr><td>4</td><td><strong>蓝色光标</strong></td><td>300058</td><td class="tag-down">-6.72亿</td><td>⚠️ AI应用/传媒</td></tr>
+        <tr><td>5</td><td><strong>多氟多</strong></td><td>002407</td><td class="tag-down">-6.26亿</td><td>⚠️ 光刻胶/化工，跌停</td></tr>
+        <tr><td>6</td><td><strong>亨通光电</strong></td><td>600487</td><td class="tag-down">-6.06亿</td><td>⚠️ 光纤光缆</td></tr>
+        <tr><td>7</td><td><strong>天娱数科</strong></td><td>002354</td><td class="tag-down">-5.87亿</td><td>⚠️ AI应用/AIGC</td></tr>
+        <tr><td>8</td><td><strong>香农芯创</strong></td><td>301099</td><td class="tag-down">-5.77亿</td><td>⚠️ 半导体分销</td></tr>
+        <tr><td>9</td><td><strong>长川科技</strong></td><td>300604</td><td class="tag-down">-5.68亿</td><td>⚠️ 半导体设备</td></tr>
+        <tr><td>10</td><td><strong>江丰电子</strong></td><td>300666</td><td class="tag-down">-5.65亿</td><td>⚠️ 半导体靶材</td></tr>
+    </table>
+</div>
+
+<h2>四、北向资金</h2>
+
+<div class="box">
+    <table>
+        <tr><td><strong>整体态势</strong></td><td>结束此前连续单边流出的状态，早盘短暂流出，盘中持续逆势回流</td></tr>
+        <tr><td><strong>方向选择</strong></td><td>沪股通+深股通同步净买入，外资没有"选边站"</td></tr>
+        <tr><td><strong>买入方向</strong></td><td>低位硬件（PCB/消费电子）、医药（创新药/CXO）、黄金有色</td></tr>
+        <tr><td><strong>边际变化</strong></td><td><span class="tag-up">积极</span>——不再恐慌式抛售，阶段性止盈离场节奏放缓，是今日稳住大盘的核心增量资金来源之一</td></tr>
+    </table>
+</div>
+
+<h2>五、资金流向时间线</h2>
+
+<div class="box">
+    <table>
+        <tr><th>时段</th><th>资金状态</th><th>盘面特征</th></tr>
+        <tr><td><strong>9:30-10:30</strong></td><td><span class="tag-down">开盘大幅净流出</span></td><td>承袭昨日恐慌，高位AI算力/半导体集中抛售；北向短暂流出</td></tr>
+        <tr><td><strong>10:30-11:30</strong></td><td><span class="tag-up">盘中明显回流企稳</span></td><td>汽车零部件/PCB/通信设备获主力+北向共振流入，指数翻红</td></tr>
+        <tr><td><strong>13:00-14:00</strong></td><td><span class="tag-up">持续流入，指数冲高</span></td><td>机器人涨停潮扩散+黄金拉升，沪指一度+1%，创业板一度+2.29%</td></tr>
+        <tr><td><strong>14:00-15:00</strong></td><td><span class="tag-down">尾盘资金再次小幅流出</span></td><td>涨幅收窄，缩量反弹特征明显，资金对下周走势仍有分歧</td></tr>
+    </table>
+</div>
+
+<h2>六、核心结论</h2>
+
+<div class="highlight">
+    <h3 style="margin-top:0; color:#1565c0;">三个核心判断</h3>
+    <p><strong>1️⃣ 高低切换是今日最核心的资金特征。</strong></p>
+    <p>半导体（-194.77亿）+ 电子（-299.13亿）合计流出近500亿，而汽车（+68亿）+ PCB（+66亿）+ 汽车零部件（+62亿）合计流入近200亿。不是资金离场，是资金在内部做高低切换——从溢价的半导体切换到低位的汽车/机械设备/PCB。</p>
+    <p><strong>2️⃣ 机器人是最强吸金主线，题材端吸金143亿。</strong></p>
+    <p>机器人概念净流入143.74亿，是第二名（人形机器人113亿）的1.3倍，是其他所有题材的2-3倍。40余只涨停是资金在"铺板块"——板块效应 > 龙头效应。</p>
+    <p><strong>3️⃣ 资金缩量（3.18万亿）是隐忧。</strong></p>
+    <p>缩量2680亿并非好信号——说明场外资金仍在观望，今日的修复主要来自场内资金的轮动换仓，而非增量入场。下周的关键变量是成交量能否回升至3.5万亿以上，以及汽车/PCB的流入能否持续。</p>
+</div>
+
+<div class="footer">
+    <p>数据来源：交易所数据、东方财富、金融界、每日经济新闻、同花顺</p>
+    <p>本报告仅供参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+    <p>生成日期：2026-07-03 收盘</p>
+</div>
+
+</body>
+</html>
