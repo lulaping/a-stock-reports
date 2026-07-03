@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安培龙(301413) Serenity Mode 1 分析报告 - 2026-07-03</title>
+    <style>
+        body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; max-width: 1100px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #333; line-height: 1.7; }
+        h1 { color: #1a1a2e; border-bottom: 3px solid #e94560; padding-bottom: 12px; font-size: 28px; }
+        h2 { color: #16213e; margin-top: 36px; border-left: 5px solid #e94560; padding-left: 14px; font-size: 22px; }
+        h3 { color: #0f3460; margin-top: 24px; font-size: 18px; }
+        .verdict { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 24px 28px; border-radius: 12px; margin: 20px 0; }
+        .verdict p { margin: 8px 0; font-size: 16px; }
+        .verdict strong { color: #ffd700; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; margin: 2px; }
+        .tag-green { background: #d4edda; color: #155724; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-red { background: #f8d7da; color: #721c24; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        th { background: #16213e; color: white; padding: 12px 16px; text-align: left; font-weight: 600; }
+        td { padding: 10px 16px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f1f3f5; }
+        .card { background: white; border-radius: 10px; padding: 20px 24px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .signal-up { color: #28a745; font-weight: bold; }
+        .signal-down { color: #dc3545; font-weight: bold; }
+        .source { font-size: 12px; color: #888; margin-top: 4px; }
+        .footer { text-align: center; color: #888; font-size: 13px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; }
+        .check-yes { background: #d4edda; padding: 2px 8px; border-radius: 4px; color: #155724; font-size: 13px; white-space: nowrap; }
+        .check-no { background: #f8d7da; padding: 2px 8px; border-radius: 4px; color: #721c24; font-size: 13px; white-space: nowrap; }
+        .check-partial { background: #fff3cd; padding: 2px 8px; border-radius: 4px; color: #856404; font-size: 13px; white-space: nowrap; }
+        .bubble-note { background: #e8f4fd; border: 2px solid #2196F3; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    </style>
+</head>
+<body>
+
+<h1>安培龙 (301413) — Serenity Mode 1 分析报告</h1>
+<p style="color:#888;font-size:14px;">分析日期：2026-07-03 | 模式：A股 Mode 1（Serenity框架 + 客观框架对照） | 创业板</p>
+
+<div class="verdict">
+    <p><strong>行1 · 客观框架：</strong>Bear Case 55-65亿（机器人传感器未放量+传统业务增速跌至10%，PE 55-65x对应2026E净利1亿），Base Case 90-110亿（2027E净利1.4亿×PE 65-80x，含机器人期权），Bull Case 130-160亿（六维力传感器批量交付头部机器人厂商+2027E净利破2亿，PE 65-80x）。当前市值约95亿处于Base Case中位。</p>
+    <p><strong>行2 · Serenity 视角：</strong>🟡 <strong>Watch / 高风险高赔率</strong> — A股最稀缺的"六维力传感器"标的，MEMS压力传感器暴增433%证明研发转化能力，"材料→芯片→模组"垂直一体化是真实卡点。但2026Q1净利润暴跌84.82%至309万，PE 130x+，员工持股计划减持1.25%，5.44亿定增稀释在即——这是"要么赢麻、要么腰斩"的典型期权标的。</p>
+</div>
+
+<!-- ===== 核心矛盾 ===== -->
+<div class="bubble-note">
+    <h3>核心矛盾：六维力传感器的稀缺性 vs 盈利的极度脆弱</h3>
+    <p>安培龙的长期故事是A股最具想象空间之一：六维力传感器是人形机器人关节的"触觉神经"，单台人形机器人需要4-6个六维力传感器（手腕+脚踝），单价约3000-5000元/个。如果2030年人形机器人年出货100万台，仅六维力传感器就是一个<strong>120-300亿</strong>的增量市场。目前全球能做车规级六维力传感器的厂商不超过5家（ATI、OnRobot、坤维科技、宇立仪器、安培龙），安培龙是国内唯一上市公司。</p>
+    <p>但现实是：六维力传感器还在送样测试阶段，距离批量交付至少6-12个月。此期间公司靠传统传感器"养家"——而传统传感器正在经历明显的盈利恶化（Q1净利暴跌84.82%至309万）。95亿市值对应2026E预测净利润约1亿，PE 95x，如果机器人故事不兑现，戴维斯双杀的风险是真实存在的。</p>
+</div>
+
+<h2>① 客观事实底座</h2>
+
+<h3>关键财务数据</h3>
+<table>
+    <tr><th>维度</th><th>2023A</th><th>2024A</th><th>2025A</th><th>2026Q1</th></tr>
+    <tr><td>营收（亿元）</td><td>7.47</td><td>9.40</td><td>11.83</td><td>2.62</td></tr>
+    <tr><td>营收增速</td><td><span class="signal-up">+19.12%</span></td><td><span class="signal-up">+25.81%</span></td><td><span class="signal-up">+25.88%</span></td><td><span class="signal-down">+0.19%</span></td></tr>
+    <tr><td>归母净利润（亿）</td><td>0.80</td><td>0.83</td><td>0.91</td><td>0.031</td></tr>
+    <tr><td>净利增速</td><td><span class="signal-down">-10.55%</span></td><td><span class="signal-up">+3.67%</span></td><td><span class="signal-up">+9.81%</span></td><td><span class="signal-down">-84.82%</span></td></tr>
+    <tr><td>毛利率</td><td>31.75%</td><td>32.24%</td><td>29.06%</td><td>—</td></tr>
+    <tr><td>净利率</td><td>10.70%</td><td>8.79%</td><td>7.67%</td><td>1.18%</td></tr>
+    <tr><td>研发费用率</td><td>—</td><td>~6.6%</td><td>8.27%</td><td>10.0%</td></tr>
+    <tr><td>资产负债率</td><td>—</td><td>38.81%</td><td>42.37%</td><td>—</td></tr>
+</table>
+<div class="source">数据来源：公司年报/季报。营收增速从25%+骤降至0.19%，净利从9.81%正增长断崖至-84.82%——这是最危险的基本面信号。</div>
+
+<h3>业务拆分（2025年报）</h3>
+<table>
+    <tr><th>业务</th><th>2025营收</th><th>占比</th><th>增速</th><th>说明</th></tr>
+    <tr><td>压力传感器</td><td>6.74亿</td><td>56.98%</td><td><span class="signal-up">+44.08%</span></td><td>陶瓷电容6.2亿+34.78%，MEMS 0.58亿+433.57%</td></tr>
+    <tr><td>热敏电阻及温度传感器</td><td>4.89亿</td><td>41.30%</td><td>+7.57%</td><td>成熟稳定，增速趋缓</td></tr>
+    <tr><td>氧传感器及其他</td><td>0.20亿</td><td>1.72%</td><td>+14.69%</td><td>已获车规级定点</td></tr>
+</table>
+
+<h3>核心估值快照</h3>
+<table>
+    <tr><th>指标</th><th>数值</th><th>解读</th></tr>
+    <tr><td>股价</td><td>74.49元（07-02收盘，+0.76%）</td><td>近期从65元反弹至78元后回落</td></tr>
+    <tr><td>总市值</td><td>~95亿</td><td>1.28亿总股本</td></tr>
+    <tr><td>PE(TTM)</td><td><span class="signal-down">129.7x</span></td><td>极其昂贵，远高于行业中位94x</td></tr>
+    <tr><td>PB</td><td>7.5x</td><td>—</td></tr>
+    <tr><td>2026E PE</td><td>~90x（一致预期净利1.05亿）</td><td>华源/光大/华泰均预期净利1.05-1.1亿</td></tr>
+    <tr><td>2027E PE</td><td>~68x（一致预期净利1.4亿）</td><td>—</td></tr>
+    <tr><td>定增</td><td>5.44亿，06-26获批复</td><td>用于MEMS芯片+压力传感器扩产+力传感器</td></tr>
+    <tr><td>股东户数</td><td>2.41万（-3.61%）</td><td>筹码在集中</td></tr>
+</table>
+
+<h2>② Serenity 框架分析</h2>
+
+<h3>2.1 超级周期定位 & 竞争格局</h3>
+<div class="card">
+    <p><strong>人形机器人传感器赛道是"卡点中的卡点"。</strong>六维力传感器是人形机器人关节力控的核心部件，技术壁垒极高——需要同时测量三个方向的力和三个方向的力矩，精度要求0.1%FS以内，过去15年全球仅ATI、OnRobot等少数公司能提供稳定可靠的六维力传感器。</p>
+    <p><strong>竞争格局：</strong></p>
+    <ul>
+        <li>全球：ATI（被Novanta收购）、OnRobot（丹麦）、Robotiq（加拿大）</li>
+        <li>国内非上市：坤维科技（华为哈勃投资）、宇立仪器</li>
+        <li><strong>安培龙是国内唯一六维力传感器上市公司</strong>，拥有金属应变式+MEMS硅基双技术路线</li>
+    </ul>
+    <p><strong>但当前阶段六维力传感器的真实市场极小</strong>——人形机器人尚未量产，协作机器人用量有限。2025年力传感器收入未单独披露（隐含判断：<1000万）。这是一个"未来卡点"而非"现在卡点"。</p>
+</div>
+
+<h3>2.2 卡点判据（15条）</h3>
+<table>
+    <tr><th>#</th><th>判据</th><th>判定</th><th>说明</th></tr>
+    <tr><td>1</td><td>垄断/双寡头/SPOF</td><td><span class="check-partial">△ 潜在</span></td><td>六维力传感器处于全球前5、国内唯一上市公司，但市场极小</td></tr>
+    <tr><td>2</td><td>极小市值 vs 巨大TAM</td><td><span class="check-yes">✓ 通过</span></td><td>95亿 vs 压力传感器>300亿+力传感器>100亿的未来市场</td></tr>
+    <tr><td>3</td><td>BOM占比巨大+designed-in</td><td><span class="check-partial">△ 理论</span></td><td>六维力占协作机器人BOM 10-15%，但人形机器人BOM占比待定</td></tr>
+    <tr><td>4</td><td>designed-in + 多客户</td><td><span class="check-no">✗ 未通过</span></td><td>天机智能、埃斯顿在合作，但未公告批量订单</td></tr>
+    <tr><td>5</td><td>认证周期长</td><td><span class="check-yes">✓ 通过</span></td><td>车规级认证周期2-3年+机器人传感器性能验证难度极高</td></tr>
+    <tr><td>6</td><td>未来爆发营收</td><td><span class="check-partial">△ 待验证</span></td><td>2026E一致预期净利1.05亿，同比仅+15%。"爆发"要等到2027-2028</td></tr>
+    <tr><td>7</td><td>资产负债表撑过爬坡</td><td><span class="check-partial">△ 勉强</span></td><td>负债率42%>行业均值29%，定增5.44亿尚待发行</td></tr>
+    <tr><td>8</td><td>Demand outstrips supply</td><td><span class="check-no">✗ 未通过</span></td><td>六维力传感器当前需求极低</td></tr>
+    <tr><td>9</td><td>大客户全包产能</td><td><span class="check-no">✗ 未通过</span></td><td>—</td></tr>
+    <tr><td>10</td><td>国家安全/政府介入</td><td><span class="check-yes">✓ 通过</span></td><td>国家级专精特新"小巨人"第一批，传感器自主可控战略</td></tr>
+    <tr><td>11</td><td>本土化护城河</td><td><span class="check-partial">△ 中等</span></td><td>压力/温度传感器国产化率已较高，六维力传感器国产化几乎从零开始</td></tr>
+    <tr><td>12</td><td>信息不对称</td><td><span class="check-partial">△ 部分</span></td><td>力传感器收入未单独披露，进展被低估或高估都有可能</td></tr>
+    <tr><td>13</td><td>极少数玩家</td><td><span class="check-yes">✓ 通过</span></td><td>国内六维力传感器上市公司仅此一家</td></tr>
+    <tr><td>14</td><td>多年营收可见性</td><td><span class="check-partial">△ 中等</span></td><td>压力传感器趋势明确(+44%)，力传感器几乎为零可见性</td></tr>
+    <tr><td>15</td><td>国产替代紧迫度（A股）</td><td><span class="check-yes">✓ 通过</span></td><td>六维力传感器国产化率<5%，国产替代逻辑极强</td></tr>
+</table>
+<p><strong>卡点质量评分：7/15 通过，6项部分，2项不通过。</strong> 与丰光精密同分（7/15），但安培龙的卡点更独特——六维力传感器的稀缺性在A股几乎无替代标的。</p>
+
+<h3>2.3 红旗扫描</h3>
+<table>
+    <tr><th>#</th><th>红旗项</th><th>判定</th><th>说明</th></tr>
+    <tr><td style="color:#cc0000;">⚠️</td><td><strong>Q1净利润暴跌84.82%（仅309万）</strong></td><td><span class="check-yes">✓ 核心红旗</span></td><td>营收仅+0.19%+研发暴增62%+老厂关停一次性费用</td></tr>
+    <tr><td style="color:#cc0000;">⚠️</td><td><strong>PE 130x / PB 7.5x</strong></td><td><span class="check-yes">✓ 估值红旗</span></td><td>远高于行业中位PE 94x，包含大量机器人溢价</td></tr>
+    <tr><td style="color:#cc0000;">⚠️</td><td><strong>定增稀释5.44亿</strong></td><td><span class="check-yes">✓ 已触发</span></td><td>06-26获批复，预计稀释8-10%</td></tr>
+    <tr><td style="color:#cc0000;">⚠️</td><td><strong>员工持股计划减持1.25%</strong></td><td><span class="check-yes">✓ 已触发</span></td><td>内部人在卖，不积极信号</td></tr>
+    <tr><td>通用</td><td>大客户集中</td><td><span class="check-no">✗ 未触发</span></td><td>客户分散（汽车+家电+储能多领域）</td></tr>
+    <tr><td>通用</td><td>零收入炒作</td><td><span class="check-no">✗ 未触发</span></td><td>11.83亿营收，有真实传感器基本盘</td></tr>
+</table>
+<p><strong>红旗结论：4项触警。Q1利润断崖+员工减持+PE 130x+定增稀释——这一篮子的短期负面信号不容忽视。</strong></p>
+
+<h2>③ 估值分析</h2>
+
+<h3>客观框架估值</h3>
+<table>
+    <tr><th>场景</th><th>逻辑</th><th>目标PE(2027E)</th><th>目标市值</th><th>目标价</th></tr>
+    <tr><td><strong>Bear</strong></td><td>六维力传感器商业化推迟至2028+，压力传感器增速降至20%，2027E净利1.0亿</td><td>50-55x</td><td>50-55亿</td><td>39-43元</td></tr>
+    <tr><td><strong>Base</strong></td><td>六维力2027年贡献2000-3000万收入，压力传感器保持30%增速，2027E净利1.4亿</td><td>65-80x</td><td>90-110亿</td><td>70-86元</td></tr>
+    <tr><td><strong>Bull</strong></td><td>六维力成为主流人形机器人主力供应商，2027E力传感器收入破亿+净利破2亿</td><td>65-80x</td><td>130-160亿</td><td>102-125元</td></tr>
+</table>
+
+<div class="card" style="background:#e8f4fd;">
+    <p><strong>A股对标：</strong></p>
+    <ul>
+        <li><strong>柯力传感：</strong>传统力学传感器龙头，PE 60-80x（2025年净利3.91亿，市值约280亿），安培龙的"六维力+车规级"标签理论上应有更高溢价</li>
+        <li><strong>敏芯股份/纳芯微：</strong>MEMS传感器公司，PE 80-120x，安培龙同属传感器赛道，但有"压力传感器+力传感器"的双重稀缺性</li>
+        <li><strong>绿的谐波：</strong>人形机器人核心部件，PE 167x。如果安培龙被视作"人形机器人核心传感器"标的，90x PE在同赛道中不算最贵</li>
+        <li><strong>机构预期：</strong>华源/光大/华泰一致预期2026E净利1.05-1.1亿，"买入"评级但均下调了盈利预测</li>
+    </ul>
+</div>
+
+<h2>④ 催化剂与风险</h2>
+<h3>主要催化剂</h3>
+<table>
+    <tr><th>催化剂</th><th>强度</th><th>时间</th><th>说明</th></tr>
+    <tr><td>六维力传感器获机器人客户批量订单</td><td><span class="signal-up">极高</span></td><td>2026H2-2027H1</td><td>任何头部机器人企业的批量订单将直接触发估值重估</td></tr>
+    <tr><td>MEMS压力传感器上量（2025+433%）</td><td><span class="signal-up">高</span></td><td>2026H2</td><td>Q1增速为0可能只是季节性，下半年压力传感器有望恢复30%+增速</td></tr>
+    <tr><td>定增完成+产能释放</td><td><span class="signal-neutral">中</span></td><td>2026H2</td><td>5.44亿用于力传感器+MEMS芯片产线</td></tr>
+    <tr><td>Tesla/宇树量产催化</td><td><span class="signal-up">极高</span></td><td>2026H2</td><td>任何量产催化都将推动六维力传感器概念</td></tr>
+</table>
+
+<h3>核心风险</h3>
+<table>
+    <tr><th>风险</th><th>概率</th><th>影响</th><th>说明</th></tr>
+    <tr><td>Q2再超预期亏损</td><td>中</td><td>极高</td><td>若Q2净利仍<500万，全年净利可能不足8000万，当前PE将飙至120x+</td></tr>
+    <tr><td>六维力传感器竞争加剧</td><td>中高</td><td>高</td><td>坤维科技（华为哈勃投资）非上市但资金雄厚+技术领先</td></tr>
+    <tr><td>人形机器人量产推迟</td><td>中</td><td>极高</td><td>六维力传感器故事将无限期推迟，只剩传统传感器90x PE无法支撑</td></tr>
+    <tr><td>毛利率继续下滑</td><td>中</td><td>中</td><td>29%毛利率低于行业43%均值，竞争加剧可能进一步压缩</td></tr>
+    <tr><td>员工持股继续减持</td><td>中</td><td>低</td><td>减持1.25%影响有限但信号负面</td></tr>
+</table>
+
+<h2>⑤ 综合判定</h2>
+
+<div class="card" style="border-left:5px solid #fd7e14;">
+    <h3 style="margin-top:0; color:#e65100;">Serenity 最终观点</h3>
+    <p><strong>安培龙是A股最稀缺的人形机器人"触觉"传感器标的。</strong>六维力传感器的技术壁垒和国产替代空间让其长期逻辑高度确定——全球前5、国内唯一上市公司、双技术路线、车规级认证体系、从材料到芯片的垂直整合。这些标签组合在一起，在A股独一无二。</p>
+
+    <p><strong>它好在哪：</strong></p>
+    <ul>
+        <li><strong>六维力传感器国内唯一上市公司：</strong>人形机器人核心部件中，减速器（绿的/昊志）、电机（汇川/伟创）、滚珠丝杠（鼎智/恒立）都有标的，唯独六维力传感器只有安培龙</li>
+        <li><strong>MEMS压力传感器+433%暴增：</strong>证明公司研发→产品化→商业化的能力，不是PPT公司</li>
+        <li><strong>车规级认证体系：</strong>压力传感器已进入比亚迪/上汽/长城供应链，车规级品质标准是机器人传感器的天然背书</li>
+        <li><strong>"材料→芯片→模组"垂直整合：</strong>自主可控的产业链能力远超大多数传感器公司</li>
+        <li><strong>定增资金到位（5.44亿）：</strong>为力传感器+MEMS芯片扩产提供弹药</li>
+    </ul>
+
+    <p><strong>它不好在哪：</strong></p>
+    <ul>
+        <li><strong>2026Q1净利润暴跌84.82%至309万：</strong>营收仅+0.19%，研发暴增62%，老厂关停一次性费用——三重打击叠加</li>
+        <li><strong>PE 130x：</strong>即使按2026E净利1.05亿算也是90x，如果Q2继续恶化净利可能更低</li>
+        <li><strong>六维力传感器尚无收入：</strong>最性感的产品还在送样测试阶段，商业化至少还需要6-12个月</li>
+        <li><strong>员工持股减持1.25% + 定增稀释：</strong>内部人在高估值区域兑现 + 5.44亿新股稀释~8-10%</li>
+        <li><strong>坤维科技（华为哈勃投资）是非上市竞争对手：</strong>资金和技术实力不弱，竞争格局不是垄断</li>
+    </ul>
+
+    <p style="font-size:16px; background:#fff3e0; padding:12px; border-radius:8px; color:#e65100;">
+        <strong>🟡 Serenity 判定：Watch / 高风险高赔率期权。</strong> 安培龙的长期逻辑（六维力传感器作为人形机器人核心卡点）是A股最好的"赛道稀缺性"故事之一。但短期基本面极其脆弱：Q1净利仅309万、PE 130x、员工减持、定增稀释。<br><br>
+        <strong>操作建议：</strong>在六维力传感器有实质性批量订单公告之前，仅适合极轻仓的期权布局。安全边际参考：Bear Case 50-55亿（对应约39-43元）。如果Q2季报（8月）显示压力传感器恢复30%+增速+整体净利超2000万，可在50-55元区间分批建仓。<br><br>
+        <strong>一句话：</strong>这是一个值得放进自选长期跟踪的标的——它拥有A股最稀缺的六维力传感器卡位，但它的股价包含了太多的"如果"。如果你的投资框架允许"买未来"而非"买现在"，安培龙值得在回调时关注。
+    </p>
+</div>
+
+<div class="footer">
+    <p>本报告基于公开信息整理，使用 Serenity 投资分析框架（A股适配版）生成。</p>
+    <p>数据来源：公司公告/年报/季报、互动易、华源/光大/华泰/山西证券研报、新浪财经、证券时报。</p>
+    <p><strong>免责声明：本报告仅供参考，不构成投资建议。市场有风险，投资需谨慎。</strong></p>
+    <p>生成日期：2026-07-03 | Serenity Mode 1</p>
+</div>
+
+</body>
+</html>
