@@ -10,6 +10,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Trae IDE skill 目录（无需同步到 GitHub）
+.trae/
+
 # Logs
 *.log
 
