@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伟创电气(688698) Serenity Mode 1 分析报告 - 2026-07-03</title>
+    <style>
+        body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; max-width: 1100px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #333; line-height: 1.7; }
+        h1 { color: #1a1a2e; border-bottom: 3px solid #e94560; padding-bottom: 12px; font-size: 28px; }
+        h2 { color: #16213e; margin-top: 36px; border-left: 5px solid #e94560; padding-left: 14px; font-size: 22px; }
+        h3 { color: #0f3460; margin-top: 24px; font-size: 18px; }
+        .verdict { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 24px 28px; border-radius: 12px; margin: 20px 0; }
+        .verdict p { margin: 8px 0; font-size: 16px; }
+        .verdict strong { color: #ffd700; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; margin: 2px; }
+        .tag-green { background: #d4edda; color: #155724; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-red { background: #f8d7da; color: #721c24; }
+        .tag-blue { background: #d6d8f5; color: #1a237e; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        th { background: #16213e; color: white; padding: 12px 16px; text-align: left; font-weight: 600; }
+        td { padding: 10px 16px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f1f3f5; }
+        .card { background: white; border-radius: 10px; padding: 20px 24px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .signal-up { color: #28a745; font-weight: bold; }
+        .signal-down { color: #dc3545; font-weight: bold; }
+        .signal-neutral { color: #fd7e14; font-weight: bold; }
+        .source { font-size: 12px; color: #888; margin-top: 4px; }
+        .footer { text-align: center; color: #888; font-size: 13px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; }
+        .check-yes { background: #d4edda; padding: 2px 8px; border-radius: 4px; color: #155724; font-size: 13px; white-space: nowrap; }
+        .check-no { background: #f8d7da; padding: 2px 8px; border-radius: 4px; color: #721c24; font-size: 13px; white-space: nowrap; }
+        .check-partial { background: #fff3cd; padding: 2px 8px; border-radius: 4px; color: #856404; font-size: 13px; white-space: nowrap; }
+        .stack-layer { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 12px 16px; margin: 6px 0; }
+        .stack-layer .layer-title { font-weight: bold; color: #0f3460; }
+        .bubble-note { background: #e8f4fd; border: 2px solid #2196F3; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+        .bubble-note h3 { margin-top: 0; color: #1565C0; }
+        .bubble-risk { background: #fff3e0; border: 2px solid #ff9800; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+        .bubble-risk h3 { margin-top: 0; color: #e65100; }
+    </style>
+</head>
+<body>
+
+<h1>伟创电气 (688698) — Serenity Mode 1 分析报告</h1>
+<p style="color:#888;font-size:14px;">分析日期：2026-07-03 | 模式：A股 Mode 1（Serenity框架 + 客观框架对照） | 科创板</p>
+
+<!-- ===== 结论 ===== -->
+<div class="verdict">
+    <p><strong>行1 · 客观框架：</strong>Bear Case 80-95亿（机器人业务未兑现+传统工控竞争恶化，PE 25-30x），Base Case 130-160亿（2026E净利3.3亿×PE 40-50x，含机器人估值溢价），Bull Case 180-220亿（2027E机器人营收2亿+，PE 50-60x）。当前市值约129亿处于Base Case中位偏下。</p>
+    <p><strong>行2 · Serenity 视角：</strong>🟢 <strong>Buy on dips / 长期配置</strong> — 科创板最完整的人形机器人执行层零部件标的，变频器基本盘稳健（12.5亿+20%），海外毛利率49%+是盈利压舱石，合资矩阵覆盖关节模组+灵巧手+泰国产能三大机器人卡点。但2026Q1增收不增利（净利-14.7%），经营现金流-1.1亿，Q2将是验证盈利拐点的关键窗口。</p>
+</div>
+
+<!-- ===== 核心矛盾 ===== -->
+<div class="bubble-note">
+    <h3>核心矛盾：工控基本盘尚可 vs 机器人估值已包含大量预期</h3>
+    <p>伟创电气处于一个独特的"夹层"位置：传统工控（变频器+伺服）给它提供了19.5亿营收和2.6亿利润的基本盘，但当前129亿市值的~50%以上是人形机器人期权的估值。问题在于：<strong>机器人业务目前还处于"投入期"——2026Q1研发费用率11.8%（5529万），经营现金流-1.1亿，净利同比-14.7%。如果机器人量产节奏推迟到2028年，当前PE 50x+的估值支撑会变得脆弱。</strong></p>
+    <ul>
+        <li>变频器全球份额仅3.4%，汇川技术是其8倍——在工控赛道上，伟创是"第二梯队"</li>
+        <li>但机器人布局的完整程度远超同行：灵巧手（依智灵巧）+关节模组（伟达立）+泰国产能（荣创智控）</li>
+        <li>截至2025年，机器人收入仍微乎其微——没有单独披露</li>
+    </ul>
+</div>
+
+<!-- ===== 客观事实底座 ===== -->
+<h2>① 客观事实底座</h2>
+
+<h3>L0-事实：关键财务数据</h3>
+<table>
+    <tr><th>维度</th><th>2023A</th><th>2024A</th><th>2025A</th><th>2026Q1</th></tr>
+    <tr><td>营收（亿元）</td><td>13.05</td><td>16.40</td><td>19.46</td><td>4.68</td></tr>
+    <tr><td>营收增速</td><td><span class="signal-up">+34.78%</span></td><td><span class="signal-up">+25.67%</span></td><td><span class="signal-up">+18.66%</span></td><td><span class="signal-up">+20.98%</span></td></tr>
+    <tr><td>归母净利润（亿元）</td><td>1.87</td><td>2.45</td><td>2.63</td><td>0.48</td></tr>
+    <tr><td>净利增速</td><td><span class="signal-up">+44.26%</span></td><td><span class="signal-up">+31.02%</span></td><td><span class="signal-down">+7.24%</span></td><td><span class="signal-down">-14.74%</span></td></tr>
+    <tr><td>毛利率</td><td>38.06%</td><td>39.17%</td><td>37.61%</td><td>35.60%</td></tr>
+    <tr><td>净利率</td><td>14.33%</td><td>14.94%</td><td>13.51%</td><td>10.31%</td></tr>
+    <tr><td>研发费用率</td><td>12.63%</td><td>13.30%</td><td>12.50%</td><td>11.81%</td></tr>
+    <tr><td>经营现金流（亿）</td><td>1.29</td><td>2.01</td><td>0.84</td><td>-1.10</td></tr>
+    <tr><td>资产负债率</td><td>~30%</td><td>~34%</td><td>~38%</td><td>~36%</td></tr>
+    <tr><td>应收账款（亿）</td><td>—</td><td>—</td><td>7.72</td><td>7.87</td></tr>
+</table>
+<div class="source">数据来源：公司年报/季报、东吴/华创/华泰证券研报。关键趋势：营收增速持续下滑（35%→26%→19%→21%），净利增速从44%断崖至-14.7%，毛利率从39%跌至35.6%。2025全年经营现金流-58%，Q1转负。</div>
+
+<h3>业务拆分（2025年报）</h3>
+<table>
+    <tr><th>业务</th><th>2025营收</th><th>占比</th><th>增速</th><th>毛利率</th></tr>
+    <tr><td>变频器</td><td>12.46亿</td><td>64.0%</td><td>+20.41%</td><td>41.61%</td></tr>
+    <tr><td>伺服系统及控制系统</td><td>5.77亿</td><td>29.6%</td><td>+16.39%</td><td>31.47%</td></tr>
+    <tr><td>绿色能源</td><td>0.74亿</td><td>3.8%</td><td>+22%</td><td>25.0%</td></tr>
+</table>
+
+<h3>核心估值快照</h3>
+<table>
+    <tr><th>指标</th><th>数值</th><th>as-of</th><th>解读</th></tr>
+    <tr><td>股价</td><td>60.19元（+8.84%，盘中临停）</td><td>2026-07-03 10:30</td><td>强势上涨，因低于定增底价触发护盘逻辑？</td></tr>
+    <tr><td>总市值</td><td>~129亿</td><td>2026-07-03</td><td>2.14亿总股本</td></tr>
+    <tr><td>PE(TTM)</td><td>~50.6x</td><td>2026-07-03</td><td>行业（仪器仪表）PE中位61x，低于行业中位</td></tr>
+    <tr><td>PE(2026E)</td><td>~39x（一致预期3.3亿）</td><td>—</td><td>不算贵，但也不便宜</td></tr>
+    <tr><td>PB</td><td>~5.4x</td><td>2026-07-03</td><td>—</td></tr>
+    <tr><td>机构目标均价</td><td>85-108元</td><td>—</td><td>华创84.7/华泰89.9/东吴最高133</td></tr>
+    <tr><td>流通市值</td><td>~129亿（全流通）</td><td>—</td><td>无解禁压力</td></tr>
+    <tr><td>机构持仓</td><td>291家，占比79.29%</td><td>2025-12-31</td><td>高机构重仓，筹码高度集中</td></tr>
+</table>
+
+<h3>2026Q1营收故事</h3>
+<table>
+    <tr><th>业务</th><th>Q1 2026营收</th><th>Q1 2025营收</th><th>同比</th><th>看点</th></tr>
+    <tr><td>变频器</td><td>2.37亿</td><td>2.32亿</td><td>+2.32%</td><td>主力产品增速大幅放缓</td></tr>
+    <tr><td>伺服系统及控制系统</td><td>1.64亿</td><td>1.33亿</td><td>+23.36%</td><td>伺服仍在高速渗透</td></tr>
+    <tr><td>绿色能源</td><td>0.51亿</td><td>0.10亿</td><td><span class="signal-up">+412%</span></td><td>从极低基数暴增</td></tr>
+    <tr><td>境外</td><td>1.33亿</td><td>0.99亿</td><td>+34.10%</td><td>海外毛利49%+，盈利压舱石</td></tr>
+</table>
+<div class="source">数据来源：2026年一季报。变频器增速骤降至+2.32%是最大警示信号，伺服增速尚可（但毛利率承压），绿色能源暴增但基数极低。</div>
+
+<!-- ===== Serenity框架 ===== -->
+<h2>② Serenity 框架分析</h2>
+
+<h3>2.1 超级周期定位</h3>
+<div class="card">
+    <p><strong>终端判断：</strong>伟创电气身处两个周期：<strong>工控弱复苏周期（OEM市场+1.3%的低速增长阶段）+ 人形机器人导入期→加速期转折</strong>。前者提供稳定的基本盘，后者决定估值弹性。</p>
+    <p><strong>工控竞争格局：</strong>汇川技术（伺服市占率32%+）是绝对的霸主。伟创处于"比上不足、比下有余"的第二梯队，变频器份额3.4%（同比+0.4pct）在缓慢提升，伺服份额~2-3%在追赶。行业专机的差异化策略有一定护城河，但在经济下行周期中，这种差异化能抵挡多久存疑。</p>
+    <p><strong>机器人竞争格局：</strong>这是伟创电气最有吸引力的维度。公司通过合资企业方式同时卡位了三个关键赛道：灵巧手（依智灵巧，与科达利/银轮/开普勒合资，发布YZ-T6 6DOF腱绳灵巧手）、关节模组（伟达立，与科达利/盟立合资，四大系列关节模组）、泰国产能（荣创智控，与浙江荣泰合资，对接北美客户）。<strong>这种"铺摊子"式的合资生态在A股工控公司中是独一无二的。</strong></p>
+</div>
+
+<h3>2.2 供应链栈绘制</h3>
+<div class="stack-layer"><span class="layer-title">终端层：</span>人形机器人（特斯拉Optimus/宇树/智元/开普勒）+ 工业机器人 + 自动化设备</div>
+<div class="stack-layer"><span class="layer-title">执行器层：</span>灵巧手（依智灵巧6DOF腱绳仿生）+ 关节模组（伟达立谐波/行星/摆线/轴向磁通四大系列）</div>
+<div class="stack-layer"><span class="layer-title">驱动层：</span>无刷空心杯电机（6-23mm）、伺服电机、直线/旋转执行器电机、轮毂电机</div>
+<div class="stack-layer"><span class="layer-title">控制/传动层：</span>变频器 + 伺服驱动器 + PLC + 编码器（自研）</div>
+<div class="stack-layer"><span class="layer-title">底层制造：</span>苏州/深圳自建产能 + 泰国合资产能（荣创智控，2026年4月注册）</div>
+
+<p style="margin-top:12px;"><strong>Serenity 判读：</strong>伟创电气是目前A股中唯一覆盖从"驱动层（变频器/伺服→电机）→执行器层（关节模组+灵巧手）→终端方案"完整链条的工控/机器人公司。对比绿的谐波（只做减速器）、汇川技术（只做到驱动+控制层），伟创的差异化在于它直接布局了灵巧手和关节模组——这是人形机器人最大的新增价值量区域。</p>
+
+<h3>2.3 卡点判据（15条）</h3>
+<table>
+    <tr><th>#</th><th>判据</th><th>判定</th><th>说明</th></tr>
+    <tr><td>1</td><td>垄断/双寡头/SPOF</td><td><span class="check-no">✗ 未通过</span></td><td>变频器份额3.4%，伺服<3%，远未达到卡点</td></tr>
+    <tr><td>2</td><td>极小市值 vs 巨大TAM</td><td><span class="check-partial">△ 部分</span></td><td>129亿/工控~1500亿+人形~万亿，但中小市值</td></tr>
+    <tr><td>3</td><td>BOM占比巨大+designed-in</td><td><span class="check-partial">△ 理论</span></td><td>灵巧手/关节模组是机器人BOM核心，但尚未大量designed-in</td></tr>
+    <tr><td>4</td><td>designed-in + 多客户</td><td><span class="check-no">✗ 未通过</span></td><td>合资公司有产品发布，但未获得主流机器人厂商design win公告</td></tr>
+    <tr><td>5</td><td>认证周期长</td><td><span class="check-yes">✓ 通过</span></td><td>变频器/伺服已有安规等认证体系，但机器人新品认证尚在早期</td></tr>
+    <tr><td>6</td><td>未来爆发营收</td><td><span class="check-partial">△ 待验证</span></td><td>16家机构一致预期2026E净利3.3亿，但2026Q1净利同比-14.7%</td></tr>
+    <tr><td>7</td><td>资产负债表撑过爬坡</td><td><span class="check-yes">✓ 通过</span></td><td>负债率36%，货币资金2.9亿，短期偿债能力尚可</td></tr>
+    <tr><td>8</td><td>Demand outstrips supply</td><td><span class="check-no">✗ 未通过</span></td><td>机器人零部件产能远未到供不应求阶段</td></tr>
+    <tr><td>9</td><td>大客户全包产能</td><td><span class="check-no">✗ 未通过</span></td><td>—</td></tr>
+    <tr><td>10</td><td>国家安全/政府介入</td><td><span class="check-yes">✓ 通过</span></td><td>人形机器人国家战略+具身智能江苏省重点扶持</td></tr>
+    <tr><td>11</td><td>本土化护城河</td><td><span class="check-partial">△ 中等</span></td><td>海外毛利好，但技术壁垒不如减速器、传感器等核心件深</td></tr>
+    <tr><td>12</td><td>信息不对称</td><td><span class="check-partial">△ 部分</span></td><td>机器人生意未独立披露，进展被"包裹"在主营收入中</td></tr>
+    <tr><td>13</td><td>极少数玩家</td><td><span class="check-no">✗ 未通过</span></td><td>工控赛道玩家众多（汇川/英威腾/禾川/信捷），竞争激烈</td></tr>
+    <tr><td>14</td><td>多年营收可见性</td><td><span class="check-partial">△ 中等</span></td><td>变频器基本盘可见性较高，机器人极低可见性</td></tr>
+    <tr><td>15</td><td>国产替代紧迫度（A股）</td><td><span class="check-partial">△ 中等</span></td><td>变频器/伺服国产化率已较高，人形机器人国产供应链需求强</td></tr>
+</table>
+<p style="margin-top:8px;"><strong>卡点质量评分：5/15 通过，6项部分，4项不通过。</strong> 传统工控端卡点很弱（完全不卡），但机器人业务给了它"未来卡点"的潜力。这个评分本质上是"为远期期权买单"。</p>
+
+<h3>2.4 红旗扫描（12项）</h3>
+<table>
+    <tr><th>#</th><th>红旗项</th><th>判定</th><th>说明</th></tr>
+    <tr><td style="color:#999;">通用</td><td>无限ATM/增发稀释</td><td><span class="check-yes">✓ 已触发 ⚠️</span></td><td>2025年定增5.9亿，底价39元。当前股价60元高于底价，稀释~2%</td></tr>
+    <tr><td style="color:#999;">通用</td><td>单一客户集中</td><td><span class="check-no">✗ 未触发</span></td><td>客户分散，前五大客户集中度~15%</td></tr>
+    <tr><td style="color:#999;">通用</td><td>资产负债表toxic</td><td><span class="check-no">✗ 未触发</span></td><td>负债率36%可控</td></tr>
+    <tr><td style="color:#999;">通用</td><td>零收入纯炒作</td><td><span class="check-no">✗ 未触发</span></td><td>19.5亿营收，有真实工控基本盘</td></tr>
+    <tr><td style="color:#999;">通用</td><td>技术太远</td><td><span class="check-no">✗ 未触发</span></td><td>空心杯电机等已有产品，不是纯PPT</td></tr>
+    <tr><td style="color:#999;">通用</td><td>纯软件/SaaS</td><td><span class="check-no">✗ 未触发</span></td><td>精密硬件制造</td></tr>
+    <tr><td style="color:#E94560;">A股</td><td>海外技术依赖</td><td><span class="check-partial">△ 部分</span></td><td>芯片/IGBT进口依赖，但逐步国产替代</td></tr>
+    <tr><td style="color:#E94560;">A股</td><td>政策依赖风险</td><td><span class="check-no">✗ 未触发</span></td><td>—</td></tr>
+    <tr><td style="color:#E94560;">A股</td><td>大股东质押过高</td><td style="font-size:13px;color:#888;">[未核实]</td><td>—</td></tr>
+    <tr><td style="color:#E94560;">A股</td><td>商誉过高</td><td><span class="check-no">✗ 未触发</span></td><td>—</td></tr>
+    <tr><td style="color:#cc0000;">⚠️</td><td><strong>增收不增利恶化（Q1净利-14.7%）</strong></td><td><span class="check-yes">✓ 已触发 ⚠️</span></td><td>毛利率连续3年下滑，费用高速膨胀吞噬利润</td></tr>
+    <tr><td style="color:#cc0000;">⚠️</td><td><strong>经营现金流转为负值</strong></td><td><span class="check-yes">✓ 已触发 ⚠️</span></td><td>Q1经营现金流-1.1亿，应收账款/净利比达300%</td></tr>
+    <tr><td style="color:#cc0000;">⚠️</td><td><strong>机构目标价集中下调</strong></td><td><span class="check-yes">✓ 已触发 ⚠️</span></td><td>华创从3.4→3.3亿、华泰从124→89.9，多家下修</td></tr>
+</table>
+<p style="margin-top:8px;"><strong>红旗结论：4项触警，1项关注。核心风险：经营质量恶化趋势明显（增收不增利+现金流转负+机构下修），这是比概念炒作更值得警惕的信号。</strong></p>
+
+<!-- ===== 估值分析 ===== -->
+<h2>③ 估值分析</h2>
+
+<h3>3a Serenity 框架估值</h3>
+<div class="card" style="border-left:5px solid #28a745;">
+    <p><strong>信念：</strong><span class="tag tag-green">Buy on dips / 45-50元为核心建仓区间</span></p>
+    <p><strong>核心判断：</strong></p>
+    <ul>
+        <li>伟创电气129亿市值约40%是机器人期权估值（~50亿），60%是工控基本盘估值（~79亿对应2026年PE~24x，还算合理）</li>
+        <li>机器人布局的"广度"在A股独一无二：灵巧手+关节模组+空心杯电机+泰国产能，任何单一环节掉链子都有其他切入点</li>
+        <li>最大的问题是经营质量恶化：营收增速19%但净利增速仅7%，Q1净利更是-14.7%。如果工控业务赚钱能力持续弱化，市场最终会意识到"故事的估值支撑不了现实的利润"</li>
+        <li>安全边际线：定增底价39元+同行可比PE 25-30x（对应工控部分65-80亿）+机器人期权0元=65-80亿。当前129亿高于此线，但并非离谱</li>
+    </ul>
+</div>
+
+<h3>3b 客观框架估值</h3>
+<table>
+    <tr><th>场景</th><th>逻辑</th><th>目标PE(2026E)</th><th>目标市值</th><th>目标价</th></tr>
+    <tr>
+        <td><strong>Bear</strong></td><td>机器人业务<1亿收入+工控竞争加剧导致毛利率跌至33%+，2026E净利2.5亿</td><td>30-35x</td><td>75-88亿</td><td>35-41元</td></tr>
+    <tr>
+        <td><strong>Base</strong></td><td>变频器+伺服稳健+机器人开始贡献少量收入（~1.5亿），2026E净利3.3亿</td><td>40-48x</td><td>130-160亿</td><td>61-75元</td></tr>
+    <tr>
+        <td><strong>Bull</strong></td><td>机器人关节模组+灵巧手开始批量交付头部客户，2027E净利破4亿</td><td>50-60x</td><td>180-220亿</td><td>84-103元</td></tr>
+</table>
+
+<div class="card" style="background:#e8f4fd;">
+    <p><strong>A股专用尺子校验：</strong></p>
+    <ul>
+        <li><strong>工控同行对比：</strong>汇川技术PE~35x（2026E净利~70亿）、信捷电气PE~40x、禾川科技PE~50x（亏损边缘）。伟创PE 40-50x在行业中不算贵。</li>
+        <li><strong>机器人赛道对比：</strong>绿的谐波PE~167x、三花智控PE~40x、拓普集团PE~35x。伟创的"工控+机器人"双标签可享受一定的机器人溢价。</li>
+        <li><strong>机构目标价参考：</strong>11家机构目标均价107元（对应市值230亿，PE 70x）。但多家正在下修目标价（华创84.7元、华泰89.9元），反映对2026年盈利预期的下调。</li>
+        <li><strong>PEG视角：</strong>如果2026年净利3.3亿（+25%），PE 39x，PEG=1.56x。如果2027年净利3.9亿（+18%），PE 33x。不算极端泡沫，但绝对不算便宜。</li>
+    </ul>
+</div>
+
+<!-- ===== 催化剂与风险 ===== -->
+<h2>④ 催化剂与风险</h2>
+
+<h3>主要催化剂</h3>
+<table>
+    <tr><th>催化剂</th><th>方向</th><th>强度</th><th>时间</th><th>说明</th></tr>
+    <tr><td>Tesla Optimus量产启动</td><td>主题</td><td><span class="signal-up">极高</span></td><td>2026H2</td><td>若Optimus量产节奏明确，伟创的灵巧手/关节模组将直接受益</td></tr>
+    <tr><td>定增完成+产能释放</td><td>基本面</td><td><span class="signal-neutral">中</span></td><td>2026H2</td><td>5.9亿定增用于苏州/深圳产能扩建</td></tr>
+    <tr><td>机器人合资公司获大单</td><td>基本面</td><td><span class="signal-up">极高</span></td><td>随时</td><td>伟达立/依智灵巧任何一家获得头部机器人客户批量订单→估值重构</td></tr>
+    <tr><td>Q2盈利拐点确认</td><td>基本面</td><td><span class="signal-up">高</span></td><td>2026年8月</td><td>若Q2单季净利>7000万（恢复正常季节节奏），则Q1只是"异常低点"</td></tr>
+    <tr><td>海外变频器市占率提升</td><td>基本面</td><td><span class="signal-neutral">中</span></td><td>持续</td><td>海外毛利率49%，占比每提升5%可增厚利润~2000万</td></tr>
+</table>
+
+<h3>核心风险</h3>
+<table>
+    <tr><th>风险</th><th>概率</th><th>影响</th><th>说明</th></tr>
+    <tr><td>毛利率持续下滑（铜/铝/芯片涨价）</td><td>中高</td><td>高</td><td>Q1毛利率35.6%已低于2025年37.6%，若下半年跌至34%，则2026年净利可能低于3亿</td></tr>
+    <tr><td>工控竞争加剧（汇川进一步蚕食份额）</td><td>高</td><td>中</td><td>汇川在伺服端已32%份额，正向中小客户下沉</td></tr>
+    <tr><td>人形机器人量产推迟到2028+</td><td>中</td><td>极高</td><td>特斯拉Optimus量产已从2024推迟到2026再推=机器人期权估值腰斩</td></tr>
+    <tr><td>经营现金流持续恶化</td><td>中</td><td>高</td><td>应收账款占比300%净利润，若经济下行可能产生坏账</td></tr>
+    <tr><td>定增稀释（底价39元）</td><td>确定</td><td>低</td><td>~2%的稀释，影响有限</td></tr>
+</table>
+
+<!-- ===== 综合判定 ===== -->
+<h2>⑤ 综合判定</h2>
+
+<div class="card" style="border-left:5px solid #28a745;">
+    <h3 style="margin-top:0; color:#155724;">Serenity 最终观点</h3>
+
+    <p><strong>伟创电气是科创板最完整的人形机器人执行层零部件标的。</strong>它的竞争力不在于单个产品的垄断力（变频器仅3.4%份额），而在于合资生态布局的广度和完整性——灵巧手+关节模组+伺服/电机+泰国产能的全覆盖，在A股没有第二家。</p>
+
+    <p><strong>它好在哪：</strong></p>
+    <ul>
+        <li><strong>机器人布局的广度独一无二：</strong>灵巧手（依智灵巧）、关节模组（伟达立）、空心杯电机、泰国产能（荣创智控）——四个维度同时推进，形成完整的执行层方案</li>
+        <li><strong>海外毛利率49%+：</strong>海外业务5.44亿贡献了绝大部分盈利增量，是工控端最稳定的利润来源</li>
+        <li><strong>变频器基本盘仍在增长：</strong>+20%的收入增速在工控行业中属于中上水平，份额在提升（3.0%→3.4%）</li>
+        <li><strong>研发投入坚定：</strong>研发费用率12.5%，2.4亿的年度研发额在第二梯队工控公司中领先</li>
+        <li><strong>主力机构重仓：</strong>291家机构持仓79%，高机构覆盖提供了流动性和估值锚</li>
+    </ul>
+
+    <p><strong>它不好在哪：</strong></p>
+    <ul>
+        <li><strong>增收不增利困境恶化：</strong>净利增速从+44%（2023）→+31%（2024）→+7%（2025）→<strong>-14.7%（2026Q1）</strong>，趋势触目惊心</li>
+        <li><strong>经营现金流恶化：</strong>从+2.0亿（2024）→+0.84亿（2025）→<strong>-1.1亿（2026Q1）</strong>——这是最危险的信号</li>
+        <li><strong>变频器增长失速：</strong>Q1变频器收入仅+2.32%，如果这是新趋势而非季节性因素，基盘将承压</li>
+        <li><strong>机器人收入尚未脱"零"：</strong>合资公司产品已发布但订单未公告，截至2025年报机器人收入未单独披露（意味着贡献极小）</li>
+        <li><strong>机构正在下修预期：</strong>华创/华泰/东吴等多家已下调目标价和盈利预测，反映基本面的实质性恶化</li>
+        <li><strong>竞争格局不利：</strong>同赛道汇川是8倍体量的巨头，信捷/禾川/英威腾在细分领域各有优势</li>
+    </ul>
+
+    <p style="font-size:16px; background:#d4edda; padding:12px; border-radius:8px; color:#155724;">
+        <strong>🟢 Serenity 判定：Buy on dips / 长期配置。</strong> 伟创电气不是那种买了就能放心的"傻瓜卡点"标的（像三花/绿的），它需要跟踪经营质量何时触底回升。但当前129亿市值包含的机器人期权估值相对合理（~50亿），如果算上工控基本盘的合理价值（~80亿，PE 25x），安全边际尚可。<br><br>
+        <strong>操作节奏：</strong>如果2026Q2季报（8月）显示净利同比转正+经营现金流转正，当前60元可继续持有或加仓。如果Q2继续恶化（净利同比-5%以下），需要认真考虑减仓。<br><br>
+        <strong>关键节点：</strong>特斯拉/宇树量产节奏的明确 → 伟达立/依智灵巧大单公告 → Q2盈利拐点 → 2026年报时机器人收入是否单独突破1亿。<br><br>
+        <strong>一句话：</strong>对于能容忍中期波动（工控端盈利恶化+机器人端尚无收入）的投资者来说，45-50元区间是良好的建仓区域。等待Q2季报确认经营拐点。
+    </p>
+</div>
+
+<div class="footer">
+    <p>本报告基于公开信息整理，使用 Serenity 投资分析框架（A股适配版）生成。</p>
+    <p>数据来源：公司公告/年报/季报、东吴/华创/华泰/西部证券研报、东方财富、新浪财经、雪球、同花顺。</p>
+    <p><strong>免责声明：本报告仅供参考，不构成投资建议。市场有风险，投资需谨慎。</strong></p>
+    <p>生成日期：2026-07-03 | Serenity Mode 1</p>
+</div>
+
+</body>
+</html>
