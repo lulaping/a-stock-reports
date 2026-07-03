@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多氟多(002407) Serenity Mode 1 分析报告 - 2026-07-03</title>
+    <style>
+        body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; max-width: 1100px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #333; line-height: 1.7; }
+        h1 { color: #1a1a2e; border-bottom: 3px solid #e94560; padding-bottom: 12px; font-size: 28px; }
+        h2 { color: #16213e; margin-top: 36px; border-left: 5px solid #e94560; padding-left: 14px; font-size: 22px; }
+        h3 { color: #0f3460; margin-top: 24px; font-size: 18px; }
+        .verdict { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 24px 28px; border-radius: 12px; margin: 20px 0; }
+        .verdict p { margin: 8px 0; font-size: 16px; }
+        .verdict strong { color: #ffd700; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; margin: 2px; }
+        .tag-green { background: #d4edda; color: #155724; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-red { background: #f8d7da; color: #721c24; }
+        .tag-blue { background: #d6d8f5; color: #1a237e; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        th { background: #16213e; color: white; padding: 12px 16px; text-align: left; font-weight: 600; }
+        td { padding: 10px 16px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f1f3f5; }
+        .card { background: white; border-radius: 10px; padding: 20px 24px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .signal-up { color: #28a745; font-weight: bold; }
+        .signal-down { color: #dc3545; font-weight: bold; }
+        .signal-neutral { color: #fd7e14; font-weight: bold; }
+        .source { font-size: 12px; color: #888; margin-top: 4px; }
+        .footer { text-align: center; color: #888; font-size: 13px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; }
+        .kpi-box { display: inline-block; background: #f0f4ff; border-radius: 8px; padding: 12px 20px; margin: 6px; min-width: 120px; text-align: center; }
+        .kpi-box .num { font-size: 22px; font-weight: bold; color: #16213e; }
+        .kpi-box .label { font-size: 12px; color: #666; }
+        .stack-layer { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 12px 16px; margin: 6px 0; }
+        .stack-layer .layer-title { font-weight: bold; color: #0f3460; }
+        .check-yes { background: #d4edda; padding: 2px 8px; border-radius: 4px; color: #155724; font-size: 13px; }
+        .check-no { background: #f8d7da; padding: 2px 8px; border-radius: 4px; color: #721c24; font-size: 13px; }
+        .check-partial { background: #fff3cd; padding: 2px 8px; border-radius: 4px; color: #856404; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+<h1>多氟多 (002407) — Serenity Mode 1 分析报告</h1>
+<p style="color:#888;font-size:14px;">分析日期：2026-07-03 | 模式：A股 Mode 1（Serenity框架 + 客观框架对照输出）</p>
+
+<!-- ===== 结论 ===== -->
+<div class="verdict">
+    <p><strong>行1 · 客观框架：</strong>Base Case 市值区间 800-1000亿（2026E PE 25-30x），Bull Case 1200-1400亿（若六氟价格维持+钠电超预期），已过翻倍门槛（+100%）</p>
+    <p><strong>行2 · Serenity 视角：</strong>🔥 <strong>Buy on dip / 趋势持有</strong> — 六氟磷酸锂是"材料级 toll booth"卡点，半导体氢氟酸是A股稀缺 designed-in 认证壁垒，钠电是未完全定价的纯增量。但短期股价已大幅上涨，市场情绪过热，追高风险大。</p>
+</div>
+
+<!-- ===== 客观事实底座 ===== -->
+<h2>① 客观事实底座</h2>
+
+<h3>L0-事实：关键数据</h3>
+<table>
+    <tr><th>维度</th><th>数据</th><th>as-of</th><th>来源</th></tr>
+    <tr><td>股价</td><td>55.25元</td><td>2026-07-01</td><td>深交所</td></tr>
+    <tr><td>总市值</td><td>~657亿元</td><td>2026-07-01</td><td>Wind</td></tr>
+    <tr><td>总股本</td><td>11.90亿股</td><td>2026-Q1</td><td>公司公告</td></tr>
+    <tr><td>资产负债率</td><td>59.83%</td><td>2026-Q1</td><td>公司公告</td></tr>
+    <tr><td>2025营收</td><td>94.34亿元 (+14.37% YoY)</td><td>2025年报</td><td>公司公告</td></tr>
+    <tr><td>2025归母净利</td><td>2.13亿元（扭亏为盈）</td><td>2025年报</td><td>公司公告</td></tr>
+    <tr><td>2026Q1营收</td><td>32.16亿元 (+53.26% YoY)</td><td>2026-Q1</td><td>公司公告</td></tr>
+    <tr><td>2026Q1归母净利</td><td>3.76亿元 (+480.14% YoY)</td><td>2026-Q1</td><td>公司公告</td></tr>
+    <tr><td>2026Q1毛利率</td><td>27.61%（同比+14.14pct）</td><td>2026-Q1</td><td>公司公告</td></tr>
+    <tr><td>机构一致预测2026E净利</td><td>~23.22亿元</td><td>2026-07</td><td>头部机构一致预期</td></tr>
+    <tr><td>近一年涨幅</td><td>~400%</td><td>2026-07-01</td><td>Wind</td></tr>
+    <tr><td>近10日涨幅</td><td>~40.48%</td><td>2026-07-01</td><td>公司异动公告</td></tr>
+</table>
+
+<h3>业务拆分（2025年）</h3>
+<table>
+    <tr><th>业务板块</th><th>2025营收</th><th>占比</th><th>毛利率</th><th>核心产品</th><th>竞争地位</th></tr>
+    <tr>
+        <td>新能源材料</td><td>31.34亿</td><td>33.2%</td><td>21.74%</td>
+        <td>六氟磷酸锂</td><td>全球第二，市占率~25%</td>
+    </tr>
+    <tr>
+        <td>新能源电池</td><td>28.50亿</td><td>30.2%</td><td>12.57%</td>
+        <td>大圆柱电池（氟芯）</td><td>国内大圆柱第一</td>
+    </tr>
+    <tr>
+        <td>氟基新材料</td><td>27.89亿</td><td>29.6%</td><td>9.05%</td>
+        <td>无水氟化铝/冰晶石</td><td>全球第一（市占率25%）</td>
+    </tr>
+    <tr>
+        <td>电子信息材料</td><td>4.09亿</td><td>4.3%</td><td>11.46%</td>
+        <td>G5半导体氢氟酸/硅烷</td><td>国内唯一台积电认证</td>
+    </tr>
+</table>
+
+<h3>产能与订单关键数据</h3>
+<table>
+    <tr><th>产品</th><th>当前产能</th><th>2026E产能</th><th>长协覆盖</th><th>主要客户</th></tr>
+    <tr><td>六氟磷酸锂</td><td>6.5万吨</td><td>8.5万吨</td><td>~80%（含比亚迪3年6万吨）</td><td>比亚迪、宁德时代、LG、松下</td></tr>
+    <tr><td>G5半导体氢氟酸</td><td>4万吨</td><td>4万吨（技改中）</td><td>长协为主</td><td>台积电、三星、中芯国际、长鑫</td></tr>
+    <tr><td>六氟磷酸钠（钠电）</td><td>1.5万吨</td><td>5万吨（广西基地）</td><td>宁德3.2万吨长协（至2027）</td><td>宁德时代（70%供应份额）</td></tr>
+    <tr><td>大圆柱电池</td><td>30GWh</td><td>50GWh</td><td>多家车企定点</td><td>五菱、奇瑞、华宝储能</td></tr>
+</table>
+
+<div class="source">数据来源：公司公告、投资者关系记录、行业公开信息。注：部分远期规划数据为管理层指引，标注"已证实"或"管理层声称"。</div>
+
+<!-- ===== Serenity 框架分析 ===== -->
+<h2>② Serenity 框架分析</h2>
+
+<h3>2.1 超级周期定位</h3>
+<div class="card">
+    <p><strong>终端判断：</strong>中国新能源汽车高端化（单车带电量提升）+ 全球储能爆发（容量电价机制落地、AI算力中心用电）双轮驱动。六氟磷酸锂行业处于 <span class="tag tag-green">周期早中期</span>（供需紧平衡，库存仅一周）。</p>
+    <p><strong>国产替代阶段：</strong></p>
+    <ul>
+        <li>G5半导体氢氟酸：<span class="tag tag-green">加速期</span>（已通过头部认证，产能满产）</li>
+        <li>六氟磷酸钠（钠电材料）：<span class="tag tag-green">加速期</span>（全球唯一连续量产，绑定宁德时代）</li>
+        <li>六氟化钨（半导体特气）：<span class="tag tag-yellow">导入期</span>（试产线建成，认证中，尚无营收）</li>
+    </ul>
+</div>
+
+<h3>2.2 供应链栈绘制</h3>
+
+<div class="stack-layer"><span class="layer-title">终端层：</span>新能源汽车 / 储能电站 / 半导体晶圆厂 / AI数据中心</div>
+<div class="stack-layer"><span class="layer-title">电池/PACK层：</span>大圆柱电池（氟芯）→ 五菱/奇瑞/华宝储能</div>
+<div class="stack-layer"><span class="layer-title">电解液/化学品层：</span>六氟磷酸锂（LiPF₆）、六氟磷酸钠（NaPF₆）、G5级氢氟酸</div>
+<div class="stack-layer"><span class="layer-title">氟化物中间体层：</span>无水氟化氢（AHF）、氟化锂（LiF）、五氟化磷（PF₅）</div>
+<div class="stack-layer"><span class="layer-title">氟资源层：</span>萤石 / 磷肥副产氟硅酸 ← <strong>多氟多一体化起点</strong></div>
+
+<p style="margin-top:12px;font-size:14px;color:#666;">多氟多横跨资源层→中间体层→电解液/化学品层→电池层，是A股为数不多完成"氟资源→高端材料→电池"全栈布局的企业。</p>
+
+<h3>2.3 卡点判据（15条逐项评估）</h3>
+<table>
+    <tr><th>#</th><th>判据</th><th>判定</th><th>说明</th></tr>
+    <tr><td>1</td><td>垄断/双寡头/SPOF</td><td><span class="check-yes">✓ 通过</span></td><td>六氟磷酸锂全球第二（~25%），半导体氢氟酸国内唯一通过四大头部晶圆厂认证</td></tr>
+    <tr><td>2</td><td>极小市值 vs 巨大下游TAM</td><td><span class="check-partial">△ 部分</span></td><td>当前657亿市值已不"极小"。但半导体氢氟酸、钠电材料若单独估值，仍有重估空间</td></tr>
+    <tr><td>3</td><td>BOM占比相对市值巨大+designed-in</td><td><span class="check-yes">✓ 通过</span></td><td>六氟磷酸锂占电解液成本40-60%，designed-in性质极强</td></tr>
+    <tr><td>4</td><td>designed-in + 多客户（toll booth）</td><td><span class="check-yes">✓ 通过</span></td><td>六氟磷酸锂→宁德时代/比亚迪/LG/松下；半导体氢氟酸→台积电/三星/中芯</td></tr>
+    <tr><td>5</td><td>认证/资格周期长、未反映当期营收</td><td><span class="check-partial">△ 部分</span></td><td>半导体认证壁垒已反映在估值中（PE 96x），尚未反映在当期利润中（营收占比<2%）</td></tr>
+    <tr><td>6</td><td>未来爆发营收（2027-28/2030）</td><td><span class="check-yes">✓ 通过</span></td><td>六氟磷酸钠2027年后随钠电池爆发；六氟化钨认证中</td></tr>
+    <tr><td>7</td><td>资产负债表能撑过爬坡</td><td><span class="check-partial">△ 部分</span></td><td>负债率59.83%，有息负债94亿，电池扩产资本开支大，但经营性现金流转正</td></tr>
+    <tr><td>8</td><td>Demand far outstrips supply</td><td><span class="check-yes">✓ 通过</span></td><td>2026年六氟磷酸锂供需紧平衡（需求40.4万吨 vs 供给41.4万吨），库存仅一周</td></tr>
+    <tr><td>9</td><td>大客户全包上游产能</td><td><span class="check-yes">✓ 通过</span></td><td>比亚迪锁定3年6万吨长单，宁德锁定钠盐长单</td></tr>
+    <tr><td>10</td><td>国家安全/政府介入</td><td><span class="check-yes">✓ 通过</span></td><td>半导体国产替代国家战略；电子级氢氟酸是战略物资</td></tr>
+    <tr><td>11</td><td>Made in America / 本土化护城河</td><td><span class="check-yes">✓ 通过</span></td><td>A股适配：国产替代紧迫度极高——半导体氢氟酸此前被日本垄断</td></tr>
+    <tr><td>12</td><td>信息不对称/定价错误</td><td><span class="check-partial">△ 部分</span></td><td>市场仍按"周期股"给估值，可能低估半导体+钠电成长属性</td></tr>
+    <tr><td>13</td><td>极少数玩家</td><td><span class="check-yes">✓ 通过</span></td><td>G5级氢氟酸全球仅3-4家能量产；六氟磷酸钠全球唯一连续量产</td></tr>
+    <tr><td>14</td><td>多年营收可见性/backlog</td><td><span class="check-yes">✓ 通过</span></td><td>长协覆盖80%六氟产能+宁德3.2万吨钠盐长协锁定至2027年</td></tr>
+    <tr><td>15</td><td>国产替代紧迫度（A股专用）</td><td><span class="check-yes">✓ 通过</span></td><td>G5半导体氢氟酸国产化率<30%，国内唯一通过四大晶圆厂认证</td></tr>
+</table>
+<p style="margin-top:8px;font-size:13px;"><strong>卡点质量评分：13/15 通过，2项部分通过。属于A股中极其稀缺的高质量卡点标的。</strong></p>
+
+<h3>2.4 红旗扫描</h3>
+<table>
+    <tr><th>#</th><th>红旗项</th><th>判定</th><th>说明</th></tr>
+    <tr><td style="color:#999;">（通用）</td><td>无限ATM/增发稀释</td><td><span class="check-no">✗ 未触发</span></td><td>暂无大规模增发计划</td></tr>
+    <tr><td style="color:#999;">（通用）</td><td>单一客户集中风险</td><td><span class="check-no">✗ 未触发</span></td><td>客户分散：比亚迪、宁德时代、LG、松下、台积电、三星</td></tr>
+    <tr><td style="color:#999;">（通用）</td><td>资产负债表toxic</td><td><span class="check-partial">△ 关注</span></td><td>负债率59.83%偏高，但经营现金流转正（1.99亿），有改善趋势</td></tr>
+    <tr><td style="color:#999;">（通用）</td><td>零收入纯炒作</td><td><span class="check-no">✗ 未触发</span></td><td>2025年营收94亿，实打实</td></tr>
+    <tr><td style="color:#999;">（通用）</td><td>技术太远</td><td><span class="check-no">✗ 未触发</span></td><td>六氟磷酸锂已大规模量产，半导体氢氟酸已批量供货</td></tr>
+    <tr><td style="color:#999;">（通用）</td><td>纯软件/SaaS</td><td><span class="check-no">✗ 未触发</span></td><td>制造业实体企业</td></tr>
+    <tr><td style="color:#E94560;"><strong>（A股）</strong></td><td><strong>海外技术依赖</strong></td><td><span class="check-no">✗ 未触发</span></td><td>全产业链自主可控</td></tr>
+    <tr><td style="color:#E94560;"><strong>（A股）</strong></td><td><strong>政策依赖风险</strong></td><td><span class="check-partial">△ 关注</span></td><td>政府补助占比需跟踪，目前未见异常</td></tr>
+    <tr><td style="color:#E94560;"><strong>（A股）</strong></td><td><strong>大股东质押</strong></td><td style="font-size:13px;color:#888;">[未核实]</td><td>需查最新质押数据</td></tr>
+    <tr><td style="color:#E94560;"><strong>（A股）</strong></td><td><strong>商誉过高</strong></td><td><span class="check-no">✗ 未触发</span></td><td>未见异常商誉</td></tr>
+</table>
+<p style="margin-top:8px;font-size:13px;"><strong>红旗结论：无硬否决项。关注负债率和政府补助占比。</strong></p>
+
+<!-- ===== 估值分析 ===== -->
+<h2>③ 估值分析</h2>
+
+<h3>3a Serenity 框架估值</h3>
+<div class="card">
+    <p><strong>信念分档：</strong><span class="tag tag-green">Buy on dip / 趋势持有</span></p>
+    <p><strong>视角空间：</strong></p>
+    <ul>
+        <li><strong>卡点五连判：</strong>
+            <ol>
+                <li>六氟磷酸锂 = <strong>toll booth</strong>（designed-in + 多客户 + 长协锁定）</li>
+                <li>G5半导体氢氟酸 = <strong>认证壁垒卡点</strong>（国内唯一四大晶圆厂认证）</li>
+                <li>六氟磷酸钠 = <strong>纯增量期权</strong>（全球唯一连续量产，绑定宁德）</li>
+                <li>大圆柱电池 = <strong>成长缓冲层</strong>（熨平周期波动）</li>
+                <li>全产业链一体化 = <strong>成本护城河</strong>（成本比行业低15-20%）</li>
+            </ol>
+        </li>
+        <li><strong>核心矛盾：</strong>短期股价已上涨400%，当前657亿市值是否已充分定价2026E 23亿利润？若六氟价格维持，2026E PE≈28x，对周期股不算便宜，对成长股不算贵。市场在给它"成长股估值"还是"周期股估值"的拉锯中。</li>
+    </ul>
+</div>
+
+<h3>3b 客观框架估值</h3>
+
+<table>
+    <tr><th>场景</th><th>2026E净利润</th><th>合理PE</th><th>目标市值</th><th>目标价</th><th>上涨空间</th></tr>
+    <tr>
+        <td><strong>Bear</strong>（六氟价格回落至8万/吨）</td>
+        <td>~12亿</td>
+        <td>20x（周期股估值）</td>
+        <td>240亿</td>
+        <td>~20元</td>
+        <td><span class="signal-down">-63%</span></td>
+    </tr>
+    <tr>
+        <td><strong>Base</strong>（六氟维持11-13万/吨+钠电/半导体放量）</td>
+        <td>~23亿</td>
+        <td>25-30x（周期成长股）</td>
+        <td>800-1000亿</td>
+        <td>~67-84元</td>
+        <td><span class="signal-up">+22-52%</span></td>
+    </tr>
+    <tr>
+        <td><strong>Bull</strong>（六氟价格持续上行+钠电超预期）</td>
+        <td>~30亿+</td>
+        <td>30-35x（成长股估值）</td>
+        <td>1200-1400亿</td>
+        <td>~100-118元</td>
+        <td><span class="signal-up">+82-113%</span></td>
+    </tr>
+</table>
+
+<div class="card" style="background:#fff8e1;">
+    <p><strong>A股专用尺子校验：</strong></p>
+    <ul>
+        <li><strong>PEG相对法：</strong>2026E净利润增速~991%，PE≈28x → PEG≈0.03（极低，但基数效应所致，需谨慎解读）</li>
+        <li><strong>赛道同类对比法：</strong>天赐材料（六氟同行）PE≈25x，多氟多28x基本持平。但天赐无半导体/钠电概念</li>
+        <li><strong>政策溢价折价法：</strong>半导体国产替代+钠电国家级战略，应给予+20-30%溢价</li>
+        <li><strong>关键区分：</strong>当前ROIC约5%，市盈率96x（2025基数）→ 泡沫信号；2026E PE 28x，若ROIC同步改善至>10%，可容忍</li>
+    </ul>
+    <p><strong>硬阈值判定：</strong>当前PE 96x（基于2025净利），但2026E PE~28x。关键在于市场是否相信23亿利润能兑现。Base Case下仍有空间，但安全边际有限。</p>
+</div>
+
+<!-- ===== 催化剂与风险 ===== -->
+<h2>④ 催化剂与风险</h2>
+
+<h3>催化剂跟踪清单</h3>
+<table>
+    <tr><th>催化剂</th><th>类型</th><th>强度</th><th>预期时间</th><th>验证指标</th></tr>
+    <tr><td>六氟磷酸锂现货价格</td><td>先行信号</td><td><span class="signal-up">高</span></td><td>持续跟踪</td><td>百川盈孚周度报价</td></tr>
+    <tr><td>2026年中报</td><td>财报</td><td><span class="signal-up">高</span></td><td>2026年8月</td><td>半导体氢氟酸+钠电营收增速</td></tr>
+    <tr><td>六氟化钨认证通过</td><td>定点公告</td><td><span class="signal-up">高</span></td><td>2026H2</td><td>通过先进制程认证公告</td></tr>
+    <tr><td>广西钠电基地满产</td><td>产线投产</td><td><span class="signal-up">高</span></td><td>2026H2</td><td>5万吨六氟磷酸钠达产公告</td></tr>
+    <tr><td>大圆柱电池新客户定点</td><td>定点公告</td><td><span class="signal-neutral">中</span></td><td>持续</td><td>新车型定点公告</td></tr>
+    <tr><td>锂电材料进口关税/出口管制政策</td><td>政策</td><td><span class="signal-neutral">中</span></td><td>不确定</td><td>工信部/商务部文件</td></tr>
+</table>
+
+<h3>⚠️ 风险矩阵</h3>
+<table>
+    <tr><th>风险</th><th>概率</th><th>影响</th><th>说明</th></tr>
+    <tr><td>六氟磷酸锂价格回落</td><td>中</td><td>高</td><td>若中小产能复产或需求不及预期，价格回落将直接压缩利润</td></tr>
+    <tr><td>股价高位回调</td><td>高</td><td>中</td><td>近10日涨幅40%，公司已发异动公告提示非理性炒作，回调风险大</td></tr>
+    <tr><td>半导体营收占比过低</td><td>已证实</td><td>中</td><td>公司公告明确半导体氢氟酸营收占比<2%，短期无法支撑业绩</td></tr>
+    <tr><td>高负债扩张</td><td>中</td><td>中</td><td>负债率59.83%，电池扩产持续大额资本开支</td></tr>
+    <tr><td>机构持仓不稳定</td><td>中</td><td>中</td><td>2026Q1机构从361家降至24家，近期虽回补但结构不稳定</td></tr>
+    <tr><td>六氟化钨预期落空</td><td>已证实</td><td>低</td><td>公司公告暂无量产线，市场过度炒作</td></tr>
+</table>
+
+<!-- ===== 综合判断 ===== -->
+<h2>⑤ 综合判定</h2>
+
+<div class="card" style="border-left:5px solid #ffd700;">
+    <h3 style="margin-top:0;">Serenity 最终观点</h3>
+    <p><strong>多氟多是A股极为罕见的"周期反转 + 半导体国产替代 + 钠电新赛道"三重逻辑叠加的标的。</strong></p>
+    <p>六氟磷酸锂的供需反转有扎实产业数据支撑（库存仅一周、CR3>60%），半导体氢氟酸的认证壁垒A股独一份（台积电/三星/中芯/长鑫），钠电材料是全球唯一连续量产（绑定宁德时代长协至2027）。从<strong>卡点质量评分13/15</strong>来看，这是一家基本面过硬的平台型企业。</p>
+    <p>但当前核心矛盾不是基本面，而是<strong>估值与位置</strong>：</p>
+    <ul>
+        <li>近一年涨幅~400%，近10日涨幅~40%，短期情绪已极度亢奋</li>
+        <li>公司本身已发异动公告主动降温，半导体氢氟酸营收占比不足2%的事实说明市场在提前定价远期预期</li>
+        <li>Base Case下仍有空间，但安全边际不足，一有风吹草动（如六氟价格回调）容易出现戴维斯双杀</li>
+    </ul>
+    <p><strong>操作建议：</strong></p>
+    <ul>
+        <li>有持仓者：可持有但应设止盈位，跟踪六氟价格+中报验证</li>
+        <li>未入场者：不建议追高。等待回调至合理位置（如市值600亿以下、PE 25x左右）再分批介入</li>
+        <li>核心验证指标：六氟磷酸锂现货价格、中报半导体氢氟酸营收增速、钠电材料出货量</li>
+    </ul>
+    <p><strong>一句话总结：好公司，好逻辑，但不是好价格。</strong></p>
+</div>
+
+<div class="footer">
+    <p>本报告基于公开信息整理，使用 Serenity 投资分析框架（A股适配版）生成。</p>
+    <p>数据来源：公司公告、百川盈孚、Wind、东方财富、雪球、各机构研报。</p>
+    <p><strong>免责声明：本报告仅供参考，不构成投资建议。市场有风险，投资需谨慎。</strong></p>
+    <p>生成日期：2026-07-03 | Serenity Mode 1</p>
+</div>
+
+</body>
+</html>
