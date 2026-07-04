@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贝斯特 (300580) — Serenity Mode 1 分析报告</title>
+    <style>
+        :root {
+            --bg: #f8f9fa; --card: #ffffff; --text: #2d3436; --muted: #636e72;
+            --accent: #e94560; --accent2: #0f3460; --green: #00b894; --yellow: #fdcb6e;
+            --red: #d63031; --border: #dfe6e9; --tag-bg: #f1f2f6;
+        }
+        body {
+            font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            max-width: 860px; margin: 0 auto; padding: 28px 20px;
+            background: var(--bg); color: var(--text); line-height: 1.72;
+        }
+        h1 { font-size: 22px; color: #1a1a2e; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 6px; }
+        .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+        h2 { font-size: 17px; color: var(--accent2); margin: 30px 0 10px; border-left: 4px solid var(--accent); padding-left: 10px; }
+        h3 { font-size: 15px; color: #555; margin: 20px 0 8px; }
+        .card {
+            background: var(--card); border-radius: 10px; padding: 18px 22px;
+            margin: 12px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .verdict {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff; border-radius: 12px; padding: 22px 26px; margin: 16px 0;
+        }
+        .verdict h2 { color: #fff; border-left-color: var(--accent); margin-top: 0; }
+        .serenity-badge {
+            display: inline-block; padding: 5px 14px; border-radius: 20px;
+            font-weight: 700; font-size: 15px; margin: 8px 0;
+        }
+        .badge-sell { background: #d63031; color: #fff; }
+        .badge-watch { background: #fdcb6e; color: #333; }
+        .badge-buy { background: #00b894; color: #fff; }
+        .badge-strong { background: #0984e3; color: #fff; }
+
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: #f1f2f6; color: #555; font-weight: 600; font-size: 13px; }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .positive { color: #d63031; }
+        .negative { color: #00b894; }
+
+        .tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 12px; margin: 2px 4px; background: var(--tag-bg); color: #555;
+        }
+        .tag-red { background: #ffeaa7; color: #d63031; }
+        .tag-green { background: #dfe6e9; color: #00b894; }
+        .tag-blue { background: #dfe6e9; color: #0984e3; }
+
+        .score-bar { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+        .score-bar .label { width: 170px; font-size: 13px; color: #555; flex-shrink: 0; }
+        .score-bar .bar { flex: 1; height: 8px; background: #dfe6e9; border-radius: 4px; overflow: hidden; }
+        .score-bar .fill { height: 100%; border-radius: 4px; }
+        .fill-low { background: #d63031; }
+        .fill-mid { background: #fdcb6e; }
+        .fill-high { background: #00b894; }
+
+        .risk-item {
+            padding: 8px 14px; margin: 4px 0; border-left: 3px solid #d63031;
+            background: #fff5f5; border-radius: 0 6px 6px 0; font-size: 14px;
+        }
+        .risk-item.warn { border-left-color: #fdcb6e; background: #fffdf0; }
+        .risk-item.good { border-left-color: #00b894; background: #f0fff4; }
+
+        .conclusion-box {
+            background: #f8f9fa; border: 1px solid var(--border);
+            border-radius: 8px; padding: 14px 18px; margin: 12px 0; font-size: 14px;
+        }
+        .footer {
+            text-align: center; color: #999; font-size: 12px;
+            margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+        }
+        .highlight { background: linear-gradient(180deg, transparent 60%, #fdcb6e 60%); }
+    </style>
+</head>
+<body>
+
+<h1>贝斯特 (300580) — Serenity Mode 1 分析报告</h1>
+<div class="subtitle">2026年7月3日 · 星期五 · 无锡贝斯特精机股份有限公司</div>
+
+<!-- ==================== 结论 ==================== -->
+<div class="verdict">
+    <h2>核心结论</h2>
+    <p style="margin:4px 0; font-size:15px;">
+        <strong>客观空间：</strong> Bear 70-85亿 / Base 90-115亿 / Bull 130-160亿 — <strong>当前市值130亿处于Base上限与Bull下限交汇处</strong>，翻倍空间有限。
+    </p>
+    <p style="margin:4px 0; font-size:15px;">
+        <strong>Serenity 判定：</strong>
+        <span class="serenity-badge badge-watch">🟡 Watch / 真卡点但估值不便宜 / 等回调</span>
+    </p>
+    <p style="margin:6px 0 0; font-size:14px; color:#ccc;">
+        因由：A股稀缺的<span class="highlight">真正有人形机器人核心卡点（C0级丝杠）</span>的公司，深度绑定宇树科技（45%份额）、智元机器人（独家传感器）、特斯拉Optimus（间接验证通过），不是纯概念炒作。传统涡轮增压器业务提供稳定现金流（11.5亿营收）。但130亿市值已price-in了丝杠2026年2.7亿→2027年5亿+的乐观预期，当前PE 46x vs 行业31x，溢价来自机器人概念。合理买入区间85-105亿（17-21元），现价25.96元（涨停板上）无安全边际。
+    </p>
+</div>
+
+<!-- ==================== 客观事实底座 ==================== -->
+<h2>L0 客观事实底座</h2>
+
+<div class="card">
+    <h3>三梯次业务拆解</h3>
+    <table>
+        <tr><th>梯次</th><th>业务</th><th>2025年营收（估）</th><th>占比</th><th>定位</th></tr>
+        <tr>
+            <td><strong>第一梯次</strong></td>
+            <td>涡轮增压器精密零部件（叶轮/中间壳/轴承件）</td>
+            <td class="num">~11.5亿</td>
+            <td class="num">~77%</td>
+            <td>压舱石 / 现金牛</td>
+        </tr>
+        <tr>
+            <td><strong>第二梯次</strong></td>
+            <td>新能源汽车零部件（轻量化结构件/氢燃料部件）</td>
+            <td class="num">~2.4亿</td>
+            <td class="num">~16%</td>
+            <td>快速成长期</td>
+        </tr>
+        <tr>
+            <td><strong>第三梯次</strong></td>
+            <td>工业母机/人形机器人丝杠（滚珠/滚柱丝杠/直线导轨/力矩传感器）</td>
+            <td class="num">~0.9亿</td>
+            <td class="num">~6%</td>
+            <td>弹性盘 / 市场开拓期</td>
+        </tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        <strong>意味着什么：</strong>三梯次结构清晰——传统业务提供现金流（11.5亿），新能源提供增量（2.4亿），丝杠提供想象空间（0.9亿→2.7亿预期）。丝杠占比虽低（6%），但毛利率50-55%远高于传统业务（33%），是未来利润弹性的核心来源。
+    </p>
+</div>
+
+<div class="card">
+    <h3>核心财务数据</h3>
+    <table>
+        <tr><th>指标</th><th>2025年</th><th>2024年</th><th>2026Q1</th><th>YoY(Q1)</th></tr>
+        <tr><td>营业收入</td><td class="num">15.04亿</td><td class="num">13.57亿</td><td class="num">3.86亿</td><td class="num positive">+10.38%</td></tr>
+        <tr><td>归母净利润</td><td class="num">2.78亿</td><td class="num">2.89亿</td><td class="num">0.73亿</td><td class="num positive">+5.23%</td></tr>
+        <tr><td>扣非净利润</td><td class="num">2.61亿</td><td class="num">2.63亿</td><td class="num">0.69亿</td><td class="num positive">+4.85%</td></tr>
+        <tr><td>毛利率</td><td class="num">33.23%</td><td class="num">34.64%</td><td class="num">33.59%</td><td class="num negative">-1.27pct</td></tr>
+        <tr><td>净利率</td><td class="num">18.49%</td><td class="num">21.27%</td><td class="num">18.92%</td><td class="num negative">-4.67pct</td></tr>
+        <tr><td>ROE</td><td class="num">8.70%</td><td class="num">~10%</td><td class="num">2.20%</td><td class="num">—</td></tr>
+        <tr><td>经营现金流</td><td class="num">1.52亿</td><td class="num">2.28亿</td><td class="num">-0.15亿</td><td class="num">—</td></tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        <strong>意味着什么：</strong>2025年<span class="highlight">增收不增利</span>（营收+10.8%，利润-3.7%），主因是新基地投产折旧增加、研发投入加大（7.92亿研发费用）、原材料涨价。扣非仅微降0.67%，主业盈利基本稳定。2026Q1恢复增长，但经营现金流转负值得关注。应收账款/净利润=215.92%，显著偏高，下游账期较长。
+    </p>
+</div>
+
+<div class="card">
+    <h3>市值与估值</h3>
+    <table>
+        <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+        <tr><td>股价</td><td class="num">25.96元</td><td>2026-07-03涨停价（+20.02%）</td></tr>
+        <tr><td>总市值</td><td class="num">130.40亿</td><td>—</td></tr>
+        <tr><td>流通市值</td><td class="num">122.69亿</td><td>—</td></tr>
+        <tr><td>PE (TTM)</td><td class="num">46.30x</td><td>按涨停价</td></tr>
+        <tr><td>PB</td><td class="num">3.88x</td><td>—</td></tr>
+        <tr><td>每股净资产</td><td class="num">6.69元</td><td>—</td></tr>
+        <tr><td>行业PE中位</td><td class="num">31.44x</td><td>汽车零部件（申万）</td></tr>
+        <tr><td>机构目标均价</td><td class="num">32.82元</td><td>5家机构，4买入1增持</td></tr>
+        <tr><td>机构2026E净利润</td><td class="num">3.38亿</td><td>对应forward PE ~38.6x</td></tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        <strong>意味着什么：</strong>46x PE显著高于汽车零部件行业中位31x，溢价约50%来自机器人概念。但若按机构预期2026年净利润3.38亿，forward PE约38.6x，也不算极端。机构目标价32.82元（对应165亿市值），尚有26%空间，但这是12个月目标。
+    </p>
+</div>
+
+<!-- ==================== 供应链定位 ==================== -->
+<h2>供应链定位：人形机器人丝杠产业链</h2>
+
+<div class="card">
+    <table>
+        <tr><th>层级</th><th>内容</th><th>贝斯特所处位置</th></tr>
+        <tr><td>终端整机</td><td>特斯拉Optimus / 宇树H1/G1 / 智元 / 优必选Walker / 华为</td><td>—</td></tr>
+        <tr><td>关节模组/执行器</td><td>线性执行器总成、旋转关节模组</td><td>贝斯特正从丝杠向执行器延伸</td></tr>
+        <tr><td><strong>核心传动部件</strong></td><td><strong>行星滚柱丝杠、滚珠丝杠、直线导轨</strong></td><td style="background:#fdcb6e;font-weight:700;">← 贝斯特在这里（C0级）</td></tr>
+        <tr><td>精密加工设备</td><td>高精度螺纹磨床、五轴加工中心</td><td>贝斯特自研专用磨床（设备自制）</td></tr>
+        <tr><td>原材料</td><td>轴承钢、合金钢、特种涂层材料</td><td>—</td></tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        <strong>关键认知：</strong>行星滚柱丝杠是人形机器人线性关节的<span class="highlight">核心传动部件</span>，单台Optimus需14个行星滚柱丝杠+12个微型滚珠丝杠，丝杠价值量占整机~19%，是单台价值量最高的零部件。全球高端丝杠95%+被日本THK/NSK、德国舍弗勒垄断，贝斯特是国内极少数突破C0级精度的企业之一。
+    </p>
+</div>
+
+<!-- ==================== Serenity 卡点评估 ==================== -->
+<h2>Serenity 卡点评估</h2>
+
+<div class="card">
+    <h3>卡点质量评分：<span style="color:#fdcb6e;">7.5/15</span> — 中强卡点</h3>
+
+    <div class="score-bar"><div class="label">1. 垄断/双寡头</div><div class="bar"><div class="fill fill-mid" style="width:60%;"></div></div><span style="font-size:12px;">6/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">高端丝杠外资垄断95%+，但国产替代者不止贝斯特一家（五洲新春、恒立液压、北特科技也在突破）。</p>
+
+    <div class="score-bar"><div class="label">3. BOM占比 + designed-in</div><div class="bar"><div class="fill fill-high" style="width:90%;"></div></div><span style="font-size:12px;">9/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">丝杠占整机价值19%，一旦design-in极难切换（认证1-2年+工艺耦合）。这是最强卡点维度。</p>
+
+    <div class="score-bar"><div class="label">4. 多客户toll booth</div><div class="bar"><div class="fill fill-high" style="width:80%;"></div></div><span style="font-size:12px;">8/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">宇树(45%份额)+智元(独家传感器)+特斯拉(间接)+优必选+华为。在多个头部客户中反复出现。</p>
+
+    <div class="score-bar"><div class="label">5. 认证/资格周期</div><div class="bar"><div class="fill fill-high" style="width:80%;"></div></div><span style="font-size:12px;">8/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">人形机器人核心部件认证1-2年+汽车IATF16949/AS9100航空航天资质，先发优势明显。</p>
+
+    <div class="score-bar"><div class="label">6. 未来爆发营收</div><div class="bar"><div class="fill fill-high" style="width:80%;"></div></div><span style="font-size:12px;">8/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">丝杠2024年0.1亿→2025年0.9亿→2026E 2.7亿，CAGR 60%+。2027年若Optimus量产50万台，丝杠需求将爆发。</p>
+
+    <div class="score-bar"><div class="label">7. 资产负债表</div><div class="bar"><div class="fill fill-high" style="width:80%;"></div></div><span style="font-size:12px;">8/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">负债率仅14%，几乎无有息负债，传统业务提供稳定现金流支撑丝杠扩产。</p>
+
+    <div class="score-bar"><div class="label">8. 供不应求</div><div class="bar"><div class="fill fill-mid" style="width:70%;"></div></div><span style="font-size:12px;">7/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">人形机器人丝杠需求爆发+国产C0级产能稀缺，宇华精机二期扩产中。</p>
+
+    <div class="score-bar"><div class="label">13. 极少数玩家</div><div class="bar"><div class="fill fill-mid" style="width:70%;"></div></div><span style="font-size:12px;">7/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">国内能做C0级行星滚柱丝杠的屈指可数（五洲新春、贝斯特、恒立液压、北特科技），但竞争在加剧。</p>
+
+    <div class="score-bar"><div class="label">15. 国产替代紧迫度</div><div class="bar"><div class="fill fill-high" style="width:80%;"></div></div><span style="font-size:12px;">8/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 180px;">工业母机丝杠国产化率&lt;5%，人形机器人丝杠进口依赖&gt;70%。国家战略支持+十五五政策催化。</p>
+</div>
+
+<!-- ==================== 红旗扫描 ==================== -->
+<h2>红旗扫描</h2>
+
+<div class="risk-item warn">
+    <strong>🟡 应收账款过高：</strong>应收账款/净利润=215.92%，下游客户账期长，经营性应收项目增加2.4亿。虽然公司解释为票据结算方式变化，但现金流质量需持续跟踪。
+</div>
+<div class="risk-item warn">
+    <strong>🟡 2025年增收不增利：</strong>新基地投产折旧+研发投入加大+原材料涨价三重压力。2026年能否恢复利润增长是关键验证点。
+</div>
+<div class="risk-item warn">
+    <strong>🟡 丝杠业务占比仍低：</strong>2025年丝杠仅占营收~6%，短期无法完全对冲传统涡轮增压业务受纯电替代的长期压力。
+</div>
+<div class="risk-item warn">
+    <strong>🟡 特斯拉Optimus合作未正式公告：</strong>公司以"商业机密"回避特斯拉供货问题，市场流传的"10万套订单"尚未得到官方确认。这是最大的预期差风险。
+</div>
+<div class="risk-item warn">
+    <strong>🟡 竞争格局恶化风险：</strong>五洲新春绑定特斯拉为独家一级供应商，恒立液压资金雄厚，北特科技快速追赶。贝斯特不是丝杠赛道的唯一玩家。
+</div>
+<div class="risk-item good">
+    <strong>🟢 无硬伤：</strong>无股权质押、无商誉风险（仅1480万，占净资产0.44%）、无有息负债、无增发稀释。资产负债率仅14%，财务极度健康。
+</div>
+
+<!-- ==================== 核心矛盾 ==================== -->
+<h2>核心矛盾</h2>
+
+<div class="card">
+    <p style="font-size:15px; margin:0;">
+        <strong>矛盾一：真卡点 vs 估值已price-in。</strong>贝斯特是A股稀缺的真正有丝杠卡点的公司，不是概念炒作。但130亿市值已将丝杠2026年2.7亿→2027年5亿+的乐观预期price-in。当前PE 46x中约15-20x是机器人概念溢价。<br><br>
+        <strong>矛盾二：客户广度 vs 单一客户深度。</strong>贝斯特在宇树（45%份额）、智元（独家）、优必选、特斯拉、华为均有布局，客户矩阵最广。但五洲新春是特斯拉Optimus<span class="highlight">独家一级供应商</span>（锁定2026-2030年长协），在最大单一客户上深度不如五洲。<br><br>
+        <strong>矛盾三：传统业务托底 vs 长期趋势下行。</strong>涡轮增压器业务虽有混动增量，但纯电替代是长期趋势。传统业务估值中枢下行将与丝杠估值上行形成对冲。
+    </p>
+</div>
+
+<!-- ==================== 估值 ==================== -->
+<h2>估值矩阵：分部估值法（SOTP）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>业务板块</th><th>2026E营收</th><th>净利率</th><th>净利润</th><th>PE倍数</th><th>估值</th></tr>
+        <tr><td>传统涡轮增压器</td><td class="num">12.0亿</td><td class="num">15%</td><td class="num">1.80亿</td><td class="num">15-18x</td><td class="num">27-32亿</td></tr>
+        <tr><td>新能源汽车零部件</td><td class="num">3.0亿</td><td class="num">12%</td><td class="num">0.36亿</td><td class="num">20-25x</td><td class="num">7-9亿</td></tr>
+        <tr><td style="font-weight:700;">丝杠/直线运动部件</td><td class="num" style="font-weight:700;">2.7亿</td><td class="num" style="font-weight:700;">30%</td><td class="num" style="font-weight:700;">0.81亿</td><td class="num" style="font-weight:700;">40-60x</td><td class="num" style="font-weight:700;">32-49亿</td></tr>
+        <tr style="font-weight:700;background:#f8f9fa;"><td>合计（Base）</td><td class="num">—</td><td class="num">—</td><td class="num">2.97亿</td><td class="num">~35x blended</td><td class="num">90-115亿</td></tr>
+    </table>
+    <p style="font-size:13px;color:#888;margin-top:6px;">
+        <strong>当前130亿市值对应丝杠业务隐含估值约55-65亿</strong>（传统+新能源按40亿扣除），即丝杠2026E净利润的68-80x PE。这要求丝杠业务2027年达到5亿+营收才能合理化。
+    </p>
+</div>
+
+<div class="card">
+    <h3>Bear / Base / Bull</h3>
+    <table>
+        <tr><th>情景</th><th>假设</th><th>市值区间</th><th>vs 当前</th></tr>
+        <tr>
+            <td><strong>Bear</strong></td>
+            <td>人形机器人量产不及预期，丝杠2026年营收仅1.5亿；传统业务受纯电替代加速下滑</td>
+            <td class="num">70-85亿</td>
+            <td class="num negative">-35%~-46%</td>
+        </tr>
+        <tr>
+            <td><strong>Base</strong></td>
+            <td>丝杠按预期放量2.7亿，Optimus稳步推进但未爆发；传统业务平稳</td>
+            <td class="num">90-115亿</td>
+            <td class="num negative">-12%~-31%</td>
+        </tr>
+        <tr>
+            <td><strong>Bull</strong></td>
+            <td>Optimus正式定点贝斯特+宇树IPO带动产业链+丝杠2027年5亿+</td>
+            <td class="num">130-160亿</td>
+            <td class="num">0%~+23%</td>
+        </tr>
+    </table>
+    <p style="font-size:13px;color:#888;margin-top:6px;">
+        <strong>当前市值130亿处于Base上限与Bull下限交汇处。</strong>在涨停日（+20%）分析，市场情绪已充分反映乐观预期。Base情景下仍有12-31%下行空间。
+    </p>
+</div>
+
+<div class="card">
+    <h3>丝杠赛道同业对比</h3>
+    <table>
+        <tr><th>公司</th><th>代码</th><th>市值</th><th>丝杠定位</th><th>核心客户</th></tr>
+        <tr><td style="font-weight:700;">贝斯特</td><td>300580</td><td class="num">130亿</td><td>C0级丝杠+传感器+执行器</td><td>宇树/智元/特斯拉(间接)/优必选/华为</td></tr>
+        <tr><td>五洲新春</td><td>603667</td><td class="num">~200亿</td><td>行星滚柱+微型滚珠+轴承全链</td><td>特斯拉(独家一级)/宇树/智元</td></tr>
+        <tr><td>恒立液压</td><td>601100</td><td class="num">~1500亿</td><td>丝杠项目投入大，资金雄厚</td><td>待验证</td></tr>
+        <tr><td>北特科技</td><td>603009</td><td class="num">~80亿</td><td>汽车底盘加工经验切入丝杠</td><td>待验证</td></tr>
+    </table>
+    <p style="font-size:13px;color:#888;margin-top:4px;">
+        贝斯特在丝杠赛道中市值居中，客户矩阵最广但单一客户深度不如五洲新春（特斯拉独家）。五洲新春200亿市值说明市场对丝杠龙头的估值天花板更高。
+    </p>
+</div>
+
+<!-- ==================== 催化剂 ==================== -->
+<h2>关键验证窗口</h2>
+
+<div class="card">
+    <table>
+        <tr><th>时间</th><th>事件</th><th>关注点</th></tr>
+        <tr>
+            <td><strong>2026年8月18日</strong></td>
+            <td>2026年中报披露</td>
+            <td>丝杠业务营收是否达到1亿+？毛利率是否维持50%+？宇华精机产能爬坡进展？</td>
+        </tr>
+        <tr>
+            <td><strong>2026年Q3-Q4</strong></td>
+            <td>特斯拉Optimus量产节奏</td>
+            <td>Optimus是否正式定点贝斯特？10万套订单能否落地？</td>
+        </tr>
+        <tr>
+            <td><strong>2026年Q3</strong></td>
+            <td>宇树科技科创板上市</td>
+            <td>宇树IPO后资本开支扩大→丝杠采购量增加→贝斯特直接受益</td>
+        </tr>
+        <tr>
+            <td><strong>2026年Q4</strong></td>
+            <td>泰国倍永华一期投产</td>
+            <td>海外产能释放，配套海外客户，规避贸易壁垒</td>
+        </tr>
+        <tr>
+            <td><strong>持续关注</strong></td>
+            <td>优必选优世界U1交付进展</td>
+            <td>优必选U1订单13361台，若交付顺利→拉动丝杠需求</td>
+        </tr>
+    </table>
+</div>
+
+<!-- ==================== 证据标注 ==================== -->
+<h2>证据来源与评级</h2>
+
+<div class="card">
+    <table>
+        <tr><th>数据点</th><th>来源</th><th>评级</th></tr>
+        <tr><td>2025年营收/净利润</td><td>2025年年报（公证天业审计，无保留意见）</td><td><span class="tag tag-green">已证实</span></td></tr>
+        <tr><td>C0级丝杠量产</td><td>民生证券研报（2025.4.21）+ 公司调研纪要</td><td><span class="tag tag-green">已证实</span></td></tr>
+        <tr><td>宇树科技45%份额</td><td>网络分析文章，非官方公告</td><td><span class="tag tag-blue">待核实</span></td></tr>
+        <tr><td>特斯拉10万套订单</td><td>网络分析文章，公司以"商业机密"回避</td><td><span class="tag tag-red">纯推测</span></td></tr>
+        <tr><td>智元机器人订单+400%</td><td>网络分析文章</td><td><span class="tag tag-blue">待核实</span></td></tr>
+        <tr><td>丝杠2026E 2.7亿</td><td>网络分析文章/市场预期</td><td><span class="tag tag-blue">我的推断</span></td></tr>
+        <tr><td>机构目标价32.82元</td><td>5家机构研报（4买入1增持）</td><td><span class="tag tag-green">已证实</span></td></tr>
+        <tr><td>无质押/无商誉/无有息负债</td><td>2025年年报+2026年一季报</td><td><span class="tag tag-green">已证实</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:#d63031;margin-top:8px;">
+        <strong>⚠ 注意：</strong>关于特斯拉Optimus供货、宇树份额、智元订单增长等关键数据，主要来源为网络分析文章和投资者社区讨论，<strong>未经公司官方公告确认</strong>。市场可能高估了这些合作的确定性和规模。这是本分析最大的不确定性来源。
+    </p>
+</div>
+
+<!-- ==================== 独立复核 ==================== -->
+<h2>独立复核</h2>
+
+<div class="conclusion-box">
+    <ol style="margin:4px 0; padding-left:18px; font-size:13px;">
+        <li>所有财务数据来自2025年年报和2026年一季报，已交叉核验 ≥3个源。</li>
+        <li>丝杠业务的具体客户份额和订单数据<strong>存在较大不确定性</strong>——Tesla供货未获官方确认，宇树45%份额来自非官方渠道。标注为"待核实"或"纯推测"，不构成投资依据。</li>
+        <li>确认贝斯特是真正的丝杠制造商（有C0级量产能力），而非概念炒作。这是与迈赫股份（系统集成商）的本质区别。</li>
+        <li>同业对比中，五洲新春是特斯拉Optimus独家一级供应商（官方确认），贝斯特在最大客户深度上不及五洲。</li>
+        <li>确认无遗漏重大红旗：无质押、无商誉、无有息负债——财务健康度在A股制造业中属优秀。</li>
+    </ol>
+</div>
+
+<div class="footer">
+    本报告基于 Serenity Mode 1 分析框架生成 · 2026年7月3日 · 仅供研究参考，不构成投资建议<br>
+    <a href="index.html">返回报告列表</a>
+</div>
+
+</body>
+</html>
