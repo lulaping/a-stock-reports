@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迈赫股份 (301199) — Serenity Mode 1 分析报告</title>
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --card: #ffffff;
+            --text: #2d3436;
+            --muted: #636e72;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --green: #00b894;
+            --yellow: #fdcb6e;
+            --red: #d63031;
+            --border: #dfe6e9;
+            --tag-bg: #f1f2f6;
+        }
+        body {
+            font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.72;
+        }
+        h1 { font-size: 22px; color: #1a1a2e; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 6px; }
+        .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+        h2 { font-size: 17px; color: var(--accent2); margin: 30px 0 10px; border-left: 4px solid var(--accent); padding-left: 10px; }
+        h3 { font-size: 15px; color: #555; margin: 20px 0 8px; }
+        .card {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .verdict {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            border-radius: 12px;
+            padding: 22px 26px;
+            margin: 16px 0;
+        }
+        .verdict h2 { color: #fff; border-left-color: var(--accent); margin-top: 0; }
+        .verdict .serenity-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 15px;
+            margin: 8px 0;
+        }
+        .badge-sell { background: #d63031; color: #fff; }
+        .badge-watch { background: #fdcb6e; color: #333; }
+        .badge-buy { background: #00b894; color: #fff; }
+        .badge-strong { background: #0984e3; color: #fff; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: #f1f2f6;
+            color: #555;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .positive { color: #d63031; }
+        .negative { color: #00b894; }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin: 2px 4px;
+            background: var(--tag-bg);
+            color: #555;
+        }
+        .tag-red { background: #ffeaa7; color: #d63031; }
+        .tag-green { background: #dfe6e9; color: #00b894; }
+        .tag-blue { background: #dfe6e9; color: #0984e3; }
+
+        .score-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0;
+        }
+        .score-bar .label { width: 140px; font-size: 13px; color: #555; }
+        .score-bar .bar {
+            flex: 1;
+            height: 8px;
+            background: #dfe6e9;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        .fill-low { background: #d63031; }
+        .fill-mid { background: #fdcb6e; }
+        .fill-high { background: #00b894; }
+
+        .risk-item {
+            padding: 8px 14px;
+            margin: 4px 0;
+            border-left: 3px solid #d63031;
+            background: #fff5f5;
+            border-radius: 0 6px 6px 0;
+            font-size: 14px;
+        }
+        .risk-item.warn {
+            border-left-color: #fdcb6e;
+            background: #fffdf0;
+        }
+
+        .conclusion-box {
+            background: #f8f9fa;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin-top: 36px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+<h1>迈赫股份 (301199) — Serenity Mode 1 分析报告</h1>
+<div class="subtitle">2026年7月3日 · 星期五 · 迈赫机器人自动化股份有限公司</div>
+
+<!-- ==================== 结论 ==================== -->
+<div class="verdict">
+    <h2>核心结论</h2>
+    <p style="margin:4px 0; font-size:15px;">
+        <strong>客观空间：</strong> Bear 15-18亿 / Base 25-30亿 / Bull 35-40亿 — <strong>当前市值39.72亿已触及Bull上限</strong>，未过翻倍门槛。
+    </p>
+    <p style="margin:4px 0; font-size:15px;">
+        <strong>Serenity 判定：</strong>
+        <span class="serenity-badge badge-sell">🔴 Sell / 不建议参与</span>
+    </p>
+    <p style="margin:6px 0 0; font-size:14px; color:#ccc;">
+        因由：名字带"机器人"但本质是汽车焊装产线系统集成商——低壁垒、低毛利、项目制收入波动大，且与当前市场热炒的"人形机器人"概念无实质关联。当前46x PE（扣非58x）对于一个ROE仅5.76%的系统集成商严重高估。25.69亿在手订单提供一定下行保护，但不足以支撑当前估值。
+    </p>
+</div>
+
+<!-- ==================== 客观事实底座 ==================== -->
+<h2>L0 客观事实底座</h2>
+
+<div class="card">
+    <h3>业务拆分</h3>
+    <table>
+        <tr><th>业务板块</th><th>2025年营收</th><th>占比</th><th>YoY</th></tr>
+        <tr><td>智能装备系统及动力能源供应系统</td><td class="num">11.16亿</td><td>96.31%</td><td class="num positive">+6.76%</td></tr>
+        <tr><td>规划设计业务</td><td class="num">0.42亿</td><td>3.64%</td><td class="num">基本持平</td></tr>
+        <tr><td>其他</td><td class="num">0.005亿</td><td>0.05%</td><td class="num negative">-50.40%</td></tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        汽车行业贡献营收10.83亿（93.27%），其他行业0.78亿（6.73%）。<br>
+        <strong>意味着什么：</strong>几乎纯汽车周期股，与汽车行业capex周期深度绑定。新能源汽车渗透率提升是核心驱动力，但项目制收入具有天然波动性。
+    </p>
+</div>
+
+<div class="card">
+    <h3>核心财务数据</h3>
+    <table>
+        <tr><th>指标</th><th>2025年</th><th>2024年</th><th>2023年</th><th>2026Q1</th><th>YoY(Q1)</th></tr>
+        <tr><td>营业收入</td><td class="num">11.61亿</td><td class="num">10.91亿</td><td class="num">9.75亿</td><td class="num">2.56亿</td><td class="num negative">-25.13%</td></tr>
+        <tr><td>归母净利润</td><td class="num">1.08亿</td><td class="num">0.86亿</td><td class="num">0.28亿</td><td class="num">0.19亿</td><td class="num negative">-53.76%</td></tr>
+        <tr><td>扣非净利润</td><td class="num">0.91亿</td><td class="num">0.53亿</td><td class="num">—</td><td class="num">0.15亿</td><td class="num negative">-59.72%</td></tr>
+        <tr><td>毛利率</td><td class="num">22.51%</td><td class="num">20.36%</td><td class="num">—</td><td class="num">24.44%</td><td class="num positive">+3.24pct</td></tr>
+        <tr><td>净利率</td><td class="num">9.34%</td><td class="num">7.90%</td><td class="num">—</td><td class="num">7.41%</td><td class="num negative">-4.59pct</td></tr>
+        <tr><td>ROE</td><td class="num">5.76%</td><td class="num">—</td><td class="num">—</td><td class="num">0.98%</td><td class="num">—</td></tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        <strong>意味着什么：</strong>2025年扣非增70%是低基数效应（2024扣非仅0.53亿）。2026Q1营收和利润双双大幅下滑，验证了项目制收入的波动性——公司自己也承认"终验收时间分布不均匀"。毛利率虽有改善但净利率下降，说明费用端压力增大（研发费用+51.82%）。
+    </p>
+</div>
+
+<div class="card">
+    <h3>市值与估值</h3>
+    <table>
+        <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+        <tr><td>股价</td><td class="num">21.28元</td><td>2026-07-03涨停价（+20.02%）</td></tr>
+        <tr><td>总市值</td><td class="num">39.72亿</td><td>—</td></tr>
+        <tr><td>流通市值</td><td class="num">38.24亿</td><td>解禁后流通盘大幅增加</td></tr>
+        <tr><td>PE (TTM)</td><td class="num">46.01x</td><td>—</td></tr>
+        <tr><td>扣非PE (TTM)</td><td class="num">57.93x</td><td>扣非口径更贵</td></tr>
+        <tr><td>PB</td><td class="num">2.05x</td><td>—</td></tr>
+        <tr><td>每股净资产</td><td class="num">10.40元</td><td>—</td></tr>
+        <tr><td>行业PE中位</td><td class="num">56.06x</td><td>专用设备制造业</td></tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        <strong>意味着什么：</strong>46x PE对一个ROE仅5.76%、毛利率22%的系统集成商偏贵。扣非PE接近58x更是没有安全边际。虽然低于行业中位数56x，但行业包含了大量真正有技术壁垒的装备公司（如恒立液压等），迈赫作为系统集成商不应享受同等估值。
+    </p>
+</div>
+
+<div class="card">
+    <h3>在手订单与现金流</h3>
+    <table>
+        <tr><th>指标</th><th>数值</th></tr>
+        <tr><td>在手订单（截至2025/12/31）</td><td class="num">25.69亿</td></tr>
+        <tr><td>订单/营收比</td><td class="num">2.21x</td></tr>
+        <tr><td>项目平均周期</td><td class="num">~18个月</td></tr>
+        <tr><td>2025经营现金流</td><td class="num">+1.73亿</td></tr>
+        <tr><td>2026Q1经营现金流</td><td class="num">-0.01亿</td></tr>
+        <tr><td>有息负债</td><td class="num">无</td></tr>
+        <tr><td>资产负债率</td><td class="num">38.28%</td></tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        <strong>意味着什么：</strong>25.69亿在手订单是最大亮点，提供约2年营收可见性。但18个月周期意味着收入确认极不均匀，季度业绩波动大是常态。无有息负债、现金流改善是加分项，但低ROE说明资产运营效率低。
+    </p>
+</div>
+
+<!-- ==================== 供应链定位 ==================== -->
+<h2>供应链定位：产业链分层</h2>
+
+<div class="card">
+    <table>
+        <tr><th>层级</th><th>内容</th><th>迈赫所处位置</th></tr>
+        <tr><td>终端</td><td>汽车整车厂（比亚迪、吉利、长安等）</td><td>—</td></tr>
+        <tr><td>产线集成</td><td>焊装/涂装/总装系统集成</td><td style="background:#ffeaa7;font-weight:700;">← 迈赫在这里</td></tr>
+        <tr><td>装备/模组</td><td>工业机器人本体、焊接设备、涂装设备</td><td>迈赫是采购方（买ABB/发那科/库卡机器人）</td></tr>
+        <tr><td>核心零部件</td><td>伺服电机、减速器、丝杆、传感器</td><td>迈赫不生产</td></tr>
+        <tr><td>控制系统</td><td>PLC、MES、数字孪生软件</td><td>迈赫有部分自研软件能力</td></tr>
+    </table>
+    <p style="font-size:13px; color:#888; margin-top:4px;">
+        <strong>关键认知：</strong>迈赫是<strong>系统集成商</strong>，不是机器人制造商。公司自己明确表示"目前尚未涉足机器人本体的生产"。公司的核心竞争力是"把发那科/ABB的机器人、焊接设备、输送系统组装成一条汽车产线并调试到可量产状态"。这不是一个"卡点"位置——系统集成是高度竞争、低集中度的行业。
+    </p>
+</div>
+
+<!-- ==================== Serenity 卡点评估 ==================== -->
+<h2>Serenity 卡点评估</h2>
+
+<div class="card">
+    <h3>卡点质量评分：<span style="color:#d63031;">3/15</span> — 非卡点</h3>
+
+    <div class="score-bar"><div class="label">1. 垄断/双寡头</div><div class="bar"><div class="fill fill-low" style="width:13%;"></div></div><span style="font-size:12px;">2/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">系统集成行业高度分散，竞争对手包括江苏北人、瑞松科技、豪森智能等30+家A股公司，无一形成垄断。</p>
+
+    <div class="score-bar"><div class="label">2. 小市值 vs 巨大TAM</div><div class="bar"><div class="fill fill-mid" style="width:40%;"></div></div><span style="font-size:12px;">4/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">汽车智能制造市场确实大（全球5800亿美元），但迈赫仅做其中焊装/涂装/总装集成，子市场空间有限，且40亿市值已不算小。</p>
+
+    <div class="score-bar"><div class="label">3. BOM占比 + designed-in</div><div class="bar"><div class="fill fill-low" style="width:10%;"></div></div><span style="font-size:12px;">1/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">系统集成商在客户BOM中占比虽大（一条产线数亿），但非designed-in——每次招标都是重新竞争，切换成本相对低。</p>
+
+    <div class="score-bar"><div class="label">4. 多客户toll booth</div><div class="bar"><div class="fill fill-low" style="width:20%;"></div></div><span style="font-size:12px;">2/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">有比亚迪、吉利、长安等客户，但每单需重新竞标，不具备"过路费"属性。</p>
+
+    <div class="score-bar"><div class="label">5. 认证/资格周期</div><div class="bar"><div class="fill fill-mid" style="width:30%;"></div></div><span style="font-size:12px;">3/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">有甲级设计资质等行业准入壁垒，但系统集成认证周期远短于核心零部件（如丝杠/减速器）。</p>
+
+    <div class="score-bar"><div class="label">6. 未来爆发营收</div><div class="bar"><div class="fill fill-low" style="width:20%;"></div></div><span style="font-size:12px;">2/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">25.69亿在手订单能支撑2年营收，但并非"爆发"——2025年营收仅增6.44%，2026Q1反降25%。</p>
+
+    <div class="score-bar"><div class="label">7. 资产负债表</div><div class="bar"><div class="fill fill-high" style="width:70%;"></div></div><span style="font-size:12px;">7/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">无有息负债，现金充足，经营现金流改善明显。这是最加分的一项。</p>
+
+    <div class="score-bar"><div class="label">8. 供不应求</div><div class="bar"><div class="fill fill-low" style="width:10%;"></div></div><span style="font-size:12px;">1/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">不存在供不应求。系统集成是买方市场，客户有充分选择权，竞争激烈导致项目中标价低。</p>
+
+    <div class="score-bar"><div class="label">13. 极少数玩家</div><div class="bar"><div class="fill fill-low" style="width:10%;"></div></div><span style="font-size:12px;">1/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">国内能做汽车焊装集成的公司数量众多，迈赫并非稀缺。</p>
+
+    <div class="score-bar"><div class="label">15. 国产替代紧迫度</div><div class="bar"><div class="fill fill-low" style="width:15%;"></div></div><span style="font-size:12px;">1.5/10</span></div>
+    <p style="font-size:12px;color:#888;margin:2px 0 0 150px;">系统集成领域早已国产化，不存在"卡脖子"问题。迈赫的竞争对手大多是国内企业。</p>
+</div>
+
+<!-- ==================== 红旗扫描 ==================== -->
+<h2>红旗扫描</h2>
+
+<div class="risk-item">
+    <strong>🔴 名字误导：</strong>公司名称含"机器人"但实际不做机器人本体，是工业机器人系统集成商。在当前市场热炒"人形机器人"概念背景下，投资者容易产生错误认知，形成估值泡沫。
+</div>
+<div class="risk-item">
+    <strong>🔴 单一行业集中风险：</strong>汽车行业营收占比93.27%，与汽车capex周期高度绑定。一旦汽车行业资本开支放缓，公司业绩将直接承压。
+</div>
+<div class="risk-item warn">
+    <strong>🟡 业绩波动剧烈：</strong>2026Q1营收-25%、净利润-54%，公司解释为"终验收时间分布不均匀"，但这恰恰说明项目制收入的内在不可预测性。季度业绩无参考价值。
+</div>
+<div class="risk-item warn">
+    <strong>🟡 解禁压力：</strong>2026年6月8日解禁1.071亿股（57.37%）。虽然控股股东自愿延长锁定期12个月并承诺年减持不超10%，但解禁后流通盘从约0.73亿股暴增至1.80亿股，供给压力不容忽视。
+</div>
+<div class="risk-item warn">
+    <strong>🟡 毛利率偏低：</strong>22.51%的毛利率在装备制造业中处于偏低水平，反映系统集成业务附加值有限、竞争激烈。对比真正有卡点的装备公司（恒立液压毛利率40%+），差距明显。
+</div>
+<div class="risk-item" style="border-left-color:#00b894;background:#f0fff4;">
+    <strong>🟢 无硬伤：</strong>无股权质押、无商誉、无有息负债、无增发稀释。公司财务纪律良好，这是A股小市值公司中难得的优点。
+</div>
+
+<!-- ==================== 核心矛盾 ==================== -->
+<h2>核心矛盾</h2>
+
+<div class="card">
+    <p style="font-size:15px; margin:0;">
+        <strong>矛盾：</strong>公司名称和代码标签（"机器人""智能制造"）带来的概念溢价 vs 系统集成商的低壁垒本质。<br><br>
+        25.69亿在手订单 → 2年营收可见性 → 给市场"业绩确定性"的错觉。<br>
+        但2026Q1的-25%营收下滑已经证明——<strong>订单不等于收入，终验收节奏才是关键。</strong><br><br>
+        市场愿意给"机器人概念"46x PE，但迈赫赚的是系统集成的辛苦钱（22%毛利率、5.76% ROE），合理估值应该对标工程服务公司（15-20x PE）。
+    </p>
+</div>
+
+<!-- ==================== 估值 ==================== -->
+<h2>估值矩阵</h2>
+
+<div class="card">
+    <h3>Bear / Base / Bull</h3>
+    <table>
+        <tr><th>情景</th><th>假设</th><th>估值方法</th><th>市值区间</th><th>vs 当前</th></tr>
+        <tr>
+            <td><strong>Bear</strong></td>
+            <td>汽车行业capex收缩，在手订单转化率下降，毛利率压缩至20%以下</td>
+            <td>12x 2025扣非 + 资产折价</td>
+            <td class="num">15-18亿</td>
+            <td class="num negative">-55%~-62%</td>
+        </tr>
+        <tr>
+            <td><strong>Base</strong></td>
+            <td>正常经营，在手订单平稳转化，年净利润1-1.2亿</td>
+            <td>18-22x 正常化扣非PE</td>
+            <td class="num">25-30亿</td>
+            <td class="num negative">-25%~-37%</td>
+        </tr>
+        <tr>
+            <td><strong>Bull</strong></td>
+            <td>海外市场突破+新能源产能扩张大潮，年净利润1.5亿+</td>
+            <td>25x 乐观PE</td>
+            <td class="num">35-40亿</td>
+            <td class="num negative">0%~-12%</td>
+        </tr>
+    </table>
+    <p style="font-size:13px;color:#888;margin-top:6px;">
+        <strong>当前市值39.72亿已触及Bull上限。</strong>在涨停日（+20%）分析，意味着市场情绪已经price-in了最乐观情景。Base情景下仍有25-37%下行空间。
+    </p>
+</div>
+
+<div class="card">
+    <h3>同业对比</h3>
+    <table>
+        <tr><th>公司</th><th>代码</th><th>市值</th><th>PE(TTM)</th><th>毛利率</th><th>ROE</th></tr>
+        <tr><td>迈赫股份</td><td>301199</td><td class="num">39.7亿</td><td class="num">46.0x</td><td class="num">22.5%</td><td class="num">5.76%</td></tr>
+        <tr><td>江苏北人</td><td>688218</td><td class="num">~25亿</td><td class="num">~35x</td><td class="num">~20%</td><td class="num">~5%</td></tr>
+        <tr><td>瑞松科技</td><td>688090</td><td class="num">~30亿</td><td class="num">~40x</td><td class="num">~18%</td><td class="num">~4%</td></tr>
+        <tr><td>豪森智能</td><td>688529</td><td class="num">~35亿</td><td class="num">~30x</td><td class="num">~25%</td><td class="num">~6%</td></tr>
+    </table>
+    <p style="font-size:13px;color:#888;margin-top:4px;">
+        迈赫在同业中PE偏高。系统集成商合理PE区间应为20-30x，迈赫的46x更多是"机器人"概念溢价而非基本面支撑。
+    </p>
+</div>
+
+<!-- ==================== 催化剂 ==================== -->
+<h2>关键验证窗口</h2>
+
+<div class="card">
+    <table>
+        <tr><th>时间</th><th>事件</th><th>关注点</th></tr>
+        <tr>
+            <td><strong>2026年8月28日</strong></td>
+            <td>2026年中报披露</td>
+            <td>Q2营收能否扭转Q1的-25%颓势？在手订单转化率？毛利率趋势？</td>
+        </tr>
+        <tr>
+            <td><strong>2026年6月8日</strong></td>
+            <td>1.071亿股解禁</td>
+            <td>实际减持压力？控股股东承诺年减持不超10%是否兑现？</td>
+        </tr>
+        <tr>
+            <td><strong>持续关注</strong></td>
+            <td>比亚迪/吉利新车型capex</td>
+            <td>主要客户资本开支节奏决定新签订单增速</td>
+        </tr>
+        <tr>
+            <td><strong>持续关注</strong></td>
+            <td>法国子公司海外订单</td>
+            <td>海外市场能否成为第二增长曲线？目前仍处早期阶段</td>
+        </tr>
+    </table>
+</div>
+
+<!-- ==================== 证据标注 ==================== -->
+<h2>证据来源与评级</h2>
+
+<div class="card">
+    <table>
+        <tr><th>数据点</th><th>来源</th><th>评级</th></tr>
+        <tr><td>2025年营收/净利润</td><td>2025年年报（大信审计，无保留意见）</td><td><span class="tag tag-green">已证实</span></td></tr>
+        <tr><td>2026Q1财务数据</td><td>2026年一季报</td><td><span class="tag tag-green">已证实</span></td></tr>
+        <tr><td>在手订单25.69亿</td><td>2026年5月14日机构调研（公司IR）</td><td><span class="tag tag-blue">管理层声称</span></td></tr>
+        <tr><td>不涉足机器人本体</td><td>2026年1月19日互动易回复</td><td><span class="tag tag-green">已证实</span></td></tr>
+        <tr><td>控股股东延长锁定期</td><td>2025年4月16日公告</td><td><span class="tag tag-green">已证实</span></td></tr>
+        <tr><td>比亚迪巴西项目</td><td>公司官网新闻（2026年2月）</td><td><span class="tag tag-blue">管理层声称</span></td></tr>
+        <tr><td>法国子公司注册</td><td>2026年5月15日公告</td><td><span class="tag tag-green">已证实</span></td></tr>
+        <tr><td>基金持仓变化</td><td>季报披露数据</td><td><span class="tag tag-green">已证实</span></td></tr>
+    </table>
+</div>
+
+<!-- ==================== 独立复核 ==================== -->
+<h2>独立复核</h2>
+
+<div class="conclusion-box">
+    <ol style="margin:4px 0; padding-left:18px; font-size:13px;">
+        <li>所有财务数据来自2025年年报和2026年一季报，已交叉核验东方财富、同花顺、新浪财经 ≥3个源。</li>
+        <li>在手订单25.69亿为管理层在调研中披露，非审计数据，标注为"管理层声称"。</li>
+        <li>确认未将"机器人"概念错误等同于公司实际业务——公司自己明确表示不生产机器人本体，是系统集成商。</li>
+        <li>同业对比倍数为同日近似值，不做精确对比，仅作方向参考。</li>
+        <li>确认无遗漏重大问题：无质押、无商誉、无增发，财务健康但业务模式缺乏壁垒。</li>
+    </ol>
+</div>
+
+<div class="footer">
+    本报告基于 Serenity Mode 1 分析框架生成 · 2026年7月3日 · 仅供研究参考，不构成投资建议<br>
+    <a href="index.html">返回报告列表</a>
+</div>
+
+</body>
+</html>
