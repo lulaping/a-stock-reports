@@ -19,3 +19,6 @@ Thumbs.db
 # Temp
 tmp/
 temp/
+
+# GitHub Pages deploy token（机密，勿提交）
+.github_pages_token
