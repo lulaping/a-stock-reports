@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+    <meta name="theme-color" content="#f6f8fa">
+    <title>丰光精密 (920510) — Serenity Mode 1 分析报告</title>
+    <style>
+        :root {
+            --c-bg: #f6f8fa; --c-card: #fff; --c-text: #1a1a2e; --c-text2: #5a5f6e;
+            --c-accent: #c0392b; --c-accent2: #0f3460; --c-green: #1e8449;
+            --c-yellow: #b7950b; --c-red: #c0392b; --c-border: #e2e6ed; --c-tag-bg: #f0f2f5;
+            --rad: 12px; --sh: 0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)
+        }
+        @media (prefers-color-scheme:dark) {
+            :root {
+                --c-bg: #0d1117; --c-card: #161b22; --c-text: #e6edf3; --c-text2: #8b949e;
+                --c-accent: #f85149; --c-accent2: #58a6ff; --c-border: #30363d; --c-tag-bg: #21262d
+            }
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+        body{
+            font-family:system-ui,-apple-system,'SF Pro Text','PingFang SC','Microsoft YaHei',sans-serif;
+            background:var(--c-bg);color:var(--c-text);line-height:1.65;
+            padding:env(safe-area-inset-top) max(16px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px,env(safe-area-inset-left));
+            -webkit-font-smoothing:antialiased
+        }
+        .wrap{max-width:860px;margin:0 auto;padding:clamp(16px,4vw,32px) clamp(12px,3vw,24px)}
+        h1{font-size:clamp(20px,4.5vw,26px);font-weight:800;color:var(--c-text);letter-spacing:-0.02em;border-bottom:3px solid var(--c-accent);padding-bottom:10px}
+        h2{font-size:clamp(16px,3.2vw,19px);font-weight:700;color:var(--c-accent2);margin:clamp(20px,4vw,34px) 0 clamp(8px,2vw,14px);border-left:4px solid var(--c-accent);padding-left:10px}
+        h3{font-size:clamp(14px,2.6vw,16px);font-weight:600;color:var(--c-text);margin:clamp(14px,3vw,22px) 0 8px}
+        .card{background:var(--c-card);border-radius:var(--rad);padding:clamp(14px,3vw,22px) clamp(14px,3vw,24px);margin:clamp(8px,2vw,12px) 0;box-shadow:var(--sh)}
+        .verdict{
+            font-size:clamp(18px,4vw,24px);font-weight:800;
+            padding:clamp(12px,2.5vw,18px) clamp(14px,3vw,20px);border-radius:var(--rad);
+            margin:clamp(12px,3vw,18px) 0;text-align:center;letter-spacing:-0.01em
+        }
+        .verdict.sell{background:#fdecea;color:#c0392b;border:2px solid #e74c3c}
+        .verdict.watch{background:#fef9e7;color:#b7950b;border:2px solid #f39c12}
+        .verdict.buy{background:#eafaf1;color:#1e8449;border:2px solid #27ae60}
+        @media (prefers-color-scheme:dark){
+            .verdict.sell{background:rgba(248,81,73,0.12);color:#f85149;border-color:rgba(248,81,73,0.4)}
+            .verdict.watch{background:rgba(210,153,34,0.12);color:#d29922;border-color:rgba(210,153,34,0.4)}
+            .verdict.buy{background:rgba(63,185,80,0.12);color:#3fb950;border-color:rgba(63,185,80,0.4)}
+        }
+        .tbl-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:clamp(8px,2vw,12px) 0;border-radius:8px}
+        table{width:100%;min-width:480px;border-collapse:collapse;font-size:clamp(13px,2.5vw,14px);line-height:1.5}
+        th,td{padding:clamp(8px,1.5vw,11px) clamp(8px,1.8vw,14px);border:1px solid var(--c-border);text-align:left;vertical-align:top}
+        th{background:var(--c-tag-bg);font-weight:600;color:var(--c-text2);white-space:nowrap}
+        .tag{display:inline-flex;align-items:center;padding:clamp(2px,0.5vw,4px) clamp(6px,1.2vw,10px);border-radius:20px;font-size:clamp(11px,2vw,12px);font-weight:600;white-space:nowrap}
+        .tag-r{background:#fdecea;color:#c0392b}
+        .tag-g{background:#eafaf1;color:#1e8449}
+        .tag-y{background:#fef9e7;color:#b7950b}
+        .tag-b{background:#e8f0fe;color:#0f3460}
+        .tag-gray{background:var(--c-tag-bg);color:var(--c-text2)}
+        @media (prefers-color-scheme:dark){
+            .tag-r{background:rgba(248,81,73,0.12);color:#f85149}
+            .tag-g{background:rgba(63,185,80,0.12);color:#3fb950}
+            .tag-y{background:rgba(210,153,34,0.12);color:#d29922}
+            .tag-b{background:rgba(88,166,255,0.12);color:#58a6ff}
+        }
+        .score-wrap{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+        .score-bar{flex:1;min-width:120px;height:10px;border-radius:5px;background:var(--c-border);overflow:hidden}
+        .score-fill{height:100%;border-radius:5px;transition:width .4s ease}
+        .score-fill.hi{background:linear-gradient(90deg,#27ae60,#2ecc71)}
+        .score-fill.mid{background:linear-gradient(90deg,#f39c12,#f1c40f)}
+        .score-fill.lo{background:linear-gradient(90deg,#e74c3c,#c0392b)}
+        .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(10px,2vw,16px)}
+        .risk-item{padding:clamp(6px,1.2vw,8px) 0;border-bottom:1px dashed var(--c-border);font-size:clamp(13px,2.5vw,14px)}
+        .risk-item:last-child{border-bottom:none}
+        .fn{color:var(--c-text2);font-size:clamp(11px,2vw,12px);margin-top:4px}
+        hr.divider{border:0;border-top:1px solid var(--c-border);margin:clamp(20px,4vw,28px) 0}
+        .meta{color:var(--c-text2);font-size:clamp(12px,2.2vw,13px)}
+        .strong{font-weight:700}
+        .disclaimer{color:var(--c-text2);font-size:clamp(11px,2vw,12px);text-align:center;line-height:1.6}
+        a{color:var(--c-accent2);text-decoration:none}
+        .highlight{background:linear-gradient(180deg,transparent 60%,#fef08a 60%);padding:0 2px}
+        @media (prefers-color-scheme:dark){.highlight{background:linear-gradient(180deg,transparent 60%,rgba(210,153,34,0.3) 60%)}}
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>丰光精密 (920510) — Serenity Mode 1 分析报告</h1>
+<p class="meta">分析日期：2026-07-05 | 数据截止：2026-07-03（周五收盘） | 北交所 | <a href="920510_丰光精密_Serenity分析_20260703.html">对比7/3分析</a></p>
+
+<div class="verdict watch">
+    🟡 Watch / 微型谐波国内唯一但估值已透支 / 不追高，等回调<br>
+    <span style="font-size:clamp(13px,2.5vw,14px);font-weight:500;display:block;margin-top:6px;">
+        7/3涨停+30%后市值达60.28亿，PB 11.89x。03/05/08微型谐波减速器国内唯一能量产是真卡点，但2025年营收2.1亿（-9.79%）、亏损1,555万，60亿市值PS达28.7x——市场已提前定价了30万套谐波满产满销的2028年情景。
+    </span>
+</div>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:34%">Serenity 卡点质量</th><td><span class="strong">8.0 / 15</span>（中强卡点——微型谐波国内唯一，但产能小+亏损中）</td></tr>
+        <tr><th>客观空间</th><td>Bear 25-35亿 / Base 40-55亿 / Bull 70-100亿</td></tr>
+        <tr><th>当前市值</th><td><span class="strong">60.28亿</span>（32.76元，7/3涨停+30%，换手率30.78%）</td></tr>
+        <tr><th>PE(TTM)</th><td><span class="tag tag-r">亏损</span>（2025年归母-1,555万，无法计算PE）</td></tr>
+        <tr><th>PB</th><td><span class="strong">11.89x</span></td></tr>
+        <tr><th>PS(TTM)</th><td>28.7x（2.10亿营收→60.28亿市值）</td></tr>
+        <tr><th>资产负债率</th><td>27.52%（2026Q1）</td></tr>
+        <tr><th>总股本 / 流通市值</th><td>1.84亿 / 30.76亿</td></tr>
+    </table>
+    </div>
+    <p class="fn" style="margin-top:10px"><span class="strong">⚠️ 与7/3分析对比：</span>7月3日本次分析时股价约25.2元（市值约46亿），当日涨停至32.76元（市值60.28亿）。核心结论不变（🟡 Watch），但估值从偏贵变为极度昂贵——60亿市值已超过Base上沿，进入Bull区间。</p>
+</div>
+
+<h2>L0 — 客观事实底座</h2>
+
+<div class="card">
+    <h3>公司概况</h3>
+    <p>青岛丰光精密机械股份有限公司，2009年从日资转为中资，深耕精密金属制造二十余年，<span class="strong">国家级专精特新"小巨人"</span>。2025年形成"<strong>精密零部件 + 谐波减速器 + 半导体国产化</strong>"三角战略。</p>
+    <ul style="margin:6px 0 0 18px;font-size:clamp(13px,2.5vw,14px)">
+        <li><strong>精密零部件（主业，~80%营收）</strong>：半导体真空泵精密件（埃地沃兹核心供应商）、机器人自动化零部件（安川电机/THK）、汽车零部件（均胜电子/盖茨）、轨道交通（中国中车/阿尔斯通）。加工精度0.001mm级，日系标准</li>
+        <li><strong>谐波减速器（第二曲线，正在爬坡）</strong>：03-32全系列量产，<span class="strong">03/05/08超微型国内唯一能量产</span>，填补国产微型谐波空白。整体规划30万套/年，一期10万套。2025Q3上合工厂投产，已小批量稳定供货</li>
+        <li><strong>半导体国产化（第三曲线）</strong>：从埃地沃兹供应的真空泵零部件起步，拓展国内半导体设备客户</li>
+    </ul>
+    <p style="margin-top:8px"><strong>2026年6月新动作：</strong>1.12亿收购惯性导航公司51%股权，打通"减速器+感知导航"，完善人形机器人硬件链条。日本全资子公司作为海外研发与生产中心。</p>
+</div>
+
+<div class="card">
+    <h3>财务快照</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>指标</th><th>2023</th><th>2024</th><th>2025</th><th>2026Q1</th></tr>
+        <tr><td>营收（亿）</td><td>—</td><td>2.32</td><td>2.10</td><td>0.607</td></tr>
+        <tr><td>营收YoY</td><td>—</td><td>+10.09%</td><td><span class="tag tag-r">-9.79%</span></td><td><span class="tag tag-g">+19.18%</span></td></tr>
+        <tr><td>归母净利润（万）</td><td>—</td><td>2,106</td><td><span class="tag tag-r">-1,555</span></td><td>-98</td></tr>
+        <tr><td>归母YoY</td><td>—</td><td>-40.81%</td><td><span class="tag tag-r">-173.84%</span></td><td><span class="tag tag-g">+58.61%</span></td></tr>
+        <tr><td>扣非净利润（万）</td><td>—</td><td>1,984</td><td><span class="tag tag-r">-1,951</span></td><td>-96</td></tr>
+        <tr><td>毛利率</td><td>—</td><td>36.31%</td><td>27.28%</td><td>26.70%</td></tr>
+        <tr><td>净利率</td><td>—</td><td>9.08%</td><td><span class="tag tag-r">-7.42%</span></td><td>-1.61%</td></tr>
+        <tr><td>ROE</td><td>—</td><td>—</td><td><span class="tag tag-r">-3.94%</span></td><td>—</td></tr>
+        <tr><td>经营现金流（万）</td><td>—</td><td>6,431</td><td>3,412</td><td>963</td></tr>
+    </table>
+    </div>
+    <p class="fn"><span class="strong">关键解读：</span>2025年是上市以来首次年度亏损，主因上合新工厂投产（折旧+搬迁费用+产能爬坡）、股权激励费用、研发投入（费率>5%）。2026Q1营收+19.18%转正、亏损从-236万收窄至-98万（+58.61%），边际改善信号明确。但毛利率从36.31%→26.70%说明传统业务盈利能力在恶化，谐波爬坡尚未形成规模对冲。</p>
+</div>
+
+<div class="card">
+    <h3>谐波减速器——核心看点拆解</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>维度</th><th>丰光精密</th><th>绿的谐波（对标）</th></tr>
+        <tr><td>市场定位</td><td><strong>微型谐波国内唯一</strong>（03/05/08型）</td><td>全尺寸龙头，国内市占60%+</td></tr>
+        <tr><td>产品规格</td><td>03-32全系列，最小直径22mm，重<85g</td><td>全系列，中大尺寸优势</td></tr>
+        <tr><td>产能规划</td><td>一期10万套→总30万套（2026爬坡）</td><td>2025年50万套→2026年底100万套</td></tr>
+        <tr><td>人形机器人客户</td><td>宇树（灵巧手批量）、新时达、埃斯顿、智元、傅利叶、优必选（送样）</td><td>特斯拉Optimus（直供）、优必选、埃斯顿</td></tr>
+        <tr><td>Tesla进展</td><td>送样→白名单，<strong>无直接批量订单</strong></td><td>已供入北美产线</td></tr>
+        <tr><td>谐波收入占比</td><td><10%（2025年，业务刚起步）</td><td>~78%（绝对主业）</td></tr>
+        <tr><td>市值</td><td>60.28亿</td><td>~895亿</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)"><span class="strong">微型谐波是真壁垒：</span>03/05/08型是人形机器人灵巧手/指关节的刚需——哈默纳科（日本）全球垄断该规格，国内仅丰光精密突破量产。宇树科技H1人形机器人灵巧手Dex3/Dex5已批量使用丰光03/05微型谐波（万台级交付），这是实锤验证。但产能规模与绿的谐波差距巨大（10万 vs 100万套），且中大尺寸谐波竞争力弱。</p>
+</div>
+
+<div class="card">
+    <h3>关键事件时间线</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><td style="width:140px">2026-07-03</td><td><span class="tag tag-r">30%涨停</span>，宇树科技IPO获批引爆机器人板块。龙虎榜净买1,742万（国信深圳+2,717万，机构卖出5,467万）</td></tr>
+        <tr><td>2026-06</td><td>1.12亿收购惯性导航公司51%股权，完善"减速器+感知导航"布局</td></tr>
+        <tr><td>2026-05-08</td><td>互动易：谐波减速器在手订单储备充足，一期产能10万套，整体规划30万套</td></tr>
+        <tr><td>2026-04-29</td><td>2025年报：<span class="tag tag-r">首亏-1,555万</span>，营收-9.79%。上合工厂投产拖累利润</td></tr>
+        <tr><td>2026Q1</td><td>营收+19.18%转正，亏损收窄至-98万（+58.61%），边际改善</td></tr>
+        <tr><td>2025Q3</td><td>上合工厂投产，谐波减速器开始小批量交付</td></tr>
+    </table>
+    </div>
+</div>
+
+<h2>Serenity 框架 — 卡点十五判</h2>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:8%">#</th><th style="width:28%">判据</th><th style="width:8%">判定</th><th>说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td><span class="tag tag-g">✅ +1</span></td><td>03/05/08微型谐波国内唯一量产，哈默纳科之外全球第二家</td></tr>
+        <tr><td>2</td><td>小市值 vs 大TAM</td><td><span class="tag tag-g">✅ +1</span></td><td>60亿市值vs万亿级机器人市场，有10x空间</td></tr>
+        <tr><td>3</td><td>designed-in</td><td><span class="tag tag-g">✅ +0.5</span></td><td>宇树灵巧手已批量使用，安川电机36个月认证通过</td></tr>
+        <tr><td>4</td><td>多客户toll booth</td><td><span class="tag tag-y">△ +0.5</span></td><td>宇树+新时达+埃斯顿+智元+安川，客户分散但尚未形成toll booth效应</td></tr>
+        <tr><td>5</td><td>认证/资格周期长</td><td><span class="tag tag-g">✅ +1</span></td><td>安川电机认证36个月，人形机器人客户验证6-12个月，壁垒极高</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td><span class="tag tag-y">△ +0.5</span></td><td>10万→30万套谐波产能，但当前仅小批量，2027年才可能放量</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td><span class="tag tag-g">✅ +0.5</span></td><td>负债率27.5%，经营现金流正向，但亏损中消耗现金</td></tr>
+        <tr><td>8</td><td>Demand >> Supply</td><td><span class="tag tag-y">△ +0.5</span></td><td>"在手订单储备充足"，但未量化，产能爬坡慢于需求</td></tr>
+        <tr><td>9</td><td>大客户全包产能</td><td><span class="tag tag-b">+0</span></td><td>不适用</td></tr>
+        <tr><td>10</td><td>国家安全/政府介入</td><td><span class="tag tag-b">+0</span></td><td>不适用</td></tr>
+        <tr><td>11</td><td>Made in America</td><td><span class="tag tag-b">+0</span></td><td>不适用</td></tr>
+        <tr><td>12</td><td>信息不对称</td><td><span class="tag tag-y">△ +0.5</span></td><td>Tesla白名单真实状态/谐波真实交付量/宇树订单规模未公开</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td><span class="tag tag-g">✅ +1</span></td><td>全球能做03/05微型谐波并量产的≤3家（哈默纳科+丰光+绿的）</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td><span class="tag tag-y">△ +0.5</span></td><td>安川长期合作+精密零部件基本盘，但谐波新业务可见性仅1-2年</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td><span class="tag tag-g">✅ +0.5</span></td><td>微型谐波100%依赖哈默纳科，国产替代紧迫，但市场规模小于中大尺寸</td></tr>
+    </table>
+    </div>
+    <div class="score-wrap" style="margin-top:16px">
+        <span class="strong" style="font-size:clamp(14px,2.8vw,16px);white-space:nowrap">卡点质量：8.0 / 15</span>
+        <div class="score-bar"><div class="score-fill mid" style="width:53%"></div></div>
+        <span class="strong" style="color:var(--c-yellow);white-space:nowrap">中强卡点</span>
+    </div>
+    <p style="margin-top:8px;font-size:clamp(13px,2.5vw,14px);color:var(--c-text2)">
+        <strong>评分高于贝斯特（7.5）和瑞迪智驱（7.0），低于华辰装备（10.5）。</strong>微型谐波垄断性极强——03/05/08型国内只有丰光能量产，这是真卡点。但扣分项在于：①谐波业务刚起步，营收占比<10%，规模远小于绿的谐波；②公司2025年亏损，2026Q1仍亏损，利润拐点尚未确认；③60亿市值已price-in了30万套满产的乐观预期。
+    </p>
+</div>
+
+<div class="card">
+    <h3>红旗扫描</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>红旗</th><th>状态</th><th>说明</th></tr>
+        <tr><td>无限ATM/增发稀释</td><td><span class="tag tag-g">✅ 未触发</span></td><td>2025年已完成定增，近期无再融资计划</td></tr>
+        <tr><td>单一客户集中</td><td><span class="tag tag-g">✅ 未触发</span></td><td>客户结构分散，安川/埃地沃兹/THK/中车等</td></tr>
+        <tr><td>资产负债表toxic</td><td><span class="tag tag-g">✅ 未触发</span></td><td>负债率27.5%，2026Q1经营现金流+963万</td></tr>
+        <tr><td>零收入纯炒作</td><td><span class="tag tag-g">✅ 未触发</span></td><td>2.1亿真实营收，有实体业务</td></tr>
+        <tr><td>技术太远/2030+</td><td><span class="tag tag-g">✅ 未触发</span></td><td>谐波已量产交付，不是科学项目</td></tr>
+        <tr><td>纯软件/SaaS</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>海外核心技术依赖</td><td><span class="tag tag-g">✅ 未触发</span></td><td>完全自研，齿形/热处理/磨削均为自主</td></tr>
+        <tr><td>政策依赖(补助>30%)</td><td><span class="tag tag-g">✅ 未触发</span></td><td>非补贴驱动</td></tr>
+        <tr><td><strong>大股东质押>50%</strong></td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>商誉过高</td><td><span class="tag tag-y">⚠️ 关注</span></td><td>2026年6月收购惯导公司51%股权（1.12亿），需关注商誉确认金额</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)"><span class="strong">非红旗但需警惕：</span>①毛利率三年从36%→27%→26.7%，传统业务盈利在恶化；②2025年营收-9.79%且低于行业均值（-0.26%），竞争加剧；③营业收入下降但销售费用+10.56%，费用控制能力存疑；④龙虎榜显示7/3机构净卖出5,467万，游资主导拉升。</p>
+</div>
+
+<h2>估值分析</h2>
+
+<div class="card">
+    <h3>核心矛盾：60亿市值 vs 2.1亿营收、亏损1,555万</h3>
+    <p style="font-size:clamp(14px,2.6vw,15px)">
+        丰光精密当前无法用PE估值（亏损）。PS(TTM) 28.7x，PB 11.89x。对比绿的谐波（895亿市值，PS 157x，但谐波收入占比78%+净利1.24亿持续增长），丰光的PS看似便宜，但绿的谐波有确定性增长和特斯拉直供背书，丰光仅在微型细分有优势。
+    </p>
+    <p style="margin-top:10px;font-size:clamp(14px,2.6vw,15px)">
+        <strong>乐观推演：</strong>假设2027年谐波10万套满产，均价1,500元/套→1.5亿收入，毛利率38%→毛利5,700万。叠加传统精密零部件恢复到2.5亿×30%毛利=7,500万。合计毛利1.32亿，扣除费用（假设8,000万），净利约5,000万。60亿市值对应PE=120x——仍然不便宜。
+    </p>
+    <p style="margin-top:10px;font-size:clamp(14px,2.6vw,15px)">
+        <strong>悲观推演：</strong>谐波爬坡不达预期（仅5万套），传统业务继续萎缩。2亿营收×25%毛利=5,000万毛利，费用8,000万→亏损3,000万。60亿市值纯属泡沫。按1.5x PS（亏损制造业）→仅值3亿。
+    </p>
+</div>
+
+<div class="card">
+    <h3>三维空间</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>情景</th><th>市值(亿)</th><th>股价(元)</th><th>隐含PS</th><th>触发条件</th></tr>
+        <tr><td style="color:#e74c3c;font-weight:700">Bear</td><td>25-35</td><td>14-19</td><td>12-17x</td><td>谐波放量不及预期 + 传统业务继续萎缩 + 机器人板块退潮</td></tr>
+        <tr><td style="color:#f39c12;font-weight:700">Base</td><td>40-55</td><td>22-30</td><td>19-26x</td><td>谐波10万套满产 + 2026H2扭亏 + 机器人概念温和</td></tr>
+        <tr><td style="color:#27ae60;font-weight:700">Bull</td><td>70-100</td><td>38-54</td><td>33-48x</td><td>特斯拉Optimus正式定点 + 谐波30万套满产 + 净利突破5,000万</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)">
+        <span class="strong">当前60.28亿处于Base上沿与Bull下沿之间。</span>向下有42-58%空间（Bear），向上有16-66%（Bull）。Bull需要特斯拉定点+利润反转同时兑现——目前两者均未确认。7/3涨停后机构净卖出5,467万（龙虎榜），说明专业资金在涨停价减仓。
+    </p>
+</div>
+
+<div class="card">
+    <h3>行业对比</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>公司</th><th>代码</th><th>市值(亿)</th><th>谐波收入占比</th><th>净利（2025）</th><th>PS</th><th>卡点评分</th></tr>
+        <tr><td>绿的谐波</td><td>688017</td><td>~895</td><td>~78%</td><td>1.24亿</td><td>~157x</td><td style="color:#27ae60;font-weight:700">12+/15</td></tr>
+        <tr><td style="font-weight:700">丰光精密</td><td>920510</td><td>60.28</td><td><10%</td><td style="color:#e74c3c">-1,555万</td><td>28.7x</td><td>8.0/15</td></tr>
+        <tr><td>瑞迪智驱</td><td>301596</td><td>69.11</td><td>8.44%</td><td>1.05亿</td><td>10.7x</td><td>7.0/15</td></tr>
+        <tr><td>华辰装备</td><td>300809</td><td>76.80</td><td>丝杠磨床</td><td>2.03亿</td><td>—</td><td style="color:#27ae60;font-weight:700">10.5/15</td></tr>
+    </table>
+    </div>
+    <p class="fn">丰光精密PS 28.7x显著高于瑞迪智驱（10.7x），但瑞迪智驱有1.05亿净利润而丰光亏损。市场给丰光更高的PS溢价，是基于微型谐波唯一性的稀缺溢价——但稀缺性不等于确定性的利润，60亿市值的安全边际几乎为零。</p>
+</div>
+
+<h2>催化剂与验证窗口</h2>
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:30%">时间窗口</th><th>事件</th><th>影响方向</th></tr>
+        <tr><td>2026-07-03</td><td>宇树科技IPO获批→板块涨停潮，30%涨停</td><td><span class="tag tag-y">一次性催化</span> 已兑现</td></tr>
+        <tr><td>2026-07-21</td><td>解禁（前次分析提示）</td><td><span class="tag tag-r">风险</span> 可能增加抛压</td></tr>
+        <tr><td>2026-08月底</td><td>2026半年报</td><td><span class="tag tag-y">关键</span> 谐波收入是否突破3,000万？Q2是否扭亏？</td></tr>
+        <tr><td>2026H2</td><td>特斯拉Optimus灵巧手谐波验证结果</td><td><span class="tag tag-y">大变量</span> 若定点→估值体系重构</td></tr>
+        <tr><td>2026H2</td><td>上合工厂谐波产能爬坡至10万套</td><td><span class="tag tag-y">观察</span> 良率、交付量是否达标</td></tr>
+    </table>
+    </div>
+</div>
+
+<h2>综合判定</h2>
+<div class="card">
+    <h3>客观框架空间</h3>
+    <div class="grid2">
+        <div>
+            <span class="strong">Bear（25-35亿 / 14-19元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">谐波放量远低于预期+传统业务继续萎缩+机器人行情退潮。PB压缩至5-7x。较当前<span style="color:#e74c3c" class="strong">-42%~-58%</span></p>
+        </div>
+        <div>
+            <span class="strong">Base（40-55亿 / 22-30元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">谐波10万套满产+2026H2扭亏。7/3涨停前市值约46亿正好在Base中枢。当前60亿已超出Base上沿</p>
+        </div>
+        <div>
+            <span class="strong">Bull（70-100亿 / 38-54元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">特斯拉定点+30万套满产+净利5,000万。上行<span style="color:#27ae60" class="strong">+16%~+66%</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Serenity 视角一句</h3>
+    <p style="font-size:clamp(15px,3vw,18px);font-weight:700;color:var(--c-accent2)">
+        "03/05/08微型谐波减速器是国内人形机器人供应链中被忽视的最大卡点之一——哈默纳科全球垄断，丰光精密是国内唯一突破量产的玩家。宇树科技H1灵巧手已批量使用，安川电机36个月认证通过，这些都是真金白银的验证。但60亿市值买一个2025年亏损1,555万、谐波收入占比不到10%的公司，等于提前把2028年30万套满产满销的剧本写好了。7/3涨停是宇树IPO催化的情绪驱动，机构在涨停板上净卖出5,467万，散户在追——这不是好的入场时机。"
+    </p>
+    <p style="margin-top:16px;font-size:clamp(14px,2.6vw,15px)">
+        <span class="strong">Serenity判定：🟡 Watch / 微型谐波真卡点但估值已透支，等35-45亿</span> — 丰光精密是近期分析的机器人标的中<strong>卡点质量排名第二</strong>（仅次于华辰装备），微型谐波唯一性是真实壁垒。但当前60亿市值已price-in了乐观预期，7/3涨停是宇树IPO情绪催化而非基本面驱动。合理观察区间35-45亿（19-24元），对应2026H2扭亏后的PS 17-22x。8月半年报是第一个验证窗口。
+    </p>
+</div>
+
+<div class="card">
+    <h3>核心风险摘要</h3>
+    <div class="risk-item"><span class="strong">1. 亏损状态持续</span> — 2025年上市以来首亏，2026Q1仍亏损。上合工厂折旧+产能爬坡拖累短期利润，但拐点未确认。若2026全年无法扭亏，60亿市值将面临严重的估值收缩。</div>
+    <div class="risk-item"><span class="strong">2. 谐波占比太小</span> — 谐波减速器营收占比<10%，公司本质上仍是精密零部件加工商。微型谐波虽然唯一，但市场规模（灵巧手关节）远小于中大尺寸（躯干关节）。</div>
+    <div class="risk-item"><span class="strong">3. 特斯拉送样≠定点</span> — 公司互动易承认"暂无直接大批量供货特斯拉，仅处于验证阶段"。绿的谐波已供入北美产线，丰光能否分到蛋糕完全未知。</div>
+    <div class="risk-item"><span class="strong">4. 毛利率趋势恶化</span> — 36%→27%→26.7%，传统精密零部件业务面临竞争加剧和客户压价。谐波业务毛利率虽高但规模太小，短期内无法扭转整体趋势。</div>
+    <div class="risk-item"><span class="strong">5. 7月解禁+龙虎榜信号</span> — 7/21有解禁盘，7/3机构净卖出5,467万。短期内解禁抛压+游资获利了结风险并存。</div>
+</div>
+
+<hr class="divider">
+
+<div class="card">
+    <h3>与近期分析标的横向对比（更新）</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>标的</th><th>代码</th><th>卡点评分</th><th>Serenity判定</th><th>核心逻辑</th></tr>
+        <tr><td style="font-weight:700">华辰装备</td><td>300809</td><td style="color:#27ae60;font-weight:700">10.5/15</td><td>🟡 Watch</td><td>三重卡点（轧辊垄断+丝杠全球独家+半导体期权），扣非241x太贵等回调</td></tr>
+        <tr><td style="font-weight:700">丰光精密</td><td>920510</td><td style="font-weight:700">8.0/15</td><td>🟡 Watch</td><td>微型谐波国内唯一，宇树/安川验证，但60亿市值+亏损中，等35-45亿</td></tr>
+        <tr><td>贝斯特</td><td>300580</td><td>7.5/15</td><td>🟡 Watch</td><td>C0级丝杠突破+宇树/智元/特斯拉绑定，130亿已price-in</td></tr>
+        <tr><td>瑞迪智驱</td><td>301596</td><td>7.0/15</td><td>🟡 Watch</td><td>谐波真玩家但占比8.44%太小，扣非两连降，77x扣非PE等利润验证</td></tr>
+        <tr><td>万达轴承</td><td>920002</td><td>5.5/15</td><td>🟡 Watch</td><td>叉车轴承龙头+机器人故事，但扣非PE 76x+扣非增长0.7%严重不匹配</td></tr>
+        <tr><td>迈赫股份</td><td>301199</td><td style="color:#e74c3c">3/15</td><td>🔴 Sell</td><td>"机器人"名字溢价，汽车焊装集成商，22%毛利率被46x PE定价</td></tr>
+    </table>
+    </div>
+</div>
+
+<hr class="divider">
+
+<p class="disclaimer">
+    <span class="strong">免责声明：</span>本报告基于公开信息，采用Serenity Mode 1分析框架，仅供参考，不构成投资建议。投资有风险，入市需谨慎。<br>
+    数据来源：2025年报、2026Q1季报、北交所/互动易公告、东方财富、龙虎榜。标注"已证实"为财报/官方公告数据，"管理层声称"为业绩说明会/互动易表述，"纯推测"为框架推论。<br>
+    本报告为7/5日更新版，与7/3版本相比，核心结论不变但估值分析因当日涨停（25.2→32.76元）有所调整。
+</p>
+</div>
+</body>
+</html>
