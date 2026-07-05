@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+    <meta name="theme-color" content="#f6f8fa">
+    <title>万达轴承 (920002) — Serenity Mode 1 分析报告</title>
+    <style>
+        :root {
+            --c-bg: #f6f8fa; --c-card: #fff; --c-text: #1a1a2e; --c-text2: #5a5f6e;
+            --c-accent: #c0392b; --c-accent2: #0f3460; --c-green: #1e8449;
+            --c-yellow: #b7950b; --c-red: #c0392b; --c-border: #e2e6ed; --c-tag-bg: #f0f2f5;
+            --rad: 12px; --sh: 0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)
+        }
+        @media (prefers-color-scheme:dark) {
+            :root {
+                --c-bg: #0d1117; --c-card: #161b22; --c-text: #e6edf3; --c-text2: #8b949e;
+                --c-accent: #f85149; --c-accent2: #58a6ff; --c-border: #30363d; --c-tag-bg: #21262d
+            }
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+        body{
+            font-family:system-ui,-apple-system,'SF Pro Text','PingFang SC','Microsoft YaHei',sans-serif;
+            background:var(--c-bg);color:var(--c-text);line-height:1.65;
+            padding:env(safe-area-inset-top) max(16px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px,env(safe-area-inset-left));
+            -webkit-font-smoothing:antialiased
+        }
+        .wrap{max-width:860px;margin:0 auto;padding:clamp(16px,4vw,32px) clamp(12px,3vw,24px)}
+        h1{font-size:clamp(20px,4.5vw,26px);font-weight:800;color:var(--c-text);letter-spacing:-0.02em;border-bottom:3px solid var(--c-accent);padding-bottom:10px}
+        h2{font-size:clamp(16px,3.2vw,19px);font-weight:700;color:var(--c-accent2);margin:clamp(20px,4vw,34px) 0 clamp(8px,2vw,14px);border-left:4px solid var(--c-accent);padding-left:10px}
+        h3{font-size:clamp(14px,2.6vw,16px);font-weight:600;color:var(--c-text);margin:clamp(14px,3vw,22px) 0 8px}
+        .card{background:var(--c-card);border-radius:var(--rad);padding:clamp(14px,3vw,22px) clamp(14px,3vw,24px);margin:clamp(8px,2vw,12px) 0;box-shadow:var(--sh)}
+        .verdict{
+            font-size:clamp(18px,4vw,24px);font-weight:800;
+            padding:clamp(12px,2.5vw,18px) clamp(14px,3vw,20px);border-radius:var(--rad);
+            margin:clamp(12px,3vw,18px) 0;text-align:center;letter-spacing:-0.01em
+        }
+        .verdict.sell{background:#fdecea;color:#c0392b;border:2px solid #e74c3c}
+        .verdict.watch{background:#fef9e7;color:#b7950b;border:2px solid #f39c12}
+        .verdict.buy{background:#eafaf1;color:#1e8449;border:2px solid #27ae60}
+        @media (prefers-color-scheme:dark){
+            .verdict.sell{background:rgba(248,81,73,0.12);color:#f85149;border-color:rgba(248,81,73,0.4)}
+            .verdict.watch{background:rgba(210,153,34,0.12);color:#d29922;border-color:rgba(210,153,34,0.4)}
+            .verdict.buy{background:rgba(63,185,80,0.12);color:#3fb950;border-color:rgba(63,185,80,0.4)}
+        }
+        .tbl-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:clamp(8px,2vw,12px) 0;border-radius:8px}
+        table{width:100%;min-width:480px;border-collapse:collapse;font-size:clamp(13px,2.5vw,14px);line-height:1.5}
+        th,td{padding:clamp(8px,1.5vw,11px) clamp(8px,1.8vw,14px);border:1px solid var(--c-border);text-align:left;vertical-align:top}
+        th{background:var(--c-tag-bg);font-weight:600;color:var(--c-text2);white-space:nowrap}
+        .tag{display:inline-flex;align-items:center;padding:clamp(2px,0.5vw,4px) clamp(6px,1.2vw,10px);border-radius:20px;font-size:clamp(11px,2vw,12px);font-weight:600;white-space:nowrap}
+        .tag-r{background:#fdecea;color:#c0392b}
+        .tag-g{background:#eafaf1;color:#1e8449}
+        .tag-y{background:#fef9e7;color:#b7950b}
+        .tag-b{background:#e8f0fe;color:#0f3460}
+        .tag-gray{background:var(--c-tag-bg);color:var(--c-text2)}
+        @media (prefers-color-scheme:dark){
+            .tag-r{background:rgba(248,81,73,0.12);color:#f85149}
+            .tag-g{background:rgba(63,185,80,0.12);color:#3fb950}
+            .tag-y{background:rgba(210,153,34,0.12);color:#d29922}
+            .tag-b{background:rgba(88,166,255,0.12);color:#58a6ff}
+        }
+        .score-wrap{display:flex;align-items:center;gap:10px;margin-top:12px}
+        .score-bar{flex:1;height:10px;border-radius:5px;background:var(--c-border);overflow:hidden}
+        .score-fill{height:100%;border-radius:5px;transition:width .4s ease}
+        .score-fill.hi{background:linear-gradient(90deg,#27ae60,#2ecc71)}
+        .score-fill.mid{background:linear-gradient(90deg,#f39c12,#f1c40f)}
+        .score-fill.lo{background:linear-gradient(90deg,#e74c3c,#c0392b)}
+        .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(10px,2vw,16px)}
+        .risk-item{padding:clamp(6px,1.2vw,8px) 0;border-bottom:1px dashed var(--c-border);font-size:clamp(13px,2.5vw,14px)}
+        .risk-item:last-child{border-bottom:none}
+        .fn{color:var(--c-text2);font-size:clamp(11px,2vw,12px);margin-top:4px}
+        hr.divider{border:0;border-top:1px solid var(--c-border);margin:clamp(20px,4vw,28px) 0}
+        .meta{color:var(--c-text2);font-size:clamp(12px,2.2vw,13px)}
+        .strong{font-weight:700}
+        .disclaimer{color:var(--c-text2);font-size:clamp(11px,2vw,12px);text-align:center;line-height:1.6}
+        a{color:var(--c-accent2);text-decoration:none}
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>万达轴承 (920002) — Serenity Mode 1 分析报告</h1>
+<p class="meta">分析日期：2026-07-05 | 数据截止：2026-07-03（周五收盘） | 北交所</p>
+
+<div class="verdict watch">
+    🟡 Watch / 传统业务稳健但增长乏力 / 等机器人新业务放量<br>
+    <span style="font-size:clamp(13px,2.5vw,14px);font-weight:500;display:block;margin-top:4px;">
+        叉车轴承龙头，市占率领先，资产负债率仅9.86%。但营收增长仅2.16%、扣非净利仅+0.70%，传统业务已触天花板。工业机器人客户100+家是潜在催化剂，但占比尚小。68x PE在当前增速下偏贵。
+    </span>
+</div>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:34%">Serenity 卡点质量</th><td><span class="strong">5.5 / 15</span>（弱卡点——传统工业品，非供应链瓶颈）</td></tr>
+        <tr><th>客观空间</th><td>Bear 25-30亿 / Base 30-40亿 / Bull 45-55亿</td></tr>
+        <tr><th>当前市值</th><td><span class="strong">41.93亿</span>（65.82元，7/3涨停+25.13%，龙虎榜）</td></tr>
+        <tr><th>PE(TTM) / 扣非PE</th><td>66.88x / ≈76x（扣非）</td></tr>
+        <tr><th>PB</th><td>5.67x</td></tr>
+        <tr><th>ROE（2025）</th><td>8.86%（较低）</td></tr>
+        <tr><th>资产负债率</th><td>9.86%</td></tr>
+        <tr><th>总股本 / 流通股本</th><td>6,370万 / 4,460万（北交所，流动性弱）</td></tr>
+    </table>
+    </div>
+</div>
+
+<h2>L0 — 客观事实底座</h2>
+
+<div class="card">
+    <h3>公司概况</h3>
+    <p>江苏万达特种轴承股份有限公司，前身为国营如皋轴承厂（1969年建厂），2001年改制。2024年5月30日北交所上市。<span class="strong">国内叉车轴承绝对龙头</span>，国家级专精特新"小巨人"、制造业单项冠军。</p>
+    <p style="margin-top:8px"><span class="strong">主营业务：</span></p>
+    <ul style="margin:6px 0 0 18px;font-size:clamp(13px,2.5vw,14px)">
+        <li><strong>叉车轴承</strong>：收入3.09亿（占比87.5%），毛利率32.19%。包括主滚轮轴承、侧滚轮轴承、链轮轴承等</li>
+        <li><strong>回转支承</strong>：收入3,178万（占比9.0%），毛利率46.63%，增速+16.47%</li>
+        <li><strong>其他</strong>：收入708万（占比2.0%）</li>
+    </ul>
+    <p style="margin-top:8px"><span class="strong">核心客户：</span>杭叉集团、安徽合力、中力股份、中国龙工、丰田叉车、林德叉车等全球工业车辆20强。前五大客户占比51.97%。</p>
+    <p style="margin-top:8px"><span class="strong">新业务布局：</span>已积累工业机器人客户100+家，包括海康机器人、三一机器人、库卡机器人、国自机器人、欧米麦克等。<span class="strong">但尚未披露机器人业务的具体营收贡献。</span></p>
+</div>
+
+<div class="card">
+    <h3>财务快照</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>指标</th><th>2023</th><th>2024</th><th>2025</th></tr>
+        <tr><td>营收（亿）</td><td>3.40</td><td>3.46</td><td>3.53</td></tr>
+        <tr><td>营收YoY</td><td>—</td><td>+1.76%</td><td>+2.16%</td></tr>
+        <tr><td>归母净利润（万）</td><td>5,156</td><td>5,757</td><td>6,268</td></tr>
+        <tr><td>归母YoY</td><td>—</td><td>+11.65%</td><td>+8.87%</td></tr>
+        <tr><td>扣非净利润（万）</td><td>—</td><td>5,475</td><td>5,514</td></tr>
+        <tr><td>扣非YoY</td><td>—</td><td>—</td><td><span class="tag tag-y">+0.70%</span></td></tr>
+        <tr><td>毛利率</td><td>32.63%</td><td>32.22%</td><td>32.13%</td></tr>
+        <tr><td>净利率</td><td>15.2%</td><td>16.6%</td><td>17.7%</td></tr>
+        <tr><td>ROE</td><td>—</td><td>9.45%</td><td>8.86%</td></tr>
+        <tr><td>经营现金流（万）</td><td>—</td><td>5,620</td><td>6,924</td></tr>
+        <tr><td>研发费用率</td><td>—</td><td>3.0%</td><td>3.1%</td></tr>
+    </table>
+    </div>
+    <p class="fn"><span class="strong">关键解读：</span>2025扣非净利仅增长0.70%，几乎停滞。政府补助从18万激增至457万（+9倍），是归母净利增长的重要推力。公司现金3.49亿（含理财），无有息负债，财务极度保守。</p>
+</div>
+
+<div class="card">
+    <h3>资产负债表要点</h3>
+    <div class="grid2">
+        <div>
+            <span class="tag tag-g" style="margin-bottom:6px">加分项</span>
+            <div class="risk-item"><span class="strong">零有息负债</span>，资产负债率仅9.86%（全A股最低梯队之一）</div>
+            <div class="risk-item">货币资金1.32亿 + 理财2.17亿 = <span class="strong">3.49亿现金</span>，占总资产42%</div>
+            <div class="risk-item">经营现金流6,924万，覆盖净利润110%</div>
+            <div class="risk-item">专利126项（发明专利51项），研发体系扎实</div>
+            <div class="risk-item">前身国企1969年建厂，行业积淀深厚，客户关系稳固</div>
+        </div>
+        <div>
+            <span class="tag tag-r" style="margin-bottom:6px">减分项</span>
+            <div class="risk-item">扣非增长仅0.70%，<span class="strong">主业已近停滞</span></div>
+            <div class="risk-item">政府补助激增9倍（457万 vs 18万），<span class="strong">利润含金量下降</span></div>
+            <div class="risk-item"><span class="strong">7名股东宣布减持</span>（含实控人），合计不超2%，6月26日公告</div>
+            <div class="risk-item">前五大客户集中度51.97%，海外收入-24.17%</div>
+            <div class="risk-item">直接材料成本占比68.41%，钢材价格波动影响大</div>
+            <div class="risk-item">ROE持续下滑（9.45%→8.86%），资本回报效率走低</div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>关键事件</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><td style="width:140px">2026-07-03</td><td><span class="tag tag-r">龙虎榜</span> 涨停+25.13%，换手12.61%。主力净流入4,157万。随机器人板块情绪涨停</td></tr>
+        <tr><td>2026-06-26</td><td><span class="tag tag-r">7名股东拟减持不超2%</span>（含实控人徐群生、徐明、徐飞及4名高管），6月29日股价跌12.5%</td></tr>
+        <tr><td>2026-05-15</td><td>业绩说明会：确认工业机器人客户100+家，但未披露具体收入贡献</td></tr>
+        <tr><td>2026-05-27</td><td>2025年权益分派：10派1元 + 10转4股</td></tr>
+        <tr><td>2025年度</td><td>扣非净利仅+0.70%，政府补助+900%，传统主业触顶信号明显</td></tr>
+    </table>
+    </div>
+</div>
+
+<h2>Serenity 框架 — 卡点十五判</h2>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:8%">#</th><th style="width:28%">判据</th><th style="width:8%">判定</th><th>说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td><span class="tag tag-y">△ +0.5</span></td><td>国内叉车轴承市占领先，但非不可替代——同行业有大量竞争对手</td></tr>
+        <tr><td>2</td><td>小市值 vs 大TAM</td><td><span class="tag tag-b">+0</span></td><td>42亿市值不算极小，叉车轴承TAM有限（全球~50亿级别）</td></tr>
+        <tr><td>3</td><td>designed-in</td><td><span class="tag tag-y">△ +0.5</span></td><td>是叉车关键零部件，客户替换成本较高，但非不可替代</td></tr>
+        <tr><td>4</td><td>多客户toll booth</td><td><span class="tag tag-g">✅ +0.5</span></td><td>全球工业车辆20强客户基础，营收分散</td></tr>
+        <tr><td>5</td><td>认证/资格周期长</td><td><span class="tag tag-y">△ +0.5</span></td><td>轴承认证周期6-12个月，有一定壁垒</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td><span class="tag tag-y">△ +0.5</span></td><td>机器人业务有潜力，但当前占比极小，未披露数据</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td><span class="tag tag-g">✅ +1</span></td><td>零负债+3.5亿现金，A股顶级财务安全垫</td></tr>
+        <tr><td>8</td><td>Demand >> Supply</td><td><span class="tag tag-b">+0</span></td><td>叉车轴承供需平衡，非紧缺状态</td></tr>
+        <tr><td>9</td><td>大客户全包产能</td><td><span class="tag tag-b">+0</span></td><td>不适用</td></tr>
+        <tr><td>10</td><td>国家安全/政府介入</td><td><span class="tag tag-b">+0</span></td><td>不适用</td></tr>
+        <tr><td>11</td><td>Made in America</td><td><span class="tag tag-b">+0</span></td><td>不适用</td></tr>
+        <tr><td>12</td><td>信息不对称</td><td><span class="tag tag-y">△ +0.5</span></td><td>北交所标的卖方覆盖少，存在信息不对称；机器人业务具体数据未披露</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td><span class="tag tag-y">△ +0.5</span></td><td>国内做叉车轴承的企业有限，但不构成硬壁垒</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td><span class="tag tag-g">✅ +0.5</span></td><td>与龙头叉车厂长期合作，存量替换需求稳定</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td><span class="tag tag-y">△ +0.5</span></td><td>轴承国产化率已较高，非卡脖子环节</td></tr>
+    </table>
+    </div>
+    <div class="score-wrap" style="margin-top:16px">
+        <span class="strong" style="font-size:clamp(14px,2.8vw,16px);white-space:nowrap">卡点质量：5.5 / 15</span>
+        <div class="score-bar"><div class="score-fill lo" style="width:37%"></div></div>
+        <span class="strong" style="color:var(--c-yellow);white-space:nowrap">弱卡点</span>
+    </div>
+    <p style="margin-top:8px;font-size:clamp(13px,2.5vw,14px);color:var(--c-text2)">
+        万达轴承不是Serenity框架下的"卡点"标的。它是成熟工业品制造商——行业地位稳固、财务干净，但不具备供应链瓶颈属性。机器人客户100+家是估值溢价的核心来源，但目前尚未转化为有意义的营收。
+    </p>
+</div>
+
+<div class="card">
+    <h3>红旗扫描</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>红旗</th><th>状态</th><th>说明</th></tr>
+        <tr><td>无限ATM/增发稀释</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>单一客户集中</td><td><span class="tag tag-y">⚠️ 轻微</span></td><td>前五大客户51.97%，虽高但属行业特性（叉车集中度高）</td></tr>
+        <tr><td>资产负债表toxic</td><td><span class="tag tag-g">✅ 未触发</span></td><td>9.86%负债率，A股最安全梯队</td></tr>
+        <tr><td>零收入纯炒作</td><td><span class="tag tag-g">✅ 未触发</span></td><td>有真实3.5亿营收</td></tr>
+        <tr><td>技术太远/2030+</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>纯软件/SaaS</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>海外核心技术依赖</td><td><span class="tag tag-g">✅ 未触发</span></td><td>自主可控</td></tr>
+        <tr><td>政策依赖(补助>30%)</td><td><span class="tag tag-g">✅ 未触发</span></td><td>457万/6,268万=7.3%，但增速过快需关注</td></tr>
+        <tr><td>大股东质押>50%</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>商誉过高</td><td><span class="tag tag-g">✅ 未触发</span></td><td>无商誉</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)"><span class="strong">红旗触发项：</span>7名股东集中减持（2%总量）是最大短期负面信号。6月26日公告后股价单日-12.5%已部分反映。整体红旗较轻。</p>
+</div>
+
+<h2>估值分析</h2>
+
+<div class="card">
+    <h3>核心矛盾：传统业务 PE 76x vs 机器人期权溢价</h3>
+    <p style="font-size:clamp(14px,2.6vw,15px)">
+        万达轴承2025年扣非净利5,514万，YoY仅+0.70%。按41.93亿市值计算，扣非PE约76x。对于一个营收增长2%、扣非利润增长0.7%的叉车轴承制造商，这个估值非常贵——即使考虑10转4后的摊薄效应。
+    </p>
+    <p style="margin-top:10px;font-size:clamp(14px,2.6vw,15px)">
+        市场愿意给这个估值的唯一原因是：<span class="strong">机器人概念。</span>公司5月业绩说明会披露"工业机器人客户100+家"，叠加7月3日人形机器人板块涨停潮，万达轴承顺势+25.13%。但需注意：
+    </p>
+    <ul style="margin:10px 0 0 18px;font-size:clamp(13px,2.5vw,14px)">
+        <li style="margin-bottom:6px">公司<strong>未披露机器人业务的具体营收金额</strong>——通常意味着占比极小</li>
+        <li style="margin-bottom:6px">其产品（叉车轴承/回转支承）与机器人关节轴承有技术相通性，但<strong>非人形机器人核心卡点</strong></li>
+        <li style="margin-bottom:6px">与华辰装备（丝杠磨床全球独家）的卡位质量完全不在一个量级</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h3>三维空间</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>情景</th><th>市值(亿)</th><th>股价(元)</th><th>隐含PE</th><th>触发条件</th></tr>
+        <tr><td style="color:#e74c3c;font-weight:700">Bear</td><td>25-30</td><td>39-47</td><td>45-54x</td><td>减持压力持续 + 机器人概念退潮 + 传统业务继续停滞</td></tr>
+        <tr><td style="color:#f39c12;font-weight:700">Base</td><td>30-40</td><td>47-63</td><td>54-73x</td><td>传统业务稳健 + 机器人客户少量放量，扣非维持5,500万+</td></tr>
+        <tr><td style="color:#27ae60;font-weight:700">Bull</td><td>45-55</td><td>71-86</td><td>65-80x</td><td>机器人轴承放量兑现 + 成为人形机器人关节轴承供应商，扣非升至7,000万+</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)">
+        <span class="strong">当前41.93亿处于Base偏上沿。</span>向下有28-40%空间（Bear），向上仅7-31%（Bull）。风险回报比不佳——下行空间远大于上行。
+    </p>
+</div>
+
+<div class="card">
+    <h3>行业对比</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>公司</th><th>代码</th><th>市值(亿)</th><th>PE(TTM)</th><th>营收增速</th><th>净利增速</th><th>ROE</th></tr>
+        <tr><td style="font-weight:700">万达轴承</td><td>920002</td><td>41.93</td><td>66.88x</td><td>+2.16%</td><td>+8.87%</td><td>8.86%</td></tr>
+        <tr><td>五洲新春</td><td>603667</td><td>~160</td><td>~55x</td><td>+12%</td><td>+35%</td><td>12%</td></tr>
+        <tr><td>长盛轴承</td><td>300718</td><td>~50</td><td>~40x</td><td>+8%</td><td>+10%</td><td>10%</td></tr>
+        <tr><td>双飞集团</td><td>300817</td><td>~25</td><td>~35x</td><td>+5%</td><td>+8%</td><td>8%</td></tr>
+    </table>
+    </div>
+    <p class="fn">注：同行增速数据为近似对比。万达轴承PE远高于同行，溢价来源于机器人概念炒作+北交所小盘溢价。五洲新春已确认为特斯拉丝杠一级供应商，其估值逻辑更扎实。</p>
+</div>
+
+<h2>催化剂与验证窗口</h2>
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:30%">时间窗口</th><th>事件</th><th>影响方向</th></tr>
+        <tr><td>2026-07-15</td><td>临时股东会：审议变更注册资本+修订章程</td><td><span class="tag tag-gray">中性</span></td></tr>
+        <tr><td>2026-07中下旬</td><td>减持期开始（公告15个交易日后，约7月中）</td><td><span class="tag tag-r">压制</span> 7名股东合计减持不超2%</td></tr>
+        <tr><td>2026-08</td><td>2026半年报披露</td><td><span class="tag tag-y">关键</span> 机器人业务是否披露具体数据？扣非拐点？</td></tr>
+        <tr><td>2026H2</td><td>人形机器人产业链订单落地</td><td><span class="tag tag-y">观察</span> 万达能否从工业机器人切入人形机器人？</td></tr>
+    </table>
+    </div>
+</div>
+
+<h2>综合判定</h2>
+<div class="card">
+    <h3>客观框架空间</h3>
+    <div class="grid2">
+        <div>
+            <span class="strong">Bear（25-30亿 / 39-47元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">减持压力 + 机器人概念退潮 + 传统业务停滞。扣非维持5,500万，PE回归45-54x。较当前下行<span style="color:#e74c3c" class="strong">-28%~-40%</span></p>
+        </div>
+        <div>
+            <span class="strong">Base（30-40亿 / 47-63元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">传统业务稳健但无增长 + 机器人概念温和。较当前<span style="color:var(--c-text2)">-5%~-29%</span>。当前41.93亿已超出Base上沿。</p>
+        </div>
+        <div>
+            <span class="strong">Bull（45-55亿 / 71-86元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">机器人轴承放量 + 扣非升至7,000万+ + 概念持续升温。较当前上行<span style="color:#27ae60" class="strong">+7%~+31%</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Serenity 视角一句</h3>
+    <p style="font-size:clamp(15px,3vw,18px);font-weight:700;color:var(--c-accent2)">
+        "叉车轴承龙头，资产负债率9.86%、零有息负债、3.5亿现金——财务干净得无可挑剔。但营收增长2%、扣非利润增长0.7%的传统生意，凭什么值76x扣非PE？答案只有一个字：'炒'。机器人客户100+家听起来很美，但公司连具体营收都不敢披露——说明这饼还没烙熟。7名股东宣布减持2%告诉你：连自己人都在高位兑现。"
+    </p>
+    <p style="margin-top:16px;font-size:clamp(14px,2.6vw,15px)">
+        <span class="strong">Serenity判定：🟡 Watch / 等回调+验证</span> — 不是Serenity框架下的好标的（卡点仅5.5/15），但财务安全垫极厚（9.86%负债率）使其在A股极端行情中具有防御价值。适合在25-30亿区间（PE 45-54x）等机器人业务真正放量后再考虑。当前41.93亿的涨停价，是纯情绪驱动的结果，不是基本面推动。
+    </p>
+</div>
+
+<div class="card">
+    <h3>核心风险摘要</h3>
+    <div class="risk-item"><span class="strong">1. 估值过高</span> — 扣非PE 76x + 营收增长2% + ROE 8.86%。DCF推演几乎无法支持当前市值。66.88x PE(TTM)很难找到基本面支撑。</div>
+    <div class="risk-item"><span class="strong">2. 7名股东减持压制</span> — 6月26日公告实控人+高管集体减持不超2%，7月中下旬开始执行。减持期3个月内持续抛压。</div>
+    <div class="risk-item"><span class="strong">3. 机器人概念含金量存疑</span> — "100+家客户"未披露任何营收数据，大概率处于打样/小批量阶段。人形机器人关节轴承的认证周期长，短期放量概率低。</div>
+    <div class="risk-item"><span class="strong">4. 传统业务天花板已现</span> — 叉车市场成熟，营收增长<3%。海外收入-24%说明出海不顺。直接材料（钢材）占成本68%，钢价上涨直接压缩利润。</div>
+    <div class="risk-item"><span class="strong">5. 北交所流动性</span> — 流通市值仅29亿，日成交额常<1亿。大资金进出困难，龙虎榜行情后可能快速冷却。</div>
+</div>
+
+<hr class="divider">
+
+<div class="card">
+    <h3>与近期分析标的横向对比</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>标的</th><th>代码</th><th>卡点评分</th><th>Serenity判定</th><th>核心逻辑</th></tr>
+        <tr><td style="font-weight:700">华辰装备</td><td>300809</td><td style="color:#27ae60;font-weight:700">10.5/15</td><td>🟡 Watch</td><td>三重卡点（轧辊垄断+丝杠全球独家+半导体期权），扣非241x太贵等回调</td></tr>
+        <tr><td>贝斯特</td><td>300580</td><td>7.5/15</td><td>🟡 Watch</td><td>C0级丝杠突破+宇树/智元/特斯拉绑定，130亿已price-in</td></tr>
+        <tr><td><span style="font-weight:700">万达轴承</span></td><td>920002</td><td>5.5/15</td><td>🟡 Watch</td><td>叉车轴承龙头+机器人故事，但扣非PE 76x+扣非增长0.7%严重不匹配</td></tr>
+        <tr><td>迈赫股份</td><td>301199</td><td style="color:#e74c3c">3/15</td><td>🔴 Sell</td><td>"机器人"名字溢价，汽车焊装集成商，22%毛利率被46x PE定价</td></tr>
+    </table>
+    </div>
+</div>
+
+<hr class="divider">
+
+<p class="disclaimer">
+    <span class="strong">免责声明：</span>本报告基于公开信息，采用Serenity Mode 1分析框架，仅供参考，不构成投资建议。投资有风险，入市需谨慎。<br>
+    数据来源：2025年报、北交所公告、同花顺、新浪财经。标注"已证实"为财报数据，"管理层声称"为业绩说明会表述，"纯推测"为框架推论。
+</p>
+</div>
+</body>
+</html>
