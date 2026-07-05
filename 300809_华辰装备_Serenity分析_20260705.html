@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+    <meta name="theme-color" content="#f6f8fa">
+    <title>华辰装备 (300809) — Serenity Mode 1 分析报告</title>
+    <style>
+        :root {
+            --c-bg: #f6f8fa;
+            --c-card: #fff;
+            --c-text: #1a1a2e;
+            --c-text2: #5a5f6e;
+            --c-accent: #c0392b;
+            --c-accent2: #0f3460;
+            --c-green: #1e8449;
+            --c-yellow: #b7950b;
+            --c-red: #c0392b;
+            --c-border: #e2e6ed;
+            --c-tag-bg: #f0f2f5;
+            --rad: 12px;
+            --sh: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --sh-hover: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        @media (prefers-color-scheme:dark) {
+            :root {
+                --c-bg: #0d1117;
+                --c-card: #161b22;
+                --c-text: #e6edf3;
+                --c-text2: #8b949e;
+                --c-accent: #f85149;
+                --c-accent2: #58a6ff;
+                --c-border: #30363d;
+                --c-tag-bg: #21262d;
+            }
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+        body{
+            font-family:system-ui,-apple-system,'SF Pro Text','PingFang SC','Microsoft YaHei',sans-serif;
+            background:var(--c-bg);
+            color:var(--c-text);
+            line-height:1.65;
+            padding:env(safe-area-inset-top) max(16px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px,env(safe-area-inset-left));
+            -webkit-font-smoothing:antialiased
+        }
+        .wrap{max-width:860px;margin:0 auto;padding:clamp(16px,4vw,32px) clamp(12px,3vw,24px)}
+
+        h1{
+            font-size:clamp(20px,4.5vw,26px);
+            font-weight:800;
+            color:var(--c-text);
+            letter-spacing:-0.02em;
+            border-bottom:3px solid var(--c-accent);
+            padding-bottom:10px
+        }
+        h2{
+            font-size:clamp(16px,3.2vw,19px);
+            font-weight:700;
+            color:var(--c-accent2);
+            margin:clamp(20px,4vw,34px) 0 clamp(8px,2vw,14px);
+            border-left:4px solid var(--c-accent);
+            padding-left:10px
+        }
+        h3{
+            font-size:clamp(14px,2.6vw,16px);
+            font-weight:600;
+            color:var(--c-text);
+            margin:clamp(14px,3vw,22px) 0 8px
+        }
+
+        .card{
+            background:var(--c-card);
+            border-radius:var(--rad);
+            padding:clamp(14px,3vw,22px) clamp(14px,3vw,24px);
+            margin:clamp(8px,2vw,12px) 0;
+            box-shadow:var(--sh)
+        }
+
+        .verdict{
+            font-size:clamp(18px,4vw,24px);
+            font-weight:800;
+            padding:clamp(12px,2.5vw,18px) clamp(14px,3vw,20px);
+            border-radius:var(--rad);
+            margin:clamp(12px,3vw,18px) 0;
+            text-align:center;
+            letter-spacing:-0.01em
+        }
+        .verdict.sell{background:#fdecea;color:#c0392b;border:2px solid #e74c3c}
+        .verdict.watch{background:#fef9e7;color:#b7950b;border:2px solid #f39c12}
+        .verdict.buy{background:#eafaf1;color:#1e8449;border:2px solid #27ae60}
+        @media (prefers-color-scheme:dark){
+            .verdict.sell{background:rgba(248,81,73,0.12);color:#f85149;border-color:rgba(248,81,73,0.4)}
+            .verdict.watch{background:rgba(210,153,34,0.12);color:#d29922;border-color:rgba(210,153,34,0.4)}
+            .verdict.buy{background:rgba(63,185,80,0.12);color:#3fb950;border-color:rgba(63,185,80,0.4)}
+        }
+
+        /* ── responsive table wrapper ── */
+        .tbl-wrap{
+            width:100%;
+            overflow-x:auto;
+            -webkit-overflow-scrolling:touch;
+            margin:clamp(8px,2vw,12px) 0;
+            border-radius:8px
+        }
+        table{
+            width:100%;
+            min-width:520px;
+            border-collapse:collapse;
+            font-size:clamp(13px,2.5vw,14px);
+            line-height:1.5
+        }
+        th,td{
+            padding:clamp(8px,1.5vw,11px) clamp(8px,1.8vw,14px);
+            border:1px solid var(--c-border);
+            text-align:left;
+            vertical-align:top
+        }
+        th{
+            background:var(--c-tag-bg);
+            font-weight:600;
+            color:var(--c-text2);
+            white-space:nowrap
+        }
+        td{color:var(--c-text)}
+
+        /* ── tags ── */
+        .tag{
+            display:inline-flex;align-items:center;
+            padding:clamp(2px,0.5vw,4px) clamp(6px,1.2vw,10px);
+            border-radius:20px;
+            font-size:clamp(11px,2vw,12px);
+            font-weight:600;
+            white-space:nowrap
+        }
+        .tag-r{background:#fdecea;color:#c0392b}
+        .tag-g{background:#eafaf1;color:#1e8449}
+        .tag-y{background:#fef9e7;color:#b7950b}
+        .tag-b{background:#e8f0fe;color:#0f3460}
+        .tag-gray{background:var(--c-tag-bg);color:var(--c-text2)}
+        @media (prefers-color-scheme:dark){
+            .tag-r{background:rgba(248,81,73,0.12);color:#f85149}
+            .tag-g{background:rgba(63,185,80,0.12);color:#3fb950}
+            .tag-y{background:rgba(210,153,34,0.12);color:#d29922}
+            .tag-b{background:rgba(88,166,255,0.12);color:#58a6ff}
+        }
+
+        /* ── score bar ── */
+        .score-wrap{display:flex;align-items:center;gap:10px;margin-top:12px}
+        .score-bar{flex:1;height:10px;border-radius:5px;background:var(--c-border);overflow:hidden}
+        .score-fill{height:100%;border-radius:5px;transition:width .4s ease}
+        .score-fill.hi{background:linear-gradient(90deg,#27ae60,#2ecc71)}
+        .score-fill.mid{background:linear-gradient(90deg,#f39c12,#f1c40f)}
+        .score-fill.lo{background:linear-gradient(90deg,#e74c3c,#c0392b)}
+
+        /* ── two-col grid ── */
+        .grid2{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));
+            gap:clamp(10px,2vw,16px)
+        }
+        .risk-item{
+            padding:clamp(6px,1.2vw,8px) 0;
+            border-bottom:1px dashed var(--c-border);
+            font-size:clamp(13px,2.5vw,14px)
+        }
+        .risk-item:last-child{border-bottom:none}
+
+        /* ── footnote / divider / misc ── */
+        .fn{color:var(--c-text2);font-size:clamp(11px,2vw,12px);margin-top:4px}
+        hr.divider{border:0;border-top:1px solid var(--c-border);margin:clamp(20px,4vw,28px) 0}
+        .meta{color:var(--c-text2);font-size:clamp(12px,2.2vw,13px)}
+        .strong{font-weight:700}
+        .hl{background:rgba(255,193,7,0.2);padding:1px 4px;border-radius:3px}
+
+        /* ── footer disclaimer ── */
+        .disclaimer{
+            color:var(--c-text2);
+            font-size:clamp(11px,2vw,12px);
+            text-align:center;
+            line-height:1.6
+        }
+
+        /* ── touch-friendly links ── */
+        a{color:var(--c-accent2);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>华辰装备 (300809) — Serenity Mode 1 分析报告</h1>
+<p class="meta">分析日期：2026-07-05 | 数据截止：2026-07-03（周五收盘） | PE基于2025年报</p>
+
+<!-- ═══ 结论 ═══ -->
+<div class="verdict watch">
+    🟡 Watch / 真卡点但需等扣非利润兑现 / 等回调<br>
+    <span style="font-size:clamp(13px,2.5vw,14px);font-weight:500;display:block;margin-top:4px;">
+        轧辊磨床垄断者 + 人形机器人丝杠"卖铲人" + 半导体磨床破局者——三重卡点叠加，A股极度稀缺。
+        但扣非PE 241x，当前76.80亿市值已定价2027年乐观预期。Q1营收-17%是短期压制，等回调再动手。
+    </span>
+</div>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:34%">Serenity 卡点质量</th><td><span class="strong">10.5 / 15</span>（强卡点）</td></tr>
+        <tr><th>客观空间</th><td>Bear 40-50亿 / Base 60-80亿 / Bull 100-130亿</td></tr>
+        <tr><th>当前市值</th><td><span class="strong">76.80亿</span>（30.29元，7/3涨停+11.73%）</td></tr>
+        <tr><th>PE(TTM) / 扣非PE</th><td>37.99x（归母口径） / <span style="color:#e74c3c;">≈241x（扣非口径）</span></td></tr>
+        <tr><th>行业中位PE(机床工具)</th><td>56.06x</td></tr>
+        <tr><th>PB</th><td>4.22x</td></tr>
+        <tr><th>总股本 / 流通股本</th><td>2.535亿 / 1.505亿</td></tr>
+    </table>
+    </div>
+</div>
+
+<!-- ═══ L0 事实底座 ═══ -->
+<h2>L0 — 客观事实底座</h2>
+
+<div class="card">
+    <h3>公司概况</h3>
+    <p>华辰精密装备（昆山）股份有限公司，2019年12月创业板上市，总部江苏昆山。<span class="strong">国内轧辊磨床绝对龙头，市占率超40%，全球前三。</span>工信部制造业单项冠军示范企业、国家级专精特新"小巨人"。</p>
+    <p style="margin-top:8px"><span class="strong">三层业务结构：</span></p>
+    <div class="grid2">
+        <div>
+            <span class="tag tag-b">第一层：轧辊磨床</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">年产能200台，2025年交付186台，产能利用率93%。自研HCK2000智能磨削数控系统，<span class="strong">核心系统100%自主可控</span>，圆度0.2μm、粗糙度Ra0.25μm，对标甚至超越德国瓦德里希。高速箔材（电池箔/电工钢）专用磨床国内独家。</p>
+        </div>
+        <div>
+            <span class="tag tag-g">第二层：丝杠磨床（机器人"卖铲人"）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px"><span class="strong">全球唯一量产小直径丝杠专用磨床。</span>外螺纹最小加工直径1mm，内螺纹4mm。福立旺100台/1.8亿大单已签，贝斯特、五洲新春、鑫鑫直线等头部丝杠厂密集下单。进入特斯拉Optimus、优必选、宇树科技上游设备供应链。</p>
+        </div>
+        <div>
+            <span class="tag tag-y">第三层：半导体磨床（远期期权）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">与中科院长春光学精密机械研究所（长光所）合资+联合研发，专攻光刻机光学元件超精密磨削。2025年8月中标长光所高精度外螺纹磨床项目，板块唯一公开披露的半导体磨床订单。</p>
+        </div>
+        <div>
+            <span class="tag tag-r">第四层：高毛利维修</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">维修改造毛利率40%+，2025年收入5843万（+89%），现金牛稳定增厚。设备+服务+智造一体化模式平滑周期波动。</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>财务快照</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>指标</th><th>2023</th><th>2024</th><th>2025</th><th>2026Q1</th></tr>
+        <tr><td>营收（亿）</td><td>4.79</td><td>4.46</td><td>5.43</td><td>1.04</td></tr>
+        <tr><td>营收YoY</td><td>+42.5%</td><td>-6.9%</td><td>+21.8%</td><td><span class="tag tag-r">-17.2%</span></td></tr>
+        <tr><td>归母净利润（万）</td><td>11,775</td><td>6,198</td><td>20,215</td><td>1,279</td></tr>
+        <tr><td>归母净利润YoY</td><td>+149.4%</td><td>-47.4%</td><td><span class="tag tag-y">+226.2%</span><sup>*</sup></td><td><span class="tag tag-r">-45.8%</span></td></tr>
+        <tr><td>扣非净利润（万）</td><td>—</td><td>1,824</td><td>3,183</td><td>1,692</td></tr>
+        <tr><td>扣非YoY</td><td>—</td><td>—</td><td>+74.5%</td><td><span class="tag tag-r">-23.2%</span></td></tr>
+        <tr><td>毛利率</td><td>34.3%</td><td>28.5%</td><td>29.9%</td><td>28.2%</td></tr>
+        <tr><td>净利率（归母口径）</td><td>24.6%</td><td>13.9%</td><td>37.2%</td><td>12.3%</td></tr>
+        <tr><td>ROE（加权）</td><td>—</td><td>—</td><td>11.70%</td><td>0.70%</td></tr>
+        <tr><td>ROIC</td><td>—</td><td>—</td><td>12.87%</td><td>—</td></tr>
+    </table>
+    </div>
+    <p class="fn"><sup>*</sup> 注：2025年归母净利润2.02亿中，约1.9亿来自<span class="strong">交易性金融资产公允价值变动（非经常性损益）</span>，扣非净利润仅3,183万。这是理解华辰估值最关键的一点——归母PE 38x是假象，扣非PE高达241x。华鑫/华西/浙商三家券商预测2026年扣非净利约1.0-1.96亿。</p>
+</div>
+
+<div class="card">
+    <h3>资产负债表要点</h3>
+    <div class="grid2">
+        <div>
+            <span class="tag tag-g" style="margin-bottom:6px">加分项</span>
+            <div class="risk-item"><span class="strong">零有息负债</span>，资产负债率仅21.06%</div>
+            <div class="risk-item">现金+交易性金融资产超<span class="strong">10亿</span>，占总资产42%+</div>
+            <div class="risk-item">经营现金流1.54亿（2025年），Q1继续正流2,989万</div>
+            <div class="risk-item">合同负债2.42亿，在手订单充裕（占2025营收44%）</div>
+            <div class="risk-item">研发费用率10.46%（领先同行），累计专利161项</div>
+            <div class="risk-item">实控人减持计划（2026/01-04）<span class="strong">届满未实际减持</span></div>
+        </div>
+        <div>
+            <span class="tag tag-r" style="margin-bottom:6px">减分项</span>
+            <div class="risk-item"><span class="strong">扣非PE 241x</span>——1.9亿非经常性损益扭曲利润表</div>
+            <div class="risk-item">Q1营收-17%、净利-46%，项目制验收节奏波动大</div>
+            <div class="risk-item">2025年10转4股，总股本从1.33亿→2.54亿，<span class="strong">稀释</span></div>
+            <div class="risk-item">实控人曾宣布减持2%（虽未执行，信号偏负面）</div>
+            <div class="risk-item">固定资产+在建工程持续扩大，未来折旧压力</div>
+            <div class="risk-item">股东冯果质押100%（1,261万股），占总股本4.97%</div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>关键事件</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><td style="width:140px">2026-07-07</td><td><span class="tag tag-y">除权除息</span> 10派1元（含税），股权登记日7月6日</td></tr>
+        <tr><td>2026-05-08</td><td>业绩说明会：确认福立旺订单"持续推进中"，未披露交付节奏（<span class="strong">[管理层声称]</span>）；Q1业绩下滑因"设备验收节奏+公允价值变动"</td></tr>
+        <tr><td>2026-04-20</td><td><span class="tag tag-g">实控人减持届满</span>，曹宇中/刘翔雄/赵泽明<span class="strong">均未实际减持</span></td></tr>
+        <tr><td>2025-12-26</td><td>实控人公告计划以大宗交易减持合计2%（后未执行）</td></tr>
+        <tr><td>2025-08</td><td><span class="strong">中标长光所</span>高精度外螺纹磨床项目——板块唯一公开披露的半导体磨床订单</td></tr>
+        <tr><td>2025-03-25</td><td>与福立旺签署100台精密螺纹磨床+高速外圆磨床合同，<span class="strong">总额约1.8亿</span>，首批2025年9月完成交付</td></tr>
+        <tr><td>2024-12-19</td><td>与长光大器合资设立子公司，布局超精密光学元件/导轨磨床</td></tr>
+    </table>
+    </div>
+</div>
+
+<!-- ═══ Serenity 框架 ═══ -->
+<h2>Serenity 框架 — 卡点十五判</h2>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:8%">#</th><th style="width:28%">判据</th><th style="width:8%">判定</th><th>说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td><span class="tag tag-g">✅ +1.5</span></td><td>国内轧辊磨床市占40%+，全球前三。高速箔材专用磨床国内独家。丝杠磨床全球唯一量产小直径专用机型</td></tr>
+        <tr><td>2</td><td>小市值 vs 大TAM</td><td><span class="tag tag-y">△ +0.5</span></td><td>76.8亿略超Sub-100亿线，但轧辊+丝杠+半导体磨床合计TAM达数百亿</td></tr>
+        <tr><td>3</td><td>designed-in</td><td><span class="tag tag-g">✅ +1</span></td><td>磨床作为丝杠生产核心设备，一旦客户选定，替换成本千万级。福立旺100台大单已印证</td></tr>
+        <tr><td>4</td><td>多客户toll booth</td><td><span class="tag tag-g">✅ +1</span></td><td>福立旺/贝斯特/五洲新春/鑫鑫直线/豪能空天多头下单；特斯拉/优必选/宇树整机厂间接验证</td></tr>
+        <tr><td>5</td><td>认证/资格周期长</td><td><span class="tag tag-g">✅ +1</span></td><td>磨床设备验证周期1年+，客户替换成本千万级，一旦绑定终身供货</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td><span class="tag tag-g">✅ +1</span></td><td>券商一致预期2027E营收11亿+、净利3亿+（vs 2025扣非仅0.32亿）。丝杠磨床订单已排至2026年底</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td><span class="tag tag-g">✅ +1</span></td><td>零有息负债、现金>10亿、经营现金流1.54亿——几乎A股最干净的工业母机资产负债表</td></tr>
+        <tr><td>8</td><td>Demand &gt;&gt; Supply</td><td><span class="tag tag-y">△ +0.5</span></td><td>丝杠磨床全球独供、产能300台/年正爬坡。但轧辊磨床并非严重供不应求</td></tr>
+        <tr><td>9</td><td>大客户全包产能</td><td><span class="tag tag-gray">— N/A</span></td><td>不适用</td></tr>
+        <tr><td>10</td><td>国家安全/政府介入</td><td><span class="tag tag-y">△ +0.5</span></td><td>工业母机国产替代政策利好，但非纯军工/国家安全逻辑</td></tr>
+        <tr><td>11</td><td>Made in America</td><td><span class="tag tag-gray">— N/A</span></td><td>不适用（A股国产替代反向对标）</td></tr>
+        <tr><td>12</td><td>信息不对称</td><td><span class="tag tag-g">✅ +0.5</span></td><td>归母PE 38x vs 扣非PE 241x的严重错位，多数投资者只看归母PE；福立旺交付进度未披露</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td><span class="tag tag-g">✅ +1</span></td><td>丝杠磨床（尤其内螺纹）壁垒极高，目前被海外三井等垄断，华辰是唯一国产突破者</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td><span class="tag tag-y">△ +0.5</span></td><td>合同负债2.42亿+福立旺100台，但设备验收节奏不可控</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td><span class="tag tag-g">✅ +1</span></td><td>高端磨床80%+依赖进口，亚微米级磨床国产化率极低，华辰是最核心的国产替代载体</td></tr>
+    </table>
+    </div>
+    <div class="score-wrap" style="margin-top:16px">
+        <span class="strong" style="font-size:clamp(14px,2.8vw,16px);white-space:nowrap">卡点质量：10.5 / 15</span>
+        <div class="score-bar"><div class="score-fill hi" style="width:70%"></div></div>
+        <span class="strong" style="color:var(--c-green);white-space:nowrap">强卡点</span>
+    </div>
+    <p style="margin-top:8px;font-size:clamp(13px,2.5vw,14px);color:var(--c-text2)">
+        华辰是少数同时满足"垄断（轧辊磨床）"+"专利/准垄断（丝杠磨床全球首家）"+"增量TAM（人形机器人）"+"财务安全垫"四个Serenity核心条件的A股标的。得分10.5/15，属于A股稀缺的强卡点。
+    </p>
+</div>
+
+<div class="card">
+    <h3>红旗扫描</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>红旗</th><th>状态</th><th>说明</th></tr>
+        <tr><td>无限ATM / 增发稀释</td><td><span class="tag tag-y">⚠️ 轻微</span></td><td>2025年10转4股（增加总股本），非实质增发但稀释已有</td></tr>
+        <tr><td>单一客户集中（>50%）</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>资产负债表toxic</td><td><span class="tag tag-g">✅ 未触发</span></td><td>零有息负债+10亿现金，A股最干净之一</td></tr>
+        <tr><td>零收入纯炒作</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>技术太远（A股2030+）</td><td><span class="tag tag-g">✅ 未触发</span></td><td>丝杠磨床已交付，半导体磨床2026-2027</td></tr>
+        <tr><td>纯软件/SaaS</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>海外核心技术依赖</td><td><span class="tag tag-g">✅ 未触发</span></td><td>HCK2000数控系统100%自研</td></tr>
+        <tr><td>政策依赖(补助>30%)</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>大股东质押>50%</td><td><span class="tag tag-y">⚠️ 观察</span></td><td>冯果个人质押100%（1,261万股），但仅占总股本4.97%，不影响控制权</td></tr>
+        <tr><td>商誉过高(>50%净资产)</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)"><span class="strong">红旗触发项：</span>10转4稀释（轻微）+ 实控人曾计划减持（虽未执行但信号偏负）+ 冯果质押100%（影响有限）。整体红旗等级较轻，不影响核心投资逻辑。</p>
+</div>
+
+<!-- ═══ 估值 ═══ -->
+<h2>估值分析</h2>
+
+<div class="card">
+    <h3>核心矛盾：归母PE 38x vs 扣非PE 241x</h3>
+    <p style="font-size:clamp(14px,2.6vw,15px)">
+        华辰2025年归母净利润2.02亿中，<span class="strong">约1.9亿来自交易性金融资产公允价值变动</span>（公司持有参股公司股权等金融资产的估值上升），扣非净利润仅3,183万。这意味着：
+    </p>
+    <ul style="margin:10px 0 0 18px;font-size:clamp(13px,2.5vw,14px)">
+        <li style="margin-bottom:6px">按归母净利算：76.80亿 / 2.02亿 = <span class="tag tag-g">PE 38x</span>——看起来合理</li>
+        <li style="margin-bottom:6px">按扣非净利算：76.80亿 / 0.318亿 = <span class="tag tag-r">PE 241x</span>——极度昂贵</li>
+        <li style="margin-bottom:6px"><span class="strong">真相在中间：</span>2026E扣非净利预估1.0-1.96亿（各券商中位约1.4亿），对应forward扣非PE = 55x。2027E若达3亿，forward PE = 25.6x。</li>
+    </ul>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px);color:var(--c-text2)">
+        结论：当前76.80亿市值实际上是在定价2027年的乐观预期。从2027年前瞻看合理，从2025扣非看极端。核心变量是丝杠磨床订单交付速度。
+    </p>
+</div>
+
+<div class="card">
+    <h3>三维空间</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>情景</th><th>市值(亿)</th><th>股价(元)</th><th>隐含PE</th><th>触发条件</th></tr>
+        <tr><td style="color:#e74c3c;font-weight:700">Bear</td><td>40-50</td><td>16-20</td><td>25-31x(2027E)</td><td>福立旺交付不及预期，机器人故事退潮；钢铁下行周期拖累传统主业</td></tr>
+        <tr><td style="color:#f39c12;font-weight:700">Base</td><td>60-80</td><td>24-32</td><td>31-33x(2027E)</td><td>丝杠磨床按节奏交付，2027年扣非2-2.5亿，PE 30-35x</td></tr>
+        <tr><td style="color:#27ae60;font-weight:700">Bull</td><td>100-130</td><td>39-51</td><td>33-43x(2027E)</td><td>Optimus量产引爆丝杠磨床需求暴增+半导体磨床批量供货，2027年净利3-3.5亿</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)">
+        <span class="strong">当前76.80亿处于Base偏上限。</span>向下有30%+回调空间（Bear场景），向上有30-69%空间（Bull场景）。关键在于华辰能否在2026H2兑现福立旺订单的交付和业绩转化——这是今年最重要的催化剂。
+    </p>
+</div>
+
+<div class="card">
+    <h3>同行业对比</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>公司</th><th>代码</th><th>市值(亿)</th><th>PE(TTM)</th><th>毛利率</th><th>ROE</th><th>业务定位</th></tr>
+        <tr><td style="font-weight:700">华辰装备</td><td>300809</td><td>76.80</td><td>38x / <span style="color:#e74c3c">扣非241x</span></td><td>29.9%</td><td>11.7%</td><td>轧辊磨床垄断+丝杠/半导体磨床</td></tr>
+        <tr><td>秦川机床</td><td>000837</td><td>~80</td><td>~45x</td><td>~25%</td><td>~5%</td><td>通用机床+减速器</td></tr>
+        <tr><td>海天精工</td><td>601882</td><td>~150</td><td>~35x</td><td>~30%</td><td>~15%</td><td>数控龙门/卧加</td></tr>
+        <tr><td>科德数控</td><td>688305</td><td>~100</td><td>~80x</td><td>~40%</td><td>~8%</td><td>五轴联动数控机床</td></tr>
+        <tr><td>浙海德曼</td><td>688577</td><td>~25</td><td>~35x</td><td>~28%</td><td>~7%</td><td>精密数控车床</td></tr>
+    </table>
+    </div>
+    <p class="fn">注：同行数据截至2026Q1。华辰归母PE 38x在同行偏中等，但扣非241x使其成为板块异常值。市场正在为其机器人/半导体期权支付大幅溢价。</p>
+</div>
+
+<!-- ═══ 催化剂 ═══ -->
+<h2>催化剂与验证窗口</h2>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:30%">时间窗口</th><th>事件</th><th>影响方向</th></tr>
+        <tr><td>2026-07-07</td><td>10派1元除权除息</td><td><span class="tag tag-gray">中性</span></td></tr>
+        <tr><td>2026-08-29</td><td><span class="strong">2026年半年报披露</span></td><td><span class="tag tag-r">关键</span> Q2营收是否恢复？福立旺订单交付进度？扣非利润能否环比大幅改善？</td></tr>
+        <tr><td>2026H2</td><td>贝斯特/五洲新春丝杠磨床交付</td><td><span class="tag tag-y">观察</span> 验证多客户放量能力</td></tr>
+        <tr><td>2026H2</td><td>特斯拉Optimus量产进度</td><td><span class="tag tag-r">最大催化剂</span> 若Optimus确定量产时间线，丝杠磨床需求将从"百台级"跃升至"千台级"</td></tr>
+        <tr><td>2026H2</td><td>半导体磨床客户验证进展</td><td><span class="tag tag-y">观察</span> 长光所后是否有新客户？量产进度？</td></tr>
+        <tr><td>2026-2027</td><td>丝杠磨床年产能300台达产</td><td><span class="tag tag-y">中期</span> 产能爬坡是业绩兑现的前提</td></tr>
+    </table>
+    </div>
+</div>
+
+<!-- ═══ 综合判定 ═══ -->
+<h2>综合判定</h2>
+
+<div class="card">
+    <h3>客观框架空间</h3>
+    <div class="grid2">
+        <div>
+            <span class="strong">Bear（40-50亿 / 16-20元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">丝杠磨床订单交付远不及预期 + 轧辊磨床受钢铁周期拖累 + 机器人概念退潮。2027年扣非仅1-1.5亿，回归传统机床估值25-31x。较当前下行<span style="color:#e74c3c" class="strong">-35%~-48%</span></p>
+        </div>
+        <div>
+            <span class="strong">Base（60-80亿 / 24-32元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">福立旺订单按节奏交付，贝斯特/五洲新春跟进，2027年扣非2-2.5亿，PE 30-35x。较当前<span style="color:var(--c-text2)">-22%~+4%</span>。当前76.80亿在此区间偏上沿。</p>
+        </div>
+        <div>
+            <span class="strong">Bull（100-130亿 / 39-51元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">Optimus量产时间线明确 + 丝杠磨床千台级需求 + 半导体磨床批量供货，2027年扣非3-3.5亿，PE 33-43x。较当前上行<span style="color:#27ae60" class="strong">+30%~+69%</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Serenity 视角一句</h3>
+    <p style="font-size:clamp(15px,3vw,18px);font-weight:700;color:var(--c-accent2)">
+        "这是A股极度稀缺的三重卡点叠加标的——轧辊磨床垄断者、人形机器人丝杠全球唯一'卖铲人'、半导体超精密磨床破局者。零有息负债+10亿现金是熊市最硬的安全垫。但当前76.80亿市值已price-in了2027年的乐观预期，扣非PE 241x意味着任何交付miss都会被市场严厉惩罚。真正的买点在Q2业绩验证或Optimus量产催化剂之后——等市场给你一个可以上车的价格。"
+    </p>
+    <p style="margin-top:16px;font-size:clamp(14px,2.6vw,15px)">
+        <span class="strong">Serenity判定：🟡 Watch / 等回调买</span> — 华辰是少数能通过Serenity 15条判据中10.5条的A股标的，卡点质量(10.5/15)显著优于迈赫股份(3/15)，甚至略高于贝斯特(7.5/15)。轧辊磨床垄断+丝杠磨床全球独家+半导体磨床期权，三重稀缺性叠加。但估值不友好——扣非241x意味着当前价格已经包含了太多还没实现的利润。建议在Q2中报前密切关注，若市场因短期业绩压力给出20元以下的入场窗口，果断动手。
+    </p>
+</div>
+
+<div class="card">
+    <h3>核心风险摘要</h3>
+    <div class="risk-item"><span class="strong">1. 扣非PE虚高（241x）</span> — 2025年净利2.02亿中1.9亿来自非经常性损益，真实盈利能力仅3,183万。如果2026-2027年丝杠磨床放量不及预期，扣非PE的"均值回归"将非常剧烈。</div>
+    <div class="risk-item"><span class="strong">2. 福立旺交付不确定</span> — 100台订单"持续推进中"，但公司拒绝披露已交付数量和后续节奏（5月业绩说明会已确认）。交付进度的不透明是最大短期风险。</div>
+    <div class="risk-item"><span class="strong">3. 设备型商业模式天然波动</span> — 项目验收节奏由下游客户决定，Q1营收-17%、净利-46%已表明单季度可能巨幅波动，不适合短线和情绪交易。</div>
+    <div class="risk-item"><span class="strong">4. 人形机器人量产时间不确定</span> — 丝杠磨床的爆发性需求高度依赖特斯拉Optimus/优必选等整机厂量产节奏。若Optimus量产延迟至2027年以后，华辰业绩兑现时间会同步推后。</div>
+    <div class="risk-item"><span class="strong">5. 10转4稀释 + 实控人减持信号</span> — 虽实控人最终未减持，但2025年底的减持公告仍是一个需要持续关注的信号。</div>
+</div>
+
+<hr class="divider">
+
+<div class="card">
+    <h3>与近期分析标的横向对比</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>标的</th><th>代码</th><th>卡点评分</th><th>Serenity判定</th><th>核心逻辑</th></tr>
+        <tr><td style="font-weight:700">华辰装备</td><td>300809</td><td style="color:#27ae60;font-weight:700">10.5/15</td><td>🟡 Watch</td><td>三重卡点（轧辊垄断+丝杠全球独家+半导体期权），扣非241x太贵等回调</td></tr>
+        <tr><td>贝斯特</td><td>300580</td><td>7.5/15</td><td>🟡 Watch</td><td>C0级丝杠突破+宇树/智元/特斯拉绑定，130亿已price-in乐观预期</td></tr>
+        <tr><td>迈赫股份</td><td>301199</td><td style="color:#e74c3c">3/15</td><td>🔴 Sell</td><td>汽车焊装系统集成商，"机器人"名字溢价，22%毛利率被46x PE定价</td></tr>
+    </table>
+    </div>
+</div>
+
+<hr class="divider">
+
+<p class="disclaimer">
+    <span class="strong">免责声明：</span>本报告基于公开信息，采用Serenity Mode 1分析框架，仅供参考，不构成投资建议。投资有风险，入市需谨慎。<br>
+    数据来源：2025年报、2026Q1季报、深交所互动易、东吴/华鑫/浙商/华西证券研报、公司公告、同花顺、新浪财经。<br>
+    标注层级：<span class="strong">已证实</span>（财报/公告） / <span class="strong">管理层声称</span>（互动易/业绩说明会） / <span class="strong">券商预测</span>（需独立验证） / <span class="strong">纯推测</span>（框架推论）
+</p>
+
+</div>
+</body>
+</html>
