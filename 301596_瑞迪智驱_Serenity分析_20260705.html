@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+    <meta name="theme-color" content="#f6f8fa">
+    <title>瑞迪智驱 (301596) — Serenity Mode 1 分析报告</title>
+    <style>
+        :root {
+            --c-bg: #f6f8fa; --c-card: #fff; --c-text: #1a1a2e; --c-text2: #5a5f6e;
+            --c-accent: #c0392b; --c-accent2: #0f3460; --c-green: #1e8449;
+            --c-yellow: #b7950b; --c-red: #c0392b; --c-border: #e2e6ed; --c-tag-bg: #f0f2f5;
+            --rad: 12px; --sh: 0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)
+        }
+        @media (prefers-color-scheme:dark) {
+            :root {
+                --c-bg: #0d1117; --c-card: #161b22; --c-text: #e6edf3; --c-text2: #8b949e;
+                --c-accent: #f85149; --c-accent2: #58a6ff; --c-border: #30363d; --c-tag-bg: #21262d
+            }
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+        body{
+            font-family:system-ui,-apple-system,'SF Pro Text','PingFang SC','Microsoft YaHei',sans-serif;
+            background:var(--c-bg);color:var(--c-text);line-height:1.65;
+            padding:env(safe-area-inset-top) max(16px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px,env(safe-area-inset-left));
+            -webkit-font-smoothing:antialiased
+        }
+        .wrap{max-width:860px;margin:0 auto;padding:clamp(16px,4vw,32px) clamp(12px,3vw,24px)}
+        h1{font-size:clamp(20px,4.5vw,26px);font-weight:800;color:var(--c-text);letter-spacing:-0.02em;border-bottom:3px solid var(--c-accent);padding-bottom:10px}
+        h2{font-size:clamp(16px,3.2vw,19px);font-weight:700;color:var(--c-accent2);margin:clamp(20px,4vw,34px) 0 clamp(8px,2vw,14px);border-left:4px solid var(--c-accent);padding-left:10px}
+        h3{font-size:clamp(14px,2.6vw,16px);font-weight:600;color:var(--c-text);margin:clamp(14px,3vw,22px) 0 8px}
+        .card{background:var(--c-card);border-radius:var(--rad);padding:clamp(14px,3vw,22px) clamp(14px,3vw,24px);margin:clamp(8px,2vw,12px) 0;box-shadow:var(--sh)}
+        .verdict{
+            font-size:clamp(18px,4vw,24px);font-weight:800;
+            padding:clamp(12px,2.5vw,18px) clamp(14px,3vw,20px);border-radius:var(--rad);
+            margin:clamp(12px,3vw,18px) 0;text-align:center;letter-spacing:-0.01em
+        }
+        .verdict.sell{background:#fdecea;color:#c0392b;border:2px solid #e74c3c}
+        .verdict.watch{background:#fef9e7;color:#b7950b;border:2px solid #f39c12}
+        .verdict.buy{background:#eafaf1;color:#1e8449;border:2px solid #27ae60}
+        @media (prefers-color-scheme:dark){
+            .verdict.sell{background:rgba(248,81,73,0.12);color:#f85149;border-color:rgba(248,81,73,0.4)}
+            .verdict.watch{background:rgba(210,153,34,0.12);color:#d29922;border-color:rgba(210,153,34,0.4)}
+            .verdict.buy{background:rgba(63,185,80,0.12);color:#3fb950;border-color:rgba(63,185,80,0.4)}
+        }
+        .tbl-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:clamp(8px,2vw,12px) 0;border-radius:8px}
+        table{width:100%;min-width:480px;border-collapse:collapse;font-size:clamp(13px,2.5vw,14px);line-height:1.5}
+        th,td{padding:clamp(8px,1.5vw,11px) clamp(8px,1.8vw,14px);border:1px solid var(--c-border);text-align:left;vertical-align:top}
+        th{background:var(--c-tag-bg);font-weight:600;color:var(--c-text2);white-space:nowrap}
+        .tag{display:inline-flex;align-items:center;padding:clamp(2px,0.5vw,4px) clamp(6px,1.2vw,10px);border-radius:20px;font-size:clamp(11px,2vw,12px);font-weight:600;white-space:nowrap}
+        .tag-r{background:#fdecea;color:#c0392b}
+        .tag-g{background:#eafaf1;color:#1e8449}
+        .tag-y{background:#fef9e7;color:#b7950b}
+        .tag-b{background:#e8f0fe;color:#0f3460}
+        .tag-gray{background:var(--c-tag-bg);color:var(--c-text2)}
+        @media (prefers-color-scheme:dark){
+            .tag-r{background:rgba(248,81,73,0.12);color:#f85149}
+            .tag-g{background:rgba(63,185,80,0.12);color:#3fb950}
+            .tag-y{background:rgba(210,153,34,0.12);color:#d29922}
+            .tag-b{background:rgba(88,166,255,0.12);color:#58a6ff}
+        }
+        .score-wrap{display:flex;align-items:center;gap:10px;margin-top:12px}
+        .score-bar{flex:1;height:10px;border-radius:5px;background:var(--c-border);overflow:hidden}
+        .score-fill{height:100%;border-radius:5px;transition:width .4s ease}
+        .score-fill.hi{background:linear-gradient(90deg,#27ae60,#2ecc71)}
+        .score-fill.mid{background:linear-gradient(90deg,#f39c12,#f1c40f)}
+        .score-fill.lo{background:linear-gradient(90deg,#e74c3c,#c0392b)}
+        .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(10px,2vw,16px)}
+        .risk-item{padding:clamp(6px,1.2vw,8px) 0;border-bottom:1px dashed var(--c-border);font-size:clamp(13px,2.5vw,14px)}
+        .risk-item:last-child{border-bottom:none}
+        .fn{color:var(--c-text2);font-size:clamp(11px,2vw,12px);margin-top:4px}
+        hr.divider{border:0;border-top:1px solid var(--c-border);margin:clamp(20px,4vw,28px) 0}
+        .meta{color:var(--c-text2);font-size:clamp(12px,2.2vw,13px)}
+        .strong{font-weight:700}
+        .disclaimer{color:var(--c-text2);font-size:clamp(11px,2vw,12px);text-align:center;line-height:1.6}
+        a{color:var(--c-accent2);text-decoration:none}
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>瑞迪智驱 (301596) — Serenity Mode 1 分析报告</h1>
+<p class="meta">分析日期：2026-07-05 | 数据截止：2026-07-03（周五收盘） | 创业板</p>
+
+<div class="verdict watch">
+    🟡 Watch / 谐波减速机真玩家但分量太小 / 等利润质量改善<br>
+    <span style="font-size:clamp(13px,2.5vw,14px);font-weight:500;display:block;margin-top:4px;">
+        谐波减速机是机器人关节的核心卡点——绿的谐波靠它值380亿。但瑞迪智驱谐波营收仅5,454万（占8.44%），主业仍是电磁制动器。65.8x PE + 扣非净利连降两期（-5%→-18%），69亿市值已大幅提前定价了谐波放量的乐观预期。
+    </span>
+</div>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:34%">Serenity 卡点质量</th><td><span class="strong">7.0 / 15</span>（中偏弱卡点——真在做谐波但分量小，不是龙头）</td></tr>
+        <tr><th>客观空间</th><td>Bear 35-45亿 / Base 50-65亿 / Bull 80-110亿</td></tr>
+        <tr><th>当前市值</th><td><span class="strong">69.11亿</span>（63.97元，7/3涨停+20%，龙虎榜）</td></tr>
+        <tr><th>PE(TTM) / 扣非PE</th><td>65.81x / ≈77.3x（扣非：69.11亿÷8,938万）</td></tr>
+        <tr><th>PB</th><td>7.72x</td></tr>
+        <tr><th>ROE（2025）</th><td>12.2%</td></tr>
+        <tr><th>资产负债率</th><td>24.86%（2025Q3）</td></tr>
+        <tr><th>总股本 / 流通市值</th><td>1.0803亿（10转4后） / 约29亿</td></tr>
+    </table>
+    </div>
+</div>
+
+<h2>L0 — 客观事实底座</h2>
+
+<div class="card">
+    <h3>公司概况</h3>
+    <p>成都瑞迪智驱科技股份有限公司，创立于2009年（技术源于1996年成立的瑞迪实业），2024年5月13日登陆创业板。国家级专精特新"小巨人"企业。<span class="strong">"传动+制动"双轮驱动：</span></p>
+    <ul style="margin:6px 0 0 18px;font-size:clamp(13px,2.5vw,14px)">
+        <li><strong>电磁制动器</strong>：收入3.48亿（占53.89%），毛利率32.45%。核心客户包括汇川技术、埃斯顿、日立/奥的斯/东芝电梯。全球市占7%，电梯领域市占18%。伺服制动器"薄12%但承载3倍扭矩"</li>
+        <li><strong>精密传动件</strong>：收入2.01亿（占31.03%），以OEM/ODM为主，产品覆盖胀套、联轴器、同步轮</li>
+        <li><strong>谐波减速机</strong>：收入5,454万（占8.44%），YoY +59.27%，毛利率38.92%。寿命10,000小时（行业均值6,000）。客户：中科新松（独供）、钛虎机器人（独供）、宇树科技（送样）。与越疆科技、珞石智能、魔法原子、星动纪元建立合作。产能2万套→12万套（2026年），满产满销</li>
+    </ul>
+    <p style="margin-top:8px"><span class="strong">新布局：</span>行星滚柱丝杠（人形机器人线性关节核心传动件）计划2026年量产，良率目标80%+。EMB电子机械制动切入智能底盘领域。</p>
+</div>
+
+<div class="card">
+    <h3>财务快照</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>指标</th><th>2023</th><th>2024</th><th>2025</th></tr>
+        <tr><td>营收（亿）</td><td>5.85</td><td>6.16</td><td>6.46</td></tr>
+        <tr><td>营收YoY</td><td>—</td><td>+5.3%</td><td>+4.91%</td></tr>
+        <tr><td>归母净利润（万）</td><td>9,100</td><td>10,100</td><td>10,500</td></tr>
+        <tr><td>归母YoY</td><td>—</td><td>+11%</td><td>+4.01%</td></tr>
+        <tr><td>扣非净利润（万）</td><td>—</td><td>9,408</td><td>8,938</td></tr>
+        <tr><td>扣非YoY</td><td>—</td><td>—</td><td><span class="tag tag-r">-5.00%</span></td></tr>
+        <tr><td>毛利率</td><td>32.88%</td><td>31.74%</td><td>30.62%</td></tr>
+        <tr><td>净利率</td><td>~15.5%</td><td>16.4%</td><td>16.88%</td></tr>
+        <tr><td>ROE</td><td>22.49%</td><td>12.15%</td><td>12.2%</td></tr>
+        <tr><td>ROIC</td><td>~24%</td><td>14.75%</td><td>11.94%</td></tr>
+        <tr><td>经营现金流（万）</td><td>—</td><td>8,804</td><td>9,475</td></tr>
+    </table>
+    </div>
+    <p class="fn"><span class="strong">关键解读：</span>2025年扣非净利-5%，2026Q1扣非增速进一步恶化至-18.44%——主业（电磁制动器+传动件）面临毛利率持续下滑（33%→30.6%）和费用增长压力。谐波减速机增速虽快（+59%），但基数太小（5,454万），短期内难以对冲主业疲态。ROIC从24%→11.94%是IPO股本扩张+盈利能力下降的双重结果。</p>
+</div>
+
+<div class="card">
+    <h3>资产负债表要点</h3>
+    <div class="grid2">
+        <div>
+            <span class="tag tag-g" style="margin-bottom:6px">加分项</span>
+            <div class="risk-item"><span class="strong">零有息负债</span>，资产负债率24.86%（A股极低梯队）</div>
+            <div class="risk-item">现金+理财 <span class="strong">5.14亿</span>（2025Q3），财务安全垫极厚</div>
+            <div class="risk-item">经营现金流9,475万，覆盖净利90%</div>
+            <div class="risk-item">谐波减速机毛利率38.92%，<span class="strong">高于绿的谐波</span>，产品定位高端</div>
+            <div class="risk-item">客户复购率96%+，电磁制动器护城河稳固</div>
+            <div class="risk-item">2026年股票激励计划，绑定核心团队</div>
+        </div>
+        <div>
+            <span class="tag tag-r" style="margin-bottom:6px">减分项</span>
+            <div class="risk-item"><span class="strong">扣非连降两期</span>：2025 -5%、2026Q1 -18.44%</div>
+            <div class="risk-item"><span class="strong">应收账款/利润=174%</span>（2.94亿应收），回款质量差</div>
+            <div class="risk-item">存货1.55亿，周转天数360天（行业均值100天）</div>
+            <div class="risk-item">毛利率连续三年下滑（32.88%→31.74%→30.62%）</div>
+            <div class="risk-item">ROIC从24%降至11.94%，资本回报效率持续走低</div>
+            <div class="risk-item">营运资本/营收从0.41升至0.48，资金占用效率下降</div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>关键事件</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><td style="width:140px">2026-07-03</td><td><span class="tag tag-r">20%涨停</span> + 异常波动公告。3日涨幅偏离值累计超30%。龙虎榜净买入1.07亿（深股通5,862万+机构4,997万买入）</td></tr>
+        <tr><td>2026-06-29</td><td>互动易：确认谐波减速机用于工业/协作/人形机器人，参加AUTOMATE 2026国际展会</td></tr>
+        <tr><td>2026-06-04</td><td>权益分派：10派2元+10转4股（转增后总股本1.0803亿）</td></tr>
+        <tr><td>2026-05-08</td><td>2026年限制性股票激励计划授予，绑定核心团队</td></tr>
+        <tr><td>2026-04-30</td><td>业绩说明会：谐波减速机前两大客户为中科新松和钛虎机器人（均为独供）</td></tr>
+        <tr><td>2026-04-23</td><td>2025年报：扣非净利-5%，谐波减速机+59%但基数小</td></tr>
+        <tr><td>2026Q1</td><td><span class="tag tag-r">增收不增利</span>：营收+14.45%、归母-13.86%、扣非-18.44%</td></tr>
+    </table>
+    </div>
+</div>
+
+<h2>Serenity 框架 — 卡点十五判</h2>
+
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:8%">#</th><th style="width:28%">判据</th><th style="width:8%">判定</th><th>说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td><span class="tag tag-b">+0</span></td><td>谐波减速机绿的谐波占60%+市占，瑞迪是第三梯队</td></tr>
+        <tr><td>2</td><td>小市值 vs 大TAM</td><td><span class="tag tag-y">△ +0.5</span></td><td>69亿市值vs2030年267亿谐波市场，有空间但不是最小</td></tr>
+        <tr><td>3</td><td>designed-in</td><td><span class="tag tag-g">✅ +1</span></td><td>中科新松+钛虎独供，越疆/珞石/魔法原子已合作，产品已嵌入</td></tr>
+        <tr><td>4</td><td>多客户toll booth</td><td><span class="tag tag-g">✅ +0.5</span></td><td>电磁制动器复购率96%+，汇川/埃斯顿/日立等稳定客户群</td></tr>
+        <tr><td>5</td><td>认证/资格周期长</td><td><span class="tag tag-y">△ +0.5</span></td><td>谐波减速机认证周期6-12个月，有一定壁垒</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td><span class="tag tag-y">△ +0.5</span></td><td>谐波2万→12万套（2026）+行星滚柱丝杠2026量产=期权</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td><span class="tag tag-g">✅ +1</span></td><td>零负债+5亿现金，能撑任何业务爬坡期</td></tr>
+        <tr><td>8</td><td>Demand >> Supply</td><td><span class="tag tag-y">△ +0.5</span></td><td>谐波满产满销，"产能紧张到倒班生产"</td></tr>
+        <tr><td>9</td><td>大客户全包产能</td><td><span class="tag tag-b">+0</span></td><td>不适用</td></tr>
+        <tr><td>10</td><td>国家安全/政府介入</td><td><span class="tag tag-b">+0</span></td><td>谐波减速机有国产替代属性但非国家安全级</td></tr>
+        <tr><td>11</td><td>Made in America</td><td><span class="tag tag-b">+0</span></td><td>不适用</td></tr>
+        <tr><td>12</td><td>信息不对称</td><td><span class="tag tag-y">△ +0.5</span></td><td>谐波真实产能/特斯拉验证进度未公开，存在信息差</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td><span class="tag tag-y">△ +0.5</span></td><td>能做高端谐波减速机的国内企业≤5家，但竞争格局不如绿的集中</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td><span class="tag tag-y">△ +0.5</span></td><td>电磁制动器存量替换+新客户开发=稳定底盘</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td><span class="tag tag-y">△ +0.5</span></td><td>谐波减速机国产化率<30%，进口替代空间大但绿的已占主导</td></tr>
+    </table>
+    </div>
+    <div class="score-wrap" style="margin-top:16px">
+        <span class="strong" style="font-size:clamp(14px,2.8vw,16px);white-space:nowrap">卡点质量：7.0 / 15</span>
+        <div class="score-bar"><div class="score-fill mid" style="width:47%"></div></div>
+        <span class="strong" style="color:var(--c-yellow);white-space:nowrap">中偏弱</span>
+    </div>
+    <p style="margin-top:8px;font-size:clamp(13px,2.5vw,14px);color:var(--c-text2)">
+        瑞迪智驱的卡点质量高于万达轴承（5.5），低于贝斯特（7.5）和华辰装备（10.5）。<strong>谐波减速机是真卡点</strong>——单台人形机器人需6-14套——但瑞迪在该赛道的份额和产能体量与绿的谐波（60%+市占、160万台产能目标）差距悬殊。当前估值中"谐波减速机"的故事权重大，但财务上仅8.44%的收入占比。
+    </p>
+</div>
+
+<div class="card">
+    <h3>红旗扫描</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>红旗</th><th>状态</th><th>说明</th></tr>
+        <tr><td>无限ATM/增发稀释</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>单一客户集中</td><td><span class="tag tag-g">✅ 未触发</span></td><td>前五大客户占比合理，客户结构分散</td></tr>
+        <tr><td>资产负债表toxic</td><td><span class="tag tag-g">✅ 未触发</span></td><td>零负债+5亿现金，极强</td></tr>
+        <tr><td>零收入纯炒作</td><td><span class="tag tag-g">✅ 未触发</span></td><td>6.46亿真实营收</td></tr>
+        <tr><td>技术太远/2030+</td><td><span class="tag tag-g">✅ 未触发</span></td><td>谐波2025年已有放量</td></tr>
+        <tr><td>纯软件/SaaS</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>海外核心技术依赖</td><td><span class="tag tag-y">⚠️ 轻微</span></td><td>谐波减速机轴承仍外购，但非关键依赖</td></tr>
+        <tr><td>政策依赖(补助>30%)</td><td><span class="tag tag-g">✅ 未触发</span></td><td>非经常性损益以理财收益为主，非补贴驱动</td></tr>
+        <tr><td>大股东质押>50%</td><td><span class="tag tag-g">✅ 未触发</span></td><td></td></tr>
+        <tr><td>商誉过高</td><td><span class="tag tag-g">✅ 未触发</span></td><td>无商誉</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)"><span class="strong">需警惕的非红旗信号：</span>应收账款/利润=174%、存货周转360天、扣非两连降——这些不触发红旗但显著影响利润质量。20%涨停系连续3日累计涨幅超30%触发异常波动公告，机构+深股通7/3净买入是真金白银，但追涨停的散户需注意短期回调风险。</p>
+</div>
+
+<h2>估值分析</h2>
+
+<div class="card">
+    <h3>核心矛盾：69亿市值 vs 扣非8,938万 = 扣非PE 77.3x</h3>
+    <p style="font-size:clamp(14px,2.6vw,15px)">
+        瑞迪智驱2025年归母净利1.05亿。按69.11亿市值，PE(TTM)=65.8x。但扣非仅8,938万（-5%），按扣非算PE=77.3x。2026Q1扣非继续恶化至-18.44%，全年若扣非仅8,000万，forward PE将升至<strong>86x</strong>。
+    </p>
+    <p style="margin-top:10px;font-size:clamp(14px,2.6vw,15px)">
+        <strong>乐观推演（谐波故事定价）：</strong>假设2027年谐波收入2亿（从12万套满产），毛利率38%→毛利7,600万，叠加主业6.5亿收入×16%净利=1.04亿，合计净利约1.5-1.6亿。对应69亿市值PE=43-46x——对于一个ROE 12%的制造业公司，这个PE仍不便宜。
+    </p>
+    <p style="margin-top:10px;font-size:clamp(14px,2.6vw,15px)">
+        <strong>悲观推演（主业估值）：</strong>剔除谐波概念，电磁制动器+传动件6亿营收×16%净利≈9,600万净利。制造业合理PE 18-22x，仅值<strong>17-21亿</strong>。即：69亿中有约50亿是为谐波减速机+行星滚柱丝杠支付的"期权溢价"。
+    </p>
+</div>
+
+<div class="card">
+    <h3>三维空间</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>情景</th><th>市值(亿)</th><th>股价(元)</th><th>隐含PE(扣非)</th><th>触发条件</th></tr>
+        <tr><td style="color:#e74c3c;font-weight:700">Bear</td><td>35-45</td><td>32-42</td><td>39-50x</td><td>谐波放量不及预期 + 收入增速<10% + 机器人板块情绪退潮</td></tr>
+        <tr><td style="color:#f39c12;font-weight:700">Base</td><td>50-65</td><td>46-60</td><td>56-73x</td><td>谐波按计划爬坡至12万套 + 扣非回到9,000万+ + 机器人概念温和</td></tr>
+        <tr><td style="color:#27ae60;font-weight:700">Bull</td><td>80-110</td><td>74-102</td><td>90-123x</td><td>特斯拉Optimus正式定点 + 谐波收入突破1.5亿 + 行星滚柱丝杠量产 + 行业爆发</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px;font-size:clamp(13px,2.5vw,14px)">
+        <span class="strong">当前69.11亿处于Base偏上沿。</span>向下有37-49%空间（Bear），向上有16-59%（Bull）。Bull情景需要特斯拉定点+行星滚柱丝杠量产同时兑现——目前均为未证实的预期。
+    </p>
+</div>
+
+<div class="card">
+    <h3>行业对比</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>公司</th><th>代码</th><th>市值(亿)</th><th>PE</th><th>谐波收入占比</th><th>扣非趋势</th><th>卡点评分</th></tr>
+        <tr><td>绿的谐波</td><td>688017</td><td>~380</td><td>~110x</td><td>~78%</td><td>+121%</td><td style="color:#27ae60;font-weight:700">12+/15</td></tr>
+        <tr><td style="font-weight:700">瑞迪智驱</td><td>301596</td><td>69.11</td><td>65.8x</td><td>8.44%</td><td style="color:#e74c3c">-5%→-18%</td><td>7.0/15</td></tr>
+        <tr><td>昊志机电</td><td>300503</td><td>~183</td><td>~46x</td><td>1.25%</td><td>+44%(全口径)</td><td>—</td></tr>
+        <tr><td>华辰装备</td><td>300809</td><td>76.8</td><td>~38x</td><td>丝杠磨床(非谐波)</td><td>—</td><td style="color:#27ae60;font-weight:700">10.5/15</td></tr>
+    </table>
+    </div>
+    <p class="fn">绿的谐波：谐波减机绝对龙头，市占率60%+，特斯拉北美产线供入。瑞迪智驱：谐波占比仅8.44%，但PE接近绿的的60%——市场给了远超其份额的溢价。华辰装备同为机器人赛道卡点，PE 38x+扣非241x极具分化，但垄断性更强。</p>
+</div>
+
+<h2>催化剂与验证窗口</h2>
+<div class="card">
+    <div class="tbl-wrap">
+    <table>
+        <tr><th style="width:30%">时间窗口</th><th>事件</th><th>影响方向</th></tr>
+        <tr><td>2026-07-03</td><td>异常波动公告：公司自查，无需更正或补充</td><td><span class="tag tag-gray">中性</span></td></tr>
+        <tr><td>2026-08-26</td><td>2026半年报预约披露</td><td><span class="tag tag-y">关键</span> 谐波收入是否突破4000万？扣非拐点？</td></tr>
+        <tr><td>2026H2</td><td>特斯拉Optimus谐波减速机验证结果</td><td><span class="tag tag-y">观察</span> 大变量——若定点将彻底重塑估值</td></tr>
+        <tr><td>2026H2</td><td>行星滚柱丝杠量产进度（良率目标80%+）</td><td><span class="tag tag-y">观察</span> 第二条曲线能否兑现</td></tr>
+    </table>
+    </div>
+</div>
+
+<h2>综合判定</h2>
+<div class="card">
+    <h3>客观框架空间</h3>
+    <div class="grid2">
+        <div>
+            <span class="strong">Bear（35-45亿 / 32-42元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">谐波产能爬坡不及预期 + 扣非继续下滑 + 机器人概念退潮。估值压缩至扣非PE 39-50x。较当前<span style="color:#e74c3c" class="strong">-37%~-49%</span></p>
+        </div>
+        <div>
+            <span class="strong">Base（50-65亿 / 46-60元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">谐波12万套满产满销 + 扣非稳定9,000万+ + 概念温和。较当前<span style="color:var(--c-text2)">-6%~-28%</span>。当前69亿已超出Base上沿</p>
+        </div>
+        <div>
+            <span class="strong">Bull（80-110亿 / 74-102元）</span>
+            <p style="font-size:clamp(13px,2.5vw,14px);margin-top:4px">特斯拉定点+行星滚柱丝杠量产+谐波收入破1.5亿。上行<span style="color:#27ae60" class="strong">+16%~+59%</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Serenity 视角一句</h3>
+    <p style="font-size:clamp(15px,3vw,18px);font-weight:700;color:var(--c-accent2)">
+        "谐波减速机是A股机器人赛道最纯正的卡点之一——绿的谐波用380亿市值证明了这一点。但瑞迪智驱只有8.44%的收入来自谐波，扣非利润还在下滑。69亿市值中有约50亿是为'谐波+行滚'期权买单——而这两个期权的兑现窗口最早在2027年。机构7月3日净买1亿是真金白银下注，但散户追20%涨停进场，安全边际为零。"
+    </p>
+    <p style="margin-top:16px;font-size:clamp(14px,2.6vw,15px)">
+        <span class="strong">Serenity判定：🟡 Watch / 等谐波收入占比突破15%+扣非转正</span> — 谐波减速机是真卡点方向，瑞迪智驱是真在做的玩家（非纯概念）。但当前估值已大幅提前定价了乐观预期。50亿以下（PE<45x扣非）进入有安全边际的观察区间。8月26日半年报是第一个验证窗口。
+    </p>
+</div>
+
+<div class="card">
+    <h3>核心风险摘要</h3>
+    <div class="risk-item"><span class="strong">1. 谐波占比太小</span> — 8.44%的收入，即使翻倍也仅1亿。69亿市值对1亿谐波收入给予的平台溢价极高。绿的谐波市占率60%+是瑞迪的7倍以上。</div>
+    <div class="risk-item"><span class="strong">2. 扣非两连降</span> — 2025年-5%、2026Q1-18.44%。增收不增利的趋势若延续，即使谐波放量，整体盈利改善幅度有限。</div>
+    <div class="risk-item"><span class="strong">3. 应收账款隐患</span> — 应收/利润=174%，存货周转360天。若下游客户付款周期拉长或出现坏账，利润将受一次性冲击。</div>
+    <div class="risk-item"><span class="strong">4. 特斯拉验证不确定性</span> — 样品送测≠定点。绿的谐波已供入特斯拉北美产线，瑞迪能分到多大蛋糕完全未知。此前雪球讨论中"三花独家订单"已被公司辟谣。</div>
+    <div class="risk-item"><span class="strong">5. 毛利率趋势下行</span> — 连续三年下降（32.88%→30.62%），虽然谐波减速机毛利率38.92%是亮点，但权重太小不足以逆转整体趋势。</div>
+</div>
+
+<hr class="divider">
+
+<div class="card">
+    <h3>与近期分析标的横向对比</h3>
+    <div class="tbl-wrap">
+    <table>
+        <tr><th>标的</th><th>代码</th><th>卡点评分</th><th>Serenity判定</th><th>核心逻辑</th></tr>
+        <tr><td style="font-weight:700">华辰装备</td><td>300809</td><td style="color:#27ae60;font-weight:700">10.5/15</td><td>🟡 Watch</td><td>三重卡点（轧辊垄断+丝杠全球独家+半导体期权），扣非241x太贵等回调</td></tr>
+        <tr><td>贝斯特</td><td>300580</td><td>7.5/15</td><td>🟡 Watch</td><td>C0级丝杠突破+宇树/智元/特斯拉绑定，130亿已price-in</td></tr>
+        <tr><td><span style="font-weight:700">瑞迪智驱</span></td><td>301596</td><td>7.0/15</td><td>🟡 Watch</td><td>谐波真玩家但占比8.44%太小，扣非两连降，77x扣非PE等利润验证</td></tr>
+        <tr><td>万达轴承</td><td>920002</td><td>5.5/15</td><td>🟡 Watch</td><td>叉车轴承龙头+机器人故事，但扣非PE 76x+扣非增长0.7%严重不匹配</td></tr>
+        <tr><td>迈赫股份</td><td>301199</td><td style="color:#e74c3c">3/15</td><td>🔴 Sell</td><td>"机器人"名字溢价，汽车焊装集成商，22%毛利率被46x PE定价</td></tr>
+    </table>
+    </div>
+</div>
+
+<hr class="divider">
+
+<p class="disclaimer">
+    <span class="strong">免责声明：</span>本报告基于公开信息，采用Serenity Mode 1分析框架，仅供参考，不构成投资建议。投资有风险，入市需谨慎。<br>
+    数据来源：2025年报、2026Q1季报、东方财富、同花顺、新浪财经、投资者关系记录、龙虎榜数据。标注"已证实"为财报/官方公告数据，"管理层声称"为业绩说明会/互动易表述，"纯推测"为框架推论。
+</p>
+</div>
+</body>
+</html>
