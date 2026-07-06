@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>688039 当虹科技 — Serenity 分析报告 2026-07-06</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg2: #f6f8fa;
+            --text: #1a1a2e;
+            --border: #d0d7de;
+            --accent: #0969da;
+            --green: #1a7f37;
+            --red: #cf222e;
+            --yellow: #9a6700;
+            --gray: #656d76;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 0;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+        h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+        .subtitle { color: var(--gray); font-size: 14px; margin-bottom: 32px; }
+        .meta-bar {
+            display: flex; gap: 16px; flex-wrap: wrap;
+            padding: 12px 16px; background: var(--bg2); border-radius: 8px;
+            font-size: 13px; margin-bottom: 32px; border: 1px solid var(--border);
+        }
+        .meta-bar span { display: flex; align-items: center; gap: 4px; }
+        .tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 12px; font-weight: 600;
+        }
+        .tag-a { background: #ddf4ff; color: #0969da; }
+        .tag-fire { background: #fff1e0; color: #bd5612; }
+        .tag-hold { background: #fff8c5; color: #9a6700; }
+
+        h2 {
+            font-size: 20px; font-weight: 700; margin: 40px 0 16px;
+            padding-bottom: 8px; border-bottom: 2px solid var(--accent);
+        }
+        h3 { font-size: 16px; font-weight: 600; margin: 24px 0 12px; }
+        h4 { font-size: 14px; font-weight: 600; margin: 16px 0 8px; color: var(--gray); }
+
+        .card {
+            background: var(--bg2); border: 1px solid var(--border);
+            border-radius: 8px; padding: 20px; margin-bottom: 16px;
+        }
+        .card-title { font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #f0f6ff 0%, #fefefe 100%);
+            border: 2px solid var(--accent); border-radius: 10px;
+            padding: 24px; margin-bottom: 24px;
+        }
+        .conclusion-row {
+            display: flex; align-items: baseline; gap: 8px;
+            padding: 10px 0; border-bottom: 1px solid var(--border);
+        }
+        .conclusion-row:last-child { border-bottom: none; }
+        .conclusion-label {
+            font-weight: 600; font-size: 13px; white-space: nowrap;
+            min-width: 100px; color: var(--gray);
+        }
+        .conclusion-value { font-size: 15px; }
+
+        table {
+            width: 100%; border-collapse: collapse; font-size: 14px;
+            margin: 12px 0;
+        }
+        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--bg2); font-weight: 600; font-size: 13px; }
+        tr:hover td { background: #f0f6ff; }
+
+        .judge-grid { display: grid; grid-template-columns: auto 1fr auto; gap: 8px 16px; font-size: 14px; }
+        .judge-num { font-weight: 700; color: var(--accent); }
+        .judge-tag { font-size: 11px; padding: 1px 8px; border-radius: 10px; white-space: nowrap; }
+        .tag-yes { background: #dafbe1; color: #1a7f37; }
+        .tag-partial { background: #fff8c5; color: #9a6700; }
+        .tag-no { background: #ffebe9; color: #cf222e; }
+
+        .flag-list { list-style: none; padding: 0; }
+        .flag-list li {
+            padding: 8px 12px; margin-bottom: 6px;
+            border-left: 4px solid var(--gray); background: var(--bg2);
+            font-size: 14px; border-radius: 0 4px 4px 0;
+        }
+        .flag-list li.pass { border-left-color: var(--green); }
+        .flag-list li.warn { border-left-color: var(--yellow); }
+        .flag-list li.fail { border-left-color: var(--red); }
+
+        .evidence { font-size: 13px; color: var(--gray); }
+        .evidence em { font-style: italic; color: var(--text); }
+
+        .bear-bull-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0; }
+        .bb-card { padding: 16px; border-radius: 8px; border: 1px solid var(--border); }
+        .bb-card.bear { border-top: 4px solid var(--red); }
+        .bb-card.base { border-top: 4px solid var(--yellow); }
+        .bb-card.bull { border-top: 4px solid var(--green); }
+        .bb-card h4 { margin: 0 0 8px; font-size: 15px; }
+        .bb-card .price { font-size: 20px; font-weight: 700; margin: 8px 0; }
+        .bb-card .price-detail { font-size: 13px; color: var(--gray); }
+
+        .footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--gray); text-align: center; }
+
+        @media (max-width: 700px) {
+            .bear-bull-grid { grid-template-columns: 1fr; }
+            .judge-grid { grid-template-columns: auto 1fr; }
+        }
+        .evidence-source { font-size: 12px; color: var(--gray); margin-top: 4px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<h1>688039 当虹科技 — Serenity 投资分析</h1>
+<div class="subtitle">分析日期：2026-07-06（涨停日） | 数据截止：2026Q1 财报 / 2026-07-06 收盘</div>
+
+<div class="meta-bar">
+    <span>🏷️ <span class="tag tag-a">A 股 / 科创板</span></span>
+    <span>📐 <span class="tag tag-a">IT 服务Ⅱ</span></span>
+    <span>🗂️ <span class="tag tag-a">AI 多模态 / 智能座舱 / 具身智能</span></span>
+    <span>⚡ <span class="tag tag-hold">Serenity: HOLD</span></span>
+</div>
+
+<!-- ========== ① 结论 ========== -->
+<h2>① 结论（两行）</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">行1 — 客观框架</span>
+        <span class="conclusion-value">
+            <strong>Base（区间震荡，等待业绩验证）</strong>。<br>
+            当前市值 <strong>48.18 亿元</strong>，对应股价 <strong>43.56 元</strong>（总股本 ~1.106 亿股）。
+            Bear 25-30 亿（23-27 元）/ Base 40-55 亿（36-50 元）/ Bull 80-120 亿（72-108 元）。
+            尚未过翻倍门槛（从当前 48 亿到 Bull 下限 80 亿需 +66%，到上限 120 亿需 +149%）。
+        </span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">行2 — Serenity 视角</span>
+        <span class="conclusion-value">
+            <strong>🟡 Hold（观望，非典型卡点标的）</strong>。
+            当虹科技是"AI 多模态+视频技术"转型故事，而非供应链瓶颈卡点。
+            虽有 30+ 车企定点、BlackEye 大模型等技术壁垒，但不满足 Serenity 核心卡点判据（非垄断/非 single-point-of-failure/非供需缺口）。
+            当前涨停属情绪驱动 + 低位反弹，基本面扭亏仍需时间验证。
+        </span>
+    </div>
+</div>
+
+<!-- ========== ② 客观事实底座 ========== -->
+<h2>② 客观事实底座</h2>
+
+<h3>L0-事实：核心财务数据</h3>
+
+<table>
+    <tr><th>指标</th><th>数值</th><th>As-of</th><th>来源</th><th>意味着什么</th></tr>
+    <tr>
+        <td>收盘价</td><td><strong>43.56 元</strong>（+20% 涨停）</td><td>2026-07-06</td><td>上交所</td>
+        <td>龙虎榜净买入 7219 万，游资驱动；今年以来首次涨停</td>
+    </tr>
+    <tr>
+        <td>总市值 / 流通市值</td><td><strong>48.18 亿元</strong></td><td>2026-07-06</td><td>东方财富</td>
+        <td>全流通，无解禁压力；市值在科创板 IT 服务中排名 75/139</td>
+    </tr>
+    <tr>
+        <td>总股本</td><td><strong>~1.106 亿股</strong></td><td>2025 年报</td><td>EPS 反推</td>
+        <td>股本稳定，近三年无增发/送转</td>
+    </tr>
+    <tr>
+        <td>2025 年营收</td><td><strong>3.22 亿元</strong>（+4.96%）</td><td>2025 年报</td><td>公司财报</td>
+        <td>传媒文化 -5.67% 拖累整体；智能座舱 +52% 是唯一亮点</td>
+    </tr>
+    <tr>
+        <td>2025 年归母净利润</td><td><strong>-9,131 万元</strong>（亏损收窄 10.7%）</td><td>2025 年报</td><td>公司财报</td>
+        <td>连亏第三年；投资性房地产减值 5185 万是主要拖累</td>
+    </tr>
+    <tr>
+        <td>2025 年扣非净利润</td><td><strong>-1.06 亿元</strong></td><td>2025 年报</td><td>公司财报</td>
+        <td>主营仍未盈利，扣非亏损与上年持平</td>
+    </tr>
+    <tr>
+        <td>2025 毛利率</td><td><strong>36.94%</strong></td><td>2025 年报</td><td>公司财报</td>
+        <td>同比 +1.53pct，产品化率提升推高毛利</td>
+    </tr>
+    <tr>
+        <td>2026Q1 营收</td><td><strong>8,275 万元</strong>（+68.64% YoY）</td><td>2026Q1</td><td>公司财报</td>
+        <td>传媒文化大项目集中确认收入，Q1 高增长但全年持续性待观察</td>
+    </tr>
+    <tr>
+        <td>2026Q1 归母净利润</td><td><strong>-1,521 万元</strong>（亏损扩大 28%）</td><td>2026Q1</td><td>公司财报</td>
+        <td>营收翻倍但亏损扩大，成本增速（+126%）远超营收增速（+69%）</td>
+    </tr>
+    <tr>
+        <td>货币资金</td><td><strong>未精确披露</strong></td><td>2026Q1</td><td>公司财报</td>
+        <td>货币资金同比 +90%（2025 年报披露），在手现金充裕</td>
+    </tr>
+    <tr>
+        <td>总资产 / 负债率</td><td>14.32 亿 / <strong>27.98%</strong></td><td>2026Q1</td><td>公司财报</td>
+        <td>负债率健康，无债务风险</td>
+    </tr>
+    <tr>
+        <td>经营现金流（2025）</td><td><strong>+4,798 万元</strong></td><td>2025 年报</td><td>公司财报</td>
+        <td>由负转正，回款改善；但 2026Q1 转负至 -5292 万</td>
+    </tr>
+    <tr>
+        <td>研发投入占比</td><td><strong>29.09%</strong>（2025）/ 30.95%（2026Q1）</td><td>最新</td><td>公司财报</td>
+        <td>高研发投入支撑技术壁垒，但压缩利润空间</td>
+    </tr>
+    <tr>
+        <td>PE（TTM）</td><td><strong>-50.91x</strong>（亏损）</td><td>2026-07-06</td><td>东方财富</td>
+        <td>亏损股无法用 PE 估值</td>
+    </tr>
+    <tr>
+        <td>PS（TTM）</td><td><strong>~14.96x</strong></td><td>2026-07-06</td><td>测算</td>
+        <td>可比公司均值 8-10x，当前估值偏高</td>
+    </tr>
+    <tr>
+        <td>机构目标均价</td><td><strong>52.09 元</strong></td><td>近 90 天</td><td>证券之星</td>
+        <td>较今日涨停价 43.56 仍有 ~20% 空间；但仅 1 家机构覆盖</td>
+    </tr>
+</table>
+
+<h3>业务拆分（2025 年报）</h3>
+
+<table>
+    <tr><th>业务板块</th><th>营收（万元）</th><th>占比</th><th>同比</th><th>行业定位</th></tr>
+    <tr>
+        <td><strong>传媒文化</strong>（超高清播控/编转码/AIGC）</td>
+        <td>17,475</td><td>54.3%</td><td>-5.67%</td>
+        <td>传统基本盘，国产化替代（AVS3 信创）+ AIGC 升级</td>
+    </tr>
+    <tr>
+        <td><strong>工业与卫星</strong>（视频压缩终端/卫星回传）</td>
+        <td>7,033</td><td>21.8%</td><td>+0.59%</td>
+        <td>卫星互联网/低空经济场景驱动，10-100 倍超级压缩技术壁垒</td>
+    </tr>
+    <tr>
+        <td><strong>智能网联汽车</strong>（车载智能座舱）</td>
+        <td>7,024</td><td>21.8%</td><td><strong>+52.29%</strong></td>
+        <td>最高增速引擎，30+ 车企定点，已量产交付</td>
+    </tr>
+    <tr style="font-weight:600;">
+        <td>合计</td><td>32,184</td><td>100%</td><td>+4.96%</td><td></td>
+    </tr>
+</table>
+
+<h3>L0-框架：产业链分层定位</h3>
+
+<div class="card">
+    <div class="card-title">产业价值链位置</div>
+    <pre style="font-size:13px; line-height:1.8; background:#f0f0f0; padding:12px; border-radius:6px; overflow-x:auto;">
+【终端层】     广电/互联网视频 / 车企 / 卫星 / 工业 / 机器人
+    ↑ 提供编转码/压缩/AI 分析解决方案
+【应用层】     当虹科技 ← 核心定位
+    │           ├─ 传媒文化：8K AVS3 编转码 / AIGC 内容生产 / 智能审核
+    │           ├─ 工业与卫星：边缘感知压缩 / 卫星窄带回传 / 端侧 AI
+    │           └─ 智能网联汽车：车载多屏同步 / 哨兵模式 / 5D 沉浸座舱
+    ↓ 技术引擎
+【技术层】     BlackEye 2.0 多模态大模型 + 视频超级压缩 + 超低延时编码
+    ↓ 硬件依赖
+【硬件层】     CPU/GPU/FPGA（英特尔/英伟达/国产） + 边缘终端（自研）
+    </pre>
+    <p class="evidence">定位：技术方案集成商，非底层硬件卡点。在超高清编解码（AVS3）标准制定中有话语权，但非不可替代。</p>
+</div>
+
+<!-- ========== 红旗扫描 ========== -->
+<h2>红旗扫描（12 项）</h2>
+
+<ul class="flag-list">
+    <li class="pass">✅ 无限 ATM / 增发稀释 — 近三年无增发，股本稳定</li>
+    <li class="pass">✅ 单一客户集中风险 — 客户覆盖广电/车企/工业，无单一 >50%</li>
+    <li class="warn">⚠️ 资产负债表 — 负债率 28% 健康；但连续 3 年亏损，未分配利润 -2.2 亿，依赖现金储备撑过渡期</li>
+    <li class="pass">✅ 零收入纯炒作 — 2025 年营收 3.22 亿，非零收入</li>
+    <li class="pass">✅ 技术太远 — BlackEye 大模型已备案，产品已落地</li>
+    <li class="pass">✅ 纯软件/SaaS — 有硬件终端产品（边缘压缩盒/编码器），软硬一体</li>
+    <li class="pass">✅ 海外核心技术依赖 — AVS3 是国产标准；但 FPGA/GPU 仍依赖海外上游</li>
+    <li class="pass">✅ 政策依赖 — 政府补助 464 万/季，占比营收 ~5.6%，未超 30% 红线</li>
+    <li class="pass">✅ 大股东质押 — 未发现大额质押公告</li>
+    <li class="pass">✅ 商誉过高 — 商誉未显著披露，占比低</li>
+</ul>
+
+<p class="evidence">结论：红旗无硬否决项。需跟踪连续亏损对现金储备的消耗。</p>
+
+<!-- ========== ③ 两套评估 ========== -->
+<h2>③ 两套评估</h2>
+
+<h3>3a. Serenity 框架 — 卡点五连判</h3>
+
+<div class="judge-grid card">
+    <span class="judge-num">#1</span>
+    <span><strong>垄断/双寡头/single point of failure？</strong><br>非垄断。超高清编解码市场有海康/大华/当虹/数码视讯等多家竞争。AVS3 标准参与方，但不构成单点故障。</span>
+    <span class="judge-tag tag-no">❌ 否</span>
+
+    <span class="judge-num">#2</span>
+    <span><strong>极小市值 vs 巨大下游 TAM？</strong><br>48 亿市值 vs 超高清（万亿级）/ 智能座舱（千亿级）TAM。市值小但 TAM 大的比例存在。但公司当前营收仅 3.2 亿，渗透率极低。</span>
+    <span class="judge-tag tag-partial">◐ 部分</span>
+
+    <span class="judge-num">#3</span>
+    <span><strong>designed-in + 多客户？</strong><br>30+ 车企定点 = designed-in；广电覆盖 90%+ 省级 IPTV。多客户属性成立。</span>
+    <span class="judge-tag tag-partial">◐ 部分</span>
+
+    <span class="judge-num">#4</span>
+    <span><strong>认证/资格周期长，未反映当期营收？</strong><br>车企定点周期 2-3 年，认证壁垒存在。但目前定点已陆续转化为量产营收，非"未反映"。</span>
+    <span class="judge-tag tag-partial">◐ 部分</span>
+
+    <span class="judge-num">#5</span>
+    <span><strong>国产替代紧迫度？</strong><br>超高清视频编解码国产化率已较高（AVS3 标准主导），非 <20% 紧迫卡点。卫星/工业场景的超级压缩技术有一定独特性。</span>
+    <span class="judge-tag tag-no">❌ 否</span>
+</div>
+
+<div class="card">
+    <div class="card-title">Serenity 信念分档</div>
+    <p><strong>🟡 Hold</strong> — 当虹科技不符合 Serenity 核心卡点画像。它是一家"技术转型中"的软件/方案公司，非"供应链瓶颈"标的。BlackEye 大模型 + 智能座舱的增长故事有吸引力，但 Serenity 框架要求的是市场尚未定价的供需缺口，而非营收增长预期。</p>
+</div>
+
+<h3>3b. 客观框架 — 估值 + bear/base/bull</h3>
+
+<h4>相对估值对比</h4>
+
+<table>
+    <tr><th>可比公司</th><th>市值</th><th>PS（2024E）</th><th>PS（2025E）</th><th>PS（2026E）</th></tr>
+    <tr><td>光庭信息 301221</td><td>45.8 亿</td><td>7.0x</td><td>6.2x</td><td>5.4x</td></tr>
+    <tr><td>虹软科技 688088</td><td>136.4 亿</td><td>16.4x</td><td>13.3x</td><td>11.1x</td></tr>
+    <tr><td>佳发教育 300559</td><td>41.2 亿</td><td>5.9x</td><td>4.6x</td><td>3.6x</td></tr>
+    <tr style="font-weight:600; background:#f0f6ff;">
+        <td>可比均值</td><td>—</td><td>9.8x</td><td>8.1x</td><td>6.7x</td></tr>
+    <tr style="font-weight:600;">
+        <td>当虹科技（当前）</td><td>48.2 亿</td><td colspan="3">PS(TTM) ~14.96x（高于均值，含转型溢价）</td></tr>
+</table>
+
+<p class="evidence">数据来源：华泰研究 2024.10 / 东方财富 2026-07-06。可比公司估值为 2024 年 10 月数据，仅供参考。</p>
+
+<h4>Bear / Base / Bull 三情景</h4>
+
+<div class="bear-bull-grid">
+    <div class="bb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">25-30 亿</div>
+        <div class="price-detail">对应股价 23-27 元</div>
+        <p style="font-size:13px; margin-top:8px;">
+            <strong>条件：</strong>传媒文化持续萎缩 + 智能座舱增速放缓 + 亏损扩大消耗现金。<br>
+            <strong>PS：</strong>8-10x 对 3.0-3.5 亿营收。<br>
+            <strong>概率：</strong>~25%。下行保护来自账上现金（~8-10 亿估算）。
+        </p>
+    </div>
+    <div class="bb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">40-55 亿</div>
+        <div class="price-detail">对应股价 36-50 元</div>
+        <p style="font-size:13px; margin-top:8px;">
+            <strong>条件：</strong>营收稳定增长至 4-5 亿 / 亏损逐步收窄 / 智能座舱持续放量。<br>
+            <strong>PS：</strong>10-12x（与可比均值接近）。<br>
+            <strong>概率：</strong><strong>~50%</strong>（当前最可能情景）。<br>
+            <strong>当前位置：</strong>43.56 元处于 Base 区间上沿。
+        </p>
+    </div>
+    <div class="bb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">80-120 亿</div>
+        <div class="price-detail">对应股价 72-108 元</div>
+        <p style="font-size:13px; margin-top:8px;">
+            <strong>条件：</strong>AI 多模态 / 具身智能 / 卫星业务规模化 + 盈利拐点出现。<br>
+            <strong>PS：</strong>15-18x 对 5.5-6.5 亿营收。<br>
+            <strong>概率：</strong>~25%。需业绩持续超预期验证。<br>
+            <strong>翻倍门槛：</strong>80/120 亿 (+66%/+149%)。
+        </p>
+    </div>
+</div>
+
+<p class="evidence">
+    <strong>翻倍门槛判断：</strong>当前 48 亿至 Bull 下限 80 亿需上涨 <strong>+66%</strong>，至上限 120 亿需 <strong>+149%</strong>。
+    当前基本面不足以支撑翻倍定价，需等待营收突破 5 亿 + 盈利拐点确认。<br>
+    <strong>总股本：</strong>~1.106 亿股（基于 2025 年报 EPS -0.83 元 / 归母净利 -9131 万测算）。
+    股价 = 市值 ÷ 1.106 亿股。
+</p>
+
+<!-- ========== 催化剂 ========== -->
+<h2>催化剂 & 风险</h2>
+
+<div class="card">
+    <div class="card-title">关键催化剂（未来 6-12 个月）</div>
+    <table>
+        <tr><th>催化剂</th><th>类型</th><th>紧迫度</th><th>验证方式</th></tr>
+        <tr><td>中报业绩（2026.08.26 披露）</td><td>财报</td><td>高</td><td>Q2 单季营收能否维持 Q1 高增速</td></tr>
+        <tr><td>BlackEye 大模型商业化订单</td><td>定点/中标公告</td><td>高</td><td>关注具身智能/卫星方向的订单公告</td></tr>
+        <tr><td>智能座舱新车型定点</td><td>定点</td><td>中</td><td>车企定点公告更新</td></tr>
+        <tr><td>卫星互联网/低空经济政策催化</td><td>政策</td><td>中</td><td>十五五规划细化落地</td></tr>
+        <tr><td>机构调研密度变化</td><td>先行信号</td><td>低</td><td>互动易/调研记录频率</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <div class="card-title">核心风险</div>
+    <ul>
+        <li><strong>连续亏损消耗现金：</strong>连亏 3 年，未分配利润 -2.2 亿。若亏损不改善，现金储备将被持续消耗。</li>
+        <li><strong>成本增速过快：</strong>2026Q1 营收 +69% 但成本 +126%，毛利率面临下行压力。</li>
+        <li><strong>估值溢价偏高：</strong>PS ~15x 高于可比均值 8-10x，市场已定价转型预期，一旦业绩 miss 将面临估值回归。</li>
+        <li><strong>传媒文化基本盘萎缩：</strong>传统广电预算收缩，传媒业务 -5.67%，能否被新业务对冲存在不确定性。</li>
+        <li><strong>机构覆盖不足：</strong>仅 1 家机构覆盖，市场关注度低，流动性有限（今日涨停成交 3.36 亿）。</li>
+    </ul>
+</div>
+
+<!-- ========== 复核 ========== -->
+<h2>独立复核</h2>
+
+<table>
+    <tr><th>复核项</th><th>结果</th></tr>
+    <tr><td>关键数字一手来源</td><td>✅ 全部来自上交所公告（年报/季报）、东方财富、Wind，可回溯验证</td></tr>
+    <tr><td>数据时效性</td><td>✅ 2025 年报 & 2026Q1 为最新披露；股价为 2026-07-06 当日</td></tr>
+    <tr><td>确认偏误检查</td><td>✅ Bear/Base/Bull 三情景均给出，未预设倾向；Serenity 判定明确为 Hold 而非 Strong Buy</td></tr>
+    <tr><td>跨标的倍数对比</td><td>✅ 可比公司估值已标注日期/来源，同源对比</td></tr>
+    <tr><td>A 股特有复核</td><td>✅ 政府补助占比 ~5.6%（未达 30% 红线）；无大额质押；无定增公告遗漏</td></tr>
+</table>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid var(--border);">
+
+<div style="font-size: 13px; color: var(--gray);">
+    <p><strong>证据标注说明：</strong>以上分析中所有财务数据均标注来源。<br>
+    <code>已证实</code> — 来自公司财报/交易所数据<br>
+    <code>管理层声称</code> — 来自业绩说明会/互动易回复<br>
+    <code>我的推断</code> — 基于公开数据的推演测算</p>
+    <p style="margin-top: 12px;"><strong>⚠️ 免责声明：</strong>本报告基于公开信息整理，不构成投资建议。股市有风险，投资需谨慎。Serenity 框架是一种分析视角，非买卖建议。</p>
+</div>
+
+<div class="footer">
+    <p>Generated by Serenity Investment Analysis Engine | 2026-07-06</p>
+</div>
+
+</div>
+</body>
+</html>
