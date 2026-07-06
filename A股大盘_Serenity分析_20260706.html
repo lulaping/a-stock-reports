@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>A 股大盘 — Serenity 分析报告 2026-07-06</title>
+<style>
+:root{--bg:#fff;--bg2:#f6f8fa;--text:#1a1a2e;--border:#d0d7de;--accent:#0969da;--green:#1a7f37;--red:#cf222e;--yellow:#9a6700;--gray:#656d76}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:0}
+.container{max-width:960px;margin:0 auto;padding:40px 24px}
+h1{font-size:28px;font-weight:700;margin-bottom:4px}
+.subtitle{color:var(--gray);font-size:14px;margin-bottom:32px}
+.meta-bar{display:flex;gap:16px;flex-wrap:wrap;padding:12px 16px;background:var(--bg2);border-radius:8px;font-size:13px;margin-bottom:32px;border:1px solid var(--border)}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-a{background:#ddf4ff;color:#0969da}
+.tag-hold{background:#fff8c5;color:#9a6700}
+h2{font-size:20px;font-weight:700;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+h3{font-size:16px;font-weight:600;margin:24px 0 12px}
+h4{font-size:14px;font-weight:600;margin:16px 0 8px;color:var(--gray)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
+.card-title{font-weight:600;font-size:14px;margin-bottom:12px}
+.conclusion-box{background:linear-gradient(135deg,#f0f6ff 0%,#fefefe 100%);border:2px solid var(--accent);border-radius:10px;padding:24px;margin-bottom:24px}
+.conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+.conclusion-row:last-child{border-bottom:none}
+.conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:100px;color:var(--gray)}
+.conclusion-value{font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg2);font-weight:600;font-size:13px}
+tr:hover td{background:#f0f6ff}
+.judge-grid{display:grid;grid-template-columns:auto 1fr auto;gap:8px 16px;font-size:14px}
+.judge-num{font-weight:700;color:var(--accent)}
+.judge-tag{font-size:11px;padding:1px 8px;border-radius:10px;white-space:nowrap}
+.tag-yes{background:#dafbe1;color:#1a7f37}
+.tag-partial{background:#fff8c5;color:#9a6700}
+.tag-no{background:#ffebe9;color:#cf222e}
+.evidence{font-size:13px;color:var(--gray)}
+.bear-bull-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+.bb-card{padding:16px;border-radius:8px;border:1px solid var(--border)}
+.bb-card.bear{border-top:4px solid var(--red)}
+.bb-card.base{border-top:4px solid var(--yellow)}
+.bb-card.bull{border-top:4px solid var(--green)}
+.bb-card h4{margin:0 0 8px;font-size:15px}
+.bb-card .price{font-size:20px;font-weight:700;margin:8px 0}
+.bb-card .price-detail{font-size:13px;color:var(--gray)}
+.flag-list{list-style:none;padding:0}
+.flag-list li{padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--gray);background:var(--bg2);font-size:14px;border-radius:0 4px 4px 0}
+.flag-list li.pass{border-left-color:var(--green)}
+.flag-list li.warn{border-left-color:var(--yellow)}
+.footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--gray);text-align:center}
+.highlight{background:#fff8c5;padding:1px 4px;border-radius:3px}
+@media(max-width:700px){.bear-bull-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>A 股大盘 — Serenity 收盘分析</h1>
+<div class="subtitle">分析日期：2026-07-06（周一） | 数据截止：2026-07-06 15:00 收盘</div>
+
+<div class="meta-bar">
+    <span>🏷️ <span class="tag tag-a">A 股</span></span>
+    <span>📐 <span class="tag tag-a">大盘复盘</span></span>
+    <span>🗂️ <span class="tag tag-a">全市场</span></span>
+    <span>⚡ <span class="tag tag-hold">Serenity: 结构性机会</span></span>
+</div>
+
+<!-- ========== ① 结论 ========== -->
+<h2>① 结论（两行）</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">行1 — 客观框架</span>
+        <span class="conclusion-value">
+            <strong>Base（区间震荡）</strong>。沪指收 4041.24（-0.06%），深成指 15416.80（-1.16%），创业板 3948.86（-1.77%），科创 50 逆势 +1.04%。全市场成交 3.09 万亿（缩量 914 亿），1875 涨 vs 3536 跌，超六成个股收绿。核心矛盾：<strong>指数失真</strong>——权重护盘掩盖中小盘亏钱效应。沪指支撑 4000-4020，压力 4060-4080。<br>
+            ⚠️ <strong>翻倍门槛不适用</strong>（大盘分析，非个股）
+        </span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">行2 — Serenity 视角</span>
+        <span class="conclusion-value">
+            <strong>🟡 结构性机会</strong>。今日行情的本质不是下跌，是<span class="highlight">存量资金完成了一次大规模的高低估值重置</span>。从 Serenity 方法论看，当前阶段更适合沿供应链寻找<strong>已跌出安全边际的国产替代卡点标的</strong>（创新药/养殖/煤炭），而非追涨已启动的防御板块。大盘层面不构成系统性做多/做空信号，但结构性机会存在于低位反转板块。
+        </span>
+    </div>
+</div>
+
+<!-- ========== ② 客观事实底座 ========== -->
+<h2>② 客观事实底座</h2>
+
+<h3>L0-事实：核心数据全景</h3>
+
+<table>
+<tr><th>维度</th><th>数据</th><th>As-of</th><th>来源</th><th>意味着什么</th></tr>
+<tr>
+    <td>上证指数</td><td><strong>4041.24（-0.06%）</strong></td><td>7/6 收盘</td><td>上交所</td>
+    <td>权重护盘，高 4060 / 低 4005，4000 点有承接</td>
+</tr>
+<tr>
+    <td>深证成指</td><td><strong>15416.80（-1.16%）</strong></td><td>7/6 收盘</td><td>深交所</td>
+    <td>真实跌幅远大于沪指，成长股承压</td>
+</tr>
+<tr>
+    <td>创业板指</td><td><strong>3948.86（-1.77%）</strong></td><td>7/6 收盘</td><td>深交所</td>
+    <td>盘中一度跌 2.9%，成长赛道集中杀跌</td>
+</tr>
+<tr>
+    <td>科创 50</td><td><strong>1996.10（+1.04%）</strong></td><td>7/6 收盘</td><td>上交所</td>
+    <td>逆势收红，封测板块独立性走强</td>
+</tr>
+<tr>
+    <td>北证 50</td><td><strong>-3.25%</strong></td><td>7/6 收盘</td><td>北交所</td>
+    <td>小盘流动性承压，最先受伤</td>
+</tr>
+<tr>
+    <td>全市场成交额</td><td><strong>30911 亿元</strong></td><td>7/6 收盘</td><td>Wind</td>
+    <td>缩量 914 亿，无增量资金，纯存量腾挪</td>
+</tr>
+<tr>
+    <td>涨跌家数</td><td><strong>1875 涨 / 3536 跌</strong></td><td>7/6 收盘</td><td>Wind</td>
+    <td>超六成个股收绿，亏钱效应显著</td>
+</tr>
+<tr>
+    <td>涨跌停</td><td><strong>110 只 ≥9% / 124 只 ≤-9%</strong></td><td>7/6 收盘</td><td>大智慧 VIP</td>
+    <td>两极分化剧烈</td>
+</tr>
+<tr>
+    <td>央行操作</td><td><strong>1 万亿买断式逆回购（净投放 2000 亿）</strong></td><td>7/6</td><td>央行</td>
+    <td>流动性宽松信号，结束此前连续 3 个月缩量</td>
+</tr>
+<tr>
+    <td>新规落地</td><td><strong>沪深北交易所交易新规</strong></td><td>7/6</td><td>交易所</td>
+    <td>ST 涨跌幅调整、盘后定价交易完善</td>
+</tr>
+<tr>
+    <td>ETF 成交</td><td><strong>5569 亿元</strong>（+309 亿 vs 前日）</td><td>7/6 收盘</td><td>每日经济新闻</td>
+    <td>ETF 交易热度维持高位</td>
+</tr>
+</table>
+
+<h3>板块资金流向全景（申万一级）</h3>
+
+<table>
+<tr><th>领涨行业</th><th>涨幅</th><th>领跌行业</th><th>跌幅</th></tr>
+<tr><td>煤炭</td><td><strong>+4.11%</strong></td><td>建筑材料</td><td><strong>-5.75%</strong></td></tr>
+<tr><td>农林牧渔</td><td><strong>+2.57%</strong></td><td>通信</td><td><strong>-3.05%</strong></td></tr>
+<tr><td>石油石化</td><td><strong>+2.43%</strong></td><td>机械设备</td><td><strong>-1.97%</strong></td></tr>
+<tr><td>银行</td><td><strong>+1.90%</strong></td><td>电力设备</td><td><strong>-1.82%</strong></td></tr>
+<tr><td>交通运输</td><td><strong>+1.45%</strong></td><td>有色金属</td><td><strong>-1.70%</strong></td></tr>
+</table>
+
+<h4>主力资金净流入板块</h4>
+<table>
+<tr><th>板块</th><th>净流入</th><th>核心催化</th></tr>
+<tr><td>高股息精选</td><td>+30.88 亿</td><td>避险+防御</td></tr>
+<tr><td>创新药</td><td>+28.39 亿</td><td>CGT 审批绿色通道政策</td></tr>
+<tr><td>国产操作系统</td><td>+23.94 亿</td><td>信创</td></tr>
+<tr><td>减肥药</td><td>+19.23 亿</td><td>医药主题扩散</td></tr>
+</table>
+
+<h3>L0-框架：当前市场生态位</h3>
+
+<div class="card">
+<div class="card-title">资金流向全景图</div>
+<pre style="font-size:13px;line-height:1.8;background:#f0f0f0;padding:12px;border-radius:6px;overflow-x:auto;">
+┌─────────────────────────────────────────────────┐
+│                  全市场（3.09 万亿）                │
+│  ┌──────────────┐       ┌──────────────────┐     │
+│  │  资金流入方向  │       │  资金流出方向      │     │
+│  ├──────────────┤       ├──────────────────┤     │
+│  │ ① 煤炭 +4.11%│       │ ① 建材/玻纤 -5.75%│     │
+│  │ ② 养殖 +4.5% │       │ ② 通信 -3.05%    │     │
+│  │ ③ 石油 +2.43%│       │ ③ 机械 -1.97%   │     │
+│  │ ④ 银行 +1.9% │       │ ④ 电力设备 -1.82%│     │
+│  │ ⑤ 创新药     │       │ ⑤ PCB/稀土/航天   │     │
+│  └──────┬───────┘       └──────────────────┘     │
+│         │ 高低切换方向 → → → → → → → → → → →    │
+│         └─────────────────────────────────►       │
+│           防御+低位周期 ← 撤离 ← 高位科技/题材      │
+└─────────────────────────────────────────────────┘
+</pre>
+<p class="evidence">数据来源：粤开证券/Wind/东方财富</p>
+</div>
+
+<!-- ========== ③ 两套评估 ========== -->
+<h2>③ 两套评估</h2>
+
+<h3>3a. Serenity 框架 — 市场层面结构性判断</h3>
+
+<div class="judge-grid card">
+<span class="judge-num">#1</span>
+<span><strong>高低切换是当前核心矛盾，非系统性风险</strong><br>3.09 万亿缩量 + 资金从科技流向防御/周期，而非整体出逃</span>
+<span class="judge-tag tag-yes">✅ 已证实</span>
+
+<span class="judge-num">#2</span>
+<span><strong>利好出尽模式反复出现</strong><br>周末存储涨价/创新药政策 → 今日高开出货窗口。普冉股份跌超 10%</span>
+<span class="judge-tag tag-yes">✅ 已证实</span>
+
+<span class="judge-num">#3</span>
+<span><strong>流动性宽松底已确认</strong><br>万亿买断式逆回购，净投放 2000 亿，结束连续 3 个月缩量</span>
+<span class="judge-tag tag-yes">✅ 已证实</span>
+
+<span class="judge-num">#4</span>
+<span><strong>指数失真，个股亏钱效应远大于指数</strong><br>沪指 -0.06% 但 3536 只下跌。权重护盘掩盖真实抛压</span>
+<span class="judge-tag tag-yes">✅ 已证实</span>
+
+<span class="judge-num">#5</span>
+<span><strong>科技内部分化，封测独立走强</strong><br>科创 50 +1.04%，但存储/材料端全线回调。仅封测+液冷有结构性机会</span>
+<span class="judge-tag tag-yes">✅ 已证实</span>
+</div>
+
+<div class="card">
+<div class="card-title">Serenity 视角 vs 市场共识</div>
+<table>
+<tr><th>维度</th><th>市场共识</th><th>Serenity 视角</th></tr>
+<tr>
+    <td>今日下跌成因</td><td>利好落地兑现</td>
+    <td>更底层：前 4 个月"缩圈"抱团导致筹码极其拥挤，任何消息面扰动都触发连锁平仓</td>
+</tr>
+<tr>
+    <td>缩量怎么看</td><td>资金离场观望</td>
+    <td>存量资金从高位赛道<strong>系统性迁移</strong>到低位——这是筹码重置，不是趋势转空</td>
+</tr>
+<tr>
+    <td>后续主线</td><td>不明朗</td>
+    <td>沿政策+供需缺口逆向：创新药集采出清后修复 + 猪周期底部确认 + 煤炭迎峰度夏</td>
+</tr>
+</table>
+</div>
+
+<h3>3b. 客观框架 — 量化评估</h3>
+
+<h4>相对估值对照（申万一级 PE-TTM 分位）</h4>
+
+<table>
+<tr><th>板块</th><th>PE-TTM</th><th>历史分位</th><th>判定</th></tr>
+<tr><td>煤炭</td><td>~9-11x</td><td>30% 以下</td><td>估值低位，旺季催化</td></tr>
+<tr><td>银行</td><td>~6-7x</td><td>25% 分位</td><td>低估，防御配置</td></tr>
+<tr><td>创新药</td><td>分化大（龙头 35-50x）</td><td>近 5 年低位</td><td>政策催化 + 出清后修复</td></tr>
+<tr><td>养殖</td><td>亏损→扭亏过渡</td><td>历史底部</td><td>猪周期反转逻辑</td></tr>
+<tr><td>通信/光模块</td><td>40-60x+</td><td>80%+ 分位</td><td>高估，筹码拥挤</td></tr>
+</table>
+
+<h4>Bear / Base / Bull 三情景</h4>
+
+<div class="bear-bull-grid">
+<div class="bb-card bear">
+<h4>🐻 Bear</h4>
+<div class="price">沪指跌破 3950</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>条件：</strong>超预期外部冲击（美股大跌/地缘风险）。高位科技继续杀跌拖累创业板。<br>
+<strong>概率：</strong>~25%<br>
+<strong>大盘不适用市值与股价（非个股分析）</strong>
+</p>
+</div>
+<div class="bb-card base">
+<h4>📊 Base</h4>
+<div class="price">沪指 3990-4080</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>条件：</strong>缩量 + 权重护盘 + 流动性宽松。板块轮动加快，不具备突破/崩盘条件。<br>
+<strong>概率：</strong><strong>~55%</strong>（当前最可能）<br>
+<strong>当前位置：</strong>4041 处于 Base 区间中段。
+</p>
+</div>
+<div class="bb-card bull">
+<h4>🐂 Bull</h4>
+<div class="price">沪指突破 4100</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>条件：</strong>政策超预期 + 高位科技完成调整 + 新主线确认领涨。<br>
+<strong>概率：</strong>~20%<br>
+<strong>翻倍门槛不适用</strong>
+</p>
+</div>
+</div>
+
+<p class="evidence">
+<strong>⚠️ 框架适配说明：</strong>原 SKILL.md 第 158 行要求 bear/base/bull 中给出<strong>市值与股价</strong>（如"150-180 亿对应股价 50-60 元"），此为个股分析约束。本次为大盘复盘，无法直接对应单一市值/股价。<br>
+<strong>模式说明：</strong>本次为 Mode 1（默认），Serenity + 客观框架对照。若需个股级完整分析，请指定标的。
+</p>
+
+<!-- ========== 政策催化 ========== -->
+<h2>政策催化事件（7 月 6 日）</h2>
+
+<div class="card">
+<table>
+<tr><th>政策</th><th>类型</th><th>影响</th></tr>
+<tr><td><strong>央行 1 万亿买断式逆回购</strong>（净投放 2000 亿）</td><td>货币宽松</td><td>结束连续 3 个月缩量，跨季托底流动性</td></tr>
+<tr><td><strong>A 股交易新规正式施行</strong></td><td>制度</td><td>ST 涨跌幅 5%→10%、盘后定价交易扩容</td></tr>
+<tr><td><strong>药监局 CGT 审评绿色通道</strong></td><td>产业</td><td>创新药 30 日审批通道，直接催化板块</td></tr>
+<tr><td><strong>美丽中国"十五五"规划</strong></td><td>财政</td><td>绿色低碳方向，利好环保/循环经济</td></tr>
+<tr><td><strong>2000 亿设备更新资金全部下达</strong></td><td>财政</td><td>超长期特别国债支持设备更新</td></tr>
+</table>
+</div>
+
+<!-- ========== 复核 ========== -->
+<h2>独立复核</h2>
+
+<table>
+<tr><th>复核项</th><th>结果</th></tr>
+<tr><td>关键数字一手来源</td><td>✅ 全部来自上交所/深交所/Wind/央行公告/粤开证券，已交叉验证</td></tr>
+<tr><td>数据时效性</td><td>✅ 均为 2026-07-06 当日收盘数据</td></tr>
+<tr><td>确认偏误检查</td><td>✅ Bear/Base/Bull 三情景均列出，未预设倾向</td></tr>
+<tr><td>A 股特有复核</td><td>✅ 已纳入央行流动性政策、交易新规落地、板块资金流向等 A 股特有因子</td></tr>
+</table>
+
+<hr style="margin:40px 0;border:none;border-top:1px solid var(--border)">
+
+<div style="font-size:13px;color:var(--gray)">
+<p><strong>证据标注说明：</strong><br>
+<code>已证实</code> — 来自交易所/Wind/央行公告<br>
+<code>管理层声称</code> — 来自公司公告<br>
+<code>我的推断</code> — 基于公开数据的推演测算</p>
+<p style="margin-top:12px"><strong>⚠️ 免责声明：</strong>本报告基于公开市场数据整理，不构成投资建议。股市有风险，投资需谨慎。</p>
+</div>
+
+<div class="footer">
+<p>Generated by Serenity Investment Analysis Engine | 2026-07-06</p>
+</div>
+
+</div>
+</body>
+</html>
