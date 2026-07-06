@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>INTC Intel — Serenity 分析报告 2026-07-06</title>
+<style>
+:root{--bg:#fff;--bg2:#f6f8fa;--text:#1a1a2e;--border:#d0d7de;--accent:#0969da;--green:#1a7f37;--red:#cf222e;--yellow:#9a6700;--gray:#656d76}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:0}
+.container{max-width:960px;margin:0 auto;padding:40px 24px}
+h1{font-size:28px;font-weight:700;margin-bottom:4px}
+.subtitle{color:var(--gray);font-size:14px;margin-bottom:32px}
+.meta-bar{display:flex;gap:16px;flex-wrap:wrap;padding:12px 16px;background:var(--bg2);border-radius:8px;font-size:13px;margin-bottom:32px;border:1px solid var(--border)}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-us{background:#ddf4ff;color:#0969da}
+.tag-hold{background:#fff8c5;color:#9a6700}
+h2{font-size:20px;font-weight:700;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+h3{font-size:16px;font-weight:600;margin:24px 0 12px}
+h4{font-size:14px;font-weight:600;margin:16px 0 8px;color:var(--gray)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
+.card-title{font-weight:600;font-size:14px;margin-bottom:12px}
+.conclusion-box{background:linear-gradient(135deg,#f0f6ff 0%,#fefefe 100%);border:2px solid var(--accent);border-radius:10px;padding:24px;margin-bottom:24px}
+.conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+.conclusion-row:last-child{border-bottom:none}
+.conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:100px;color:var(--gray)}
+.conclusion-value{font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg2);font-weight:600;font-size:13px}
+tr:hover td{background:#f0f6ff}
+.judge-grid{display:grid;grid-template-columns:auto 1fr auto;gap:8px 16px;font-size:14px}
+.judge-num{font-weight:700;color:var(--accent)}
+.judge-tag{font-size:11px;padding:1px 8px;border-radius:10px;white-space:nowrap}
+.tag-yes{background:#dafbe1;color:#1a7f37}
+.tag-partial{background:#fff8c5;color:#9a6700}
+.tag-no{background:#ffebe9;color:#cf222e}
+.flag-list{list-style:none;padding:0}
+.flag-list li{padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--gray);background:var(--bg2);font-size:14px;border-radius:0 4px 4px 0}
+.flag-list li.pass{border-left-color:var(--green)}
+.flag-list li.warn{border-left-color:var(--yellow)}
+.flag-list li.fail{border-left-color:var(--red)}
+.evidence{font-size:13px;color:var(--gray)}
+.bear-bull-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+.bb-card{padding:16px;border-radius:8px;border:1px solid var(--border)}
+.bb-card.bear{border-top:4px solid var(--red)}
+.bb-card.base{border-top:4px solid var(--yellow)}
+.bb-card.bull{border-top:4px solid var(--green)}
+.bb-card h4{margin:0 0 8px;font-size:15px}
+.bb-card .price{font-size:20px;font-weight:700;margin:8px 0}
+.bb-card .price-detail{font-size:13px;color:var(--gray)}
+.footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--gray);text-align:center}
+@media(max-width:700px){.bear-bull-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>INTC Intel — Serenity 投资分析</h1>
+<div class="subtitle">分析日期：2026-07-06 | 数据截止：2026Q1 财报 (2026-04-23) / 2026-07-02 收盘</div>
+
+<div class="meta-bar">
+    <span>🏷️ <span class="tag tag-us">美股 / NASDAQ</span></span>
+    <span>📐 <span class="tag tag-us">半导体</span></span>
+    <span>🗂️ <span class="tag tag-us">IDM 2.0 / Foundry / x86 / AI</span></span>
+    <span>⚡ <span class="tag tag-hold">Serenity: HOLD</span></span>
+</div>
+
+<!-- ========== ① 结论 ========== -->
+<h2>① 结论（两行）</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">行1 — 客观框架</span>
+        <span class="conclusion-value">
+            <strong>Base（高位震荡，等待 Foundry 突破）</strong>。<br>
+            当前市值 <strong>$605B</strong>，对应股价 <strong>$120.35</strong>（总股本 5.023B 股，来源：2026Q1 10-Q）。
+            Bear $300-400B（$60-80）/ Base $500-700B（$100-140）/ Bull $900B-1.2T（$180-240）。
+            <strong>不过翻倍门槛</strong>（从 $605B 到 Bull 下限 $900B 需 +49%，到上限 $1.2T 需 +98%）。
+        </span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">行2 — Serenity 视角</span>
+        <span class="conclusion-value">
+            <strong>🟡 Hold（战胜了，但已 price in 太多）</strong>。<br>
+            Intel 是 Serenity 框架下罕见的"大市值卡点"标的——全球仅 3 家先进制程代工厂（TSMC/Samsung/Intel），
+            18A 的 RibbonFET + PowerVia 是真正的技术突破，CHIPS Act 加持 Made in America 护城河。
+            但股价已从 $18 涨至 $120（+567%），<strong>市场已定价了 18A 成功和大部分 14A 预期</strong>。
+            当前不是买入时机，而是持有观察——等待 14A 外部客户落地或 18A 毛利率改善再评估。
+        </span>
+    </div>
+</div>
+
+<!-- ========== ② 客观事实底座 ========== -->
+<h2>② 客观事实底座</h2>
+
+<h3>L0-事实：核心财务数据</h3>
+
+<table>
+<tr><th>指标</th><th>数值</th><th>As-of</th><th>来源</th><th>意味着什么</th></tr>
+<tr>
+    <td>股价</td><td><strong>$120.35</strong></td><td>2026-07-02</td><td>NASDAQ</td>
+    <td>52周区间 ~$18-$132，12M 涨幅 +450%</td>
+</tr>
+<tr>
+    <td>总市值</td><td><strong>$604.9B</strong></td><td>2026-07-02</td><td>雪球</td>
+    <td>全球半导体市值前五，非 typical Serenity 小市值标的</td>
+</tr>
+<tr>
+    <td>总股本</td><td><strong>5,023M 股</strong></td><td>2026-04-17</td><td>10-Q</td>
+    <td>股本稳定，无大幅稀释</td>
+</tr>
+<tr>
+    <td>FY2025 营收</td><td><strong>$52.9B</strong>（flat YoY）</td><td>FY2025</td><td>公司财报</td>
+    <td>营收持平，但 non-GAAP EPS $0.42，毛利率 36.7%</td>
+</tr>
+<tr>
+    <td>Q1 2026 营收</td><td><strong>$13.6B</strong>（+7% YoY）</td><td>2026Q1</td><td>公司财报</td>
+    <td>连续第 6 个季度超预期</td>
+</tr>
+<tr>
+    <td>Q1 GAAP EPS</td><td><strong>-$0.73</strong>（亏损）</td><td>2026Q1</td><td>公司财报</td>
+    <td>GAAP 亏损因 Foundry 折旧 + 18A 爬坡成本</td>
+</tr>
+<tr>
+    <td>Q1 Non-GAAP EPS</td><td><strong>$0.29</strong>（beat $0.01）</td><td>2026Q1</td><td>公司财报</td>
+    <td>Non-GAAP 盈利，产品业务 $12.8B 收入 +9%</td>
+</tr>
+<tr>
+    <td>Q2 2026 指引</td><td>营收 $13.8-14.8B，Non-GAAP EPS $0.20</td><td>2026Q1 ER</td><td>公司指引</td>
+    <td>Q2 供应继续受限，但需求极端旺盛</td>
+</tr>
+<tr>
+    <td>Intel Foundry 营收</td><td><strong>$5.4B</strong>（+16% YoY），外部仅 $174M</td><td>2026Q1</td><td>公司财报</td>
+    <td>几乎全部内部收入；运营亏损 -$2.4B</td>
+</tr>
+<tr>
+    <td>DCAI 营收</td><td><strong>$5.1B</strong>（+22% YoY）</td><td>2026Q1</td><td>公司财报</td>
+    <td>AI 驱动增长，AI 业务占 DCAI 60% +40% YoY</td>
+</tr>
+<tr>
+    <td>CCG 营收</td><td><strong>$7.7B</strong>（+1% YoY）</td><td>2026Q1</td><td>公司财报</td>
+    <td>AI PC 占比 60%+，ASP +16%</td>
+</tr>
+<tr>
+    <td>现金及短期投资</td><td><strong>$37.4B</strong></td><td>FY2025</td><td>公司财报</td>
+    <td>资产负债表强健，可支撑 Foundry 爬坡</td>
+</tr>
+<tr>
+    <td>经营现金流</td><td><strong>$1.1B</strong>（Q1）/ $10B（LTM）</td><td>2026Q1</td><td>公司财报</td>
+    <td>CFO/Rev 19%，但 FCF 为负（capex 重）</td>
+</tr>
+<tr>
+    <td>CHIPS Act</td><td><strong>$1.5B</strong> 已收到</td><td>FY2025</td><td>SEC Filing</td>
+    <td>政府背书，Made in America = 护城河</td>
+</tr>
+<tr>
+    <td>P/E（TTM）</td><td><strong>亏损</strong>（GAAP）</td><td>2026-07-02</td><td>雪球</td>
+    <td>GAAP 亏损，无法用 PE 估值</td>
+</tr>
+<tr>
+    <td>P/B</td><td><strong>5.43x</strong></td><td>2026-07-02</td><td>雪球</td>
+    <td>高于历史均值，含 Foundry 转型溢价</td>
+</tr>
+</table>
+
+<h3>业务拆分（2026Q1）</h3>
+
+<table>
+<tr><th>业务板块</th><th>Q1 营收</th><th>YoY</th><th>定位</th></tr>
+<tr><td><strong>CCG</strong>（客户端）</td><td>$7.7B</td><td>+1%</td><td>现金牛，AI PC 转型中，ASP +16%</td></tr>
+<tr><td><strong>DCAI</strong>（数据中心+AI）</td><td>$5.1B</td><td><strong>+22%</strong></td><td>增长引擎，AI 业务占比 60%，Custom ASIC 翻倍</td></tr>
+<tr><td><strong>Intel Foundry</strong></td><td>$5.4B</td><td>+16%</td><td>转型核心，18A 爬坡，外部客户 $174M（仅 3%），亏损 -$2.4B</td></tr>
+<tr><td>All Other</td><td>$0.6B</td><td>-33%</td><td>Mobileye 等，Altera 已剥离</td></tr>
+</table>
+
+<h3>L0-框架：供应链栈定位</h3>
+
+<div class="card">
+<div class="card-title">Intel 在半导体价值链中的位置</div>
+<pre style="font-size:13px;line-height:1.8;background:#f0f0f0;padding:12px;border-radius:6px;overflow-x:auto;">
+【终端】        PC OEM / 云厂商 / 企业 / 政府 / 自动驾驶
+    ↑ CPU/GPU/ASIC 供货
+【芯片设计】     Intel Products (CCG + DCAI)
+    │            ├─ x86 CPU（PC + 服务器）— 与 AMD 双寡头
+    │            ├─ AI Accelerator（Gaudi）— 追赶 NVIDIA
+    │            └─ Custom ASIC（> $1B run-rate）— 新兴业务
+    ↓ 制造
+【芯片制造】     Intel Foundry ← 3 家全球先进制程之一
+    │            ├─ 18A（RibbonFET + PowerVia）— 已量产，200 design wins
+    │            ├─ 18A-P — 2027 量产，Apple 传闻客户
+    │            └─ 14A（High-NA EUV）— 2028 风险试产，2029 量产
+    ↓ 设备/材料
+【上游】         ASML EUV / 硅片 / 化学品 / 气体
+</pre>
+<p class="evidence">核心定位：<strong>垂直整合（IDM 2.0）</strong>——既是芯片设计商（x86 duopoly），又是先进制程代工厂（全球仅 3 家）。Foundry 是当前最大的价值重估变量。</p>
+</div>
+
+<!-- ========== 红旗扫描 ========== -->
+<h2>红旗扫描（通用 6 项 + 美股 2 项）</h2>
+
+<ul class="flag-list">
+<li class="pass">✅ 无限 ATM / 增发稀释 — 股本稳定 5.0B，无大幅增发</li>
+<li class="pass">✅ 单一客户集中风险 — 客户分散（PC OEM + 云厂商），无单一 >50%</li>
+<li class="pass">✅ 资产负债表 toxic — $37.4B 现金，负债率 39%，健康</li>
+<li class="pass">✅ 零收入纯炒作 — 年营收 $52.9B</li>
+<li class="pass">✅ 技术太远 — 18A 已量产，14A 2028 风险试产，在可接受范围</li>
+<li class="pass">✅ 纯软件/SaaS — 硬件制造 + 芯片设计</li>
+<li class="warn">⚠️ <strong>中国敞口</strong> — 中国营收 ~20%（FY2025），非主要（<50%），但不可忽视。中美关系恶化可能影响在华销售。</li>
+<li class="pass">✅ brand/risk-free convertible 假合作 — NVIDIA $5B 投资、Microsoft/Amazon 签约，均为实质性合作</li>
+</ul>
+
+<p class="evidence">结论：无硬否决红旗。中国敞口需关注，但 20% 非主要营收，不构成原则性排除。关键风险是 Foundry 能否扭亏，而非地缘。</p>
+
+<!-- ========== ③ 两套评估 ========== -->
+<h2>③ 两套评估</h2>
+
+<h3>3a. Serenity 框架 — 卡点五连判（14 项通用）</h3>
+
+<div class="judge-grid card">
+<span class="judge-num">#1</span>
+<span><strong>垄断/双寡头/single point of failure？</strong><br>x86 CPU 与 AMD 双寡头。但 ARM 在 PC 和服务器端渗透，苹果/高通/Ampere 持续侵蚀。并非绝对垄断。</span>
+<span class="judge-tag tag-partial">◐ 部分</span>
+
+<span class="judge-num">#2</span>
+<span><strong>极小市值 vs 巨大下游 TAM？</strong><br>$605B 市值 vs 半导体 $1T TAM。市值巨大，非 typical Serenity 小市值。但 TAM 也巨大。</span>
+<span class="judge-tag tag-no">❌ 否</span>
+
+<span class="judge-num">#3</span>
+<span><strong>BOM 占比相对市值巨大 + designed-in？</strong><br>CPU 在服务器 BOM 中占比高，x86 深度 designed-in。但 $605B 市值已 price in 太多。</span>
+<span class="judge-tag tag-partial">◐ 部分</span>
+
+<span class="judge-num">#4</span>
+<span><strong>designed-in + 多客户？</strong><br>所有 PC OEM + 云厂商都用 x86。多客户 toll booth 成立。</span>
+<span class="judge-tag tag-yes">✅ 是</span>
+
+<span class="judge-num">#5</span>
+<span><strong>认证/资格周期长？</strong><br>Foundry 认证周期 2-3 年，18A 刚量产，14A 外部客户尚未锁定。认证周期长但未反映在当期营收。</span>
+<span class="judge-tag tag-yes">✅ 是</span>
+
+<span class="judge-num">#6</span>
+<span><strong>未来爆发营收？</strong><br>如果 14A 赢得 Apple/Qualcomm 等大客户，2029+ 营收将爆发。但时间线远（2029）。</span>
+<span class="judge-tag tag-partial">◐ 部分</span>
+
+<span class="judge-num">#7</span>
+<span><strong>资产负债表能撑过爬坡？</strong><br>$37.4B 现金 + 政府补贴，完全能撑过 Foundry 亏损期。</span>
+<span class="judge-tag tag-yes">✅ 是</span>
+
+<span class="judge-num">#8</span>
+<span><strong>Demand far outstrips supply？</strong><br>Q1 供应严重受限，CEO/CFO 反复强调"unprecedented demand"。DCAI 受限无法满足全部订单。</span>
+<span class="judge-tag tag-yes">✅ 是</span>
+
+<span class="judge-num">#9</span>
+<span><strong>大客户全包上游产能？</strong><br>NVIDIA 投资 $5B，Microsoft 签约 18A。但尚未达到"全包"程度。</span>
+<span class="judge-tag tag-partial">◐ 部分</span>
+
+<span class="judge-num">#10</span>
+<span><strong>国家安全/CHIPS Act？</strong><br>$1.5B CHIPS Act 已到账，Made in America 是明确护城河。政府 U.S. government 持股 8.4%。</span>
+<span class="judge-tag tag-yes">✅ 是</span>
+
+<span class="judge-num">#11</span>
+<span><strong>Made in America = 护城河？</strong><br>全球唯一在美国本土制造先进制程的公司。地缘政治风险下，这是硬护城河。</span>
+<span class="judge-tag tag-yes">✅ 是</span>
+
+<span class="judge-num">#12</span>
+<span><strong>信息不对称/定价错误？</strong><br>市场对 Intel 观点极度分裂：Bulls 看 Foundry 成功 + AI CPU 需求，Bears 看 Foundry 烧钱 + AMD/NVIDIA 竞争。但 $120 的股价说明市场已不便宜。</span>
+<span class="judge-tag tag-partial">◐ 部分</span>
+
+<span class="judge-num">#13</span>
+<span><strong>极少数玩家？</strong><br>全球先进制程只有 TSMC + Samsung + Intel。3 家。这是 Intel Foundry 最核心的卡点价值。</span>
+<span class="judge-tag tag-yes">✅ 是</span>
+
+<span class="judge-num">#14</span>
+<span><strong>多年营收可见性？</strong><br>内部产品需求 + 200 个 18A design wins + 14A 客户评估中。但外部客户 revenue 仍极少。</span>
+<span class="judge-tag tag-partial">◐ 部分</span>
+</div>
+
+<div class="card">
+<div class="card-title">Serenity 信念分档</div>
+<p><strong>🟡 Hold</strong> — Intel 命中了 14 项判据中的 7 项（✅）+ 6 项部分（◐）+ 1 项否（❌）。这在 Serenity 框架下是罕见的"大市值卡点"标的——<strong>全球仅 3 家先进制程代工厂，Made in America 是硬护城河，18A 技术突破真实，需求远超供给</strong>。但 $605B 的市值已经把 18A 成功和大部分 14A 预期都 price in 了。当前价位不是买入，而是持有等待 14A 外部客户落地的催化剂。</p>
+</div>
+
+<h3>3b. 客观框架 — 估值 + bear/base/bull</h3>
+
+<h4>相对估值对照</h4>
+
+<table>
+<tr><th>可比公司</th><th>市值</th><th>PE (FWD)</th><th>PS (TTM)</th><th>业务</th></tr>
+<tr><td><strong>INTC</strong></td><td><strong>$605B</strong></td><td><strong>N/A (亏损)</strong></td><td><strong>~11.4x</strong></td><td>IDM + Foundry</td></tr>
+<tr><td>AMD</td><td>~$300B</td><td>~40x</td><td>~12x</td><td>Fabless CPU/GPU</td></tr>
+<tr><td>NVDA</td><td>~$5T</td><td>~45x</td><td>~35x</td><td>AI GPU 霸主</td></tr>
+<tr><td>TSMC</td><td>~$1.2T</td><td>~20x</td><td>~12x</td><td>纯代工</td></tr>
+<tr><td>QCOM</td><td>~$250B</td><td>~18x</td><td>~6x</td><td>Fabless 移动芯片</td></tr>
+</table>
+
+<p class="evidence">Intel PS ~11.4x 与 AMD/TSMC 接近，低于 NVDA。但 Intel 的利润结构远差于 TSMC（Foundry 亏损 -$2.4B/Q）。如果 Foundry 扭亏，PS 可向 TSMC 收敛；如果失败，PS 将大幅收缩。</p>
+
+<h4>Bear / Base / Bull 三情景</h4>
+
+<div class="bear-bull-grid">
+<div class="bb-card bear">
+<h4>🐻 Bear</h4>
+<div class="price">$300-400B</div>
+<div class="price-detail">对应股价 $60-80</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>条件：</strong>18A 良率停滞 + 外部客户流失 + AMD 持续侵蚀 x86 份额 + Foundry 亏损扩大。<br>
+<strong>PS：</strong>6-8x 对 $50B 营收。<br>
+<strong>概率：</strong>~20%。下行保护来自 $37.4B 现金 + CHIPS Act 政府背书。
+</p>
+</div>
+<div class="bb-card base">
+<h4>📊 Base</h4>
+<div class="price">$500-700B</div>
+<div class="price-detail">对应股价 $100-140</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>条件：</strong>18A 成功爬坡 + 部分外部客户落地 + Foundry 亏损逐步收窄 + DCAI 持续增长。<br>
+<strong>PS：</strong>10-13x。<br>
+<strong>概率：</strong><strong>~50%</strong>（当前最可能情景）。<br>
+<strong>当前位置：</strong>$120 / $605B 处于 Base 区间中段。
+</p>
+</div>
+<div class="bb-card bull">
+<h4>🐂 Bull</h4>
+<div class="price">$900B-1.2T</div>
+<div class="price-detail">对应股价 $180-240</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>条件：</strong>14A 赢得 Apple/Qualcomm 等大客户 + Foundry 实现盈利 + DCAI 营收翻倍 + 市场给予 TSMC 级别估值。<br>
+<strong>PS：</strong>15-18x 对 $60-70B 营收。<br>
+<strong>概率：</strong>~30%。需 14A 外部客户锁定 + 持续执行。<br>
+<strong>翻倍门槛：</strong>从 $605B 到 $1.2T 需 +98%，未过。
+</p>
+</div>
+</div>
+
+<p class="evidence">
+<strong>翻倍门槛判断：</strong>从 $605B 到 Bull 上限 $1.2T 需 <strong>+98%</strong>，接近翻倍但未达 +100% 门槛。<br>
+<strong>总股本：</strong>5,023M 股（2026Q1 10-Q）。股价 = 市值 ÷ 5.023B。
+</p>
+
+<!-- ========== 催化剂 ========== -->
+<h2>催化剂 & 风险</h2>
+
+<div class="card">
+<div class="card-title">关键催化剂（未来 6-12 个月）</div>
+<table>
+<tr><th>催化剂</th><th>类型</th><th>紧迫度</th><th>验证方式</th></tr>
+<tr><td>Q2 2026 财报（2026-07-23）</td><td>财报</td><td><strong>极高</strong></td><td>18A 毛利率改善进度 + 外部客户进展</td></tr>
+<tr><td>14A 客户签约公告</td><td>design-win</td><td><strong>极高</strong></td><td>2026H2 预计有客户锁定 14A 订单</td></tr>
+<tr><td>Apple 18A-P 合作确认</td><td>大客户</td><td>高</td><td>郭明錤预测 2027 放量，关注供应链确认</td></tr>
+<tr><td>18A 良率突破公告</td><td>技术里程碑</td><td>中</td><td>年中达成 2026 年底良率目标</td></tr>
+<tr><td>Custom ASIC 新增客户</td><td>design-win</td><td>中</td><td>定制 ASIC 业务 >$1B run-rate，持续增长</td></tr>
+</table>
+</div>
+
+<div class="card">
+<div class="card-title">核心风险</div>
+<ul>
+<li><strong>Foundry 持续烧钱：</strong>每季度亏损 -$2.4B，年化亏损 ~$10B。即使 18A 良率改善，盈利仍需数年。</li>
+<li><strong>股价已大幅上涨：</strong>从 $18 低点涨至 $120（+567%），大量预期已 price in。任何执行失误都将导致大幅回调。</li>
+<li><strong>AMD 竞争：</strong>EPYC 在服务器 CPU 持续侵蚀份额，Intel 的数据中心地位面临长期挑战。</li>
+<li><strong>AI 加速器落后：</strong>Gaudi 在 NVIDIA 面前几乎无存在感。Custom ASIC 是替代路线，但规模有限。</li>
+<li><strong>14A 时间线过远：</strong>2029 量产意味着 3 年后才有实质营收贡献。期间 TSMC 不会停滞。</li>
+<li><strong>中国敞口 20%：</strong>出口管制升级可能影响在华营收。</li>
+</ul>
+</div>
+
+<!-- ========== 复核 ========== -->
+<h2>独立复核</h2>
+
+<table>
+<tr><th>复核项</th><th>结果</th></tr>
+<tr><td>关键数字一手来源</td><td>✅ 全部来自 Intel 10-Q/10-K/8-K、SEC Filing、公司官方 IR、雪球/NASDAQ</td></tr>
+<tr><td>数据时效性</td><td>✅ 2026Q1 为最新披露（2026-04-23）；股价为 2026-07-02</td></tr>
+<tr><td>确认偏误检查</td><td>✅ Bear/Base/Bull 三情景均给出；Serenity 判定为 Hold 而非 Strong Buy</td></tr>
+<tr><td>跨标的倍数对比</td><td>✅ AMD/NVDA/TSMC/QCOM 同源比较</td></tr>
+<tr><td>美股特有复核</td><td>✅ China exposure 已检查（~20%），未达原则排除阈值；NVIDIA $5B 投资为实质性合作非假合作</td></tr>
+</table>
+
+<hr style="margin:40px 0;border:none;border-top:1px solid var(--border)">
+
+<div style="font-size:13px;color:var(--gray)">
+<p><strong>证据标注说明：</strong><br>
+<code>已证实</code> — 来自公司财报/SEC Filing<br>
+<code>管理层声称</code> — 来自 Earnings Call<br>
+<code>我的推断</code> — 基于公开数据的推演测算</p>
+<p style="margin-top:12px"><strong>⚠️ 免责声明：</strong>本报告基于公开信息整理，不构成投资建议。股市有风险，投资需谨慎。Serenity 框架是一种分析视角，非买卖建议。Intel 是市值 $600B+ 的 mega-cap，其股价波动受多重宏观因素影响，单一分析框架有局限性。</p>
+</div>
+
+<div class="footer">
+<p>Generated by Serenity Investment Analysis Engine | 2026-07-06</p>
+</div>
+
+</div>
+</body>
+</html>
