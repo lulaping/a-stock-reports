@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华丰科技 (688629) — Serenity Mode 1 分析报告</title>
+    <style>
+        :root { --bg: #f8f9fa; --card: #fff; --text: #1a1a2e; --muted: #888; --red: #e94560; --blue: #0f3460; --green: #27ae60; --gold: #f39c12; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 20px 16px; line-height: 1.7; }
+        h1 { color: var(--blue); border-bottom: 3px solid var(--red); padding-bottom: 10px; font-size: clamp(20px, 4vw, 26px); }
+        h2 { color: var(--blue); margin: 24px 0 10px; font-size: clamp(16px, 3vw, 19px); border-left: 4px solid var(--red); padding-left: 10px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: clamp(14px, 2.6vw, 16px); }
+        .meta { color: var(--muted); font-size: 13px; margin: 8px 0 16px; }
+        .card { background: var(--card); border-radius: 10px; padding: 16px 20px; margin: 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #f0f0f0; font-weight: 600; color: #555; }
+        ul, ol { padding-left: 20px; } li { margin: 4px 0; }
+        .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; padding-top: 16px; border-top: 1px solid #ddd; }
+        .highlight { background: #fffde7; border-left: 3px solid var(--gold); padding: 8px 14px; margin: 12px 0; font-style: italic; }
+        .up { color: #c0392b; font-weight: 600; } .down { color: #27ae60; }
+        .verdict { padding: 12px 16px; border-radius: 8px; font-weight: 700; font-size: clamp(13px, 2.6vw, 15px); margin: 12px 0; }
+        .verdict-bear { background: #fde8e8; color: #c0392b; border: 1px solid #e6b0b0; }
+        .verdict-watch { background: #fef5e7; color: #b7950b; border: 1px solid #f0d78c; }
+        .verdict-base { background: #e8f0fe; color: #2471a3; border: 1px solid #a9cce3; }
+        .score-bar { display: flex; gap: 4px; margin: 2px 0; }
+        .score-dot { width: 14px; height: 14px; border-radius: 50%; }
+        .score-on { background: var(--red); } .score-off { background: #ddd; }
+        .risk-high { color: #c0392b; font-weight: 600; } .risk-med { color: #e67e22; font-weight: 600; } .risk-low { color: #27ae60; }
+    </style>
+</head>
+<body>
+    <h1>华丰科技 (688629) — Serenity Mode 1 分析</h1>
+    <p class="meta">分析日期：2026-07-06 | 盘中价：202.65元（+12.58%，触发临停） | 总市值：~949亿</p>
+
+    <!-- ============================================================ -->
+    <h2>一、核心结论</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / 华为昇腾高速连接器垄断性卡点、Q1扣非+323%+经营现金流4.28亿拐点确认，但949亿（202.65元）对应2026E PE 130x已大幅透支 / 等回调至600-700亿（对应128-150元，2026E PE 83-97x）再评估</div>
+        <p><strong>Serenity 视角一句：</strong>Buy on Weakness — 这是A股AI算力赛道中卡点质量最高的标的之一（华为昇腾NVL72铜连接核心供应商，份额>60%），但949亿市值已经Price in了2026年7亿+利润的全部预期。Serenity要求"在市场没定价前买入"，不是"在充分定价后追高"。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>二、公司基本面底座</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <h3>公司概况</h3>
+        <p>前身为1958年成立的"国营华丰无线电器材厂"，中国连接器行业开创者。2023年科创板上市，当前核心业务：<strong>AI算力高速互连（高速线模组/高速背板连接器）+ 防务连接器 + 新能源汽车连接器</strong>。华为哈勃持股约2.95%。</p>
+        <br>
+
+        <h3>关键财务数据</h3>
+        <table>
+            <tr><th>指标</th><th>2026Q1</th><th>2025年</th><th>同比</th></tr>
+            <tr><td>营收</td><td>6.33亿</td><td>25.28亿</td><td class="up">+56.15%（Q1）/ +131.50%（全年）</td></tr>
+            <tr><td>归母净利</td><td>1.05亿</td><td>3.59亿</td><td class="up">+230.43%（Q1）/ 扭亏</td></tr>
+            <tr><td>扣非净利</td><td>0.97亿</td><td>—</td><td class="up">+322.95%（Q1）</td></tr>
+            <tr><td>经营现金流</td><td>4.28亿</td><td>-249万</td><td class="up">去年同期-0.99亿 → 大幅转正</td></tr>
+            <tr><td>组件毛利率</td><td>—</td><td>39.75%</td><td>远高于传统连接器17.19%</td></tr>
+        </table>
+        <br>
+
+        <h3>估值现状</h3>
+        <table>
+            <tr><th>指标</th><th>数值</th></tr>
+            <tr><td>总市值</td><td><strong>~949亿</strong>（202.65元 × 4.68亿股）</td></tr>
+            <tr><td>TTM PE</td><td><strong>219x</strong>（行业PE中位数90x）</td></tr>
+            <tr><td>PB</td><td>48.47x</td></tr>
+            <tr><td>2026E PE（国海7.18亿）</td><td><strong>130x</strong></td></tr>
+            <tr><td>2027E PE（国海10.81亿）</td><td><strong>88x</strong></td></tr>
+            <tr><td>定增价</td><td>133.90元/股（726万股，2026.6.16上市）</td></tr>
+            <tr><td>华为框架订单</td><td>60亿级（40万套），2026Q1起批量交付</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>三、Serenity 卡点框架评估</h2>
+    <!-- ============================================================ -->
+
+    <h3>3.1 卡点五连判</h3>
+    <div class="card">
+        <table>
+            <tr><th style="width:60px;">#</th><th style="width:140px;">卡点维度</th><th>评分</th><th>说明</th></tr>
+            <tr>
+                <td>①</td><td>垄断/寡头地位</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-off"></span></span></td>
+                <td>华为昇腾高速线模组份额>60%，国内唯一112Gbps量产厂商。华为昇腾若停产，下游等1-2年。近乎single point of failure</td>
+            </tr>
+            <tr>
+                <td>②</td><td>小市值 vs 大TAM</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span></span></td>
+                <td>949亿已不算小市值。AI铜连接市场2030年TAM千亿级，但当前市值已Price in大量远期预期，非"未定价"</td>
+            </tr>
+            <tr>
+                <td>③</td><td>Designed-in + 多客户</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-off"></span></span></td>
+                <td>华为份额>60%+阿里/字节/腾讯/浪潮/超聚变/曙光全部认证通过，从"单一客户"→"全行业平台"，toll booth格局形成</td>
+            </tr>
+            <tr>
+                <td>④</td><td>认证周期长/未反映当期营收</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-off"></span></span></td>
+                <td>112G认证周期12-24个月，224G研发中，448G预研。产能利用率111.89%，定增扩产Q3投产，在手订单6.16亿排期超6个月</td>
+            </tr>
+            <tr>
+                <td>⑤</td><td>国产替代紧迫度</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span></span></td>
+                <td>高速连接器国产化率极低（<10%），AI算力自主可控的国家战略级卡点。华为昇腾供应链国产化是政治任务</td>
+            </tr>
+        </table>
+        <br>
+        <p><strong>卡点质量总分：14/15</strong> — 本系列分析中卡点质量最高的标的之一。华为昇腾高速连接器是"卡点中的卡点"——国产化率极低、认证周期极长、单一供应商依赖、国家战略级国产替代。</p>
+    </div>
+
+    <h3>3.2 红旗扫描</h3>
+    <div class="card">
+        <table>
+            <tr><th>红旗类别</th><th>状态</th><th>说明</th></tr>
+            <tr><td><strong>⚠️ 单一客户集中</strong></td><td><span class="risk-med">⚠️ 红旗</span></td><td>2025年华为占比60.52%，虽拓展至阿里/字节但占比仍高。华为采购节奏变化=业绩大幅波动</td></tr>
+            <tr><td><strong>⚠️ 定增稀释</strong></td><td><span class="risk-med">⚠️ 关注</span></td><td>726万股（占1.55%）已上市，锁定期6个月。稀释有限但需关注减持压力</td></tr>
+            <tr><td><strong>⚠️ 估值极度透支</strong></td><td><span class="risk-med">⚠️ 红旗</span></td><td>TTM PE 219x，2026E PE 130x，PB 48x。即使2027E PE仍88x，远超行业均值</td></tr>
+            <tr><td>扣非亏损</td><td><span class="risk-low">✅ 未触发</span></td><td>Q1扣非+323%，真实盈利拐点确认</td></tr>
+            <tr><td>经营现金流</td><td><span class="risk-low">✅ 健康</span></td><td>Q1经营现金流4.28亿，造血能力大幅改善</td></tr>
+            <tr><td>大股东质押/商誉</td><td><span class="risk-low">✅ 正常</span></td><td>无异常</td></tr>
+        </table>
+        <br>
+        <p><strong>红旗命中：3/12（无硬否决）</strong> — 最大的红旗是估值，不是基本面。华为依赖度虽高但正在改善（目标2026年降至35-40%）。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>四、核心矛盾</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <p><strong>矛盾一：最好的卡点 vs 最贵的价格</strong></p>
+        <p>华丰科技的卡点质量（14/15）是本系列分析中最高的一档，但949亿市值（2026E PE 130x）也是最贵的。Serenity框架的核心是"在市场没定价前买入"——华丰的卡点已经被市场充分定价甚至过度定价。定增价133.90元，当前202.65元已溢价51%。</p>
+        <br>
+
+        <p><strong>矛盾二：华为单一客户双刃剑</strong></p>
+        <p>华为60亿框架订单是业绩爆发的最强催化剂，但客户占比60%也是最大的风险。好消息是阿里/字节/腾讯已完成认证，在手订单6.16亿排期超6个月，客户多元化正在兑现。但华为的采购节奏仍然是短期业绩的绝对主导变量。</p>
+        <br>
+
+        <p><strong>矛盾三：产能瓶颈 vs 需求爆发</strong></p>
+        <p>产能利用率111.89%（超负荷），高速线模组月产能仅6000套。定增扩产至3万套/月，Q3投产。在产能爬坡的6个月真空期内，营收增速可能受到供给端约束。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>五、客观框架</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <table>
+            <tr><th>场景</th><th>触发条件</th><th>市值</th><th>股价</th><th>较当前</th></tr>
+            <tr><td><strong>🐻 Bear</strong></td><td>华为昇腾采购节奏放缓+定增产能爬坡不及预期+AI算力capex下行+2026年净利<5亿</td><td><strong>500-600亿</strong></td><td><strong>107-128元</strong></td><td>-37%</td></tr>
+            <tr><td><strong>📊 Base</strong></td><td>华为订单正常交付+多元客户放量+2026年净利7-8亿+2027年10-12亿</td><td><strong>700-850亿</strong></td><td><strong>150-182元</strong></td><td>-16%</td></tr>
+            <tr><td><strong>🐂 Bull</strong></td><td>华为昇腾超预期+阿里/字节/腾讯全线放量+224G量产+2027年净利15亿+</td><td><strong>1100-1400亿</strong></td><td><strong>235-299元</strong></td><td>+33%</td></tr>
+        </table>
+        <br>
+        <p><strong>客观框架结论：</strong>当前949亿（202.65元）已位于Base上沿偏Bull。Bear空间-37%、Base空间-16%、Bull空间+33%。风险收益比一般，向下空间大于向上空间。翻倍门槛（从当前到Bull上限+48%）尚未达到。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>六、综合判定</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / 华为昇腾高速连接器垄断性卡点（14/15）+Q1扣非+323%拐点确认，但949亿已透支 / 等回调至600-700亿（对应128-150元，2026E PE 83-97x）是Serenity框架下的合理击球区</div>
+        <br>
+        <p><strong>华丰科技是"好卡点+好公司"，但当前不是"好价格"。</strong></p>
+        <br>
+        <p><strong>用Serenity的语言：</strong></p>
+        <ul>
+            <li>✅ 卡点五连判：14/15 — 华为昇腾铜连接"卡点中的卡点"，国产唯一、认证周期长、国家战略级</li>
+            <li>✅ 财务拐点：Q1扣非+323%、经营现金流4.28亿，从"烧钱"到"造血"</li>
+            <li>❌ 估值：949亿 / 2026E PE 130x = 不是"未定价"而是"过度定价"</li>
+            <li>❌ Serenity原则："Sub-$2B / A股 Sub-¥100亿才有10x" — 华丰949亿，10x空间已关闭</li>
+        </ul>
+        <br>
+        <p><strong>操作建议：</strong>等回调至600-700亿（对应128-150元，接近定增价133.90元）。在这个区间，2026E PE约83-97x，接近行业均值90x，安全边际出现。今日涨停（+12.58%触发临停）不追。</p>
+    </div>
+
+    <div class="footer">
+        <p>数据来源：国海证券深度研报、雪球、新浪财经、证券时报、东方财富、中财网</p>
+        <p>免责声明：不构成投资建议。</p>
+        <p><a href="index.html">返回报告列表</a></p>
+    </div>
+</body>
+</html>
