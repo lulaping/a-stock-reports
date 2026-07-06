@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国力电子 (688103) — Serenity Mode 1 分析报告</title>
+    <style>
+        :root { --bg: #f8f9fa; --card: #fff; --text: #1a1a2e; --muted: #888; --red: #e94560; --blue: #0f3460; --green: #27ae60; --gold: #f39c12; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 20px 16px; line-height: 1.7; }
+        h1 { color: var(--blue); border-bottom: 3px solid var(--red); padding-bottom: 10px; font-size: clamp(20px, 4vw, 26px); }
+        h2 { color: var(--blue); margin: 24px 0 10px; font-size: clamp(16px, 3vw, 19px); border-left: 4px solid var(--red); padding-left: 10px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: clamp(14px, 2.6vw, 16px); }
+        .meta { color: var(--muted); font-size: 13px; margin: 8px 0 16px; }
+        .card { background: var(--card); border-radius: 10px; padding: 16px 20px; margin: 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px 4px; }
+        .tag-red { background: #fde8e8; color: #c0392b; }
+        .tag-blue { background: #e8f0fe; color: #2471a3; }
+        .tag-green { background: #e8f8e8; color: #1e8449; }
+        .tag-gold { background: #fef5e7; color: #b7950b; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #f0f0f0; font-weight: 600; color: #555; white-space: nowrap; }
+        ul, ol { padding-left: 20px; }
+        li { margin: 4px 0; }
+        .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; padding-top: 16px; border-top: 1px solid #ddd; }
+        .highlight { background: #fffde7; border-left: 3px solid var(--gold); padding: 8px 14px; margin: 12px 0; font-style: italic; }
+        .up { color: #c0392b; font-weight: 600; }
+        .down { color: #27ae60; font-weight: 600; }
+        .verdict { padding: 12px 16px; border-radius: 8px; font-weight: 700; font-size: clamp(13px, 2.6vw, 15px); margin: 12px 0; }
+        .verdict-bear { background: #fde8e8; color: #c0392b; border: 1px solid #e6b0b0; }
+        .verdict-watch { background: #fef5e7; color: #b7950b; border: 1px solid #f0d78c; }
+        .verdict-base { background: #e8f0fe; color: #2471a3; border: 1px solid #a9cce3; }
+        .score-bar { display: flex; gap: 4px; margin: 2px 0; }
+        .score-dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+        .score-on { background: var(--red); }
+        .score-off { background: #ddd; }
+        .risk-high { color: #c0392b; font-weight: 600; }
+        .risk-med { color: #e67e22; font-weight: 600; }
+        .risk-low { color: #27ae60; }
+    </style>
+</head>
+<body>
+    <h1>国力电子 (688103) — Serenity Mode 1 分析</h1>
+    <p class="meta">分析日期：2026-07-06 | 收盘价：84.45元（+15.67%） | 数据截至2026-07-06</p>
+
+    <!-- ============================================================ -->
+    <h2>一、核心结论</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / 电真空器件国产替代卡位，80亿市值PE 123x已Price in / 等回调至60-65亿（对应63-68元，2026E PE 33-36x）再评估</div>
+        <p><strong>Serenity 视角一句：</strong>Hold — 公司在真空电容器（半导体设备国产替代）和可控核聚变核心器件两个方向有实质性卡位，但短期暴涨15.67%后估值已充分反映题材溢价，不追高。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>二、公司基本面底座</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <h3>公司概况</h3>
+        <p>昆山国力电子科技股份有限公司（688103），2021年9月科创板上市。专注电真空器件60+年，产品覆盖真空电容器、直流接触器、真空交流接触器、高压继电器、氢闸流管、磁控管、大功率速调管等。下游覆盖航空航天、新能源汽车、半导体设备、可控核聚变、大科学工程等。</p>
+        <br>
+
+        <h3>关键财务数据</h3>
+        <table>
+            <tr><th>指标</th><th>2025年</th><th>2024年</th><th>同比</th></tr>
+            <tr><td>营收</td><td>13.23亿</td><td>7.92亿</td><td class="up">+66.98%</td></tr>
+            <tr><td>归母净利</td><td>7,061万</td><td>3,024万</td><td class="up">+133.51%</td></tr>
+            <tr><td>扣非净利</td><td>6,159万</td><td>1,828万</td><td class="up">+236.91%</td></tr>
+            <tr><td>基本EPS</td><td>0.74元</td><td>0.32元</td><td class="up">+131%</td></tr>
+        </table>
+        <br>
+
+        <h3>估值现状</h3>
+        <table>
+            <tr><th>指标</th><th>数值</th></tr>
+            <tr><td>总市值</td><td><strong>~80亿</strong>（84.45元 × 0.95亿股）</td></tr>
+            <tr><td>TTM PE</td><td><strong>123x</strong>（行业PE中位数93x）</td></tr>
+            <tr><td>PB</td><td>6.97x</td></tr>
+            <tr><td>总股本</td><td>9,531.56万股（全流通）</td></tr>
+            <tr><td>2026E EPS（东兴证券）</td><td>1.98元 → 对应PE 42.6x</td></tr>
+            <tr><td>2027E EPS（东兴证券）</td><td>2.77元 → 对应PE 30.5x</td></tr>
+            <tr><td>股权激励授予价</td><td>30.14元/股（占现价35.7%，21名激励对象）</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>三、Serenity 卡点框架评估</h2>
+    <!-- ============================================================ -->
+
+    <h3>3.1 卡点五连判</h3>
+    <div class="card">
+        <table>
+            <tr><th style="width:60px;">#</th><th style="width:140px;">卡点维度</th><th>评分</th><th>说明</th></tr>
+            <tr>
+                <td>①</td><td>垄断/寡头地位</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span></span></td>
+                <td>真空电容器细分领域国内领先，但全球市场仍由国外品牌主导。非双寡头格局，国产替代进程中竞争者众（如中电科系）</td>
+            </tr>
+            <tr>
+                <td>②</td><td>小市值 vs 大TAM</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span></span></td>
+                <td>80亿市值 vs 半导体设备+新能源+核聚变多赛道TAM合计超千亿。但当前PE 123x已反映大量预期，非"未定价"</td>
+            </tr>
+            <tr>
+                <td>③</td><td>Designed-in + 多客户</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span></span></td>
+                <td>真空电容器已进入国内主流半导体设备厂商供应链，但客户集中度偏高，单一客户占比未披露</td>
+            </tr>
+            <tr>
+                <td>④</td><td>认证周期长/未反映当期营收</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-off"></span><span class="score-dot score-off"></span></span></td>
+                <td>可控核聚变器件（氢闸流管/速调管）处于研发验证阶段，需1-3年才能放量，当下尚未反映在营收中——这是最大的预期差</td>
+            </tr>
+            <tr>
+                <td>⑤</td><td>国产替代紧迫度</td>
+                <td><span class="score-bar"><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-on"></span><span class="score-dot score-off"></span></span></td>
+                <td>真空电容器国产化率约20-30%，半导体设备国产替代政策紧迫（设备厂加速导入国产零部件），卡位明确</td>
+            </tr>
+        </table>
+        <br>
+        <p><strong>卡点质量总分：9/15</strong> — 在国产替代和核聚变两个方向有实质卡位，但非垄断级卡点。真空电容器这类"被国产替代驱动的零部件"相比"全球唯一供应商"的卡点强度弱一个等级。</p>
+    </div>
+
+    <h3>3.2 红旗扫描</h3>
+    <div class="card">
+        <table>
+            <tr><th>红旗类别</th><th>状态</th><th>说明</th></tr>
+            <tr><td>增发稀释风险</td><td><span class="risk-low">✅ 未触发</span></td><td>股权激励30.14元/股，53.29万股仅稀释0.56%，影响有限</td></tr>
+            <tr><td>单一客户集中</td><td><span class="risk-med">⚠️ 关注</span></td><td>新能源汽车板块客户集中度偏高，具体数据未完整披露</td></tr>
+            <tr><td>资产负债表健康度</td><td><span class="risk-low">✅ 健康</span></td><td>2025年经营现金流转正，资产负债率约40-50%合理区间</td></tr>
+            <tr><td>零收入纯炒作</td><td><span class="risk-low">✅ 未触发</span></td><td>2025年营收13.23亿（+67%），有真实业务支撑</td></tr>
+            <tr><td>技术太远</td><td><span class="risk-med">⚠️ 部分</span></td><td>可控核聚变器件处于研发验证，但公司明确说明"非蹭概念"，有实质投入</td></tr>
+            <tr><td>海外核心技术依赖</td><td><span class="risk-med">⚠️ 部分</span></td><td>核心产品为自主技术，但国产替代进度依赖下游设备厂导入速度</td></tr>
+            <tr><td>大股东质押过高</td><td><span class="risk-low">✅ 未触发</span></td><td>控股股东质押比例正常，无明显风险</td></tr>
+            <tr><td>商誉过高</td><td><span class="risk-low">✅ 未触发</span></td><td>未见有高商誉风险</td></tr>
+            <tr><td><strong>⚠️ 特殊红旗：多概念叠加炒作风险</strong></td><td><span class="risk-high">🔴 命中</span></td><td><strong>经济观察报7/3明确指出公司"涉及高压快充、可控核聚变、商业航天等多热门概念，20日主力资金净流出"</strong></td></tr>
+        </table>
+        <br>
+        <p><strong>红旗命中：3/12（含1项特殊红旗）</strong> — 无硬否决项，但多概念叠加+主力资金净流出需引起高度重视。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>四、核心矛盾</h2>
+    <!-- ============================================================ -->
+
+    <div class="card">
+        <p><strong>矛盾一：营收高增长 vs 利润体量过小</strong></p>
+        <p>13.23亿营收对应仅7,061万净利，净利率5.3%。在科创板+半导体设备+新能源的多重光环下，利润绝对值太小。80亿市值=113倍营收真实利润，每股年化回报不到1元。<p>
+        <br>
+
+        <p><strong>矛盾二：多概念齐射 vs 主力资金净流出</strong></p>
+        <p>公司同时涉及可控核聚变、第四代半导体（金刚石）、新能源、商业航天、培育钻石等热门概念，但经济观察报报道近20日主力资金持续净流出。概念的广度与资金的流向呈现背离——拉高出货的嫌疑不能被排除。</p>
+        <br>
+
+        <p><strong>矛盾三：核聚变期权未定价 vs 当前价格已透支</strong></p>
+        <p>可控核聚变是真正的"10x期权"——如果氢闸流管/速调管成功量产，公司估值将重估。但PE 123x、PS 6x已经Price in了大量利好，核聚变的期权价值已被隐含反映。当前的80亿市值并非"未定价"，而是"部分定价且不含安全边际"。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>五、催化剂与下行风险</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <h3>催化剂（未来3-6个月）</h3>
+        <ul>
+            <li><strong>2026年中报（8月）：</strong>Q2营收和利润能否延续高增长（2025Q4净利仅0.15亿，环比-25%，需关注趋势）</li>
+            <li><strong>可控核聚变订单突破：</strong>氢闸流管/速调管从"研发验证"→"小批量交付"的拐点确认</li>
+            <li><strong>子公司专利诉讼结果：</strong>诉厦门宏发等7000万专利侵权案，胜诉意味着继电器业务竞争格局改善</li>
+            <li><strong>海外车企定点交付：</strong>国外知名车企的订单开始交付，多合一控制盒放量</li>
+        </ul>
+        <br>
+        <h3>下行风险</h3>
+        <ul>
+            <li><strong>概念退潮风险：</strong>公司同时绑定多个热门概念，一旦市场风格切换，多概念=多跌幅乘数</li>
+            <li><strong>中报不及预期：</strong>2026Q1数据未单独披露，若Q2增速放缓，高PE将承受估值杀</li>
+            <li><strong>限售股解禁：</strong>全流通虽无额外解禁，但股权激励行权可能带来小幅抛压</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>六、客观框架</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <table>
+            <tr><th>场景</th><th>触发条件</th><th>市值</th><th>股价</th><th>较当前</th></tr>
+            <tr><td><strong>🐻 Bear</strong></td><td>中报不及预期+概念退潮+核聚变订单延迟+毛利率下滑</td><td><strong>40-50亿</strong></td><td><strong>42-52元</strong></td><td>-37%</td></tr>
+            <tr><td><strong>📊 Base</strong></td><td>新能源稳健增长+半导体设备替代渐进+核聚变维持研发状态+净利2026E达1.8亿</td><td><strong>60-70亿</strong></td><td><strong>63-73元</strong></td><td>-13%</td></tr>
+            <tr><td><strong>🐂 Bull</strong></td><td>核聚变订单落地+半导体设备加速导入+海外车企放量+净利2027E达2.6亿</td><td><strong>90-120亿</strong></td><td><strong>94-126元</strong></td><td>+33%</td></tr>
+        </table>
+        <br>
+        <p><strong>客观框架结论：</strong>Base 60-70亿（对应63-73元）是合理估值区间。当前80亿（84.45元）已处于Base上沿偏Bull的位置，向下空间13%+，向上空间33%但需核聚变订单兑现。风险收益比不佳。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>七、综合判定</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / 电真空器件国产替代有实质性卡位，但80亿PE 123x已充分定价 / 等回调至60-65亿（对应63-68元）再评估</div>
+        <br>
+        <p><strong>国力电子的"底色"是好的</strong>——营收13亿+67%、扣非+237%、有实质业务支撑，不是纯蹭概念。但今天15.67%的大涨之后，80亿市值、123x PE、6x PS已把大部分预期price in。核聚变期权是真实的，但期权价值已被隐含反映在当前价格中。</p>
+        <br>
+        <p><strong>三个"不"：</strong></p>
+        <ul>
+            <li>❌ <strong>不追高：</strong>84.45元买入的每1元里，约0.35元是核聚变概念的'梦想溢价'</li>
+            <li>❌ <strong>不抄底：</strong>主力资金净流出信号未消失前，下跌趋势中的抄底是接飞刀</li>
+            <li>✅ <strong>等回调：</strong>60-65亿（对应63-68元）是合理关注区间。股权激励授予价30.14元是绝对安全底，但那个价格意味着公司基本面崩塌</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>数据来源：东兴证券研报、经济观察报、证券时报、互动易、东方财富、中财网</p>
+        <p>免责声明：不构成投资建议。</p>
+        <p><a href="index.html">返回报告列表</a></p>
+    </div>
+</body>
+</html>
