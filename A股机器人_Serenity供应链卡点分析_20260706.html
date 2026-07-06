@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股机器人产业链 — Serenity 供应链卡点分析 | 2026-07-06</title>
+    <style>
+        :root { --bg: #f8f9fa; --card: #fff; --text: #1a1a2e; --muted: #888; --red: #e94560; --blue: #0f3460; --green: #27ae60; --gold: #f39c12; --border: #e2e6ed; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); max-width: 960px; margin: 0 auto; padding: 20px 16px; line-height: 1.7; }
+        h1 { color: var(--blue); border-bottom: 3px solid var(--red); padding-bottom: 10px; font-size: clamp(20px, 4vw, 26px); }
+        h2 { color: var(--blue); margin: 28px 0 12px; font-size: clamp(17px, 3.2vw, 20px); border-left: 4px solid var(--red); padding-left: 10px; }
+        h3 { color: #555; margin: 20px 0 8px; font-size: clamp(14px, 2.6vw, 16px); }
+        .meta { color: var(--muted); font-size: 13px; margin: 8px 0 16px; }
+        .card { background: var(--card); border-radius: 10px; padding: 16px 20px; margin: 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px 4px; }
+        .tag-red { background: #fde8e8; color: #c0392b; }
+        .tag-blue { background: #e8f0fe; color: #2471a3; }
+        .tag-green { background: #e8f8e8; color: #1e8449; }
+        .tag-gold { background: #fef5e7; color: #b7950b; }
+        .tag-purple { background: #f3e8ff; color: #7c3aed; }
+        .verdict { padding: 14px 18px; border-radius: 8px; font-weight: 700; font-size: clamp(14px, 2.8vw, 16px); margin: 16px 0; text-align: center; }
+        .verdict-bear { background: #fde8e8; color: #c0392b; border: 1px solid #e6b0b0; }
+        .verdict-watch { background: #fef5e7; color: #b7950b; border: 1px solid #f0d78c; }
+        .verdict-base { background: #e8f0fe; color: #2471a3; border: 1px solid #a9cce3; }
+        .verdict-bull { background: #e8f8e8; color: #1e8449; border: 1px solid #a3d9a3; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+        th { background: #f0f0f0; font-weight: 600; color: #555; white-space: nowrap; }
+        ul { padding-left: 20px; }
+        li { margin: 4px 0; }
+        .risk-high { color: #c0392b; font-weight: 600; }
+        .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .stack-layer { border-left: 4px solid var(--blue); padding: 10px 14px; margin: 8px 0; background: #f8fafc; border-radius: 0 6px 6px 0; }
+        .stack-layer strong { color: var(--blue); }
+        .score-bar { display: inline-block; height: 8px; border-radius: 4px; background: var(--green); }
+        .score-bg { display: inline-block; width: 100px; height: 8px; border-radius: 4px; background: #eee; margin: 0 6px; }
+        .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; padding-top: 16px; border-top: 1px solid #ddd; }
+        .highlight { background: #fffde7; padding: 2px 6px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>A股机器人产业链 — Serenity 供应链卡点分析</h1>
+    <p class="meta">分析框架：Serenity Mode 1（供应链卡点逆向） | 日期：2026-07-06 | 能力圈：人形机器人产业链（丝杠·减速器·传感器·电机·灵巧手·设备）</p>
+
+    <div class="verdict verdict-base">🔵 核心结论：丝杠是"卡点中的卡点"——恒立液压是A股最强Serenity标的；传感器（安培龙/柯力）是小市值高弹性卡点；减速器（绿的谐波）卡点质量高但估值严重透支</div>
+
+    <!-- ============================================================ -->
+    <h2>一、供应链栈：6层结构 + 多跳映射</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="stack-layer"><strong>L1 终端整机：</strong>Tesla Optimus / 宇树科技 / 智元机器人 / 优必选 / 小米 / 华为 / Figure AI</div>
+        <div class="stack-layer"><strong>L2 关节模组总成：</strong>三花智控(002050) / 拓普集团(601689) / 埃斯顿(002747) — Tier1集成商，对接终端</div>
+        <div class="stack-layer"><strong>L3 核心零部件——传动：</strong><span class="highlight">行星滚柱丝杠</span>（恒立液压/五洲新春/贝斯特）→ <span class="highlight">谐波减速器</span>（绿的谐波/来福谐波）→ 轴承（五洲新春/长盛轴承）</div>
+        <div class="stack-layer"><strong>L4 核心零部件——驱动：</strong>无框力矩电机（雷赛智能/步科股份）→ 空心杯电机（鸣志电器）→ 灵巧手（雷赛智能/兆威机电）</div>
+        <div class="stack-layer"><strong>L5 核心零部件——感知：</strong>六维力传感器（安培龙/柯力传感/坤维-未上市）→ 力矩传感器（安培龙）→ 电子皮肤（日盈电子/汉威科技）→ IMU（北微传感-未上市）</div>
+        <div class="stack-layer"><strong>L6 设备/材料：</strong>丝杠磨床（华辰装备/秦川机床）→ 特种钢材（抚顺特钢）→ PEEK材料（富春染织/肇民科技）</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>二、逐层卡点评估：Serenity 15条判据 × A股标的</h2>
+    <!-- ============================================================ -->
+
+    <h3>🥇 第一梯队：最强卡点（Serenity框架高度匹配）</h3>
+
+    <div class="card">
+        <h3 style="margin-top:0">1. 恒立液压 (601100) — 行星滚柱丝杠 🔥 Tier 1 最强卡点</h3>
+        <div class="tbl-wrap">
+        <table>
+            <tr><th>维度</th><th>评估</th><th>详情</th></tr>
+            <tr><td>市值</td><td>1631亿</td><td>2026E净利35亿，PE 47x — 偏大，但丝杠业务仅占<5%</td></tr>
+            <tr><td>卡点形态</td><td><span class="tag tag-green">Single Point of Failure</span></td><td>行星滚柱丝杠全球仅4家量产（Rollvis/SKF/Ewellix/力士乐），国产化率<20%</td></tr>
+            <tr><td>BOM占比</td><td><span class="tag tag-red">18-20%</span></td><td>丝杠是人形机器人成本第一大件，单台14根×4500元=6.3万</td></tr>
+            <tr><td>designed-in</td><td><span class="tag tag-green">✅ 北美客户PPAP</span></td><td>拿下PPAP框架协议，份额≥70%，美国头部机器人客户核心零部件最大供应商</td></tr>
+            <tr><td>产能</td><td>月出货几百套→下半年几千套</td><td>墨西哥已拿地，支撑百万套产能；FY26机器人营收~1亿，FY27目标10亿</td></tr>
+            <tr><td>估值</td><td>PE 47x(2026E) / 33x(2027E)</td><td>传统液压主业PE 40x，丝杠业务隐含期权价值，估值合理偏高</td></tr>
+            <tr><td>红旗</td><td>无重大红旗</td><td>汇兑损失一次性扰动；墨西哥工厂短期亏损（战略性出血）</td></tr>
+        </table>
+        </div>
+        <p><strong>Serenity判定：</strong>🟢 <strong>Extremely Strong Buy候选</strong> — 行星滚柱丝杠是整个人形机器人供应链中"卡点中的卡点"，全球仅4家量产、国产化率<20%、BOM占比第一。恒立凭借液压精密加工能力跨界丝杠，已拿下北美客户≥70%份额，且客户V3版本已量产。唯一扣分项是1631亿市值压缩了10x空间，但丝杠业务仅占<5%意味着"隐藏的10x"——若丝杠3年后做到100亿收入（中性假设），相当于再造一个恒立。</p>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-top:0">2. 安培龙 (301413) — 力/力矩/六维力传感器 🔥 Tier 1 小市值卡点</h3>
+        <div class="tbl-wrap">
+        <table>
+            <tr><th>维度</th><th>评估</th><th>详情</th></tr>
+            <tr><td>市值</td><td><span class="tag tag-green">94亿</span></td><td>小市值，符合Serenity"Sub ¥100亿才有10x"标准</td></tr>
+            <tr><td>卡点形态</td><td><span class="tag tag-green">极少数玩家</span></td><td>真正对接上特斯拉机器人传感器的不到3家，公司是其中之一</td></tr>
+            <tr><td>BOM占比</td><td><span class="tag tag-red">~17%</span></td><td>力矩传感器占整机BOM约17%，六维力占其中近一半</td></tr>
+            <tr><td>designed-in</td><td><span class="tag tag-gold">送样阶段→突破在即</span></td><td>特斯拉审厂反馈超预期（技术+商务+研发多部门），已签订NDA；国内XP订单落地在即</td></tr>
+            <tr><td>认证壁垒</td><td><span class="tag tag-green">1-2年</span></td><td>传感器认证周期长，先发优势明显</td></tr>
+            <tr><td>估值</td><td>PE 104x(2026E)</td><td>高PE但市值小，若机器人传感器突破→市值可看300-500亿</td></tr>
+            <tr><td>红旗</td><td><span class="risk-high">Q1净利-85%</span></td><td>研发费用激增+厂房搬迁拖累主业，机器人传感器仍在送样阶段，尚未量产</td></tr>
+        </table>
+        </div>
+        <p><strong>Serenity判定：</strong>🟡 <strong>High Conviction Watch</strong> — 完美符合Serenity"极小市值vs巨大下游TAM"框架。力传感器是机器人感知层的最核心卡点，特斯拉早期用海外供应商（ATI），降本诉求下国产替代是必然。安培龙已通过汽车业务建立信任基础（全球份额35%+），机器人传感器进展是"何时突破"而非"能否突破"。最大风险是送样→定点的节奏不确定性。</p>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-top:0">3. 绿的谐波 (688017) — 谐波减速器 🔥 卡点质量最高，但估值严重透支</h3>
+        <div class="tbl-wrap">
+        <table>
+            <tr><th>维度</th><th>评估</th><th>详情</th></tr>
+            <tr><td>市值</td><td><span class="tag tag-red">895亿</span></td><td>PS 157x，TTM PE 654x — 严重透支</td></tr>
+            <tr><td>卡点形态</td><td><span class="tag tag-green">双寡头</span></td><td>国产第一/全球第二，国内市占27.5%，唯一绕开日本哈默纳科专利的国产厂商</td></tr>
+            <tr><td>BOM占比</td><td><span class="tag tag-red">~18%</span></td><td>谐波减速器占整机BOM约18%，单台28-34个×4500元</td></tr>
+            <tr><td>designed-in</td><td><span class="tag tag-green">✅ 特斯拉独家国产</span></td><td>特斯拉Optimus国产谐波独家供应商，国内人形市占65-70%</td></tr>
+            <tr><td>2026E人形营收</td><td>8.22亿</td><td>2025年人形谐波出货10万台，2026E随Optimus量产爆发</td></tr>
+            <tr><td>估值</td><td><span class="risk-high">TTM PE 654x</span></td><td>机构目标均价301元，现价488元已溢价62%；2027E PE仍316x</td></tr>
+            <tr><td>红旗</td><td><span class="risk-high">估值极度透支</span></td><td>60日涨幅+160%；毛利率从48.7%→33.6%持续下滑（价格战）</td></tr>
+        </table>
+        </div>
+        <p><strong>Serenity判定：</strong>🟡 <strong>卡点质量10/10，估值0/10</strong> — 绿的谐波是A股机器人产业链中最"Serenity"的标的：双寡头格局、designed-in特斯拉、全产业链自研、专利壁垒。但895亿市值+654x PE已经把2028年的乐观预期都price in了。Serenity框架的核心是"在市场没定价前买入"，绿的谐波显然已经被充分定价。</p>
+    </div>
+
+    <h3>🥈 第二梯队：强卡点（有一定瑕疵）</h3>
+
+    <div class="card">
+        <h3 style="margin-top:0">4. 雷赛智能 (002979) — 无框电机+灵巧手 🔥 差异化卡点</h3>
+        <div class="tbl-wrap">
+        <table>
+            <tr><th>维度</th><th>评估</th><th>详情</th></tr>
+            <tr><td>市值</td><td>220亿</td><td>2026E净利3.3亿，PE 67x — 适中偏高</td></tr>
+            <tr><td>卡点形态</td><td><span class="tag tag-blue">灵巧手稀缺性</span></td><td>国内唯一实现灵巧手+关节模组+无框电机全栈批量供货的企业</td></tr>
+            <tr><td>BOM占比</td><td>灵巧手~15% + 无框电机~10%</td><td>合计占整机BOM约25%</td></tr>
+            <tr><td>designed-in</td><td><span class="tag tag-green">✅ 80%厂商</span></td><td>进入国内80%主流人形机器人厂商供应链，获智元"优秀供应商"</td></tr>
+            <tr><td>量产进度</td><td>无框电机12万台+灵巧手批量</td><td>在建年产200万台产线，灵巧手21自由度已商业化</td></tr>
+            <tr><td>估值</td><td>PE 67x(2026E)</td><td>剔除股权激励后PE ~50x，合理偏高</td></tr>
+            <tr><td>红旗</td><td><span class="risk-high">竞争格局不如丝杠/减速器</span></td><td>无框电机壁垒相对较低，汇川等巨头可能进入；Q1经营现金流为负</td></tr>
+        </table>
+        </div>
+        <p><strong>Serenity判定：</strong>🟡 <strong>Buy on Weakness</strong> — 无框电机壁垒不如丝杠/减速器，但灵巧手是差异化卡点（21自由度+多维力传感+自适应抓取）。220亿市值+67x PE有回调空间，等回调至150-180亿（PE 45-55x）是更好的入场点。</p>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-top:0">5. 柯力传感 (603662) — 六维力传感器 🔥 传统龙头跨界</h3>
+        <div class="tbl-wrap">
+        <table>
+            <tr><th>维度</th><th>评估</th><th>详情</th></tr>
+            <tr><td>市值</td><td>156亿</td><td>2026E净利3.6亿，PE 43x — 合理</td></tr>
+            <tr><td>卡点形态</td><td><span class="tag tag-green">六维力国产第一</span></td><td>国内六维力市占12%国产第一，全球仅3家具备稳定大批量交付能力</td></tr>
+            <tr><td>基本盘</td><td><span class="tag tag-green">称重传感器40%市占</span></td><td>连续14年国内第一，年营收6.2亿，提供稳定现金流安全垫</td></tr>
+            <tr><td>人形进展</td><td>2025年出货1500+台</td><td>送样70+家整机厂，切入特斯拉Optimus/优必选/新松</td></tr>
+            <tr><td>估值</td><td>PE 43x(2026E)</td><td>传统业务支撑30x PE，六维力业务期权价值</td></tr>
+            <tr><td>红旗</td><td>人形仍在送样阶段</td><td>非量产供货，六维力人形业务营收占比仍小</td></tr>
+        </table>
+        </div>
+        <p><strong>Serenity判定：</strong>🟢 <strong>Buy候选（安全边际最好）</strong> — 传统称重传感器业务提供稳定现金流+40%市占率护城河，六维力传感器是"期权"而非"全部身家"。PE 43x中传统业务贡献~30x，六维力仅贡献~13x，下行保护较强。适合"先买基本盘，白送机器人期权"的逻辑。</p>
+    </div>
+
+    <h3>🥉 第三梯队：卡点偏弱 / 估值过高 / 尚在早期</h3>
+
+    <div class="card">
+        <div class="tbl-wrap">
+        <table>
+            <tr><th>标的</th><th>卡点</th><th>市值</th><th>PE</th><th>核心问题</th><th>Serenity判定</th></tr>
+            <tr>
+                <td><strong>贝斯特(300580)</strong></td>
+                <td>行星滚柱丝杠</td>
+                <td>130亿</td>
+                <td>~47x</td>
+                <td><span class="risk-high">人形营收仅22万！</span>2026H1人形丝杠样品收入22.3万(0.03%)，纯样品阶段</td>
+                <td>🔴 不匹配 — 130亿市值炒的是2028年预期，不是Serenity框架</td>
+            </tr>
+            <tr>
+                <td><strong>五洲新春(603667)</strong></td>
+                <td>行星滚柱丝杠（国产龙头）</td>
+                <td>~200亿</td>
+                <td>~50x</td>
+                <td>国产丝杠绝对龙头，98万套产能，特斯拉/华为/智元定点。但竞争格局不如恒立（恒立有液压基本盘+北美客户深度绑定）</td>
+                <td>🟡 次强卡点 — 丝杠赛道好，但相对恒立缺乏"独家"属性</td>
+            </tr>
+            <tr>
+                <td><strong>富春染织(605189)</strong></td>
+                <td>PEEK材料</td>
+                <td>35亿</td>
+                <td>~12x</td>
+                <td>PEEK材料量产+人形机器人轻量化。Q1+1415%是真成长，但PEEK非人形"卡点"（可有可无的轻量化选项）</td>
+                <td>🟡 弱卡点 — PEEK不是"停产就瘫痪"的零部件</td>
+            </tr>
+            <tr>
+                <td><strong>华辰装备(300809)</strong></td>
+                <td>丝杠磨床（设备）</td>
+                <td>~80亿</td>
+                <td>~60x</td>
+                <td>丝杠磨床国产化率<5%，是"卡点的卡点"——没有磨床就没有丝杠。但设备股逻辑不同于零部件，弹性更小</td>
+                <td>🟡 间接卡点 — 卖铲子的逻辑，弹性不如铲子本身</td>
+            </tr>
+            <tr>
+                <td><strong>三花智控(002050)</strong></td>
+                <td>关节模组总成</td>
+                <td>~800亿</td>
+                <td>~30x</td>
+                <td>Tier1集成商，特斯拉Optimus核心供应商。但关节总成集成壁垒低于零部件，市值太大</td>
+                <td>🟡 弱卡点 — 集成商而非核心零部件</td>
+            </tr>
+            <tr>
+                <td><strong>兆威机电(003021)</strong></td>
+                <td>灵巧手</td>
+                <td>~100亿</td>
+                <td>~50x</td>
+                <td>微型传动系统，灵巧手齿轮箱供应商。与雷赛智能直接竞争，格局未定</td>
+                <td>🟡 格局未定 — 灵巧手赛道好但竞争格局尚未清晰</td>
+            </tr>
+            <tr>
+                <td><strong>日盈电子(603286)</strong></td>
+                <td>电子皮肤</td>
+                <td>~30亿</td>
+                <td>亏损</td>
+                <td>公司澄清电子皮肤收入不足1万元，纯概念炒作</td>
+                <td>🔴 不匹配 — 伪卡点，已澄清</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>三、卡点质量评分总排名</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="tbl-wrap">
+        <table>
+            <tr><th>排名</th><th>标的</th><th>卡点层级</th><th>卡点质量<br>(/15)</th><th>估值合理性<br>(/10)</th><th>市值空间<br>(/10)</th><th>综合<br>(/35)</th><th>Serenity判定</th></tr>
+            <tr>
+                <td><strong>1</strong></td>
+                <td><strong>恒立液压</strong></td>
+                <td>丝杠（卡点中的卡点）</td>
+                <td>14</td>
+                <td>7</td>
+                <td>5</td>
+                <td><strong>26</strong></td>
+                <td>🟢 最强卡点 — 市值偏大是唯一扣分</td>
+            </tr>
+            <tr>
+                <td><strong>2</strong></td>
+                <td><strong>安培龙</strong></td>
+                <td>力传感器</td>
+                <td>12</td>
+                <td>6</td>
+                <td>8</td>
+                <td><strong>26</strong></td>
+                <td>🟢 小市值+高弹性卡点</td>
+            </tr>
+            <tr>
+                <td><strong>3</strong></td>
+                <td><strong>柯力传感</strong></td>
+                <td>六维力传感器</td>
+                <td>11</td>
+                <td>8</td>
+                <td>7</td>
+                <td><strong>26</strong></td>
+                <td>🟢 安全边际最好的卡点</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>绿的谐波</td>
+                <td>谐波减速器</td>
+                <td>14</td>
+                <td>2</td>
+                <td>3</td>
+                <td>19</td>
+                <td>🟡 卡点质量最高但估值透支</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>雷赛智能</td>
+                <td>无框电机+灵巧手</td>
+                <td>10</td>
+                <td>5</td>
+                <td>6</td>
+                <td>21</td>
+                <td>🟡 灵巧手是差异化卡点</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>五洲新春</td>
+                <td>丝杠</td>
+                <td>11</td>
+                <td>5</td>
+                <td>6</td>
+                <td>22</td>
+                <td>🟡 丝杠次强卡点</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>华辰装备</td>
+                <td>丝杠磨床</td>
+                <td>9</td>
+                <td>5</td>
+                <td>7</td>
+                <td>21</td>
+                <td>🟡 间接卡点（卖铲子）</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>贝斯特</td>
+                <td>丝杠（样品阶段）</td>
+                <td>8</td>
+                <td>3</td>
+                <td>6</td>
+                <td>17</td>
+                <td>🔴 样品阶段，估值前置</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>四、红旗扫描（12项A股专用）</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <table>
+            <tr><th>红旗</th><th>绿的谐波</th><th>恒立液压</th><th>安培龙</th><th>雷赛智能</th><th>柯力传感</th></tr>
+            <tr><td>增发稀释</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td></tr>
+            <tr><td>单一客户>50%</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td></tr>
+            <tr><td>资产负债表toxic</td><td>✅ 9.4%负债率</td><td>✅ 健康</td><td>⚠️ 现金流承压</td><td>⚠️ Q1经营现金流-0.48亿</td><td>✅ 健康</td></tr>
+            <tr><td>零收入纯炒作</td><td>✅ 5.7亿营收</td><td>✅ 109亿营收</td><td>⚠️ 机器人收入极小</td><td>✅ 有真实收入</td><td>✅ 有真实收入</td></tr>
+            <tr><td>技术太远（2030+）</td><td>✅ 2026量产</td><td>✅ 2026量产</td><td>✅ 2026送样</td><td>✅ 已量产</td><td>✅ 已小批量</td></tr>
+            <tr><td>纯软件/SaaS</td><td>✅ 硬件</td><td>✅ 硬件</td><td>✅ 硬件</td><td>✅ 硬件</td><td>✅ 硬件</td></tr>
+            <tr><td>海外核心技术依赖</td><td>⚠️ 部分设备进口</td><td>⚠️ 部分设备进口</td><td>✅ 自研芯片</td><td>✅ 自研</td><td>✅ 自研</td></tr>
+            <tr><td>政府补助>30%</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td></tr>
+            <tr><td>大股东质押>50%</td><td>✅ 0质押</td><td>✅ 低</td><td>✅ 低</td><td>✅ 低</td><td>✅ 低</td></tr>
+            <tr><td>商誉>50%净资产</td><td>✅ 0商誉</td><td>✅ 低</td><td>✅ 低</td><td>✅ 765万</td><td>⚠️ 并购较多</td></tr>
+        </table>
+        <p style="margin-top:12px"><strong>红旗总结：</strong>五个核心标的均无重大红旗。绿的谐波和恒立液压资产负债表最干净（负债率极低、0商誉、0质押）。安培龙和雷赛智能的现金流问题是短期投入期特征，不是结构性问题。柯力传感通过并购扩张，商誉需持续关注。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>五、估值对比</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="tbl-wrap">
+        <table>
+            <tr><th>标的</th><th>市值(亿)</th><th>2025营收(亿)</th><th>PS</th><th>2025净利(亿)</th><th>TTM PE</th><th>2026E PE</th><th>2027E PE</th><th>人形弹性</th></tr>
+            <tr><td><strong>恒立液压</strong></td><td>1631</td><td>109</td><td>15x</td><td>27.3</td><td>60x</td><td><strong>47x</strong></td><td><strong>38x</strong></td><td>丝杠10亿→100亿</td></tr>
+            <tr><td><strong>安培龙</strong></td><td>94</td><td>11.8</td><td>8x</td><td>0.91</td><td>103x</td><td><strong>98x</strong></td><td><strong>60x</strong></td><td>传感器0→8亿</td></tr>
+            <tr><td><strong>柯力传感</strong></td><td>156</td><td>15.6</td><td>10x</td><td>3.41</td><td>46x</td><td><strong>43x</strong></td><td><strong>40x</strong></td><td>六维力0.97→20亿</td></tr>
+            <tr><td>绿的谐波</td><td>895</td><td>5.7</td><td>157x</td><td>1.24</td><td>654x</td><td>460x</td><td>316x</td><td>谐波1.14→50亿</td></tr>
+            <tr><td>雷赛智能</td><td>220</td><td>18.7</td><td>12x</td><td>2.25</td><td>83x</td><td>67x</td><td>52x</td><td>灵巧手+电机0→70亿</td></tr>
+        </table>
+        </div>
+        <p style="margin-top:12px"><strong>估值核心矛盾：</strong>恒立液压PS 15x vs 绿的谐波PS 157x — 同样是机器人核心卡点，恒立有109亿基本盘支撑，绿的谐波仅5.7亿营收却895亿市值。恒立的"丝杠期权"是白送的，绿的谐波已经把所有期权都定价了。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>六、催化剂时点</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <table>
+            <tr><th>时间</th><th>催化剂</th><th>受益标的</th></tr>
+            <tr><td>2026年7-8月</td><td>特斯拉Optimus Q2产量数据 / 宇树科技科创板上市</td><td>恒立液压、绿的谐波、贝斯特</td></tr>
+            <tr><td>2026年H2</td><td>特斯拉Optimus周产目标千台 / 安培龙获定点公告</td><td>安培龙、恒立液压</td></tr>
+            <tr><td>2026年Q4</td><td>国内人形机器人全年出货10万台（10倍于2025）</td><td>全产业链</td></tr>
+            <tr><td>2027年</td><td>Optimus年产150万台 / 丝杠/传感器大规模国产替代</td><td>恒立液压、安培龙、柯力传感</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>七、综合结论</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <h3>Serenity框架下的A股机器人产业链投资组合</h3>
+        <br>
+        <p><strong>🥇 核心持仓（最强卡点+合理估值）：</strong></p>
+        <p><strong>恒立液压(601100)</strong> — 丝杠是"卡点中的卡点"，全球仅4家量产，国产化率<20%，BOM占比第一，北美客户≥70%份额。1631亿市值偏大，但丝杠业务仅占<5%意味着"隐藏的10x"。PE 47x(2026E)在机器人核心标的中偏低。</p>
+        <br>
+        <p><strong>🥈 卫星仓位（小市值+高弹性卡点）：</strong></p>
+        <p><strong>安培龙(301413)</strong> — 94亿小市值，完美符合Serenity"Sub ¥100亿才有10x"。特斯拉传感器供应链突破在即，国内XP订单落地在即。最大风险是送样→定点的节奏不确定性。</p>
+        <p><strong>柯力传感(603662)</strong> — 156亿中等市值，传统称重传感器40%市占率提供安全垫，六维力传感器是"期权"。PE 43x(2026E)是五个标的中最低的。适合"先买基本盘，白送机器人期权"。</p>
+        <br>
+        <p><strong>🥉 观察清单（等回调）：</strong></p>
+        <p><strong>绿的谐波(688017)</strong> — 卡点质量10/10但估值0/10。895亿+654x PE已经把2028年预期price in。等回调至300-400亿（PE 200-300x）再考虑。</p>
+        <p><strong>雷赛智能(002979)</strong> — 灵巧手是差异化卡点，但220亿+67x PE不便宜。等回调至150-180亿。</p>
+        <br>
+        <p><strong>🔴 不匹配Serenity框架（排除）：</strong></p>
+        <p>贝斯特(300580) — 人形营收仅22万(0.03%)，130亿市值纯炒预期，不符合Serenity"已证实/管理层声称"的证据标准。</p>
+        <p>日盈电子(603286) — 电子皮肤收入不足1万元，公司已澄清，伪卡点。</p>
+    </div>
+
+    <div class="footer">
+        <p>本报告基于Serenity(@aleabitoreddit)供应链卡点逆向投资框架分析 | 数据来源：公司公告、券商研报、东方财富、同花顺</p>
+        <p>免责声明：不构成投资建议。Serenity框架强调"独立判断"，本报告仅提供分析框架，不替你拍板。</p>
+        <p><a href="index.html">返回报告列表</a></p>
+    </div>
+</body>
+</html>
