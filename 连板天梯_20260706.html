@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板天梯 (2026-07-06)</title>
+    <style>
+        :root { --bg: #f8f9fa; --card: #fff; --text: #1a1a2e; --muted: #888; --red: #e94560; --blue: #0f3460; --green: #27ae60; --gold: #f39c12; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 20px 16px; line-height: 1.7; }
+        h1 { color: var(--blue); border-bottom: 3px solid var(--red); padding-bottom: 10px; font-size: clamp(20px, 4vw, 26px); }
+        h2 { color: var(--blue); margin: 24px 0 10px; font-size: clamp(16px, 3vw, 19px); border-left: 4px solid var(--red); padding-left: 10px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: clamp(14px, 2.6vw, 16px); }
+        .meta { color: var(--muted); font-size: 13px; margin: 8px 0 16px; }
+        .card { background: var(--card); border-radius: 10px; padding: 16px 20px; margin: 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px 4px; }
+        .tag-red { background: #fde8e8; color: #c0392b; }
+        .tag-blue { background: #e8f0fe; color: #2471a3; }
+        .tag-green { background: #e8f8e8; color: #1e8449; }
+        .tag-gold { background: #fef5e7; color: #b7950b; }
+        .tag-gray { background: #f0f0f0; color: #888; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top; }
+        th { background: #f0f0f0; font-weight: 600; color: #555; white-space: nowrap; }
+        ul, ol { padding-left: 20px; }
+        li { margin: 4px 0; }
+        .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; padding-top: 16px; border-top: 1px solid #ddd; }
+        .highlight { background: #fffde7; border-left: 3px solid var(--gold); padding: 8px 14px; margin: 12px 0; font-style: italic; }
+        .up { color: #c0392b; font-weight: 600; }
+        .down { color: #27ae60; }
+        .ladder { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+        .ladder-row { display: flex; align-items: center; gap: 10px; }
+        .ladder-label { width: 70px; text-align: right; font-weight: 700; font-size: 14px; color: #555; flex-shrink: 0; }
+        .ladder-stocks { display: flex; flex-wrap: wrap; gap: 6px; }
+        .ladder-stock { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+        .ladder-5 { background: #c0392b; color: #fff; }
+        .ladder-4 { background: #e74c3c; color: #fff; }
+        .ladder-3 { background: #f39c12; color: #fff; }
+        .ladder-2 { background: #3498db; color: #fff; }
+        .ladder-1 { background: #95a5a6; color: #fff; }
+        .verdict { padding: 12px 16px; border-radius: 8px; font-weight: 700; font-size: clamp(13px, 2.6vw, 15px); margin: 12px 0; }
+        .verdict-bear { background: #fde8e8; color: #c0392b; border: 1px solid #e6b0b0; }
+        .verdict-watch { background: #fef5e7; color: #b7950b; border: 1px solid #f0d78c; }
+        .verdict-base { background: #e8f0fe; color: #2471a3; border: 1px solid #a9cce3; }
+    </style>
+</head>
+<body>
+    <h1>连板天梯 (2026-07-06)</h1>
+    <p class="meta">数据截至2026-07-06收盘 | 来源：财联社/新浪财经/东方财富/复盘网 | 共9只连板股</p>
+
+    <!-- ============================================================ -->
+    <h2>一、连板天梯全景</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="ladder">
+            <div class="ladder-row">
+                <div class="ladder-label">5连板</div>
+                <div class="ladder-stocks">
+                    <span class="ladder-stock ladder-5">恒尚节能 603137</span>
+                </div>
+            </div>
+            <div class="ladder-row">
+                <div class="ladder-label">4连板</div>
+                <div class="ladder-stocks">
+                    <span class="ladder-stock ladder-4">宜宾纸业 600793</span>
+                </div>
+            </div>
+            <div class="ladder-row">
+                <div class="ladder-label">3连板</div>
+                <div class="ladder-stocks">
+                    <span class="ladder-stock ladder-3">金科股份 000656</span>
+                    <span class="ladder-stock ladder-3">艾艾精工 603580</span>
+                </div>
+            </div>
+            <div class="ladder-row">
+                <div class="ladder-label">2连板</div>
+                <div class="ladder-stocks">
+                    <span class="ladder-stock ladder-2">贤丰控股 002141</span>
+                    <span class="ladder-stock ladder-2">星网锐捷 002396</span>
+                    <span class="ladder-stock ladder-2">先锋电子 002767</span>
+                    <span class="ladder-stock ladder-2">晋拓股份 603211</span>
+                    <span class="ladder-stock ladder-2">阿科力 603722</span>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size: 13px; color: #888;">* 贤丰控股为14天8板，星网锐捷为5天4板，非纯连板但计入2连板梯队</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>二、盘面总览</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <table>
+            <tr><th>指标</th><th>数值</th></tr>
+            <tr><td>全市场涨停家数</td><td><strong>~49家</strong>（午盘统计，不含ST）</td></tr>
+            <tr><td>连板股总数</td><td><strong>9只</strong></td></tr>
+            <tr><td>封板率</td><td><strong>59%</strong>（34股封板未遂）</td></tr>
+            <tr><td>沪指收盘</td><td>~4046（+0.08%）</td></tr>
+            <tr><td>两市成交</td><td>3.18万亿（缩量）</td></tr>
+            <tr><td>机器人板块</td><td><span class="up">+9.12%</span>（绝对主线）</td></tr>
+        </table>
+        <br>
+        <p><strong>今日核心特征：</strong>机器人概念以板块+9.12%断层领跑，宇树科技IPO获批引爆情绪，资金从半导体/算力高位大幅切换至机器人赛道。但市场缩量（3.18万亿），封板率仅59%，说明资金追高意愿谨慎，属于"缩量反弹，结构分化"行情。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>三、连板股逐只分析</h2>
+    <!-- ============================================================ -->
+
+    <h3>🥇 5连板：恒尚节能 (603137)</h3>
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / 跨界存储并购标的，一字板无买入机会 / 等开板后观察</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>炒作逻辑</td><td>拟收购金胜电子（存储器），跨界存储</td></tr>
+            <tr><td>封单</td><td>27.72亿（封单比22.11%），一字板无量</td></tr>
+            <tr><td>市值</td><td>346亿（停牌前约23亿，复牌后暴涨）</td></tr>
+            <tr><td>累计涨幅</td><td>5连板累计约+61%</td></tr>
+        </table>
+        <p><strong>简评：</strong>从7/3的4连板→7/6的5连板，封单27.72亿极其强势，但一字板完全无法买入。353亿市值对应标的金胜电子为消费级存储品牌，无业绩承诺。等开板后需重新评估。</p>
+    </div>
+
+    <h3>🥈 4连板：宜宾纸业 (600793)</h3>
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / 造纸+化工双题材，累计+46%换手仅13% / 高位博弈，不追</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>现价</td><td>17.61元</td></tr>
+            <tr><td>市值</td><td>31.15亿</td></tr>
+            <tr><td>累计涨幅</td><td>4连板+46.38%</td></tr>
+            <tr><td>累计换手</td><td>13.54%（换手偏低，筹码锁定好）</td></tr>
+            <tr><td>龙虎榜</td><td>营业部席位净买入3590.75万</td></tr>
+        </table>
+        <p><strong>简评：</strong>宜宾纸业从7/1起4连板，累计涨幅46%但累计换手仅13.5%，说明筹码锁定非常好。30亿小市值+造纸景气度回升+化工属性联动，属于资金抱团小票。但无基本面大幅改善支撑，纯情绪博弈。</p>
+    </div>
+
+    <h3>🥉 3连板：金科股份 (000656)</h3>
+    <div class="card">
+        <div class="verdict verdict-bear">🔴 Bear / ST摘帽博弈，地产困境反转逻辑薄弱 / 不参与</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>现价</td><td>~1.43元</td></tr>
+            <tr><td>市值</td><td>~151亿</td></tr>
+            <tr><td>涨停逻辑</td><td>撤销退市风险警示（ST摘帽）</td></tr>
+            <tr><td>基本面</td><td>地产行业整体下行，公司基本面仍承压</td></tr>
+        </table>
+        <p><strong>简评：</strong>ST摘帽+地产低位修复，但地产行业基本面未反转。情绪博弈为主，1元股属性吸引短线资金，但风险收益比不佳。</p>
+    </div>
+
+    <h3>🥉 3连板：艾艾精工 (603580)</h3>
+    <div class="card">
+        <div class="verdict verdict-bear">🔴 Bear / 摘帽+机器人概念双题材，但基本面弱 / 纯博弈，不参与</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>涨停逻辑</td><td>摘帽后经营改善预期+机器人传动零部件</td></tr>
+            <tr><td>累计走势</td><td>此前7/3为5天3板，今日晋级3连板</td></tr>
+        </table>
+        <p><strong>简评：</strong>艾艾精工此前为5天3板，今日晋级3连板。摘帽+机器人双题材，但公司基本面弱，属于纯情绪博弈标的。</p>
+    </div>
+
+    <h3>2连板：贤丰控股 (002141) — 14天8板</h3>
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / PCB覆铜板涨价逻辑通顺，但14天8板位置极高 / 等回调</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>现价</td><td>5.65元</td></tr>
+            <tr><td>市值</td><td>~54亿</td></tr>
+            <tr><td>涨停逻辑</td><td>覆铜板(CCL)涨价+PCB概念+兽用疫苗</td></tr>
+            <tr><td>基本面</td><td>2026Q1扣非净利润同比+355%；毛利率从5.72%→15.18%</td></tr>
+        </table>
+        <p><strong>简评：</strong>覆铜板涨价逻辑通顺（建滔年内第5次提价15%），公司扣非净利润拐点明确。但14天8板累计涨幅巨大，当前位置极高风险。等回调至合理位置再评估。</p>
+    </div>
+
+    <h3>2连板：星网锐捷 (002396) — 5天4板</h3>
+    <div class="card">
+        <div class="verdict verdict-base">🔵 Base / 业绩超预期+算力交换机，基本面扎实 / 持有不追</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>现价</td><td>25.74元</td></tr>
+            <tr><td>涨停逻辑</td><td>中报业绩超预期+WiFi 6/F5G+算力交换机</td></tr>
+            <tr><td>资金</td><td>主力净流入4544.80万</td></tr>
+        </table>
+        <p><strong>简评：</strong>业绩驱动型涨停，算力交换机受益AI基础设施建设。5天4板但属于有基本面支撑的标的，相对安全。</p>
+    </div>
+
+    <h3>2连板：先锋电子 (002767)</h3>
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / 智能燃气表小而美，营收增长+现金流改善 / 关注但市值小波动大</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>现价</td><td>19.84元</td></tr>
+            <tr><td>市值</td><td>29.76亿</td></tr>
+            <tr><td>涨停逻辑</td><td>智能燃气表+营收增长(2025年+14.6%, 2026Q1+20.18%)+现金流改善(+85%)</td></tr>
+            <tr><td>营收</td><td>2025年7.11亿，净利2925万</td></tr>
+        </table>
+        <p><strong>简评：</strong>燃气表行业龙头，NB-IoT物联网表升级周期带来营收增长。现金流大幅改善（+85%），内控合规。纯基本面驱动型涨停，但30亿市值太小，波动大。</p>
+    </div>
+
+    <h3>2连板：晋拓股份 (603211)</h3>
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / 新能源汽车+机器人精密零部件双轮驱动 / 但Q1净利降35%，等回调</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>现价</td><td>~39.53元</td></tr>
+            <tr><td>市值</td><td>~96亿</td></tr>
+            <tr><td>涨停逻辑</td><td>铝合金精密压铸+新能源汽车零部件+人形机器人(UR/节卡/智元等)</td></tr>
+            <tr><td>2026Q1</td><td>营收3.34亿(+12%)，净利1132万(-35.68%)</td></tr>
+        </table>
+        <p><strong>简评：</strong>汽车零部件+机器人精密结构件，客户覆盖UR、节卡、越疆、智元等头部机器人企业。但2026Q1净利同比下降35%，基本面有隐忧。机器人概念溢价明显。</p>
+    </div>
+
+    <h3>2连板：阿科力 (603722)</h3>
+    <div class="card">
+        <div class="verdict verdict-watch">🟡 Watch / COC新材料国产替代千吨级量产+控制权变更复牌涨停 / 关注后续</div>
+        <table>
+            <tr><th>指标</th><th>数据</th></tr>
+            <tr><td>现价</td><td>43.56元</td></tr>
+            <tr><td>市值</td><td>~43亿</td></tr>
+            <tr><td>涨停逻辑</td><td>COC(环烯烃共聚物)千吨级稳定供货+控制权变更(青岛华芯智基入股)</td></tr>
+            <tr><td>2026Q1</td><td>营收同比+40.11%，经营现金流转正</td></tr>
+        </table>
+        <p><strong>简评：</strong>COC新材料国产替代（VR/AR/自动驾驶光学材料），潜江新基地投产。7/6复牌涨停，控制权变更引入战投（青岛华芯智基）。基本面改善+事件驱动，值得跟踪。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>四、断板观察（昨日连板今日断板）</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <table>
+            <tr><th>个股</th><th>昨日</th><th>今日表现</th><th>说明</th></tr>
+            <tr><td>富春染织(605189)</td><td>3连板</td><td><span class="down">+6.54%</span> 断板</td><td>PEEK材料回落，换手10.15%</td></tr>
+            <tr><td>雷赛智能(002979)</td><td>3连板</td><td><span class="down">+8.97%</span> 开板</td><td>10:06打开涨停，成交12.81亿</td></tr>
+            <tr><td>埃斯顿(002747)</td><td>4天3板</td><td>跟涨，未涨停</td><td>机器人中军，趋势未破</td></tr>
+            <tr><td>中通国脉(603559)</td><td>3连板</td><td>低开0.1%→回落</td><td>摘帽纯博弈，已透支</td></tr>
+        </table>
+        <br>
+        <p><strong>断板率：</strong>昨日10只2连板以上个股中，今日仅晋级4只（恒尚节能、宜宾纸业、金科股份、艾艾精工），晋级率40%。市场情绪虽强（机器人+9%），但高位接力意愿下降，资金更偏好低位首板。</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>五、主线分析</h2>
+    <!-- ============================================================ -->
+    <div class="card">
+        <p><strong>🤖 机器人概念（超级主线）：</strong>板块指数+9.12%，连板梯队+批量首板完整。宇树科技IPO获批是里程碑事件，类比2020年宁德时代对新能源的带动效应。资金从高位半导体/算力全面切换，机构+游资共识形成。</p>
+        <br>
+        <p><strong>🥇 贵金属（防御支线）：</strong>黄金板块延续强势，全球降息预期+地缘不确定性支撑。</p>
+        <br>
+        <p><strong>🔻 半导体（资金流出）：</strong>前期涨幅过大，获利盘集中兑现。科陆电子、概伦电子等逆势走强属独立行情。</p>
+        <br>
+        <p><strong>💡 Serenity 视角：</strong>今日连板股中，<strong>恒尚节能</strong>（跨界并购无业绩承诺）、<strong>金科股份/艾艾精工</strong>（纯博弈）不满足Serenity框架。<strong>贤丰控股</strong>（覆铜板涨价扣非+355%）、<strong>星网锐捷</strong>（业绩超预期）有基本面支撑，但位置已高。<strong>阿科力</strong>（COC国产替代千吨级量产+控制权变更）是唯一有"卡点"逻辑（国产替代+新材料）且位置相对合理的标的，值得跟踪。</p>
+    </div>
+
+    <div class="footer">
+        <p>数据来源：财联社、新浪财经、东方财富、复盘网、证券时报</p>
+        <p>免责声明：不构成投资建议。</p>
+        <p><a href="index.html">返回报告列表</a></p>
+    </div>
+</body>
+</html>
