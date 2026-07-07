@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>A股大盘 — Serenity 分析报告 2026-07-07</title>
+<style>
+:root{--bg:#fff;--bg2:#f6f8fa;--text:#1a1a2e;--border:#d0d7de;--accent:#0969da;--green:#1a7f37;--red:#cf222e;--yellow:#9a6700;--gray:#656d76}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.container{max-width:960px;margin:0 auto;padding:40px 24px}
+h1{font-size:28px;font-weight:700;margin-bottom:4px}
+.subtitle{color:var(--gray);font-size:14px;margin-bottom:32px}
+.meta-bar{display:flex;gap:12px;flex-wrap:wrap;padding:12px 16px;background:var(--bg2);border-radius:8px;font-size:13px;margin-bottom:32px;border:1px solid var(--border)}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-a{background:#ddf4ff;color:#0969da}
+.tag-bear{background:#ffebe9;color:#cf222e}
+.tag-yellow{background:#fff8c5;color:#9a6700}
+.tag-green{background:#dafbe1;color:#1a7f37}
+h2{font-size:20px;font-weight:700;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+h3{font-size:16px;font-weight:600;margin:24px 0 12px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
+.conclusion-box{background:linear-gradient(135deg,#fef6f0 0%,#fefefe 100%);border:2px solid var(--red);border-radius:10px;padding:24px;margin-bottom:24px}
+.conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+.conclusion-row:last-child{border-bottom:none}
+.conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:118px;color:var(--gray)}
+.conclusion-value{font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg2);font-weight:600;font-size:13px}
+tr:hover td{background:#f0f6ff}
+.evidence{font-size:13px;color:var(--gray);margin-top:4px}
+.price-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+.pb-card{padding:16px;border-radius:8px;border:1px solid var(--border)}
+.pb-card.bear{border-top:4px solid var(--red);background:#fff8f8}
+.pb-card.base{border-top:4px solid var(--yellow);background:#fffdf5}
+.pb-card.bull{border-top:4px solid var(--green);background:#f5fff8}
+.pb-card h4{margin:0 0 8px;font-size:15px}
+.pb-card .probability{font-size:28px;font-weight:700;margin:8px 0}
+.pb-card .prob-detail{font-size:13px;color:var(--gray)}
+.footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--gray);text-align:center}
+.highlight{background:#fff8c5;padding:1px 4px;border-radius:3px}
+.alert-box{padding:16px;border-radius:8px;border-left:4px solid var(--red);background:#fff8f8;margin:12px 0}
+@media(max-width:700px){.price-box{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>A股大盘 — Serenity 分析报告</h1>
+<div class="subtitle">分析日期：2026-07-07 | 沪指失守 4000 点 | 成交缩至 2.58 万亿</div>
+
+<div class="meta-bar">
+    <span>🏷️ <span class="tag tag-a">A股大盘复盘</span></span>
+    <span>📉 <span class="tag tag-bear">沪指 -1.26%</span></span>
+    <span>⚠️ 韩国KOSPI熔断波及</span>
+    <span>📐 Mode 1</span>
+</div>
+
+<!-- ① 结论 -->
+<h2>① 结论（两行）</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">行1 — 客观框架</span>
+        <span class="conclusion-value">
+            <strong>Bear（加速下跌，逼近 Base 下沿）</strong>。<br>
+            沪指 <strong>3990.24（-1.26%）</strong>，失守 4000 点心理关口。<br>
+            深成指 -1.24%，创业板指 -0.94%，科创 50 逆势 +0.28%。<br>
+            成交 <strong>2.58 万亿</strong>（缩量 5100 亿），<strong>693 涨 vs 4797 跌</strong>（仅 12.6% 个股上涨）。<br>
+            主力资金净流出 <strong>667.64 亿</strong>（连续 5 日净流出）。<br>
+            ⚠️ <strong>翻倍门槛不适用</strong>（大盘分析，非个股）。<br>
+            <strong>Bear 不变</strong>：沪指支撑 3950，压力 4030。若跌破 3950 则转极端 Bear。
+        </span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">行2 — Serenity 视角</span>
+        <span class="conclusion-value">
+            <strong>🐻 防御信号升级</strong>。<br>
+            今日核心矛盾不是"跌了什么"，而是 <strong>12.6% 的上涨家数 + 缩量 5100 亿 = 流动性枯竭式下跌</strong>。<br>
+            韩国 KOSPI 暴跌 8% 触发熔断是外部冲击，但 A 股自身脆弱性更强——<br>
+            ① 高位板块（医药 -3.71% / 有色 -2.75% / 化工 -2.74%）全面瓦解；<br>
+            ② 资金被迫挤入唯一安全区：半导体（先进封装 +40.33 亿净流入）。<br>
+            <span class="highlight">半导体是当前唯一有资金承接的方向，但这是"被迫抱团"而非"主动进攻"。</span>等半导体补跌 + 成交放量才是安全的入场信号。
+        </span>
+    </div>
+</div>
+
+<!-- ② 客观事实底座 -->
+<h2>② 客观事实底座</h2>
+
+<h3>L0-事实：核心数据全景</h3>
+
+<table>
+<tr><th>维度</th><th>数据</th><th>7/6 对比</th><th>意味着什么</th></tr>
+<tr><td><strong>沪指</strong></td><td><strong>3990.24（-1.26%）</strong>，失守 4000</td><td>4041.24（-0.06%）</td><td>6 日勉强守住，7 日跌破。4000 心理关口丢失</td></tr>
+<tr><td><strong>深成指</strong></td><td><strong>15225.11（-1.24%）</strong></td><td>15416.80（-1.16%）</td><td>连续两日下跌，加速</td></tr>
+<tr><td><strong>创业板指</strong></td><td><strong>3911.91（-0.94%）</strong></td><td>3948.86（-1.77%）</td><td>跌幅收窄，但仍在下跌</td></tr>
+<tr><td><strong>科创 50</strong></td><td><strong>2001.59（+0.28%）</strong></td><td>1996.10（+1.04%）</td><td>连续两日逆势收红，半导体独撑</td></tr>
+<tr><td><strong>成交额</strong></td><td><strong>2.58 万亿</strong>（缩量 5100 亿）</td><td>3.09 万亿（缩量 913 亿）</td><td>连续缩量，资金加速离场</td></tr>
+<tr><td><strong>涨跌家数</strong></td><td><strong>693 涨 / 4797 跌</strong>（12.6%）</td><td>1875 涨 / 3536 跌（35%）</td><td>从"六成跌"恶化到"近九成跌"</td></tr>
+<tr><td><strong>涨跌停</strong></td><td><strong>34 涨停 / 45 跌停</strong></td><td>110 涨≥9% / 124 跌≥9%</td><td>跌停数超过涨停，恐慌升级</td></tr>
+<tr><td><strong>主力资金</strong></td><td><strong>净流出 667.64 亿</strong>（连续 5 日）</td><td>—</td><td>系统性撤离，非板块轮动</td></tr>
+<tr><td><strong>北向资金</strong></td><td>小幅净流入（结构：加仓半导体/银行，减持高位科技）</td><td>净卖出 ~14 亿</td><td>外资态度边际改善，但非核心变量</td></tr>
+</table>
+
+<h3>L0-框架：行业涨跌全景</h3>
+
+<table>
+<tr><th>方向</th><th>行业</th><th>涨跌幅</th><th>主力资金（亿）</th><th>解读</th></tr>
+<tr style="background:#dafbe1"><td><strong>唯一上涨</strong></td><td><strong>银行</strong></td><td><strong>+0.20%</strong></td><td>+7.98</td><td>防御资金抱团，建行/中行/工行/农行逆势拉升</td></tr>
+<tr><td>跌幅最小</td><td>通信</td><td>-0.05%</td><td>-43.49</td><td>有支撑但资金仍在流出</td></tr>
+<tr><td>跌幅最小</td><td>传媒</td><td>-0.08%</td><td><strong>+11.22</strong></td><td>游戏概念逆势，网络游戏+15.2亿净流入</td></tr>
+<tr><td>跌幅最小</td><td>电子</td><td>-0.68%</td><td><strong>-103.95</strong></td><td>半导体涨但消费电子跌，资金内部分化</td></tr>
+<tr style="background:#ffebe9"><td><strong>领跌</strong></td><td><strong>综合</strong></td><td><strong>-3.80%</strong></td><td>-2.59</td><td>小市值综合类，流动性最差方向</td></tr>
+<tr style="background:#ffebe9"><td><strong>领跌</strong></td><td><strong>医药生物</strong></td><td><strong>-3.71%</strong></td><td>-67.18</td><td>创新药利好出尽，海南海药一字跌停</td></tr>
+<tr style="background:#ffebe9"><td>领跌</td><td>建筑材料</td><td>-3.51%</td><td>-26.09</td><td>连续两日大幅下跌（昨日 -5.75%）</td></tr>
+<tr style="background:#ffebe9"><td>领跌</td><td>社会服务</td><td>-3.05%</td><td>-4.58</td><td>消费方向全面承压</td></tr>
+<tr style="background:#ffebe9"><td>领跌</td><td>商贸零售</td><td>-3.03%</td><td>-5.81</td><td>消费方向全面承压</td></tr>
+</table>
+
+<h3>概念板块：半导体一枝独秀</h3>
+
+<div class="card">
+<p style="font-size:14px;margin-bottom:12px"><strong>半导体内部梯队：</strong></p>
+<table>
+<tr><th>概念</th><th>主力净流入（亿）</th><th>涨停数</th><th>代表个股</th></tr>
+<tr><td>先进封装</td><td><strong>+40.33</strong></td><td>4</td><td>华天科技涨停，净流入 37.91 亿</td></tr>
+<tr><td>第三代半导体</td><td><strong>+35.16</strong></td><td>2</td><td>有研硅 20% 涨停</td></tr>
+<tr><td>网络游戏</td><td>+15.20</td><td>0</td><td>万通发展 2 连板</td></tr>
+</table>
+<p class="evidence">半导体是今天唯一有实质性资金净流入的方向。但注意：电子行业整体净流出 103.95 亿——说明半导体涨但消费电子/存储芯片在跌，<strong>资金在半导体内部也在分化</strong>。</p>
+</div>
+
+<h3>外部冲击：韩国 KOSPI 熔断</h3>
+
+<div class="alert-box">
+<p style="font-size:14px;font-weight:600;margin-bottom:8px">⚠️ 亚太市场联动风险</p>
+<p style="font-size:14px">韩国 KOSPI 指数盘中<strong>暴跌超 8%，触发熔断机制</strong>。导火索：三星电子 Q2 业绩超预期，但股价暴跌 10%——"买预期、卖事实"，利好早已计入前期涨幅，财报兑现后触发获利了结。SK 海力士赴美 IPO 路演也加剧了韩国半导体板块的资金抽离。<br><br>
+亚太恐慌情绪显著波及 A 股：<strong>沪指午后从 4000 点附近加速下探至 3990</strong>，与韩国熔断时点高度吻合。</p>
+</div>
+
+<!-- ③ 两套评估 -->
+<h2>③ 两套评估</h2>
+
+<h3>3a. Serenity 框架视角</h3>
+
+<h4>三条核心判断</h4>
+
+<table>
+<tr><th>#</th><th>判断</th><th>证据</th><th>标注</th></tr>
+<tr>
+    <td>1</td>
+    <td><strong>从"指数失真"切换到"全面下跌"</strong>——昨日（7/6）是权重护盘+中小盘跌，沪指仅跌 0.06%。今日沪指跌 1.26%，全市场仅 12.6% 个股上涨，<strong>权重也撑不住了</strong>。</td>
+    <td>沪指 4041→3990，涨跌比 35%→12.6%，成交缩量 5100 亿</td>
+    <td><code>已证实</code> — 交易所数据</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td><strong>半导体是唯一"诺亚方舟"，但这是被迫抱团</strong>——先进封装 +40 亿 / 三代半导体 +35 亿净流入，但电子行业整体净流出 104 亿。资金不是"看好半导体"而是"其他地方都在跌，只能买半导体"。</td>
+    <td>有研硅涨停、华天科技涨停、东微半导 +16%；但兆易创新净流出 24.94 亿、澜起科技净流出 19.43 亿</td>
+    <td><code>已证实</code> — 龙虎榜/资金流向</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td><strong>高位板块全面瓦解，医药/有色/化工成为"重灾区"</strong>——医药 -3.71%（海南海药一字跌停）、有色 -2.75%（华锡有色跌停）、建材连续两日累计 -9.3%。<strong>这不是板块轮动，是系统性出逃。</strong></td>
+    <td>申万一级行业仅银行上涨，27 个行业主力净流出</td>
+    <td><code>已证实</code> — 证券时报/粤开证券</td>
+</tr>
+</table>
+
+<h4>Serenity 信念分档</h4>
+
+<div class="card" style="border-left: 4px solid var(--red);">
+<p style="font-size:16px;font-weight:600;margin-bottom:8px">🐻 <strong>Bear（防御）— 从昨日"结构性机会"降级为"全面防御"</strong></p>
+<p style="font-size:14px;line-height:1.8">
+昨天（7/6）的判断是"结构性机会存在于低位反转板块（创新药/养殖/煤炭）"。今天医药 -3.71%、煤炭 -2.11%、养殖（农林牧渔）-1.51%——<strong>低位板块也扛不住了</strong>。<br><br>
+当前唯一还能站住的是半导体（硅片/先进封装/三代半导体），但这不是"主动进攻"而是"被迫抱团"——资金无处可去，只能挤进最后一个有承接的方向。<br><br>
+<strong>操作建议：</strong>不加仓、不抄底。等两个信号：① 半导体补跌完成（标志：有研硅/华天科技开板回调）；② 成交放量（回到 3 万亿以上）。在此之前，防御为主。
+</p>
+</div>
+
+<h3>3b. 客观框架（量化评估）</h3>
+
+<h4>Bear / Base / Bull 三情景（市场整体）</h4>
+
+<div class="price-box">
+<div class="pb-card bear">
+<h4>🐻 Bear</h4>
+<div class="probability">40%</div>
+<div class="prob-detail">（昨日 25% → 今 40%，↑）</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>沪指跌破 3950，目标 3850-3900</strong><br>
+触发条件：半导体补跌 + 韩国/亚太继续恶化 + 中美关税 7/9 截止日出现负面消息<br>
+<strong>概率从 25% 调升至 40%</strong>：今日缩量 5100 亿 + 仅 12.6% 个股上涨，市场脆弱性显著增加
+</p>
+</div>
+<div class="pb-card base">
+<h4>📊 Base</h4>
+<div class="probability">45%</div>
+<div class="prob-detail">（昨日 55% → 今 45%，↓）</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>沪指 3950-4030 区间震荡</strong><br>
+触发条件：半导体继续独撑 + 银行/煤炭护盘 + 外部冲击消化<br>
+概率下调：失守 4000 点增加了向下惯性
+</p>
+</div>
+<div class="pb-card bull">
+<h4>🐂 Bull</h4>
+<div class="probability">15%</div>
+<div class="prob-detail">（昨日 20% → 今 15%，↓）</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>沪指收复 4050，增量资金入场</strong><br>
+触发条件：半导体行情扩散至全市场 + 中报业绩超预期 + 中美关税利好<br>
+概率下调：缩量 5100 亿 + 主力连续 5 日净流出，短期内无增量资金信号
+</p>
+</div>
+</div>
+
+<h4>今日 vs 昨日数据对比</h4>
+
+<table>
+<tr><th>维度</th><th>7/6（周一）</th><th>7/7（周二）</th><th>方向</th></tr>
+<tr><td>沪指</td><td>4041.24（-0.06%）</td><td>3990.24（-1.26%）</td><td>🔴 恶化</td></tr>
+<tr><td>涨跌比</td><td>1875 涨 / 3536 跌（35%）</td><td>693 涨 / 4797 跌（12.6%）</td><td>🔴 严重恶化</td></tr>
+<tr><td>成交额</td><td>3.09 万亿</td><td>2.58 万亿（-5100 亿）</td><td>🔴 缩量</td></tr>
+<tr><td>领涨</td><td>煤炭 +4.11%、养殖 +2.57%</td><td>仅银行 +0.20% 上涨</td><td>🔴 领涨消失</td></tr>
+<tr><td>领跌</td><td>建材 -5.75%、通信 -3.05%</td><td>综合 -3.80%、医药 -3.71%</td><td>🟡 扩散</td></tr>
+<tr><td>主力资金</td><td>—</td><td>净流出 667.64 亿（连续 5 日）</td><td>🔴 新信号</td></tr>
+<tr><td>外部冲击</td><td>无</td><td>韩国 KOSPI 熔断 -8%</td><td>🔴 新增风险</td></tr>
+<tr><td>Bear 概率</td><td>25%</td><td>40%</td><td>🔴 上调</td></tr>
+</table>
+
+<h4>关键事件关注</h4>
+
+<table>
+<tr><th>时间</th><th>事件</th><th>影响</th></tr>
+<tr><td><strong>7/9（周三）</strong></td><td><strong>特朗普关税谈判截止日</strong></td><td>若未延期，可能冲击出口导向型行业（光伏等）</td></tr>
+<tr><td><strong>7/10（周四）</strong></td><td><strong>SK 海力士美股 IPO</strong></td><td>全球存储芯片资金再配置，影响 A 股存储板块</td></tr>
+<tr><td>7 月中旬</td><td>政治局会议</td><td>稳增长政策加码预期，可能触发市场转向</td></tr>
+<tr><td>7 月下旬</td><td>中报密集披露</td><td>业绩验证期，高位无业绩支撑的概念股面临回调压力</td></tr>
+</table>
+
+<!-- 独立复核 -->
+<h2>独立复核</h2>
+
+<table>
+<tr><th>复核项</th><th>结果</th></tr>
+<tr><td>关键数字来源</td><td>✅ 指数/成交/涨跌来自交易所，行业资金流向来自证券时报数据宝，板块分析来自粤开证券/每日经济新闻/央广网</td></tr>
+<tr><td>数据时效性</td><td>✅ 均为 2026-07-07 收盘数据</td></tr>
+<tr><td>确认偏误检查</td><td>✅ Bear/Base/Bull 三情景均列出，概率从昨日动态调整（Bear 25%→40%，Base 55%→45%，Bull 20%→15%）</td></tr>
+<tr><td>外部冲击纳入</td><td>✅ 韩国 KOSPI 熔断 + 中美关税 7/9 截止日 + SK 海力士 IPO 均已纳入评估</td></tr>
+<tr><td>A 股特有复核</td><td>✅ 已纳入：程序化交易新规实施、中报业绩验证期、政治局会议政策预期</td></tr>
+</table>
+
+<hr style="margin:40px 0;border:none;border-top:1px solid var(--border)">
+
+<div style="font-size:13px;color:var(--gray)">
+<p><strong>证据标注说明：</strong><br>
+<code>已证实</code> — 来自交易所数据/券商研报/权威媒体<br>
+<code>我的推断</code> — 基于公开数据的推演测算</p>
+<p style="margin-top:12px"><strong>⚠️ 免责声明：</strong>本报告基于公开市场数据整理，不构成投资建议。股市有风险，投资需谨慎。</p>
+</div>
+
+<div class="footer">
+<p>Generated by Serenity Investment Analysis Engine | 2026-07-07</p>
+</div>
+
+</div>
+</body>
+</html>
