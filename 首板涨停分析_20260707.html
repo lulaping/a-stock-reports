@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>首板涨停分析 — 2026-07-07</title>
+<style>
+:root{--bg:#fff;--bg2:#f6f8fa;--text:#1a1a2e;--border:#d0d7de;--accent:#0969da;--green:#1a7f37;--red:#cf222e;--yellow:#9a6700;--gray:#656d76}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.container{max-width:960px;margin:0 auto;padding:40px 24px}
+h1{font-size:28px;font-weight:700;margin-bottom:4px}
+.subtitle{color:var(--gray);font-size:14px;margin-bottom:32px}
+.meta-bar{display:flex;gap:12px;flex-wrap:wrap;padding:12px 16px;background:var(--bg2);border-radius:8px;font-size:13px;margin-bottom:32px;border:1px solid var(--border)}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-red{background:#ffebe9;color:#cf222e}
+.tag-blue{background:#ddf4ff;color:#0969da}
+.tag-green{background:#dafbe1;color:#1a7f37}
+.tag-yellow{background:#fff8c5;color:#9a6700}
+h2{font-size:20px;font-weight:700;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+h3{font-size:16px;font-weight:600;margin:24px 0 12px}
+h4{font-size:14px;font-weight:600;margin:16px 0 8px;color:var(--gray)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
+.alert-box{padding:16px;border-radius:8px;border-left:4px solid var(--red);background:#fff8f8;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg2);font-weight:600;font-size:13px}
+tr:hover td{background:#f0f6ff}
+.evidence{font-size:13px;color:var(--gray);margin-top:4px}
+.stock-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.stock-card{padding:14px;border-radius:8px;border:1px solid var(--border);background:var(--bg)}
+.stock-card h4{font-size:15px;margin:0 0 6px;color:var(--text)}
+.stock-card .code{font-size:12px;color:var(--gray)}
+.stock-card .logic{font-size:13px;margin:6px 0}
+.stock-card .seal{font-size:12px;color:var(--accent);font-weight:600}
+.stock-card.chip{border-left:3px solid var(--accent)}
+.stock-card.robot{border-left:3px solid var(--green)}
+.stock-card.earnings{border-left:3px solid var(--yellow)}
+.stock-card.other{border-left:3px solid var(--gray)}
+.footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--gray);text-align:center}
+.highlight{background:#fff8c5;padding:1px 4px;border-radius:3px}
+.verdict{font-size:14px;padding:12px;border-radius:6px;margin:8px 0}
+.verdict.buy{background:#dafbe1;border:1px solid var(--green)}
+.verdict.hold{background:#fff8c5;border:1px solid var(--yellow)}
+.verdict.skip{background:#ffebe9;border:1px solid var(--red)}
+@media(max-width:700px){.stock-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>首板涨停个股分析 — 2026-07-07</h1>
+<div class="subtitle">全市场仅 34 只涨停（4月2日以来最低），涨停数 < 跌停数（45）| 冰点环境下的"幸存者偏差"</div>
+
+<div class="meta-bar">
+    <span>🏷️ <span class="tag tag-red">冰点：34涨停 / 45跌停</span></span>
+    <span>📉 沪指 3990 -1.26%</span>
+    <span>📊 693涨 / 4797跌</span>
+    <span>📐 首板 28只 | 连板 6只</span>
+</div>
+
+<!-- 首板全景 -->
+<h2>首板全景：28只首板，5条主线</h2>
+
+<div class="alert-box">
+<p style="font-size:14px;font-weight:600;margin-bottom:8px">⚠️ 环境判断：冰点打板，赔率极高但胜率极低</p>
+<p style="font-size:14px">今日涨停数 34 只是 4/2 以来最低，全市场仅 12.6% 个股上涨。冰点环境下的涨停板有两种命运：① 次日高开溢价（资金抱团取暖）；② 次日直接低开闷杀（流动性枯竭，无人接盘）。<br><br>
+<strong>核心原则：只关注有基本面支撑的首板，避开纯概念/纯情绪的首板。</strong></p>
+</div>
+
+<h3>首板五大主线</h3>
+
+<table>
+<tr><th>主线</th><th>数量</th><th>核心催化</th><th>持续性判断</th></tr>
+<tr style="background:#ddf4ff"><td><strong>① 芯片/半导体</strong></td><td><strong>~8只</strong></td><td>英特尔CPU涨价 + WAIC开幕 + 硅片涨价 + SK海力士IPO</td><td>⭐⭐⭐⭐ 最强方向，有产业逻辑支撑</td></tr>
+<tr><td><strong>② 机器人</strong></td><td><strong>~6只</strong></td><td>8/19世界机器人大会 + 1-5月机器人营收+27%</td><td>⭐⭐⭐ 有催化但分化严重</td></tr>
+<tr><td><strong>③ 中报预增</strong></td><td><strong>~4只</strong></td><td>中报窗口期，业绩确定性避险</td><td>⭐⭐⭐⭐⭐ 最高确定性</td></tr>
+<tr><td><strong>④ 物理AI</strong></td><td><strong>~3只</strong></td><td>巴黎MACHINA Summit</td><td>⭐⭐ 概念驱动，持续性存疑</td></tr>
+<tr><td><strong>⑤ 其他</strong></td><td><strong>~7只</strong></td><td>锂电/光伏/有机硅/商业航天等</td><td>⭐⭐ 散乱，板块效应弱</td></tr>
+</table>
+
+<!-- 主线一：芯片/半导体 -->
+<h2>主线一：芯片/半导体（最强方向，8只涨停）</h2>
+
+<div class="stock-grid">
+<div class="stock-card chip">
+<h4>有研硅 <span class="code">688432</span></h4>
+<div class="logic">20CM涨停。刻蚀硅耗材国内唯一/全球前三 + 12英寸硅片 + 收购晶隆半导体。年内累涨273%。</div>
+<div class="seal">Serenity判定：🟡 卡点标的但估值过冲，等回调</div>
+</div>
+<div class="stock-card chip">
+<h4>华天科技 <span class="code">002185</span></h4>
+<div class="logic">涨停 21.93元（+9.98%）。先进封装+收购华羿微电。封单4.19亿，主力净流入35亿，机构净买入1.91亿。</div>
+<div class="seal">⭐ 机构+北向+游资三方合力，今日最强首板</div>
+</div>
+<div class="stock-card chip">
+<h4>TCL中环 <span class="code">002129</span></h4>
+<div class="logic">涨停（+9.98%）。半导体硅片+光伏双赛道。硅片涨价周期受益。</div>
+<div class="seal">大市值首板，板块中军</div>
+</div>
+<div class="stock-card chip">
+<h4>有研新材 <span class="code">600206</span></h4>
+<div class="logic">涨停（+10.00%）。半导体材料，封单2.78亿。与有研硅同属有研集团旗下。</div>
+<div class="seal">跟风有研硅，板块联动</div>
+</div>
+<div class="stock-card chip">
+<h4>华微电子 <span class="code">600360</span></h4>
+<div class="logic">涨停（+9.98%）。功率半导体，芯片+新能源汽车+国企改革概念。</div>
+<div class="seal">功率半导体首板，需验证基本面</div>
+</div>
+<div class="stock-card chip">
+<h4>瑞芯微 <span class="code">603893</span></h4>
+<div class="logic">涨停。AIoT芯片，开盘7分钟封板。芯片+机器人双概念。</div>
+<div class="seal">封板速度极快，资金认可度高</div>
+</div>
+<div class="stock-card chip">
+<h4>大港股份 <span class="code">002077</span></h4>
+<div class="logic">涨停。芯片封测，跟风华天科技。</div>
+<div class="seal">二线封测，跟风属性</div>
+</div>
+<div class="stock-card chip">
+<h4>实益达 <span class="code">002137</span></h4>
+<div class="logic">涨停（+10.01%）。芯片+新能源汽车+数字经济。</div>
+<div class="seal">多概念叠加，但无核心壁垒</div>
+</div>
+</div>
+
+<div class="verdict buy">
+<strong>芯片首板核心判断：</strong>有研硅（卡点标的但已过冲）、华天科技（机构+游资合力，封测龙头收购兑现）是唯二有基本面支撑的首板。其余为跟风/概念驱动，冰点环境下次日溢价不确定。
+</div>
+
+<!-- 主线二：机器人 -->
+<h2>主线二：机器人（6只涨停）</h2>
+
+<div class="stock-grid">
+<div class="stock-card robot">
+<h4>圣龙股份 <span class="code">603178</span></h4>
+<div class="logic">涨停（+10.03%），3天2板。汽车+机器人双属性，板块连板龙头。</div>
+<div class="seal">⭐ 机器人方向最强首板，有连板基因</div>
+</div>
+<div class="stock-card robot">
+<h4>多利科技 <span class="code">001311</span></h4>
+<div class="logic">涨停（+10.01%）。机器人精密零部件，新能源汽车+比亚迪概念。</div>
+<div class="seal">精密零部件，有产业逻辑</div>
+</div>
+<div class="stock-card robot">
+<h4>力鼎光电 <span class="code">605118</span></h4>
+<div class="logic">涨停（+9.99%）。机器人视觉+物理AI硬件，双概念叠加。</div>
+<div class="seal">视觉是机器人核心环节</div>
+</div>
+<div class="stock-card robot">
+<h4>天海电子 <span class="code">001365</span></h4>
+<div class="logic">涨停（+10.00%）。机器人电机配套，新能源汽车+国企改革。</div>
+<div class="seal">电机配套，跟风属性</div>
+</div>
+<div class="stock-card robot">
+<h4>威尔高 <span class="code">301251</span></h4>
+<div class="logic">20CM涨停。机器人+5G+专精特新，PCB概念。</div>
+<div class="seal">20CM弹性大，但PCB逻辑弱</div>
+</div>
+<div class="stock-card robot">
+<h4>劲旅环境 <span class="code">001230</span></h4>
+<div class="logic">涨停（+9.97%）。机器人+新能源汽车+数字经济。</div>
+<div class="seal">多概念叠加，逻辑分散</div>
+</div>
+</div>
+
+<div class="verdict hold">
+<strong>机器人首板核心判断：</strong>8/19世界机器人大会是远期催化（1.5个月后），当前首板更多是情绪驱动。圣龙股份（3天2板有连板基因）和力鼎光电（视觉是机器人核心环节）相对优质，其余为跟风。
+</div>
+
+<!-- 主线三：中报预增 -->
+<h2>主线三：中报预增（4只涨停，最高确定性）</h2>
+
+<div class="stock-grid">
+<div class="stock-card earnings">
+<h4>雅化集团 <span class="code">002497</span> 🏆</h4>
+<div class="logic">一字涨停（+10.00%）。中报预增710%-857%，净利11-13亿。封单3.71亿。</div>
+<div class="seal">⭐⭐⭐⭐⭐ 今日最强基本面首板，业绩暴增</div>
+</div>
+<div class="stock-card earnings">
+<h4>视源股份 <span class="code">002841</span> 🏆</h4>
+<div class="logic">涨停（+10.01%）。参投企业即将上市带来大额投资收益。封单5.21亿（今日最高）。</div>
+<div class="seal">⭐⭐⭐⭐⭐ 封单最高，机构资金认可</div>
+</div>
+<div class="stock-card earnings">
+<h4>宝地矿业 <span class="code">601121</span></h4>
+<div class="logic">涨停（+10.03%）。有色矿业，业绩预增+国企改革。</div>
+<div class="seal">业绩预增但有色板块整体承压</div>
+</div>
+<div class="stock-card earnings">
+<h4>浙江东方 <span class="code">600120</span></h4>
+<div class="logic">涨停（+9.91%）。金融投资，业绩预增+国企改革+参股保险。</div>
+<div class="seal">非主营驱动，一次性收益</div>
+</div>
+</div>
+
+<div class="verdict buy">
+<strong>中报预增首板核心判断：</strong>雅化集团（锂矿暴增710%+）和视源股份（封单5.21亿）是今日首板中基本面最扎实的两只。冰点环境下，业绩确定性 = 最高安全边际。这两只次日溢价概率最大。
+</div>
+
+<!-- 主线四：物理AI -->
+<h2>主线四：物理AI（3只涨停）</h2>
+
+<div class="stock-grid">
+<div class="stock-card other">
+<h4>魅视科技 <span class="code">001229</span></h4>
+<div class="logic">涨停（+10.00%）。AI视觉硬件，芯片+数字经济+专精特新。</div>
+<div class="seal">巴黎MACHINA Summit催化</div>
+</div>
+<div class="stock-card other">
+<h4>力鼎光电 <span class="code">605118</span></h4>
+<div class="logic">涨停（+9.99%）。AI视觉+机器人视觉，双概念。</div>
+<div class="seal">物理AI+机器人双催化</div>
+</div>
+<div class="stock-card other">
+<h4>声迅股份 <span class="code">003004</span></h4>
+<div class="logic">涨停（+10.00%）。光通信配套，数字经济+人工智能。</div>
+<div class="seal">概念驱动，基本面弱</div>
+</div>
+</div>
+
+<div class="verdict skip">
+<strong>物理AI首板核心判断：</strong>巴黎MACHINA Summit是短期事件催化，持续性存疑。力鼎光电有机器人视觉叠加稍好，但整体板块缺乏基本面支撑。
+</div>
+
+<!-- 主线五：其他 -->
+<h2>主线五：其他散乱首板（7只）</h2>
+
+<table>
+<tr><th>个股</th><th>涨停逻辑</th><th>板块</th><th>判断</th></tr>
+<tr><td>百合花 603823</td><td>独立行情（+10.01%）</td><td>化工</td><td>已分析过：概念炒作，PE 167x，不参与</td></tr>
+<tr><td>中远通 301516</td><td>20CM涨停，算力服务器电源</td><td>电源</td><td>已分析过：非卡点，12月解禁风险，不参与</td></tr>
+<tr><td>晨光新材 605399</td><td>有机硅涨价+中报预增</td><td>化工</td><td>有业绩支撑，但板块效应弱</td></tr>
+<tr><td>佛塑科技 000973</td><td>锂电/铜箔，建滔涨价催化</td><td>锂电</td><td>跟风雅化集团，逻辑弱</td></tr>
+<tr><td>大名城 600094</td><td>商业航天+低空经济首板</td><td>商业航天</td><td>低位首板，概念想象空间大但无业绩</td></tr>
+<tr><td>双星新材 002585</td><td>光伏+华为+OLED</td><td>光伏</td><td>多概念叠加，无核心逻辑</td></tr>
+<tr><td>依依股份 001206</td><td>造纸+京津冀</td><td>造纸</td><td>跟风宜宾纸业5连板，纯跟风</td></tr>
+</table>
+
+<!-- 连板高标 -->
+<h2>连板高标梯队（6只，非首板）</h2>
+
+<table>
+<tr><th>名称</th><th>连板数</th><th>涨停逻辑</th><th>风险提示</th></tr>
+<tr><td><strong>恒尚节能 603137</strong></td><td><strong>6连板</strong></td><td>跨界存储+并购重组，一字板，封单3.85亿</td><td>6板后博弈价值极低，随时炸板</td></tr>
+<tr><td><strong>宜宾纸业 600793</strong></td><td><strong>5连板</strong></td><td>造纸+化工，周期独立趋势</td><td>脱离基本面，纯情绪博弈</td></tr>
+<tr><td>大恒科技 600288</td><td>2连板</td><td>机器人+半导体视觉，北向净买入1.53亿</td><td>双概念叠加，有资金认可</td></tr>
+<tr><td>万通发展 600246</td><td>2连板</td><td>算力芯片，北向净买入4.15亿</td><td>北向大买，但需验证业绩</td></tr>
+<tr><td>白云电器 603861</td><td>2连板</td><td>IDC电源/数据中心配套</td><td>算力产业链，有产业逻辑</td></tr>
+<tr><td>ST海王 000078</td><td>2连板</td><td>医疗器械+粤港澳</td><td>ST股，风险极高</td></tr>
+</table>
+
+<!-- 首板质量评估 -->
+<h2>首板质量评估：哪些值得关注？</h2>
+
+<h3>⭐⭐⭐⭐⭐ 重点关注（基本面+资金面双优）</h3>
+
+<table>
+<tr><th>个股</th><th>涨停逻辑</th><th>封单/资金</th><th>Serenity快速判断</th></tr>
+<tr style="background:#dafbe1">
+<td><strong>雅化集团 002497</strong></td>
+<td>中报预增710-857%，锂矿暴利</td>
+<td>一字板，封单3.71亿</td>
+<td>业绩确定性最高，冰点避风港。但锂矿周期性强，追涨停需设止损</td>
+</tr>
+<tr style="background:#dafbe1">
+<td><strong>视源股份 002841</strong></td>
+<td>参投企业上市+AI商用显示</td>
+<td>封单5.21亿（今日最高）</td>
+<td>封单最大=资金认可度最高。一次性投资收益+主业增长，基本面扎实</td>
+</tr>
+<tr style="background:#dafbe1">
+<td><strong>华天科技 002185</strong></td>
+<td>先进封装+收购华羿微电</td>
+<td>封单4.19亿，主力净流入35亿</td>
+<td>机构+北向+游资三方合力。封测龙头，有产业逻辑。但流通盘大，次日溢价取决于板块持续性</td>
+</tr>
+</table>
+
+<h3>⭐⭐⭐⭐ 可以关注（有逻辑但需验证）</h3>
+
+<table>
+<tr><th>个股</th><th>涨停逻辑</th><th>关注点</th></tr>
+<tr><td>有研硅 688432</td><td>半导体硅片+刻蚀耗材</td><td>卡点标的但已过冲，已分析过：等回调</td></tr>
+<tr><td>TCL中环 002129</td><td>硅片龙头</td><td>大市值首板，板块中军，但流通盘大</td></tr>
+<tr><td>瑞芯微 603893</td><td>AIoT芯片+机器人</td><td>封板速度快（7分钟），资金认可度高</td></tr>
+<tr><td>圣龙股份 603178</td><td>机器人+汽车</td><td>3天2板，有连板基因，机器人方向龙头</td></tr>
+</table>
+
+<h3>⭐⭐⭐ 谨慎关注（概念驱动，基本面弱）</h3>
+
+<table>
+<tr><th>个股</th><th>涨停逻辑</th><th>风险</th></tr>
+<tr><td>华微电子 600360</td><td>功率半导体</td><td>需验证基本面，功率半导体竞争激烈</td></tr>
+<tr><td>力鼎光电 605118</td><td>机器人视觉+物理AI</td><td>双概念叠加，但业绩未知</td></tr>
+<tr><td>大名城 600094</td><td>商业航天首板</td><td>低位首板有想象空间，但无业绩支撑</td></tr>
+<tr><td>晨光新材 605399</td><td>有机硅涨价+中报预增</td><td>有业绩但板块效应弱</td></tr>
+</table>
+
+<h3>❌ 不建议参与</h3>
+
+<table>
+<tr><th>个股</th><th>原因</th></tr>
+<tr><td>百合花 603823</td><td>已分析：PE 167x，概念炒作，控股股东减持</td></tr>
+<tr><td>中远通 301516</td><td>已分析：非卡点，12月解禁风险，连续亏损</td></tr>
+<tr><td>依依股份 001206</td><td>纯跟风宜宾纸业，无独立逻辑</td></tr>
+<tr><td>佛塑科技 000973</td><td>跟风雅化集团，逻辑弱</td></tr>
+<tr><td>双星新材 002585</td><td>多概念叠加，无核心逻辑</td></tr>
+<tr><td>实益达 002137</td><td>多概念叠加，无核心壁垒</td></tr>
+<tr><td>ST海王 000078</td><td>ST股，风险极高</td></tr>
+</table>
+
+<!-- 总结 -->
+<h2>总结：冰点打板三原则</h2>
+
+<div class="card" style="border-left: 4px solid var(--accent);">
+<ol style="font-size:14px;line-height:2;padding-left:20px">
+<li><strong>只做有基本面支撑的首板。</strong>今日环境（34涨停/45跌停，12.6%个股上涨），纯概念/纯情绪首板次日大概率低开闷杀。雅化集团（业绩暴增710%+）、视源股份（封单5.21亿）、华天科技（机构+北向合力）是三只有基本面支撑的首板。</li>
+<li><strong>半导体首板 > 机器人首板 > 其他首板。</strong>半导体是今日唯一有主力资金净流入的方向（先进封装+40亿），有产业逻辑支撑（英特尔涨价+硅片涨价+SK海力士IPO）。机器人靠8/19大会预期，时间差1.5个月，中间可能反复。</li>
+<li><strong>控制仓位，设置止损。</strong>冰点打板赔率极高（抓到龙头可能连板），但胜率极低（大多数首板次日无溢价甚至低开）。单只仓位不超过总资金10%，次日低开3%无条件止损。</li>
+</ol>
+</div>
+
+<hr style="margin:40px 0;border:none;border-top:1px solid var(--border)">
+
+<div style="font-size:13px;color:var(--gray)">
+<p><strong>⚠️ 免责声明：</strong>本报告基于公开市场数据整理，不构成投资建议。涨停板分析属于高风险交易策略，股市有风险，投资需谨慎。</p>
+</div>
+
+<div class="footer">
+<p>Generated by Serenity Investment Analysis Engine | 2026-07-07</p>
+</div>
+
+</div>
+</body>
+</html>
