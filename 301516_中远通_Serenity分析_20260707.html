@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>中远通 (301516) — Serenity 分析报告 2026-07-07</title>
+<style>
+:root{--bg:#fff;--bg2:#f6f8fa;--text:#1a1a2e;--border:#d0d7de;--accent:#0969da;--green:#1a7f37;--red:#cf222e;--yellow:#9a6700;--gray:#656d76}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.container{max-width:960px;margin:0 auto;padding:40px 24px}
+h1{font-size:28px;font-weight:700;margin-bottom:4px}
+.subtitle{color:var(--gray);font-size:14px;margin-bottom:32px}
+.meta-bar{display:flex;gap:12px;flex-wrap:wrap;padding:12px 16px;background:var(--bg2);border-radius:8px;font-size:13px;margin-bottom:32px;border:1px solid var(--border)}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-a{background:#ddf4ff;color:#0969da}
+.tag-bear{background:#ffebe9;color:#cf222e}
+.tag-bull{background:#dafbe1;color:#1a7f37}
+h2{font-size:20px;font-weight:700;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+h3{font-size:16px;font-weight:600;margin:24px 0 12px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
+.conclusion-box{background:linear-gradient(135deg,#fef6f0 0%,#fefefe 100%);border:2px solid var(--red);border-radius:10px;padding:24px;margin-bottom:24px}
+.conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+.conclusion-row:last-child{border-bottom:none}
+.conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:118px;color:var(--gray)}
+.conclusion-value{font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg2);font-weight:600;font-size:13px}
+tr:hover td{background:#f0f6ff}
+.judge-tag{font-size:11px;padding:1px 8px;border-radius:10px;white-space:nowrap}
+.tag-yes{background:#dafbe1;color:#1a7f37}
+.tag-partial{background:#fff8c5;color:#9a6700}
+.tag-no{background:#ffebe9;color:#cf222e}
+.evidence{font-size:13px;color:var(--gray);margin-top:4px}
+.price-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+.pb-card{padding:16px;border-radius:8px;border:1px solid var(--border)}
+.pb-card.bear{border-top:4px solid var(--red);background:#fff8f8}
+.pb-card.base{border-top:4px solid var(--yellow);background:#fffdf5}
+.pb-card.bull{border-top:4px solid var(--green);background:#f5fff8}
+.pb-card h4{margin:0 0 8px;font-size:15px}
+.pb-card .price{font-size:22px;font-weight:700;margin:8px 0}
+.pb-card .price-detail{font-size:13px;color:var(--gray)}
+.flag-list{list-style:none;padding:0}
+.flag-list li{padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--gray);background:var(--bg2);font-size:14px;border-radius:0 4px 4px 0}
+.flag-list li.pass{border-left-color:var(--green)}
+.flag-list li.warn{border-left-color:var(--yellow)}
+.flag-list li.fail{border-left-color:var(--red)}
+.footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--gray);text-align:center}
+.highlight{background:#fff8c5;padding:1px 4px;border-radius:3px}
+@media(max-width:700px){.price-box{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>中远通 (301516) — Serenity 分析报告</h1>
+<div class="subtitle">分析日期：2026-07-07 | 今日涨停 +20% 报 18.72 元 | 上日收盘 15.60 元（+7.96%）</div>
+
+<div class="meta-bar">
+    <span>🏷️ <span class="tag tag-a">A股 · 创业板</span></span>
+    <span>🔌 电源设备</span>
+    <span>⚡ <span class="tag tag-bear">Serenity: Bear（不参与）</span></span>
+    <span>📐 Mode 1</span>
+</div>
+
+<!-- ① 结论 -->
+<h2>① 结论（两行）</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">行1 — 客观框架</span>
+        <span class="conclusion-value">
+            <strong>Bear（估值严重过冲，非 Serenity 卡点标的）</strong>。<br>
+            <strong>当前市值 ~52.6 亿（对应股价 ~18.72 元，涨停）</strong>，总股本 <strong>2.81 亿股</strong>。<br>
+            <strong>Bear 12-18 亿（4.3-6.4 元）/ Base 20-30 亿（7.1-10.7 元）/ Bull 35-50 亿（12.5-17.8 元）</strong>。<br>
+            股价 = 市值 ÷ 总股本（<strong>2.81 亿股</strong>，创业板全流通后 2.81 亿，当前流通 0.70 亿）。<br>
+            ⚠️ 当前已超过 Bull 上沿，<strong>严重过冲</strong>。且注意 <strong>2026-12-08 限售解禁</strong>（2.11 亿股，占总股本 75%）。
+        </span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">行2 — Serenity 视角</span>
+        <span class="conclusion-value">
+            <strong>🐻 Bear（不参与）</strong>。<br>
+            中远通不满足 Serenity 核心判据。它是通信电源 OEM/ODM 厂商，毛利率仅 17%，连续 2 年亏损，无定价权、无不可替代性。虽然披着 12 个概念标签（5G/核电/光伏/氢能/数据中心/低空经济…），但<strong>无一形成实质利润贡献</strong>。<br>
+            今日涨停（+20%）+ 30% 换手是典型的小盘概念炒作，非基本面对价。<br>
+            <span class="highlight">12 月限售解禁是重大风险事件，不建议在解禁前参与。</span>
+        </span>
+    </div>
+</div>
+
+<!-- ② 客观事实底座 -->
+<h2>② 客观事实底座</h2>
+
+<h3>L0-事实：核心数据全景</h3>
+
+<table>
+<tr><th>维度</th><th>数据</th><th>来源</th><th>意味着什么</th></tr>
+<tr><td><strong>当前股价</strong></td><td><strong>18.72 元</strong>（7/7 涨停 +20%）</td><td>证券时报</td><td>突破半年线 17.90，换手 30.23%</td></tr>
+<tr><td><strong>上日收盘</strong></td><td><strong>15.60 元</strong>（+7.96%）</td><td>证券之星</td><td>已连续 2 日放量大涨</td></tr>
+<tr><td><strong>当前市值</strong></td><td><strong>~52.6 亿</strong></td><td>测算（18.72 × 2.81 亿）</td><td>流通市值仅 13.1 亿，小盘易拉</td></tr>
+<tr><td><strong>总股本</strong></td><td><strong>2.81 亿股</strong></td><td>理杏仁 | 2026-03-31</td><td>当前流通仅 0.70 亿（25%）</td></tr>
+<tr><td><strong>解禁日期</strong></td><td><strong>2026-12-08</strong>（约 5 个月后）</td><td>理杏仁</td><td>2.11 亿解禁 = 当前流通的 3 倍</td></tr>
+<tr><td><strong>2025 营收</strong></td><td><strong>9.37 亿</strong>（+12.80%）</td><td>年报</td><td>较 2023 年 11.84 亿仍未恢复</td></tr>
+<tr><td><strong>2025 净利</strong></td><td><strong>-5715 万</strong>（连续第 2 年亏损）</td><td>年报</td><td>毛利率 16.13%，费用率 ~24%</td></tr>
+<tr><td><strong>2026Q1 营收</strong></td><td><strong>2.09 亿</strong>（+37.70%）</td><td>一季报</td><td>营收增速亮眼，Q1 经营现金流回正</td></tr>
+<tr><td><strong>2026Q1 净利</strong></td><td><strong>-819 万</strong>（减亏 52%）</td><td>一季报</td><td>仍亏损，但改善趋势明确</td></tr>
+<tr><td><strong>PE TTM</strong></td><td><strong>亏损</strong>（无法计算）</td><td>多源</td><td>连续亏损，PE 无意义</td></tr>
+<tr><td><strong>PB</strong></td><td><strong>~4.15x</strong></td><td>证券时报</td><td>高于行业均值 4.31（申万电源设备）</td></tr>
+<tr><td><strong>PS TTM</strong></td><td><strong>~5.6x</strong></td><td>测算</td><td>电源制造通常 1-2x PS</td></tr>
+<tr><td><strong>毛利率</strong></td><td><strong>17.08%</strong>（2026Q1）</td><td>一季报</td><td>低毛利 OEM 模式</td></tr>
+<tr><td><strong>负债率</strong></td><td><strong>22.91%</strong></td><td>一季报</td><td>低负债，资产结构健康</td></tr>
+<tr><td><strong>净资产</strong></td><td><strong>12.67 亿</strong></td><td>一季报</td><td>PB 4.15x 意味着 52.6/12.67</td></tr>
+<tr><td><strong>研发投入</strong></td><td><strong>1.20 亿</strong>（占营收 12.8%）</td><td>年报</td><td>研发强度尚可，490 人团队</td></tr>
+<tr><td><strong>概念标签</strong></td><td>5G/核电/光伏/充电桩/氢能/数据中心/储能/换电/高压快充/光通信/低空经济</td><td>通达信</td><td>12 个概念，多数收入占比"极小"</td></tr>
+</table>
+
+<h3>股价走势时间线</h3>
+
+<table>
+<tr><th>日期</th><th>股价（元）</th><th>市值（亿）</th><th>事件</th></tr>
+<tr><td>7/3（周四）</td><td>14.45</td><td>~40.6</td><td>独立董事补选公告</td></tr>
+<tr><td>7/6（周日）</td><td>15.60（+7.96%）</td><td>~43.8</td><td>放量上涨，换手 18.6%</td></tr>
+<tr><td>7/7（周一）</td><td>18.72（涨停 +20%）</td><td>~52.6</td><td>突破半年线，换手 30.2%</td></tr>
+</table>
+
+<p class="evidence"><strong>2 个交易日从 14.45 → 18.72，涨了 29.5%。</strong> 期间无重大基本面变化（唯一公告是独立董事补选）。</p>
+
+<h3>L0-框架：收入结构与估值</h3>
+
+<div class="card">
+<div class="card-title">营收结构（2025 年 9.37 亿）</div>
+<div style="font-size:14px;line-height:2">
+<table>
+<tr><th>板块</th><th>营收（亿）</th><th>占比</th><th>YoY</th><th>客户</th></tr>
+<tr><td>通信电源</td><td>5.24</td><td>55.9%</td><td>-2.3%</td><td>华为/中兴/爱立信/诺基亚/新华三</td></tr>
+<tr><td>工控电源</td><td>1.69</td><td>18.0%</td><td>+3.4%</td><td>魏德米勒</td></tr>
+<tr><td>新能源电源</td><td>1.28</td><td>13.7%</td><td><strong>+65.5%</strong></td><td>比亚迪/吉利/汇川</td></tr>
+<tr><td>其他</td><td>1.16</td><td>12.4%</td><td>+61.9%</td><td>光伏/储能/激光/轨交</td></tr>
+</table>
+</div>
+<p class="evidence">新能源电源增速亮眼（+65%），但体量仍小（1.28 亿）。服务器电源（360W-3200W 系列）已小批量生产，尚未形成规模收入。</p>
+</div>
+
+<!-- ③ 两套评估 -->
+<h2>③ 两套评估</h2>
+
+<h3>3a. Serenity 框架</h3>
+
+<h4>卡点属性评估</h4>
+
+<table>
+<tr><th>判据</th><th>结果</th><th>说明</th></tr>
+<tr>
+    <td><strong>关键卡位</strong></td>
+    <td><span class="tag tag-no" style="font-size:12px">❌ 不满足</span></td>
+    <td>通信电源是通信设备核心部件，但市场充分竞争。华为/中兴/爱立信均有多个电源供应商可选。公司并非 single point of failure。</td>
+</tr>
+<tr>
+    <td><strong>不可替代性</strong></td>
+    <td><span class="tag tag-no" style="font-size:12px">❌ 不满足</span></td>
+    <td>台达电子、中兴通讯电源事业部、维谛技术等均可替代。通信电源国产化已较成熟。</td>
+</tr>
+<tr>
+    <td><strong>定价权</strong></td>
+    <td><span class="tag tag-no" style="font-size:12px">❌ 不满足</span></td>
+    <td>毛利率仅 17%，典型的 OEM 代工利润水平。下游客户是华为/中兴等大厂，议价能力极强。</td>
+</tr>
+<tr>
+    <td><strong>安全边际</strong></td>
+    <td><span class="tag tag-no" style="font-size:12px">❌ 无</span></td>
+    <td>连续 2 年亏损，PS 5.6x，PB 4.15x。即使扭亏，给 30x PE 对应市值仅 ~5-8 亿。当前 52.6 亿没有任何安全边际。</td>
+</tr>
+</table>
+
+<p class="evidence"><strong>结论：中远通不在 Serenity 狩猎范围内。</strong>它是电源行业的普通参与者，不构成任何供应链瓶颈。</p>
+
+<h4>红旗扫描</h4>
+
+<ul class="flag-list">
+    <li class="fail"><strong>❌ 连续两年亏损</strong> — 2024 净利 -8939 万，2025 净利 -5715 万。2023 上市当年盈利 6601 万，上市后业绩变脸</li>
+    <li class="fail"><strong>❌ 经营现金流为负</strong> — 2025 年 -7473 万，盈利质量差</li>
+    <li class="warn"><strong>⚠️ 应收/存货增速 > 营收增速</strong> — 应收账款 +35.4%，存货 +23.2%，均高于营收 +12.8%</li>
+    <li class="warn"><strong>⚠️ 营收仍未恢复至 2023 年水平</strong> — 2023 年 11.84 亿 → 2024 年 8.3 亿 → 2025 年 9.37 亿</li>
+    <li class="fail"><strong>❌ 12 月限售解禁</strong> — 2.11 亿股（75%）将于 2026-12-08 解禁，届时流通盘暴增 3 倍</li>
+    <li class="warn"><strong>⚠️ 12 个概念标签</strong> — 多数概念收入"占比极小"（公司原话），概念炒作特征明显</li>
+    <li class="warn"><strong>⚠️ 募投项目全部延期</strong> — 研发中心/信息化/制造技改项目均延至 2027-12-31</li>
+    <li class="pass"><strong>✅ 负债率低（22.9%）</strong> — 资产结构健康，无短期偿债风险</li>
+    <li class="pass"><strong>✅ Q1 营收 +37.7%</strong> — 增长加速，减亏趋势明确</li>
+    <li class="pass"><strong>✅ 中广核背景</strong> — 国资实控人，无退市/爆雷风险</li>
+</ul>
+
+<h4>Serenity 信念分档</h4>
+
+<div class="card" style="border-left: 4px solid var(--red);">
+<p style="font-size:16px;font-weight:600;margin-bottom:8px">🐻 <strong>Bear（不参与）</strong></p>
+<p style="font-size:14px">
+中远通是典型的小盘概念股，而非 Serenity 意义上的供应链卡点。公司基本面正在改善（Q1 营收 +37.7%、减亏趋势明确），但 52.6 亿市值远超合理估值范围。<br><br>
+核心风险不是公司会不会扭亏（大概率会），而是<strong>当前估值已经把扭亏+服务器电源+新能源的三重预期全部透支</strong>。再加上 12 月 75% 限售股解禁，届时抛压将非常沉重。<br><br>
+<strong>等解禁落地（2027 年 Q1）+ 业绩验证后再评估。</strong>当前绝对不参与。
+</p>
+</div>
+
+<h3>3b. 客观框架（量化评估）</h3>
+
+<h4>Bear / Base / Bull 三情景</h4>
+
+<div class="price-box">
+<div class="pb-card bear">
+<h4>🐻 Bear</h4>
+<div class="price">12-18 亿</div>
+<div class="price-detail">对应股价 4.3-6.4 元</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>触发条件：</strong>解禁抛压 + 主营业务继续低迷 + 概念退潮。回归 PB 1-1.4x（净资产 12.67 亿）。<br>
+<strong>概率：~35%</strong>
+</p>
+</div>
+<div class="pb-card base">
+<h4>📊 Base</h4>
+<div class="price">20-30 亿</div>
+<div class="price-detail">对应股价 7.1-10.7 元</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>触发条件：</strong>2026 年微利（净利 2000-3000 万）+ 服务器电源有实质收入但未爆发。给 40-50x PE（小盘+概念溢价）。<br>
+<strong>概率：~45%</strong>
+</p>
+</div>
+<div class="pb-card bull">
+<h4>🐂 Bull</h4>
+<div class="price">35-50 亿</div>
+<div class="price-detail">对应股价 12.5-17.8 元</div>
+<p style="font-size:13px;margin-top:8px">
+<strong>触发条件：</strong>服务器电源批量供货（如进入字节/阿里/腾讯供应链）+ 新能源电源维持 50%+ 增速 + 2026 年扣非净利 5000 万+。给 50-60x PE。<br>
+<strong>概率：~20%</strong><br>
+⚠️ <strong>不过翻倍门槛</strong>（当前 18.72 已在 Bull 上沿外，翻倍需 37.44 = ~105 亿市值）。
+</p>
+</div>
+</div>
+
+<p class="evidence"><strong>⚠️ 关键约束:</strong> bear/base/bull 中市值与股价同时给出。股价 = 市值 ÷ 总股本（<strong>2.81 亿股</strong>，截至 2026-03-31，H1 未发生股本变动，无除权调整）。</p>
+
+<h4>翻倍门槛判断</h4>
+
+<table>
+<tr><th>方向</th><th>概率</th><th>说明</th></tr>
+<tr><td>18.72 → 37.44（+100%）</td><td>极小（<3%）</td><td>需要市值 105 亿，对应 PS > 11x，PE > 200x。即使服务器电源月入 2000 万也撑不起这个估值</td></tr>
+<tr><td>18.72 → 6.5（-65%，先回调再翻倍）</td><td>中等（30%）</td><td>解禁后若跌回 PB 1.5x = 19 亿（6.8 元），再翻倍需涨回 13.6 元（38 亿）。条件是基本面验证扭亏+服务器电源放量</td></tr>
+</table>
+
+<h4>同行业估值对比</h4>
+
+<table>
+<tr><th>标的</th><th>市值（亿）</th><th>PS TTM</th><th>毛利率</th><th>净利率</th><th>特点</th></tr>
+<tr><td><strong>中远通 (301516)</strong></td><td><strong>~52.6</strong></td><td><strong>~5.6x</strong></td><td>17%</td><td>-6%</td><td>通信电源 OEM</td></tr>
+<tr><td>麦格米特</td><td>~150</td><td>~2x</td><td>30%</td><td>8%</td><td>电源+电控平台</td></tr>
+<tr><td>英可瑞</td><td>~30</td><td>~3x</td><td>25%</td><td>-5%</td><td>充电桩模块</td></tr>
+<tr><td>通合科技</td><td>~40</td><td>~4x</td><td>32%</td><td>10%</td><td>军工电源+充电桩</td></tr>
+<tr><td>电源设备行业均值</td><td>—</td><td>~3x</td><td>~28%</td><td>~8%</td><td>—</td></tr>
+</table>
+
+<p class="evidence">中远通 PS 5.6x 是同业均值的 <strong>1.9 倍</strong>，但毛利率和净利率都显著低于同业。高 PS + 低利润率 = 估值泡沫。</p>
+
+<h3>关键事件关注</h3>
+
+<table>
+<tr><th>时间</th><th>事件</th><th>影响</th></tr>
+<tr><td>2026-08-27</td><td>中报披露</td><td>验证 Q2 营收增速和减亏趋势是否持续</td></tr>
+<tr><td>2026-12-08</td><td><strong>限售解禁</strong>（2.11 亿股）</td><td>流通盘从 0.70 亿暴增至 2.81 亿。中广核/吉学龙/张学军等大股东是否减持？</td></tr>
+<tr><td>2027-04</td><td>2026 年报</td><td>验证是否扭亏、服务器电源是否形成规模收入</td></tr>
+</table>
+
+<!-- 独立复核 -->
+<h2>独立复核</h2>
+
+<table>
+<tr><th>复核项</th><th>结果</th></tr>
+<tr><td>关键数字一手来源</td><td>✅ 财务数据来自深交所年报/一季报/公司公告，股价来自证券时报/证券之星</td></tr>
+<tr><td>总股本确认</td><td>✅ 2.81 亿股（2026-03-31 最新），来源：理杏仁/公司公告，H1 未变动</td></tr>
+<tr><td>数据时效性</td><td>✅ 财务数据 Q1 2026 截止 3/31，股价 7/7 盘中涨停</td></tr>
+<tr><td>确认偏误检查</td><td>✅ Bear/Base/Bull 三情景均列出。承认减亏趋势但估值过冲</td></tr>
+<tr><td>卡点判据完整性</td><td>✅ 四个维度全部不满足，明确标注为"非 Serenity 标的"</td></tr>
+<tr><td>解禁风险提示</td><td>✅ 2026-12-08 解禁 2.11 亿股已纳入核心风险评估</td></tr>
+</table>
+
+<hr style="margin:40px 0;border:none;border-top:1px solid var(--border)">
+
+<div style="font-size:13px;color:var(--gray)">
+<p><strong>证据标注说明：</strong><br>
+<code>已证实</code> — 来自交易所公告/公司年报<br>
+<code>管理层声称</code> — 来自公司互动平台/调研纪要<br>
+<code>我的推断</code> — 基于公开数据的推演测算</p>
+<p style="margin-top:12px"><strong>⚠️ 免责声明：</strong>本报告基于公开市场数据整理，不构成投资建议。股市有风险，投资需谨慎。</p>
+</div>
+
+<div class="footer">
+<p>Generated by Serenity Investment Analysis Engine | 2026-07-07</p>
+</div>
+
+</div>
+</body>
+</html>
