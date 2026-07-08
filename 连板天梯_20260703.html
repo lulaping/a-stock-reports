@@ -2,196 +2,400 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>连板天梯 2026-07-03</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+    <title>连板天梯 — 2026年7月3日</title>
     <style>
-        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #333; line-height: 1.8; }
-        h1 { color: #1a1a2e; border-bottom: 3px solid #e94560; padding-bottom: 12px; }
-        h2 { color: #16213e; margin-top: 30px; border-left: 4px solid #e94560; padding-left: 12px; }
-        h3 { color: #0f3460; margin-top: 20px; }
-        .box { background: white; border-radius: 10px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-        table { width: 100%; border-collapse: collapse; margin: 12px 0; background: white; border-radius: 8px; overflow: hidden; }
-        th { background: #16213e; color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
-        td { padding: 8px 14px; border-bottom: 1px solid #eee; }
-        tr:hover { background: #f8f9fa; }
-        .ladder { display: flex; flex-direction: column; gap: 12px; }
-        .rung { background: white; border-radius: 10px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #e94560; }
-        .rung-4 { border-left-color: #b71c1c; }
-        .rung-3 { border-left-color: #e65100; }
-        .rung-2 { border-left-color: #f57f17; }
-        .rung-fb { border-left-color: #1565c0; }
-        .rung h3 { margin: 0 0 8px 0; color: #1a1a2e; }
-        .tag-up { display:inline-block;background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-size:12px;margin:0 4px;}
-        .tag-bear { display:inline-block;background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-size:12px;margin:0 4px;}
-        .tag-mid { display:inline-block;background:#fff3cd;color:#856404;padding:2px 8px;border-radius:4px;font-size:12px;margin:0 4px;}
-        .footer { text-align: center; color: #888; font-size: 13px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; }
-        .highlight { background: #e8f4fd; border: 2px solid #2196F3; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+        :root { --c-bg:#f6f8fa;--c-card:#fff;--c-text:#1a1a2e;--c-text2:#5a5f6e;--c-accent:#c0392b;--c-accent2:#0f3460;--c-green:#1e8449;--c-yellow:#b7950b;--c-border:#e2e6ed;--c-tag-bg:#f0f2f5;--rad:12px;--sh:0 1px 3px rgba(0,0,0,0.06) }
+        @media(prefers-color-scheme:dark){:root{--c-bg:#0d1117;--c-card:#161b22;--c-text:#e6edf3;--c-text2:#8b949e;--c-accent:#f85149;--c-accent2:#58a6ff;--c-border:#30363d;--c-tag-bg:#21262d}}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{-webkit-text-size-adjust:100%}
+        body{font-family:system-ui,-apple-system,'SF Pro Text','PingFang SC','Microsoft YaHei',sans-serif;background:var(--c-bg);color:var(--c-text);line-height:1.65;padding:env(safe-area-inset-top) max(16px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px,env(safe-area-inset-left));-webkit-font-smoothing:antialiased}
+        .wrap{max-width:860px;margin:0 auto;padding:clamp(16px,4vw,32px) clamp(12px,3vw,24px)}
+        h1{font-size:clamp(20px,4.5vw,26px);font-weight:800;border-bottom:3px solid var(--c-accent);padding-bottom:10px}
+        h2{font-size:clamp(16px,3.2vw,19px);font-weight:700;color:var(--c-accent2);margin:clamp(20px,4vw,34px) 0 clamp(8px,2vw,14px);border-left:4px solid var(--c-accent);padding-left:10px}
+        h3{font-size:clamp(14px,2.6vw,16px);margin:clamp(12px,2.5vw,20px) 0 6px}
+        .card{background:var(--c-card);border-radius:var(--rad);padding:clamp(14px,3vw,22px) clamp(14px,3vw,24px);margin:clamp(8px,2vw,12px) 0;box-shadow:var(--sh)}
+        .tbl-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:clamp(8px,2vw,12px) 0;border-radius:8px}
+        table{width:100%;min-width:480px;border-collapse:collapse;font-size:clamp(13px,2.5vw,14px);line-height:1.5}
+        th,td{padding:clamp(8px,1.5vw,11px) clamp(8px,1.8vw,14px);border:1px solid var(--c-border);text-align:left;vertical-align:top}
+        th{background:var(--c-tag-bg);font-weight:600;color:var(--c-text2);white-space:nowrap}
+        .tag{display:inline-flex;align-items:center;padding:clamp(2px,0.5vw,4px) clamp(6px,1.2vw,10px);border-radius:20px;font-size:clamp(11px,2vw,12px);font-weight:600;white-space:nowrap}
+        .tag-r{background:#fdecea;color:#c0392b}.tag-g{background:#eafaf1;color:#1e8449}.tag-y{background:#fef9e7;color:#b7950b}.tag-b{background:#e8f0fe;color:#0f3460}.tag-gray{background:var(--c-tag-bg);color:var(--c-text2)}
+        @media(prefers-color-scheme:dark){.tag-r{background:rgba(248,81,73,0.12);color:#f85149}.tag-g{background:rgba(63,185,80,0.12);color:#3fb950}.tag-y{background:rgba(210,153,34,0.12);color:#d29922}.tag-b{background:rgba(88,166,255,0.12);color:#58a6ff}}
+        .stock-card{border-left:4px solid var(--c-accent);padding:clamp(10px,2vw,16px) clamp(12px,2.5vw,18px);margin:clamp(10px,2vw,14px) 0;background:var(--c-card);border-radius:0 var(--rad) var(--rad) 0;box-shadow:var(--sh)}
+        .stock-card.robot{border-left-color:#27ae60}.stock-card.gold{border-left-color:#f39c12}.stock-card.reorg{border-left-color:#9b59b6}.stock-card.independent{border-left-color:#7f8c8d}
+        @media(prefers-color-scheme:dark){.stock-card.robot{border-left-color:#3fb950}.stock-card.gold{border-left-color:#d29922}.stock-card.reorg{border-left-color:#bc8cff}.stock-card.independent{border-left-color:#8b949e}}
+        .stock-header{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:8px}
+        .stock-name{font-size:clamp(16px,3vw,18px);font-weight:700}
+        .stock-code{color:var(--c-text2);font-size:clamp(12px,2.2vw,13px)}
+        .stock-detail{font-size:clamp(13px,2.5vw,14px);color:var(--c-text);line-height:1.6}
+        .stock-detail p{margin:4px 0}
+        .verdict-line{font-weight:700;margin-top:8px;padding:6px 10px;border-radius:6px;font-size:clamp(13px,2.5vw,14px)}
+        .verdict-line.chase{background:#fdecea;color:#c0392b}.verdict-line.hold{background:#fef9e7;color:#b7950b}.verdict-line.avoid{background:#eafaf1;color:#1e8449;display:inline-block}
+        .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(10px,2vw,16px)}
+        .fn{color:var(--c-text2);font-size:clamp(11px,2vw,12px);margin-top:4px}
+        .meta{color:var(--c-text2);font-size:clamp(12px,2.2vw,13px)}
+        .strong{font-weight:700}
+        .disclaimer{color:var(--c-text2);font-size:clamp(11px,2vw,12px);text-align:center;line-height:1.6;margin-top:clamp(24px,4vw,36px)}
+        hr.divider{border:0;border-top:1px solid var(--c-border);margin:clamp(20px,4vw,28px) 0}
+        .summary-box{background:var(--c-card);border-radius:var(--rad);padding:clamp(14px,3vw,20px);margin:clamp(12px,2.5vw,16px) 0;box-shadow:var(--sh)}
+        .summary-box ul{margin:6px 0 0 18px;font-size:clamp(13px,2.5vw,14px);line-height:1.8}
     </style>
 </head>
 <body>
+<div class="wrap">
 
-<h1>连板天梯 — 2026-07-03（周五收盘）</h1>
-<p style="color:#888;">数据来源：财联社 | 不含ST/退市股 | 封板率70% | 107股涨停，19只连板股</p>
+<h1>连板天梯 — 2026年7月3日</h1>
+<p class="meta">数据截止：2026-07-03 收盘 | 沪指4043.64 +0.37% | 成交3.18万亿 | 涨停107只（不含ST） | 连板股16只</p>
 
-<div class="highlight">
-    <p><strong>今日概况：</strong>全市场107只个股涨停，连板股总数19只，52只炸板（封板率70%）。机器人概念全线爆发（四十余只涨停），黄金延续强势，医药反复活跃。半导体材料板块重挫，多氟多跌停。</p>
-    <p><strong>晋级率：</strong>4板→4板恒尚节能独苗晋级；3进4无（今日最高4板）；2进3成功率待核。反包/趋势板为当前赚钱效应主线。</p>
+<div class="summary-box">
+    <h3 style="margin-top:0">📊 连板总览</h3>
+    <ul>
+        <li><strong>连板晋级率：</strong>21.05%（19→16，不含ST）——晋级率偏低，高位分化明显</li>
+        <li><strong>最高连板：</strong>4连板（恒尚节能，并购重组）</li>
+        <li><strong>核心主线：</strong>人形机器人（6只连板）+ 贵金属黄金（2只）+ 摘帽重组（6只）</li>
+        <li><strong>周期特征：</strong>阴分歧内局部修复小阳——缩量反弹，题材小票活跃，科技权重承压。情绪综合强度73分</li>
+        <li><strong>最大风险：</strong>缩量普涨（-7.77%量能），资金跷跷板极致，机器人/黄金吸走全场流动性，冷门赛道单边下跌</li>
+    </ul>
 </div>
 
-<h2>连板梯队</h2>
+<h2>一、4连板（全场最高标）</h2>
 
-<div class="ladder">
-
-    <!-- 4板 -->
-    <div class="rung rung-4">
-        <h3>4连板</h3>
-        <table>
-            <tr><th style="width:120px;">个股</th><th style="width:80px;">代码</th><th>题材</th><th>研判</th></tr>
-            <tr>
-                <td><strong>恒尚节能</strong></td>
-                <td>603137</td>
-                <td><span class="tag-up">并购重组</span></td>
-                <td>全市场最高连板。并购重组独立逻辑，不依赖板块联动。封板时间早、持筹信心足。昨日3进4唯一成功者，下周关注能否加速。</td>
-            </tr>
-        </table>
+<div class="stock-card reorg">
+    <div class="stock-header">
+        <span class="stock-name">恒尚节能</span>
+        <span class="stock-code">603137</span>
+        <span class="tag tag-y">4连板</span>
+        <span class="tag tag-gray">并购重组</span>
     </div>
-
-    <!-- 3板 -->
-    <div class="rung rung-3">
-        <h3>3连板</h3>
-        <table>
-            <tr><th style="width:120px;">个股</th><th style="width:80px;">代码</th><th>题材</th><th>研判</th></tr>
-            <tr>
-                <td><strong>宜宾纸业</strong></td>
-                <td>600793</td>
-                <td><span class="tag-up">造纸</span></td>
-                <td>放量换手3板，筹码结构健康。独立题材不依赖大盘情绪。造纸板块整体走强提供板块支撑。</td>
-            </tr>
-            <tr>
-                <td><strong>富春染织</strong></td>
-                <td>605189</td>
-                <td><span class="tag-up">机器人概念</span></td>
-                <td>今日市场最强主线（机器人涨停潮），板块联动性强。但纺织+机器人的双属性，机器人纯度需注意。</td>
-            </tr>
-        </table>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>7/1复牌一字板→7/2一字板→7/3一字板（3连一字，累计+53.5%），换手率仅0.2%-0.33%，筹码高度锁定</p>
+        <p><strong>现价/市值：</strong>17.22元 / 31.5亿 | 自由流通市值仅13.03亿</p>
+        <p><strong>涨停逻辑：</strong>跨界收购金胜电子（存储芯片）100%股权，交易总价不超6亿。标的2025年营收7.86亿、净利4187万（+190%），切入AI存储赛道</p>
+        <p><strong>基本面：</strong>主营建筑幕墙，2025年营收14.85亿（-31.25%）、亏损3502万（上市首亏），经营现金流-2.98亿。2026Q1营收2.53亿（-42.56%），短暂盈利仅为季度节奏</p>
+        <p><strong>核心风险：</strong>跨界整合风险（公司无半导体经验）、重组审批漫长（仅预案阶段）、开板后底部筹码全部浮盈40%+将集中兑现</p>
+        <div class="verdict-line chase">⚠️ 不追板 — 一字板无法买入，开板后大概率高开低走。重组不确定性极高，跨界存储整合失败概率大，仅适合开板后观察回踩12-14元支撑</div>
     </div>
-
-    <!-- 4天3板（趋势/反包板） -->
-    <div class="rung rung-fb">
-        <h3>4天3板（趋势板 / 反包板）</h3>
-        <table>
-            <tr><th style="width:120px;">个股</th><th style="width:80px;">代码</th><th>题材</th><th>研判</th></tr>
-            <tr>
-                <td><strong>埃斯顿</strong></td>
-                <td>002747</td>
-                <td><span class="tag-up">机器人+收购</span></td>
-                <td>宇树科技IPO催化+全资收购埃斯顿酷卓。板块联动性极强，四十余只机器人涨停助攻。有业绩支撑，趋势走法比纯连板更健康。</td>
-            </tr>
-            <tr>
-                <td><strong>星网锐捷</strong></td>
-                <td>002396</td>
-                <td><span class="tag-up">交换机+中报预增</span></td>
-                <td><strong>本梯队最强基本面支撑：</strong>中报预增46-103%。AI数据中心交换机业务爆发。有业绩的板 ≠ 概念炒作的板，持有信心更强。</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- 2板 -->
-    <div class="rung rung-2">
-        <h3>2连板</h3>
-        <table>
-            <tr><th style="width:120px;">个股</th><th style="width:80px;">代码</th><th>题材</th><th>研判</th></tr>
-            <tr>
-                <td><strong>招金黄金</strong></td>
-                <td>000506</td>
-                <td><span class="tag-up">贵金属</span></td>
-                <td>美国6月非农仅+5.7万（预期11.3万），降息预期升温，金价突破4193美元。黄金板块联动走强（四川黄金、西部黄金、山金国际多股涨停）。依赖金价走势，不可控。</td>
-            </tr>
-            <tr>
-                <td><strong>赤峰黄金</strong></td>
-                <td>600988</td>
-                <td><span class="tag-up">贵金属</span></td>
-                <td>与招金黄金同步2连板。板块联动性极强，日内多只黄金股涨停。若伦敦金守住4100美元，下周仍有溢价。</td>
-            </tr>
-            <tr>
-                <td><strong>日盈电子</strong></td>
-                <td>603286</td>
-                <td><span class="tag-up">汽车+机器人</span></td>
-                <td>汽车零部件+机器人双主线共振。今日汽车零部件板块涨幅4%，机器人涨停潮，双概念加持。</td>
-            </tr>
-            <tr>
-                <td><strong>石药景峰</strong></td>
-                <td>000908</td>
-                <td><span class="tag-up">医药</span></td>
-                <td>创新药板块反复活跃——迪哲医药FDA批准、医保商保双目录利好。医药板块今日多个首板助攻，板块联动性强。</td>
-            </tr>
-        </table>
-    </div>
-
 </div>
 
-<h2>📊 关键数据分析</h2>
+<h2>二、3连板</h2>
 
-<div class="box">
+<div class="stock-card robot">
+    <div class="stock-header">
+        <span class="stock-name">富春染织</span>
+        <span class="stock-code">605189</span>
+        <span class="tag tag-y">3连板</span>
+        <span class="tag tag-g">机器人主线</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>7/1涨停→7/2涨停→7/3涨停（3连板，板块高度标杆），7/3主力净流入4281万</p>
+        <p><strong>现价/市值：</strong>16.05元 / 34.76亿 | PE约11.9x（2026Q1年化）</p>
+        <p><strong>涨停逻辑：</strong>PEEK材料量产+人形机器人轻量化。全资子公司"芜湖富春高新技术"聚焦PEEK研发，已获人形机器人行星减速器公司样件订单。与鹿明机器人联合发布全PEEK超轻关节模组（减重62%、扭矩密度+71%）</p>
+        <p><strong>基本面：</strong>全球最大筒子纱染色厂，2026Q1营收8.73亿（+30.32%）、净利7329万（+1415.88%），主业爆发。PEEK业务总投资4亿，达产后年销11亿。2026年全年预期净利1.8-2.5亿</p>
+        <p><strong>核心风险：</strong>PEEK产能爬坡期（2026年刚量产）、主业棉价波动、纺织股估值天花板（市场给纺织5-10x PE vs 新材料30-50x PE的估值重构尚未完成）</p>
+        <div class="verdict-line hold">🟡 观察 — 3连板中唯一有基本面支撑的标的。Q1业绩炸裂（+1415%）+PEEK量产是真成长，非纯蹭概念。但3连板后已无安全边际，等回调至12-13元（对应25-30亿市值）</div>
+    </div>
+</div>
+
+<div class="stock-card independent">
+    <div class="stock-header">
+        <span class="stock-name">宜宾纸业</span>
+        <span class="stock-code">600793</span>
+        <span class="tag tag-y">3连板</span>
+        <span class="tag tag-gray">独立逻辑</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>7/1涨停→7/2涨停→7/3涨停（3连板），9:30一字封板</p>
+        <p><strong>涨停逻辑：</strong>造纸周期反转+小盘低价股。造纸行业产能出清，纸浆价格下行利好成本端。属于独立个股行情，不具备板块扩散能力</p>
+        <p><strong>核心风险：</strong>无板块效应、纯周期博弈、3连板后追高风险极大</p>
+        <div class="verdict-line avoid">🔴 不参与 — 独立行情无板块助攻，造纸周期持续性存疑，3连板后不建议追</div>
+    </div>
+</div>
+
+<h2>三、4天3板 / 5天3板</h2>
+
+<div class="stock-card robot">
+    <div class="stock-header">
+        <span class="stock-name">埃斯顿</span>
+        <span class="stock-code">002747</span>
+        <span class="tag tag-y">4天3板</span>
+        <span class="tag tag-g">机器人主线</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>7/1涨停→7/2调整→7/3涨停（4天3板，09:34回封），机器人板块人气龙头</p>
+        <p><strong>涨停逻辑：</strong>机器人整机中军，国产工业机器人龙头。宇树科技IPO获批+特斯拉Optimus量产催化，人形机器人产业链核心标的。此前已做过Serenity分析（见7/3报告）</p>
+        <p><strong>核心风险：</strong>4天3板后追高性价比低，机器人板块情绪高潮后容易分化</p>
+        <div class="verdict-line hold">🟡 持有观察 — 机器人中军龙头，趋势新高，但不宜追板。已持有者可持有，未持有等回调</div>
+    </div>
+</div>
+
+<div class="stock-card independent">
+    <div class="stock-header">
+        <span class="stock-name">星网锐捷</span>
+        <span class="stock-code">002396</span>
+        <span class="tag tag-y">4天3板</span>
+        <span class="tag tag-gray">算力+业绩</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>4天3板，09:30封板，算力交换机+业绩预增双驱动</p>
+        <p><strong>涨停逻辑：</strong>AI算力交换机需求爆发+中报业绩预增。数据中心交换机国产替代加速，公司为国内交换机ODM龙头</p>
+        <p><strong>核心风险：</strong>算力板块整体承压（科技权重遭抛售），独立走强持续性存疑</p>
+        <div class="verdict-line hold">🟡 观察 — 有业绩支撑的算力标的，但板块情绪偏弱，等回调</div>
+    </div>
+</div>
+
+<div class="stock-card reorg">
+    <div class="stock-header">
+        <span class="stock-name">艾艾精工</span>
+        <span class="stock-code">603580</span>
+        <span class="tag tag-y">5天3板</span>
+        <span class="tag tag-gray">摘帽</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>5天3板，14:53尾盘封板（封板时间极晚，资金犹豫）</p>
+        <p><strong>涨停逻辑：</strong>摘帽概念+ST板块活跃。7月6日ST涨跌幅限制由5%调整至10%的政策催化。纯超跌低价博弈</p>
+        <p><strong>核心风险：</strong>尾盘封板=弱封，纯情绪博弈无产业逻辑，摘帽行情持续性差</p>
+        <div class="verdict-line avoid">🔴 不参与 — 尾盘封板质量差，摘帽纯博弈无基本面支撑，风险收益比极差</div>
+    </div>
+</div>
+
+<div class="stock-card reorg">
+    <div class="stock-header">
+        <span class="stock-name">中通国脉</span>
+        <span class="stock-code">603559</span>
+        <span class="tag tag-y">4天3板</span>
+        <span class="tag tag-gray">摘帽</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>摘帽概念，通信服务板块。ST涨跌幅调整政策催化</p>
+        <div class="verdict-line avoid">🔴 不参与 — 摘帽纯博弈，无基本面支撑</div>
+    </div>
+</div>
+
+<h2>四、2连板 — 机器人主线</h2>
+
+<div class="stock-card robot">
+    <div class="stock-header">
+        <span class="stock-name">雷赛智能</span>
+        <span class="stock-code">002979</span>
+        <span class="tag tag-y">2连板（一字）</span>
+        <span class="tag tag-g">机器人主线</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>7/2一字板→7/3一字板（百万手封单），连续2日一字涨停，根本买不到</p>
+        <p><strong>现价/市值：</strong>69.55元 / 219.78亿 | PE约76x（华泰目标价72.80元）</p>
+        <p><strong>涨停逻辑：</strong>2026H1业绩预告超预期——归母净利1.84-1.96亿（+55%-65%），Q2单季营收同比+42%-48%。伺服系统+52%高增，人形机器人核心零部件（无框电机/灵巧手/关节模组）已进入国内80%主流厂商供应链。无框电机2025年交付12万台（+20倍），在建年产200万台产线。12家机构调研，华泰/中金/东吴均给出买入评级</p>
+        <p><strong>核心风险：</strong>①一字板无法买入；②76x PE已price-in了2027年增长预期；③经营现金流Q1为负（-0.48亿），高应收+高存货；④股权激励费用拖累（2025年5507万）</p>
+        <div class="verdict-line hold">🟡 不追（也买不到） — 业绩+机器人双驱动是2连板中最扎实的标的，但一字板锁死+76x PE已无安全边际。等开板回调至45-55元（PE 50-60x）</div>
+    </div>
+</div>
+
+<div class="stock-card robot">
+    <div class="stock-header">
+        <span class="stock-name">日盈电子</span>
+        <span class="stock-code">603286</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-g">机器人主线</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>机器人+汽车零部件双概念。机器人传感器/精密零部件供应商，汽车电子业务受益于智能驾驶</p>
+        <p><strong>核心风险：</strong>机器人业务占比小，更多是概念跟风。2连板后追高风险大</p>
+        <div class="verdict-line hold">🟡 观察 — 机器人板块2连板补涨，辨识度不如埃斯顿/雷赛智能，不建议追</div>
+    </div>
+</div>
+
+<div class="stock-card robot">
+    <div class="stock-header">
+        <span class="stock-name">浙江鼎力</span>
+        <span class="stock-code">603338</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-g">机器人主线</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>高空作业平台龙头+机器人概念。工程机械受益于基建投资，机器人属性较弱</p>
+        <div class="verdict-line hold">🟡 观察 — 工程机械属性为主，机器人概念偏弱，2连板后不建议追</div>
+    </div>
+</div>
+
+<div class="stock-card robot">
+    <div class="stock-header">
+        <span class="stock-name">朝阳科技</span>
+        <span class="stock-code">002981</span>
+        <span class="tag tag-y">3天2板</span>
+        <span class="tag tag-g">机器人主线</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>消费电子+机器人双概念。精密结构件供应商，切入机器人零部件领域</p>
+        <div class="verdict-line hold">🟡 观察 — 消费电子为主，机器人占比小，3天2板后不建议追</div>
+    </div>
+</div>
+
+<h2>五、2连板 — 黄金主线</h2>
+
+<div class="stock-card gold">
+    <div class="stock-header">
+        <span class="stock-name">赤峰黄金</span>
+        <span class="stock-code">600988</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-y">黄金主线</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>7/2涨停→7/3一字板（1分钟封板），2日涨幅21%，主力净流入4.59亿</p>
+        <p><strong>现价/市值：</strong>31.23元（7/4价格）/ 约360亿 | PE约15x</p>
+        <p><strong>涨停逻辑：</strong>美国6月非农仅5.7万（预期11.3万），降息预期升温，金价突破4180美元。2026Q1营收35.54亿（+47.65%）、净利9.88亿（+104.43%）。紫金矿业92亿港元战略投资（转让价41.36元/股），当前价相当于75折。金价每涨1%→净利+4.57%，弹性黄金板块第一</p>
+        <p><strong>核心风险：</strong>利润100%依赖金价（Q1产量-11%但金价+61%），全维持成本暴涨38.6%。紫金交易尚未正式签约，41.36元锚若破裂则支撑崩塌</p>
+        <div class="verdict-line hold">🟡 持有但不追 — 黄金龙头有基本面支撑，PE 15x不贵。但2连板后追高风险大，且资金来自"科技避险"而非"看好黄金"，科技企稳则资金回流</div>
+    </div>
+</div>
+
+<div class="stock-card gold">
+    <div class="stock-header">
+        <span class="stock-name">招金黄金</span>
+        <span class="stock-code">000506</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-y">黄金主线</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停路径：</strong>7/2涨停→7/3涨停（2连板），1分钟封板</p>
+        <p><strong>现价/市值：</strong>12.61元 / 约117亿 | PE约15.6x</p>
+        <p><strong>涨停逻辑：</strong>金价大涨+降息预期。纯黄金标的（黄金营收占比99%），斐济瓦图科拉金矿2026年产能目标1.2吨+。2026Q1营收+120%、净利+80%，小市值高弹性</p>
+        <p><strong>核心风险：</strong>产量规模小（0.77吨 vs 赤峰15吨+），金价波动影响极大</p>
+        <div class="verdict-line hold">🟡 持有但不追 — 小市值高弹性，金价若继续上行弹性最大。但2连板后追高风险大</div>
+    </div>
+</div>
+
+<h2>六、2连板 — 摘帽/重组</h2>
+
+<div class="stock-card reorg">
+    <div class="stock-header">
+        <span class="stock-name">金科股份</span>
+        <span class="stock-code">000656</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-gray">摘帽</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>摘帽概念+ST板块活跃。7月6日ST涨跌幅调整催化</p>
+        <div class="verdict-line avoid">🔴 不参与 — 摘帽纯博弈，无基本面</div>
+    </div>
+</div>
+
+<div class="stock-card reorg">
+    <div class="stock-header">
+        <span class="stock-name">宝塔实业</span>
+        <span class="stock-code">000595</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-gray">摘帽</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>摘帽概念</p>
+        <div class="verdict-line avoid">🔴 不参与 — 纯博弈</div>
+    </div>
+</div>
+
+<div class="stock-card reorg">
+    <div class="stock-header">
+        <span class="stock-name">石药景峰</span>
+        <span class="stock-code">000908</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-gray">摘帽</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>摘帽概念</p>
+        <div class="verdict-line avoid">🔴 不参与</div>
+    </div>
+</div>
+
+<h2>七、2连板 — 独立逻辑</h2>
+
+<div class="stock-card independent">
+    <div class="stock-header">
+        <span class="stock-name">甘化科工</span>
+        <span class="stock-code">000576</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-gray">军工</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>军工+地面兵装。国防军工板块活跃，但非主线</p>
+        <div class="verdict-line hold">🟡 观察 — 军工独立行情，持续性不确定</div>
+    </div>
+</div>
+
+<div class="stock-card independent">
+    <div class="stock-header">
+        <span class="stock-name">三羊马</span>
+        <span class="stock-code">001317</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-gray">交通运输</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>物流/交通运输，独立行情</p>
+        <div class="verdict-line avoid">🔴 不参与 — 无板块效应</div>
+    </div>
+</div>
+
+<div class="stock-card independent">
+    <div class="stock-header">
+        <span class="stock-name">天域生物</span>
+        <span class="stock-code">603717</span>
+        <span class="tag tag-y">2连板</span>
+        <span class="tag tag-gray">养殖业</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>养殖/农业，独立行情</p>
+        <div class="verdict-line avoid">🔴 不参与</div>
+    </div>
+</div>
+
+<div class="stock-card independent">
+    <div class="stock-header">
+        <span class="stock-name">绿康生化</span>
+        <span class="stock-code">002868</span>
+        <span class="tag tag-y">3天2板</span>
+        <span class="tag tag-gray">动物保健</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>动物保健，独立行情</p>
+        <div class="verdict-line avoid">🔴 不参与</div>
+    </div>
+</div>
+
+<div class="stock-card independent">
+    <div class="stock-header">
+        <span class="stock-name">安洁科技</span>
+        <span class="stock-code">002635</span>
+        <span class="tag tag-y">3天2板</span>
+        <span class="tag tag-gray">消费电子</span>
+    </div>
+    <div class="stock-detail">
+        <p><strong>涨停逻辑：</strong>消费电子+机器人概念。精密功能件供应商</p>
+        <div class="verdict-line hold">🟡 观察 — 消费电子为主，机器人属性弱</div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<div class="summary-box">
+    <h3 style="margin-top:0">📋 综合结论</h3>
+    <div class="tbl-wrap">
     <table>
-        <tr><th>指标</th><th>数值</th><th>解读</th></tr>
-        <tr><td>涨停总数</td><td>107只</td><td>较昨日93只增加</td></tr>
-        <tr><td>连板股</td><td>19只</td><td>数量回升</td></tr>
-        <tr><td>封板率</td><td>70%</td><td>较昨日回升（昨日70%持平）</td></tr>
-        <tr><td>炸板</td><td>52只</td><td>炸板率30%，正常偏高</td></tr>
-        <tr><td>最高连板</td><td>4板（恒尚节能）</td><td>较昨日3板提升，但连板高度整体偏低</td></tr>
-        <tr><td>最强主线</td><td>机器人概念（40+涨停）</td><td>宇树科技IPO+特斯拉Optimus量产催化，军团式涨停</td></tr>
-        <tr><td>最强2板集群</td><td>黄金（招金+赤峰）</td><td>金价突破4193美元驱动</td></tr>
-        <tr><td>跌停关注</td><td>多氟多（半导体材料）</td><td>8天4板大妖股发异动公告降温，单日流出30亿</td></tr>
+        <tr><th>梯队</th><th>标的</th><th>逻辑质量</th><th>操作建议</th></tr>
+        <tr><td>4连板</td><td>恒尚节能</td><td><span class="tag tag-y">中等</span> 跨界存储有想象空间但风险大</td><td>不追一字板</td></tr>
+        <tr><td>3连板</td><td>富春染织</td><td><span class="tag tag-g">高</span> Q1+1415%+PEEK量产，2连板中基本面最强</td><td>等回调12-13元</td></tr>
+        <tr><td>3连板</td><td>宜宾纸业</td><td><span class="tag tag-r">低</span> 独立行情</td><td>不参与</td></tr>
+        <tr><td>4天3板</td><td>埃斯顿</td><td><span class="tag tag-g">高</span> 机器人中军龙头</td><td>持有不追</td></tr>
+        <tr><td>2连板</td><td>雷赛智能</td><td><span class="tag tag-g">最高</span> H1+55-65%+无框电机12万台+80%厂商覆盖</td><td>等开板回调45-55元</td></tr>
+        <tr><td>2连板</td><td>赤峰黄金</td><td><span class="tag tag-g">高</span> Q1+104%+紫金41.36元锚</td><td>持有不追</td></tr>
+        <tr><td>2连板</td><td>招金黄金</td><td><span class="tag tag-y">中等</span> 小市值高弹性</td><td>持有不追</td></tr>
+        <tr><td>其余2连板</td><td>日盈/浙江鼎力/朝阳/甘化/摘帽等</td><td><span class="tag tag-r">低-中</span></td><td>不参与</td></tr>
     </table>
+    </div>
+    <p style="margin-top:12px;font-size:clamp(13px,2.5vw,14px)"><strong>核心结论：</strong>7/3连板行情呈现"<strong>冰火两重天</strong>"——机器人主线（富春染织/埃斯顿/雷赛智能）有业绩支撑，属于真成长；摘帽/重组（恒尚节能/金科/宝塔/艾艾）纯情绪博弈，风险极大。连板晋级率仅21%说明高位分化严重，<strong>不建议追任何已连板标的</strong>。等回调后，富春染织（12-13元）和雷赛智能（45-55元）是2连板中基本面最扎实的观察标的。</p>
 </div>
 
-<h2>对比参考：昨日（7月2日）连板格局</h2>
-
-<div class="box">
-    <table>
-        <tr><th>板数</th><th>昨日（7/2）</th><th>今日（7/3）</th><th>变化</th></tr>
-        <tr><td>最高板</td><td>3板（恒尚节能、先导基电）</td><td>4板（恒尚节能）</td><td class="tag-up">高度+1</td></tr>
-        <tr><td>3板以上</td><td>3只</td><td>1只（恒尚节能）</td><td class="tag-mid">先导基电未晋级</td></tr>
-        <tr><td>趋势/反包板</td><td>海南海药8天6板、兴业股份5天4板、兴业科技10天7板</td><td>埃斯顿4天3板、星网锐捷4天3板</td><td>题材轮换：从医药/半导体→机器人/业绩</td></tr>
-        <tr><td>跌停/断板</td><td>多只高位股跌停（北方华创等）</td><td>多氟多跌停（异动公告）</td><td class="tag-mid">高位退潮仍在延续</td></tr>
-    </table>
-    <p style="color:#888;font-size:13px;">注：昨日兴业科技10天7板、海南海药8天6板等趋势抱团股今日走势待核（财联社焦点股中未再提及，表明资金接力出现了方向性切换）。</p>
+<p class="disclaimer">
+    <strong>免责声明：</strong>本报告基于公开信息整理，仅供参考，不构成投资建议。连板股波动剧烈，追高风险极大。投资有风险，入市需谨慎。<br>
+    数据来源：财联社、东方财富、同花顺、新浪财经、深交所/上交所公告、龙虎榜。2026-07-05 整理。
+</p>
 </div>
-
-<h2>板块维度：今日涨停潮分布</h2>
-
-<div class="box">
-    <table>
-        <tr><th>板块</th><th>涨停数量</th><th>代表股</th><th>核心催化</th></tr>
-        <tr><td>机器人</td><td>40+只</td><td>埃斯顿4天3板、日盈电子2连板、长盛轴承、贝斯特</td><td>宇树科技科创板IPO获批+特斯拉Optimus量产+工信部人形机器人专项行动</td></tr>
-        <tr><td>汽车零部件</td><td>多只</td><td>日盈电子2连板、凯龙高科20cm、万里扬、圣龙股份</td><td>汽车零部件+机器人双概念共振</td></tr>
-        <tr><td>贵金属</td><td>多只</td><td>招金黄金2连板、赤峰黄金2连板、四川黄金</td><td>美国非农低于预期→降息预期升温→金价突破4193美元</td></tr>
-        <tr><td>医药</td><td>多只</td><td>石药景峰2连板、多个首板</td><td>迪哲医药FDA批准+医保商保双目录+创新药BD金额同比增73%</td></tr>
-        <tr><td>电网设备</td><td>多只</td><td>华明装备、金智科技、中元股份</td><td>电力设备板块整体走强</td></tr>
-        <tr><td>建材</td><td>多只</td><td>华新建材、中国巨石</td><td>建筑材料板块领涨4%</td></tr>
-    </table>
-</div>
-
-<h2>策略研判</h2>
-
-<div class="box" style="border-left:5px solid #b71c1c;">
-    <h3 style="margin-top:0; color:#b71c1c;">核心结论</h3>
-    <ol>
-        <li><strong>连板高度偏低（仅4板），板块效应 > 龙头效应。</strong> 恒尚节能4连板是并购重组的独立逻辑，无法代表市场情绪。真正的赚钱效应在机器人板块的"军团式涨停"——四十余只涨停说明资金在铺板块而非押龙头。</li>
-        <li><strong>趋势板 > 纯连板。</strong> 埃斯顿、星网锐捷的"4天3板"模式，比逐日追板更可持续。星网锐捷有中报+46~103%的业绩支撑，是本梯队确定性最高的标的。</li>
-        <li><strong>黄金2连板依赖金价。</strong> 招金+赤峰同步2连板是板块联动结果（非独立走强）。若伦敦金守住4100美元，下周仍有溢价；反之回调风险显著。</li>
-        <li><strong>多氟多跌停是妖股退潮的标志性事件。</strong> 半导体材料高位股的筹码已经非常松散，追高风险极大。题材从半导体材料向机器人+黄金切换的趋势明显。</li>
-        <li><strong>下周关键观察：</strong>①恒尚节能能否加速5连板（打开连板空间）；②机器人板块能否走出持续性（以及新的连板龙头诞生）；③黄金是否受金价回调影响断板；④成交量能否回升至3.5万亿以上。</li>
-    </ol>
-</div>
-
-<div class="footer">
-    <p>数据来源：财联社（2026-07-03 涨停分析）、凤凰网财经、证券时报</p>
-    <p>⚠️ 数据经过年份二次核查（剔除同日期2025年历史数据）</p>
-    <p>本报告仅供参考，不构成投资建议。连板股交易风险极高。</p>
-    <p>生成日期：2026-07-03 收盘</p>
-</div>
-
 </body>
 </html>
