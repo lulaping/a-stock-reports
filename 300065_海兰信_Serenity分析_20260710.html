@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>300065 海兰信 · Serenity 分析报告</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f0f4f8;
+    color: #1a2332;
+    line-height: 1.6;
+    padding: 32px 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: "Serenity";
+    position: absolute;
+    right: 32px;
+    top: 20px;
+    font-size: 72px;
+    font-weight: 900;
+    opacity: 0.06;
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+  .header .ticker { font-size: 14px; opacity: 0.7; font-weight: 400; margin-bottom: 4px; }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .header .subtitle { font-size: 14px; opacity: 0.6; }
+  .header .date-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  /* Conclusion Cards */
+  .conclusion-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .conclusion-card {
+    flex: 1;
+    min-width: 280px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px 26px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #1a3a6b;
+  }
+  .conclusion-card .label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6b7a8f;
+    margin-bottom: 8px;
+  }
+  .conclusion-card .body { font-size: 14px; color: #1a2332; line-height: 1.7; }
+  .conclusion-card .body strong { color: #1a3a6b; }
+  .conclusion-card .badge {
+    display: inline-block;
+    background: #1a3a6b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+  .badge.bear { background: #c0392b; }
+  .badge.base { background: #d4a017; }
+  .badge.bull { background: #1a6b3c; }
+  .badge.hold { background: #d4a017; }
+
+  /* Section */
+  .section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0a1628;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8edf4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .icon { font-size: 20px; }
+
+  /* Data Table */
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table tr { border-bottom: 1px solid #eef2f7; }
+  .data-table tr:last-child { border: none; }
+  .data-table td {
+    padding: 10px 8px;
+    font-size: 14px;
+    vertical-align: top;
+  }
+  .data-table td:first-child {
+    font-weight: 600;
+    color: #1a3a6b;
+    white-space: nowrap;
+    width: 140px;
+  }
+  .data-table td:last-child { color: #2c3e50; }
+
+  /* Business Structure */
+  .bar-group { margin: 8px 0; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .bar-row .label {
+    width: 220px;
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .bar-row .bar-track {
+    flex: 1;
+    height: 22px;
+    background: #e8edf4;
+    border-radius: 11px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-row .bar-fill {
+    height: 100%;
+    border-radius: 11px;
+    background: linear-gradient(90deg, #1a3a6b, #3a7bd5);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 40px;
+  }
+  .bar-row .pct {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a2332;
+    width: 60px;
+    text-align: right;
+  }
+
+  /* Criteria Grid */
+  .criteria-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 600px) { .criteria-grid { grid-template-columns: 1fr; } }
+  .criterion {
+    background: #f7f9fc;
+    border-radius: 10px;
+    padding: 16px 18px;
+    border-left: 4px solid #3a7bd5;
+  }
+  .criterion.fail { border-left-color: #c0392b; }
+  .criterion.warn { border-left-color: #d4a017; }
+  .criterion .c-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0a1628;
+    margin-bottom: 4px;
+  }
+  .criterion .c-verdict {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .criterion .c-detail { font-size: 13px; color: #4a5a72; line-height: 1.5; }
+
+  /* Pros & Cons */
+  .two-col { display: flex; gap: 20px; flex-wrap: wrap; }
+  .two-col > div { flex: 1; min-width: 240px; }
+  .pros h4 { color: #1a6b3c; margin-bottom: 8px; font-size: 14px; }
+  .cons h4 { color: #c0392b; margin-bottom: 8px; font-size: 14px; }
+  .pros ul, .cons ul { list-style: none; }
+  .pros ul li, .cons ul li {
+    font-size: 13px;
+    padding: 5px 0 5px 18px;
+    position: relative;
+    color: #2c3e50;
+  }
+  .pros ul li::before { content: "✓"; position: absolute; left: 0; color: #1a6b3c; font-weight: 700; }
+  .cons ul li::before { content: "✗"; position: absolute; left: 0; color: #c0392b; font-weight: 700; }
+
+  /* Quote Box */
+  .quote-box {
+    background: #f0f4f8;
+    border-radius: 10px;
+    padding: 18px 22px;
+    border-left: 4px solid #1a3a6b;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1a2332;
+    margin-bottom: 0;
+  }
+  .quote-box strong { color: #1a3a6b; }
+
+  /* Warning */
+  .warning-box {
+    background: #fff8e6;
+    border: 1px solid #f0d78c;
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-size: 13px;
+    color: #8a6d1a;
+    margin-top: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .warning-box .w-icon { font-size: 18px; line-height: 1.4; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #8a9bb0;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #dce3ec;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="ticker">300065 · SZ</div>
+    <h1>海兰信 · Serenity 分析报告</h1>
+    <div class="subtitle">UDC 海底数据中心 · 全球唯二 · AI 算力绿色基础设施</div>
+    <div class="date-badge">📅 2026-07-10</div>
+  </div>
+
+  <!-- Conclusion Row -->
+  <div class="conclusion-row">
+    <div class="conclusion-card">
+      <div class="label">客观框架</div>
+      <div class="body">
+        <span class="badge bear">Bear</span> 估值严重过冲，财务脉冲波动<br>
+        当前市值 <strong>207.7 亿</strong>（涨停 28.79 元），总股本 7.22 亿股<br>
+        <span class="badge bear">Bear</span> 80-120 亿（11-17 元） /
+        <span class="badge base">Base</span> 140-180 亿（19-25 元） /
+        <span class="badge bull">Bull</span> 200-260 亿（28-36 元）<br>
+        今日已触及 Bull 上沿，但 PE 2556x 全市场最高之一。不过翻倍门槛（需 415 亿，+100%）。
+      </div>
+    </div>
+    <div class="conclusion-card">
+      <div class="label">Serenity 视角</div>
+      <div class="body">
+        <span class="badge hold">🟡 Hold</span> 观察仓，等回调 19-22 元<br>
+        UDC 海底数据中心是真实的技术卡点（全球唯二），智能航海毛利率 45% 是利润奶牛，火箭回收是稀缺概念。但业绩脉冲式波动极大，PE 2556x 无安全边际。好公司，极差的价格。
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Data -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📊</span> 核心数据</div>
+    <table class="data-table">
+      <tr><td>今日股价</td><td>28.79 元（涨停 +20.01%），盘中最高 28.79</td></tr>
+      <tr><td>市值</td><td>207.7 亿</td></tr>
+      <tr><td>总股本</td><td>7.22 亿股（流通 6.57 亿）</td></tr>
+      <tr><td>2025 营收</td><td>7.16 亿（+86.57%），归母净利 4029 万（+391%）</td></tr>
+      <tr><td>2026Q1 营收</td><td>9137 万（-73.63%），归母净利 168 万（-95.17%）</td></tr>
+      <tr><td>PE TTM</td><td>~2556x（A 股最高之一）</td></tr>
+      <tr><td>PB</td><td>~10.4x</td></tr>
+      <tr><td>毛利率</td><td>37.36%（Q1），智能航海 45.52%</td></tr>
+      <tr><td>负债率</td><td>28.38%</td></tr>
+      <tr><td>股东户数</td><td>13.84 万（Q1，环比 +45%），散户涌入明显</td></tr>
+    </table>
+  </div>
+
+  <!-- Business Structure -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🏗️</span> 业务结构（2025）</div>
+    <div class="bar-group">
+      <div class="bar-row">
+        <div class="label">海洋观探测装备与系统</div>
+        <div class="bar-track"><div class="bar-fill" style="width:48.22%">48.22%</div></div>
+        <div class="pct">3.45 亿</div>
+      </div>
+      <div class="bar-row">
+        <div class="label">智能船舶与智能航行系统</div>
+        <div class="bar-track"><div class="bar-fill" style="width:47.87%">47.87%</div></div>
+        <div class="pct">3.43 亿</div>
+      </div>
+      <div class="bar-row">
+        <div class="label">其他</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.91%">3.91%</div></div>
+        <div class="pct">0.28 亿</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Serenity Criteria -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🔍</span> Serenity 四判据</div>
+    <div class="criteria-grid">
+      <div class="criterion warn">
+        <div class="c-title">1. 关键卡位？</div>
+        <div class="c-verdict" style="color:#d4a017;">⚠️ 部分满足</div>
+        <div class="c-detail">UDC 海底数据中心：全球唯二（微软+海兰信），国内市占率 70%+</div>
+      </div>
+      <div class="criterion warn">
+        <div class="c-title">2. 不可替代性？</div>
+        <div class="c-verdict" style="color:#d4a017;">⚠️ 部分满足</div>
+        <div class="c-detail">UDC 有技术壁垒，但智能航海/海洋观探测非唯一</div>
+      </div>
+      <div class="criterion warn">
+        <div class="c-title">3. 定价权？</div>
+        <div class="c-verdict" style="color:#d4a017;">⚠️ 部分满足</div>
+        <div class="c-detail">智能航海毛利率 45%，但 EPC 项目仅 12%</div>
+      </div>
+      <div class="criterion fail">
+        <div class="c-title">4. 安全边际？</div>
+        <div class="c-verdict" style="color:#c0392b;">❌ 不满足</div>
+        <div class="c-detail">PE 2556x，营收脉冲式波动，Q1 营收骤降 73%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Logic -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚖️</span> 核心逻辑</div>
+    <div class="two-col">
+      <div class="pros">
+        <h4>✓ 好的一面</h4>
+        <ul>
+          <li>UDC 是真实的技术卡点，PUE 1.1 对 AI 算力中心有吸引力</li>
+          <li>智能航海是利润奶牛（45% 毛利率）</li>
+          <li>火箭回收稀缺概念</li>
+          <li>负债率仅 28%，财务结构健康</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>✗ 坏的一面</h4>
+        <ul>
+          <li>PE 2556x 是 A 股最高之一，相当于把 2027 年 50 亿营收目标全部提前定价</li>
+          <li>业绩脉冲式波动（Q1 营收 -73%）</li>
+          <li>股东户数 13.84 万环比 +45%，说明散户在追涨</li>
+          <li>UDC 仍处商业化早期，2027 年目标激进</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Judgment -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📌</span> 核心判断</div>
+    <div class="quote-box">
+      海兰信是 A 股"最性感但也最昂贵"的标的之一。UDC 是真实的技术壁垒，全球唯二，搭上 AI 算力+绿色能源双风口。但 207.7 亿市值、PE 2556x 意味着市场已经把 2027 年 50 亿营收目标全部提前定价。当前 28.79 元处于 Bull 上沿，距合理估值 19-22 元（PS 15-18x）有 <strong>-24% 至 -34%</strong> 下行空间。等回调到 19-22 元再评估，或等 Q2 中报验证 UDC 订单收入转化（8/24）。
+    </div>
+    <div class="warning-box">
+      <div class="w-icon">⚠️</div>
+      <div><strong>注意：</strong>今天涨停是 SK 海力士 IPO 日 + 半导体情绪外溢，非基本面催化。</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    本报告基于 Serenity 分析框架生成 · 仅供参考，不构成投资建议 · 数据来源：公开信息
+  </div>
+
+</div>
+</body>
+</html>
