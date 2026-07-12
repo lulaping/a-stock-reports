@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海兰信(300065) Serenity 分析报告 - 2026.07.12</title>
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e3a8a;
+            --secondary-blue: #60a5fa;
+            --accent-blue: #0ea5e9;
+            --bg-white: #ffffff;
+            --bg-light: #f0f9ff;
+            --bg-card: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --orange: #f97316;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(30, 64, 175, 0.2);
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        header .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        header .date {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+
+        .conclusion-box {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .conclusion-box .row1 {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .conclusion-box .row2 {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .conclusion-box .row2 .signal {
+            display: inline-block;
+            padding: 2px 10px;
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--orange) 100%);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 8px;
+            font-size: 13px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--secondary-blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .data-table td {
+            font-size: 14px;
+        }
+
+        .data-table tr:hover td {
+            background: var(--bg-light);
+        }
+
+        .highlight-red {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        .highlight-green {
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .highlight-orange {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .highlight-blue {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .business-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .business-item {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 16px;
+            border-left: 3px solid var(--primary-blue-light);
+        }
+
+        .business-item .name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .business-item .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .business-item .percent {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .highlights-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .highlights-list li {
+            padding: 12px 0;
+            padding-left: 24px;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .highlights-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .criteria-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .criteria-card .icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .criteria-card .title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .criteria-card .result {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .result-yes {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--green);
+        }
+
+        .result-partial {
+            background: rgba(234, 179, 8, 0.1);
+            color: var(--yellow);
+        }
+
+        .result-no {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--red);
+        }
+
+        .logic-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .logic-box {
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .logic-box.good {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(34, 197, 94, 0.1) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .logic-box.bad {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.1) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .logic-box .title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logic-box.good .title {
+            color: var(--green);
+        }
+
+        .logic-box.bad .title {
+            color: var(--red);
+        }
+
+        .logic-box ul {
+            list-style: none;
+        }
+
+        .logic-box li {
+            padding: 6px 0;
+            font-size: 14px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .logic-box.good li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-size: 12px;
+        }
+
+        .logic-box.bad li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-size: 12px;
+        }
+
+        .core-judgment {
+            background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.3);
+        }
+
+        .core-judgment .quote {
+            font-size: 32px;
+            opacity: 0.3;
+            float: left;
+            margin-right: 12px;
+            line-height: 1;
+        }
+
+        .core-judgment p {
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 179, 8, 0.1) 100%);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .warning-box .icon {
+            font-size: 24px;
+        }
+
+        .warning-box p {
+            font-size: 14px;
+            color: var(--orange);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .valuation-range {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .valuation-item {
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            min-width: 140px;
+        }
+
+        .valuation-item.bear {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .valuation-item.base {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .valuation-item.bull {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .valuation-item.current {
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--orange) 100%);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .valuation-item .label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .valuation-item .value {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .valuation-item .price {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .serenity-rating {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .serenity-rating .badge {
+            font-size: 24px;
+        }
+
+        .serenity-rating .text {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+
+            .criteria-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logic-section {
+                grid-template-columns: 1fr;
+            }
+
+            .valuation-range {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .valuation-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>海兰信(300065) Serenity 分析报告</h1>
+            <div class="subtitle">Serenity Framework Analysis Report</div>
+            <div class="date">生成日期：2026年7月12日</div>
+        </header>
+
+        <div class="conclusion-box">
+            <div class="row1">
+                <strong>客观框架：</strong><span class="highlight-red">Bear</span>（估值严重过冲，业绩脉冲式波动）。当前市值 <span class="highlight-blue">207.7 亿</span>（<span class="highlight-orange">28.79 元</span>），总股本 <span class="highlight-blue">7.22 亿股</span>。Bear 80-120 亿（11-17 元）/ Base 140-180 亿（19-25 元）/ Bull 200-260 亿（28-36 元）。当前处于 Bull 上沿，PE ~3091x 全市场最高之一。翻倍门槛极高（需 415 亿，+100%）。
+            </div>
+            <div class="row2">
+                <span class="signal">🟡 Hold</span><strong>Serenity 视角：</strong>观察仓，等回调 19-22 元。UDC 海底数据中心是真实的技术卡点（全球唯二，国内市占率70%+），智能航海毛利率 45% 是利润奶牛，火箭回收是稀缺概念。但业绩脉冲式波动极大（Q1 净利 -95%），PE 3091x 无安全边际。好公司，极差的价格。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">估值区间</div>
+            <div class="valuation-range">
+                <div class="valuation-item bear">
+                    <div class="label">Bear</div>
+                    <div class="value">80-120 亿</div>
+                    <div class="price">11-17 元</div>
+                </div>
+                <div class="valuation-item base">
+                    <div class="label">Base</div>
+                    <div class="value">140-180 亿</div>
+                    <div class="price">19-25 元</div>
+                </div>
+                <div class="valuation-item current">
+                    <div class="label">Current</div>
+                    <div class="value">207.7 亿</div>
+                    <div class="price">28.79 元</div>
+                </div>
+                <div class="valuation-item bull">
+                    <div class="label">Bull</div>
+                    <div class="value">200-260 亿</div>
+                    <div class="price">28-36 元</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">核心数据表</div>
+            <table class="data-table">
+                <tbody>
+                    <tr>
+                        <th>指标</th>
+                        <td>数据</td>
+                    </tr>
+                    <tr>
+                        <th>7/10 收盘</th>
+                        <td><span class="highlight-green">28.79 元（+20% 涨停）</span>，盘中最高 28.79</td>
+                    </tr>
+                    <tr>
+                        <th>市值</th>
+                        <td><span class="highlight-blue">207.73 亿</span></td>
+                    </tr>
+                    <tr>
+                        <th>总股本</th>
+                        <td><span class="highlight-blue">7.22 亿股</span>（流通 6.57 亿）</td>
+                    </tr>
+                    <tr>
+                        <th>2025 营收</th>
+                        <td><span class="highlight-green">7.16 亿（+86.57%）</span>，归母净利 <span class="highlight-green">4028.73 万（+390.97%）</span></td>
+                    </tr>
+                    <tr>
+                        <th>2025 扣非净利</th>
+                        <td><span class="highlight-green">1169.91 万（+148.22%）</span>，非经常性损益占比 <span class="highlight-red">71%</span></td>
+                    </tr>
+                    <tr>
+                        <th>2026Q1 营收</th>
+                        <td><span class="highlight-red">9136 万（-73.63%）</span>，归母净利 <span class="highlight-red">168 万（-95.17%）</span></td>
+                    </tr>
+                    <tr>
+                        <th>2026Q1 扣非</th>
+                        <td><span class="highlight-red">-437.31 万（转亏）</span></td>
+                    </tr>
+                    <tr>
+                        <th>PE TTM</th>
+                        <td><span class="highlight-red">~3091x（A 股最高之一）</span></td>
+                    </tr>
+                    <tr>
+                        <th>PB</th>
+                        <td><span class="highlight-orange">~11.82x</span></td>
+                    </tr>
+                    <tr>
+                        <th>毛利率</th>
+                        <td><span class="highlight-blue">37.36%</span>（Q1），智能航海业务 <span class="highlight-green">45.52%</span></td>
+                    </tr>
+                    <tr>
+                        <th>负债率</th>
+                        <td><span class="highlight-green">28.38%（较低）</span></td>
+                    </tr>
+                    <tr>
+                        <th>股东户数</th>
+                        <td><span class="highlight-red">13.84 万（Q1，环比 +45%）</span>，散户涌入明显</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">业务结构（2025）</div>
+            <div class="business-structure">
+                <div class="business-item">
+                    <div class="name">海洋观探测装备与系统</div>
+                    <div class="value">3.45 亿</div>
+                    <div class="percent">占比 48.22%</div>
+                </div>
+                <div class="business-item">
+                    <div class="name">智能船舶与智能航行系统</div>
+                    <div class="value">3.43 亿</div>
+                    <div class="percent">占比 47.87%</div>
+                </div>
+                <div class="business-item">
+                    <div class="name">其他业务</div>
+                    <div class="value">0.28 亿</div>
+                    <div class="percent">占比 3.91%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">核心业务亮点</div>
+            <ul class="highlights-list">
+                <li><strong>UDC 海底数据中心：</strong>全球唯二（微软+海兰信），国内市占率>70%，PUE 1.076</li>
+                <li><strong>三重盈利引擎：</strong>①设备销售（短期）②算力租赁（中期，海南陵水签约电信/阿里/字节/商汤）③Token出海（远期，汕头项目，美元结算，净利率90%+）</li>
+                <li><strong>商业航天：</strong>A股唯一具备商业化海上回收测控能力的企业，4.58亿测控船订单</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Serenity 四判据</div>
+            <div class="criteria-grid">
+                <div class="criteria-card">
+                    <div class="icon">🎯</div>
+                    <div class="title">关键卡位</div>
+                    <div class="result result-yes">✅ 是</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">UDC全球唯二，国内70%+市占率；海上火箭回收测控A股唯一</div>
+                </div>
+                <div class="criteria-card">
+                    <div class="icon">🔒</div>
+                    <div class="title">不可替代性</div>
+                    <div class="result result-partial">⚠️ 部分</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">UDC有技术壁垒，但智能航海/海洋观探测非唯一</div>
+                </div>
+                <div class="criteria-card">
+                    <div class="icon">💰</div>
+                    <div class="title">定价权</div>
+                    <div class="result result-yes">✅ 强</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">智能航海毛利率45%，客户粘性极高（军工认证壁垒）</div>
+                </div>
+                <div class="criteria-card">
+                    <div class="icon">🛡️</div>
+                    <div class="title">安全边际</div>
+                    <div class="result result-no">❌ 弱</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">PE 3091x，Q1营收-73%，扣非转亏，几乎无安全边际</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">核心逻辑对照</div>
+            <div class="logic-section">
+                <div class="logic-box good">
+                    <div class="title">
+                        <span>📈</span> 好的一面
+                    </div>
+                    <ul>
+                        <li>UDC是真正的技术卡点，全球唯二，搭上AI算力+绿色能源双风口</li>
+                        <li>智能航海毛利率45%是利润奶牛</li>
+                        <li>火箭回收稀缺概念</li>
+                        <li>负债率仅28%，财务结构健康</li>
+                        <li>海南陵水项目已签约四大客户</li>
+                        <li>汕头Token出海项目四季度试运行</li>
+                    </ul>
+                </div>
+                <div class="logic-box bad">
+                    <div class="title">
+                        <span>📉</span> 坏的一面
+                    </div>
+                    <ul>
+                        <li>PE 3091x已把2027年50亿营收目标全部提前定价</li>
+                        <li>业绩脉冲式波动（Q1营收-73%，扣非转亏）</li>
+                        <li>股东户数13.84万环比+45%说明散户追涨</li>
+                        <li>非经常性损益占净利71%，主业盈利基础待夯实</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">核心判断</div>
+            <div class="core-judgment">
+                <span class="quote">"</span>
+                <p>海兰信是A股"最性感但也最昂贵"的标的之一。UDC是真实的技术壁垒，全球唯二，国内市占率70%+，搭上AI算力+绿色能源双风口。但207.7亿市值、PE 3091x意味着市场已把未来3-5年的商用卫星放量预期全部定价。当前28.79元处于Bull上沿，距合理估值19-22元（PS 15-18x）有-24%至-34%下行空间。等回调到19-22元再评估，或等Q2中报验证营收增速（8/24）。</p>
+            </div>
+            <div class="warning-box">
+                <span class="icon">⚠️</span>
+                <p><strong>重要提示：</strong>7/10涨停是长征十号乙火箭回收成功+商业航天情绪催化，非基本面质变。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Serenity 评级</div>
+            <div class="serenity-rating">
+                <span class="badge">🟡</span>
+                <span class="text"><strong>Hold（观察仓）</strong> — 等待回调至 19-22 元区间再评估介入时机</span>
+            </div>
+        </div>
+
+        <footer style="text-align: center; padding: 20px; color: var(--text-secondary); font-size: 12px; border-top: 1px solid var(--border-color); margin-top: 40px;">
+            <p>Serenity Framework Analysis Report | Generated by AI</p>
+            <p style="margin-top: 4px;">免责声明：本报告仅供参考，不构成投资建议</p>
+        </footer>
+    </div>
+</body>
+</html>
