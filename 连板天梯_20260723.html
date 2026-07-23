@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板天梯 — 2026-07-23 A股连板个股深度分析</title>
+    <base href="https://lulaping.github.io/a-stock-reports/">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --muted: #8b949e;
+            --red: #f85149;
+            --orange: #d2991d;
+            --green: #3fb950;
+            --blue: #58a6ff;
+            --purple: #bc8cff;
+            --accent: #e94560;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); max-width: 1000px; margin: 0 auto; padding: 24px 20px; line-height: 1.7; }
+        h1 { font-size: 22px; color: #fff; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 8px; }
+        .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+        h2 { font-size: 17px; color: #fff; margin: 32px 0 12px; border-left: 3px solid var(--accent); padding-left: 10px; }
+        h3 { font-size: 14px; color: var(--blue); margin: 18px 0 8px; }
+        .summary { background: linear-gradient(135deg, #1a1a2e, #0f3460); border-radius: 12px; padding: 20px 24px; margin: 16px 0; border: 1px solid var(--border); font-size: 14px; }
+        .summary .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
+        .summary .stat { text-align: center; }
+        .summary .stat .num { font-size: 28px; font-weight: 700; color: #fff; }
+        .summary .stat .label { font-size: 11px; color: var(--muted); }
+        .ladder { margin: 20px 0; }
+        .ladder-row { display: flex; align-items: stretch; margin-bottom: 6px; border-radius: 8px; overflow: hidden; }
+        .ladder-badge { display: flex; align-items: center; justify-content: center; min-width: 100px; padding: 14px 12px; font-weight: 700; font-size: 14px; color: #fff; text-align: center; }
+        .badge-6 { background: linear-gradient(135deg, #c62828, #e53935); }
+        .badge-4 { background: linear-gradient(135deg, #e65100, #ff6d00); }
+        .badge-3 { background: linear-gradient(135deg, #f57f17, #ffb300); color: #1a1a2e; }
+        .badge-2 { background: linear-gradient(135deg, #2e7d32, #4caf50); }
+        .badge-special { background: linear-gradient(135deg, #6a1b9a, #9c27b0); }
+        .ladder-content { flex: 1; background: var(--card); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; border: 1px solid var(--border); border-left: none; }
+        .stock-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; border: 1px solid var(--border); transition: all 0.2s; }
+        .stock-chip:hover { transform: translateY(-1px); border-color: var(--blue); }
+        .chip-buy { background: rgba(63,185,80,0.12); color: var(--green); }
+        .chip-hold { background: rgba(210,153,29,0.12); color: var(--orange); }
+        .chip-sell { background: rgba(248,81,73,0.12); color: var(--red); }
+        .chip-none { background: rgba(88,166,255,0.08); color: var(--blue); }
+        .stock-detail { margin-top: 6px; font-size: 12px; color: var(--muted); }
+        .analysis-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+        .analysis-table th { background: var(--card); padding: 10px 12px; text-align: left; color: var(--muted); font-size: 11px; font-weight: 500; border-bottom: 2px solid var(--border); }
+        .analysis-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .analysis-table tr:hover td { background: rgba(88,166,255,0.04); }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .badge-red { background: rgba(248,81,73,0.2); color: var(--red); }
+        .badge-orange { background: rgba(210,153,29,0.2); color: var(--orange); }
+        .badge-green { background: rgba(63,185,80,0.2); color: var(--green); }
+        .badge-blue { background: rgba(88,166,255,0.2); color: var(--blue); }
+        .badge-purple { background: rgba(188,140,255,0.2); color: var(--purple); }
+        .theme-section { margin: 20px 0; }
+        .theme-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 10px 0; }
+        .theme-card h4 { font-size: 14px; margin-bottom: 8px; }
+        .theme-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+        .quote { border-left: 3px solid var(--border); padding: 8px 16px; margin: 12px 0; color: var(--muted); font-size: 13px; font-style: italic; }
+        .divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+        .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .highlight { color: var(--accent); font-weight: 600; }
+        .down { color: var(--red); }
+        .up { color: var(--green); }
+        @media (max-width: 640px) {
+            .ladder-row { flex-direction: column; }
+            .ladder-badge { min-width: auto; }
+            .ladder-content { border-left: 1px solid var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🪜 连板天梯 — 2026年7月23日</h1>
+<p class="subtitle">A股连板个股深度分析 · 午盘数据 · 65股涨停 · 连板股14只 · 封板率73%</p>
+
+<!-- ====== 市场概况 ====== -->
+<div class="summary">
+    <strong>📊 市场概况</strong>
+    <div class="grid">
+        <div class="stat"><div class="num">0.19<span class="down" style="font-size:14px;">%</span></div><div class="label">沪指</div></div>
+        <div class="stat"><div class="num">0.19<span class="down" style="font-size:14px;">%</span></div><div class="label">深成指</div></div>
+        <div class="stat"><div class="num">0.33<span class="down" style="font-size:14px;">%</span></div><div class="label">创业板</div></div>
+        <div class="stat"><div class="num" style="color:var(--red);">4.09<span class="down" style="font-size:14px;">%</span></div><div class="label">科创50</div></div>
+        <div class="stat"><div class="num">65</div><div class="label">涨停股</div></div>
+        <div class="stat"><div class="num">14</div><div class="label">连板股</div></div>
+        <div class="stat"><div class="num">73<span style="font-size:14px;">%</span></div><div class="label">封板率</div></div>
+        <div class="stat"><div class="num">1.46<span style="font-size:14px;">万亿</span></div><div class="label">半日成交</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        指数弱势震荡，但个股涨多跌少（超3200家上涨）。科技股全线调整（半导体领跌），资金从AI/半导体撤出，涌向<strong>电力、油气、贵金属、电网设备</strong>等避险/周期板块。科创50单日跌超4%，与主板形成极致分化。
+    </div>
+</div>
+
+<!-- ====== 连板天梯 ====== -->
+<h2>🪜 连板天梯</h2>
+
+<div class="ladder">
+    <div class="ladder-row">
+        <div class="ladder-badge badge-6">6连板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-sell">001258 立新能源</span>
+            <span class="stock-detail">12.11元 · 市值113亿 · PE 93x · 电力/绿电 · 净利预增570-793%</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-4">4连板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-hold">000815 美利云</span>
+            <span class="stock-detail">17.74元 · 市值约123亿 · 算力租赁/IDC · 央企 · 一季报净利+102%</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-special">5天4板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-sell">600722 金牛化工</span>
+            <span class="stock-detail">10.90元 · 换手19% · 化工+风电转型 · 甲醇涨价+4.36亿风电大单</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-3">3连板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-sell">000603 盛达资源</span>
+            <span class="stock-detail">24.83元 · 贵金属/铅锌 · 黄金避险</span>
+            <span class="stock-chip chip-sell">002197 证通电子</span>
+            <span class="stock-detail">算力租赁/IT设备 · 扭亏</span>
+            <span class="stock-chip chip-sell">002879 长缆科技</span>
+            <span class="stock-detail">16.41元 · 换手19% · 电网设备/电缆附件</span>
+            <span class="stock-chip chip-sell">603221 爱丽家居</span>
+            <span class="stock-detail">12.73元 · 换手0.07% · 股权转让 · 一字板</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-special">4天3板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-sell">603619 中曼石油</span>
+            <span class="stock-detail">23.47元 · 市值109亿 · 油气 · 霍尔木兹海峡地缘冲突催化</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-2">2连板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-sell">000595 新能股份</span>
+            <span class="stock-detail">5.52元 · 电力</span>
+            <span class="stock-chip chip-sell">002412 汉森制药</span>
+            <span class="stock-detail">7.38元 · 创新药</span>
+            <span class="stock-chip chip-sell">002900 哈三联</span>
+            <span class="stock-detail">12.10元 · 换手15% · 化学制药</span>
+            <span class="stock-chip chip-sell">301234 五洲医疗</span>
+            <span class="stock-detail">48.96元 · 跨界并购芯片</span>
+            <span class="stock-chip chip-sell">603988 中电电机</span>
+            <span class="stock-detail">电力设备</span>
+            <span class="stock-chip chip-sell">605162 新中港</span>
+            <span class="stock-detail">8.45元 · 热电联产</span>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 逐股分析 ====== -->
+<h2>🔬 连板个股 Serenity 快速评估</h2>
+
+<div class="analysis-table-wrapper" style="overflow-x:auto;">
+<table class="analysis-table">
+    <tr>
+        <th style="width:90px;">股票</th>
+        <th style="width:55px;">连板</th>
+        <th>驱动逻辑</th>
+        <th style="width:80px;">核心风险</th>
+        <th style="width:55px;">判定</th>
+    </tr>
+
+    <tr>
+        <td><strong>001258<br>立新能源</strong></td>
+        <td><span class="badge badge-red">6连板</span></td>
+        <td>
+            ① 半年报净利预增570-793%（6000-8000万）<br>
+            ② 迎峰度夏用电负荷连创新高（15.51亿千瓦）<br>
+            ③ 十五五可再生能源规划发布（2030年风电光伏28亿千瓦）<br>
+            ④ 公司澄清"无算力业务"<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】业绩暴增主要靠"疆电外送"联营企业投资收益+7149万补贴回款，非内生爆发；应收补贴款31.35亿≈3年营收；资产负债率83%</span>
+        </td>
+        <td><span class="badge badge-red">PE 93x<br>补贴依赖<br>高杠杆<br>算力概念伪</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>000815<br>美利云</strong></td>
+        <td><span class="badge badge-red">4连板</span></td>
+        <td>
+            ① 算力租赁龙头，东数西算中卫枢纽稀缺IDC标的<br>
+            ② 央企（中国诚通）背景，一季报净利+102%<br>
+            ③ 彻底剥离亏损造纸业务，IDC毛利率44%<br>
+            ④ 与金山云签长期战略合作<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】转型IDC成功，2025年扭亏；但两大股东合计32.24%股权处于破产重整/司法冻结；前五客户占比98%</span>
+        </td>
+        <td><span class="badge badge-orange">股东破产重整<br>客户集中98%<br>连板追高</span></td>
+        <td><span class="badge badge-orange">🟡 Hold</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>600722<br>金牛化工</strong></td>
+        <td><span class="badge badge-red">5天4板</span></td>
+        <td>
+            ① 甲醇涨价：美伊冲突阻断海外进口，港口库存五年新低<br>
+            ② 新能源转型：子公司签4.36亿风机采购合同，布局200MW风电储能<br>
+            ③ 焦炉气制甲醇成本优势，甲醇每涨100元净利增厚2000万<br>
+            <span style="color:var(--muted);font-size:12px;">【管理层声称】新能源转型处于早期，风电项目尚未建成投产；化工+风电双主线故事性强但落地周期长</span>
+        </td>
+        <td><span class="badge badge-red">甲醇周期波动<br>风电未投产<br>换手率19%</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>000603<br>盛达资源</strong></td>
+        <td><span class="badge badge-orange">3连板</span></td>
+        <td>
+            ① 贵金属避险：美伊冲突+全球地缘风险升温<br>
+            ② 铅锌矿为主业，黄金价格上涨带动估值<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】贵金属板块资金净流入，黄金价格持续走高</span>
+        </td>
+        <td><span class="badge badge-orange">地缘降温回调<br>换手10%</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>002197<br>证通电子</strong></td>
+        <td><span class="badge badge-orange">3连板</span></td>
+        <td>
+            ① 算力租赁概念联动（跟风美利云）<br>
+            ② 业绩扭亏+数据中心REITs+金融科技<br>
+            <span style="color:var(--muted);font-size:12px;">【未核实】算力业务实质规模待确认</span>
+        </td>
+        <td><span class="badge badge-red">跟风炒作<br>基本面薄弱</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>002879<br>长缆科技</strong></td>
+        <td><span class="badge badge-orange">3连板</span></td>
+        <td>
+            ① 电网设备：国网特高压第三次招标落地，中国西电等中标63亿<br>
+            ② 用电负荷创新高+十五五电网投资4万亿<br>
+            ③ 增持回购<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】电网投资大周期启动，但电缆附件属细分市场，竞争充分</span>
+        </td>
+        <td><span class="badge badge-orange">换手19%<br>非核心卡点</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>603221<br>爱丽家居</strong></td>
+        <td><span class="badge badge-orange">3连板</span></td>
+        <td>
+            ① 控股股东协议转让股份<br>
+            ② 一字板，换手0.07%，筹码极度惜售<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】股权转让驱动，非基本面改善</span>
+        </td>
+        <td><span class="badge badge-red">一字板开板<br>即套人</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>603619<br>中曼石油</strong></td>
+        <td><span class="badge badge-purple">4天3板</span></td>
+        <td>
+            ① 霍尔木兹海峡+曼德海峡通航量下降，地缘风险溢价<br>
+            ② 中东布局+油气开采+机器人概念<br>
+            ⚠️ 但上半年净利预降65-70%<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】地缘冲突催化油价，但公司自身业绩大幅下滑</span>
+        </td>
+        <td><span class="badge badge-red">业绩预降70%<br>地缘降温即跌</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>002412<br>汉森制药</strong></td>
+        <td><span class="badge badge-green">2连板</span></td>
+        <td>
+            ① 创新药概念：工信部披露上半年38款创新药获批，国产31款<br>
+            ② 中药+化药双线<br>
+            <span style="color:var(--muted);font-size:12px;">【未核实】创新药属性待确认</span>
+        </td>
+        <td><span class="badge badge-orange">概念炒作</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>301234<br>五洲医疗</strong></td>
+        <td><span class="badge badge-green">2连板</span></td>
+        <td>
+            ① 跨界收购旋智科技（电机控制芯片），一字板<br>
+            ② 产业资本以48.53元/股溢价43%接盘11.81%<br>
+            → 详见独立分析报告（已发布：🔴Sell）<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】预案"留白"多，48.96元已超Bull case</span>
+        </td>
+        <td><span class="badge badge-red">跨界无协同<br>商誉暴增<br>48.96>Bull</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+</table>
+</div>
+
+<!-- ====== 主线分析 ====== -->
+<h2>🧭 四大主线拆解</h2>
+
+<div class="theme-card">
+    <h4>⚡ 主线一：电力/电网（最强主线，6只连板）</h4>
+    <p>
+        <strong>核心驱动：</strong>迎峰度夏用电负荷两度刷新历史极值（15.51亿千瓦）+ 十五五可再生能源规划（2030年风电光伏28亿千瓦）+ 国网十五五固定资产投资4万亿（较十四五+40%）+ 特高压第三次招标落地（63亿中标）<br>
+        <strong>代表个股：</strong>立新能源6连板、新能股份2连板、新中港2连板、长缆科技3连板、中电电机2连板<br>
+        <strong>Serenity 评估：</strong>电力板块是本轮最强主线，有真实基本面支撑（用电负荷、政策、投资），但连板龙头立新能源 PE 93x 远超行业均值38x，业绩暴增靠一次性投资收益+补贴回款，澄清"无算力业务"后仍被炒作，概念溢价严重。电网设备方向（长缆科技等）受益于投资周期，但电缆附件等环节竞争充分，非真正卡点。
+    </p>
+</div>
+
+<div class="theme-card">
+    <h4>💻 主线二：算力租赁（2只连板）</h4>
+    <p>
+        <strong>核心驱动：</strong>国内算力租赁市场Q1规模680亿（+62%），AI算力需求同比+417%，供需缺口持续扩大<br>
+        <strong>代表个股：</strong>美利云4连板、证通电子3连板<br>
+        <strong>Serenity 评估：</strong>美利云是唯一值得跟踪的标的——央企背景、东数西算核心区位、彻底剥离亏损造纸转型纯IDC、与金山云战略合作锁定需求、绿电直供降本。但两大股东32.24%股权处于破产重整/司法冻结是重大不确定性。证通电子为跟风炒作。
+    </p>
+</div>
+
+<div class="theme-card">
+    <h4>🛢️ 主线三：油气/贵金属（地缘冲突驱动，2只连板）</h4>
+    <p>
+        <strong>核心驱动：</strong>美伊冲突持续升级 + 霍尔木兹海峡/曼德海峡通航量下降 + 黄金避险需求<br>
+        <strong>代表个股：</strong>中曼石油4天3板、盛达资源3连板<br>
+        <strong>Serenity 评估：</strong>纯地缘事件驱动，无基本面上涨支撑。中曼石油上半年净利预降65-70%，股价却4天3板——典型的事件博弈。地缘一旦降温，回调幅度将极为剧烈。盛达资源同理，黄金价格驱动，非企业内生价值提升。
+    </p>
+</div>
+
+<div class="theme-card">
+    <h4>🏭 主线四：化工+新能源转型（1只连板）</h4>
+    <p>
+        <strong>核心驱动：</strong>甲醇涨价（海外进口受阻）+ 新能源风电转型（4.36亿风机采购合同）<br>
+        <strong>代表个股：</strong>金牛化工5天4板<br>
+        <strong>Serenity 评估：</strong>甲醇涨价有真实产业逻辑支撑（焦炉气制甲醇成本优势），但风电项目尚未投产，转型故事性>实质。换手率19%说明分歧极大，风险较高。
+    </p>
+</div>
+
+<!-- ====== 综合判断 ====== -->
+<h2>📋 综合判断</h2>
+
+<div class="summary">
+    <table style="width:100%;font-size:14px;color:var(--text);">
+        <tr><td style="color:var(--muted);width:120px;">市场风格</td><td><strong>科技→周期切换</strong>：半导体领跌（科创50跌超4%），资金从AI/半导体大规模撤出，涌入电力、油气、贵金属、电网设备等避险/周期板块</td></tr>
+        <tr><td style="color:var(--muted);">连板质量</td><td><strong>整体偏低</strong>：14只连板股中，仅美利云有基本面支撑（且存股东风险），其余均为事件驱动（地缘/政策/跨界并购/股权转让）或概念炒作（算力跟风/医药概念）</td></tr>
+        <tr><td style="color:var(--muted);">可跟踪标的</td><td><strong>美利云（000815）</strong> — 唯一值得放入观察清单的连板股：央企IDC+东数西算核心区位+绿电直供降本+业绩扭亏兑现。但需等待股东破产重整风险化解 + 回调至合理估值区间</td></tr>
+        <tr><td style="color:var(--muted);">风险警示</td><td><span class="highlight">立新能源6连板后PE 93x</span>，公司已澄清"无算力业务"，且业绩暴增依赖一次性收益；<span class="highlight">中曼石油4天3板但业绩预降70%</span>；一字板标的（爱丽家居、五洲医疗）开板即面临剧烈回调</td></tr>
+        <tr><td style="color:var(--muted);">Serenity 一句话</td><td>本轮连板行情本质是"科技股获利了结→资金涌入周期/避险板块"的板块轮动，连板股多为事件驱动而非基本面驱动。电力主线有政策+需求双重支撑但龙头估值已严重透支；算力租赁中美利云是唯一有基本面底座的标的但需等风险出清；其余连板股均为纯事件博弈，赔率极差。</td></tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+    <p>本报告由 Serenity 投资分析引擎生成 · 基于公开信息 · 不构成投资建议</p>
+    <p>数据来源：财联社、证券时报、金融界、公司公告 · 2026年7月23日</p>
+    <p><a href="https://lulaping.github.io/a-stock-reports/" style="color:var(--blue);">返回报告列表</a></p>
+</div>
+
+</body>
+</html>
