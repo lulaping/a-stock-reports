@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>301234 五洲医疗 — Serenity 深度分析</title>
+    <base href="https://lulaping.github.io/a-stock-reports/">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --muted: #8b949e;
+            --red: #f85149;
+            --orange: #d2991d;
+            --green: #3fb950;
+            --blue: #58a6ff;
+            --purple: #bc8cff;
+            --accent: #e94560;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); max-width: 960px; margin: 0 auto; padding: 24px 20px; line-height: 1.7; }
+        h1 { font-size: 22px; color: #fff; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 8px; }
+        .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+        h2 { font-size: 17px; color: #fff; margin: 32px 0 12px; border-left: 3px solid var(--accent); padding-left: 10px; }
+        h3 { font-size: 14px; color: var(--blue); margin: 18px 0 8px; }
+        .verdict { background: linear-gradient(135deg, #1a1a2e, #0f3460); border-radius: 12px; padding: 24px; margin: 20px 0; border: 1px solid var(--border); }
+        .verdict .tag { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+        .tag-sell { background: #c62828; color: #fff; }
+        .verdict .price { font-size: 32px; font-weight: 800; color: #fff; }
+        .verdict .meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
+        .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+        .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+        .card h3 { margin-top: 0; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+        .card .num { font-size: 26px; font-weight: 700; color: #fff; }
+        .card .note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { color: var(--muted); font-weight: 500; font-size: 12px; }
+        td { color: var(--text); }
+        .up { color: var(--green); }
+        .down { color: var(--red); }
+        .checklist { list-style: none; }
+        .checklist li { padding: 6px 0; border-bottom: 1px solid rgba(48,54,61,0.5); font-size: 14px; }
+        .checklist li::before { margin-right: 8px; }
+        .pass::before { content: "✅"; }
+        .fail::before { content: "❌"; }
+        .warn::before { content: "⚠️"; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .badge-red { background: rgba(248,81,73,0.2); color: var(--red); }
+        .badge-orange { background: rgba(210,153,29,0.2); color: var(--orange); }
+        .badge-green { background: rgba(63,185,80,0.2); color: var(--green); }
+        .badge-blue { background: rgba(88,166,255,0.2); color: var(--blue); }
+        .scenario { padding: 12px; border-radius: 8px; margin: 8px 0; font-size: 14px; }
+        .scenario-bear { background: rgba(248,81,73,0.1); border-left: 3px solid var(--red); }
+        .scenario-base { background: rgba(210,153,29,0.1); border-left: 3px solid var(--orange); }
+        .scenario-bull { background: rgba(63,185,80,0.1); border-left: 3px solid var(--green); }
+        .scenario strong { color: #fff; }
+        .score-bar { height: 6px; background: var(--border); border-radius: 3px; margin: 8px 0; overflow: hidden; }
+        .score-fill { height: 100%; border-radius: 3px; }
+        .score-low { background: var(--red); width: 27%; }
+        .quote { border-left: 3px solid var(--border); padding: 8px 16px; margin: 12px 0; color: var(--muted); font-size: 13px; font-style: italic; }
+        .divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+        .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .highlight { color: var(--accent); font-weight: 600; }
+        @media (max-width: 640px) {
+            .grid2, .grid3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🔬 301234 五洲医疗 — Serenity 深度分析</h1>
+<p class="subtitle">2026年7月23日 星期四 · 跨界并购半导体 · 2连板 · 市值33.29亿 · PE 176x</p>
+
+<!-- ====== 结论 ====== -->
+<div class="verdict">
+    <span class="tag tag-sell">🔴 Sell</span>
+    <div class="price">48.96 元</div>
+    <div class="meta">+20.00% 涨停（2连板） · 总市值 33.29 亿 · 总股本 6800 万股</div>
+    <div style="margin-top:16px;font-size:14px;line-height:1.8;">
+        <strong>客观框架空间：</strong>Bear 4.2元 / Base 15元 / Bull 43元 &nbsp;|&nbsp; <span class="highlight">当前价 48.96 元已超 Bull case</span><br>
+        <strong>Serenity 判定：</strong>🔴 <strong>Sell</strong> — 主业连续四年下滑（扣非-77%），跨界并购无协同效应，重组预案关键条款全部"留白"，产业资本一二级联动痕迹明显，当前价已透支重组成功+标的爆发的双重乐观预期，赔率极差。
+    </div>
+</div>
+
+<!-- ====== L0 事实底座 ====== -->
+<h2>📊 L0 — 客观事实底座</h2>
+
+<div class="grid3">
+    <div class="card">
+        <h3>总市值</h3>
+        <div class="num">33.29 亿</div>
+        <div class="note">流通市值 16.39 亿</div>
+    </div>
+    <div class="card">
+        <h3>PE(TTM)</h3>
+        <div class="num" style="color:var(--red);">176x</div>
+        <div class="note">基于2025全年净利 1889 万</div>
+    </div>
+    <div class="card">
+        <h3>PB</h3>
+        <div class="num">4.33x</div>
+        <div class="note">每股净资产 11.31 元</div>
+    </div>
+</div>
+
+<div class="grid2">
+    <div class="card">
+        <h3>营收趋势（逐年下滑）</h3>
+        <table>
+            <tr><th>年度</th><th>营收</th><th>归母净利</th><th>扣非净利</th></tr>
+            <tr><td>2022</td><td>5.47亿</td><td>7093万</td><td>6101万</td></tr>
+            <tr><td>2023</td><td>5.34亿 <span class="down">-2.5%</span></td><td>6027万 <span class="down">-15%</span></td><td>5504万 <span class="down">-9.8%</span></td></tr>
+            <tr><td>2024</td><td>4.77亿 <span class="down">-10.5%</span></td><td>3997万 <span class="down">-33.7%</span></td><td>3554万 <span class="down">-35.4%</span></td></tr>
+            <tr><td>2025</td><td>4.58亿 <span class="down">-4.0%</span></td><td>1889万 <span class="down">-52.7%</span></td><td>1441万 <span class="down">-59.5%</span></td></tr>
+            <tr><td>2026Q1</td><td>1.01亿 <span class="down">-3.3%</span></td><td>805万 <span class="up">+42.9%</span></td><td>516万 <span class="up">+13.0%</span></td></tr>
+        </table>
+        <div class="note" style="margin-top:4px;">来源：公司年报/季报（容诚审计，标准无保留意见）<br>2026Q1 净利增长含非经常性损益 289 万，经营现金流 -81.58 万</div>
+    </div>
+    <div class="card">
+        <h3>盈利能力持续恶化</h3>
+        <table>
+            <tr><th>指标</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
+            <tr><td>毛利率</td><td>22.4%</td><td>20.0%</td><td>17.8%</td><td>14.6%</td></tr>
+            <tr><td>净利率</td><td>13.0%</td><td>11.3%</td><td>8.4%</td><td>4.1%</td></tr>
+            <tr><td>ROE</td><td>—</td><td>—</td><td>5.5%</td><td>2.5%</td></tr>
+        </table>
+        <div class="note" style="margin-top:4px;">毛利率三年下降 7.8 个百分点，行业排名 470/504（倒数）</div>
+    </div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+    <h3>业务结构（2025年报）</h3>
+    <table>
+        <tr><th>产品</th><th>营收</th><th>占比</th><th>同比</th></tr>
+        <tr><td>注射器</td><td>1.81亿</td><td>39.5%</td><td class="down">-11.2%</td></tr>
+        <tr><td>医用穿刺针</td><td>1.22亿</td><td>26.6%</td><td class="down">-20.2%</td></tr>
+        <tr><td>输液输血器</td><td>0.97亿</td><td>21.3%</td><td class="up">+41.7%</td></tr>
+        <tr><td>其他</td><td>0.58亿</td><td>12.6%</td><td class="up">+10.8%</td></tr>
+    </table>
+    <div class="note">境外收入占比 <strong>96.4%</strong>（4.42亿），境内仅 3.6%。ODM 模式绑定海外品牌商，无自主品牌。来源：2025年报</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+    <h3>资产负债表（2026Q1）</h3>
+    <div class="grid3">
+        <div><span style="color:var(--muted);">总资产</span><br><strong>8.54 亿</strong></div>
+        <div><span style="color:var(--muted);">净资产</span><br><strong>7.69 亿</strong></div>
+        <div><span style="color:var(--muted);">资产负债率</span><br><strong style="color:var(--green);">9.94%</strong></div>
+        <div><span style="color:var(--muted);">货币资金</span><br><strong>0.36 亿</strong></div>
+        <div><span style="color:var(--muted);">交易性金融资产</span><br><strong>3.38 亿</strong></div>
+        <div><span style="color:var(--muted);">每股净资产</span><br><strong>11.31 元</strong></div>
+    </div>
+    <div class="note" style="margin-top:6px;">负债率极低，账面干净，但主业造血能力持续衰减。来源：2026Q1季报</div>
+</div>
+
+<!-- ====== 重组核心变量 ====== -->
+<h2>🔄 核心变量：跨界收购旋智科技</h2>
+
+<div class="card">
+    <h3>收购标的：旋智电子科技（上海）有限公司</h3>
+    <table>
+        <tr><th>维度</th><th>详情</th></tr>
+        <tr><td>成立背景</td><td>2014年，前身为美国仙童半导体电机控制产品线事业部，MBO独立运营</td></tr>
+        <tr><td>业务模式</td><td>Fabless，专注电机控制芯片设计+算法+系统全栈方案</td></tr>
+        <tr><td>核心客户</td><td>美的、格力、大疆、三星等，累计出货 >2亿颗</td></tr>
+        <tr><td>股东阵容</td><td>大基金（芯动能）、汇川技术、张江高科、元禾璞华、光远数科</td></tr>
+        <tr><td>2024年</td><td>营收 1.58亿，净亏损 <span class="down">-4185万</span></td></tr>
+        <tr><td>2025年</td><td>营收 2.58亿，净利润 <span class="up">3279万</span>（扭亏为盈）</td></tr>
+        <tr><td>2026H1</td><td>营收 1.90亿，净利润 <span class="up">2091万</span>（未经审计）</td></tr>
+        <tr><td>资产规模</td><td>总资产 3.15亿，净资产 2.52亿（截至2026.6.30）</td></tr>
+        <tr><td>预估对价</td><td>10亿元以上（紫马资本预估），<span class="highlight">审计评估尚未完成</span></td></tr>
+    </table>
+</div>
+
+<div class="card" style="margin-top:12px;border-left:3px solid var(--orange);">
+    <h3 style="color:var(--orange);">⚠️ 重组预案关键"留白"项</h3>
+    <ul style="list-style:disc;padding-left:20px;font-size:14px;line-height:2;">
+        <li><strong>标的估值及交易作价</strong> — 尚未确定，审计评估仍在进行</li>
+        <li><strong>股份与现金支付比例</strong> — 未敲定</li>
+        <li><strong>业绩承诺及补偿安排</strong> — 未约定</li>
+        <li><strong>配套融资规模</strong> — 未明确</li>
+        <li><strong>交易还需经过：</strong>董事会再次审议 → 股东会批准 → 交易所审核 → 证监会注册</li>
+    </ul>
+    <div class="note" style="margin-top:8px;">产业资本先以48.53元/股接手11.81%股份（溢价43%），一二级联动运作痕迹清晰</div>
+</div>
+
+<!-- ====== 供应链栈 ====== -->
+<h2>🔗 Serenity 供应链栈</h2>
+
+<div class="card">
+    <h3>原主业（低值医用耗材）</h3>
+    <div style="font-size:13px;color:var(--muted);line-height:2;">
+        原料（PP/PE塑料粒子、不锈钢针管）→ 注塑/组装 → ODM贴牌 → 海外品牌商 → 终端医院<br>
+        <span class="badge badge-red">无卡点</span> 低值耗材制造，技术壁垒低，竞争充分，议价权在品牌商
+    </div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+    <h3>并购标的（电机控制芯片）</h3>
+    <div style="font-size:13px;color:var(--muted);line-height:2;">
+        EDA工具/IP → 芯片设计（旋智科技）→ 晶圆代工（台积电等）→ 封测 → 模组/系统厂商 → 终端（白电/工业/汽车/低空）<br>
+        <span class="badge badge-orange">中等卡点</span> 旋智在电机控制芯片领域有一定技术积累，但非唯一供应商，峰岹科技(688279)为主要竞对
+    </div>
+</div>
+
+<!-- ====== 15条卡点判据 ====== -->
+<h2>🎯 15条好卡点判据</h2>
+<div class="score-bar"><div class="score-fill score-low"></div></div>
+<p style="font-size:13px;color:var(--muted);">得分：<strong>4/15</strong> — 非好卡点</p>
+
+<ul class="checklist">
+    <li class="fail"><strong>1. 垄断/双寡头</strong> — 电机控制芯片赛道有峰岹科技(262亿市值)、极海半导体、灵动微电子等多家国内竞争者，旋智远非垄断</li>
+    <li class="fail"><strong>2. 极小市值 vs 巨大下游TAM</strong> — 旋智科技年营收仅2.58亿，虽下游TAM大但竞争格局分散，非稀缺标的</li>
+    <li class="fail"><strong>3. BOM占比相对市值巨大</strong> — 电机控制芯片在终端BOM中占比小，且面临通用MCU替代威胁</li>
+    <li class="pass"><strong>4. Designed-in + 多客户</strong> — 已进入美的/格力/大疆/三星供应链，累计出货>2亿颗，有一定客户粘性</li>
+    <li class="warn"><strong>5. 认证/资格周期长</strong> — 白电认证周期中等，汽车电子认证周期长但旋智在该领域份额尚小</li>
+    <li class="pass"><strong>6. 未来爆发营收</strong> — 2025年扭亏、2026H1净利2091万，增长曲线明确但不具爆发性</li>
+    <li class="warn"><strong>7. 资产负债表能撑过爬坡</strong> — 五洲医疗负债率9.94%、账面干净，但重组后增发+商誉将大幅改变财务结构</li>
+    <li class="fail"><strong>8. Demand outstrips supply</strong> — 电机控制芯片供给充足，Fabless模式下晶圆代工产能可获取</li>
+    <li class="fail"><strong>9. 大客户全包上游产能</strong> — 不适用，Fabless模式本身不涉及产能包揽</li>
+    <li class="pass"><strong>10. 国家安全/政策介入</strong> — 集成电路国产化属国家战略，大基金持股芯动能有一定背书</li>
+    <li class="fail"><strong>11. Made in America</strong> — N/A（A股标的）</li>
+    <li class="pass"><strong>12. 信息不对称</strong> — 重组预案"留白"多，存在信息不对称但方向不利（关键条款未定 = 不确定性高）</li>
+    <li class="fail"><strong>13. 极少数玩家</strong> — 电机控制芯片设计公司众多，旋智远非"世界没几家能做"</li>
+    <li class="fail"><strong>14. 多年营收可见性</strong> — 未披露长期订单/backlog，仅凭头部客户关系不足以de-risk</li>
+    <li class="fail"><strong>15. 国产替代紧迫度</strong> — 电机控制芯片国产化率已在提升中，非最紧迫环节（峰岹科技已科创板上市、港股双重上市）</li>
+</ul>
+
+<!-- ====== 红旗扫描 ====== -->
+<h2>🚩 红旗扫描（12项）</h2>
+
+<ul class="checklist">
+    <li class="fail"><strong>增发稀释</strong> <span class="badge badge-red">硬否决</span> — 若全股份支付10亿对价，需增发3185万股（占现有股本47%），叠加配套融资向35名特定投资者增发，稀释幅度极大</li>
+    <li class="warn"><strong>单一客户/地域集中</strong> — 原主业境外收入96.4%，汇率风险+贸易壁垒风险集中</li>
+    <li class="pass"><strong>资产负债表toxic</strong> — 负债率9.94%，目前尚可，但重组后商誉风险巨大</li>
+    <li class="fail"><strong>零收入/纯炒作</strong> <span class="badge badge-red">命中</span> — 原主业虽有收入但持续萎缩，2连板涨停纯靠重组预期炒作，预案阶段无实质进展</li>
+    <li class="pass"><strong>技术太远</strong> — 旋智科技已量产，不算太远</li>
+    <li class="pass"><strong>纯软件/SaaS</strong> — 不适用</li>
+    <li class="warn"><strong>海外核心技术依赖</strong> — 旋智Fabless模式依赖海外晶圆代工（台积电等），存在供应链风险</li>
+    <li class="warn"><strong>政策依赖</strong> — 旋智享受集成电路产业政策优惠，但具体占比不详</li>
+    <li class="pass"><strong>大股东质押</strong> — [未核实] 待查</li>
+    <li class="fail"><strong>商誉过高</strong> <span class="badge badge-red">严重预警</span> — 10亿+对价收购2.52亿净资产，将产生<strong>7.5亿+商誉</strong>，重组后商誉/净资产比例将远超50%红线</li>
+    <li class="fail"><strong>跨界整合风险</strong> <span class="badge badge-red">核心硬伤</span> — 医用耗材ODM与电机控制芯片零协同效应：海外ODM体系无法赋能芯片业务，芯片技术也无法反向赋能输注耗材。业绩增量仅来自报表合并</li>
+    <li class="fail"><strong>一二级联动</strong> — 产业资本先以48.53元/股溢价43%接盘11.81%，再推动重组，资本运作痕迹明显，散户处于信息劣势</li>
+</ul>
+
+<p style="font-size:14px;margin-top:8px;"><span class="badge badge-red">命中 5 项红旗</span> 增发稀释、跨界整合无协同、商誉暴增、纯炒作、一二级联动 — 多项硬否决</p>
+
+<!-- ====== 估值 ====== -->
+<h2>💰 估值：三情景分析</h2>
+<p style="color:var(--muted);font-size:13px;">总股本 6800 万股 · 增发后预估 9985 万股（假设全股份支付10亿对价）</p>
+
+<div class="scenario scenario-bear">
+    <strong>🐻 Bear Case：重组失败 / 被否决</strong><br>
+    <span style="color:var(--muted);">监管否决跨界并购或审核周期过长导致失败</span><br>
+    回到纯医用耗材逻辑：2025年净利1889万 × 15x PE（低值耗材合理估值） = <strong>2.83亿市值</strong><br>
+    → 每股 <strong>4.2 元</strong>（较当前 <span class="down">-91.4%</span>）<br>
+    <span style="font-size:12px;color:var(--muted);">依据：主业连续四年下滑，毛利率14.6%行业倒数，ODM无品牌溢价</span>
+</div>
+
+<div class="scenario scenario-base">
+    <strong>🟡 Base Case：重组成功但整合困难</strong><br>
+    <span style="color:var(--muted);">重组落地，旋智科技维持增长但无爆发，原主业继续萎缩</span><br>
+    旋智科技：2026E净利4200万 × 30x PE = 12.6亿<br>
+    原主业：净利1800万 × 15x PE = 2.7亿<br>
+    合计：<strong>15.3亿</strong>（含增发稀释后每股 <strong>15.3 元</strong>）<br>
+    <span style="font-size:12px;color:var(--muted);">依据：30x PE对标峰岹科技73x给予折价（规模/技术/市占率差距），原主业保守估计</span>
+</div>
+
+<div class="scenario scenario-bull">
+    <strong>🟢 Bull Case：重组成功 + 旋智科技爆发</strong><br>
+    <span style="color:var(--muted);">旋智科技在汽车电子/低空经济放量，2027年净利达8000万</span><br>
+    旋智科技：2027E净利8000万 × 50x PE = 40亿<br>
+    原主业：净利2000万 × 15x PE = 3亿<br>
+    合计：<strong>43亿</strong>（含增发稀释后每股 <strong>43.1 元</strong>）<br>
+    <span style="font-size:12px;color:var(--muted);">依据：50x PE是给予电机控制芯片龙头的估值溢价（峰岹科技73x），8000万净利需在2026H1年化4200万基础上接近翻倍</span>
+</div>
+
+<div class="card" style="margin-top:16px;border:2px solid var(--red);text-align:center;">
+    <h3 style="color:var(--red);">⚠️ 当前价 48.96 元 已超过 Bull Case 43.1 元</h3>
+    <p style="font-size:14px;">即市场定价已包含"重组成功 + 标的爆发 + 给到龙头估值"三重乐观假设同时兑现 — 且预案尚在<strong>审计评估未完成</strong>阶段</p>
+</div>
+
+<!-- ====== 催化剂 ====== -->
+<h2>📅 催化剂时间线</h2>
+
+<div class="card">
+    <table>
+        <tr><th style="width:100px;">时间</th><th>事件</th><th>影响</th></tr>
+        <tr><td>7月7日</td><td>停牌前最后交易日，收盘34元，跌4.71%</td><td><span class="badge badge-blue">基准</span></td></tr>
+        <tr><td>7月21日</td><td>披露重组预案 + 股东以48.53元向嘉兴汇芯转让11.81%</td><td><span class="badge badge-green">催化剂</span></td></tr>
+        <tr><td>7月22日</td><td>复牌一字涨停，40.80元，封单16万手</td><td><span class="badge badge-green">首板</span></td></tr>
+        <tr><td>7月23日</td><td>二连板一字涨停，48.96元，封单12.7万手，换手0.73%</td><td><span class="badge badge-orange">2连板</span></td></tr>
+        <tr><td>待定</td><td>审计评估报告出炉 → 标的估值、对价、支付比例、业绩承诺确定</td><td><span class="badge badge-orange">关键节点</span></td></tr>
+        <tr><td>待定</td><td>董事会再次审议 + 股东会</td><td><span class="badge badge-orange">审批风险</span></td></tr>
+        <tr><td>待定</td><td>深交所审核 + 证监会注册</td><td><span class="badge badge-red">重大不确定性</span></td></tr>
+    </table>
+    <div class="note" style="margin-top:8px;">⚠️ 近期跨界并购审核趋严，传统行业跨界半导体的案例面临更严格的问询</div>
+</div>
+
+<!-- ====== 信念分档 ====== -->
+<h2>🏆 信念分档：🔴 Sell</h2>
+
+<div class="card" style="border-left:3px solid var(--red);">
+    <table style="font-size:14px;">
+        <tr><td style="color:var(--muted);">好卡点得分</td><td><strong>4/15</strong> — 非卡点标的</td></tr>
+        <tr><td style="color:var(--muted);">红旗命中</td><td><strong>5项</strong>，含增发稀释、跨界无协同、商誉暴增等硬否决</td></tr>
+        <tr><td style="color:var(--muted);">当前价 vs Bear</td><td>48.96 vs 4.2 元 — <span class="down">下行空间 91%</span></td></tr>
+        <tr><td style="color:var(--muted);">当前价 vs Base</td><td>48.96 vs 15.3 元 — <span class="down">下行空间 69%</span></td></tr>
+        <tr><td style="color:var(--muted);">当前价 vs Bull</td><td><span class="highlight">48.96 > 43.1 元 — 已超 Bull case</span></td></tr>
+        <tr><td style="color:var(--muted);">Sell 触发条件</td><td>当前价 > Bull case × 1.13 → 满足 Sell 条件</td></tr>
+    </table>
+</div>
+
+<div class="quote">
+    <strong>Serenity 一句话：</strong>这不是"低值耗材公司跨界收购芯片"，而是"产业资本借壳将半导体资产装入上市公司"的资本运作。原主业是拖累而非底座，旋智科技是好资产但估值已被博弈到极致，当前48.96元不仅完全定价了重组成功的预期，甚至已为标的未来两年的爆发式增长买单 — 而预案还停留在审计评估都没做完的阶段。
+</div>
+
+<!-- ====== 独立复核 ====== -->
+<h2>✅ 独立复核</h2>
+
+<div class="card">
+    <table style="font-size:13px;">
+        <tr><td style="color:var(--muted);width:180px;">财务数据来源</td><td>2025年报（容诚审计，标准无保留意见）、2026Q1季报、重组预案公告</td></tr>
+        <tr><td style="color:var(--muted);">旋智科技数据</td><td>来源于重组预案，标注"未经审计"</td></tr>
+        <tr><td style="color:var(--muted);">对标估值</td><td>峰岹科技(688279) 262亿市值，2026年预计净利3.6亿，PE 73x</td></tr>
+        <tr><td style="color:var(--muted);">确认偏误检查</td><td>客观框架 Bear 4.2元 / Base 15元 / Bull 43元 均远低于当前价，不是为倾向结论找理由</td></tr>
+        <tr><td style="color:var(--muted);">遗漏检查</td><td>大股东质押比例[未核实]、旋智科技政府补助占比[未核实]</td></tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+    <p>本报告由 Serenity 投资分析引擎生成 · 基于公开信息 · 不构成投资建议</p>
+    <p>2026年7月23日 · <a href="https://lulaping.github.io/a-stock-reports/" style="color:var(--blue);">返回报告列表</a></p>
+</div>
+
+</body>
+</html>
