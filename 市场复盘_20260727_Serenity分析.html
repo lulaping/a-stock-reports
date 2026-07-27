@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-07-27 A股收盘复盘 — Serenity 市场级分析</title>
+    <base href="https://lulaping.github.io/a-stock-reports/">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:1000px; margin:0 auto; padding:24px 20px; line-height:1.7; }
+        h1 { font-size:22px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:8px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:24px; }
+        h2 { font-size:17px; color:#fff; margin:32px 0 14px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(105px,1fr)); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:26px; font-weight:700; color:#fff; }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .up { color:var(--green); }
+        .down { color:var(--red); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        .card h4 { font-size:14px; margin-bottom:8px; color:#fff; }
+        .card p { font-size:13px; color:var(--muted); line-height:1.7; }
+        table { width:100%; border-collapse:collapse; margin:14px 0; font-size:13px; }
+        th { background:var(--card); padding:10px 12px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:2px solid var(--border); }
+        td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .phase-row { display:flex; gap:10px; margin:12px 0; }
+        .phase-card { flex:1; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; }
+        .phase-card .time { font-size:11px; color:var(--muted); margin-bottom:4px; }
+        .phase-card .val { font-size:20px; font-weight:700; }
+        .phase-card .desc { font-size:12px; color:var(--muted); margin-top:4px; }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .divider { border:none; border-top:1px solid var(--border); margin:28px 0; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        .highlight { color:var(--accent); font-weight:600; }
+        .big-num { font-size:32px; font-weight:800; }
+        @media (max-width:640px) { .phase-row { flex-direction:column; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 A股收盘复盘 — 2026年7月27日（周一）</h1>
+<p class="subtitle">Serenity 市场级复盘 · 长鑫科技IPO首日 · 午盘高潮后冲高回落 · 科创50逆势承压</p>
+
+<!-- ====== 市场概况 ====== -->
+<div class="summary">
+    <strong>📊 收盘数据（全天上演"先扬后抑"）</strong>
+    <div class="grid">
+        <div class="stat"><div class="num"><span class="down">-0.40%</span></div><div class="label">沪指<br>3799</div></div>
+        <div class="stat"><div class="num"><span class="up">+0.50%</span></div><div class="label">深成指<br>13839</div></div>
+        <div class="stat"><div class="num"><span class="up">+0.80%</span></div><div class="label">创业板<br>~3508</div></div>
+        <div class="stat"><div class="num"><span class="down">-1.50%</span></div><div class="label">科创50<br>~1760</div></div>
+        <div class="stat"><div class="num">~2万亿</div><div class="label">全天成交</div></div>
+        <div class="stat"><div class="num">~4000涨</div><div class="label">上涨家数</div></div>
+        <div class="stat"><div class="num">~80只</div><div class="label">涨停家数</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        今日市场呈现典型的<span class="highlight">"午盘高潮→午后回落"</span>走势。早盘低开后一路拉升，沪指午间涨0.40%至3829点，深成指+1.41%，全市场近4900只个股上涨，涨停74只。午后抛压涌现，<strong>沪指最终收跌0.40%至3799点</strong>，从午间高点回落约0.8%。深成指、创业板勉强收红。科创50受长鑫科技IPO虹吸和半导体分化拖累，全天领跌。市场核心矛盾：<strong>长鑫科技IPO首日成交1221亿（半日）的巨额虹吸 vs 锂电池/创新药/脑机接口/机器人四条主线的做多热情</strong>。
+    </div>
+</div>
+
+<!-- ====== 分时拆解 ====== -->
+<h2>⏱️ 全天分时拆解</h2>
+<div class="phase-row">
+    <div class="phase-card">
+        <div class="time">📉 09:25 — 开盘</div>
+        <div class="val down">沪指 3808.90</div>
+        <div class="desc">低开0.14% · 长鑫科技开+471.6% · 油气/半导体低开</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">📈 09:30-10:30 — 早盘拉升</div>
+        <div class="val up">创业板 +1.5%</div>
+        <div class="desc">宁德时代+5%领涨 · 锂电池/电网/创新药/脑机接口集体爆发</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">📈 11:30 — 午间高潮</div>
+        <div class="val up">沪指 3829.39</div>
+        <div class="desc">+0.40% · 涨停74只 · 上涨4893家 · 近4900股飘红</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">📉 13:00-15:00 — 午后回落</div>
+        <div class="val down">沪指 3799</div>
+        <div class="desc">-0.40% · 油气/商业航天/光伏/白酒拖累 · 高位连板分歧加大</div>
+    </div>
+</div>
+
+<!-- ====== 核心事件 ====== -->
+<h2>🔥 核心事件：长鑫科技IPO首日</h2>
+<div class="card">
+    <h4>🏭 长鑫科技 (688981) — 科创板史上最大IPO，首日成交额创A股纪录</h4>
+    <table>
+        <tr><td style="width:100px;color:var(--muted);">发行价</td><td>8.66 元/股</td></tr>
+        <tr><td style="color:var(--muted);">开盘价</td><td><strong>49.50 元</strong>（+471.6%）</td></tr>
+        <tr><td style="color:var(--muted);">午间收盘</td><td><strong>54.65 元</strong>（+531.1%），市值 <strong>3.66万亿</strong>（A股第一）</td></tr>
+        <tr><td style="color:var(--muted);">半日成交</td><td><strong>1221亿</strong>（A股首只单日破千亿的个股）</td></tr>
+        <tr><td style="color:var(--muted);">换手率</td><td>58.06%（半日）</td></tr>
+        <tr><td style="color:var(--muted);">盘中波动</td><td>最低38.11元 → 最高55.03元，万亿级市值波动</td></tr>
+    </table>
+    <p style="margin-top:10px;font-size:13px;color:var(--muted);">
+        <strong>三重影响：</strong><br>
+        ① <span class="highlight">巨额虹吸</span>：半日成交1221亿，全天预估超1500亿，对科创板/半导体板块形成持续资金挤出。兆易创新触及跌停（-9.58%），华虹宏力跌超10%，科创50全天领跌。<br>
+        ② <span class="highlight">产业催化剂</span>：华西证券给出5万亿目标市值，东北证券3.75-5.62万亿。长鑫作为国产DRAM龙头上市，提升了存储芯片/半导体设备赛道的估值锚定。午后存储芯片板块反弹（蓝箭电子/康强电子/百傲化学/三孚股份涨停）。<br>
+        ③ <span class="highlight">估值分歧</span>：市值从38.11元（~2.5万亿）到55.03元（~3.66万亿）的万亿级波动，反映出市场对长鑫的定价仍存在巨大分歧。机构给2026年40倍PE（5万亿）vs 当前市场交易价 ~26倍PE（3.66万亿），说明二级市场比一级市场更谨慎。
+    </p>
+</div>
+
+<!-- ====== 板块表现 ====== -->
+<h2>🧭 板块表现</h2>
+
+<div class="card">
+    <h4>🟢 领涨板块</h4>
+    <table>
+        <tr><th>板块</th><th>强度</th><th>龙头</th><th>核心驱动</th></tr>
+        <tr>
+            <td>🔋 锂电池</td>
+            <td><span class="badge badge-green">⭐⭐⭐⭐⭐</span></td>
+            <td>宁德时代+5% · 海科新源/华盛锂电/恩捷股份等10+涨停</td>
+            <td>宁德200-400亿回购注销（A股史上最大）+ 电解液VC突破20万/吨 + 碳酸锂站上14.7万</td>
+        </tr>
+        <tr>
+            <td>🧠 脑机接口</td>
+            <td><span class="badge badge-green">⭐⭐⭐⭐⭐</span></td>
+            <td>爱朋医疗20cm涨停 · 创新医疗3天2板 · 盈趣科技/南京熊猫涨停</td>
+            <td>全球首例跨地域千人同步脑电信号采集突破 + Science Corp.视网膜芯片获批</td>
+        </tr>
+        <tr>
+            <td>💊 创新药</td>
+            <td><span class="badge badge-green">⭐⭐⭐⭐</span></td>
+            <td>哈三联4天3板 · 海南海药/益佰制药4天2板 · 睿智医药涨停</td>
+            <td>38款创新药获批 + 医保谈判预期 + 中报业绩预增</td>
+        </tr>
+        <tr>
+            <td>🤖 人形机器人</td>
+            <td><span class="badge badge-green">⭐⭐⭐⭐</span></td>
+            <td>明新旭腾/首开股份/北自科技涨停 · 鑫宏业+15%</td>
+            <td>十五五国防科创规划 + 产业催化密集 · 近20只涨停</td>
+        </tr>
+        <tr>
+            <td>⚡ 电网设备</td>
+            <td><span class="badge badge-green">⭐⭐⭐⭐</span></td>
+            <td>长缆科技5连板 · 顺钠股份3连板 · 汉缆股份/太阳电缆涨停</td>
+            <td>国网投资+12.6% · 十五五万亿级电网投资 · 算电协同</td>
+        </tr>
+        <tr>
+            <td>💾 存储芯片</td>
+            <td><span class="badge badge-green">⭐⭐⭐</span></td>
+            <td>蓝箭电子/康强电子/百傲化学/三孚股份涨停（午后）</td>
+            <td>长鑫科技上市情绪映射 + DRAM合约价持续大涨</td>
+        </tr>
+        <tr>
+            <td>🧪 氟化工</td>
+            <td><span class="badge badge-green">⭐⭐⭐</span></td>
+            <td>中巨芯/滨化股份/孚日股份涨停</td>
+            <td>韩国氢氟酸涨价 + 三季度补库</td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <h4>🔴 领跌板块</h4>
+    <table>
+        <tr><th>板块</th><th>跌幅</th><th>领跌个股</th><th>原因</th></tr>
+        <tr>
+            <td>🛢️ 油气</td>
+            <td><span class="badge badge-red">-4%</span></td>
+            <td>中曼石油/山东墨龙跌停 · 通源石油/科力股份-14%</td>
+            <td>美伊暂停互袭，国际油价暴跌超6%</td>
+        </tr>
+        <tr>
+            <td>🚀 商业航天</td>
+            <td><span class="badge badge-red">大跌</span></td>
+            <td>国电电子/星环科技跌停 · 星图测控-21%</td>
+            <td>前期涨幅过大，获利盘撤离</td>
+        </tr>
+        <tr>
+            <td>🤖 AI应用</td>
+            <td><span class="badge badge-red">调整</span></td>
+            <td>天龙集团/值得买/宏博医药跌停</td>
+            <td>科技风格切换，资金撤出</td>
+        </tr>
+        <tr>
+            <td>☀️ 光伏设备</td>
+            <td><span class="badge badge-red">调整</span></td>
+            <td>板块整体走弱</td>
+            <td>产能过剩担忧</td>
+        </tr>
+    </table>
+</div>
+
+<!-- ====== 连板梯队 ====== -->
+<h2>🪜 连板天梯（收盘）</h2>
+<div class="card">
+    <table>
+        <tr><th>连板</th><th>个股</th><th>题材</th><th>收盘状态</th><th>判定</th></tr>
+        <tr>
+            <td><span class="badge badge-red">5连板</span></td>
+            <td><strong>002879 长缆科技</strong></td>
+            <td>电网设备/特高压</td>
+            <td>低开1.77%后强势涨停，换手16.69%</td>
+            <td><span class="badge badge-red">🔴Sell</span></td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-red">5连板</span></td>
+            <td><strong>603221 爱丽家居</strong></td>
+            <td>并购重组（一字板）</td>
+            <td>竞价涨停，全天封死</td>
+            <td><span class="badge badge-red">🔴Sell</span></td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-orange">4连板</span></td>
+            <td><strong>301234 五洲医疗</strong></td>
+            <td>创业板 · 并购芯片（一字板）</td>
+            <td>竞价涨停</td>
+            <td><span class="badge badge-red">🔴Sell</span></td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-orange">3连板</span></td>
+            <td><strong>000533 顺钠股份</strong></td>
+            <td>电网设备</td>
+            <td>高开5.65%封板</td>
+            <td><span class="badge badge-red">🔴Sell</span></td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-orange">3连板</span></td>
+            <td><strong>孚日股份</strong></td>
+            <td>氟化工+锂电池</td>
+            <td>9:31封板，业绩预增50-70%</td>
+            <td><span class="badge badge-orange">🟡Hold</span></td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-orange">多天板</span></td>
+            <td><strong>002900 哈三联</strong></td>
+            <td>创新药/脑机接口</td>
+            <td>4天3板</td>
+            <td><span class="badge badge-orange">🟡Hold</span></td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-orange">多天板</span></td>
+            <td><strong>002173 创新医疗</strong></td>
+            <td>脑机接口</td>
+            <td>3天2板</td>
+            <td><span class="badge badge-orange">🟡Hold</span></td>
+        </tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">
+        ⚠️ <strong>断板警示</strong>：艾艾精工（9天6板，开盘跌停）、立新能源（冲击7板炸板，核按钮预期）、新能股份（低开10.05%断板）、托伦斯（低开10.24%断板）。高位连板分歧加剧，连板高度从上周的7板骤降至5板。
+    </p>
+</div>
+
+<!-- ====== 资金面 ====== -->
+<h2>💰 资金面</h2>
+<div class="phase-row">
+    <div class="phase-card">
+        <div class="time">半日成交</div>
+        <div class="val" style="color:#fff;">1.35万亿</div>
+        <div class="desc">较上周五放量1242亿</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">全天成交</div>
+        <div class="val" style="color:#fff;">~2万亿</div>
+        <div class="desc">较上周五（1.93万亿）放量</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">融资余额(7/24)</div>
+        <div class="val down">2.66万亿</div>
+        <div class="desc">减少221.95亿，连降</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">央行公开市场</div>
+        <div class="val" style="color:var(--muted);font-size:16px;">净回笼730亿</div>
+        <div class="desc">3255亿逆回购 vs 3985亿到期</div>
+    </div>
+</div>
+<div class="card">
+    <h4>主力资金流向（上午数据）</h4>
+    <table>
+        <tr><th>方向</th><th>板块/个股</th><th>净额</th></tr>
+        <tr><td style="color:var(--green);">净流入</td><td>电子 · 医药生物 · 电力设备</td><td>板块前三</td></tr>
+        <tr><td style="color:var(--green);">个股流入TOP3</td><td>风华高科 +18.89亿 · 雅克科技 +14.97亿 · 宁德时代 +14.03亿</td><td></td></tr>
+        <tr><td style="color:var(--red);">个股流出TOP3</td><td>N长鑫 -85.2亿 · 紫光股份 -7.15亿 · 中际旭创 -6.11亿</td><td></td></tr>
+        <tr><td style="color:var(--red);">净流出</td><td>银行</td><td>板块第一</td></tr>
+    </table>
+</div>
+
+<!-- ====== 情绪周期 ====== -->
+<h2>📈 情绪周期定位</h2>
+<div class="summary">
+    <table style="width:100%;font-size:14px;color:var(--text);">
+        <tr><td style="color:var(--muted);width:120px;">情绪阶段</td><td><strong>退潮后试错→修复</strong>：上周五（7/25）"黑色星期五"近5000只下跌，连板晋级率26.67%为近期冰点。今日涨停74只（午间），上午近4900只上涨，赚钱效应爆棚。但午后冲高回落，沪指翻绿，显示修复力度有限。</td></tr>
+        <tr><td style="color:var(--muted);">连板生态</td><td><strong>高度压缩，一字板主导</strong>：连板高度从7板骤降至5板。爱丽家居/五洲医疗以一字板形式晋级，实际参与度极低。长缆科技是唯一通过换手晋级的5板标的。断板阵营扩大（艾艾精工跌停、立新能源核按钮），高位风险加剧。</td></tr>
+        <tr><td style="color:var(--muted);">主线方向</td><td><strong>四大主线并行</strong>：锂电池（宁德回购+VC涨价）、脑机接口+创新药（新技术突破）、电网设备（政策+订单）、机器人（产业催化）。但午后均出现不同程度回落，说明市场合力不足，资金分散。</td></tr>
+        <tr><td style="color:var(--muted);">核心矛盾</td><td><strong>长鑫科技虹吸 vs 做多热情</strong>：长鑫半日成交1221亿，全天预估超1500亿，对科创50/半导体板块形成持续压制。但锂电池/创新药/脑机接口/机器人四大方向仍能保持活跃，说明市场并非全面退潮，而是结构性分化。</td></tr>
+        <tr><td style="color:var(--muted);">关键观察</td><td>① 午后冲高回落，说明当前市场做多合力不足，谨慎追高 ② 长鑫科技次日走势将决定科创板情绪修复程度 ③ 脑机接口/机器人能否在明日形成连板梯队是新主线关键 ④ 政治局会议预期（政策信号）是近期潜在催化剂</td></tr>
+        <tr><td style="color:var(--muted);">Serenity 一句话</td><td>上周五近5000只下跌的恐慌退潮后，市场在今日上午完成了一次教科书式的情绪修复——锂电池、脑机接口、创新药、机器人、电网五条主线齐头并进，涨停74只。但午后冲高回落暴露了核心问题：<strong>长鑫科技IPO的巨额虹吸（半日1221亿）仍在持续消耗市场流动性，做多合力尚未形成</strong>。当前处于"退潮→试错→新周期"的过渡阶段，明日关注脑机接口/机器人首板晋级率，以及长鑫科技次日走势对科创板的情绪传导。</td></tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+    <p>本报告由 Serenity 投资分析引擎生成 · 基于公开信息 · 不构成投资建议</p>
+    <p>数据来源：财联社 · 第一财经 · 证券时报 · 每日经济新闻 · 澎湃新闻 · 36氪 · 2026年7月27日</p>
+    <p><a href="https://lulaping.github.io/a-stock-reports/" style="color:var(--blue);">返回报告列表</a></p>
+</div>
+
+</body>
+</html>
