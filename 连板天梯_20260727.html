@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板天梯 — 2026-07-27 A股连板个股深度分析</title>
+    <base href="https://lulaping.github.io/a-stock-reports/">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); max-width: 1000px; margin: 0 auto; padding: 24px 20px; line-height: 1.7; }
+        h1 { font-size: 22px; color: #fff; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 8px; }
+        .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+        h2 { font-size: 17px; color: #fff; margin: 32px 0 12px; border-left: 3px solid var(--accent); padding-left: 10px; }
+        .summary { background: linear-gradient(135deg, #1a1a2e, #0f3460); border-radius: 12px; padding: 20px 24px; margin: 16px 0; border: 1px solid var(--border); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 10px; }
+        .stat { text-align: center; }
+        .stat .num { font-size: 26px; font-weight: 700; color: #fff; }
+        .stat .label { font-size: 11px; color: var(--muted); }
+        .up { color: var(--green); }
+        .down { color: var(--red); }
+        .ladder { margin: 20px 0; }
+        .ladder-row { display: flex; align-items: stretch; margin-bottom: 6px; border-radius: 8px; overflow: hidden; }
+        .ladder-badge { display: flex; align-items: center; justify-content: center; min-width: 90px; padding: 14px 10px; font-weight: 700; font-size: 14px; color: #fff; text-align: center; }
+        .badge-5 { background: linear-gradient(135deg, #b71c1c, #e53935); }
+        .badge-4 { background: linear-gradient(135deg, #e65100, #ff6d00); }
+        .badge-3 { background: linear-gradient(135deg, #f57f17, #ffb300); color: #1a1a2e; }
+        .badge-2 { background: linear-gradient(135deg, #2e7d32, #4caf50); }
+        .badge-multi { background: linear-gradient(135deg, #6a1b9a, #ab47bc); }
+        .ladder-content { flex: 1; background: var(--card); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border: 1px solid var(--border); border-left: none; }
+        .stock-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid var(--border); }
+        .chip-sell { background: rgba(248,81,73,0.12); color: var(--red); }
+        .chip-hold { background: rgba(210,153,29,0.12); color: var(--orange); }
+        .chip-none { background: rgba(88,166,255,0.08); color: var(--blue); }
+        .stock-detail { font-size: 12px; color: var(--muted); margin-top: 4px; }
+        .broken-section { background: rgba(248,81,73,0.05); border: 1px dashed var(--border); border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
+        .broken-section h4 { color: var(--red); font-size: 13px; margin-bottom: 8px; }
+        .broken-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 16px; font-size: 12px; background: rgba(248,81,73,0.1); color: var(--muted); margin: 4px 6px 4px 0; text-decoration: line-through; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+        th { background: var(--card); padding: 10px 12px; text-align: left; color: var(--muted); font-size: 11px; font-weight: 500; border-bottom: 2px solid var(--border); }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .badge-red { background: rgba(248,81,73,0.2); color: var(--red); }
+        .badge-orange { background: rgba(210,153,29,0.2); color: var(--orange); }
+        .badge-green { background: rgba(63,185,80,0.2); color: var(--green); }
+        .badge-blue { background: rgba(88,166,255,0.2); color: var(--blue); }
+        .theme-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 10px 0; }
+        .theme-card h4 { font-size: 14px; margin-bottom: 8px; }
+        .theme-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+        .divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+        .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .highlight { color: var(--accent); font-weight: 600; }
+        .alert { background: rgba(248,81,73,0.08); border-left: 3px solid var(--red); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13px; }
+        @media (max-width: 640px) { .ladder-row { flex-direction: column; } .ladder-badge { min-width: auto; } .ladder-content { border-left: 1px solid var(--border); } }
+    </style>
+</head>
+<body>
+
+<h1>🪜 连板天梯 — 2026年7月27日（周一·上午）</h1>
+<p class="subtitle">A股连板个股深度分析 · 上周五强分歧退潮后修复 · 涨停~50只 · 连板晋级率回升</p>
+
+<!-- ====== 市场概况 ====== -->
+<div class="summary">
+    <strong>📊 上周五回顾 → 今日上午对比</strong>
+    <div class="grid">
+        <div class="stat"><div class="num" style="color:var(--red);">-1.61%</div><div class="label">上周五沪指</div></div>
+        <div class="stat"><div class="num"><span class="up">+0.69%</span></div><div class="label">今日沪指(午)</div></div>
+        <div class="stat"><div class="num" style="color:var(--red);">4939跌</div><div class="label">上周五个股</div></div>
+        <div class="stat"><div class="num"><span class="up">3400+涨</span></div><div class="label">今日上午个股</div></div>
+        <div class="stat"><div class="num" style="color:var(--red);">1.93万亿</div><div class="label">上周五成交</div></div>
+        <div class="stat"><div class="num">2.07万亿</div><div class="label">今日半日成交</div></div>
+        <div class="stat"><div class="num"><span class="up">26.67%</span></div><div class="label">上周五晋级率</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        上周五（7/25）经历"黑色星期五"——全市场近5000只下跌，连板晋级率仅26.67%，<span class="highlight">立新能源冲击7板炸板（收+7.60%）</span>，连板高度骤降至4板。今日（7/27）市场情绪显著修复，沪指低开0.14%后震荡回升，午间三大指数集体收红，创业板+1.58%，机器人概念近20只涨停，电网设备/贵金属/创新药/脑机接口多点开花。
+    </div>
+</div>
+
+<!-- ====== 连板天梯 ====== -->
+<h2>🪜 连板天梯（上午收盘）</h2>
+
+<div class="ladder">
+    <div class="ladder-row">
+        <div class="ladder-badge badge-5">5连板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-sell">002879 长缆科技</span>
+            <span class="stock-detail">电网设备龙头 · 低开1.77%后强势涨停 · 换手充分 · 特高压/液冷/十五五电网投资</span>
+            <span class="stock-chip chip-sell">603221 爱丽家居</span>
+            <span class="stock-detail">一字板 · 换手极低 · 并购重组：拟收购欧康诺≥77.08%股权 · 跨界切入存储测试设备</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-4">4连板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-sell">301234 五洲医疗</span>
+            <span class="stock-detail">创业板 · 竞价一字板 · 收购旋智科技（电机控制芯片） · 境外营收占比高</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-3">3连板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-sell">000533 顺钠股份</span>
+            <span class="stock-detail">电网设备 · 高开5.65%封板 · 72.6亿 · 公司澄清：AI算力中心供电技术处初期</span>
+            <span class="stock-chip chip-hold">孚日股份</span>
+            <span class="stock-detail">氟化工+锂电池 · 9:31封板 · 120亿 · 业绩预增50-70% · 机构净买入4062万</span>
+            <span class="stock-chip chip-sell">汉缆股份</span>
+            <span class="stock-detail">电网设备 · 国网投资+12.6%</span>
+            <span class="stock-chip chip-sell">太阳电缆</span>
+            <span class="stock-detail">电网设备 · 跟涨</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-multi">多天板</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-hold">002900 哈三联</span>
+            <span class="stock-detail">4天3板 · 创新药/脑机接口 · 38款创新药获批催化</span>
+            <span class="stock-chip chip-sell">创新医疗</span>
+            <span class="stock-detail">3天2板 · 脑机接口核心标的 · 脑电信号采集技术突破</span>
+            <span class="stock-chip chip-sell">300753 爱朋医疗</span>
+            <span class="stock-detail">20cm涨停 · 脑机接口 · 全球首例跨地域千人同步脑电采集</span>
+        </div>
+    </div>
+    <div class="ladder-row">
+        <div class="ladder-badge badge-2">2连板<br>(新晋)</div>
+        <div class="ladder-content">
+            <span class="stock-chip chip-hold">赤峰黄金</span>
+            <span class="stock-detail">贵金属 · 金价持续上行+避险需求</span>
+            <span class="stock-chip chip-hold">招金黄金</span>
+            <span class="stock-detail">贵金属 · 沪银涨超3%</span>
+            <span class="stock-chip chip-sell">机器人概念</span>
+            <span class="stock-detail">中大立德/北纬科技/金拓股份等近20股涨停 · 人形机器人产业催化密集</span>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 断板警示 ====== -->
+<div class="broken-section">
+    <h4>⚠️ 上周五断板警示（7/25 → 7/27 延续影响）</h4>
+    <span class="broken-chip">001258 立新能源 6→7炸板</span>
+    <span style="font-size:12px;color:var(--muted);">上周五早盘4分钟强封7板后爆量炸板收+7.60%，今日或核按钮。电力板块出现跌停潮（京能/大唐/粤电力/深南电A/湖南发展/豫能控股/华电能源跌停）</span>
+    <br>
+    <span class="broken-chip">000815 美利云 4→5断</span>
+    <span style="font-size:12px;color:var(--muted);">算力租赁集体崩塌（利通/证通/协鑫能科/信通电子/金开新能跌停）</span>
+    <br>
+    <span class="broken-chip">000595 新能股份 3→4断</span>
+    <span style="font-size:12px;color:var(--muted);">今日开盘低开10.05%，电力板块退潮</span>
+    <br>
+    <span class="broken-chip">301583 托伦斯 4天3板→断</span>
+    <span style="font-size:12px;color:var(--muted);">今日开盘低开10.24%，半导体设备分化</span>
+    <br>
+    <span class="broken-chip">贵金属/有色全线杀跌</span>
+    <span style="font-size:12px;color:var(--muted);">上周五招金/四川黄金/湖南白银跌超7%，但今日赤峰黄金/招金黄金2连板反弹</span>
+</div>
+
+<!-- ====== 逐股分析 ====== -->
+<h2>🔬 连板个股 Serenity 快速评估</h2>
+
+<table>
+    <tr>
+        <th style="width:85px;">股票</th>
+        <th style="width:50px;">连板</th>
+        <th>驱动逻辑</th>
+        <th style="width:85px;">核心风险</th>
+        <th style="width:55px;">判定</th>
+    </tr>
+
+    <tr>
+        <td><strong>002879<br>长缆科技</strong></td>
+        <td><span class="badge badge-red">5连板</span></td>
+        <td>
+            ① 电网设备绝对龙头，特高压电缆附件<br>
+            ② 国网上半年固投超3100亿（+12.6%）+十五五万亿级电网投资<br>
+            ③ 算电协同概念：AI数据中心电力缺口<br>
+            ④ 低开1.77%后强势回封，换手充分<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】电网板块唯一穿越5板高度的标的，上周五板块近30只涨停潮后剧烈分化，长缆独活。但电缆附件行业竞争充分，非真正核心卡点。</span>
+        </td>
+        <td><span class="badge badge-orange">5板高位<br>竞争充分<br>板块分化</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>603221<br>爱丽家居</strong></td>
+        <td><span class="badge badge-red">5连板</span></td>
+        <td>
+            ① 拟收购欧康诺≥77.08%股权，跨界切入存储测试设备<br>
+            ② 一字板，筹码极度惜售<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】并购重组预案关键条款未定，审计评估未完成，确定性低。一字板无参与机会，开板即面临剧烈回调。</span>
+        </td>
+        <td><span class="badge badge-red">一字板<br>开板即套<br>重组不确定</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>301234<br>五洲医疗</strong></td>
+        <td><span class="badge badge-red">4连板</span></td>
+        <td>
+            ① 收购旋智科技（电机控制芯片Fabless），大基金/汇川/张江高科持股<br>
+            ② 创业板4连板，一字板<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】7/24已分析，当前价已超Bull case。一字板纯粹情绪驱动，开板风险极大。</span>
+        </td>
+        <td><span class="badge badge-red">超Bull case<br>一字板<br>开板风险</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>000533<br>顺钠股份</strong></td>
+        <td><span class="badge badge-orange">3连板</span></td>
+        <td>
+            ① 电网设备，AI算力中心供电技术研发<br>
+            ② 市值72.6亿，处于相对合理区间<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】公司明确澄清：AI算力中心供电技术"处于初期阶段，仍未商业化落地，暂未对公司业绩产生影响"。纯概念炒作。</span>
+        </td>
+        <td><span class="badge badge-orange">公司自认<br>无商业化<br>跟风标的</span></td>
+        <td><span class="badge badge-red">🔴 Sell</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>孚日股份</strong></td>
+        <td><span class="badge badge-orange">3连板</span></td>
+        <td>
+            ① 氟化工+锂电池双概念，VC突破20万元/吨<br>
+            ② 业绩预增50-70%（3.69-4.18亿），机构净买入<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】公司披露：孚日新能源营收占比约10%，贡献有限。但VC涨价是真实产业逻辑。</span>
+        </td>
+        <td><span class="badge badge-orange">子公司贡献<br>仅10%<br>涨价持续性</span></td>
+        <td><span class="badge badge-orange">🟡 Hold</span></td>
+    </tr>
+
+    <tr>
+        <td><strong>002900<br>哈三联</strong></td>
+        <td><span class="badge badge-orange">4天3板</span></td>
+        <td>
+            ① 创新药+脑机接口双概念<br>
+            ② 38款创新药获批+脑电信号采集技术突破<br>
+            <span style="color:var(--muted);font-size:12px;">【已证实】创新药板块低位反弹，脑机接口是今日最强新题材（爱朋医疗20cm涨停）。</span>
+        </td>
+        <td><span class="badge badge-orange">概念驱动<br>业绩待验证</span></td>
+        <td><span class="badge badge-orange">🟡 Hold</span></td>
+    </tr>
+</table>
+
+<!-- ====== 主线分析 ====== -->
+<h2>🧭 主线拆解</h2>
+
+<div class="theme-card">
+    <h4>⚡ 主线一：电网设备（最强连板主线，5只连板）</h4>
+    <p>
+        <strong>核心驱动：</strong>国网上半年固投超3100亿（+12.6%）+ 十五五万亿级电网投资 + 15项特高压 + 37座抽水蓄能电站 + 算电协同<br>
+        <strong>连板梯队：</strong>长缆科技5连板（龙头）→ 顺钠股份3连板 → 汉缆股份/太阳电缆3连板<br>
+        <strong>Serenity 评估：</strong>上周五板块近30只涨停潮后今日剧烈分化，长缆科技是唯一穿越5板高度的标的。但连板梯队完整（5-3-3-3），说明板块仍有持续资金接力。核心风险：长缆5板高位+顺钠公司自认AI供电技术"未商业化"。
+    </p>
+</div>
+
+<div class="theme-card">
+    <h4>🤖 主线二：人形机器人（今日最强爆发，近20只涨停）</h4>
+    <p>
+        <strong>核心驱动：</strong>机器人产业密集催化 + 十五五国防科创规划 + 工业自动化升级<br>
+        <strong>领涨：</strong>中大立德、北纬科技、金拓股份等近20只涨停<br>
+        <strong>Serenity 评估：</strong>今日最强爆发方向，但多为首板，连板梯队尚未形成。机器人产业链是Serenity能力圈内的长期赛道，需观察明日晋级率。当前首板阶段不宜追高，等待连板梯队形成后再评估。
+    </p>
+</div>
+
+<div class="theme-card">
+    <h4>🧠 主线三：脑机接口+创新药（新主线）</h4>
+    <p>
+        <strong>核心驱动：</strong>全球首例跨地域千人同步脑电信号采集技术突破 + 38款创新药获批 + Science Corp.视网膜芯片获批欧盟上市<br>
+        <strong>连板梯队：</strong>哈三联4天3板 → 创新医疗3天2板 → 爱朋医疗20cm涨停<br>
+        <strong>Serenity 评估：</strong>脑机接口是全新的科技题材，全球首次实现跨地域千人同步脑电采集是实质性技术突破。但A股纯正脑机接口标的稀缺，当前以概念映射为主。需观察明日能否形成连板梯队。
+    </p>
+</div>
+
+<div class="theme-card">
+    <h4>🥇 主线四：贵金属（黄金反弹）</h4>
+    <p>
+        <strong>核心驱动：</strong>金价持续上行 + 避险需求 + 沪银涨超3%<br>
+        <strong>连板梯队：</strong>赤峰黄金2连板、招金黄金2连板<br>
+        <strong>Serenity 评估：</strong>上周五贵金属板块全线杀跌（招金/四川黄金/湖南白银跌超7%），今日赤峰/招金2连板反弹。贵金属板块波动大，持续性取决于国际金价走势。
+    </p>
+</div>
+
+<!-- ====== 综合判断 ====== -->
+<h2>📋 综合判断</h2>
+
+<div class="summary">
+    <table style="width:100%;font-size:14px;color:var(--text);">
+        <tr><td style="color:var(--muted);width:120px;">情绪周期</td><td><strong>强分歧退潮后修复</strong>：上周五连板晋级率26.67%为近期冰点，立新能源7板炸板标志情绪见顶。今日晋级率回升，但高位连板仍以一字板为主（爱丽家居/五洲医疗），实际参与度低。市场处于"退潮后试错期"，新主线（机器人/脑机接口）尚在首板阶段。</td></tr>
+        <tr><td style="color:var(--muted);">连板质量</td><td><strong>电网一家独大，其余方向零散</strong>：连板梯队中电网设备占5/9（长缆5→顺钠3→汉缆3→太阳3），其余方向（并购重组/氟化工/创新药/贵金属）均为单点突破，缺乏板块内连板梯队。机器人概念虽近20只涨停，但全为首板，明日晋级率是关键。</td></tr>
+        <tr><td style="color:var(--muted);">可跟踪</td><td><strong>孚日股份（氟化工+业绩支撑）</strong>：有业绩预增50-70%打底+机构净买入，VC涨价是真实产业逻辑，但公司披露子公司营收占比仅10%。<strong>哈三联（创新药+脑机接口）</strong>：4天3板，脑机接口是全新题材，若明日晋级4天4板则有望成为新主线龙头。</td></tr>
+        <tr><td style="color:var(--muted);">Serenity 一句话</td><td>上周五近5000只下跌的恐慌退潮后，市场在电网设备（5只连板）和机器人（近20首板）两个方向重建做多信心。但高位连板（长缆5板/爱丽一字5板/五洲一字4板）赔率已不利，关注点在机器人/脑机接口的首板晋级率——明日能否形成连板梯队将决定新主线方向。当前处于"退潮→试错→新周期"的过渡阶段。</td></tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+    <p>本报告由 Serenity 投资分析引擎生成 · 基于公开信息 · 不构成投资建议</p>
+    <p>数据来源：财联社、第一财经、证券时报、东方财富、GMT8 · 2026年7月27日</p>
+    <p><a href="https://lulaping.github.io/a-stock-reports/" style="color:var(--blue);">返回报告列表</a></p>
+</div>
+
+</body>
+</html>
