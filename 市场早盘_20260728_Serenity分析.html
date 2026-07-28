@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-07-28 A股早盘复盘 — Serenity 市场级分析</title>
+    <base href="https://lulaping.github.io/a-stock-reports/">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:1000px; margin:0 auto; padding:24px 20px; line-height:1.7; }
+        h1 { font-size:22px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:8px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:24px; }
+        h2 { font-size:17px; color:#fff; margin:32px 0 14px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(105px,1fr)); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:26px; font-weight:700; color:#fff; }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .up { color:var(--green); }
+        .down { color:var(--red); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        .card h4 { font-size:14px; margin-bottom:8px; color:#fff; }
+        .card p { font-size:13px; color:var(--muted); line-height:1.7; }
+        table { width:100%; border-collapse:collapse; margin:14px 0; font-size:13px; }
+        th { background:var(--card); padding:10px 12px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:2px solid var(--border); }
+        td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .phase-row { display:flex; gap:10px; margin:12px 0; }
+        .phase-card { flex:1; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; }
+        .phase-card .time { font-size:11px; color:var(--muted); margin-bottom:4px; }
+        .phase-card .val { font-size:20px; font-weight:700; }
+        .phase-card .desc { font-size:12px; color:var(--muted); margin-top:4px; }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .divider { border:none; border-top:1px solid var(--border); margin:28px 0; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        .highlight { color:var(--accent); font-weight:600; }
+        @media (max-width:640px) { .phase-row { flex-direction:column; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 A股早盘复盘 — 2026年7月28日（周二）</h1>
+<p class="subtitle">Serenity 市场级复盘 · 美股芯片暴跌传导 · 光刻机逆市涨停潮 · 创业板V型探底</p>
+
+<!-- ====== 市场概况 ====== -->
+<div class="summary">
+    <strong>📊 早盘数据（全线低开→探底回升）</strong>
+    <div class="grid">
+        <div class="stat"><div class="num down">-0.91%</div><div class="label">沪指开盘<br>3823</div></div>
+        <div class="stat"><div class="num down">-2.25%</div><div class="label">深成指开盘<br>13830</div></div>
+        <div class="stat"><div class="num down">-3.12%</div><div class="label">创业板开盘<br>3478</div></div>
+        <div class="stat"><div class="num down">-5.30%</div><div class="label">创业板最深<br>10:37</div></div>
+        <div class="stat"><div class="num">~1.3万亿</div><div class="label">半日成交<span style="color:var(--muted);">估</span></div></div>
+        <div class="stat"><div class="num">~2600跌</div><div class="label">下跌家数<br>10:37</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        隔夜美股芯片股血流成河——英伟达-5%、SK海力士-7.47%破发、闪迪-11%、费城半导体-2.23%——直接传导至今日A股开盘。三大指数集体跳空低开，创业板指开盘-3.12%，盘中一度深跌至<span class="highlight">-5.30%</span>。但随后市场展开逐级修复：<strong>长鑫科技低开7.7%后翻红</strong>、光刻机概念逆市涨停潮、白酒/银行护盘，市场呈现"V型探底回升"格局。核心矛盾：<strong>美股芯片暴跌的恐慌传导 vs 光刻机/脑机接口/创新药的逆市做多</strong>。
+    </div>
+</div>
+
+<!-- ====== 分时拆解 ====== -->
+<h2>⏱️ 早盘分时拆解</h2>
+<div class="phase-row">
+    <div class="phase-card">
+        <div class="time">📉 09:25 — 开盘</div>
+        <div class="val down">沪指 3823.13</div>
+        <div class="desc">低开0.91% · 创业板-3.12% · 长鑫科技低开-7.71% · 兆易创新-7.8%</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">📉 09:30-10:00 — 恐慌释放</div>
+        <div class="val down">创业板 -5%</div>
+        <div class="desc">CPO/存储/算力硬件全线重挫 · 新易盛/源杰科技-10% · 兆易创新跌停</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">📈 10:00-10:30 — 逆市反弹</div>
+        <div class="val up">光刻机涨停潮</div>
+        <div class="desc">捷众科技30cm · 波长光电/蓝英装备20cm · 长鑫科技翻红+0.84%</div>
+    </div>
+    <div class="phase-card">
+        <div class="time">📈 10:30-11:30 — 修复扩散</div>
+        <div class="val up">白酒/银行异动</div>
+        <div class="desc">金种子酒涨停 · 脑机接口/创新药/旅游持续活跃 · 高位股分化</div>
+    </div>
+</div>
+
+<!-- ====== 核心事件：美股芯片暴跌传导 ====== -->
+<h2>💥 核心事件：美股芯片暴跌传导A股</h2>
+<div class="card">
+    <h4>隔夜美股 → 今日A股开盘冲击</h4>
+    <table>
+        <tr><th style="width:140px;">美股</th><th>跌幅</th><th>→ A股传导</th><th>早盘跌幅</th></tr>
+        <tr><td>英伟达</td><td>-4.99%</td><td>→ AI算力/光模块</td><td>新易盛/源杰科技-10%, 中际旭创-7%</td></tr>
+        <tr><td>SK海力士ADR</td><td>-7.47%破发</td><td>→ 存储芯片</td><td>兆易创新跌停(-10%), 普冉股份-10%, 北京君正-8%</td></tr>
+        <tr><td>闪迪</td><td>-11.02%</td><td>→ 存储/半导体</td><td>佰维存储-8%, 通富微电-8%</td></tr>
+        <tr><td>费城半导体</td><td>-2.23%</td><td>→ 半导体板块</td><td>西安奕材/恒运昌-10%, 寒武纪/澜起科技大跌</td></tr>
+        <tr><td>阿斯麦</td><td>-5.80%</td><td>→ 光刻机（逆市！）</td><td><span style="color:var(--green);">波长光电/蓝英装备20cm涨停！</span></td></tr>
+    </table>
+    <p style="margin-top:10px;font-size:13px;color:var(--muted);">
+        <strong>最反直觉的现象：</strong>阿斯麦美股-5.8%，但A股光刻机概念反而涨停潮。原因：① 阿斯麦上调全年收入指引至430-450亿欧元（+12.5%），毛利率54-56%，说明实际需求强劲 ② 美股-5.8%是跟随板块情绪杀跌，而非基本面恶化 ③ A股光刻机更多是国产替代逻辑（国产光刻机整机/核心部件突破），与阿斯麦股价关联度不高。市场借ASML上调指引+国产替代叙事，发动光刻机行情。
+    </p>
+</div>
+
+<!-- ====== 长鑫科技次日 ====== -->
+<h2>🔬 长鑫科技次日：低开7.7%→翻红，韧性超预期</h2>
+<div class="card">
+    <table>
+        <tr><td style="width:100px;color:var(--muted);">昨日收盘</td><td>49.00 元（+465.82%）</td></tr>
+        <tr><td style="color:var(--muted);">今日开盘</td><td><strong class="down">45.22 元（-7.71%）</strong></td></tr>
+        <tr><td style="color:var(--muted);">10:07</td><td><strong class="up">49.31 元（+0.63%）— 翻红！</strong></td></tr>
+        <tr><td style="color:var(--muted);">市值</td><td>~3.3万亿</td></tr>
+    </table>
+    <p style="margin-top:10px;font-size:13px;color:var(--muted);">
+        在隔夜全球存储芯片（SK海力士-7.47%、美光-2.25%、闪迪-11%）和韩国股市暴跌的背景下，长鑫科技低开7.7%后仅37分钟就翻红，显示<span class="highlight">市场对国产DRAM龙头的承接力极强</span>。瑞穗证券首次覆盖给出70元目标价（较昨日溢价43%），预判芯片涨价行情延续至2028年。但需注意：长鑫科技上市首日成交1412亿，换手率极高，短期筹码博弈激烈。
+    </p>
+</div>
+
+<!-- ====== 板块表现 ====== -->
+<h2>🧭 板块表现</h2>
+
+<div class="card">
+    <h4>🟢 逆市领涨板块</h4>
+    <table>
+        <tr><th>板块</th><th>强度</th><th>龙头</th><th>核心驱动</th></tr>
+        <tr>
+            <td>🔬 光刻机</td>
+            <td><span class="badge badge-green">⭐⭐⭐⭐⭐</span></td>
+            <td>捷众科技30cm · 波长光电/蓝英装备20cm · 张江高科/永新光学/海立股份/东方嘉盛涨停</td>
+            <td>ASML上调全年指引至430-450亿欧元 + 国产替代加速</td>
+        </tr>
+        <tr>
+            <td>🧠 脑机接口</td>
+            <td><span class="badge badge-green">⭐⭐⭐⭐</span></td>
+            <td>创新医疗4天3板 · 塞力医疗/南京熊猫涨停 · 爱朋医疗+16%</td>
+            <td>Science Corp.视网膜芯片获欧盟批准 + 首次纳入国家健康规划</td>
+        </tr>
+        <tr>
+            <td>💊 创新药</td>
+            <td><span class="badge badge-green">⭐⭐⭐⭐</span></td>
+            <td>海南海药2连板 · 哈三联/哈药股份跟涨</td>
+            <td>上半年创新药对外授权81笔/1100亿美元 + 业绩修复</td>
+        </tr>
+        <tr>
+            <td>🍶 白酒</td>
+            <td><span class="badge badge-green">⭐⭐⭐</span></td>
+            <td>金种子酒涨停 · 皇台酒业/今世缘/老白干跟涨</td>
+            <td>防御属性 + 估值修复 + 11:10异动拉升</td>
+        </tr>
+        <tr>
+            <td>🏨 旅游酒店</td>
+            <td><span class="badge badge-green">⭐⭐⭐</span></td>
+            <td>华天酒店2连板 · 西安饮食/岭南控股跟涨</td>
+            <td>避暑旅游搜索量环比+230% · 酒店预订量+50%</td>
+        </tr>
+        <tr>
+            <td>🤖 AI应用</td>
+            <td><span class="badge badge-green">⭐⭐⭐</span></td>
+            <td>科蓝软件20cm涨停 · 格尔软件/南天信息涨停</td>
+            <td>腾讯WorkBuddy上架鸿蒙 · 首个桌面办公智能体</td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <h4>🔴 领跌板块</h4>
+    <table>
+        <tr><th>板块</th><th>跌幅</th><th>领跌个股</th><th>原因</th></tr>
+        <tr>
+            <td>💾 存储芯片</td>
+            <td><span class="badge badge-red">暴跌</span></td>
+            <td>兆易创新跌停(-10%) · 普冉股份-10% · 北京君正-8%</td>
+            <td>美股存储暴跌传导 + SK海力士破发</td>
+        </tr>
+        <tr>
+            <td>🔌 CPO/光模块</td>
+            <td><span class="badge badge-red">-7~10%</span></td>
+            <td>新易盛/源杰科技-10% · 中际旭创-7% · 剑桥科技-7%</td>
+            <td>英伟达-5% + AI循环融资担忧</td>
+        </tr>
+        <tr>
+            <td>🛢️ 油气</td>
+            <td><span class="badge badge-red">-5%+</span></td>
+            <td>燃油/原油期货继续大跌5%</td>
+            <td>隔夜WTI-7.5%，地缘溢价出清</td>
+        </tr>
+        <tr>
+            <td>⛏️ 煤炭/贵金属</td>
+            <td><span class="badge badge-red">调整</span></td>
+            <td>板块整体走弱</td>
+            <td>防御资金撤离 + 商品价格回调</td>
+        </tr>
+    </table>
+</div>
+
+<!-- ====== 连板天梯 ====== -->
+<h2>🪜 连板天梯（早盘）</h2>
+<div class="card">
+    <table>
+        <tr><th>连板</th><th>个股</th><th>题材</th><th>早盘状态</th></tr>
+        <tr>
+            <td><span class="badge badge-red">6连板</span></td>
+            <td><strong>603221 爱丽家居</strong></td>
+            <td>并购欧康诺（存储测试设备）</td>
+            <td>一字板涨停，16.94元</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-green">4天3板</span></td>
+            <td><strong>002173 创新医疗</strong></td>
+            <td>脑机接口</td>
+            <td>涨停</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-green">2连板</span></td>
+            <td><strong>000566 海南海药</strong></td>
+            <td>创新药</td>
+            <td>涨停</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-green">2连板</span></td>
+            <td><strong>000428 华天酒店</strong></td>
+            <td>旅游酒店</td>
+            <td>涨停</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-red">8天7板</span></td>
+            <td><strong>001258 立新能源</strong></td>
+            <td>电力/绿电</td>
+            <td>高位震荡</td>
+        </tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">
+        ⚠️ <strong>连板高度变化：</strong>长缆科技5连板→今日断板（电网设备大面积分化）。爱丽家居6连板成为市场最高标，但一字板无参与机会。脑机接口梯队（创新医疗4天3板→南京熊猫→塞力医疗）最为完整。高位连板分歧加剧，谨慎追高。
+    </p>
+</div>
+
+<!-- ====== 关键观察 ====== -->
+<h2>📋 关键观察与午后展望</h2>
+<div class="summary">
+    <table style="width:100%;font-size:14px;color:var(--text);">
+        <tr><td style="color:var(--muted);width:120px;">核心矛盾</td><td><strong>美股芯片暴跌的恐慌传导 vs A股结构性做多力量。</strong>半导体/存储/CPO确实重挫，但光刻机逆市涨停潮、长鑫科技翻红、脑机接口/创新药持续活跃，说明市场并非全面崩溃，而是<strong>结构性分化</strong>——资金在从AI硬件映射股撤出，转向国产替代（光刻机）和政策驱动（脑机/创新药）。</td></tr>
+        <tr><td style="color:var(--muted);">积极信号</td><td>① 长鑫科技低开7.7%后翻红，说明市场对国产DRAM龙头信心充足 ② 光刻机涨停潮（10+只涨停）成为新的情绪锚点，对冲了存储芯片的恐慌 ③ 创业板-5%后回升，银行/白酒护盘，3800点附近有支撑 ④ 爱丽家居6连板维持连板生态</td></tr>
+        <tr><td style="color:var(--muted);">风险点</td><td>① 半导体/CPO/存储芯片的抛压尚未充分释放，午后可能继续承压 ② 韩国股市暴跌触发熔断，外部风险仍在发酵 ③ 美联储7/28-29议息会议，市场等待7/29凌晨利率决议 ④ 创业板盘中一度-5.3%，即使回升也显示市场脆弱</td></tr>
+        <tr><td style="color:var(--muted);">午后关注</td><td>① 光刻机涨停潮能否扩散至半导体设备/材料，形成板块效应 ② 长鑫科技能否守住翻红，3.3万亿市值是关键锚 ③ 创业板能否收复-3%以内 ④ 油气板块能否企稳（油价-7.5%后是否见底）</td></tr>
+        <tr><td style="color:var(--muted);">Serenity 一句话</td><td>隔夜美股芯片股血流成河，今日A股开盘直接跳空——但最值得关注的不是跌了多少，而是<strong>谁在逆市上涨</strong>。光刻机涨停潮（ASML上调指引+国产替代）、脑机接口（Science Corp.获批）、创新药（1100亿美元出海授权），这三条线在大盘-5%的恐慌中逆市涨停，说明资金在做"去美股映射化"的调仓——从跟跌英伟达的AI硬件，切换到有独立逻辑的国产替代和政策驱动方向。这是今天最值得关注的风格切换信号。</td></tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+    <p>本报告由 Serenity 投资分析引擎生成 · 基于公开信息 · 不构成投资建议</p>
+    <p>数据来源：中国基金报 · 证券时报 · 上海证券报 · 每日经济新闻 · 华尔街见闻 · 2026年7月28日</p>
+    <p><a href="https://lulaping.github.io/a-stock-reports/" style="color:var(--blue);">返回报告列表</a></p>
+</div>
+
+</body>
+</html>
