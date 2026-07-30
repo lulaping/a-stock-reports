@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隔夜消息_20260730_Serenity分析</title>
+    <base href="https://lulaping.github.io/a-stock-reports/">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; color:#fff; margin:18px 0 8px; }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        .highlight { color:var(--accent); font-weight:600; }
+        .score-card { display:flex; gap:20px; justify-content:center; margin:16px 0; }
+        .score-item { text-align:center; padding:16px 24px; border-radius:10px; background:var(--card); border:1px solid var(--border); min-width:140px; }
+        .score-item .num { font-size:32px; font-weight:700; }
+        .score-item .label { font-size:12px; color:var(--muted); margin-top:4px; }
+        @media (max-width:640px) { .two-col { grid-template-columns:1fr; } .score-card { flex-direction:column; align-items:center; } }
+    </style>
+</head>
+<body>
+
+<h1>📰 A股隔夜利好利空消息 — 2026年7月30日（周四）</h1>
+<p class="subtitle">Serenity 消息面扫描 · 2026年7月29日盘后至7月30日盘前全部重要信息</p>
+
+<!-- ====== 消息面评分 ====== -->
+<div class="score-card">
+    <div class="score-item">
+        <div class="num up">+12</div>
+        <div class="label">利好事件</div>
+    </div>
+    <div class="score-item">
+        <div class="num down">-10</div>
+        <div class="label">利空事件</div>
+    </div>
+    <div class="score-item">
+        <div class="num" style="color:var(--orange);">偏弱</div>
+        <div class="label">综合判断</div>
+    </div>
+</div>
+
+<!-- ====== 利好 ====== -->
+<h2>🟢 利好因素（12项）</h2>
+
+<div class="two-col">
+
+<div class="card" style="margin:0;">
+    <h4>📊 昨日A股强势收涨</h4>
+    <table>
+        <tr><td>沪指</td><td class="up">+0.40%</td></tr>
+        <tr><td>深成指</td><td class="up">+1.10%</td></tr>
+        <tr><td>创业板</td><td class="up">+1.55%</td></tr>
+        <tr><td>成交额</td><td><strong>2.3万亿</strong>（放量2708亿）</td></tr>
+        <tr><td>上涨家数</td><td><strong>4253只</strong>，86只涨停</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:4px;">市场情绪显著回暖，量价齐升</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>📋 九部门联合发文：科技金融数据开发利用</h4>
+    <p>央行等九部门联合印发《关于加强科技金融领域数据开发利用的通知》，发布《全国科技金融领域数据开发利用目录1.0》，开展科技金融可信数据空间试点。利好数据要素板块。</p>
+    <p style="margin-top:4px;font-size:12px;color:var(--muted);">华创证券：2026年为数据要素价值释放大年</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>📋 上海消费品以旧换新补贴</h4>
+    <p>上海8部门联合发布补贴政策，智能清洁机器人/智能马桶/智能床等9类产品享15%补贴，适老化产品20%补贴。利好智能家居/消费电子板块。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>📋 深圳新质生产力实施方案</h4>
+    <p>深圳发布《关于加快发展新质生产力进一步培育壮大战略性新兴产业集群和未来产业的实施方案》，加快AI+低空经济/脑机接口/无人驾驶等融合创新。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>💰 兆易创新最高20亿回购注销+10亿增持</h4>
+    <p>董事长朱一明提议10-20亿回购注销，并承诺12个月内不减持+增持不低于10亿。存储芯片龙头释放强烈信心信号。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>💰 多家公司集中回购/增持</h4>
+    <p>广电电气（1-2亿）、虹软科技（1-1.5亿）、宁波韵升（0.5-1亿）、赛意信息（0.3-0.6亿）、华凯易佰（0.3-0.5亿）、福事特（0.4-0.6亿）等批量发布回购计划。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>💊 恒瑞医药长效糖尿病药获批上市</h4>
+    <p>国内首个长效胰岛素类似物获批。中国糖尿病患者1.48亿，市场空间巨大。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>📊 西部矿业H1净利润+123%</h4>
+    <p>41.69亿净利润同比+123%，有色资源板块业绩持续高增。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>📊 富满微H1扭亏为盈</h4>
+    <p>净利润9064万元（上年同期-3576万），半导体设计公司周期反转信号。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>🔗 永鼎股份11.33亿大订单</h4>
+    <p>子公司鼎芯光电签订大功率激光器芯片订单，合计约11.33亿元。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>🔬 重磅重组：天智航今日复牌</h4>
+    <p>"手术机器人第一股"拟发行股份购买微创骨科62%股权，构成重大资产重组。</p>
+</div>
+
+<div class="card" style="margin:0;">
+    <h4>🤖 人工智能应用博览会今日开幕</h4>
+    <p>2026人工智能产品应用博览会7/30-8/1在苏州举办，AI板块催化。</p>
+</div>
+
+</div>
+
+<!-- ====== 利空 ====== -->
+<h2>🔴 利空因素（10项）</h2>
+
+<div class="two-col">
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 美股三大指数暴跌</h4>
+    <table>
+        <tr><td>道指</td><td class="down">-2.19%</td></tr>
+        <tr><td>纳指</td><td class="down">-1.74%</td></tr>
+        <tr><td>标普500</td><td class="down">-1.52%</td></tr>
+        <tr><td>美光科技</td><td class="down">-10%</td></tr>
+        <tr><td>费城半导体</td><td class="down">-5%+</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:4px;">⚠️ 今日A股半导体/存储大概率承压</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 美联储鹰派信号</h4>
+    <p>FOMC维持利率不变，但出现3张反对票（主张加息25bp），主席沃什称"将毫不犹豫采取行动"。市场对9月加息预期上升至38%。</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 中东局势升级：油价暴涨7.9%</h4>
+    <p>伊朗袭击美军基地，特朗普称"要给予沉重打击"，布油重返90美元。地缘风险升温，全球风险偏好承压。</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ Meta盘后大跌7%</h4>
+    <p>Q2营收608亿美元同比+28%，但Q3营收指引610-640亿不及预期，资本开支指引收窄。AI信仰面临考验。</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 通富微电跌停，机构净卖出10.29亿</h4>
+    <p>龙虎榜"机构撤、外资接"格局，半导体封测龙头遭机构抛售。</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 中科通达股东拟减持3%</h4>
+    <p>光谷成长原始股东减持，三个月内持续抛压。</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 北京君正/华锦股份等利空</h4>
+    <p>北京君正董秘完成减持；华锦股份副总被留置调查；中科通达拟减持3%。</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 凯美特气H1净利润-60.75%</h4>
+    <p>营收微增1.67%但净利下降60.75%，扣非-70.85%。</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 景业智能H1由盈转亏</h4>
+    <p>净利润-1250万（上年同期+304万），核工业验收集中于Q4。</p>
+</div>
+
+<div class="card" style="margin:0;border-color:rgba(248,81,73,0.3);">
+    <h4>⚠️ 明新旭腾3连板但H1预亏3500-5200万</h4>
+    <p>机器人概念纯炒作，基本面持续恶化。</p>
+</div>
+
+</div>
+
+<!-- ====== 综合判断 ====== -->
+<h2>📋 Serenity 综合判断</h2>
+<div class="card">
+    <table>
+        <tr><td style="width:90px;color:var(--muted);">利好-利空</td><td><strong>12 vs 10</strong>，表面利好偏多，但利空质量更高</td></tr>
+        <tr><td style="color:var(--muted);">核心矛盾</td><td><strong>外部暴跌 vs 内部政策宽松</strong>——美股科技股暴跌（纳指-1.74%，美光-10%）与国内政策利好（九部门科技金融、上海补贴、深圳新政）、回购潮形成对冲</td></tr>
+        <tr><td style="color:var(--muted);">最大利空</td><td><span class="down"><strong>美股半导体再遭重创</strong></span>——美光-10%、费城半导体-5%+，叠加中东地缘升级油价暴涨7.9%，今日A股存储/CPO/光刻机板块大概率承压</td></tr>
+        <tr><td style="color:var(--muted);">最大利好</td><td><span class="up"><strong>回购潮+政策组合拳</strong></span>——兆易创新20亿回购+10亿增持是信号弹，九部门科技金融文件、上海补贴、深圳新政形成政策合力</td></tr>
+        <tr><td style="color:var(--muted);">今日关注</td><td>① A股半导体能否抗住美光-10%的冲击 ② 兆易创新回购能否带动存储板块情绪修复 ③ 微软云收入+43%但Meta盘后-7%，AI方向分化加剧 ④ 中际旭创H股上市首日表现 ⑤ 天智航复牌走势</td></tr>
+        <tr><td style="color:var(--muted);">操作建议</td><td><strong>短期防御为主</strong>——美股科技暴跌+中东地缘升级+美联储鹰派，三重压力下A股大概率低开。但国内政策宽松+回购潮提供底部支撑，预计低开后震荡修复。关注存储板块（兆易创新回购效应）、石油石化（油价暴涨受益）、智能家居（上海补贴）三条主线。</td></tr>
+        <tr><td style="color:var(--muted);">Serenity 一句话</td><td>昨晚是<span class="highlight">"外盘崩、内盘扛"</span>的经典剧本。美股科技股在AI信仰崩塌+中东战火+美联储鹰派的三重打击下暴跌，但A股昨日2.3万亿+4253只上涨的强势格局给了多头底气。兆易创新的20亿回购是"国家队式"的信号，但存储板块能否顶住美光-10%的冲击，才是今天真正的试金石。</td></tr>
+    </table>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:28px 0;">
+
+<div class="footer">
+    <p>本报告由 Serenity 投资分析引擎生成 · 基于公开信息 · 不构成投资建议</p>
+    <p>数据来源：财联社 · 证券时报 · 每日经济新闻 · 华尔街见闻 · 2026年7月30日</p>
+    <p><a href="https://lulaping.github.io/a-stock-reports/" style="color:var(--blue);">返回报告列表</a></p>
+</div>
+
+</body>
+</html>
