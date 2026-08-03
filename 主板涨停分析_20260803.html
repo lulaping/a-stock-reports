@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-03 主板涨停分析 — Serenity 分析</title>
+    <base href="https://lulaping.github.io/a-stock-reports/">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; color:#fff; margin:18px 0 8px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:#fff; }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .divider { border:none; border-top:1px solid var(--border); margin:28px 0; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        .highlight { color:var(--accent); font-weight:600; }
+        .flex { display:flex; gap:6px; flex-wrap:wrap; }
+        .tag { display:inline-block; padding:2px 8px; border-radius:12px; font-size:10px; }
+        .tag-green { background:rgba(63,185,80,0.15); color:var(--green); }
+        .tag-blue { background:rgba(88,166,255,0.15); color:var(--blue); }
+        .tag-orange { background:rgba(210,153,29,0.15); color:var(--orange); }
+        @media (max-width:640px) { .two-col { grid-template-columns:1fr; } .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 主板涨停分析 — 2026年8月3日（周一）</h1>
+<p class="subtitle">Serenity 涨停分析 · 主板涨停约50只（含连板16只）· 核电/泛科技/大消费/机器人四线开花 · 核电板块16只涨停成最强主线 · 传智教育6连板 · 高争民爆4连板</p>
+
+<!-- ====== 核心数据 ====== -->
+<div class="summary">
+    <strong>📊 主板涨停核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">~50</div><div class="label">主板涨停</div></div>
+        <div class="stat"><div class="num">16</div><div class="label">连板股</div></div>
+        <div class="stat"><div class="num">83%</div><div class="label">封板率</div></div>
+        <div class="stat"><div class="num">3700+</div><div class="label">上涨家数</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        沪指-0.59%收3809.65，但中小盘股活跃，涨停集中在核电/泛科技/大消费三大方向
+    </div>
+</div>
+
+<!-- ====== 连板天梯（主板） ====== -->
+<h2>🪜 连板天梯（主板）</h2>
+<div class="card">
+    <table>
+        <tr><th>连板</th><th>代码</th><th>名称</th><th>题材</th><th>特征</th></tr>
+        <tr>
+            <td><span class="badge badge-red">6连板</span></td>
+            <td>003032</td>
+            <td><strong>传智教育</strong></td>
+            <td>AI教育/IT培训</td>
+            <td>一字板涨停，市场最高标。政治局"AI+"定调+国产大模型霸榜OpenRouter前五</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-orange">8天5板</span></td>
+            <td>003001</td>
+            <td><strong>中岩大地</strong></td>
+            <td>核电/岩土工程</td>
+            <td>核电板块人气股，岩土工程受益核电基建</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-orange">4连板</span></td>
+            <td>002827</td>
+            <td><strong>高争民爆</strong></td>
+            <td>民爆</td>
+            <td>独立逻辑，民爆行业景气上行</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-green">3连板</span></td>
+            <td>603039</td>
+            <td><strong>泛微网络</strong></td>
+            <td>AI办公/软件</td>
+            <td>AI应用板块跟风，传智教育带动</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-green">3连板</span></td>
+            <td>000820</td>
+            <td><strong>神雾节能</strong></td>
+            <td>摘帽/环保</td>
+            <td>摘帽+环保概念，核电环保方向</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>000967</td>
+            <td>盈峰环境</td>
+            <td>核电/环保</td>
+            <td>核电环保方向</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>603261</td>
+            <td>立航科技</td>
+            <td>核电/专用设备</td>
+            <td>核电+航空装备</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>603337</td>
+            <td>杰克科技</td>
+            <td>机器人</td>
+            <td>机器人概念，特斯拉Optimus产能目标上调</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>002896</td>
+            <td>中大力德</td>
+            <td>机器人</td>
+            <td>机器人核心零部件，板块龙头</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>002279</td>
+            <td>恒银科技</td>
+            <td>AI应用</td>
+            <td>AI应用跟风</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>002354</td>
+            <td>天娱数科</td>
+            <td>AI应用</td>
+            <td>AI应用跟风</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>000593</td>
+            <td>德龙汇能</td>
+            <td>燃气</td>
+            <td>独立方向</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>603828</td>
+            <td>锦和商管</td>
+            <td>商业运营</td>
+            <td>大消费方向</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>002963</td>
+            <td>豪尔赛</td>
+            <td>照明工程</td>
+            <td>大消费方向</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>000815</td>
+            <td>美利云</td>
+            <td>算力租赁</td>
+            <td>泛科技方向</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">2连板</span></td>
+            <td>603167</td>
+            <td>利柏特</td>
+            <td>核电/工程</td>
+            <td>核电建设方向</td>
+        </tr>
+    </table>
+</div>
+
+<!-- ====== 核电板块涨停详细 ====== -->
+<h2>☢️ 核电板块 — 今日最强主线（16只涨停）</h2>
+<div class="card">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">驱动：国常会核准4个核电项目（辽宁庄河一期/浙江金七门二期/广东太平岭三期/山东莱阳一期），共8台机组，总投资超1700亿</p>
+    <table>
+        <tr><th>代码</th><th>名称</th><th>连板</th><th>细分方向</th><th>Serenity</th></tr>
+        <tr><td>003001</td><td>中岩大地</td><td>8天5板</td><td>核电岩土工程</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>000967</td><td>盈峰环境</td><td>2连板</td><td>核电环保</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>603261</td><td>立航科技</td><td>2连板</td><td>核电装备</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>603167</td><td>利柏特</td><td>2连板</td><td>核电工程</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>601611</td><td>中国核建</td><td>首板</td><td>核电建设龙头</td><td><span class="badge-blue tag">🟡Hold</span></td></tr>
+        <tr><td>002366</td><td>融发核电</td><td>首板</td><td>核电设备</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>002879</td><td>长缆科技</td><td>首板</td><td>电网设备/核电</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>601086</td><td>风范股份</td><td>首板</td><td>电网设备/核电</td><td><span class="badge-red tag">🔴Sell</span></td></tr>
+        <tr><td>600468</td><td>百利电气</td><td>首板</td><td>核电电气设备</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>002438</td><td>江苏神通</td><td>首板</td><td>核电阀门</td><td><span class="badge-blue tag">🟡Hold</span></td></tr>
+        <tr><td>000037</td><td>深南电A</td><td>首板</td><td>电力/核电</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>002058</td><td>威尔泰</td><td>首板</td><td>资产重组/新能源</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>000820</td><td>神雾节能</td><td>3连板</td><td>核电环保/摘帽</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>603011</td><td>合锻智能</td><td>首板</td><td>核电/机器人</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+        <tr><td>002176</td><td>江特电机</td><td>首板</td><td>锂电/稀土</td><td><span class="badge-red tag">🔴Sell</span></td></tr>
+        <tr><td>601865</td><td>福莱特</td><td>首板</td><td>光伏玻璃</td><td><span class="badge-orange tag">🟡Hold</span></td></tr>
+    </table>
+    <div class="alert" style="margin-top:8px;">
+        <strong>⚠️ 核电板块风险提示：</strong> 核电板块历史上"一日游"概率高，1700亿投资虽大但建设周期3-5年，业绩兑现慢。16只涨停中仅中岩大地（8天5板）有连板辨识度，其余多为首板跟风。建议关注中岩大地/中国核建/融发核电等核心标的，追高风险大。
+    </div>
+</div>
+
+<!-- ====== 泛科技方向 ====== -->
+<h2>📱 泛科技方向（含AI应用/算力/通信）</h2>
+<div class="card">
+    <table>
+        <tr><th>代码</th><th>名称</th><th>连板</th><th>细分方向</th><th>核心驱动</th></tr>
+        <tr><td>003032</td><td>传智教育</td><td><span class="badge badge-red">6连板</span></td><td>AI教育</td><td>一字板，市场最高标，AI应用核心龙头</td></tr>
+        <tr><td>603039</td><td>泛微网络</td><td><span class="badge badge-green">3连板</span></td><td>AI办公</td><td>AI应用跟风，办公软件方向</td></tr>
+        <tr><td>002279</td><td>恒银科技</td><td><span class="badge badge-blue">2连板</span></td><td>AI应用</td><td>AI应用跟风</td></tr>
+        <tr><td>002354</td><td>天娱数科</td><td><span class="badge badge-blue">2连板</span></td><td>AI应用</td><td>AI应用跟风</td></tr>
+        <tr><td>000815</td><td>美利云</td><td><span class="badge badge-blue">2连板</span></td><td>算力租赁</td><td>算力方向</td></tr>
+        <tr><td>002902</td><td>铭普光磁</td><td>首板</td><td>CPO/光模块</td><td>光通信探底回升</td></tr>
+        <tr><td>002792</td><td>通宇通讯</td><td>首板</td><td>卫星通信</td><td>蓝箭航天朱雀三号发射窗口锁定</td></tr>
+        <tr><td>002421</td><td>达实智能</td><td>首板</td><td>AI应用</td><td>AI应用板块扩散</td></tr>
+        <tr><td>002803</td><td>吉宏股份</td><td>首板</td><td>AI应用/跨境电商</td><td>阿里云合作，AI Agent出海</td></tr>
+        <tr><td>002131</td><td>利欧股份</td><td>首板</td><td>AI应用</td><td>AI应用板块扩散</td></tr>
+        <tr><td>002681</td><td>奋达科技</td><td>首板</td><td>消费电子</td><td>消费电子板块拉升</td></tr>
+        <tr><td>002361</td><td>神剑股份</td><td>首板</td><td>商业航天/化工</td><td>蓝箭航天催化</td></tr>
+    </table>
+</div>
+
+<!-- ====== 大消费方向 ====== -->
+<h2>🛍️ 大消费方向</h2>
+<div class="card">
+    <table>
+        <tr><th>代码</th><th>名称</th><th>连板</th><th>细分方向</th><th>核心驱动</th></tr>
+        <tr><td>603156</td><td>养元饮品</td><td>首板</td><td>食品饮料</td><td>中报业绩高增长+现金分红</td></tr>
+        <tr><td>603610</td><td>麒盛科技</td><td>首板</td><td>智能家居</td><td>消费板块反弹</td></tr>
+        <tr><td>603798</td><td>康普顿</td><td>首板</td><td>润滑油</td><td>消费板块反弹</td></tr>
+        <tr><td>600962</td><td>国投中鲁</td><td>首板</td><td>食品饮料</td><td>消费板块反弹</td></tr>
+        <tr><td>605056</td><td>咸亨国际</td><td>首板</td><td>电商/MRO</td><td>消费板块反弹</td></tr>
+        <tr><td>603828</td><td>锦和商管</td><td><span class="badge badge-blue">2连板</span></td><td>商业运营</td><td>大消费方向</td></tr>
+        <tr><td>000608</td><td>阳光股份</td><td>首板</td><td>地产</td><td>地产板块反弹</td></tr>
+        <tr><td>002963</td><td>豪尔赛</td><td><span class="badge badge-blue">2连板</span></td><td>照明工程</td><td>大消费方向</td></tr>
+        <tr><td>603222</td><td>济民健康</td><td>首板</td><td>医药</td><td>医药板块反弹</td></tr>
+    </table>
+</div>
+
+<!-- ====== 其他方向 ====== -->
+<h2>📋 其他方向</h2>
+<div class="two-col">
+    <div class="card" style="margin:0;">
+        <h4>🤖 机器人</h4>
+        <table>
+            <tr><th>代码</th><th>名称</th><th>连板</th></tr>
+            <tr><td>603337</td><td>杰克科技</td><td>2连板</td></tr>
+            <tr><td>002896</td><td>中大力德</td><td>2连板</td></tr>
+            <tr><td>603011</td><td>合锻智能</td><td>首板</td></tr>
+        </table>
+    </div>
+    <div class="card" style="margin:0;">
+        <h4>⚙️ 专用设备/其他</h4>
+        <table>
+            <tr><th>代码</th><th>名称</th><th>题材</th></tr>
+            <tr><td>002827</td><td>高争民爆</td><td>4连板/民爆</td></tr>
+            <tr><td>000593</td><td>德龙汇能</td><td>2连板/燃气</td></tr>
+            <tr><td>002075</td><td>沙钢股份</td><td>首板/钢铁</td></tr>
+            <tr><td>600540</td><td>新赛股份</td><td>首板/农业</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- ====== 个股深度分析 ====== -->
+<h2>🔬 核心个股深度分析</h2>
+
+<div class="card" style="border-color:rgba(63,185,80,0.3);">
+    <h4>🟢 传智教育（003032）— 6连板，市场最高标</h4>
+    <p>一字板涨停，AI教育/IT培训龙头。公司主营AI、鸿蒙、大数据等IT培训业务，受益于政治局"AI+"定调+国产大模型霸榜OpenRouter前五。当前已走出6连板，是市场最高标。爱丽家居停牌后，传智教育成功接棒成为新的人气标杆。但需注意：AI教育题材的想象空间不如AI硬件，且公司此前经历摘帽，基本面仍有不确定性。</p>
+</div>
+
+<div class="card" style="border-color:rgba(210,153,29,0.3);">
+    <h4>🟡 中岩大地（003001）— 8天5板，核电板块人气王</h4>
+    <p>核电岩土工程龙头，受益于1700亿核电投资。8天5板走势强劲，但需注意：公司体量小（约30亿市值），业绩弹性有限。核电建设周期3-5年，短期业绩兑现难。当前已处高位，追高风险大。</p>
+</div>
+
+<div class="card" style="border-color:rgba(248,81,73,0.3);">
+    <h4>🔴 高争民爆（002827）— 4连板，独立逻辑</h4>
+    <p>民爆行业景气上行，但4连板后已严重脱离基本面。民爆属于周期性行业，当前PE已超100倍，纯概念溢价。建议观望。</p>
+</div>
+
+<div class="card" style="border-color:rgba(210,153,29,0.3);">
+    <h4>🟡 中国核建（601611）— 核电建设龙头，首板</h4>
+    <p>核电建设绝对龙头，中字头央企。1700亿核电投资直接受益，封单强劲。但公司体量大（市值约500亿），连板能力有限。适合趋势跟踪而非短线博弈。</p>
+</div>
+
+<div class="card" style="border-color:rgba(63,185,80,0.3);">
+    <h4>🟢 养元饮品（603156）— 业绩+分红驱动</h4>
+    <p>中报业绩高增长+现金分红，是今日主板涨停中少数有基本面支撑的标的。消费板块反弹先锋，但大消费整体持续性存疑。</p>
+</div>
+
+<!-- ====== 题材分布 ====== -->
+<h2>📊 涨停题材分布</h2>
+<div class="card">
+    <table>
+        <tr><th>题材</th><th>涨停数</th><th>连板高标</th><th>强度</th></tr>
+        <tr><td>☢️ 核电/绿电（含电网设备）</td><td><strong>16</strong></td><td>中岩大地8天5板、盈峰环境2连板</td><td><span class="badge badge-red">⭐⭐⭐⭐⭐</span></td></tr>
+        <tr><td>📱 泛科技（AI应用/算力/通信）</td><td><strong>12</strong></td><td>传智教育6连板、泛微网络3连板</td><td><span class="badge badge-red">⭐⭐⭐⭐⭐</span></td></tr>
+        <tr><td>🛍️ 大消费</td><td><strong>9</strong></td><td>锦和商管2连板、豪尔赛2连板</td><td><span class="badge badge-orange">⭐⭐⭐⭐</span></td></tr>
+        <tr><td>🤖 机器人</td><td><strong>3</strong></td><td>杰克科技2连板、中大力德2连板</td><td><span class="badge badge-green">⭐⭐⭐</span></td></tr>
+        <tr><td>⚙️ 其他</td><td>若干</td><td>高争民爆4连板</td><td><span class="badge badge-blue">⭐⭐</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;">核电方向16只涨停，但多为首板跟风，连板梯队集中在AI应用（传智教育6板）。大消费方向首板为主，持续性待观察。</p>
+</div>
+
+<!-- ====== 综合判断 ====== -->
+<h2>📋 Serenity 综合判断</h2>
+<div class="summary">
+    <table style="width:100%;font-size:14px;color:var(--text);">
+        <tr><td style="color:var(--muted);width:100px;">主板涨停生态</td><td><strong>"核电搭台，AI唱戏，消费配角"——主板涨停50只，三线开花</strong>——核电板块16只涨停一枝独秀（1700亿投资催化），AI应用12只涨停（传智教育6连板成最高标），大消费9只涨停（养元饮品业绩驱动）。整体来看，主板涨停数量远超创业板（6只）和科创板（1只），说明资金在主板找到了更丰富的表达空间。</td></tr>
+        <tr><td style="color:var(--muted);">连板生态</td><td><strong>传智教育6连板接棒爱丽家居，连板高度维持</strong>——爱丽家居停牌后，传智教育一字板6连板成为市场最高标，证明连板情绪并未因龙头停牌而崩塌。中岩大地8天5板、高争民爆4连板、泛微网络/神雾节能3连板，连板梯队完整（6→5→4→3→2）。但2板股多达13只，分化严重，说明资金在广泛试错多个方向。</td></tr>
+        <tr><td style="color:var(--muted);">与创业板/科创板对比</td><td>主板涨停50只 >> 创业板6只 >> 科创板1只。主板涨停遍布核电/AI/消费/机器人四大方向，创业板涨停集中在核电/复牌/业绩，科创板仅*ST航图涨停且半导体设备重挫。主板是今日涨停的<strong>绝对主战场</strong>。</td></tr>
+        <tr><td style="color:var(--muted);">操作建议</td><td><strong>聚焦核电龙头+AI应用，回避跟风首板</strong>——核电板块建议关注中国核建/融发核电等核心标的，跟风首板（如风范股份/汇金通）持续性差。AI应用方向传智教育6连板，但板块内跟风标的（泛微网络/恒银科技/天娱数科）性价比不高。大消费方向仅养元饮品有业绩支撑，其余首板不建议参与。</td></tr>
+        <tr><td style="color:var(--muted);">Serenity 一句话</td><td>主板用了50只涨停，告诉市场一个道理：<span class="highlight">核电是"政策开闸"，AI是"产业趋势"</span>——两者都是真命题，但核电的"真"在3-5年后，AI的"真"在当下。传智教育6连板一字板，是市场对AI应用方向的最强背书；而核电16只涨停中，真正能走出2连板的可能不超过3只。<span class="highlight">在政策驱动和产业趋势之间，选择后者，赢面更大。</span></td></tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+    <p>本报告由 Serenity 投资分析引擎生成 · 基于公开信息 · 不构成投资建议</p>
+    <p>数据来源：财联社 · 东方财富Choice · 界面新闻 · 中财网 · 2026年8月3日</p>
+    <p><a href="https://lulaping.github.io/a-stock-reports/" style="color:var(--blue);">返回报告列表</a></p>
+</div>
+
+</body>
+</html>
