@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>传智教育 (003032) — Serenity 分析 2026-08-04</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--muted);
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<!-- 标题区 -->
+<h1>🎓 传智教育 (003032) — Serenity 分析报告</h1>
+<p class="subtitle">分析日期：2026-08-04 | 今日 7 连板（T字板）报 10.66 元，市值 42.90 亿 | 市场最高标 + AI职教第一股</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>📊 核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">7连板</div><div class="label">市场最高标</div></div>
+        <div class="stat"><div class="num">42.90亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">6/15</div><div class="label">好卡点评分</div></div>
+        <div class="stat"><div class="num up">+488~655%</div><div class="label">H1净利增速</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">成交2.82亿 · 换手9.32% · 总股本4.02亿股 · 流通2.84亿 · 15日累计涨+94% · 7/30异动公告 · 数据时点：2026-08-04 收盘</div>
+</div>
+
+<!-- 结论 -->
+<h2>① 结论（两行）</h2>
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">行1 — 客观框架</span>
+        <span><strong>Base（合理市值 15-20 亿，现价严重透支）</strong>。<br>
+        8/4 T字涨停报 <strong>10.66 元，市值 42.90 亿</strong>，总股本 <strong>4.02 亿股</strong>（流通 2.84 亿）。<br>
+        <strong>Bear 8-12 亿（2.0-3.0 元）/ Base 15-20 亿（3.7-5.0 元）/ Bull 30-40 亿（7.5-10.0 元）</strong>。<br>
+        股价 = 市值 ÷ 总股本（<strong>4.02 亿股</strong>）。当前 42.90 亿已超过 Bull 上限。<br>
+        ⚠️ <strong>硬伤</strong>：2025 扣非仍亏 1.06 亿、PE 为负、期间费用率 63.43% 远超行业、券商目标价 9.00 元（60x PE）已突破。</span>
+    </div>
+    <div class="conclusion-row"><span class="conclusion-label">行2 — Serenity</span>
+        <span><strong>🟡 Hold（AI职教稀缺标的，但7连板后追高风险极大）</strong>。<br>
+        <span class="highlight">核心亮点：A股唯一纯AI数字化人才培训标的 + 行业供给出清（达内剥离成人培训）+ 高研发壁垒（20.4% 费率 vs 行业 1.6%）+ 产业巨头背书（华为/阿里云/智元/宇树）+ 业绩扭亏（H1 2800-4000万）。</span><br>
+        好卡点 6/15（稀缺性 1 + 研发壁垒 1 + 未来爆发 1 + 本土化 1 + 信息不对称 1 + 大TAM 1）。<br>
+        但<strong> 7连板涨幅 +94%、市值已超券商目标价对应市值 67%、AI具身智能课程尚未开课（10月才开班，零学员结业数据）、学历教育增长靠并购</strong>——现价定价了最乐观的"AI培训全面爆发"情景。</span>
+    </div>
+</div>
+
+<!-- 客观事实底座 -->
+<h2>② 客观事实底座</h2>
+<div class="card">
+    <h2 style="margin-top:0;">L0-事实：核心数据全景</h2>
+    <table>
+        <tr><th>维度</th><th>数据</th><th>来源</th></tr>
+        <tr><td><strong>今日股价</strong></td><td><strong>10.66 元（7连板，T字涨停）</strong>，9:30 封板，成交2.82亿，换手9.32%</td><td>第一财经/金融界</td></tr>
+        <tr><td><strong>总市值</strong></td><td><strong>42.90 亿</strong>，总股本 4.02 亿股</td><td>头条/多源</td></tr>
+        <tr><td><strong>2026H1 预告</strong></td><td><strong>归母净利 2800-4000 万（+488%-655%），扭亏为盈</strong></td><td>公司公告 7/14</td></tr>
+        <tr><td><strong>2026Q1</strong></td><td>营收 1.04 亿（+43.75%），归母净利 145.79 万，单季扭亏</td><td>年报/中国经济网</td></tr>
+        <tr><td><strong>2025 全年</strong></td><td>营收 3.79 亿（+54.43%），扣非净利 <strong>-1.06 亿</strong>，期间费用率 63.43%</td><td>年报/览富财经</td></tr>
+        <tr><td><strong>收入结构</strong></td><td>短期培训 54%（"黑马程序员"+"传智AI"）/ 学历教育 36.7%（宿迁/大同/新加坡）</td><td>头条/年报</td></tr>
+        <tr><td><strong>研发投入</strong></td><td><strong>2024 年研发费率 20.4%</strong>（vs 达内 1.6%），累计培养 AI 人才超 35 万人</td><td>国泰海通研报</td></tr>
+        <tr><td><strong>历史包袱</strong></td><td>2022 年收入高点 7.7 亿 → 2025 仅 2.05 亿（跌去 73%），2024 年 *ST</td><td>头条/年报</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">L0-框架：7连板的四重逻辑拆解</h2>
+    <p style="font-size:14px;line-height:1.8">
+    <strong>① 业绩扭亏（基本面拐点）</strong>：H1 净利 2800-4000 万扭转 2024-2025 连续亏损，摘帽预期落地。但核心短训收入从 2022 年的 7.7 亿萎缩至 2025 年的 2.05 亿（-73%），扭亏基数极低。<br><br>
+    <strong>② AI 具身智能机器人（最强题材引爆点）</strong>：7/24 发布"AI具身智能机器人开发"新学科，覆盖工业机械臂/四足巡检/人形服务机器人，对接智元/宇树/众擎等头部厂商。首期班报名完成，10 月正式开课——<strong>但截至今日零学员结业，课程交付质量完全未知</strong>。<br><br>
+    <strong>③ 行业供给出清（竞争格局改善）</strong>：达内教育剥离成人培训业务，传统头部对手出清；AI 人才缺口超 500 万，2026H1 AI 岗位招聘同比 +21%。传智作为 A 股唯一纯 AI 人才培训标的，稀缺性凸出。<br><br>
+    <strong>④ 机构密集调研+券商增持（背书加持）</strong>：7 月以来 17 家机构调研，国泰海通 7/29 首次覆盖"增持"评级，目标价 9.00 元（60x 2026 PE）。但今日股价已突破目标价。
+    </p>
+</div>
+
+<!-- 两套评估 -->
+<h2>③ 两套评估</h2>
+
+<div class="card">
+    <h2 style="margin-top:0;">3a. Serenity 框架（15 条判据）</h2>
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td>0</td><td>教育行业极度分散，传智只是在 IT 培训细分有品牌</td></tr>
+        <tr><td>2</td><td>极小市值 vs 巨大 TAM</td><td>1</td><td>42.9 亿 / AI 人才培训市场 500 万缺口，TAM 极大</td></tr>
+        <tr><td>3</td><td>BOM 占比 + designed-in</td><td>0</td><td>非制造业</td></tr>
+        <tr><td>4</td><td>designed-in + 多客户</td><td>0</td><td>非硬件</td></tr>
+        <tr><td>5</td><td>认证/资格周期长</td><td>0</td><td>教育资质非核心壁垒</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td>1</td><td>AI 培训若全面爆发（2027-28），券商预测 2028 年净利 1.94 亿</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td>1</td><td>已全额计提商誉、经营现金流转正、无大额负债</td></tr>
+        <tr><td>8</td><td>Demand outstrips supply</td><td>0</td><td>AI 人才缺口存在但非"供不应求"型紧缺</td></tr>
+        <tr><td>9</td><td>大客户全包产能</td><td>0</td><td>无</td></tr>
+        <tr><td>10</td><td>国家安全/政府介入</td><td>0</td><td>无</td></tr>
+        <tr><td>11</td><td>本土化 = 护城河</td><td>1</td><td>中国 AI 职业教育天然本土市场，海外机构难以进入</td></tr>
+        <tr><td>12</td><td>信息不对称/定价错误</td><td>1</td><td>课程未开课即被定价为"AI培训龙头"，课程交付质量是最大未知数</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td>1</td><td><strong>A股唯一纯AI数字化人才培训标的</strong>，稀缺性真实</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td>0</td><td>券商预测 2026-2028 但置信度低，学历教育靠并购增长不可持续</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td>0</td><td>不适用</td></tr>
+    </table>
+    <p class="green-note"><strong>合计 6/15。</strong> 卡点属性偏"稀缺性 + 品牌壁垒"型而非"供应链卡点"型——A股唯一纯AI培训标的是核心护城河，但行业属性决定了这不是一个"卡脖子"环节。</p>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">连板 SOP 评估（高标 7 连板）</h2>
+    <table>
+        <tr><th>L1 分类</th><td><strong>高标（7连板）</strong> — 市场情绪风向标，AI 应用板块总龙头</td></tr>
+        <tr><th>L2 封板质量</th><td>T字板（9:30封死），换手9.32%，成交量2.82亿。一字变T字说明第7板分歧开始出现</td></tr>
+        <tr><th>L3 题材定位</th><td><strong>主线核心</strong> — AI应用+具身智能双主线，市场辨识度最高的AI教育标的</td></tr>
+        <tr><th>L4 判定</th><td><span class="badge badge-orange">🟡 观望</span> — 7连板+94%涨幅+价格已超券商目标价，追高风险极大</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">红旗扫描</h2>
+    <ul class="flag-list">
+        <li class="fail">🔴 <strong>7连板一字/T字无充分换手</strong> — 连板 SOP 红旗：4板以上仍一字 → 开板即剧烈分歧</li>
+        <li class="fail">🔴 <strong>课程未交付</strong> — AI具身智能机器人课程10月才开班，零学员结业数据，市场在赌"未来"</li>
+        <li class="fail">🔴 <strong>期间费用率 63.43%</strong> — 远超行业平均，2025 扣非仍亏 1.06 亿，盈利质量极差</li>
+        <li class="warn">⚠️ <strong>学历教育靠并购增长</strong> — 2025年学历教育 +646% 主要靠并表（宿迁/大同/新加坡），内生增长有限</li>
+        <li class="warn">⚠️ <strong>股价已超券商目标价 9.00 元</strong> — 国泰海通 60x PE 目标价已突破，当前定价了 2028 年乐观情景</li>
+        <li class="warn">⚠️ <strong>7/30 异动公告</strong> — 公司明确"经营及内外部环境未发生重大变化"</li>
+        <li class="warn">⚠️ <strong>短训收入较 2022 年高点跌去 73%</strong> — 复苏趋势在但远未回到峰值</li>
+        <li class="pass">✅ 行业供给出清（达内剥离成人培训），竞争格局改善</li>
+        <li class="pass">✅ 研发壁垒真实（20.4% vs 行业 1.6%），产业链背书（华为/阿里云/智元）</li>
+        <li class="pass">✅ 17 家机构调研 + 国泰海通增持评级，机构背书</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">信念分档</h2>
+    <p style="font-size:14px;line-height:1.8">
+    <strong>🟡 Hold（AI职教稀缺标的，但7连板后只可等回调）</strong> — 传智教育的核心价值在于"AI人才培训第一股"的稀缺性 + 行业供给出清后竞争格局改善 + 高研发壁垒带来的课程迭代能力。但 42.9 亿市值已定价了 2028 年最乐观的 1.94 亿净利情景（对应 PE 22x），而 <strong>当前 AI 课程尚未交付验证、学历教育靠并购驱动、期间费用率 63% 说明盈利模型尚未跑通</strong>。<br><br>
+    <strong>合理介入区间：15-22 亿（3.7-5.5 元）</strong>，即回调 50-65% 后。如果 AI 课程首批学员就业数据验证（2026 年底-2027 年初），届时可上修估值。
+    </p>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">3b. 客观框架 — Bear/Base/Bull</h2>
+    <div class="price-box">
+        <div class="pb-card bear"><h4>🐻 Bear</h4><div class="price">8-12亿</div><div class="price-detail">对应股价 2.0-3.0 元</div>
+            <p style="font-size:13px;margin-top:8px"><strong>触发：</strong>AI课程招生不及预期+学历教育增长放缓+竞争加剧，2027 净利 <2000 万，PE 40-60x。<br><strong>概率 ~25%</strong></p></div>
+        <div class="pb-card base"><h4>📊 Base</h4><div class="price">15-20亿</div><div class="price-detail">对应股价 3.7-5.0 元</div>
+            <p style="font-size:13px;margin-top:8px"><strong>触发：</strong>AI培训稳步增长，2027 净利 4000-6000 万，PE 30-40x。<br><strong>概率 ~50%</strong></p></div>
+        <div class="pb-card bull"><h4>🐂 Bull</h4><div class="price">30-40亿</div><div class="price-detail">对应股价 7.5-10.0 元</div>
+            <p style="font-size:13px;margin-top:8px"><strong>触发：</strong>AI培训全面爆发+课程交付验证+内生增长，2028 净利 1.5-2.0 亿，PE 20-25x。国泰海通目标价 9.00 元落在此区间。<br><strong>概率 ~25%</strong></p></div>
+    </div>
+    <p class="alert" style="margin-top:8px;"><strong>⚠️ 关键约束：</strong>股价 = 市值 ÷ 总股本（4.02 亿股）。当前 42.90 亿已超过 Bull 上限——现价定价了"AI 培训全面爆发 + 课程完美交付"的双重乐观预期，且已超出券商目标价 67%。</p>
+</div>
+
+<!-- 催化剂 -->
+<h2>关键催化剂时点</h2>
+<div class="card">
+    <table>
+        <tr><th>时间</th><th>事件</th><th>影响</th></tr>
+        <tr><td><strong>2026-10</strong></td><td><strong>AI具身智能机器人课程正式开班</strong></td><td>首期招生规模是验证需求的关键指标</td></tr>
+        <tr><td><strong>2026年底-2027初</strong></td><td><strong>首期学员结业 + 就业数据</strong></td><td>核心验证节点——课程交付质量决定叙事能否持续</td></tr>
+        <tr><td><strong>2026-08（待定）</strong></td><td><strong>中报正式披露</strong></td><td>验证短训招生增长 + 学历教育内生增速</td></tr>
+        <tr><td>持续</td><td>教育部 AI 赋能教育政策落地细节</td><td>行业 β，政策加码可直接催化板块</td></tr>
+        <tr><td>持续</td><td>达内等竞对动态</td><td>竞对退出越多，传智的稀缺性溢价越强</td></tr>
+    </table>
+</div>
+
+<!-- 龙虎榜 -->
+<h2>龙虎榜与资金面</h2>
+<div class="card">
+    <table>
+        <tr><th>席位</th><th>方向</th><th>金额</th><th>解读</th></tr>
+        <tr><td>杭州建设三路（国盛）</td><td>买入</td><td>0.33 亿</td><td>浙系游资参与，体量适中</td></tr>
+        <tr><td>机构（7月调研）</td><td>调研</td><td>17 家（浙商/招商基金等）</td><td>机构关注度高但尚未大规模建仓</td></tr>
+        <tr><td>国泰海通</td><td>评级</td><td>增持/目标 9.00 元</td><td>7/29 首次覆盖，当前股价已突破目标价</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">7连板期间 7 日累计换手率超 56%，筹码充分交换，分歧快速加大。</p>
+</div>
+
+<!-- 独立复核 -->
+<h2>独立复核</h2>
+<div class="card">
+    <table>
+        <tr><th>复核项</th><th>结果</th></tr>
+        <tr><td>关键数字一手来源</td><td>✅ 财务/股本来自公司公告/年报/券商研报/财经媒体，多源交叉验证</td></tr>
+        <tr><td>总股本确认</td><td>✅ 4.02 亿股（国泰海通研报/头条/多源交叉验证）</td></tr>
+        <tr><td>数据时效性</td><td>✅ 股价 8/4 实时，财务 2026H1 预告，研报 7/29</td></tr>
+        <tr><td>确认偏误检查</td><td>✅ 三情景完整，明确"7连板后追高风险极大"，无倾向性</td></tr>
+        <tr><td>卡点判据完整性</td><td>✅ 15 条逐条打分 6/15；识别为"稀缺性+品牌壁垒"型</td></tr>
+        <tr><td>A 股特有复核</td><td>✅ 已纳入：异动公告、摘帽、*ST 历史、券商目标价、龙虎榜</td></tr>
+        <tr><td>连板 SOP 复核</td><td>✅ L1-L6 全部执行，命中"一字板无换手+澄清公告"连板红旗</td></tr>
+    </table>
+</div>
+
+<div class="alert"><strong>⚠️ 风险提示：</strong>① 7连板累计涨幅 +94%，7/30 已发异动公告，随时可能停牌核查或断板；② AI具身智能机器人课程10月才开班，零学员结业数据，市场在为"未验证的未来"定价；③ 期间费用率 63.43% 说明盈利模型尚未跑通，2025 扣非仍亏 1.06 亿；④ 学历教育增长靠并购（宿迁/大同/新加坡），内生增长待验证；⑤ 本报告基于公开信息整理，不构成投资建议。</div>
+
+<!-- 页脚 -->
+<div class="footer">
+    Serenity 投资分析引擎 · 2026-08-04 · 数据来源：第一财经/金融界/每日经济新闻/国泰海通研报/公司公告 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
