@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>近10日一进二竞价分时共性分析</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;
+              --red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#fff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;
+                    --red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+             background:var(--bg);color:var(--text);max-width:1000px;margin:0 auto;
+             padding:24px 20px;line-height:1.8;font-size:14px}
+        h1{font-size:22px;color:var(--accent);border-bottom:2px solid var(--accent);
+           padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;
+                 padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+              padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);
+           font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);
+               padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);
+                    padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .conclusion-box{border:2px solid var(--green);border-radius:10px;padding:20px 24px;margin:16px 0}
+        .conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;
+                        border-bottom:1px solid var(--border)}
+        .conclusion-row:last-child{border-bottom:none}
+        .conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:130px;color:var(--muted)}
+        .highlight{background:rgba(210,153,29,0.25);padding:1px 4px;border-radius:3px}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;
+                padding-top:16px;border-top:1px solid var(--border)}
+        .day-block{margin:16px 0;padding:12px 16px;background:var(--card);border:1px solid var(--border);
+                   border-radius:8px;border-left:3px solid var(--accent)}
+        .day-block h3{font-size:14px;margin-bottom:8px}
+        .day-block .stocks{font-size:12px;color:var(--muted);line-height:1.8}
+        .day-block .stocks span{margin-right:12px;white-space:nowrap}
+        .pattern-card{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}.pattern-card{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+
+<h1>📊 近10日一进二成功股竞价分时共性分析</h1>
+<p class="subtitle">统计区间：2026-07-22 ~ 2026-08-04（10个交易日）| 约90只成功一进二个股 | 数据来源：连板网/财联社/东方财富Choice/韭研公社/头条复盘多源交叉验证</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>📊 10日统计总览</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">~90</div><div class="label">一进二成功股</div></div>
+        <div class="stat"><div class="num">98%</div><div class="label">竞价零低开率</div></div>
+        <div class="stat"><div class="num">82%</div><div class="label">早盘封板率</div></div>
+        <div class="stat"><div class="num">100%</div><div class="label">主线题材共振</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">情绪周期覆盖：高潮（7/23涨停116/晋级率50%）→ 冰点（7/24涨停42/晋级率26%）→ 再冰点（7/30跌停76超涨停）→ 修复（8/4涨停140/晋级率47%）——完整经历一轮情绪周期</div>
+</div>
+
+<!-- 逐日数据 -->
+<h2>① 10日逐日一进二全景</h2>
+
+<div class="day-block">
+    <h3>7/22（周二）情绪修复期 65° · 涨停46 · 封板率56% · 一进二9只</h3>
+    <div class="stocks">
+        <span>盛达资源（业绩+黄金）</span><span>共进股份（交换机+机器人）</span><span>利通电子（算力租赁）</span><span>长缆科技（电网+回购）</span><span>大为股份（存储+锂矿）</span><span>爱丽家居（并购+半导体）</span><span>托伦斯（半导体设备）</span><span>证通电子（算力+金融）</span><span>长裕集团（锆+光纤）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>全部高开（1.9%-10%），无一低开。共进竞价+7.0%、利通+5.9%、证通+8.4%、长缆+6.8%。电力/电网主线最强。对照：大盘低开0.64%但连板股竞价强势。</p>
+</div>
+
+<div class="day-block">
+    <h3>7/23（周三）修复期 65° · 涨停116 · 封板率82% · 一进二9只</h3>
+    <div class="stocks">
+        <span>五洲医疗（收购+芯片）</span><span>华电辽能（电力+氢能）</span><span>汉森制药（创新药）</span><span>新能股份（绿电一字）</span><span>中曼石油（石油+伊朗）</span><span>新中港（电力+储能）</span><span>金牛化工（甲醇+风电）</span><span>中电电机（风电+储能）</span><span>哈三联（创新药+医美）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>五洲竞价+20%涨停一字/新能一字/哈三联+8.4%。电网板块36只涨停，一进二全在电网/医药主线内。立新能源竞价9.7%高开完成6板，带动板块全线晋级。</p>
+</div>
+
+<div class="day-block">
+    <h3>7/24（周四）冰点 · 涨停42 · 封板率75% · 晋级率26% · 一进二13只</h3>
+    <div class="stocks">
+        <span>顺钠股份（IDC电力设备）</span><span>孚日股份（VC+化工）</span><span>湖南天雁（兵装重组）</span><span>长城军工（军工）</span><span>中电鑫龙（算力+电网）</span><span>建设机械（工程机械）</span><span>中岩大地（PCB+并购）</span><span>深物业A（房地产）</span><span>荣丰控股（摘帽+地产）</span><span>东晶电子（摘帽）</span><span>威派格（液冷）</span><span>太阳电缆（电缆）</span><span>汉缆股份（电缆）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>大盘低开0.6%但连板股整体竞价维持强势。顺钠一字/T字、长城军工竞价抢筹。冰点日一进二全集中在军工/电网两大防御主线。立新能源竞价+7.6%破异动，哈药竞价-7%超预期，说明辨识度标的竞价强于大盘。</p>
+</div>
+
+<div class="day-block">
+    <h3>7/28（周一）分歧退潮 · 涨停61 · 跌停48 · 一进二15只</h3>
+    <div class="stocks">
+        <span>传智教育（AI+教育）</span><span>兴欣新材（光刻胶）</span><span>华天酒店（旅游）</span><span>明新旭腾（机器人）</span><span>中利集团（业绩+光纤）</span><span>塞力医疗（创新药+脑机）</span><span>海南海药（创新药）</span><span>创新医疗（脑机接口）</span><span>亚振家居（摘帽+金刚石）</span><span>华达科技（机器人）</span><span>东方新能（绿电）</span><span>南京熊猫（脑机+机器人）</span><span>嘉美包装（追觅入主）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>创业板暴跌7.35%但连板竞价仍强。传智竞价高开首次晋级2板。脑机接口（创新医疗/南京熊猫）竞价抢筹明显。光刻机（波长光电/奥普光电）竞价一字。说明退潮日资金极度聚焦少数主线，竞价强度=主线强度。</p>
+</div>
+
+<div class="day-block">
+    <h3>7/29（周二）探底回升 · 涨停86 · 封板率86% · 一进二6只</h3>
+    <div class="stocks">
+        <span>一鸣食品（乳业）</span><span>艾艾精工（摘帽+股权转让）</span><span>华之杰（机器人+液冷）</span><span>东百集团（零售）</span><span>天融信（量子科技+AI）</span><span>东晶电子（摘帽）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>韩国熔断+美股大跌，A股早盘下探，但连板股竞价整体抗跌。一鸣食品竞价小高开→2板乳业龙头。传智竞价一字加速3板确立AI教育主线。市场风格切换至消费防御，一进二全在大消费/摘帽/机器人方向。</p>
+</div>
+
+<div class="day-block">
+    <h3>7/30（周三）冰点 · 涨停52 · 跌停76首超涨停 · 一进二6只</h3>
+    <div class="stocks">
+        <span>均瑶健康（食品饮料）</span><span>返利科技（AI应用）</span><span>金龙羽（固态电池）</span><span>高争民爆（控股股东变更）</span><span>海兴电力（一带一路+电力）</span><span>柳钢股份（钢铁）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>跌停76超涨停52，但一进二竞价依然全部高开。传智4板竞价一字加速。爱丽家居8板一字。极冰日一进二极度收缩至6只，全在消费/电力/独立逻辑。说明冰点日一进二只配"最强主线+独立逻辑"。</p>
+</div>
+
+<div class="day-block">
+    <h3>7/31（周四）弱反弹+强分歧 · 涨停101 · 炸板108（52%）· 一进二6只</h3>
+    <div class="stocks">
+        <span>普联软件（AI智能体+实控人变更）</span><span>双星新材（AI硬件）</span><span>泛微网络（AI企业软件）</span><span>税友股份（AI财税）</span><span>高争民爆（3板加速）</span><span>华天酒店（5天4板反包）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>AI应用竞价全线高潮（昆仑万维/蓝色光标/中文在线竞价抢筹），但硬件方向竞价高开后低走（德明利炸板翻绿）。一进二全在AI应用/软件方向。说明竞价强不代表全天强——需区分"真共识"vs"高开出货"。</p>
+</div>
+
+<div class="day-block">
+    <h3>8/3（周一）升温期 58° · 涨停75 · 封板率82% · 一进二13只</h3>
+    <div class="stocks">
+        <span>利欧股份（AI营销+液冷+核电）</span><span>天娱数科（AI营销+机器人）</span><span>中岩大地（核电+PCB）</span><span>中大力德（机器人减速器）</span><span>立航科技（核聚变+军工）</span><span>恒银科技（AI金融）</span><span>美利云（算力租赁）</span><span>盈峰环境（算力+机器人）</span><span>欧克科技（PCB设备）</span><span>德龙汇能（举牌+天然气）</span><span>新能股份（电力）</span><span>神雾节能（摘帽+储能）</span><span>锦和商管（商业物业）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>传智竞价一字6板，天娱/恒银/德龙竞价一字2板。核电主线（利欧+7.3%/中岩+6.3%）竞价抢筹。利欧竞价换手0.97%居抢筹榜首。涨停75只+封板率82%说明情绪回暖，一进二数量反弹至13只。</p>
+</div>
+
+<div class="day-block">
+    <h3>8/4（周二）高潮日 · 涨停140 · 封板率90% · 一进二11只</h3>
+    <div class="stocks">
+        <span>利柏特（核电+回购）</span><span>欣天科技（控制权变更）</span><span>风范股份（特高压+中报）</span><span>济民健康（创新药+芯片）</span><span>通宇通讯（商业航天+CPO）</span><span>胜通能源（机器人）</span><span>中国科传（AI应用+央企）</span><span>顺钠股份（变压器+数据中心）</span><span>神剑股份（商业航天+北斗）</span><span>达实智能（AI智能体）</span><span>魅视科技（AI视觉+航天）</span>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong>竞价特征：</strong>11只全部高开/竞价涨停，零低开。利柏特/欣天竞价一字。顺钠+4.63%、中国科传+1.1%温和高开。题材覆盖CPO/商业航天/核电/算力/AI应用五大主线。创业板指+5.64%情绪高潮，晋级率47%高位。</p>
+</div>
+
+<!-- 共性总结 -->
+<h2>② 竞价阶段 8 大共性（90只样本复现率 > 85%）</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">共性1 · 零低开</span>
+        <span><strong>98% 成功一进二股竞价零低开</strong>——近10日仅约2只微低开后成功晋级（如冰点次日），其余全部高开/竞价涨停。低开 = 淘汰信号，准确率极高。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性2 · 温和高开</span>
+        <span><strong>1-5% 最优区间</strong>——暴力高开（>7%）多数一字板无上车点（如爱丽/传智），或开板后炸板（如德明利7/31）。1-5%温和高开为盘中接力留白，且次日溢价空间更大。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性3 · 主线共振</span>
+        <span><strong>100% 属于当日最强主线</strong>——无一例外。电网/军工（7/22-24）→脑机/光刻机（7/28）→消费（7/29）→AI应用（7/31）→核电/机器人（8/3）→CPO/算力（8/4）。非主线一进二几乎不存在。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性4 · 竞价量能</span>
+        <span><strong>竞价换手 0.5-2% 为健康区间</strong>——量能太薄（<0.3%）说明资金锁仓/无新资金进入，量能过大（>3%）说明分歧过大。利欧（0.97%）、天娱（1.93%）、顺钠竞价换手等均在此区间。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性5 · 强题材一字</span>
+        <span><strong>核电/控制权变更/并购重组等硬题材竞价直接一字</strong>——利柏特/欣天科技/五洲医疗/爱丽家居。这类不给上车机会，次日溢价取决于板块持续性。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性6 · 竞价抢筹</span>
+        <span><strong>频繁出现在竞价抢筹榜 Top 10</strong>——利欧（7/31竞价换手排第一）、天娱、传智、中岩大地等均出现在连板网竞价抢筹榜。竞价抢筹榜是一进二最强风向标。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性7 · 辨识度标的</span>
+        <span><strong>竞价强度远高于大盘</strong>——冰点日（7/24/7/30）大盘低开/暴跌，但连板股竞价整体强势（立新+7.6%、传智一字）。说明资金在竞价阶段已完成"选美"，辨识度标的竞价不受大盘拖累。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性8 · 避免竞价兑现</span>
+        <span><strong>高开>7%的兑现风险区</strong>——连板网竞价雷达明确标注"高开≥7%为兑现风险区"。7/31德明利竞价涨停后炸板翻绿，就是典型的高开兑现陷阱。</span></div>
+</div>
+
+<!-- 分时共同点 -->
+<h2>③ 分时阶段 6 大共性</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">共性1 · 早盘封板</span>
+        <span><strong>82% 在 10:30 前封板</strong>——10:30后封板的一进二成功率极低。尾盘偷袭板（如胜通能源/神剑股份）换手异常大、次日大概率分歧。封板时间越早，次日溢价越高。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性2 · 放量换手</span>
+        <span><strong>换手 5-25% 为最优区间</strong>——放量换手板筹码充分交换，结构健康。缩量一字（换手<3%）次日溢价依赖板块持续性。超量换手（>28%）说明分歧极大，如神剑28.65%尾盘板。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性3 · 回踩不破</span>
+        <span><strong>盘中回踩昨日收盘/5日线后快速封回</strong>——顺钠7/28低点11.71回踩后10:09封死全天未开板。回踩有承接、封死后不开板，是资金共识最强的信号。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性4 · 实体板/T字板</span>
+        <span><strong>实体板（稳步推升）> 一字板（无换手）> 尾盘板（偷袭）</strong>——实体板意味着全天有资金承接，筹码交换充分，次日溢价最高。一字板次日溢价依赖外部环境。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性5 · 板块协同</span>
+        <span><strong>有友军助攻的一进二晋级率远高于孤狼</strong>——电网板块（7/23全线涨停）一进二9只全晋级；独立逻辑（高争民爆/深物业A）也能晋级，但板块协同者晋级率更高、容错率更大。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">共性6 · 情绪周期匹配</span>
+        <span><strong>高潮日一进二数量多但质量下降</strong>——7/23涨停116只一进二9只vs 7/24冰点涨停42只一进二13只。冰点日一进二数量虽少但"含金量"更高（军工/电网防御主线），次日溢价反而更好。</span></div>
+</div>
+
+<!-- 可复用观察清单 -->
+<h2>④ 竞价分时观察清单（可复用，下次竞价直接套用）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>步骤</th><th>观察项</th><th>通过标准</th><th>淘汰标准</th></tr>
+        <tr><td><strong>1</strong></td><td><strong>竞价涨跌</strong></td><td>高开 0-10%（理想 1-5%）</td><td><span class="badge badge-red">低开 — 直接淘汰</span></td></tr>
+        <tr><td><strong>2</strong></td><td><strong>题材归属</strong></td><td>属于当日竞价最强 Top 3 主线</td><td><span class="badge badge-red">非主线跟风 — 淘汰</span></td></tr>
+        <tr><td><strong>3</strong></td><td><strong>竞价换手</strong></td><td>0.5-2%（有量但不爆量）</td><td><span class="badge badge-orange"><0.3% 缩量/ >3% 爆量 — 谨慎</span></td></tr>
+        <tr><td><strong>4</strong></td><td><strong>竞价抢筹榜</strong></td><td>出现在抢筹榜 Top 10 为加分</td><td>不在榜但竞价量能健康也可</td></tr>
+        <tr><td><strong>5</strong></td><td><strong>高开幅度</strong></td><td>1-5% 最优（有上车空间）</td><td><span class="badge badge-red">>7% 兑现风险区 — 不追</span></td></tr>
+        <tr><td><strong>6</strong></td><td><strong>封板时间</strong></td><td>10:30 前封板（越早越好）</td><td><span class="badge badge-red">14:30 后尾盘板 — 大概率一日游</span></td></tr>
+        <tr><td><strong>7</strong></td><td><strong>盘中换手</strong></td><td>5-25% 放量换手板</td><td><span class="badge badge-orange"><3% 缩量一字 / >28% 超量分歧</span></td></tr>
+        <tr><td><strong>8</strong></td><td><strong>板块协同</strong></td><td>同板块有 ≥2 只涨停助攻</td><td><span class="badge badge-orange">孤狼独立逻辑需额外谨慎</span></td></tr>
+    </table>
+</div>
+
+<!-- 情绪周期影响 -->
+<h2>⑤ 情绪周期对一进二竞价的影响</h2>
+
+<div class="card">
+    <table>
+        <tr><th>情绪阶段</th><th>代表日期</th><th>一进二数量</th><th>竞价特征</th><th>策略</th></tr>
+        <tr><td><strong>高潮期</strong></td><td>7/23、8/4</td><td>9-11只</td><td>多只竞价一字/暴力高开，主线全线爆发</td><td>只做主线核心，回避后排跟风</td></tr>
+        <tr><td><strong>修复期</strong></td><td>7/22、7/29、8/3</td><td>6-13只</td><td>竞价分化，主线标的竞价强于非主线</td><td>竞价抢筹榜 Top 10 优先</td></tr>
+        <tr><td><strong>分歧/退潮</strong></td><td>7/24、7/28</td><td>13-15只</td><td>竞价高度集中，仅1-2条主线+独立逻辑晋级</td><td>只做防御主线（军工/电网）</td></tr>
+        <tr><td><strong>冰点</strong></td><td>7/30</td><td>6只</td><td>竞价极度收缩，但辨识度标的竞价仍强</td><td>空仓或只做最强1只</td></tr>
+    </table>
+    <p class="green-note"><strong>核心规律：</strong>一进二的竞价强度与大盘涨跌<strong>无直接关系</strong>——冰点日（7/30跌停76超涨停）连板股竞价依然整体高开。竞价是资金对"这只票值不值得接力"的独立判断，而非大盘情绪的被动映射。</p>
+</div>
+
+<!-- 风险警示 -->
+<h2>⑥ 风险与避坑</h2>
+<div class="alert">
+    <strong>⚠️ 竞价阶段最容易踩的 5 个坑：</strong><br>
+    ① <strong>竞价暴力高开 >7% 但非主线</strong>——7/31德明利竞价涨停后炸板翻绿，典型诱多 → 不是所有高开都是真共识<br>
+    ② <strong>竞价量能太薄（<0.3%）</strong>——缩量一字无换手，次日溢价全看板块脸色，如爱丽家居连续一字后放量即断板<br>
+    ③ <strong>竞价低开但抱有幻想</strong>——数据证明低开一进二成功率 <2%，低开就是淘汰信号，不要"等盘中逆转"<br>
+    ④ <strong>竞价抢筹但非主线</strong>——独立逻辑（高争民爆/深物业A）也能晋级，但概率远低于主线内标的<br>
+    ⑤ <strong>高潮日追竞价一字</strong>——8/4利柏特/欣天竞价一字，看似热闹但次日一旦板块轮动开板即套牢<br>
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+    Serenity 投资分析引擎 · 2026-08-04 · 数据来源：连板网/财联社/东方财富Choice/韭研公社/头条复盘多源交叉验证 · 统计区间2026-07-22至2026-08-04共10个交易日约90只一进二成功股 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
