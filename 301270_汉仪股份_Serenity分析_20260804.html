@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉仪股份 (301270) — Serenity 分析 2026-08-04</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* ---------- 主题变量：深色（默认） ---------- */
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        /* ---------- 主题变量：浅色（body.light 时启用） ---------- */
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--muted);
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<!-- ============ ① 标题区 ============ -->
+<h1>🔤 汉仪股份 (301270) — Serenity 分析报告</h1>
+<p class="subtitle">分析日期：2026-08-04 | 今日 20CM 涨停报 35.26 元，市值 35.26 亿 | OpenAI 降费 80% 催化 AI 应用 + 千奇造物收购</p>
+
+<!-- ============ ② 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📊 核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+20%</div><div class="label">今日涨停（20cm）</div></div>
+        <div class="stat"><div class="num">35.26亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">15.91%</div><div class="label">换手率</div></div>
+        <div class="stat"><div class="num">8/15</div><div class="label">好卡点评分</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">成交5.06亿 · 主力净流入1.07亿 · 总股本1.00亿股 · 流通9449万股 · 筹码成本29.95元 · 数据时点：2026-08-04 收盘（新浪财经）</div>
+</div>
+
+<!-- ============ ③ 结论 ============ -->
+<h2>① 结论（两行）</h2>
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">行1 — 客观框架</span>
+        <span><strong>Base（合理偏贵，现价已透支）</strong>。<br>
+        8/4 涨停报 <strong>35.26 元，市值 35.26 亿</strong>，总股本 <strong>1.00 亿股</strong>（流通 9449 万）。<br>
+        <strong>Bear 10-15 亿（10-15 元）/ Base 18-22 亿（18-22 元）/ Bull 48-60 亿（48-60 元）</strong>。<br>
+        股价 = 市值 ÷ 总股本（<strong>1.00 亿股</strong>）。当前 35.26 亿已高于 Base 上限。<br>
+        ⚠️ <strong>翻倍门槛</strong>：35.26 → 70.52 需 70 亿市值，需 AI 应用放量 + 千奇造物并表双重兑现。</span>
+    </div>
+    <div class="conclusion-row"><span class="conclusion-label">行2 — Serenity</span>
+        <span><strong>🟡 Hold（概念驱动涨停，业绩未验证）</strong>。<br>
+        <span class="highlight">核心亮点：字库行业双寡头（汉仪+方正）+ 鸿蒙/小米/VIVO/OPPO 预置渠道 + AI 字体生成技术（300-800 字自动生成全套字库）+ 1.035 亿收购千奇造物（2026 承诺净利 4000 万）。</span><br>
+        好卡点 8/15（字库垄断 1 + 预置渠道 1 + 现金 2 + 本土化 1 + 极少数玩家 1 + 预期差 1 + AI 布局 1 + 市值 1）。<br>
+        但<strong> 2026Q1 亏损（营收 -15.91%、净利 -139.28%）、主业增长乏力、商誉 15.04%</strong>——今日涨停纯由 OpenAI 降费 80% 的 AI 应用情绪驱动，基本面尚未跟上。</span>
+    </div>
+</div>
+
+<!-- ============ ④ 客观事实底座 ============ -->
+<h2>② 客观事实底座</h2>
+<div class="card">
+    <h2 style="margin-top:0;">L0-事实：核心数据全景</h2>
+    <table>
+        <tr><th>维度</th><th>数据</th><th>来源</th><th>意味着什么</th></tr>
+        <tr><td><strong>今日股价</strong></td><td><strong>35.26 元（+20% 涨停）</strong>，10:13 触板，成交 5.06 亿，换手 15.91%</td><td>新浪财经</td><td>创 60 日新高，AI 应用情绪高潮</td></tr>
+        <tr><td><strong>总市值</strong></td><td><strong>35.26 亿</strong>，总股本 1.00 亿股</td><td>证券之星</td><td>中小市值，弹性大</td></tr>
+        <tr><td><strong>2026Q1 业绩</strong></td><td><strong>营收 3821 万（-15.91%），归母净利 -182.75 万（-139.28%）</strong></td><td>新浪财经</td><td>⚠️ 主业下滑且亏损</td></tr>
+        <tr><td><strong>2025 全年</strong></td><td>净利 +61.53%（约 3200 万），10 派 1.02 元</td><td>公告（已证实）</td><td>2025 盈利改善，但基数低</td></tr>
+        <tr><td><strong>收入结构</strong></td><td>字库授权 69.40% / 平台授权 23.17% / 技术服务 4.97% / IP 2.43%</td><td>年报（已证实）</td><td>高度依赖传统字体授权，增长乏力</td></tr>
+        <tr><td><strong>研发投入</strong></td><td>2025 年 3660 万，占收入 19.20%</td><td>互动易回复（已证实）</td><td>AI 字体/文生图技术储备扎实</td></tr>
+        <tr><td><strong>商誉</strong></td><td>占总资产 <strong>15.04%</strong>，子公司驿创亏损超 1100 万</td><td>互动易回复</td><td>⚠️ 商誉减值风险</td></tr>
+        <tr><td><strong>客户</strong></td><td>华为（鸿蒙字体）、小米/VIVO/OPPO 预置、腾讯/京东/金山办公</td><td>互动易（已证实）</td><td>渠道壁垒真实存在</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">L0-框架：三重逻辑拆解</h2>
+    <p style="font-size:14px;line-height:1.8">
+    <strong>① 字库主业（基本面盘）</strong>：汉字字体行业双寡头（汉仪 + 方正），1800+ 款 B 端字体、服务 40 万+ 用户。授权模式稳定，但市场空间小、增速放缓——这是估值的"地板"，不是"弹性"。<br><br>
+    <strong>② AI 应用（今日涨停核心驱动）</strong>：OpenAI 宣布 GPT-5.6 Luna API 价格下调 80%，推理成本雪崩 → 应用层商业化门槛骤降 → 全市场 AI 应用股集体涨停。公司有 AI 字体生成（300-800 字自动生成全字库）、文生图/文生视频（ARTIWAY）、数字水印等落地产品，<strong>但 AI 收入占比极小，暂无收入拆分</strong>。<br><br>
+    <strong>③ IP 衍生品（并购预期）</strong>：1.035 亿收购千奇造物 26.4% 股权（柔造小程序，IP 衍生品柔性制造），2026 承诺净利 4000 万、2027-28 累计 1 亿，2028 年未上市/未并购则原股东回购——<strong>有业绩承诺兜底，但当前仅 26.4% 股权，并表贡献约 1056 万/年</strong>。
+    </p>
+</div>
+
+<!-- ============ ⑤ 两套评估 ============ -->
+<h2>③ 两套评估</h2>
+
+<div class="card">
+    <h2 style="margin-top:0;">3a. Serenity 框架（15 条判据）</h2>
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td>1</td><td>字库行业双寡头（汉仪+方正）</td></tr>
+        <tr><td>2</td><td>极小市值 vs 巨大 TAM</td><td>0</td><td>35 亿符合 Sub-100 亿，但字体市场 TAM 很小</td></tr>
+        <tr><td>3</td><td>BOM 占比 + designed-in</td><td>0</td><td>字体非 BOM 元件</td></tr>
+        <tr><td>4</td><td>designed-in + 多客户</td><td>1</td><td>手机/OS 预置（鸿蒙/小米/VIVO/OPPO）</td></tr>
+        <tr><td>5</td><td>认证/资格周期长</td><td>0</td><td>字体入库周期短，非壁垒</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td>1</td><td>AI 应用若放量（2027-28），尚未兑现</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td>2</td><td>现金充裕、无大额负债</td></tr>
+        <tr><td>8</td><td>Demand outstrips supply</td><td>0</td><td>字体需求稳定，非紧缺</td></tr>
+        <tr><td>9</td><td>大客户全包产能</td><td>0</td><td>无</td></tr>
+        <tr><td>10</td><td>国家安全/政府介入</td><td>0</td><td>无</td></tr>
+        <tr><td>11</td><td>本土化 = 护城河</td><td>1</td><td>汉字字体天然本土壁垒</td></tr>
+        <tr><td>12</td><td>信息不对称/定价错误</td><td>1</td><td>AI 应用预期 vs 主业现实存在预期差</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td>1</td><td>字库双寡头</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td>0</td><td>授权稳定但无爆发 backlog</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td>0</td><td>字体非关键卡点环节</td></tr>
+    </table>
+    <p class="green-note"><strong>合计 8/15。</strong> 卡点属性偏"渠道/IP 型"而非"供应链卡点型"——字库垄断+预置渠道真实，但 TAM 小、无硬需求缺口、AI 业务未兑现。</p>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">红旗扫描</h2>
+    <ul class="flag-list">
+        <li class="fail">🔴 <strong>2026Q1 亏损</strong> — 营收 -15.91%、净利 -139.28%，主业下行未止</li>
+        <li class="fail">🔴 <strong>商誉 15.04% + 子公司驿创亏损 1100 万</strong> — 减值风险敞口</li>
+        <li class="warn">⚠️ <strong>AI 收入未验证</strong> — 今日涨停纯概念驱动，无收入拆分支撑</li>
+        <li class="warn">⚠️ <strong>募集资金违规警示函/监管函</strong> — 已整改，但治理瑕疵需跟踪</li>
+        <li class="warn">⚠️ <strong>今日 20cm 涨停 + 换手 15.91%</strong> — 短线情绪高潮，追涨回撤风险大</li>
+        <li class="pass">✅ 现金充裕、无大额负债</li>
+        <li class="pass">✅ 千奇造物收购有业绩承诺（2026 净利 4000 万）兜底</li>
+        <li class="pass">✅ 渠道壁垒真实（鸿蒙/手机预置）</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">信念分档</h2>
+    <p style="font-size:14px;line-height:1.8">
+    <strong>🟡 Hold（有故事但当前赔率不划算）</strong> — 字库双寡头是"稳定的慢生意"，AI 应用是"未验证的期权"，千奇造物是"小比例并表"。三者叠加给出的好卡点 8/15 有含金量，但 <strong>35 亿市值已把"AI 放量 + 并购兑现"的双重乐观打进去</strong>。今日涨停后介入赔率差，<strong>合理介入区间 18-25 亿（18-25 元），即回调 30-50% 后</strong>。
+    </p>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;">3b. 客观框架 — Bear/Base/Bull</h2>
+    <div class="price-box">
+        <div class="pb-card bear"><h4>🐻 Bear</h4><div class="price">10-15亿</div><div class="price-detail">对应股价 10-15 元</div>
+            <p style="font-size:13px;margin-top:8px"><strong>触发：</strong>AI 证伪+主业继续下滑+商誉减值，2027 净利 &lt;1500 万，PE 40-60x。<br><strong>概率 ~30%</strong></p></div>
+        <div class="pb-card base"><h4>📊 Base</h4><div class="price">18-22亿</div><div class="price-detail">对应股价 18-22 元</div>
+            <p style="font-size:13px;margin-top:8px"><strong>触发：</strong>主业企稳+千奇造物并表（贡献 1056 万/年），2027 净利 3500-4500 万，PE 50x。<br><strong>概率 ~50%</strong></p></div>
+        <div class="pb-card bull"><h4>🐂 Bull</h4><div class="price">48-60亿</div><div class="price-detail">对应股价 48-60 元</div>
+            <p style="font-size:13px;margin-top:8px"><strong>触发：</strong>AI 应用放量+IP 衍生品爆发，2028 净利 8000 万-1 亿，PE 60x。<br><strong>概率 ~20%</strong></p></div>
+    </div>
+    <p class="alert" style="margin-top:8px;"><strong>⚠️ 关键约束：</strong>股价 = 市值 ÷ 总股本（1.00 亿股）。当前 35.26 亿高于 Base 上限，接近 Bull 下沿——现价已透支乐观情形。</p>
+</div>
+
+<!-- ============ ⑥ 催化剂 ============ -->
+<h2>关键催化剂时点</h2>
+<div class="card">
+    <table>
+        <tr><th>时间</th><th>事件</th><th>影响</th></tr>
+        <tr><td><strong>2026-08-26</strong></td><td><strong>中报披露</strong></td><td>验证 AI 收入占比 + 主业恢复情况</td></tr>
+        <tr><td><strong>2026H2</strong></td><td><strong>千奇造物并表</strong></td><td>26.4% 权益并表，增厚利润</td></tr>
+        <tr><td>持续</td><td>OpenAI 降费后 AI 应用商业化</td><td>行业β，AI 应用收入若放量则重估</td></tr>
+        <tr><td>2027-28</td><td>千奇造物 1 亿净利承诺兑付</td><td>2028 年末未上市则触发回购条款</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑦ 独立复核 ============ -->
+<h2>独立复核</h2>
+<div class="card">
+    <table>
+        <tr><th>复核项</th><th>结果</th></tr>
+        <tr><td>关键数字一手来源</td><td>✅ 财务/股本来自新浪财经/年报/互动易，涨停数据新浪财经+证券之星交叉验证</td></tr>
+        <tr><td>总股本确认</td><td>✅ 1.00 亿股（证券之星/新浪交叉验证）</td></tr>
+        <tr><td>数据时效性</td><td>✅ 股价 8/4 实时，财务 2026Q1，事件 7/30-8/4</td></tr>
+        <tr><td>确认偏误检查</td><td>✅ 三情景完整，明确"概念涨停+业绩未验证"，无倾向性</td></tr>
+        <tr><td>卡点判据完整性</td><td>✅ 15 条逐条打分 8/15；识别"渠道/IP 型"非"供应链卡点型"</td></tr>
+        <tr><td>A 股特有复核</td><td>✅ 已纳入：商誉减值、募集资金违规、机构调研信号、融资余额增长</td></tr>
+    </table>
+</div>
+
+<div class="alert"><strong>⚠️ 风险提示：</strong>① 今日涨停纯 OpenAI 降费概念驱动，若 AI 应用板块退潮将快速回吐；② 2026Q1 亏损+商誉减值敞口是基本面硬伤；③ 创业板单日 +5.64% 后技术性回踩风险；④ 本报告基于公开信息整理，不构成投资建议。</div>
+
+<!-- ============ ⑧ 页脚 ============ -->
+<div class="footer">
+    Serenity 投资分析引擎 · 2026-08-04 · 数据来源：新浪财经/证券之星/公司公告/互动易 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
