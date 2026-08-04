@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一进二潜在标的筛选 — 2026-08-05</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;
+              --red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#fff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;
+                    --red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+             background:var(--bg);color:var(--text);max-width:1000px;margin:0 auto;
+             padding:24px 20px;line-height:1.8;font-size:14px}
+        h1{font-size:22px;color:var(--accent);border-bottom:2px solid var(--accent);
+           padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;
+                 padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+              padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);
+           font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);
+               padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);
+                    padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .conclusion-box{border:2px solid var(--green);border-radius:10px;padding:20px 24px;margin:16px 0}
+        .conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;
+                        border-bottom:1px solid var(--border)}
+        .conclusion-row:last-child{border-bottom:none}
+        .conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:128px;color:var(--muted)}
+        .highlight{background:rgba(210,153,29,0.25);padding:1px 4px;border-radius:3px}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;
+                padding-top:16px;border-top:1px solid var(--border)}
+        .stock-card{border-left:4px solid var(--border);padding:12px 16px;margin:10px 0;
+                    background:var(--card);border-radius:0 8px 8px 0}
+        .stock-card.green{border-left-color:var(--green)}
+        .stock-card.orange{border-left-color:var(--orange)}
+        .stock-card.red{border-left-color:var(--red)}
+        .stock-card .name{font-size:15px;font-weight:600;margin-bottom:4px}
+        .stock-card .meta{font-size:12px;color:var(--muted);line-height:1.8}
+        .check-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}
+        .check-item{font-size:12px;padding:3px 6px;border-radius:4px;text-align:center}
+        .check-pass{background:rgba(63,185,80,0.15);color:var(--green)}
+        .check-warn{background:rgba(210,153,29,0.15);color:var(--orange)}
+        .check-fail{background:rgba(248,81,73,0.15);color:var(--red)}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}.check-grid{grid-template-columns:1fr 1fr}}
+    </style>
+</head>
+<body>
+
+<h1>🎯 一进二潜在标的筛选 — 2026年8月5日（周三）</h1>
+<p class="subtitle">基于近10日约90只一进二成功股共性特征，对昨日（8/4）首板池逐只过筛 | 数据来源：财联社/隔夜挂单/风口财经/东方财富Choice/头条多源交叉验证</p>
+
+<!-- 今日盘前背景 -->
+<div class="summary">
+    <strong>📊 今日盘前背景（8/5）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+0.15%</div><div class="label">沪指竞价高开</div></div>
+        <div class="stat"><div class="num up">+0.65%</div><div class="label">创业板竞价高开</div></div>
+        <div class="stat"><div class="num">5000亿</div><div class="label">央行逆回购</div></div>
+        <div class="stat"><div class="num">高潮次日</div><div class="label">情绪阶段</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+    <strong>盘前催化：</strong>隔夜美股全线大涨（道指/标普创新高，费半+6%），存储芯片领涨（美光/铠侠/西部数据）；<br>
+    <strong>利空压制：</strong>美国拟禁止进口中国新型数据中心设备 → CPO/光模块板块面临情绪压力；<br>
+    <strong>主线预判：</strong>存储芯片/算力租赁 > 机器人（宇树科技IPO定价）> CXO创新药 > CPO分化；<br>
+    <strong>情绪定位：</strong>高潮次日（8/4涨停140只），分化预期强，一进二难度大于8/4。
+    </div>
+</div>
+
+<!-- 筛选方法说明 -->
+<h2>① 筛选方法：8条竞价准则 × 昨日首板池</h2>
+<div class="card">
+    <p style="font-size:14px;line-height:1.8">
+    从昨日（8/4）约<strong>119只首板涨停股</strong>（剔ST）中，按以下8条准则逐只过滤，再结合隔夜挂单/竞价数据做最终排名：
+    </p>
+    <div class="check-grid">
+        <div class="check-item check-pass">① 竞价零低开</div>
+        <div class="check-item check-pass">② 温和高开1-5%</div>
+        <div class="check-item check-pass">③ 主线题材共振</div>
+        <div class="check-item check-pass">④ 竞价量能0.5-2%</div>
+        <div class="check-item check-pass">⑤ 竞价抢筹榜</div>
+        <div class="check-item check-pass">⑥ 首板早盘封板</div>
+        <div class="check-item check-pass">⑦ 板块协同有友军</div>
+        <div class="check-item check-warn">⑧ 非暴力高开>7%</div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">注：第⑧条为反向筛选——隔夜挂单暴力高开>7%的标的入选兑现风险区，需额外谨慎</p>
+</div>
+
+<!-- 筛选结果 -->
+<h2>② 筛选结果：按一进二概率排序</h2>
+
+<!-- Tier 1 -->
+<h2 style="color:var(--green);">🟢 Tier 1 — 高概率（2只）</h2>
+
+<div class="stock-card green">
+    <div class="name">🥇 云南锗业 (002428) — 独立逻辑 + 业绩支撑 + 不受CPO分化影响</div>
+    <div class="meta">
+        <strong>题材：</strong>锗涨价 + 磷化铟（AI算力核心材料）| 昨日封单18.59亿全场第一<br>
+        <strong>隔夜：</strong>买7.5亿 / 卖3.8亿，多空2.0:1 | 市值约440亿<br>
+        <strong>催化：</strong>H1净利预增148-261%，5.7-8.55亿磷化铟晶片供货协议8/1起执行，上半年锗出口同比-29%供给收缩<br>
+        <strong>独特优势：</strong>独立逻辑不受CPO/光模块外部利空冲击，业绩有实锤支撑，首板竞价封板质量极高<br>
+        <strong>风险：</strong>已连续大涨，位置不低；独立逻辑缺乏板块联动，一旦断板缺少友军接应
+    </div>
+    <div class="check-grid">
+        <div class="check-item check-pass">✅ 零低开</div>
+        <div class="check-item check-pass">✅ 主线(算力材料)</div>
+        <div class="check-item check-pass">✅ 首板竞价封板</div>
+        <div class="check-item check-pass">✅ 隔夜多空2.0:1</div>
+        <div class="check-item check-pass">✅ 业绩支撑</div>
+        <div class="check-item check-warn">⚠️ 位置偏高</div>
+        <div class="check-item check-warn">⚠️ 独立逻辑</div>
+        <div class="check-item check-pass">✅ 非一字板</div>
+    </div>
+</div>
+
+<div class="stock-card green">
+    <div class="name">🥈 蜂助手 (301382) — 76.7亿算力大单 + 小市值弹性</div>
+    <div class="meta">
+        <strong>题材：</strong>算力租赁（76.7亿大单，5年）| 20cm创业板<br>
+        <strong>隔夜：</strong>买6.3亿 / 卖2.9亿，多空2.2:1 | 市值偏小<br>
+        <strong>催化：</strong>子公司签46.08亿算力服务合同（5年，年均净利6000-7200万）+ 30.62亿算力服务器采购协议<br>
+        <strong>独特优势：</strong>合同金额大、周期长、有利润承诺，算力租赁主线今日隔夜热度最高<br>
+        <strong>风险：</strong>昨日已大涨15.5%提前反映利好；20cm二连需创业板指续强，高潮次日分化压力大
+    </div>
+    <div class="check-grid">
+        <div class="check-item check-pass">✅ 零低开</div>
+        <div class="check-item check-pass">✅ 主线(算力)</div>
+        <div class="check-item check-pass">✅ 隔夜多空2.2:1</div>
+        <div class="check-item check-pass">✅ 业绩承诺</div>
+        <div class="check-item check-warn">⚠️ 20cm二连</div>
+        <div class="check-item check-warn">⚠️ 昨日已涨15.5%</div>
+        <div class="check-item check-pass">✅ 小市值</div>
+        <div class="check-item check-pass">✅ 非一字板</div>
+    </div>
+</div>
+
+<!-- Tier 2 -->
+<h2 style="color:var(--orange);">🟡 Tier 2 — 中概率，需观察竞价确认（5只）</h2>
+
+<div class="stock-card orange">
+    <div class="name">🥉 东山精密 (002384) — CPO+PCB中军，但千亿盘子接力门槛极高</div>
+    <div class="meta">
+        <strong>题材：</strong>CPO+PCB双主线 | 昨日封单9.20亿全场第一<br>
+        <strong>隔夜：</strong>买22.6亿 / 卖9.8亿，多空2.3:1 | 市值超3200亿<br>
+        <strong>风险：</strong>千亿盘子一进二需天量资金（昨日主力净买39亿），高潮次日接力难度极大；CPO面临美国禁令情绪压力<br>
+        <strong>观察：</strong>竞价若高开>6%不追，3-5%温和高开+板块CPO未崩可轻仓博弈
+    </div>
+    <div class="check-grid">
+        <div class="check-item check-pass">✅ 主线(CPO/PCB)</div>
+        <div class="check-item check-pass">✅ 隔夜多空2.3:1</div>
+        <div class="check-item check-pass">✅ 封单9.2亿</div>
+        <div class="check-item check-pass">✅ 早盘封板</div>
+        <div class="check-item check-fail">🔴 千亿盘子</div>
+        <div class="check-item check-fail">🔴 CPO禁令风险</div>
+        <div class="check-item check-warn">⚠️ 高潮次日</div>
+        <div class="check-item check-pass">✅ 有板块协同</div>
+    </div>
+</div>
+
+<div class="stock-card orange">
+    <div class="name">光库科技 (300620) — 20cm CPO弹性标的，二连需创业板续强</div>
+    <div class="meta">
+        <strong>题材：</strong>CPO+铌酸锂调制器+光纤器件 | 20cm首板，市值633亿<br>
+        <strong>隔夜：</strong>买11.2亿 / 卖5.4亿，多空2.1:1<br>
+        <strong>风险：</strong>20cm二连难度极大（近10日无一成功）；CPO面临美国禁令情绪压力；创业板昨日+5.64%已高潮<br>
+        <strong>观察：</strong>若创业板指竞价维持强势（>0.5%）+ CPO板块未整体低开，可轻仓博弈
+    </div>
+    <div class="check-grid">
+        <div class="check-item check-pass">✅ 主线(CPO)</div>
+        <div class="check-item check-pass">✅ 隔夜多空2.1:1</div>
+        <div class="check-item check-warn">⚠️ 20cm二连</div>
+        <div class="check-item check-fail">🔴 CPO禁令风险</div>
+        <div class="check-item check-warn">⚠️ 633亿盘子</div>
+        <div class="check-item check-pass">✅ 有板块协同</div>
+        <div class="check-item check-pass">✅ 早盘封板</div>
+        <div class="check-item check-warn">⚠️ 高潮次日</div>
+    </div>
+</div>
+
+<div class="stock-card orange">
+    <div class="name">行云科技 (300209) — 算力"Token第一股"，20cm弹性大</div>
+    <div class="meta">
+        <strong>题材：</strong>算力租赁+Token第一股，154亿长单按月兑付 | 20cm首板<br>
+        <strong>催化：</strong>H1营收+497%/净利+540%，客户加价扩量（+201%/+79%）<br>
+        <strong>风险：</strong>20cm二连难度大；昨日放量52.7亿天量，换手巨大；GPU海外依赖是硬伤<br>
+        <strong>观察：</strong>竞价需温和高开+缩量，若竞价放量>3%则分歧过大，放弃
+    </div>
+    <div class="check-grid">
+        <div class="check-item check-pass">✅ 主线(算力)</div>
+        <div class="check-item check-pass">✅ 业绩暴增</div>
+        <div class="check-item check-warn">⚠️ 20cm二连</div>
+        <div class="check-item check-warn">⚠️ 昨放量52.7亿</div>
+        <div class="check-item check-pass">✅ 稀缺标的</div>
+        <div class="check-item check-pass">✅ 有板块协同</div>
+        <div class="check-item check-warn">⚠️ GPU依赖</div>
+        <div class="check-item check-warn">⚠️ 高潮次日</div>
+    </div>
+</div>
+
+<div class="stock-card orange">
+    <div class="name">高乐股份 (002348) — 算力租赁一字板，次日溢价依赖板块</div>
+    <div class="meta">
+        <strong>题材：</strong>算力租赁转型 | 一字板首板（无换手）<br>
+        <strong>风险：</strong>一字板首板无换手，次日溢价完全依赖板块持续性；若算力板块今日分化，开板即套牢<br>
+        <strong>观察：</strong>竞价若继续一字（无法上车），若开板需看承接力度，不建议追高
+    </div>
+    <div class="check-grid">
+        <div class="check-item check-pass">✅ 主线(算力)</div>
+        <div class="check-item check-fail">🔴 一字无换手</div>
+        <div class="check-item check-warn">⚠️ 纯概念转型</div>
+        <div class="check-item check-warn">⚠️ 无业绩支撑</div>
+        <div class="check-item check-pass">✅ 小市值</div>
+        <div class="check-item check-pass">✅ 有板块协同</div>
+        <div class="check-item check-warn">⚠️ 开板风险</div>
+        <div class="check-item check-warn">⚠️ 高潮次日</div>
+    </div>
+</div>
+
+<div class="stock-card orange">
+    <div class="name">永鼎股份 (600105) — CPO+博通链，面临CPO分化压力</div>
+    <div class="meta">
+        <strong>题材：</strong>CPO+博通CPO出货 | 主板首板<br>
+        <strong>风险：</strong>CPO板块今日面临美国禁令情绪压力，分化预期强；后排跟风标的溢价空间有限<br>
+        <strong>观察：</strong>CPO板块竞价若整体强势（非低开），可博弈，否则放弃
+    </div>
+    <div class="check-grid">
+        <div class="check-item check-pass">✅ 主线(CPO)</div>
+        <div class="check-item check-fail">🔴 CPO禁令风险</div>
+        <div class="check-item check-warn">⚠️ 后排跟风</div>
+        <div class="check-item check-pass">✅ 有板块协同</div>
+        <div class="check-item check-warn">⚠️ 高潮次日</div>
+        <div class="check-item check-warn">⚠️ 无突出业绩</div>
+        <div class="check-item check-pass">✅ 早盘封板</div>
+        <div class="check-item check-pass">✅ 小市值</div>
+    </div>
+</div>
+
+<!-- Tier 3 -->
+<h2 style="color:var(--red);">🔴 Tier 3 — 低概率/淘汰（直接过滤）</h2>
+
+<div class="stock-card red">
+    <div class="name">药明康德 (603259) — 4200亿盘子，一进二概率极低</div>
+    <div class="meta">
+        <strong>淘汰原因：</strong>千亿以上盘子近10日无一成功一进二。隔夜买8.8亿/卖5.3亿。趋势走强可中线关注，但一进二博弈不参与。<br>
+        <strong>替代：</strong>凯莱英/双成药业等小市值CXO跟风标，若药明康德竞价强势可轻仓博弈，但跟风标溢价空间有限。
+    </div>
+</div>
+
+<div class="stock-card red">
+    <div class="name">华胜天成 (600410) — H1预亏2.2-3.3亿，PE为负</div>
+    <div class="meta">
+        <strong>淘汰原因：</strong>基本面有硬伤，涨停为脉冲式反弹非趋势反转。连板红旗：业绩亏损 + PE为负，直接淘汰。
+    </div>
+</div>
+
+<div class="stock-card red">
+    <div class="name">其他小市值跟风首板</div>
+    <div class="meta">
+        <strong>淘汰：</strong>生益科技（CCL涨价，但非最强主线）、青云科技（20cm，跟随算力但后排）、博迁新材（MLCC午后反包，尾盘板弱）、格林达/金海通（半导体材料，非今日主线）、恒林股份/冰轮环境（独立逻辑，辨识度低）<br>
+        <strong>原因：</strong>非主线核心/首板封板质量差/尾盘板/无隔夜抢筹数据支撑，综合概率低于30%。
+    </div>
+</div>
+
+<!-- 今日竞价实操清单 -->
+<h2>③ 今日竞价实操清单（9:20-9:25 盯盘用）</h2>
+<div class="card">
+    <table>
+        <tr><th>观察项</th><th>通过标准</th><th>淘汰标准</th></tr>
+        <tr><td><strong>云南锗业竞价</strong></td><td>高开2-5%，竞价换手0.5-1.5%</td><td><span class="badge badge-red">低开 → 淘汰</span></td></tr>
+        <tr><td><strong>蜂助手竞价</strong></td><td>高开1-5%，竞价换手0.5-2%</td><td><span class="badge badge-red">高开>7% 或 低开 → 淘汰</span></td></tr>
+        <tr><td><strong>东山精密竞价</strong></td><td>高开3-5%，CPO板块未整体低开</td><td><span class="badge badge-red">CPO板块低开>1% → 全板块放弃</span></td></tr>
+        <tr><td><strong>光库科技竞价</strong></td><td>高开2-5%，创业板指竞价>0.3%</td><td><span class="badge badge-red">创业板指低开 → 全20cm放弃</span></td></tr>
+        <tr><td><strong>行云科技竞价</strong></td><td>高开2-5%，竞价量<昨日10%</td><td><span class="badge badge-red">竞价放量>3% → 分歧过大</span></td></tr>
+        <tr><td><strong>CPO板块整体</strong></td><td>中际旭创/新易盛竞价不低开>2%</td><td><span class="badge badge-red">龙头低开>2% → 全CPO链放弃</span></td></tr>
+        <tr><td><strong>算力板块整体</strong></td><td>美利云/利通电子竞价不崩</td><td><span class="badge badge-red">连板高标断板 → 板块谨慎</span></td></tr>
+    </table>
+</div>
+
+<!-- 风险警示 -->
+<h2>④ 今日特殊风险警示</h2>
+<div class="alert">
+    <strong>⚠️ 今日三大特殊风险：</strong><br>
+    ① <strong>高潮次日分化</strong> — 8/4涨停140只/晋级率47%均为高位，8/5一进二成功率大概率回落至30-40%区间，控制仓位；<br>
+    ② <strong>CPO禁令黑天鹅</strong> — 美国拟禁止进口中国数据中心设备，CPO/光模块板块随时面临情绪冲击，需紧盯中际旭创/新易盛竞价；<br>
+    ③ <strong>隔夜美股大涨≠A股全天大涨</strong> — 存储芯片领涨美股，但A股CPO方向面临禁令压力，利好利空交织，不做竞价追高。<br>
+    <strong>仓位建议：</strong>高潮次日一进二只用1成仓位，最多不超过2只标的。若竞价出现多只低开 → 空仓观望。
+</div>
+
+<div class="green-note">
+    <strong>✅ 最优策略：</strong>优先关注<strong>云南锗业</strong>（独立逻辑不受CPO禁令影响 + 业绩支撑 + 首板质量最高）和<strong>蜂助手</strong>（算力大单实锤 + 小市值弹性），其次为东山精密（中线最强但盘子大）。CPO链标的（光库/永鼎）需待9:25确认板块未崩再决策。
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+    Serenity 投资分析引擎 · 2026-08-05 · 基于近10日约90只一进二成功股共性特征筛选 · 数据来源：财联社/隔夜挂单/风口财经/东方财富Choice/头条 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
