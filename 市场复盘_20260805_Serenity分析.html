@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市场复盘_20260805_Serenity分析</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#fff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+        h1{font-size:21px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        h3{font-size:14px;margin:18px 0 10px}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+        .sector-card{border-left:4px solid var(--green);padding:12px 16px;margin:12px 0;background:var(--card);border-radius:0 8px 8px 0}
+        .sector-card.orange{border-left-color:var(--orange)}
+        .sector-card.red{border-left-color:var(--red)}
+        .flow-bar{height:10px;border-radius:5px;background:rgba(48,54,61,0.3);margin:6px 0;overflow:hidden;position:relative}
+        .flow-bar .fill{height:100%;border-radius:5px;transition:width 0.5s}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}}
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 A股收盘复盘 — 2026-08-05（周三）</h1>
+<p class="subtitle">数据截至15:00收盘 | 数据来源：财联社/证券时报/每日经济新闻/东方Choice/中新经纬 多源交叉验证</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>📊 大盘核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+1.47%</div><div class="label">沪指 3878.43</div></div>
+        <div class="stat"><div class="num up">+1.86%</div><div class="label">深成指 14144.20</div></div>
+        <div class="stat"><div class="num up">+1.32%</div><div class="label">创业板指 3535.14</div></div>
+        <div class="stat"><div class="num up">+4.78%</div><div class="label">科创50 1693.67</div></div>
+    </div>
+    <div class="grid-4" style="margin-top:10px">
+        <div class="stat"><div class="num" style="font-size:20px;color:var(--text);">2.66万亿</div><div class="label">两市成交额</div></div>
+        <div class="stat"><div class="num" style="font-size:20px;color:var(--green);">+4460亿</div><div class="label">较昨日放量</div></div>
+        <div class="stat"><div class="num" style="font-size:20px;color:var(--text);">3725↑/1621↓</div><div class="label">涨跌家数</div></div>
+        <div class="stat"><div class="num" style="font-size:20px;color:var(--text);">104↑/1↓</div><div class="label">涨停/跌停</div></div>
+    </div>
+    <div style="margin-top:10px;font-size:13px;color:var(--muted);">
+    红盘率69.7% | 涨跌中位数+1.4% | 封板率71% | 连板32只 | 北证50 +2.37% | 沪深300 +1.24%
+    </div>
+</div>
+
+<!-- 大盘走势 -->
+<h2>① 大盘走势：低开高走，科技高潮日</h2>
+<div class="card">
+    <table>
+        <tr><th>时段</th><th>走势</th><th>说明</th></tr>
+        <tr><td><strong>竞价</strong></td><td class="down">低开 -0.19~-3.35%</td><td>CPO禁令恐慌 + 隔夜美股科技落幕，三大指数集体低开，创业板一度-3.35%</td></tr>
+        <tr><td><strong>早盘（09:30-10:30）</strong></td><td class="up">快速修复翻红</td><td>半导体设备率先拉升，金海通2连板，存储芯片全线走强，指数快速翻红</td></tr>
+        <tr><td><strong>午盘（11:00-14:00）</strong></td><td class="up">持续走高</td><td>MLCC涨价、小金属涨停潮、玻纤概念爆发，科创50一度涨超6%</td></tr>
+        <tr><td><strong>尾盘（14:00-15:00）</strong></td><td class="up">高位震荡</td><td>尾盘主力净流入50.92亿，工业富联涨停，成交额放大至2.66万亿</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:8px;">
+        <strong>✅ 核心特征：</strong>今日是典型的"科技修复高潮日"——CPO早盘恐慌被快速消化，半导体全产业链爆发，资金从银行/油气/白酒防御板块大幅切换至科技成长。跌停仅1只，偏暖但未至亢龙状态。
+    </div>
+</div>
+
+<!-- 领涨板块 -->
+<h2>② 领涨板块 TOP10</h2>
+<div class="card">
+    <table>
+        <tr><th>排名</th><th>板块</th><th>涨幅</th><th>驱动逻辑</th></tr>
+        <tr><td>1</td><td><strong>超硬材料</strong></td><td class="up">+9.78%</td><td>半导体材料需求拉动+培育钻石景气回升</td></tr>
+        <tr><td>2</td><td><strong>玻纤及制品</strong></td><td class="up">+9.73%</td><td>风电/汽车轻量化+供给侧优化，花旗：8月电子布均价环比+17%</td></tr>
+        <tr><td>3</td><td><strong>半导体材料设备</strong></td><td class="up">+9.53%</td><td>SEMI预测全球设备2026年+23%，三星/SK海力士评估中国设备</td></tr>
+        <tr><td>4</td><td><strong>钨</strong></td><td class="up">+9.08%</td><td>战略小金属+出口管制预期+半导体需求</td></tr>
+        <tr><td>5</td><td><strong>贵金属</strong></td><td class="up">+7.87%</td><td>美伊局势缓和+油价回落缓解通胀担忧，金价站上4100</td></tr>
+        <tr><td>6</td><td><strong>电子化学品</strong></td><td class="up">+7.30%</td><td>中巨芯/江化微涨停，半导体材料国产替代加速</td></tr>
+        <tr><td>7</td><td><strong>小金属</strong></td><td class="up">+6.23%</td><td>锗/钽/钨供给收缩+涨价，云南锗业2连板</td></tr>
+        <tr><td>8</td><td><strong>半导体</strong></td><td class="up">+5.72%</td><td>存储芯片DRAM周期反转，先进封装活跃</td></tr>
+        <tr><td>9</td><td><strong>MLCC/被动元件</strong></td><td class="up">+5.45%</td><td>三星电机8月涨价30%，AI服务器MLCC用量从2000→1-2万颗</td></tr>
+        <tr><td>10</td><td><strong>智能驾驶</strong></td><td class="up">活跃</td><td>L3/L4强制性国标发布，从"推荐"到"强制"质变</td></tr>
+    </table>
+</div>
+
+<!-- 领跌板块 -->
+<h2>③ 领跌板块</h2>
+<div class="card">
+    <table>
+        <tr><th>板块</th><th>涨跌幅</th><th>原因</th></tr>
+        <tr><td><strong>银行</strong></td><td class="down">-1.14%</td><td>资金从高股息防御大举切换至科技成长，四大行全线下挫</td></tr>
+        <tr><td><strong>通信/CPO</strong></td><td class="down">-1%+</td><td>新易盛-5.29%（主力净流出19.85亿），中际旭创下跌，CPO禁令担忧仍在</td></tr>
+        <tr><td><strong>石油石化</strong></td><td class="down">下跌</td><td>美伊谈判+霍尔木兹重开预期，布油暴跌7%，通源石油走弱</td></tr>
+        <tr><td><strong>白酒/食品饮料</strong></td><td class="down">-1%+</td><td>防御板块遭抛售，茅台/五粮液承压，消费复苏不及预期</td></tr>
+        <tr><td><strong>医药商业/中药</strong></td><td class="down">-0.6%</td><td>资金撤出防御性板块，风格切换明显</td></tr>
+    </table>
+</div>
+
+<!-- 资金面 -->
+<h2>④ 资金面深度</h2>
+<div class="card">
+    <h3>主力资金流向</h3>
+    <table>
+        <tr><th>排名</th><th>板块</th><th>主力净流入</th><th>龙头股</th></tr>
+        <tr><td>1</td><td><strong>电子</strong></td><td><strong>+191.02亿</strong></td><td>工业富联涨停、胜宏科技+15.29亿</td></tr>
+        <tr><td>2</td><td><strong>有色金属</strong></td><td><strong>+64.54亿</strong></td><td>云南锗业2连板、盛达资源涨停</td></tr>
+        <tr><td>3</td><td><strong>机械设备</strong></td><td><strong>+12亿+</strong></td><td>科瑞技术涨停</td></tr>
+        <tr><td>4</td><td><strong>电力设备</strong></td><td><strong>+12亿+</strong></td><td>风电/光伏</td></tr>
+        <tr><td>5</td><td><strong>计算机</strong></td><td><strong>+12亿+</strong></td><td>智能驾驶/AI应用</td></tr>
+        <tr><td>6</td><td><strong>汽车</strong></td><td><strong>+12亿+</strong></td><td>汽车零部件7只涨停</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">
+    大盘主力净流入 <strong>330.14亿</strong>，创业板净流入87.58亿，沪深300净流入83.31亿。北向资金全天小幅净流入。
+    </p>
+    <h3 style="margin-top:12px;">个股主力净流入 TOP5</h3>
+    <table>
+        <tr><th>排名</th><th>个股</th><th>主力净流入</th><th>涨幅</th><th>板块</th></tr>
+        <tr><td>1</td><td><strong>工业富联</strong></td><td><strong>15.33亿</strong></td><td class="up">涨停</td><td>AI算力/PCB</td></tr>
+        <tr><td>2</td><td><strong>胜宏科技</strong></td><td><strong>15.29亿</strong></td><td class="up">涨停</td><td>PCB</td></tr>
+        <tr><td>3</td><td><strong>紫光股份</strong></td><td><strong>13.63亿</strong></td><td class="up">涨停</td><td>算力/交换机</td></tr>
+        <tr><td>4</td><td><strong>北方华创</strong></td><td><strong>7亿+</strong></td><td class="up">大涨</td><td>半导体设备</td></tr>
+        <tr><td>5</td><td><strong>亨通光电</strong></td><td><strong>7亿+</strong></td><td class="up">大涨</td><td>光通信/海缆</td></tr>
+    </table>
+</div>
+
+<!-- 连板天梯 -->
+<h2>⑤ 连板天梯</h2>
+<div class="card">
+    <table>
+        <tr><th>连板</th><th>个股</th><th>概念</th><th>涨停时间</th></tr>
+        <tr><td><span class="badge badge-red">8板</span></td><td><strong>传智教育</strong> (003032)</td><td>AI应用+教育+摘帽+具身智能</td><td>14:21（T字板）</td></tr>
+        <tr><td><span class="badge badge-orange">4板</span></td><td><strong>德龙汇能</strong> (000593)</td><td>牛散刘鑫举牌+天然气</td><td>09:35</td></tr>
+        <tr><td><span class="badge badge-orange">4板</span></td><td><strong>豪尔赛</strong> (002963)</td><td>液冷+固态电池+参股半导体</td><td>09:31</td></tr>
+        <tr><td><span class="badge badge-orange">3板</span></td><td><strong>欣天科技</strong> (300615)</td><td>实控人变更+高溢价转让</td><td>09:25</td></tr>
+        <tr><td><span class="badge badge-orange">3板</span></td><td><strong>风范股份</strong></td><td>特高压/输电</td><td>—</td></tr>
+        <tr><td><span class="badge badge-blue">2板</span></td><td><strong>云南锗业</strong></td><td>小金属+半导体材料，成交25亿</td><td>—</td></tr>
+        <tr><td><span class="badge badge-blue">2板</span></td><td><strong>百花医药</strong></td><td>CRO/医药</td><td>—</td></tr>
+        <tr><td><span class="badge badge-blue">2板</span></td><td><strong>博杰股份</strong></td><td>MLCC/消费电子设备</td><td>—</td></tr>
+        <tr><td><span class="badge badge-blue">2板</span></td><td><strong>其余约22只</strong></td><td>涵盖小金属/半导体/汽车/PCB/军工等</td><td>—</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">
+    2板梯队约25只，数量庞大但分散，说明资金在补涨方向全面铺开。<br>
+    2板重点跟踪：云南锗业（小金属龙头）、博杰股份（MLCC）、华正新材（覆铜板）、中材科技（玻纤+风电）。
+    </p>
+</div>
+
+<!-- 核心主线深度 -->
+<h2>⑥ 核心主线深度解读</h2>
+
+<div class="sector-card">
+    <div class="sector-name">🔬 半导体产业链 — 今日绝对主线</div>
+    <div class="sector-stat">涨幅+5~9.5% | 主力净流入~300亿 | 全线爆发</div>
+    <table>
+        <tr><th>细分</th><th>表现</th><th>催化</th></tr>
+        <tr><td><strong>设备端</strong></td><td>中微公司+11.51%，北方华创+7%，长川科技大涨，金海通2连板</td><td>SEMI预测2026年全球设备销售1659亿美元创新高；三星/SK海力士评估中国设备，国产设备出海逻辑强化</td></tr>
+        <tr><td><strong>材料端</strong></td><td>中巨芯/江化微涨停，有研硅20cm，兴福电子/国瓷材料大涨</td><td>《集成电路布图设计保护条例》10月实施，国产替代加速</td></tr>
+        <tr><td><strong>存储端</strong></td><td>兆易创新、佰维存储、江波龙批量大涨</td><td>DRAM周期反转确认，供不应求延续至2027年</td></tr>
+        <tr><td><strong>MLCC</strong></td><td>博迁新材/火炬电子/博杰股份涨停，风华高科+8%</td><td>三星电机8月起全品类涨价30%，AI服务器MLCC用量从2000飙升至1-2万颗</td></tr>
+    </table>
+</div>
+
+<div class="sector-card">
+    <div class="sector-name">🥇 贵金属/小金属 — 双线并行</div>
+    <div class="sector-stat">贵金属+7.87% | 小金属+6.23% | 有色金属ETF+5.15%</div>
+    <table>
+        <tr><th>细分</th><th>表现</th><th>催化</th></tr>
+        <tr><td><strong>贵金属</strong></td><td>盛达资源涨停，四川黄金涨停，黄金股ETF+7.41%</td><td>美伊局势缓和+油价回落缓解通胀担忧，金价站上4100；黄金股业绩弹性释放</td></tr>
+        <tr><td><strong>小金属（钨/锗/钽）</strong></td><td>云南锗业2连板，翔鹭钨业/东方钽业/福达合金涨停</td><td>战略金属+出口管制+半导体材料需求，供给收缩逻辑持续强化</td></tr>
+        <tr><td><strong>工业金属</strong></td><td>锌业股份涨停</td><td>铜供给短缺逻辑强化，AI算力+能源转型提振需求</td></tr>
+    </table>
+</div>
+
+<div class="sector-card">
+    <div class="sector-name">🤖 智能驾驶 — 政策质变</div>
+    <div class="sector-stat">索菱股份/浙江世宝/兴民智通/山子高科等多股涨停</div>
+    <p style="font-size:13px;margin-top:6px;">
+    L3/L4强制性国标发布，从"推荐"到"强制"的质变——这是中国智能驾驶发展史上最关键的法规里程碑。未来新车型必须标配L3级自动驾驶能力，推动整个产业链进入爆发期。
+    </p>
+</div>
+
+<!-- 综合判断 -->
+<h2>⑦ 综合判断与明日预期</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>✅ 今日定性：科技修复高潮日</strong><br>
+        <strong>关键信号：</strong>跌停仅1只、涨停104只、成交放量4460亿至2.66万亿、科创50+4.78%、主力净流入330亿——所有数据指向这是一轮健康的"科技主线确认日"，而非单纯的情绪亢龙。<br>
+        <strong>风格切换：</strong>资金从高股息防御（银行/油气/白酒）系统性转向科技成长，这是中期趋势而非短期博弈。
+    </div>
+    <div class="alert">
+        <strong>⚠️ 明日风险与关注：</strong><br>
+        ① <strong>高潮次日分化</strong> — 104只涨停后次日一进二成功率通常回落，追高需谨慎；<br>
+        ② <strong>CPO禁令余波</strong> — 新易盛主力净流出19.85亿，光模块方向仍有不确定性；<br>
+        ③ <strong>传智教育8板分歧</strong> — 14:21才封板（T字板），明日9板能否封住是情绪风向标；<br>
+        ④ <strong>关注持续性</strong> — 半导体设备趋势确定性强，小金属涨价逻辑中期有效，玻纤/MLCC涨价周期确认。
+    </div>
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+    Serenity 投资分析引擎 · 2026-08-05 · 数据来源：财联社/证券时报/每日经济新闻/东方Choice/中新经纬 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
