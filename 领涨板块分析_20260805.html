@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>领涨板块分析_20260805</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#fff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+        h1{font-size:21px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        h3{font-size:14px;margin:18px 0 10px}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+        .sector-card{border-left:4px solid var(--green);padding:12px 16px;margin:12px 0;background:var(--card);border-radius:0 8px 8px 0}
+        .sector-card.orange{border-left-color:var(--orange)}
+        .sector-card.red{border-left-color:var(--red)}
+        .sector-card .sector-name{font-size:15px;font-weight:700}
+        .sector-card .sector-stat{font-size:12px;color:var(--muted);margin:4px 0}
+        .flow-bar{height:10px;border-radius:5px;background:rgba(48,54,61,0.3);margin:6px 0;overflow:hidden;position:relative}
+        .flow-bar .fill{height:100%;border-radius:5px;transition:width 0.5s}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}}
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 今日A股领涨板块分析 — 2026-08-05</h1>
+<p class="subtitle">数据截至午间收盘 | 来源：财联社/证券时报/金融界/东方财富多源交叉验证</p>
+
+<!-- 盘面总览 -->
+<div class="summary">
+    <strong>📊 盘面总览</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+1.34%</div><div class="label">沪指 3873</div></div>
+        <div class="stat"><div class="num up">+1.56%</div><div class="label">深成指 14101</div></div>
+        <div class="stat"><div class="num up">+0.89%</div><div class="label">创业板指 3519</div></div>
+        <div class="stat"><div class="num up">+5.18%</div><div class="label">科创50 1700</div></div>
+    </div>
+    <div style="margin-top:8px;font-size:13px;color:var(--muted);">
+    半日成交 1.69万亿（放量3300亿）| 上涨3900+只 | 涨停90+只 | 跌停仅2只 | 市场情绪：偏热/80分
+    </div>
+    <div class="grid-4" style="margin-top:10px">
+        <div class="stat"><div class="num up" style="font-size:18px;">+164.92亿</div><div class="label">电子主力净流入</div></div>
+        <div class="stat"><div class="num up" style="font-size:18px;">+93.56亿</div><div class="label">有色主力净流入</div></div>
+        <div class="stat"><div class="num up" style="font-size:18px;">+88.26亿</div><div class="label">半导体主力净流入</div></div>
+        <div class="stat"><div class="num up" style="font-size:18px;">+277亿</div><div class="label">大盘主力净流入</div></div>
+    </div>
+</div>
+
+<!-- 三强板块 -->
+<h2>🚀 三大领涨板块（申万一级）</h2>
+
+<div class="sector-card">
+    <div class="sector-name">🥇 电子板块 <span class="badge badge-green">涨幅+5%+</span></div>
+    <div class="sector-stat">主力净流入 164.92亿 ｜ 40+股涨停或涨超10% ｜ 领涨全市场</div>
+    <div class="flow-bar"><div class="fill" style="width:100%;background:linear-gradient(90deg,var(--green),#4ade80)"></div></div>
+    <table>
+        <tr><th>细分方向</th><th>代表个股</th><th>驱动逻辑</th></tr>
+        <tr><td><strong>半导体设备</strong></td><td>金海通2连板、中微公司+13%、长川科技、华峰测控</td><td>SEMI预测全球半导体设备2026年+23%达1659亿美元，2028年增至2295亿美元；三星/SK海力士评估中微半导体设备</td></tr>
+        <tr><td><strong>半导体材料</strong></td><td>中巨芯、江化微、有研新材涨停、和远气体涨停</td><td>电子特气/湿电子化学品国产替代加速</td></tr>
+        <tr><td><strong>MLCC</strong></td><td>博迁新材、火炬电子、东材科技、博杰股份</td><td>AI服务器用高容MLCC紧缺，村田/三星电机扩产周期1年+，供给受限格局持续</td></tr>
+        <tr><td><strong>高带宽内存</strong></td><td>板块涨幅居前5</td><td>HBM需求持续爆发，AI算力拉动</td></tr>
+    </table>
+</div>
+
+<div class="sector-card">
+    <div class="sector-name">🥈 有色金属板块 <span class="badge badge-green">涨幅+4.83%</span></div>
+    <div class="sector-stat">主力净流入 93.56亿 ｜ 云南锗业/锌业股份/盛达资源/福达合金/博迁新材/翔鹭钨业/四川黄金等多股涨停</div>
+    <div class="flow-bar"><div class="fill" style="width:80%;background:linear-gradient(90deg,var(--green),#4ade80)"></div></div>
+    <table>
+        <tr><th>细分方向</th><th>代表个股</th><th>驱动逻辑</th></tr>
+        <tr><td><strong>锗/稀有金属</strong></td><td>云南锗业（锗涨价+磷化铟，今日有望3连板）</td><td>锗价持续上涨，磷化铟是光通信/CPO核心衬底材料</td></tr>
+        <tr><td><strong>贵金属</strong></td><td>四川黄金涨停、浩通科技20cm涨停</td><td>美伊谈判不确定+央行购金，金价高位运行</td></tr>
+        <tr><td><strong>钨/钼/钽</strong></td><td>翔鹭钨业、东方钽业、福达合金涨停</td><td>小金属供给端收缩，价格上行</td></tr>
+        <tr><td><strong>工业金属</strong></td><td>锌业股份、盛达资源涨停</td><td>全球PMI回暖+中国基建发力</td></tr>
+    </table>
+</div>
+
+<div class="sector-card">
+    <div class="sector-name">🥉 计算机板块 <span class="badge badge-green">涨幅居前</span></div>
+    <div class="sector-stat">主力净流入 45.19亿 ｜ 万集科技/新开普20cm涨停、索辰科技/卓易信息/行云科技涨超10%</div>
+    <div class="flow-bar"><div class="fill" style="width:55%;background:linear-gradient(90deg,var(--green),#4ade80)"></div></div>
+    <table>
+        <tr><th>细分方向</th><th>代表个股</th><th>驱动逻辑</th></tr>
+        <tr><td><strong>智能驾驶</strong></td><td>索菱股份、浙江世宝、兴民智通、山子高科涨停</td><td>车路云政策持续催化+华为智驾路线</td></tr>
+        <tr><td><strong>AI应用</strong></td><td>新开普20cm、粤传媒、博彦科技涨停</td><td>Palantir Q2业绩超预期，单日+29%；GPT-5.6降价推动AI应用成本雪崩</td></tr>
+        <tr><td><strong>算力租赁</strong></td><td>利通电子4天3板、行云科技+10%+、汉鑫科技+10%+</td><td>OpenRouter榜单前5全为中国模型，国产算力需求+417%</td></tr>
+    </table>
+</div>
+
+<!-- 概念板块 -->
+<h2>🔥 概念板块涨幅TOP10</h2>
+<div class="card">
+    <table>
+        <tr><th>排名</th><th>概念板块</th><th>涨幅</th><th>核心逻辑</th></tr>
+        <tr><td>1</td><td><strong>高带宽内存</strong></td><td class="up">+5%+</td><td>HBM需求爆发，AI算力拉动</td></tr>
+        <tr><td>2</td><td><strong>电子化学品</strong></td><td class="up">+5%+</td><td>半导体材料国产替代</td></tr>
+        <tr><td>3</td><td><strong>MLCC</strong></td><td class="up">+4%+</td><td>AI服务器紧缺，涨价周期</td></tr>
+        <tr><td>4</td><td><strong>贵金属</strong></td><td class="up">+4%+</td><td>避险+央行购金</td></tr>
+        <tr><td>5</td><td><strong>存储芯片</strong></td><td class="up">+4%+</td><td>全球涨价周期确认</td></tr>
+        <tr><td>6</td><td><strong>第三代半导体</strong></td><td class="up">+3%+</td><td>国产替代+政策支持</td></tr>
+        <tr><td>7</td><td><strong>智能驾驶</strong></td><td class="up">+3%+</td><td>政策+华为催化</td></tr>
+        <tr><td>8</td><td><strong>算力租赁</strong></td><td class="up">+3%+</td><td>国产模型崛起+需求爆发</td></tr>
+        <tr><td>9</td><td><strong>AI应用</strong></td><td class="up">+3%+</td><td>Palantir业绩催化+降价驱动</td></tr>
+        <tr><td>10</td><td><strong>CRO/创新药</strong></td><td class="up">+2%+</td><td>药明康德上调业绩指引余温</td></tr>
+    </table>
+</div>
+
+<!-- 资金面深度 -->
+<h2>💰 资金面深度</h2>
+<div class="card">
+    <h3>主力资金净流入TOP5</h3>
+    <table>
+        <tr><th>排名</th><th>板块</th><th>净流入（亿）</th><th>占比</th><th>代表个股</th></tr>
+        <tr><td>1</td><td><strong>电子</strong></td><td><strong>164.92</strong></td><td>59.4%</td><td>中微公司、金海通、中巨芯</td></tr>
+        <tr><td>2</td><td><strong>有色金属</strong></td><td><strong>93.56</strong></td><td>33.7%</td><td>云南锗业、四川黄金、锌业股份</td></tr>
+        <tr><td>3</td><td><strong>半导体</strong></td><td><strong>88.26</strong></td><td>31.8%</td><td>金海通、长川科技、华峰测控</td></tr>
+        <tr><td>4</td><td><strong>计算机</strong></td><td><strong>45.19</strong></td><td>16.3%</td><td>万集科技、新开普、博彦科技</td></tr>
+        <tr><td>5</td><td><strong>工业金属</strong></td><td><strong>37.99</strong></td><td>13.7%</td><td>铜/铝个股</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">
+    电子板块吸金164.92亿，占大盘主力净流入277亿的59.4%，资金高度集中。半导体设备（金海通2连板）和MLCC（博迁新材）是电子内部最强细分。
+    </p>
+</div>
+
+<!-- 领跌板块 -->
+<h2>❌ 领跌板块</h2>
+<div class="card">
+    <table>
+        <tr><th>板块</th><th>涨跌幅</th><th>说明</th></tr>
+        <tr><td><strong>通信/CPO</strong></td><td class="down">-2%+</td><td>中际旭创一度-13%、新易盛一度-10%（CPO禁令担忧），午后有所收窄</td></tr>
+        <tr><td><strong>银行</strong></td><td class="down">-2~3%</td><td>四大行全线下挫（工商银行/农业银行/中国银行），资金从防御转向成长</td></tr>
+        <tr><td><strong>白酒/酿酒</strong></td><td class="down">-1.30%</td><td>茅台/五粮液承压，消费复苏不及预期</td></tr>
+        <tr><td><strong>油气</strong></td><td class="down">-0.67%</td><td>美伊谈判+霍尔木兹重开预期，布油暴跌7%，通源石油/科力股份走弱</td></tr>
+        <tr><td><strong>公路桥梁</strong></td><td class="down">-1.11%</td><td>传统防御板块资金流出</td></tr>
+    </table>
+</div>
+
+<!-- 明日预期 -->
+<h2>🔮 明日预期与风险</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>✅ 延续性判断：</strong><br>
+        <strong>半导体设备（高）</strong> — SEMI预测全球设备市场2026-2028年连续增长，基本面驱动，趋势可持续；<br>
+        <strong>MLCC（高）</strong> — 供需缺口短期无法缓解，涨价周期确认；<br>
+        <strong>有色金属（中高）</strong> — 锗/钨等小金属涨价+供给收缩，中期趋势向好；<br>
+        <strong>AI应用（中）</strong> — Palantir催化+GPT降价，但A股跟风为主，需关注业绩兑现。
+    </div>
+    <div class="alert">
+        <strong>⚠️ 风险提示：</strong><br>
+        ① <strong>CPO禁令黑天鹅</strong> — 中际旭创一度-13%，若禁令升级将拖累科技板块整体情绪；<br>
+        ② <strong>高潮次日分化</strong> — 8/4涨停140只，今日涨停数回落至90只，追高风险加大；<br>
+        ③ <strong>资金高度集中电子</strong> — 电子板块吸走59%主力资金，若板块回调将拖累大盘；<br>
+        ④ <strong>SpaceX/AMD盘后双杀</strong> — 隔夜美股科技股面临压力，可能对A股AI算力板块形成情绪传导（SpaceX -8%、AMD -9%）；<br>
+        ⑤ <strong>周五美国非农</strong> — 市场定价9月加息概率66.5%，非农若超预期将压制全球风险资产。
+    </div>
+</div>
+
+<!-- 首页页脚 -->
+<div class="footer">
+    Serenity 投资分析引擎 · 2026-08-05 · 数据来源：财联社/证券时报/金融界/东方财富/央视财经 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
