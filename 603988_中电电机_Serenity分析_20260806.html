@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中电电机_Serenity分析_20260806</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+body.light{--bg:#fff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+h1{font-size:20px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+.subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+h3{font-size:14px;margin:16px 0 8px;color:var(--blue)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.up{color:var(--green)}.down{color:var(--red)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+.badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+.badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+.alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+.green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.stat{text-align:center}
+.stat .num{font-size:22px;font-weight:700;color:var(--accent)}
+.stat .label{font-size:11px;color:var(--muted)}
+.verdict{font-size:15px;font-weight:700;padding:16px 24px;border-radius:10px;margin:16px 0;text-align:center}
+.verdict-sell{background:rgba(248,81,73,0.12);border:2px solid var(--red);color:var(--red)}
+.verdict-hold{background:rgba(210,153,29,0.12);border:2px solid var(--orange);color:var(--orange)}
+.verdict-buy{background:rgba(63,185,80,0.12);border:2px solid var(--green);color:var(--green)}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+@media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body class="light">
+
+<h1>🔍 中电电机 (603988) — Serenity 分析</h1>
+<p class="subtitle">数据来源：财联社/东方财富/证券之星/同花顺/公司公告 · 2026-08-06 收盘 · 多源交叉验证</p>
+
+<div class="verdict verdict-sell">
+🔴 Sell / 回避 — 纯题材炒作，公司自己都在预警风险
+</div>
+
+<div class="card">
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+10.02%</div><div class="label">今日涨停</div></div>
+        <div class="stat"><div class="num">22.72</div><div class="label">涨停价（元）</div></div>
+        <div class="stat"><div class="num">2天2板</div><div class="label">连板状态</div></div>
+        <div class="stat"><div class="num">53.43亿</div><div class="label">总市值</div></div>
+    </div>
+    <div style="margin-top:8px;font-size:13px;color:var(--muted);">
+    今开22.00 · 昨收20.65 · 成交4.54亿 · 换手8.53% · 封板时间10:37 · 主力净流入7647.6万 · PE(TTM) 172.67x · PB 8.02x
+    </div>
+</div>
+
+<h2>① L0-事实层</h2>
+<div class="card">
+    <h3>涨停驱动（三重逻辑，但无一是业绩驱动）</h3>
+    <table>
+        <tr><th>驱动</th><th>事实</th><th>意味着什么</th></tr>
+        <tr><td><strong>① 节能电机政策</strong></td><td>工信部印发《节能装备高质量发展实施方案2026-2028》，强制替换IE4超高效电机</td><td>政策催化是真实的，但落地→订单→收入需要时间，H1业绩已预告暴降85-90%</td></tr>
+        <tr><td><strong>② 出口高增</strong></td><td>2025年境外收入同比+64%，海外毛利率高于国内</td><td>出口增长是亮点，但基数小（2025全年营收6.59亿，出口占比不到20%），绝对增量有限</td></tr>
+        <tr><td><strong>③ 矿产资源转型</strong></td><td>2025.12控股股东变更为高地资源（郭文军），新增矿产资源业务，内蒙古设子公司</td><td>纯预期，无任何落地订单或投产时间表，公司异动公告明确"不存在应披露未披露重大事项"</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <h3>基本面快筛</h3>
+    <table>
+        <tr><th>指标</th><th>数据</th><th>判定</th></tr>
+        <tr><td>2026Q1营收</td><td>1.17亿（同比-0.61%）</td><td class="down">营收停滞</td></tr>
+        <tr><td>2026H1归母净利润（预告）</td><td>360-540万（同比-84.56%~-89.71%）</td><td class="down">🔴 暴跌</td></tr>
+        <tr><td>2026H1扣非净利润（预告）</td><td>320-480万（同比-72.98%~-81.98%）</td><td class="down">🔴 暴跌</td></tr>
+        <tr><td>2025全年扣非净利润</td><td>1213万（同比-28.56%）</td><td class="down">主业持续恶化</td></tr>
+        <tr><td>2025全年归母净利润</td><td>3064万（同比+396.75%）</td><td class="orange">⚠️ 非经常性收益驱动（港股减持），主业实际下滑</td></tr>
+        <tr><td>PE(TTM)</td><td>172.67x</td><td class="down">🔴 极度高估</td></tr>
+        <tr><td>动态PE</td><td>296.79x</td><td class="down">🔴 极度高估</td></tr>
+        <tr><td>PB</td><td>8.02x</td><td class="down">🔴 行业均值约3x</td></tr>
+        <tr><td>毛利率</td><td>29.14%</td><td>中性</td></tr>
+        <tr><td>负债率</td><td>38.07%</td><td>中性偏低</td></tr>
+    </table>
+</div>
+
+<h2>② Serenity 15条判据</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>得分序列：</strong>1:0 2:0 3:0 4:1 5:0 6:0 7:0 8:0 9:0 10:1 11:1 12:0 13:1 14:0 15:1 = <strong>5/15</strong>
+    </div>
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>1</td><td>独家供应</td><td>0</td><td>电机行业充分竞争，卧龙电驱/佳电股份/大洋电机等同业众多</td></tr>
+        <tr><td>2</td><td>供需缺口</td><td>0</td><td>无短缺</td></tr>
+        <tr><td>3</td><td>拿卡交付</td><td>0</td><td>无</td></tr>
+        <tr><td>4</td><td>技术壁垒</td><td>1</td><td>省级技术中心+工程中心，国务院津贴专家，大中型电机有一定技术门槛</td></tr>
+        <tr><td>5</td><td>规模效应</td><td>0</td><td>年营收6-7亿，资产11.2亿，属中小规模</td></tr>
+        <tr><td>6</td><td>网络效应</td><td>0</td><td>无</td></tr>
+        <tr><td>7</td><td>品牌/粘性</td><td>0</td><td>20年历史，但电机行业客户粘性弱，价格敏感</td></tr>
+        <tr><td>8</td><td>先发优势</td><td>0</td><td>无</td></tr>
+        <tr><td>9</td><td>合规/牌照</td><td>0</td><td>UL/CE/CSA等是行业标配，非独特壁垒</td></tr>
+        <tr><td>10</td><td>研发投入</td><td>1</td><td>90+技术人员，省级平台，但研发费用率不高</td></tr>
+        <tr><td>11</td><td>未来爆发</td><td>1</td><td>节能电机政策+海外出口+矿产转型，三重预期但均未兑现</td></tr>
+        <tr><td>12</td><td>护城河</td><td>0</td><td>行业竞争激烈，无显著护城河</td></tr>
+        <tr><td>13</td><td>本土化壁垒</td><td>1</td><td>国产工业电机替代外资趋势，但非独特优势</td></tr>
+        <tr><td>14</td><td>信息不对称</td><td>0</td><td>无</td></tr>
+        <tr><td>15</td><td>大TAM</td><td>1</td><td>工业电机替换市场空间大</td></tr>
+    </table>
+</div>
+
+<h2>③ 红旗扫描</h2>
+<div class="card">
+    <table>
+        <tr><th>红旗</th><th>严重程度</th><th>详情</th></tr>
+        <tr><td>🔴 信披违规前科</td><td class="down">FAIL</td><td>2024.9江苏证监局警示函+上交所通报批评：重组信披不及时 + 2023半年报/三季报虚增利润286万</td></tr>
+        <tr><td>🔴 H1业绩暴降</td><td class="down">FAIL</td><td>2026H1归母预降85-90%，扣非预降73-82%，主业在节能政策利好下反而恶化</td></tr>
+        <tr><td>🔴 PE极度高估</td><td class="down">FAIL</td><td>PE(TTM) 172x，行业均值44x，透支4倍</td></tr>
+        <tr><td>🔴 公司主动预警</td><td class="down">FAIL</td><td>7/24异动公告明确："不存在应披露未披露重大事项""预计H1净利同比减少84.56%-89.71%，请广大投资者注意生产经营风险"</td></tr>
+        <tr><td>⚠️ 扣非持续下滑</td><td class="orange">WARN</td><td>2025扣非-28.56%，2026H1扣非-73~82%，主业盈利持续恶化</td></tr>
+        <tr><td>⚠️ 转型极早期</td><td class="orange">WARN</td><td>矿产资源业务无任何订单/投产时间表，公司确认"不存在应披露未披露重大事项"</td></tr>
+        <tr><td>⚠️ 投资者索赔</td><td class="orange">WARN</td><td>因信披违规，律师已启动索赔征集，诉讼时效至2025.1.25（已到期，但反映出治理问题）</td></tr>
+    </table>
+</div>
+
+<h2>④ 三情景估值</h2>
+<div class="card">
+    <table>
+        <tr><th>情景</th><th>假设</th><th>估值区间</th><th>对应股价</th></tr>
+        <tr><td>🐻 <strong>Bear</strong></td><td>H1利润暴降延续至全年，全年归母~1000万，PE 30x（电机行业熊市估值）</td><td><strong>15-25亿</strong></td><td>6.4-10.6元</td></tr>
+        <tr><td>📊 <strong>Base</strong></td><td>节能电机+海外出口Q3-Q4发力，全年归母2000-3000万，PE 50x（政策溢价）</td><td><strong>25-35亿</strong></td><td>10.6-14.9元</td></tr>
+        <tr><td>🐂 <strong>Bull</strong></td><td>矿产资源有实质性进展+节能电机订单爆发，全年归母5000万，PE 80x（小盘+政策+资源三重溢价）</td><td><strong>40-50亿</strong></td><td>17.0-21.3元</td></tr>
+        <tr><td style="color:var(--red);font-weight:700;">🔴 现价</td><td>22.72元 × 2.352亿股</td><td><strong>53.43亿</strong></td><td><strong>22.72元</strong></td></tr>
+    </table>
+    <div class="alert" style="margin-top:12px;">
+        <strong>⚠️ 结论：现价53.43亿已超过Bull情景上限（50亿），且Bull情景已包含矿产资源转型+节能爆发最乐观假设，现价透支了所有可能的好消息。</strong>
+    </div>
+</div>
+
+<h2>⑤ 核心卡点</h2>
+<div class="card">
+    <p><strong>卡点1：业绩暴降 vs 股价暴涨</strong> — H1净利预降85-90%，股价却2天2板，基本面与走势完全背离。</p>
+    <p style="margin-top:8px;"><strong>卡点2：公司自己都在预警</strong> — 7/24异动公告是A股罕见的"主动劝退"信号，公司明确说"没有应披露未披露重大事项"+"业绩暴降"，但市场无视。</p>
+    <p style="margin-top:8px;"><strong>卡点3：扣非利润持续萎缩</strong> — 2025扣非-28.56% → 2026H1扣非-73~82%，主业在政策利好下反而加速恶化，说明节能电机政策尚未转化为订单。</p>
+    <p style="margin-top:8px;"><strong>卡点4：信披违规前科</strong> — 2024年被警示函+通报批评，虚增利润286万，公司治理有瑕疵。</p>
+</div>
+
+<h2>⑥ 连板判定</h2>
+<div class="card">
+    <table>
+        <tr><th>连板SOP判据</th><th>结果</th></tr>
+        <tr><td>涨停定性</td><td>10:37早盘封板，封板时间较早，但换手8.53%偏高，属换手板</td></tr>
+        <tr><td>题材定位</td><td>节能电机主线内，但非核心龙头（非连板最高标），属跟风补涨</td></tr>
+        <tr><td>连板红旗</td><td class="down">命中：<strong>公司已发异动公告预警风险</strong>（与传智教育类似，传智发公告后8进9失败）</td></tr>
+        <tr><td>综合判定</td><td class="down"><strong>🔴 回避</strong> — 跟风补涨+公司主动预警+业绩暴降，追高风险极大</td></tr>
+    </table>
+</div>
+
+<h2>⑦ 综合判断</h2>
+<div class="card">
+    <div class="alert" style="margin-top:0;">
+        <strong>🔴 核心结论：纯题材炒作，公司自己都在劝退</strong><br><br>
+        <strong>✅ 唯一亮点：</strong><br>
+        ① 节能电机政策催化真实（十五五三年替换周期）<br>
+        ② 出口业务2025年+64%，海外高毛利<br>
+        ③ 矿产资源转型提供想象空间<br><br>
+        <strong>❌ 致命硬伤：</strong><br>
+        ① H1净利预降85-90%，政策利好下业绩反而暴降<br>
+        ② 扣非利润持续萎缩（2025-28%→2026H1-73~82%），主业加速恶化<br>
+        ③ PE(TTM) 172x，行业均值44x，透支4倍<br>
+        ④ 公司7/24主动发异动公告预警风险，A股罕见的"主动劝退"信号<br>
+        ⑤ 现价53亿已超过Bull情景上限，包含了所有乐观假设<br>
+        ⑥ 2024年信披违规被警示函+通报批评，治理有瑕疵<br>
+        ⑦ 矿产资源转型极早期，无任何落地证据<br><br>
+        <strong>操作建议：</strong>回避。公司自己都发公告说"注意生产经营风险""理性投资，注意股价炒作风险"，这是A股罕见的坦诚信号。如果非要关注，等回调至Base区间25-35亿（10.6-14.9元，较现价-35~-53%）再评估。今日涨停不追，2进3失败概率高。
+    </div>
+</div>
+
+<div class="footer">
+    Serenity 投资分析引擎 · 2026-08-06 · 数据来源：财联社/东方财富/证券之星/同花顺/公司公告 · 多源交叉验证 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
