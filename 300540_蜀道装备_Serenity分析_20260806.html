@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蜀道装备_Serenity分析_20260806</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+body.light{--bg:#fff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+h1{font-size:20px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+.subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+h3{font-size:14px;margin:16px 0 8px;color:var(--blue)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.up{color:var(--green)}.down{color:var(--red)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+.badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+.badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+.alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+.green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.stat{text-align:center}
+.stat .num{font-size:22px;font-weight:700;color:var(--accent)}
+.stat .label{font-size:11px;color:var(--muted)}
+.verdict{font-size:15px;font-weight:700;padding:16px 24px;border-radius:10px;margin:16px 0;text-align:center}
+.verdict-sell{background:rgba(248,81,73,0.12);border:2px solid var(--red);color:var(--red)}
+.verdict-hold{background:rgba(210,153,29,0.12);border:2px solid var(--orange);color:var(--orange)}
+.verdict-buy{background:rgba(63,185,80,0.12);border:2px solid var(--green);color:var(--green)}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+@media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body class="light">
+
+<h1>🔍 蜀道装备 (300540) — Serenity 分析</h1>
+<p class="subtitle">数据来源：财联社/东方财富/证券之星/同花顺/长江证券研报/公司公告 · 2026-08-06 收盘 · 多源交叉验证</p>
+
+<div class="verdict verdict-hold">
+🟡 Hold — 超跌反弹逻辑成立，但龙虎榜机构+北向均卖出，77亿估值已透支
+</div>
+
+<div class="card">
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+19.99%</div><div class="label">今日20cm涨停</div></div>
+        <div class="stat"><div class="num">33.61</div><div class="label">涨停价（元）</div></div>
+        <div class="stat"><div class="num">77.3亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">-35%</div><div class="label">距前高51.22</div></div>
+    </div>
+    <div style="margin-top:8px;font-size:13px;color:var(--muted);">
+    今开27.82 · 昨收28.01 · 振幅21.49% · 成交7.41亿 · 换手11.69% · 主力净流入+7377万 · 游资-2040万 · 散户-5337万 · PE(TTM) 105.66x
+    </div>
+    <div class="alert" style="margin-top:8px;">
+        <strong>⚠️ 龙虎榜：</strong>机构净卖出 <strong>1441万</strong>，北向资金净卖出 <strong>3871万</strong> — 龙虎榜参与者（机构+北向）在涨停板上卖出。
+    </div>
+</div>
+
+<h2>① L0-事实层</h2>
+<div class="card">
+    <h3>涨停驱动</h3>
+    <table>
+        <tr><th>驱动</th><th>事实</th><th>可信度</th></tr>
+        <tr><td><strong>① 电子特气/氦气板块集体爆发</strong></td><td>今日中巨芯20cm涨停、和远气体2连板、中船特气/华特气体大涨。全球氦气供给收缩（俄罗斯检修+中东地缘），国内氦气价格连续3日上行</td><td class="up">✅ 真实，板块共振</td></tr>
+        <tr><td><strong>② 超跌反弹</strong></td><td>从51.22高点跌至25元附近，最大回撤超50%，7连阴后的首根阳线</td><td class="up">✅ 超跌空间充足</td></tr>
+        <tr><td><strong>③ 氦气业务弹性</strong></td><td>内蒙古雅海提氦项目已稳定生产销售，产能最高55万方。氦价每涨300元/方，年毛利增1.35亿（45万方产量）</td><td class="up">✅ 有真实产能</td></tr>
+        <tr><td><strong>④ 多重题材</strong></td><td>氢能（与丰田合资）+商业航天（火箭级甲烷已投产）+蜀道集团赋能（1.65万亿资产）</td><td class="orange">⚠️ 题材丰富但兑现需时间</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <h3>基本面快筛</h3>
+    <table>
+        <tr><th>指标</th><th>数据</th><th>判定</th></tr>
+        <tr><td>2026Q1营收</td><td>9997万（同比+94.28%）</td><td class="up">✅ 高增长</td></tr>
+        <tr><td>2026Q1归母净利润</td><td>1228.74万（同比+1973%）</td><td class="up">✅ 暴增（但基数极低）</td></tr>
+        <tr><td>2026Q1扣非净利润</td><td>1183.90万（同比+859%）</td><td class="up">✅ 主业真实改善</td></tr>
+        <tr><td>毛利率</td><td>33.14%</td><td class="up">✅ 设备行业合理</td></tr>
+        <tr><td>负债率</td><td>45.26%</td><td>中性</td></tr>
+        <tr><td>财务费用</td><td>-798.1万（负值=有现金收益）</td><td class="up">✅ 财务健康</td></tr>
+        <tr><td>PE(TTM)</td><td>105.66x</td><td class="down">🔴 行业均值43.78x，高估2.4倍</td></tr>
+        <tr><td>PB</td><td>6.60x</td><td class="down">偏高</td></tr>
+        <tr><td>2026E归母净利（长江证券）</td><td>1.03亿</td><td class="up">对应当前PE 75x</td></tr>
+    </table>
+</div>
+
+<h2>② Serenity 15条判据</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>得分序列：</strong>1:0 2:1 3:0 4:1 5:0 6:0 7:0 8:1 9:1 10:1 11:1 12:0 13:1 14:0 15:1 = <strong>8/15</strong>
+    </div>
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>1</td><td>独家供应</td><td>0</td><td>LNG/空分设备行业竞争充分，杭氧股份/中泰股份等同业</td></tr>
+        <tr><td>2</td><td>供需缺口</td><td>1</td><td>全球氦气供给收缩（卡塔尔33%产能停滞+俄罗斯45%限售），国产替代窗口确定</td></tr>
+        <tr><td>3</td><td>拿卡交付</td><td>0</td><td>无</td></tr>
+        <tr><td>4</td><td>技术壁垒</td><td>1</td><td>国内最早进入天然气液化领域，主导国标编制，A级压力容器设计许可证</td></tr>
+        <tr><td>5</td><td>规模效应</td><td>0</td><td>年营收约4-5亿，规模小</td></tr>
+        <tr><td>6</td><td>网络效应</td><td>0</td><td>无</td></tr>
+        <tr><td>7</td><td>品牌/粘性</td><td>0</td><td>工程项目型业务，非消费品</td></tr>
+        <tr><td>8</td><td>先发优势</td><td>1</td><td>国产LNG运行业绩最多，深冷技术先驱</td></tr>
+        <tr><td>9</td><td>合规/牌照</td><td>1</td><td>多项压力容器/压力管道资质，行业门槛</td></tr>
+        <tr><td>10</td><td>研发投入</td><td>1</td><td>自有核心知识产权，深冷技术持续投入</td></tr>
+        <tr><td>11</td><td>未来爆发</td><td>1</td><td>氦气涨价弹性+氢能+商业航天+蜀道集团赋能，四重预期</td></tr>
+        <tr><td>12</td><td>护城河</td><td>0</td><td>技术有一定壁垒但非不可逾越，竞争格局分散</td></tr>
+        <tr><td>13</td><td>本土化壁垒</td><td>1</td><td>国产替代+氦气自主可控，国家战略方向</td></tr>
+        <tr><td>14</td><td>信息不对称</td><td>0</td><td>无</td></tr>
+        <tr><td>15</td><td>大TAM</td><td>1</td><td>氦气国产替代（千亿级）+氢能（万亿级）</td></tr>
+    </table>
+</div>
+
+<h2>③ 红旗扫描</h2>
+<div class="card">
+    <table>
+        <tr><th>红旗</th><th>严重程度</th><th>详情</th></tr>
+        <tr><td>🔴 PE 105x远高于行业均值</td><td class="down">FAIL</td><td>行业PE中位数43.78x，蜀道装备105x，高估2.4倍。长江证券预测2026E归母1.03亿，对应当前PE 75x，仍偏高</td></tr>
+        <tr><td>🔴 龙虎榜机构+北向均卖出</td><td class="down">FAIL</td><td>8/6涨停板，机构净卖出1441万，北向净卖出3871万。聪明钱在涨停板上出货</td></tr>
+        <tr><td>🔴 超跌反弹性质</td><td class="orange">WARN</td><td>从51.22跌至25元，跌超50%后的第一根阳线（20cm涨停），反弹性质为主，非新一轮主升确认</td></tr>
+        <tr><td>⚠️ 氦气业务占比待确认</td><td class="orange">WARN</td><td>氦气是弹性点但非收入主力，LNG装置仍占营收51%，氦气涨价弹性取决于产能利用率</td></tr>
+        <tr><td>⚠️ 氢能+商业航天落地需时间</td><td class="orange">WARN</td><td>丰田合资一期产能1500台/年，短期贡献有限；商业航天火箭甲烷装置已投产但业绩贡献不确定</td></tr>
+        <tr><td>✅ 无信披违规记录</td><td class="up">PASS</td><td>暂未发现信披违规或监管处罚案例</td></tr>
+        <tr><td>✅ Q1业绩真实改善</td><td class="up">PASS</td><td>营收+94%，扣非+859%，主业改善趋势明确</td></tr>
+    </table>
+</div>
+
+<h2>④ 三情景估值</h2>
+<div class="card">
+    <table>
+        <tr><th>情景</th><th>假设</th><th>估值区间</th><th>对应股价</th></tr>
+        <tr><td>🐻 <strong>Bear</strong></td><td>氦价回落+装备订单不及预期，全年归母~5000万，PE 40x</td><td><strong>20-30亿</strong></td><td>8.7-13.0元</td></tr>
+        <tr><td>📊 <strong>Base</strong></td><td>氦气稳定盈利+装备稳健增长，全年归母1.03亿（长江证券预测），PE 50x</td><td><strong>40-55亿</strong></td><td>17.4-23.9元</td></tr>
+        <tr><td>🐂 <strong>Bull</strong></td><td>氦气涨价+氢能放量+商业航天落地，全年归母1.5亿，PE 60x</td><td><strong>60-75亿</strong></td><td>26.1-32.6元</td></tr>
+        <tr><td style="color:var(--red);font-weight:700;">🔴 现价</td><td>33.61元 × 2.30亿股（含限售）</td><td><strong>77.3亿</strong></td><td><strong>33.61元</strong></td></tr>
+    </table>
+    <div class="alert" style="margin-top:12px;">
+        <strong>⚠️ 结论：现价77.3亿已超过Bull情景上限（75亿），且Bull情景已包含氦气涨价+氢能放量+商业航天落地的最乐观假设。</strong>如果按长江证券2026E归母1.03亿计算，当前PE 75x，对应合理股价约17-24元（Base区间），现价高出约40-100%。
+    </div>
+</div>
+
+<h2>⑤ 核心卡点</h2>
+<div class="card">
+    <p><strong>卡点1：超跌反弹 vs 趋势反转</strong> — 7连阴后首根20cm阳线，龙虎榜机构+北向均卖出。反弹修复性质为主，需放量站稳36元确认趋势反转，否则可能是下跌中继诱多。</p>
+    <p style="margin-top:8px;"><strong>卡点2：氦气弹性大但占比低</strong> — 氦气涨价弹性是核心叙事，但公司营收主力仍是LNG装置（51%），氦气业务对总营收贡献有限。氦价涨300元/方，年毛利增1.35亿，但需要45万方满产产量。</p>
+    <p style="margin-top:8px;"><strong>卡点3：PE 105x vs 行业43x</strong> — 即使按长江证券最乐观预测（2026E 1.03亿），当前PE仍达75x，远高于行业均值43x，估值溢价已包含氦气+氢能+商业航天的全部预期。</p>
+    <p style="margin-top:8px;"><strong>卡点4：氢能+商业航天短期难贡献业绩</strong> — 与丰田合资产能1500台/年，50辆示范车辆，短期无法产生实质利润。商业航天甲烷装置已投产但业绩贡献未披露。</p>
+</div>
+
+<h2>⑥ 蜀道集团赋能评估</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>评估</th></tr>
+        <tr><td>股东背景</td><td class="up">✅ 蜀道集团总资产1.65万亿，连续4年世界500强，四川省交通基建唯一平台</td></tr>
+        <tr><td>资源导入</td><td class="up">✅ 集团32宗矿业权→气体运营增量空间；高速公路路网→加氢站场景</td></tr>
+        <tr><td>资金支持</td><td class="up">✅ 2023年综合融资利率下降超1.11pct，低负债率为新业务提供空间</td></tr>
+        <tr><td>氢能平台</td><td class="up">✅ 蜀道集团氢能产业唯一上市平台，全产业链装备牵头主体</td></tr>
+        <tr><td>短期业绩影响</td><td class="orange">⚠️ 集团赋能是长期逻辑，短期无法快速转化为财报利润</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:8px;">
+        <strong>评估：</strong>蜀道集团赋能是蜀道装备区别于其他氦气/氢能概念股的核心优势。1.65万亿资产的股东背景，确实为公司在气体运营、氢能领域提供了别人没有的资源和场景。但这是长线逻辑，短线股价波动更多取决于氦价走势和资金博弈。
+    </div>
+</div>
+
+<h2>⑦ 综合判断</h2>
+<div class="card">
+    <div class="alert" style="margin-top:0;">
+        <strong>🔴 核心结论：超跌反弹已到位，现价透支所有乐观预期，Hold 不追</strong><br><br>
+        <strong>✅ 亮点：</strong><br>
+        ① 超跌充分（从51.22跌至25元，回撤超50%），反弹逻辑成立<br>
+        ② 氦气国产替代窗口确定（全球供给收缩，价格上行周期）<br>
+        ③ 蜀道集团1.65万亿赋能，是区别于其他概念股的核心壁垒<br>
+        ④ 氢能+商业航天+工业气体，多重题材叠加，弹性充足<br>
+        ⑤ 2026Q1营收+94%，扣非+859%，主业真实改善<br><br>
+        <strong>❌ 硬伤：</strong><br>
+        ① PE(TTM) 105x，行业均值43x，高估2.4倍<br>
+        ② 龙虎榜机构+北向涨停板上卖出，聪明钱不看好<br>
+        ③ 超跌反弹性质，非趋势反转确认，需放量站稳36元验证<br>
+        ④ 现价77亿已超Bull情景上限（75亿），包含所有乐观预期<br>
+        ⑤ 氦气为弹性点但非收入主力（LNG装置仍占51%），氢能+航天短期难贡献利润<br><br>
+        <strong>操作建议：</strong>Hold，涨停不追。理想介入区间40-55亿（17.4-23.9元，Base区间）。关键验证节点：<br>
+        • 短线：能否放量站稳36元（第一压力位）→ 确认反弹or诱多<br>
+        • 中线：8月底中报披露→氦气业务实际贡献；6N氦认证进度<br>
+        • 长线：尼日利亚LNG项目签约+氢能业务放量
+    </div>
+</div>
+
+<div class="footer">
+    Serenity 投资分析引擎 · 2026-08-06 · 数据来源：财联社/东方财富/证券之星/同花顺/长江证券研报/公司公告 · 多源交叉验证 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
