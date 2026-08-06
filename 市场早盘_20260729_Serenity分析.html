@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-07-29 A股早盘复盘 — Serenity 市场级分析</title>
+    <base href="https://lulaping.github.io/a-stock-reports/">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:1000px; margin:0 auto; padding:24px 20px; line-height:1.7; }
+        h1 { font-size:22px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:8px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:24px; }
+        h2 { font-size:17px; color:#fff; margin:32px 0 14px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(115px,1fr)); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:26px; font-weight:700; color:#fff; }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .up { color:var(--green); }
+        .down { color:var(--red); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        .card h4 { font-size:14px; margin-bottom:8px; color:#fff; }
+        .card p { font-size:13px; color:var(--muted); line-height:1.7; }
+        table { width:100%; border-collapse:collapse; margin:14px 0; font-size:13px; }
+        th { background:var(--card); padding:10px 12px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:2px solid var(--border); }
+        td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .phase-row { display:flex; gap:10px; margin:12px 0; }
+        .phase-card { flex:1; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; }
+        .phase-card .time { font-size:11px; color:var(--muted); margin-bottom:4px; }
+        .phase-card .val { font-size:20px; font-weight:700; }
+        .phase-card .desc { font-size:12px; color:var(--muted); margin-top:4px; }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .divider { border:none; border-top:1px solid var(--border); margin:28px 0; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        .highlight { color:var(--accent); font-weight:600; }
+        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        @media (max-width:640px) { .phase-row { flex-direction:column; } .two-col { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 A股早盘复盘 — 2026年7月29日（周三）</h1>
+<p class="subtitle">Serenity 市场级复盘 · 暴跌次日修复 · CPO戏剧性反转 · 医药股持续爆发 · 美联储决议前夜</p>
+
+<!-- ====== 市场概况 ====== -->
+<div class="summary">
+    <strong>📊 午间收盘数据（"指数稳、个股跌"的分化修复）</strong>
+    <div class="grid">
+        <div class="stat"><div class="num down">-0.08%</div><div class="label">沪指</div></div>
+        <div class="stat"><div class="num down">-0.04%</div><div class="label">深成指</div></div>
+        <div class="stat"><div class="num up">+0.92%</div><div class="label">创业板指</div></div>
+        <div class="stat"><div class="num">1.13万亿</div><div class="label">半日成交<span style="color:var(--muted);">+67亿</span></div></div>
+        <div class="stat"><div class="num down">3800+</div><div class="label">下跌家数</div></div>
+        <div class="stat"><div class="num">55只</div><div class="label">涨停家数<span style="color:var(--muted);">估</span></div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        昨日（7/28）创业板暴跌5.29%、兆易创新跌停、CPO全面重挫的恐慌之后，今日市场进入<span class="highlight">暴跌次日修复模式</span>。指数层面基本稳住（沪指/深成指近乎平盘），但内部结构性分化极端：<strong>3800+个股仍下跌</strong>，说明中小盘股修复力度弱；而创业板指+0.92%主要由医药权重和CPO龙头驱动。盘面核心矛盾：<strong>权重股护盘 vs 中小盘股继续失血</strong>。市场在等今晚美联储利率决议（7/30凌晨）和美股科技巨头财报（微软/Meta盘后），方向选择将在明后两天揭晓。
+    </div>
+</div>
+
+<!-- ====== 昨日暴跌回顾 ====== -->
+<h2>📉 昨日（7/28）暴跌回顾：创业板-5.29%</h2>
+<div class="card">
+    <table>
+        <tr><th>指数</th><th>7/28收盘</th><th>7/28早盘最深</th><th>→ 7/29午间</th></tr>
+        <tr><td>沪指</td><td><span class="down">-1.22%</span></td><td>-1.49%</td><td><span class="down">-0.08%</span> ✅修复</td></tr>
+        <tr><td>深成指</td><td><span class="down">-3.45%</span></td><td>-3.97%</td><td><span class="down">-0.04%</span> ✅修复</td></tr>
+        <tr><td>创业板指</td><td><span class="down">-5.29%</span></td><td>-6.0%</td><td><span class="up">+0.92%</span> ✅修复</td></tr>
+        <tr><td>科创50</td><td>大跌</td><td>-4%</td><td>—</td></tr>
+    </table>
+    <p style="margin-top:8px;font-size:12px;color:var(--muted);">
+        7/28暴跌导火索：隔夜美股芯片暴跌（英伟达-5%、SK海力士-7.5%破发、闪迪-11%）+ 韩国KOSPI熔断（-8%→-9.2%）→ A股存储/CPO/算力硬件全线重挫。兆易创新跌停、新易盛/源杰科技-10%、中际旭创-7%。光刻机是昨日唯一逆市涨停潮的板块（国产DUV光刻机量产突破）。
+    </p>
+</div>
+
+<!-- ====== 今日核心看点 ====== -->
+<h2>🔥 今日早盘三大核心看点</h2>
+
+<div class="card">
+    <h4>① CPO/算力硬件：戏剧性"昨日暴跌→今日新高"反转</h4>
+    <p>
+        昨日CPO板块全线重挫（中际旭创-7%、新易盛-10%、源杰科技-10%），但今日早盘<span class="highlight">CPO等算力硬件股震荡走强，中际旭创等多股再创历史新高！</span>这是早盘最值得关注的反转信号。驱动力：① 英伟达拟向SSI投资50亿美元+开放Vera Rubin硬件，AI算力需求叙事未变 ② 美股科技巨头财报周（微软/Meta今晚盘后），市场提前博弈AI资本开支超预期 ③ 超跌后的技术性修复。
+    </p>
+    <p style="margin-top:6px;font-size:12px;color:var(--muted);">
+        ⚠️ 但需注意：昨日的大跌已经破坏了CPO板块的短期趋势，今日反弹能否持续取决于今晚微软/Meta的AI资本开支指引。如果不及预期，CPO可能面临二次探底。
+    </p>
+</div>
+
+<div class="card">
+    <h4>② 医药股：持续爆发，CRO/创新药成为穿越周期的王者</h4>
+    <p>
+        医药股连续第4个交易日强势，今日<span class="highlight">CRO、创新药方向领涨</span>，辰欣药业等多股涨停。驱动逻辑：① 上半年创新药对外授权81笔/1100亿美元，出海超预期 ② 行业处于业绩修复+估值修复共振初期 ③ Science Corp.视网膜芯片获批是脑机接口/创新药联动催化剂 ④ 在市场整体弱势时，医药的防御属性+成长性兼具，成为资金避风港。
+    </p>
+    <p style="margin-top:6px;font-size:12px;color:var(--muted);">
+        海南海药2连板 → 哈三联 → 哈药股份跟涨，创新药梯队完整。
+    </p>
+</div>
+
+<div class="card">
+    <h4>③ 芯片股：从"跌停潮"到"活跃回暖"</h4>
+    <p>
+        昨日存储芯片全线重挫（兆易创新跌停、普冉股份-10%），今日芯片股表现活跃，<span class="highlight">东芯股份20CM涨停</span>。长鑫科技上市次日（7/28）低开7.7%后翻红，今日继续震荡，显示市场对国产存储龙头的承接力在增强。半导体板块整体从"恐慌性抛售"过渡到"分化修复"阶段。
+    </p>
+</div>
+
+<!-- ====== 板块表现 ====== -->
+<h2>🧭 板块表现</h2>
+
+<div class="two-col">
+    <div class="card" style="margin:0;">
+        <h4>🟢 领涨板块</h4>
+        <table>
+            <tr><th>板块</th><th>龙头</th></tr>
+            <tr><td>💊 CRO/创新药</td><td>辰欣药业涨停 · 海南海药2连板</td></tr>
+            <tr><td>🔌 CPO/算力硬件</td><td>中际旭创创历史新高</td></tr>
+            <tr><td>💾 半导体/芯片</td><td>东芯股份20CM涨停</td></tr>
+            <tr><td>🧠 脑机接口</td><td>创新医疗4天3板 · 塞力医疗</td></tr>
+        </table>
+    </div>
+    <div class="card" style="margin:0;">
+        <h4>🔴 领跌板块</h4>
+        <table>
+            <tr><th>板块</th><th>龙头</th></tr>
+            <tr><td>🌾 农药</td><td>海利尔-5%</td></tr>
+            <tr><td>🐷 农业/猪肉</td><td>板块整体走弱</td></tr>
+            <tr><td>🏦 保险</td><td>防御板块资金流出</td></tr>
+            <tr><td>🛢️ 油气</td><td>国际油价持续承压</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- ====== 连板天梯 ====== -->
+<h2>🪜 连板天梯（早盘）</h2>
+<div class="card">
+    <table>
+        <tr><th>连板</th><th>个股</th><th>题材</th><th>状态</th></tr>
+        <tr><td><span class="badge badge-red">7连板</span></td><td><strong>603221 爱丽家居</strong></td><td>并购欧康诺（存储测试设备）</td><td>一字板，封单18.93亿，累计涨77%</td></tr>
+        <tr><td><span class="badge badge-green">4天3板</span></td><td><strong>002173 创新医疗</strong></td><td>脑机接口</td><td>涨停，成交7.53亿，深股通净买1.38亿</td></tr>
+        <tr><td><span class="badge badge-green">2连板</span></td><td><strong>000566 海南海药</strong></td><td>创新药</td><td>涨停</td></tr>
+        <tr><td><span class="badge badge-green">2连板</span></td><td><strong>塞力医疗</strong></td><td>脑机接口/医药</td><td>涨停</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">
+        ⚠️ <strong>高位断板阵营扩大：</strong>长缆科技（5板→7/28断板）、立新能源（8天7板→7/28高开9.49%后大跌）、五洲医疗（4板→断板）、中电电机（断板）、长城军工（断板）。连板高度集中在爱丽家居（7连板一字板），但一字板无参与价值，开板即风险。市场真正的赚钱效应在脑机接口/创新药的中位连板梯队。
+    </p>
+</div>
+
+<!-- ====== 关键背景 ====== -->
+<h2>🌍 宏观背景：超级周进行时</h2>
+<div class="card">
+    <table>
+        <tr><th style="width:100px;">时间</th><th>事件</th><th>对A股影响</th></tr>
+        <tr><td>7/30 凌晨</td><td><strong>美联储7月利率决议</strong></td><td>加息概率38%，鹰派则压制成长股；温和则利好修复</td></tr>
+        <tr><td>7/30 盘后</td><td><strong>微软、Meta财报</strong></td><td>AI资本开支指引决定CPO/算力方向</td></tr>
+        <tr><td>7/29</td><td><strong>SK海力士Q2财报</strong></td><td>存储芯片产业风向标，影响长鑫/兆易</td></tr>
+        <tr><td>7/31 盘后</td><td><strong>苹果、亚马逊财报</strong></td><td>消费电子+云计算需求验证</td></tr>
+        <tr><td>7/31 周五</td><td><strong>中国7月PMI</strong></td><td>国内经济复苏成色验证</td></tr>
+        <tr><td>7月底</td><td><strong>政治局会议</strong></td><td>下半年政策定调，市场最期待的政策信号</td></tr>
+    </table>
+</div>
+
+<!-- ====== 综合判断 ====== -->
+<h2>📋 综合判断与午后展望</h2>
+<div class="summary">
+    <table style="width:100%;font-size:14px;color:var(--text);">
+        <tr><td style="color:var(--muted);width:120px;">市场阶段</td><td><strong>暴跌次日修复，但修复力度不均。</strong>指数稳住了，但3800+个股仍跌——权重护盘（医药+CPO龙头），中小盘继续失血。这不是全面反弹，而是结构性修复。</td></tr>
+        <tr><td style="color:var(--muted);">积极信号</td><td>① CPO昨日暴跌→今日中际旭创创历史新高，这是最强烈的修复信号，说明资金对AI算力方向并未放弃 ② 医药股连续4天强势，CRO/创新药成为穿越周期的王者 ③ 芯片股从跌停潮回暖（东芯股份20cm），恐慌情绪在消退 ④ 半日成交1.13万亿未缩量，流动性尚可</td></tr>
+        <tr><td style="color:var(--muted);">风险点</td><td>① 3800+个股仍跌，指数修复主要靠权重，中小盘流动性危机未解除 ② 今晚美联储决议+微软/Meta财报是重大不确定性，市场在"等方向" ③ 韩国股市昨日熔断-8%，SK海力士今日财报，外部风险仍在 ④ 爱丽家居7连板一字板，一旦开板可能带崩连板情绪</td></tr>
+        <tr><td style="color:var(--muted);">午后关注</td><td>① CPO反弹能否持续，中际旭创新高后能否稳住 ② 创业板能否守住+0.92%的修复成果 ③ 有无资金在尾盘提前布局"美联储决议后反弹" ④ 连板股（爱丽家居/创新医疗）封板力度</td></tr>
+        <tr><td style="color:var(--muted);">Serenity 一句话</td><td>昨天创业板-5.29%的暴跌是一场恐慌情绪的集中宣泄，今天市场用"指数稳住、龙头新高"来消化。但真正的方向选择不在今天——而在今晚美联储决议和微软/Meta的AI资本开支指引。当前市场处于<strong>"暴风雨后的宁静"</strong>，CPO龙头创历史新高说明最聪明的资金在提前布局，但3800+个股仍跌说明市场信心尚未完全修复。午后大概率维持震荡，真正的决战在明后两天。</td></tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+    <p>本报告由 Serenity 投资分析引擎生成 · 基于公开信息 · 不构成投资建议</p>
+    <p>数据来源：财联社 · 华尔街见闻 · 证券时报 · 中国基金报 · 2026年7月29日</p>
+    <p><a href="https://lulaping.github.io/a-stock-reports/" style="color:var(--blue);">返回报告列表</a></p>
+</div>
+
+</body>
+</html>
