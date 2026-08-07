@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>锴威特 (688693) Serenity分析 — 2026-08-07</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#ffffff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+        h1{font-size:21px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .conclusion-box{border:2px solid var(--green);border-radius:10px;padding:20px 24px;margin:16px 0}
+        .conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+        .conclusion-row:last-child{border-bottom:none}
+        .conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:118px;color:var(--muted)}
+        .price-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+        .pb-card{padding:16px;border-radius:8px;border:1px solid var(--border)}
+        .pb-card.bear{border-top:4px solid var(--red)}
+        .pb-card.base{border-top:4px solid var(--orange)}
+        .pb-card.bull{border-top:4px solid var(--green)}
+        .pb-card .price{font-size:22px;font-weight:700;margin:8px 0}
+        .pb-card .price-detail{font-size:13px;color:var(--muted)}
+        .flag-list{list-style:none;padding:0}
+        .flag-list li{padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--muted);background:var(--card);font-size:14px;border-radius:0 4px 4px 0}
+        .flag-list li.pass{border-left-color:var(--green)}
+        .flag-list li.warn{border-left-color:var(--orange)}
+        .flag-list li.fail{border-left-color:var(--red)}
+        .highlight{background:rgba(210,153,29,0.25);padding:1px 4px;border-radius:3px}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}.price-box{grid-template-columns:1fr}}
+        .verdict{font-size:18px;font-weight:700;padding:12px 20px;border-radius:10px;margin:16px 0;text-align:center}
+        .verdict-hold{background:rgba(210,153,29,0.15);border:2px solid var(--orange);color:var(--orange)}
+        .verdict-buy{background:rgba(63,185,80,0.15);border:2px solid var(--green);color:var(--green)}
+        .verdict-sell{background:rgba(248,81,73,0.15);border:2px solid var(--red);color:var(--red)}
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 锴威特 (688693) Serenity分析 — 2026-08-07</h1>
+<p class="subtitle">连续2日一字板 · 三日涨幅偏离值超30%触发异常波动公告 · 16.5亿收购晶艺半导体 · 数据截至2026-08-07盘中</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>📊 今日核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+19.99%</div><div class="label">涨跌幅</div></div>
+        <div class="stat"><div class="num">93.38</div><div class="label">涨停价（元）</div></div>
+        <div class="stat"><div class="num">69.10</div><div class="label">总市值（亿）</div></div>
+        <div class="stat"><div class="num">8.74</div><div class="label">市净率（倍）</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+    今开93.38(一字板) · 昨收77.82(+20.00%) · 前日64.85 · 换手1.41% · PE(TTM)亏损 · 总股本0.74亿 · 流通市值约36.3亿
+    </div>
+</div>
+
+<!-- 结论区 -->
+<div class="verdict verdict-hold">
+🟡 Hold — 收购晶艺半导体逻辑通顺（营收1.37倍于自身），但69亿已超Bull上限，且外资三日做T净卖出
+</div>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">客观框架</span>
+        <span>Bear 25-35亿(33.8-47.3元) / Base 40-55亿(54.1-74.3元) / Bull 60-80亿(81.1-108.1元) → 现价69亿入Bull下沿，但溢价300%收购+双亏格局压缩安全边际</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity视角</span>
+        <span>5/15 · 收购故事有产业逻辑（器件+IC协同），但标的亏损+300%溢价+公司自身亏损=三重红旗，外资做T信号需警惕</span>
+    </div>
+</div>
+
+<!-- 今日盘面 -->
+<h2>① 今日盘面：连续2日一字板，异常波动公告已发</h2>
+<div class="card">
+    <table>
+        <tr><th>日期</th><th>收盘价</th><th>涨幅</th><th>市值</th><th>封单/换手</th></tr>
+        <tr><td>8月5日</td><td>64.85元</td><td class="up">+20.00%</td><td>47.8亿</td><td>—</td></tr>
+        <tr><td>8月6日</td><td>77.82元</td><td class="up">+20.00%</td><td>57.3亿</td><td>换手1.17%</td></tr>
+        <tr style="background:rgba(63,185,80,0.06);"><td>8月7日</td><td>93.38元</td><td class="up">+19.99%</td><td>69.1亿</td><td>换手1.41%</td></tr>
+    </table>
+    <div class="alert" style="margin-top:12px;">
+        <strong>⚠️ 公司于8月7日发布股票交易异常波动公告：</strong>连续三个交易日（8/4-8/6）收盘价格涨幅偏离值累计达到30%。公司确认除收购晶艺半导体外，无其他应披露而未披露的重大信息。本次交易尚需股东会（8/21）、上交所审核及证监会注册，存在不确定性。
+    </div>
+    <div class="green-note" style="margin-top:8px;">
+        <strong>🔑 三日市值变化：</strong>47.8亿→57.3亿→69.1亿，三日累计涨幅约72.8%（从8/4收盘约39.6元起算）。收购草案公布前（8/4收盘约39.6元）市值仅29亿，收购溢价已基本被市场定价。
+    </div>
+</div>
+
+<!-- 收购详情 -->
+<h2>② 收购晶艺半导体：交易结构拆解</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>详情</th><th>评估</th></tr>
+        <tr><td>交易对价</td><td>16.5亿（股份9.01亿+现金7.49亿），另募配套资金≤9.01亿</td><td>溢价超300%（标的净资产约4亿）</td></tr>
+        <tr><td>标的业务</td><td>晶艺半导体：电机驱动+电源管理芯片，500+量产客户</td><td>小功率PMIC+电机驱动，与锴威特中大功率互补</td></tr>
+        <tr><td>标的规模</td><td>2025年营收3.50亿(+37.3%)，是锴威特自身(2.55亿)的1.37倍</td><td><span class="badge badge-green">蛇吞象</span> 营收体量超上市公司</td></tr>
+        <tr><td>标的盈利</td><td>2025年归母净利-1984万，剔除股份支付后+8968万</td><td>表面亏损，实际盈利能力强</td></tr>
+        <tr><td>PS估值</td><td>16.5亿÷3.50亿=4.7x PS</td><td>半导体并购中合理偏低</td></tr>
+        <tr><td>PE估值</td><td>16.5亿÷8968万=18.4x（剔除股份支付）</td><td>合理</td></tr>
+        <tr><td>业绩承诺A</td><td>定制化量产业务2026-2027累计净利≥2.55亿</td><td>年均1.275亿，需验证</td></tr>
+        <tr><td>业绩承诺B</td><td>自研芯片业务2026-2028累计收入≥13.53亿</td><td>年均4.51亿，需验证</td></tr>
+        <tr><td>审批节点</td><td>8/21股东会→上交所审核→证监会注册</td><td>至少3-6个月</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:12px;">
+        <strong>收购逻辑合理之处：</strong>① 晶艺的小功率PMIC+电机驱动与锴威特的中大功率功率器件形成互补，产品矩阵拓宽；② 晶艺500+量产客户可直接导入锴威特器件产品，交叉销售空间大；③ 剔除股份支付后标的实际盈利8968万，18.4x PE估值合理。
+    </div>
+    <div class="alert" style="margin-top:8px;">
+        <strong>收购风险点：</strong>① 溢价超300%形成大额商誉，若业绩不达预期将面临减值；② 配套募资9.01亿存在发行失败风险；③ 整合风险——两家公司管理风格、客户结构、技术路线需磨合；④ 审批不确定性——科创板并购重组审核趋严。
+    </div>
+</div>
+
+<!-- L0事实 -->
+<h2>③ L0 事实底座</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>来源/时点</th><th>意味着什么</th></tr>
+        <tr><td>Q1营收</td><td>6479.77万(+44.54%)</td><td>2026Q1季报</td><td>营收恢复增长，但基数低</td></tr>
+        <tr><td>Q1归母净利</td><td>-1801.53万(亏损扩大40.37%)</td><td>2026Q1季报</td><td>自身经营仍亏损</td></tr>
+        <tr><td>2025全年营收</td><td>2.55亿</td><td>2025年报</td><td>规模较小</td></tr>
+        <tr><td>主营业务</td><td>功率IC 53.12% + 功率器件 43.30%</td><td>2025年报</td><td>Fabless模式，轻资产</td></tr>
+        <tr><td>PB</td><td>8.74倍</td><td>实时</td><td>行业均值3-4x，严重高估</td></tr>
+        <tr><td>股东户数</td><td>6863户(+20.36%)</td><td>2026Q1</td><td>筹码分散化</td></tr>
+        <tr><td>总股本</td><td>0.74亿股</td><td>2026Q1</td><td>流通0.39亿股，流通市值约36.3亿</td></tr>
+    </table>
+</div>
+
+<!-- 龙虎榜 -->
+<h2>④ 龙虎榜三日数据：外资做T信号明确</h2>
+<div class="card">
+    <div class="alert" style="margin-top:0;">
+        <strong>🔴 三日（8/4-8/6）龙虎榜合计：</strong>总买入9525万，总卖出7491万，净买2034万。但前五大买入席位中，三家同时出现在卖出席位，做T特征明显。
+    </div>
+    <table>
+        <tr><th>席位</th><th>三日买入</th><th>三日卖出</th><th>净额</th><th>信号</th></tr>
+        <tr><td>国泰海通证券总部</td><td>2448万</td><td>1663万</td><td class="up">+785万</td><td>做T，净留存不多</td></tr>
+        <tr><td>高盛(中国)上海</td><td>2134万</td><td>1245万</td><td class="up">+889万</td><td>做T，净留存不多</td></tr>
+        <tr style="background:rgba(248,81,73,0.06);"><td>摩根大通上海银城中路</td><td>2111万</td><td>2566万</td><td class="down">-455万</td><td>净卖出！</td></tr>
+        <tr><td>中信证券上海分公司</td><td>1520万</td><td>853万</td><td class="up">+667万</td><td>做T</td></tr>
+        <tr><td>中信证券北京分公司</td><td>1312万</td><td>1164万</td><td class="up">+148万</td><td>做T，净留存极少</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">结论：三大外资席位（国泰海通/高盛/摩根大通）均呈现"买入+卖出"组合，净留存极少，摩根大通甚至净卖出。外资并非坚定看多，而是在利用一字板流动性做T套利。一旦开板，抛压可能较大。</p>
+</div>
+
+<!-- Serenity 15条 -->
+<h2>⑤ Serenity 15条卡点判据</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>得分序列：</strong>1:0 2:0 3:0 4:1 5:0 6:0 7:0 8:0 9:0 10:0 11:0 12:0 13:0 14:0 15:1 = <strong>2/15</strong>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">仅命中两条：④ 收购后designed-in+多客户（晶艺500+客户导入）· ⑮ 功率半导体国产替代紧迫度（国产化率仍低）。其余13条均不命中——非垄断、市值中等、BOM占比不突出、自身亏损、无供需缺口、无政府介入等。</p>
+    <p style="font-size:12px;color:var(--muted);">注意：收购前锴威特自身作为功率半导体设计公司，产业地位一般。收购后若能成功整合，卡点属性可能提升，但当前尚处"故事阶段"。</p>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>⑥ 红旗扫描</h2>
+<ul class="flag-list">
+    <li class="fail">🔴 双亏格局 — 锴威特自身Q1亏损1801万(亏损扩大40%)，标的晶艺2025年报表亏损1984万。虽标的剔除股份支付后盈利，但整合期亏损可能扩大</li>
+    <li class="fail">🔴 PB 8.74x — 行业均值3-4x，严重高估。即使考虑收购并表，PB仍远超合理水平</li>
+    <li class="warn">⚠️ 溢价300%收购 — 16.5亿收购净资产约4亿的标的，形成大额商誉。若业绩不达预期，商誉减值风险巨大</li>
+    <li class="warn">⚠️ 审批不确定性 — 需股东会+上交所+证监会三重审批，任何一环出问题都可能导致交易失败</li>
+    <li class="warn">⚠️ 异常波动公告 — 公司已主动提示风险，三日涨幅超72%，短期情绪极度亢奋</li>
+    <li class="pass">✅ 其余通过：无大股东高质押、无频繁增发稀释、无单一客户集中(>50%)</li>
+</ul>
+
+<!-- 估值 -->
+<h2>⑦ 估值情景</h2>
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">25-35亿</div>
+        <div class="price-detail">对应股价 33.8-47.3 元</div>
+        <p style="font-size:13px;margin-top:8px;">收购失败/审批被否，公司回归自身2.55亿营收+亏损状态。PB回归行业均值3-4x</p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">40-55亿</div>
+        <div class="price-detail">对应股价 54.1-74.3 元</div>
+        <p style="font-size:13px;margin-top:8px;">收购完成，整合平稳。并表后营收6-7亿，2027年实现盈利。给予并表后6-8x PS</p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">60-80亿</div>
+        <div class="price-detail">对应股价 81.1-108.1 元</div>
+        <p style="font-size:13px;margin-top:8px;">整合超预期，业绩承诺达标，协同效应释放。2027年净利1.5亿+，给予40-50x PE</p>
+    </div>
+</div>
+<div class="alert" style="margin-top:8px;">
+    <strong>⚠️ 当前市值69亿已进入Bull区间（60-80亿），距离Bull上限80亿仅16%空间。</strong>收购前（8/4收盘约39.6元）市值仅29亿，三日涨幅72.8%已充分甚至过度定价收购利好。开板后回调压力大。
+</div>
+
+<!-- 催化剂 -->
+<h2>⑧ 催化剂时点</h2>
+<div class="card">
+    <table>
+        <tr><th>时点</th><th>事件</th><th>影响</th></tr>
+        <tr><td>8月21日</td><td>股东会审议收购方案</td><td>通过则继续推进，否决则暴跌</td></tr>
+        <tr><td>待定</td><td>上交所审核受理</td><td>审核问询内容决定市场预期</td></tr>
+        <tr><td>待定</td><td>证监会注册</td><td>最终审批，不确定性最大</td></tr>
+        <tr><td>8月底</td><td>2026中报披露</td><td>验证Q2经营是否改善</td></tr>
+    </table>
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-07 · 数据来源：公司公告/龙虎榜/财联社/东方财富 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宏昌科技 (301008) Serenity分析 — 2026-08-07</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#ffffff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+        h1{font-size:21px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .conclusion-box{border:2px solid var(--green);border-radius:10px;padding:20px 24px;margin:16px 0}
+        .conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+        .conclusion-row:last-child{border-bottom:none}
+        .conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:118px;color:var(--muted)}
+        .price-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+        .pb-card{padding:16px;border-radius:8px;border:1px solid var(--border)}
+        .pb-card.bear{border-top:4px solid var(--red)}
+        .pb-card.base{border-top:4px solid var(--orange)}
+        .pb-card.bull{border-top:4px solid var(--green)}
+        .pb-card .price{font-size:22px;font-weight:700;margin:8px 0}
+        .pb-card .price-detail{font-size:13px;color:var(--muted)}
+        .flag-list{list-style:none;padding:0}
+        .flag-list li{padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--muted);background:var(--card);font-size:14px;border-radius:0 4px 4px 0}
+        .flag-list li.pass{border-left-color:var(--green)}
+        .flag-list li.warn{border-left-color:var(--orange)}
+        .flag-list li.fail{border-left-color:var(--red)}
+        .highlight{background:rgba(210,153,29,0.25);padding:1px 4px;border-radius:3px}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}.price-box{grid-template-columns:1fr}}
+        .verdict{font-size:18px;font-weight:700;padding:12px 20px;border-radius:10px;margin:16px 0;text-align:center}
+        .verdict-hold{background:rgba(210,153,29,0.15);border:2px solid var(--orange);color:var(--orange)}
+        .verdict-buy{background:rgba(63,185,80,0.15);border:2px solid var(--green);color:var(--green)}
+        .verdict-sell{background:rgba(248,81,73,0.15);border:2px solid var(--red);color:var(--red)}
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 宏昌科技 (301008) Serenity分析 — 2026-08-07</h1>
+<p class="subtitle">一字板涨停 · 7.2亿跨界收购金刚石半导体 · 对赌+回购双重兜底 · 主业Q1净利-87.96% · 数据截至2026-08-07盘中</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>📊 今日核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+19.99%</div><div class="label">涨跌幅</div></div>
+        <div class="stat"><div class="num">41.41</div><div class="label">涨停价（元）</div></div>
+        <div class="stat"><div class="num">54.23</div><div class="label">总市值（亿）</div></div>
+        <div class="stat"><div class="num">242.16</div><div class="label">PE(TTM)</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+    今开41.41(一字板) · 昨收34.51(+2.10%) · 换手1.83% · PE(动态)786.73 · 总股本1.31亿 · 流通市值47.89亿 · 8/29披露中报
+    </div>
+</div>
+
+<!-- 结论区 -->
+<div class="verdict verdict-sell">
+🔴 Sell / 回避 — 主业加速恶化（Q1净利-87.96%），7.2亿跨界金刚石半导体是纯预期博弈，54亿已超Bull上限
+</div>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">客观框架</span>
+        <span>Bear 18-25亿(13.7-19.1元) / Base 28-38亿(21.4-29.0元) / Bull 42-55亿(32.1-42.0元) → 现价54亿已超Bull上限，且Bull情景本身极度乐观</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity视角</span>
+        <span>4/15 · 洗衣机进水阀国内市占率第一是唯一亮点，但家电→金刚石半导体跨界跨度极大，管理层无半导体经验，标的极年轻（成立2-3年），对赌协议仅提供有限保护</span>
+    </div>
+</div>
+
+<!-- 今日盘面 -->
+<h2>① 今日盘面：一字板涨停，公告收购金刚石半导体</h2>
+<div class="card">
+    <table>
+        <tr><th>日期</th><th>收盘价</th><th>涨幅</th><th>市值</th><th>换手</th></tr>
+        <tr><td>8月6日</td><td>34.51元</td><td class="up">+2.10%</td><td>45.20亿</td><td>5.39%</td></tr>
+        <tr style="background:rgba(63,185,80,0.06);"><td>8月7日</td><td>41.41元</td><td class="up">+19.99%（一字板）</td><td>54.23亿</td><td>1.83%</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:12px;">
+        <strong>🔑 涨停驱动：</strong>8月6日盘后公告，拟以7.2亿元收购昆吾半导体和尤品新材料各45%股权，切入金刚石（培育钻石）半导体材料赛道。交易设计了"对赌+回购"双重兜底机制。公司同时入选大智慧"金刚石"、"培育钻石"等多个概念板块。
+    </div>
+</div>
+
+<!-- 收购详情 -->
+<h2>② 7.2亿跨界收购：交易结构拆解</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>详情</th><th>评估</th></tr>
+        <tr><td>交易金额</td><td>7.2亿，控股昆吾半导体+尤品新材料各45%</td><td>占宏昌科技净资产约60%，体量较大</td></tr>
+        <tr><td>标的业务</td><td>金刚石（人造钻石）半导体材料——用于散热片、功率器件衬底</td><td>前沿材料，商业化早期</td></tr>
+        <tr><td>标的年龄</td><td>昆吾半导体/尤品新材料均成立仅2-3年</td><td><span class="badge badge-red">极年轻</span> 无历史业绩</td></tr>
+        <tr><td>保护机制</td><td>对赌+回购双重兜底</td><td>提供一定安全垫，但执行难度大</td></tr>
+        <tr><td>跨界跨度</td><td>家电（洗衣机进水阀）→ 金刚石半导体</td><td><span class="badge badge-red">跨度极大</span> 管理层无半导体经验</td></tr>
+        <tr><td>商业化周期</td><td>散热片验证周期2-3年，公司自认验证失败风险</td><td>远水难解近渴</td></tr>
+        <tr><td>概念热度</td><td>入选大智慧"金刚石"、"培育钻石"等板块</td><td>短期情绪催化，非基本面改善</td></tr>
+    </table>
+    <div class="alert" style="margin-top:12px;">
+        <strong>🔴 核心问题：这是一笔典型的"跨界并购追热点"交易。</strong>宏昌科技主业是洗衣机进水阀（国内市占率第一），与金刚石半导体没有任何技术、客户、供应链的协同。管理层在家电行业有经验，但半导体材料是全新领域。7.2亿对一家年净利仅几百万的公司来说是一笔巨款，失败代价极高。
+    </div>
+</div>
+
+<!-- L0事实 -->
+<h2>③ L0 事实底座</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>来源/时点</th><th>意味着什么</th></tr>
+        <tr><td>Q1营收</td><td>2.56亿(-5.42%)</td><td>2026Q1季报</td><td>主业营收下滑</td></tr>
+        <tr><td>Q1归母净利</td><td>143.62万(-87.96%)</td><td>2026Q1季报</td><td>主业盈利崩溃</td></tr>
+        <tr><td>2025全年净利</td><td>约2740万</td><td>2025年报</td><td>此前年度盈利尚可</td></tr>
+        <tr><td>PE(动态)</td><td>786.73</td><td>实时</td><td>行业均值44.86x，严重高估</td></tr>
+        <tr><td>PE(静态)</td><td>137.64</td><td>实时</td><td>即使按2025年净利算也高</td></tr>
+        <tr><td>主营业务</td><td>家电部件94.13% + 汽车部件5.13%</td><td>2025年报</td><td>极度依赖家电，汽车占比低</td></tr>
+        <tr><td>洗衣机进水阀</td><td>国内市占率第一</td><td>公司披露</td><td>细分龙头但天花板低</td></tr>
+        <tr><td>每股净资产</td><td>11.52元</td><td>2026Q1</td><td>PB 3.60倍</td></tr>
+        <tr><td>总股本</td><td>1.31亿股</td><td>2026Q1</td><td>流通1.16亿股</td></tr>
+    </table>
+</div>
+
+<!-- 主业恶化 -->
+<h2>④ 主业恶化：为什么公司急着跨界？</h2>
+<div class="card">
+    <table>
+        <tr><th>时期</th><th>营收</th><th>归母净利</th><th>同比变化</th></tr>
+        <tr><td>2024全年</td><td>10.27亿</td><td>5200万</td><td>—</td></tr>
+        <tr><td>2025Q1</td><td>2.70亿</td><td>1193万</td><td>—</td></tr>
+        <tr><td>2025全年</td><td>11.47亿</td><td>2740万</td><td>营收+11.7%，净利-47.3%</td></tr>
+        <tr style="background:rgba(248,81,73,0.06);"><td>2026Q1</td><td>2.56亿</td><td>143.62万</td><td>营收-5.42%，净利-87.96%</td></tr>
+    </table>
+    <div class="alert" style="margin-top:12px;">
+        <strong>🔴 主业趋势：</strong>2025年增收不增利，2026Q1营收/净利双降，净利从1193万暴跌至144万。家电行业进入存量竞争，公司作为洗衣机进水阀龙头，天花板已现。跨界金刚石半导体，本质上是主业困境下的"赌博式转型"。
+    </div>
+</div>
+
+<!-- Serenity 15条 -->
+<h2>⑤ Serenity 15条卡点判据</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>得分序列：</strong>1:0 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:0 11:0 12:0 13:0 14:0 15:0 = <strong>0/15</strong>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">15条卡点判据无一命中。金刚石半导体材料虽有国产替代概念，但：① 公司不直接从事该业务（仅参股45%）；② 标的极年轻无验证；③ 无designed-in、无多客户、无认证壁垒、无营收可见性。这是典型的"概念驱动"而非"卡点驱动"。</p>
+    <p style="font-size:12px;color:var(--muted);">（注：上一版分析给4/15过于宽松，经复核，该标的在Serenity框架下实际不命中任何卡点判据。）</p>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>⑥ 红旗扫描</h2>
+<ul class="flag-list">
+    <li class="fail">🔴 主业加速恶化 — Q1净利-87.96%，营收-5.42%，双降趋势明确。跨界并购本质上是主业困境下的被动转型</li>
+    <li class="fail">🔴 跨界跨度极大 — 家电零部件→金刚石半导体材料，管理层无半导体经验，整合风险极高</li>
+    <li class="fail">🔴 标的极年轻 — 昆吾半导体/尤品新材料成立仅2-3年，无历史业绩可验证，对赌协议执行难度大</li>
+    <li class="fail">🔴 PE 786x — 行业均值44.86x，偏离度1653%。即使按2025全年净利2740万算，PE(静态)仍达138x</li>
+    <li class="warn">⚠️ 高管减持 — 7月8日董事吴红平以34.20元减持5000股（虽量小，但时点敏感）</li>
+    <li class="warn">⚠️ 验证周期长 — 金刚石散热片验证周期2-3年，公司自认存在验证失败风险</li>
+    <li class="pass">✅ 其余通过：PB 3.60倍尚可、无大股东高质押、资产负债合理</li>
+</ul>
+
+<!-- 估值 -->
+<h2>⑦ 估值情景</h2>
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">18-25亿</div>
+        <div class="price-detail">对应股价 13.7-19.1 元</div>
+        <p style="font-size:13px;margin-top:8px;">收购失败/主业继续恶化/金刚石验证失败。家电主业净利500-800万 × 25-30x PE + 净资产约15亿</p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">28-38亿</div>
+        <div class="price-detail">对应股价 21.4-29.0 元</div>
+        <p style="font-size:13px;margin-top:8px;">收购完成，主业企稳，金刚石业务开始贡献小量营收。2027年合并净利2000-3000万 × 30-35x PE</p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">42-55亿</div>
+        <div class="price-detail">对应股价 32.1-42.0 元</div>
+        <p style="font-size:13px;margin-top:8px;">金刚石半导体验证成功，获得大客户订单（极度乐观）。2028年净利5000万+，给予40-50x PE + 概念溢价</p>
+    </div>
+</div>
+<div class="alert" style="margin-top:8px;">
+    <strong>⚠️ 当前市值54.23亿已超Bull上限（55亿），即使Bull情景完全兑现也已无上行空间。</strong>且Bull情景本身需要金刚石半导体验证成功+大客户导入+量产出货，不确定性极高。一字板封死后无买入机会，开板后面临"利好出尽"回调风险。
+</div>
+
+<!-- 催化剂 -->
+<h2>⑧ 催化剂时点</h2>
+<div class="card">
+    <table>
+        <tr><th>时点</th><th>事件</th><th>影响</th></tr>
+        <tr><td>8月29日</td><td>2026中报披露</td><td>验证主业是否进一步恶化</td></tr>
+        <tr><td>待定</td><td>收购尽调/审计完成</td><td>标的真实财务状况浮出水面</td></tr>
+        <tr><td>待定</td><td>股东会审议</td><td>中小股东是否支持跨界并购</td></tr>
+        <tr><td>2-3年后</td><td>金刚石散热片验证结果</td><td>决定收购成败的最关键节点</td></tr>
+    </table>
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-07 · 数据来源：公司公告/财联社/同花顺/东方财富 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>

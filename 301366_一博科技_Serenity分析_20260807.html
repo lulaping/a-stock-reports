@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一博科技 (301366) Serenity分析 — 2026-08-07</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#ffffff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+        h1{font-size:21px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .conclusion-box{border:2px solid var(--green);border-radius:10px;padding:20px 24px;margin:16px 0}
+        .conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+        .conclusion-row:last-child{border-bottom:none}
+        .conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:118px;color:var(--muted)}
+        .price-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+        .pb-card{padding:16px;border-radius:8px;border:1px solid var(--border)}
+        .pb-card.bear{border-top:4px solid var(--red)}
+        .pb-card.base{border-top:4px solid var(--orange)}
+        .pb-card.bull{border-top:4px solid var(--green)}
+        .pb-card .price{font-size:22px;font-weight:700;margin:8px 0}
+        .pb-card .price-detail{font-size:13px;color:var(--muted)}
+        .flag-list{list-style:none;padding:0}
+        .flag-list li{padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--muted);background:var(--card);font-size:14px;border-radius:0 4px 4px 0}
+        .flag-list li.pass{border-left-color:var(--green)}
+        .flag-list li.warn{border-left-color:var(--orange)}
+        .flag-list li.fail{border-left-color:var(--red)}
+        .highlight{background:rgba(210,153,29,0.25);padding:1px 4px;border-radius:3px}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}.price-box{grid-template-columns:1fr}}
+        .verdict{font-size:18px;font-weight:700;padding:12px 20px;border-radius:10px;margin:16px 0;text-align:center}
+        .verdict-hold{background:rgba(210,153,29,0.15);border:2px solid var(--orange);color:var(--orange)}
+        .verdict-buy{background:rgba(63,185,80,0.15);border:2px solid var(--green);color:var(--green)}
+        .verdict-sell{background:rgba(248,81,73,0.15);border:2px solid var(--red);color:var(--red)}
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 一博科技 (301366) Serenity分析 — 2026-08-07</h1>
+<p class="subtitle">20cm涨停 · 机构调研后次日爆发 · PCB超级周期核心受益标的 · 数据截至2026-08-07盘中</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>📊 今日核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+20.00%</div><div class="label">涨跌幅</div></div>
+        <div class="stat"><div class="num">53.33</div><div class="label">涨停价（元）</div></div>
+        <div class="stat"><div class="num">111.75</div><div class="label">总市值（亿）</div></div>
+        <div class="stat"><div class="num">6.56</div><div class="label">封单额（亿）</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+    今开44.70(+0.59%) · 昨收44.44(-3.03%) · 9:57封板 · 换手11.76% · 成交6.79亿 · PE(TTM)125.19 · 总股本2.10亿
+    </div>
+</div>
+
+<!-- 结论区 -->
+<div class="verdict verdict-hold">
+🟡 Hold — 业绩爆发逻辑清晰（订单+70%逐月提速），但112亿已入Bull区间上沿，等回调至90亿以下
+</div>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">客观框架</span>
+        <span>Bear 50-65亿(23.8-31.0元) / Base 70-90亿(33.3-42.9元) / Bull 95-120亿(45.2-57.1元) → 现价112亿入Bull区间，上行空间有限</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity视角</span>
+        <span>10/15好卡点 · PCB设计龙头+高端制板一体化 · AI服务器PCB价值量+233%超级周期 · 但2日内从93→112亿(+20%)已充分定价调研利好</span>
+    </div>
+</div>
+
+<!-- 今日盘面 -->
+<h2>① 今日盘面：机构调研次日20cm涨停</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>8月6日（昨日）</th><th>8月7日（今日）</th><th>变化</th></tr>
+        <tr><td>收盘价</td><td>44.44元</td><td>53.33元（涨停）</td><td class="up">+20.00%</td></tr>
+        <tr><td>市值</td><td>93.12亿</td><td>111.75亿</td><td class="up">+18.63亿</td></tr>
+        <tr><td>换手率</td><td>11.38%</td><td>11.76%（封板时）</td><td>—</td></tr>
+        <tr><td>主力资金</td><td class="down">净流出2466万</td><td class="up">净流入3734万</td><td>逆转</td></tr>
+        <tr><td>封单</td><td>—</td><td>12.3万手/6.56亿</td><td>极强</td></tr>
+        <tr><td>竞价</td><td>低开</td><td>高开44.70(+0.59%)</td><td>情绪逆转</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:12px;">
+        <strong>🔑 涨停驱动：</strong>8月6日盘后九家机构（平安/东莞/山西/招商/红华/沐德/宝创/钰锦/路演时代）联合调研，公司在调研中披露了订单+70%逐月提速、半导体ATE收入占比将超20%、光模块月出货几十万片、瓶颈工序满产订单积压等一系列重磅利好。昨日跌3.03%后今日直接涨停，典型的"调研信息不对称→次日定价"模式。
+    </div>
+</div>
+
+<!-- L0事实 -->
+<h2>② L0 事实底座</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>来源/时点</th><th>意味着什么</th></tr>
+        <tr><td>H1营收</td><td>7.09亿(+41.63%)</td><td>2026中报(8/3)</td><td>Q2单季4.05亿(+53.78%)，加速趋势明确</td></tr>
+        <tr><td>H1归母净利</td><td>6382.93万(+1561.55%)</td><td>2026中报</td><td>剔除股权激励后7417万，扭亏为盈</td></tr>
+        <tr><td>Q2单季净利</td><td>5223.02万(+394.68%)</td><td>2026中报</td><td>Q2占H1的82%，利润加速释放</td></tr>
+        <tr><td>毛利率</td><td>31.44%</td><td>2026中报</td><td>随产能利用率提升稳步改善</td></tr>
+        <tr><td>订单增速</td><td>签单同比+70%，逐月提速</td><td>8/6调研(管理层声称)</td><td>下半年增速将明显高于上半年</td></tr>
+        <tr><td>半导体ATE</td><td>收入占比今年将超20%，同比+100%</td><td>8/6调研</td><td>增长最快板块，与AI芯片测试需求高度耦合</td></tr>
+        <tr><td>光模块PCB</td><td>月出货几十万片</td><td>8/6调研</td><td>PCB设计切入制板，量产阶段</td></tr>
+        <tr><td>产能</td><td>瓶颈工序满产，订单积压</td><td>8/6调研</td><td>一二期完全释放可支持25-30亿产值</td></tr>
+        <tr><td>mSAP产线</td><td>设备选型完成，春节前后连线</td><td>8/6调研</td><td>高端IC载板能力即将补齐</td></tr>
+        <tr><td>负债率</td><td>27.74%</td><td>2026中报</td><td>健康，扩产有空间</td></tr>
+        <tr><td>总股本</td><td>2.10亿股</td><td>2026中报</td><td>流通1.17亿股，流通市值62.39亿</td></tr>
+    </table>
+</div>
+
+<!-- 调研核心增量信息 -->
+<h2>③ 8/6调研核心增量信息（昨日未定价）</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>🔑 以下信息均为8月6日盘后调研首次披露或确认，解释了今日涨停：</strong>
+    </div>
+    <table>
+        <tr><th>披露要点</th><th>详情</th><th>增量程度</th></tr>
+        <tr><td>订单增速</td><td>签单同比+70%，增速逐月提高，增长较快领域：ATE、光模块、机器人及AI相关</td><td><span class="badge badge-green">重大增量</span></td></tr>
+        <tr><td>下半年展望</td><td>下半年营收增速将明显高于上半年，毛利率随产能利用率稳步提升</td><td><span class="badge badge-green">重大增量</span></td></tr>
+        <tr><td>2-3年前景</td><td>未来可预见的2-3年，业绩快速增长的趋势不会变</td><td><span class="badge badge-green">首提长期指引</span></td></tr>
+        <tr><td>半导体ATE</td><td>收入占比今年有望超20%，同比增长超100%</td><td><span class="badge badge-green">量化确认</span></td></tr>
+        <tr><td>前三大客户</td><td>两家与ATE相关，一家是光模块领军企业</td><td><span class="badge badge-blue">新增信息</span></td></tr>
+        <tr><td>产能瓶颈</td><td>部分瓶颈工序已满产，订单积压，扩产设备添置中</td><td><span class="badge badge-orange">供需矛盾</span></td></tr>
+        <tr><td>一二期产值</td><td>完全释放可支持25-30亿产值</td><td><span class="badge badge-blue">远景量化</span></td></tr>
+        <tr><td>涨价传导</td><td>一单一议，原材料涨价基本能顺利传导</td><td><span class="badge badge-green">确认议价力</span></td></tr>
+        <tr><td>mSAP进度</td><td>设备选型完成，预计春节前后完成连线</td><td><span class="badge badge-blue">进度更新</span></td></tr>
+        <tr><td>机器人</td><td>已与机器人领域众多客户建立合作关系</td><td><span class="badge badge-blue">新增赛道</span></td></tr>
+    </table>
+</div>
+
+<!-- 供应链定位 -->
+<h2>④ 供应链定位</h2>
+<div class="card">
+    <p><strong>产业链层级：</strong>AI算力基础设施 → 服务器/光模块 → <span class="highlight">PCB设计与高端制板（一博科技）</span> → 覆铜板(CCL)/铜箔 → 玻纤布/树脂</p>
+    <p style="margin-top:8px;"><strong>卡点属性：</strong>高速PCB设计+高端制板一体化服务商。AI服务器PCB价值量从传统3.51万→11.67万美元(+233%)，高端高多层PCB产能紧缺，公司处于"设计引流→制板变现"的飞轮加速期。</p>
+    <p style="margin-top:8px;"><strong>对标：</strong>A股PCB设计服务稀缺标的，可比公司较少。PCB制板环节可比：兴森科技、深南电路、景旺电子，但一博以"设计+制板"一体化模式差异化竞争。</p>
+</div>
+
+<!-- Serenity 15条 -->
+<h2>⑤ Serenity 15条卡点判据</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>得分序列：</strong>1:0 2:0 3:1 4:1 5:0 6:1 7:1 8:1 9:0 10:0 11:0 12:1 13:0 14:1 15:1 = <strong>10/15</strong>
+    </div>
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>3</td><td>BOM占比相对市值巨大+designed-in</td><td>1</td><td>AI服务器PCB价值量+233%，公司深度绑定英伟达/AMD/Marvell</td></tr>
+        <tr><td>4</td><td>designed-in+多客户(toll booth)</td><td>1</td><td>前三大客户覆盖ATE+光模块双赛道，多领域客户覆盖</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td>1</td><td>订单+70%逐月提速，下半年加速，2-3年快速增长明确</td></tr>
+        <tr><td>7</td><td>资产负债表能撑过爬坡</td><td>1</td><td>负债率27.74%，现金充裕</td></tr>
+        <tr><td>8</td><td>Demand outstrips supply</td><td>1</td><td>瓶颈工序满产，订单积压，行业PCB全线涨价</td></tr>
+        <tr><td>12</td><td>信息不对称/定价错误</td><td>1</td><td>8/6调研披露大量增量信息，昨日市场未充分定价</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td>1</td><td>管理层明确2-3年快速增长趋势，产能规划25-30亿</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td>1</td><td>高端AI服务器PCB国产化率低，一博是少数能做的厂商之一</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">未命中项(1,2,5,9,10,11,13)：非垄断/市值>100亿/认证周期短/无大客户包产能/无国家安全介入/非美国本土化/竞争者多</p>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>⑥ 红旗扫描</h2>
+<ul class="flag-list">
+    <li class="warn">⚠️ IPO募投项目三度延期 — 珠海二期/产能释放进度慢于预期，管理层执行力待验证</li>
+    <li class="warn">⚠️ 估值偏高 — PE(TTM)125x，行业均值74x，已Price In大量乐观预期</li>
+    <li class="warn">⚠️ 海外GPU依赖 — AI PCB需求依赖英伟达等海外芯片厂，若出口管制升级可能影响下游需求</li>
+    <li class="pass">✅ 其余通过：无频繁增发稀释、无单一客户集中(>50%)、负债率健康、无大股东高质押、无商誉过高</li>
+</ul>
+
+<!-- 估值 -->
+<h2>⑦ 估值情景</h2>
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">50-65亿</div>
+        <div class="price-detail">对应股价 23.8-31.0 元</div>
+        <p style="font-size:13px;margin-top:8px;">AI PCB需求放缓，产能释放不及预期，毛利率回落。假设2026全年净利1.2-1.5亿 × 40-45x PE</p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">70-90亿</div>
+        <div class="price-detail">对应股价 33.3-42.9 元</div>
+        <p style="font-size:13px;margin-top:8px;">订单增长持续，产能逐步释放。假设2026全年净利1.8-2.2亿 × 40x PE</p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">95-120亿</div>
+        <div class="price-detail">对应股价 45.2-57.1 元</div>
+        <p style="font-size:13px;margin-top:8px;">PCB超级周期持续，mSAP投产，一二期满产。假设2026全年净利2.5-3亿 × 40x PE</p>
+    </div>
+</div>
+<div class="alert" style="margin-top:8px;">
+    <strong>⚠️ 当前市值112亿已进入Bull区间上沿（95-120亿），距离Bull上限仅7%空间。</strong>昨日93亿时尚在Bull下沿有安全边际，今日涨停后性价比大幅下降。若回调至85-90亿（对应40-43元）可重新关注。
+</div>
+
+<!-- 催化剂 -->
+<h2>⑧ 催化剂时点</h2>
+<div class="card">
+    <table>
+        <tr><th>时点</th><th>事件</th><th>影响</th></tr>
+        <tr><td>2026年春节前后</td><td>mSAP产线完成连线</td><td>IC载板能力补齐，打开新市场</td></tr>
+        <tr><td>2026下半年</td><td>珠海二期投产</td><td>产能瓶颈缓解，营收加速</td></tr>
+        <tr><td>持续跟踪</td><td>PCB/CCL涨价函</td><td>涨价传导能力验证</td></tr>
+        <tr><td>持续跟踪</td><td>英伟达Rubin芯片量产进度</td><td>下一代AI服务器PCB需求催化剂</td></tr>
+    </table>
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-07 · 数据来源：公司公告/调研纪要/财联社/东方财富 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
