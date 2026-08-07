@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板天梯分析 — 2026-08-07（周五）</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#ffffff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+        h1{font-size:21px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        h3{font-size:14px;margin:16px 0 8px;color:var(--blue)}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}}
+        .highlight{background:rgba(210,153,29,0.25);padding:1px 4px;border-radius:3px}
+        .ladder{font-size:13px;margin:4px 0}
+        .ladder .tier{display:inline-block;margin:2px 4px 2px 0;padding:4px 10px;border-radius:6px;font-weight:600}
+        .tier-10{background:rgba(248,81,73,0.2);color:var(--red);border:1px solid var(--red)}
+        .tier-6{background:rgba(248,81,73,0.12);color:var(--red);border:1px solid var(--red)}
+        .tier-5{background:rgba(210,153,29,0.2);color:var(--orange);border:1px solid var(--orange)}
+        .tier-4{background:rgba(210,153,29,0.15);color:var(--orange);border:1px solid var(--orange)}
+        .tier-3{background:rgba(88,166,255,0.15);color:var(--blue);border:1px solid var(--blue)}
+        .tier-2{background:rgba(88,166,255,0.08);color:var(--blue);border:1px solid var(--blue)}
+        .sector-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;margin-right:3px;color:var(--muted);border:1px solid var(--border)}
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 连板天梯分析 — 2026年8月7日（周五）</h1>
+<p class="subtitle">74涨停/4跌停 · 连板13只 · 封板率74% · PCB元件+医药双主线各11只和16只涨停 · 数据截至收盘 · 多源交叉验证</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>📊 连板核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">74</div><div class="label">涨停股（不含ST/新股）</div></div>
+        <div class="stat"><div class="num">13</div><div class="label">连板股总数</div></div>
+        <div class="stat"><div class="num">74%</div><div class="label">封板率</div></div>
+        <div class="stat"><div class="num">4</div><div class="label">跌停股</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+    最高标：汇绿生态10天6板（光通信）· 4连板4只（云南锗业/百花医药/沃格光电）· 宝鼎科技6天5板 · 通宇通讯5天4板 · 3连板3只 · 2连板6只 · 封单最强：光迅科技19.49亿/景旺电子11.64亿/中国稀土10.44亿
+    </div>
+</div>
+
+<!-- 连板天梯 -->
+<h2>① 连板天梯：最高标10天6板，PCB/医药/6G/小金属四线并行</h2>
+
+<div class="card">
+    <h3>🥇 最高标（10天6板）</h3>
+    <div class="ladder">
+        <span class="tier tier-10">汇绿生态 10天6板</span>
+        <span class="sector-tag">通信</span>
+        <span style="font-size:12px;">CPO量产+业绩预增+800G光模块+NPO模块+H股上市</span>
+    </div>
+</div>
+
+<div class="card">
+    <h3>🥈 6天5板 & 5天4板</h3>
+    <div class="ladder" style="margin-bottom:4px;">
+        <span class="tier tier-6">宝鼎科技 6天5板</span>
+        <span class="sector-tag">PCB</span>
+        <span style="font-size:12px;">业绩预增+订单饱满+PCB涨价+光模块+机器人</span>
+    </div>
+    <div class="ladder">
+        <span class="tier tier-5">通宇通讯 5天4板</span>
+        <span class="sector-tag">6G</span>
+        <span style="font-size:12px;">6G预研+商业航天+滤波器龙头+射频器件+英伟达6G基站</span>
+    </div>
+</div>
+
+<div class="card">
+    <h3>🥉 4连板（4只）</h3>
+    <div class="ladder" style="margin-bottom:3px;">
+        <span class="tier tier-4">云南锗业 4连板</span>
+        <span class="sector-tag">小金属</span>
+        <span style="font-size:12px;">磷化铟+供货协议+业绩预增+扩产计划+锗龙头</span>
+    </div>
+    <div class="ladder" style="margin-bottom:3px;">
+        <span class="tier tier-4">百花医药 4连板</span>
+        <span class="sector-tag">CRO</span>
+        <span style="font-size:12px;">CRO+业绩指引上调+控制权变更+金华国资，开盘2分钟封板</span>
+    </div>
+    <div class="ladder" style="margin-bottom:3px;">
+        <span class="tier tier-4">沃格光电 4连板</span>
+        <span class="sector-tag">玻璃基板</span>
+        <span style="font-size:12px;">玻璃基板+先进封装+Mini LED</span>
+    </div>
+    <div class="ladder">
+        <span class="tier tier-4">华正新材 4天3板</span>
+        <span class="sector-tag">覆铜板</span>
+        <span style="font-size:12px;">AI服务器PCB+覆铜板+mSAP+英伟达认证</span>
+    </div>
+</div>
+
+<div class="card">
+    <h3>3连板（3只）</h3>
+    <div class="ladder" style="margin-bottom:3px;">
+        <span class="tier tier-3">有研新材 3连板</span>
+        <span class="sector-tag">半导体</span>
+        <span style="font-size:12px;">稀土+业绩增长+靶材技术+集成电路</span>
+    </div>
+    <div class="ladder" style="margin-bottom:3px;">
+        <span class="tier tier-3">和远气体 3连板</span>
+        <span class="sector-tag">电子特气</span>
+        <span style="font-size:12px;">六氟化钨+电子特气+供不应求</span>
+    </div>
+    <div class="ladder">
+        <span class="tier tier-3">金一文化 3连板</span>
+        <span class="sector-tag">饰品</span>
+        <span style="font-size:12px;">独立题材，非主线</span>
+    </div>
+</div>
+
+<div class="card">
+    <h3>2连板 / 多日连板（6只）</h3>
+    <div class="ladder" style="margin-bottom:2px;">
+        <span class="tier tier-2">景旺电子 2连板</span><span class="sector-tag">PCB</span>
+        <span style="font-size:12px;">AI服务器PCB+800G光模块+定增，封单11.64亿</span>
+    </div>
+    <div class="ladder" style="margin-bottom:2px;">
+        <span class="tier tier-2">武汉凡谷 2连板</span><span class="sector-tag">6G</span>
+        <span style="font-size:12px;">6G+英伟达6G基站+滤波器龙头</span>
+    </div>
+    <div class="ladder" style="margin-bottom:2px;">
+        <span class="tier tier-2">方正科技 2连板</span><span class="sector-tag">PCB</span>
+        <span style="font-size:12px;">CPO+PCB+业绩预增+60亿扩产</span>
+    </div>
+    <div class="ladder" style="margin-bottom:2px;">
+        <span class="tier tier-2">光迅科技 4天2板</span><span class="sector-tag">CPO</span>
+        <span style="font-size:12px;">CPO量产+800G光模块+NPO模块，封单19.49亿居首</span>
+    </div>
+    <div class="ladder" style="margin-bottom:2px;">
+        <span class="tier tier-2">生益科技 4天2板</span><span class="sector-tag">覆铜板</span>
+        <span style="font-size:12px;">覆铜板龙头+AI服务器PCB+CCL，主力净流入7.11亿</span>
+    </div>
+    <div class="ladder">
+        <span class="tier tier-2">凯莱英 4天2板</span><span class="sector-tag">CDMO</span>
+        <span style="font-size:12px;">CRO+业绩指引上调+多肽产能扩张</span>
+    </div>
+</div>
+
+<!-- 涨停主线分析 -->
+<h2>② 涨停板块分布：PCB/医药双主线碾压，6G/稀土/电子特气支线呼应</h2>
+
+<div class="card">
+    <table>
+        <tr><th>板块</th><th>涨停数</th><th>代表股</th><th>驱动逻辑</th></tr>
+        <tr><td style="color:var(--accent);font-weight:700;">🥇 PCB/元件</td><td class="up"><strong>11只</strong></td><td>宝鼎科技6天5板/景旺电子2板/方正科技2板/华正新材4天3板/生益科技4天2板/一博科技/方邦股份/红板科技/依顿电子/博敏电子/奥士康</td><td>高盛大幅上调AI服务器PCB预测：2028年840亿美元（CAGR 148%）+ mSAP工艺紧张+明年光通信缺口30%+</td></tr>
+        <tr><td style="color:var(--accent);font-weight:700;">🥈 化学制药</td><td class="up"><strong>6只</strong></td><td>哈药股份/誉衡药业/海正药业/普洛药业/哈三联/冀衡医药</td><td>业绩预增+集采中选+创新药在研+破产重整+资产注入</td></tr>
+        <tr><td style="color:var(--accent);font-weight:700;">🥉 医疗服务/CRO</td><td class="up"><strong>5只</strong></td><td>百花医药4连板/凯莱英/毕得医药/药康生物/南模生物</td><td>药明康德上调指引+百济神州Q2超预期+上半年License-out出海997亿美元(翻倍)</td></tr>
+        <tr><td>通信设备/6G</td><td class="up">4只</td><td>汇绿生态10天6板/通宇通讯5天4板/武汉凡谷2板/光迅科技</td><td>英伟达6G基站+CPO量产+800G光模块</td></tr>
+        <tr><td>半导体</td><td class="up">3只</td><td>有研新材3板/先导基电/锴威特2板</td><td>靶材+离子注入机+功率半导体收购</td></tr>
+        <tr><td>电子特气/化学制品</td><td class="up">3只</td><td>和远气体3板/中化国际/保利联合</td><td>六氟化钨供不应求+民爆十五五规划</td></tr>
+        <tr><td>小金属</td><td class="up">2只</td><td>云南锗业4板/中国稀土涨停</td><td>磷化铟20倍需求+中美反制+稀土出口-10%</td></tr>
+        <tr><td>生物制品</td><td class="up">2只</td><td>百普赛斯/近岸蛋白</td><td>CXO景气度提升+股份回购</td></tr>
+        <tr><td>医药商业</td><td class="up">2只</td><td>瑞康医药/开开实业</td><td>业绩指引上调+SPD业务</td></tr>
+        <tr><td>其他(汽车/光伏/液冷等)</td><td>9只</td><td>飞乐音响/福莱特/大元泵业/泰金新能/宏昌科技等</td><td>分散题材</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:12px;">
+        <strong>📊 板块集中度分析：</strong>PCB（11只）+化学制药（6只）+CRO（5只）+通信（4只）= <strong>26只/74只涨停 = 35.1%</strong>。加上半导体（3只）+电子特气（3只）+小金属（2只）= <strong>34只/74只涨停 = 45.9%</strong>。前三大板块集中了约一半涨停，<strong>PCB元件+医药+"资源科技"（稀土/小金属/电子特气）三线并行</strong>，结构清晰。
+    </div>
+</div>
+
+<!-- 与昨日对比 -->
+<h2>③ 连板天梯与昨日对比：主线切换但高度延续</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>8月6日（周四）</th><th>8月7日（周五）</th><th>变化</th></tr>
+        <tr><td>涨停数</td><td>83只</td><td>74只</td><td class="down">-9</td></tr>
+        <tr><td>连板数</td><td>22只</td><td>13只</td><td class="down">-9</td></tr>
+        <tr><td>最高标</td><td>爱丽家居10连板（复牌/芯片测试）</td><td>汇绿生态10天6板（光通信）</td><td>高度换人</td></tr>
+        <tr><td>最强主线</td><td>煤炭7股涨停+半导体材料</td><td>PCB 11股涨停+CRO/创新药</td><td class="orange">主线完全切换</td></tr>
+        <tr><td>封板率</td><td>—</td><td>74%</td><td>中性</td></tr>
+        <tr><td>跌停</td><td>1只</td><td>4只</td><td class="down">增加</td></tr>
+        <tr><td>风格</td><td>沪强深弱，防御抱团</td><td>全线收涨，科技成长反攻</td><td class="orange">风格反转</td></tr>
+    </table>
+    <div class="alert" style="margin-top:8px;">
+        <strong>⚠️ 关键变化：</strong><br>
+        ① 连板数从22缩至13，晋级率下降，但74%封板率仍健康<br>
+        ② 爱丽家居10连板后断板，最高标转移到汇绿生态（10天6板，换手型）<br>
+        ③ 昨日最强主线煤炭全面退潮（无一涨停），切换为PCB+医药双主线<br>
+        ④ 跌停从1只增至4只（甘咨询/大晟文化/恒银科技等），个股风险分化加大<br>
+        ⑤ 风格从"防御抱团"完全翻转为"科技成长反攻"，高低切进入第二轮
+    </div>
+</div>
+
+<!-- 情绪分析 -->
+<h2>④ 连板情绪诊断：分歧加大但结构健康</h2>
+<div class="card">
+    <table>
+        <tr><th>情绪指标</th><th>数据</th><th>判断</th></tr>
+        <tr><td>最高连板</td><td>10天6板（汇绿生态）</td><td class="up">✅ 高度健康，换手型非一字</td></tr>
+        <tr><td>4连板梯队</td><td>4只（云南锗业/百花/沃格）</td><td class="up">✅ 梯队完整</td></tr>
+        <tr><td>3连板梯队</td><td>3只</td><td class="orange">⚠️ 偏少，存在断层</td></tr>
+        <tr><td>2连板梯队</td><td>6只</td><td class="orange">⚠️ 偏少，晋级率下降</td></tr>
+        <tr><td>封板率</td><td>74%</td><td class="up">✅ 健康区间（70-85%）</td></tr>
+        <tr><td>封单最强</td><td>光迅科技19.49亿</td><td class="up">✅ 机构加持</td></tr>
+        <tr><td>跌停</td><td>4只</td><td class="orange">⚠️ 较昨日增加</td></tr>
+        <tr><td>主线集中度</td><td>PCB+医药=35%涨停</td><td class="up">✅ 主线清晰</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:8px;">
+        <strong>📊 情绪定性：良性分歧，非退潮。</strong>连板数从22降至13，但封板率74%仍在健康区间。高标汇绿生态是换手型而非一字加速，资金接力意愿存在。4连板梯队完整（4只），3板和2板偏少说明市场在"去弱留强"——不是谁都能连板，而是有明确主线逻辑的才能晋级。跌停增至4只，说明个股风险分化加大，但尚未蔓延成恐慌。
+    </div>
+</div>
+
+<!-- 各板块逻辑拆解 -->
+<h2>⑤ 各板块上涨逻辑拆解</h2>
+
+<div class="card">
+    <h3>🥇 PCB/覆铜板/铜箔（11只涨停）— 最强主线</h3>
+    <p><strong>核心催化：</strong>高盛大幅上调AI服务器PCB和CCL预测，2028年市场规模将达840亿和480亿美元，2026-2028年CAGR分别达148%和161%。</p>
+    <p style="margin-top:4px;"><strong>产业链逻辑：</strong>mSAP工艺紧张 + 明年光通信缺口30%以上 + 算力硬件需求倒逼上游扩产。PCB处于AI算力链的"基础设施"环节，业绩确定性高。</p>
+    <p style="margin-top:4px;"><strong>梯队完整：</strong>宝鼎科技（6天5板，最高标）→ 华正新材/生益科技（覆铜板中军）→ 景旺电子/方正科技/一博科技（PCB跟涨）→ 诺德股份/方邦股份（铜箔/材料）——从上游材料到下游PCB全链条涨停。</p>
+    <div class="green-note" style="margin-top:8px;">
+        <strong>🔑 判断：</strong>PCB是今日最强主线，11只涨停+封单前两名（光迅19.5亿/景旺11.6亿），机构资金深度参与（生益科技净流入7.11亿）。与昨日煤炭的"一日游"不同，PCB有高盛上调预测的增量催化+业绩兑现，持续性强于纯资源品。
+    </div>
+</div>
+
+<div class="card">
+    <h3>🥈 CRO/创新药/医药（16只涨停）— 并列主线</h3>
+    <p><strong>核心催化：</strong>药明康德上调全年业绩指引 + 百济神州H1净利32.71亿（+627%）+ License-out出海997亿美元（翻倍）。</p>
+    <p style="margin-top:4px;"><strong>产业链逻辑：</strong>创新药从"烧钱"到"赚钱"的拐点。上半年中国批准38款创新药（国产31款），License-out交易81笔/1100亿美元。路博迈基金经理李涛指出：这不是简单的风格投机，而是"低配+基本面验证"的共振。</p>
+    <p style="margin-top:4px;"><strong>涨停分布：</strong>CRO（百花医药4板/凯莱英/毕得医药/药康生物）→ 化学制药（哈药/誉衡/海正/普洛/哈三联）→ 生物制品（百普赛斯/近岸蛋白）→ 医药商业（瑞康/开开），全链条覆盖。</p>
+    <div class="green-note" style="margin-top:8px;">
+        <strong>🔑 判断：</strong>医药是本轮"高低切"中最早启动的板块之一，且具有"低位反转+业绩验证"双重属性，与PCB的"增量催化"形成互补。百花医药开盘2分钟封板，是今天最强的情绪指标。
+    </div>
+</div>
+
+<div class="card">
+    <h3>🥉 6G/光通信（4只涨停）— 延续强势</h3>
+    <p><strong>核心催化：</strong>英伟达加速进入电信运营商市场，在中国寻找基站厂商合作方开发6G基站。汇绿生态10天6板是板块情绪锚。</p>
+    <p style="margin-top:4px;"><strong>梯队：</strong>汇绿生态（10天6板，最高标）→ 通宇通讯（5天4板）→ 武汉凡谷（2板）→ 光迅科技（封单19.49亿居首）。梯队完整，但高度已经很高，分歧加大。</p>
+</div>
+
+<div class="card">
+    <h3>稀土永磁/小金属（2只涨停）— 脉冲式走强</h3>
+    <p><strong>核心催化：</strong>中美反制 + 刚果金禁铜钴出口 + 氧化镨钕环比上涨6.4% + 稀土出口同比-10%。</p>
+    <p style="margin-top:4px;"><strong>代表：</strong>中国稀土涨停（封单10.44亿，央企背景）+ 云南锗业4连板（磷化铟需求20倍增长）。兴业证券：海内外稀土价差持续维持高位，中国稀土产业链中游迎来价值重估。</p>
+</div>
+
+<div class="card">
+    <h3>电子特气（3只涨停）— 半导体材料支线</h3>
+    <p><strong>核心催化：</strong>和远气体3连板（六氟化钨供不应求）+ 中化国际涨停。电子特气是半导体制造关键材料，国产替代逻辑持续。</p>
+</div>
+
+<!-- 今日分析标的 -->
+<h2>⑥ 今日 Serenity 分析标的在连板天梯中的位置</h2>
+<div class="card">
+    <table>
+        <tr><th>标的</th><th>判定</th><th>今日表现</th><th>在连板天梯位置</th></tr>
+        <tr><td>泰金新能 (688813)</td><td>11/15 🟡Hold</td><td class="up">涨停(+20%)，封单2.49亿</td><td>首板，PCB/铜箔主线共振</td></tr>
+        <tr><td>一博科技 (301366)</td><td>10/15 🟡Hold</td><td class="up">涨停(+20%)，封单3.58亿</td><td>首板，PCB主线共振</td></tr>
+        <tr><td>志特新材 (300986)</td><td>10/15 🟡Hold</td><td class="up">涨停(+20%)，封单3.88亿</td><td>首板，独立逻辑（模块化建筑）</td></tr>
+        <tr><td>朗特智能 (300916)</td><td>4/15 🔴Sell</td><td class="down">冲高回落</td><td>未涨停，纯概念炒作验证</td></tr>
+        <tr><td>宏昌科技 (301008)</td><td>4/15 🔴Sell<br>（8/6分析）</td><td class="up">涨停(+20%)，封单2.49亿</td><td>首板，金刚石半导体概念</td></tr>
+        <tr><td>锴威特 (688693)</td><td>5/15→2/15<br>（8/6→8/7分析）</td><td class="up">涨停(+20%)，封单1.13亿</td><td>2连板，收购晶艺半导体重组</td></tr>
+    </table>
+    <div class="alert" style="margin-top:8px;">
+        <strong>⚠️ 复盘反思：</strong>今日分析的6只标的中，<strong>泰金新能、一博科技、志特新材三只涨停（均为10-11/15的"好卡点"标的）</strong>，朗特智能（4/15）冲高回落判断正确。但宏昌科技（8/6分析判定4/15 Sell）今日涨停，锴威特（判定2/15 Hold）2连板——<strong>低分标的在主线情绪外溢下也可能涨停，但属于"运气钱"而非"认知钱"</strong>。宏昌科技的金刚石半导体逻辑、锴威特的收购重组逻辑，在今日市场情绪高涨时被资金挖掘，但基本面支撑薄弱，追高风险极大。
+    </div>
+</div>
+
+<!-- 下周展望 -->
+<h2>⑦ 下周展望：连板情绪的三个关键问题</h2>
+<div class="card">
+    <div class="alert" style="margin-top:0;">
+        <strong>🔴 问题一：汇绿生态（10天6板）能否继续打开高度？</strong><br>
+        汇绿生态是换手型高标（非一字板），这意味着资金接力仍在继续，但同时也意味着随时可能断板。如果下周一断板，连板情绪将受到压制，2板/3板晋级率会大幅下降。<br><br>
+        <strong>🟡 问题二：PCB主线能否持续？</strong><br>
+        PCB是高盛上调预测的增量催化，逻辑比昨日的煤炭更强。但11只涨停后，下周一必然分化——宝鼎科技（6天5板）和景旺电子（2板）是观察核心。如果宝鼎断板、景旺无法晋级3板，PCB将进入退潮。如果宝鼎继续晋级+景旺3板，PCB可能成为持续主线。<br><br>
+        <strong>🟡 问题三：医药能否顶住周五获利盘？</strong><br>
+        医药今日涨停16只（含CRO+化学制药+生物制品+医药商业），百花医药4连板是核心风向标。医药作为"低位反转"板块，机构资金参与度较高（非纯游资），持续性可能优于纯题材。但周一面临周末效应+非农数据落地后的资金重新配置，分歧加大。<br><br>
+        <strong>操作建议：</strong>连板情绪处于"健康但非加速"阶段，适合关注主线（PCB+医药）中低位补涨标的，而非追高已连板的高标。下周一是连板情绪的关键验证日——如果高标断板+主线分化，情绪将进入退潮；如果高标继续晋级+主线延续，连板天梯可能再次扩张。
+    </div>
+</div>
+
+<div class="footer">
+    连板天梯分析 · 2026-08-07 · 数据来源：财联社/界面新闻/证券时报/央广网/同花顺 · 多源交叉验证 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
