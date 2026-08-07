@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>志特新材 (300986) Serenity分析 — 2026-08-07</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#ffffff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+        h1{font-size:21px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        h3{font-size:14px;margin:16px 0 8px;color:var(--blue)}
+        .summary{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+        body.light .summary{background:var(--card)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+        .badge-red{background:rgba(248,81,73,0.2);color:var(--red)}
+        .badge-orange{background:rgba(210,153,29,0.2);color:var(--orange)}
+        .badge-green{background:rgba(63,185,80,0.2);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.2);color:var(--blue)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .conclusion-box{border:2px solid var(--green);border-radius:10px;padding:20px 24px;margin:16px 0}
+        .conclusion-row{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+        .conclusion-row:last-child{border-bottom:none}
+        .conclusion-label{font-weight:600;font-size:13px;white-space:nowrap;min-width:118px;color:var(--muted)}
+        .price-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+        .pb-card{padding:16px;border-radius:8px;border:1px solid var(--border)}
+        .pb-card.bear{border-top:4px solid var(--red)}
+        .pb-card.base{border-top:4px solid var(--orange)}
+        .pb-card.bull{border-top:4px solid var(--green)}
+        .pb-card .price{font-size:22px;font-weight:700;margin:8px 0}
+        .pb-card .price-detail{font-size:13px;color:var(--muted)}
+        .flag-list{list-style:none;padding:0}
+        .flag-list li{padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--muted);background:var(--card);font-size:14px;border-radius:0 4px 4px 0}
+        .flag-list li.pass{border-left-color:var(--green)}
+        .flag-list li.warn{border-left-color:var(--orange)}
+        .flag-list li.fail{border-left-color:var(--red)}
+        .highlight{background:rgba(210,153,29,0.25);padding:1px 4px;border-radius:3px}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}.price-box{grid-template-columns:1fr}}
+        .verdict{font-size:18px;font-weight:700;padding:12px 20px;border-radius:10px;margin:16px 0;text-align:center}
+        .verdict-hold{background:rgba(210,153,29,0.15);border:2px solid var(--orange);color:var(--orange)}
+        .verdict-buy{background:rgba(63,185,80,0.15);border:2px solid var(--green);color:var(--green)}
+        .verdict-sell{background:rgba(248,81,73,0.15);border:2px solid var(--red);color:var(--red)}
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 志特新材 (300986) Serenity分析 — 2026-08-07</h1>
+<p class="subtitle">建筑模架A股首家 · 模块化建筑第二曲线 · 海外高毛利扩张 · 从高点32.52跌至6.86反弹至12.33 · 数据截至2026-08-06收盘 · 多源交叉验证</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>📊 核心数据（8/6收盘）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num down">-3.67%</div><div class="label">8/6涨跌幅</div></div>
+        <div class="stat"><div class="num">12.33</div><div class="label">收盘价（元）</div></div>
+        <div class="stat"><div class="num">70.99亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">10/15</div><div class="label">Serenity</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+    今开12.65 · 昨收12.80 · 最高12.75 · 最低12.22 · 振幅4.14% · 换手8.54% · 成交6.11亿 · PE(TTM)40.03x · PE(静态)43.42x · PB 3.24x · 总股本5.76亿(10转4后) · 流通股5.75亿 · 52周高低6.86-32.52 · 近5日+22.69% · 6个月-56.72% · YTD+40.23%
+    </div>
+</div>
+
+<!-- 结论区 -->
+<div class="verdict verdict-hold">
+🟡 Hold — 10/15，模块化建筑第二曲线+海外高毛利扩张逻辑清晰，71亿估值合理(前瞻PE 24x)，等8/28中报验证交付节奏
+</div>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">客观框架</span>
+        <span>Bear 35-50亿(6.1-8.7元) / Base 55-75亿(9.5-13.0元) / Bull 85-105亿(14.8-18.2元) → 现价71亿在Base区间上沿，8/28中报决定能否突破Bull</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity视角</span>
+        <span>10/15 · 建筑模架A股首家+300+专利"单项冠军"+30国品牌+海外毛利率35%>境内27%+模块化建筑万亿赛道+股权激励3年净利3亿目标。扣分项：负债率63%偏高、扣非Q1-13%、行业竞争仍激烈。8/28中报是核心催化剂</span>
+    </div>
+</div>
+
+<!-- 公司画像 -->
+<h2>① 公司画像：从铝模龙头到模块化建筑先锋</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>事实</th><th>意味着什么</th></tr>
+        <tr><td><strong>定位</strong></td><td>绿色新型建筑模架行业首家A股上市公司，细分领域头部企业</td><td>赛道先发+品牌认知优势</td></tr>
+        <tr><td><strong>核心业务</strong></td><td>建筑模架62.6%(铝模为主，毛利32.9%)+装配式/模块化建筑25.2%(毛利15.8%)+新能源/新材料12.3%(毛利22.5%)</td><td>铝模是现金牛，模块化是第二曲线</td></tr>
+        <tr><td><strong>海外布局</strong></td><td>30+国家注册商标，产品销往70+国家，马来西亚/新加坡/沙特/阿联酋/香港/澳门设子公司</td><td class="up">海外收入10年增长52倍，毛利率35%远超境内</td></tr>
+        <tr><td><strong>最近动态</strong></td><td>8/5更名"志特新材料集团"+注册资本4.12→5.76亿(10转4)</td><td>集团化管控升级，国际化战略提速</td></tr>
+        <tr><td><strong>AI4S概念</strong></td><td>联合中科大精准智能化学全国重点实验室+微观纪元布局AI for Science新材料</td><td class="orange">期权价值，尚未量产（董秘5月确认）</td></tr>
+        <tr><td><strong>荣誉</strong></td><td>单项冠军、名牌产品、绿色工厂、数字化转型L8、CIDB G7(马来西亚最高)</td><td>行业地位获官方背书</td></tr>
+    </table>
+</div>
+
+<!-- 财务 -->
+<h2>② L0 事实底座：财务拐点已确认</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>2023</th><th>2024</th><th>2025</th><th>2026Q1</th><th>趋势</th></tr>
+        <tr><td>营收（亿）</td><td>22.38(+16.0%)</td><td>25.26(+12.9%)</td><td class="up">29.68(+17.5%)</td><td class="up">6.77(+21.8%)</td><td class="up">✅ 加速</td></tr>
+        <tr><td>归母净利（亿）</td><td class="down">-0.45(-125%)</td><td class="up">0.74(扭亏)</td><td class="up">1.64(+122%)</td><td class="up">0.39(+56.4%)</td><td class="up">✅ V型反转</td></tr>
+        <tr><td>扣非净利（亿）</td><td class="down">-0.82(-157%)</td><td class="up">0.43(扭亏)</td><td class="up">1.10(+156%)</td><td class="down">0.18(-13.4%)</td><td class="orange">⚠️ Q1扣非回落</td></tr>
+        <tr><td>毛利率</td><td>24.0%</td><td>25.4%</td><td class="up">27.3%</td><td>25.5%</td><td class="up">✅ 趋势向上</td></tr>
+        <tr><td>净利率</td><td class="down">-2.0%</td><td>2.9%</td><td class="up">5.6%</td><td>5.7%</td><td class="up">✅ 持续改善</td></tr>
+        <tr><td>负债率</td><td>68.1%</td><td>65.7%</td><td>64.2%</td><td>63.3%</td><td class="up">✅ 逐年下降</td></tr>
+        <tr><td>经营现金流</td><td class="down">-0.52亿</td><td class="up">2.10亿</td><td class="up">3.54亿</td><td class="up">0.82亿</td><td class="up">✅ 大幅改善</td></tr>
+        <tr><td>境外收入占比</td><td>16.4%</td><td>21.3%</td><td>23.8%</td><td>—</td><td class="up">✅ 持续提升</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:8px;">
+        <strong>📊 关键转折：</strong>2023年行业出清至暗时刻（亏损），2024年扭亏，2025年利润爆发+122%。行业企业数从1200余家降至约200家，集中度提升利好龙头。但Q1扣非-13.35%是一个瑕疵——归母+56%主要靠非经常性损益，需关注8/28中报验证扣非是否恢复增长。
+    </div>
+</div>
+
+<!-- 业务结构 -->
+<h2>③ 业务三引擎：铝模现金牛 + 模块化第二曲线 + 海外高毛利</h2>
+<div class="card">
+    <table>
+        <tr><th>引擎</th><th>2025收入</th><th>占比</th><th>毛利率</th><th>角色</th><th>增长逻辑</th></tr>
+        <tr><td><strong>铝模基本盘</strong></td><td>18.57亿</td><td>62.6%</td><td class="up">32.9%</td><td>现金牛</td><td>行业出清后份额提升，价格企稳，残值率提升降低成本</td></tr>
+        <tr><td><strong>模块化建筑</strong></td><td>7.47亿</td><td>25.2%</td><td>15.8%</td><td>第二曲线</td><td>全球万亿市场爆发期，澳洲+中东项目落地，毛利率有提升空间</td></tr>
+        <tr><td><strong>海外业务</strong></td><td>~7.06亿</td><td>23.8%</td><td class="up">35.2%</td><td>利润放大器</td><td>股权激励目标2026境外营收≥15亿，沙特/阿联酋新布局</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:8px;">
+        <strong>🏗️ 模块化建筑为什么是万亿赛道？</strong>模块化建筑是"像造汽车一样造房子"——工期缩短50-70%、人工减少60-80%、碳排放降低40-50%。全球每年需新增9600万套住房，建筑业占全球碳排放38%，模块化建筑是碳中和+住房短缺的双重解。公司已获澳洲模块化房屋澳标认证，PC+钢结构双系列能力是稀缺竞争力。
+    </div>
+</div>
+
+<!-- Serenity 15条 -->
+<h2>④ Serenity 15条卡点判据</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>得分序列：</strong>1:0 2:0 3:0 4:1 5:1 6:1 7:1 8:0 9:0 10:0 11:1 12:1 13:1 14:1 15:1 = <strong>10/15</strong>
+    </div>
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>4</td><td>技术壁垒</td><td>1</td><td>300+专利，国家级"单项冠军"，BAND-2国际认证，数字化转型L8贯标，主编/参编多项行业标准</td></tr>
+        <tr><td>5</td><td>规模效应</td><td>1</td><td>营收近30亿，行业龙头。行业出清（1200→200家）后集中度提升，规模优势强化</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td>1</td><td>模块化建筑全球万亿市场从0到1爆发；股权激励2026净利3亿目标；海外营收目标15亿</td></tr>
+        <tr><td>7</td><td>品牌/客户粘性</td><td>1</td><td>GETO品牌在30+国家注册，中铁/中建等头部客户长期合作，铝模租赁模式客户粘性高</td></tr>
+        <tr><td>11</td><td>本土化=护城河</td><td>1</td><td>海外毛利率35.16%>境内26.63%，10年出海积累，多地设厂/子公司，出海壁垒已建立</td></tr>
+        <tr><td>12</td><td>信息不对称/定价错误</td><td>1</td><td>6个月跌56.72%（32.52→6.86），市场可能低估模块化建筑第二曲线+海外高毛利扩张价值</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td>1</td><td>同时具备PC+钢结构模块化建筑双系列能力的企业极少，A股可对标标的稀缺</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td>1</td><td>股权激励3年营收/净利双目标（2026净利3亿），PIVI 4200万美元战略合作，在手订单+框架协议支撑</td></tr>
+        <tr><td>15</td><td>大TAM</td><td>1</td><td>全球模块化建筑市场2025年约1500亿美元→2030E 4000亿美元(CAGR 20%+)，中国市场3000亿→万亿</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">未命中项(1,2,3,8,9,10)：非垄断/无供需缺口/无designed-in/先发优势不显著/无特殊牌照/研发投入占比有限</p>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>⑤ 红旗扫描</h2>
+<ul class="flag-list">
+    <li class="warn">⚠️ 扣非Q1下滑 — Q1归母+56%但扣非-13.35%，非经常性损益贡献大，主业盈利质量待验证（8/28中报）</li>
+    <li class="warn">⚠️ 负债率偏高 — 63.25%，虽逐年下降但仍偏高，财务费用2652万/季侵蚀利润</li>
+    <li class="warn">⚠️ 建筑模架行业周期性强 — 与地产开工/基建投资高度相关，国内地产下行风险尚未完全释放</li>
+    <li class="warn">⚠️ 模块化建筑毛利率低 — 仅15.8%，远低于铝模32.9%，规模效应尚未体现，短期拖累整体毛利率</li>
+    <li class="warn">⚠️ 8/6主力出逃 — 主力净流出6415万，融资净偿还3464万，8/5利好(+8.47%)后8/6即兑现出货</li>
+    <li class="warn">⚠️ AI4S概念纯期权 — 新材料仍处合作方实验室阶段，尚未量产，专利归属合作方，短期无业绩贡献</li>
+    <li class="warn">⚠️ 频繁对外担保 — 几乎每2周一次担保公告，子公司众多(63家)，管理复杂度高</li>
+    <li class="pass">✅ 其余通过：无大股东高质押、无商誉暴雷风险、无单一客户集中、经营现金流持续改善</li>
+</ul>
+
+<!-- 估值 -->
+<h2>⑥ 估值情景</h2>
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">35-50亿</div>
+        <div class="price-detail">对应股价 6.1-8.7 元</div>
+        <p style="font-size:13px;margin-top:8px;">国内地产继续下行，模块化建筑进展不及预期，全年净利1.5亿，PE 23-33x</p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">55-75亿</div>
+        <div class="price-detail">对应股价 9.5-13.0 元</div>
+        <p style="font-size:13px;margin-top:8px;">铝模企稳+海外扩张+模块化放量，全年净利2.2亿，PE 25-34x</p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">85-105亿</div>
+        <div class="price-detail">对应股价 14.8-18.2 元</div>
+        <p style="font-size:13px;margin-top:8px;">股权激励目标达成，净利3亿+模块化建筑订单爆发+AI4S进入量产，PE 28-35x</p>
+    </div>
+</div>
+<div class="green-note">
+    <strong>📊 当前71亿在Base区间上沿（9.5-13.0元），现价12.33元。</strong>按股权激励2026净利3亿目标，前瞻PE仅23.7x，估值合理偏低。若8/28中报验证H1海外营收增长>30%+模块化建筑订单放量，Bull区间可期。但若扣非继续下滑，可能向Base中轴(65亿/11.3元)回调。
+</div>
+
+<!-- 催化剂 -->
+<h2>⑦ 催化剂时点</h2>
+<div class="card">
+    <table>
+        <tr><th>时点</th><th>事件</th><th>影响</th></tr>
+        <tr><td>8月28日</td><td>2026中报披露</td><td>核心验证：H1海外营收增速、模块化建筑订单、扣非是否恢复增长</td></tr>
+        <tr><td>持续跟踪</td><td>PIVI 4200万美元合作进展</td><td>海外大单落地节奏，直接贡献营收</td></tr>
+        <tr><td>持续跟踪</td><td>沙特/阿联酋项目中标</td><td>中东基建热潮，模块化建筑最受益标的之一</td></tr>
+        <tr><td>持续跟踪</td><td>AI4S新材料量产进度</td><td>新型隔热/防火材料若进入量产，触发估值切换</td></tr>
+        <tr><td>持续跟踪</td><td>澳洲模块化建筑政策</td><td>澳洲已将模块化纳入绿色建筑补贴，政策催化</td></tr>
+    </table>
+</div>
+
+<!-- 核心卡点 -->
+<h2>⑧ 核心卡点</h2>
+<div class="card">
+    <p><strong>卡点1：模块化建筑从"概念"到"业绩"的跨越</strong> — 公司模块化建筑收入7.47亿(占比25.2%)，但毛利率仅15.8%。全球模块化建筑万亿市场是真实的，但公司能否从"有产品"到"规模化盈利"是关键跨越。澳洲+中东项目落地情况是先行指标。</p>
+    <p style="margin-top:8px;"><strong>卡点2：国内地产下行 vs 海外高增长的对冲</strong> — 国内铝模业务与地产开工高度相关，2025年国内地产新开工仍在下滑。海外高毛利扩张能否完全对冲国内下行？境外收入占比需从23.8%提升至30%+才能形成有效对冲。</p>
+    <p style="margin-top:8px;"><strong>卡点3：扣非与归母的剪刀差</strong> — Q1归母+56% but 扣非-13%，剪刀差扩大。如果扣非持续不改善，说明主业盈利质量存疑。8/28中报是验证扣非能否转正的关键窗口。</p>
+    <p style="margin-top:8px;"><strong>卡点4：负债率63%+频繁担保</strong> — 63家子公司、频繁对外担保，财务费用每季2652万。虽然负债率逐年下降，但资产偏重、扩张模式依赖杠杆，在经济下行周期有流动性风险。</p>
+</div>
+
+<!-- 综合判断 -->
+<h2>⑨ 综合判断</h2>
+<div class="card">
+    <div class="green-note" style="margin-top:0;">
+        <strong>🟡 核心结论：10/15，模块化建筑第二曲线+海外高毛利扩张逻辑清晰，71亿估值合理(前瞻PE 24x)，等8/28中报验证</strong><br><br>
+        <strong>✅ 核心利好：</strong><br>
+        ① 建筑模架A股首家+300+专利"单项冠军"，行业从1200家出清至200家，龙头受益<br>
+        ② 模块化建筑全球万亿赛道，PC+钢结构双系列能力稀缺，澳洲/中东项目落地<br>
+        ③ 海外毛利率35%>境内27%，10年出海积累，30国品牌，70国出口<br>
+        ④ 股权激励2026净利3亿目标，前瞻PE仅23.7x，估值合理偏低<br>
+        ⑤ 财务拐点已确认：2023亏损→2024扭亏→2025净利+122%<br>
+        ⑥ 经营现金流大幅改善，从2023年-0.52亿→2025年+3.54亿<br>
+        ⑦ 6个月跌56.72%后反弹，定价错误窗口仍在<br><br>
+        <strong>❌ 核心风险：</strong><br>
+        ① Q1扣非-13.35%，与归母+56%形成剪刀差，主业盈利质量待验证<br>
+        ② 负债率63.25%偏高，财务费用每季2652万侵蚀利润<br>
+        ③ 模块化建筑毛利率仅15.8%，规模效应尚未体现<br>
+        ④ 8/6主力净流出6415万，融资净偿还3464万，短期资金面偏空<br>
+        ⑤ 国内地产下行风险未完全释放，铝模基本盘承压<br>
+        ⑥ AI4S新材料纯期权，短期无业绩贡献<br><br>
+        <strong>操作建议：</strong>Hold，等8/28中报。若中报验证：①海外营收增速>30% ②扣非恢复正增长 ③模块化建筑新签订单显著放量，可上调至Buy，Bull区间85-105亿（14.8-18.2元）。若中报低于预期（扣非继续下滑+海外增速放缓），可能回调至Base中轴65亿（11.3元）附近，届时反而是更好的买点。
+    </div>
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-07 · 数据来源：公司公告/年报/季报/企查查/东方财富/同花顺/雪球/证券之星/证券时报 · 多源交叉验证 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
