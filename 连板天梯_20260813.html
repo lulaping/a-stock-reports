@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板天梯_20260813</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--red:#f85149;--orange:#d2991d;--green:#3fb950;--blue:#58a6ff;--accent:#e94560;}
+        body.light{--bg:#fff;--card:#f6f8fa;--border:#d0d7de;--text:#1a1a2e;--muted:#656d76;--red:#cf222e;--orange:#9a6700;--green:#1a7f37;--blue:#0969da;--accent:#b35900;}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.7;font-size:14px}
+        h1{font-size:20px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:6px}
+        .subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+        h2{font-size:16px;margin:28px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+        h3{font-size:14px;margin:16px 0 8px;color:var(--blue)}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:10px 0}
+        table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+        th{background:rgba(48,54,61,0.3);padding:8px 10px;text-align:left;color:var(--muted);font-size:11px;font-weight:500;border-bottom:1px solid var(--border)}
+        td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        .up{color:var(--green)}.down{color:var(--red)}
+        .alert{background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .green-note{background:rgba(63,185,80,0.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .orange-note{background:rgba(210,153,29,0.08);border-left:3px solid var(--orange);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px}
+        .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+        .stat{text-align:center}
+        .stat .num{font-size:22px;font-weight:700;color:var(--accent)}
+        .stat .label{font-size:11px;color:var(--muted)}
+        .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin:0 4px}
+        .badge-gold{background:rgba(210,153,29,0.15);color:var(--orange)}
+        .badge-red{background:rgba(248,81,73,0.15);color:var(--red)}
+        .badge-green{background:rgba(63,185,80,0.15);color:var(--green)}
+        .badge-blue{background:rgba(88,166,255,0.15);color:var(--blue)}
+        .tier-row{display:flex;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border);gap:10px}
+        .tier-label{min-width:60px;font-weight:700;font-size:13px;text-align:center;padding:4px 0}
+        .tier-label.gold{color:var(--orange)}
+        .tier-label.red{color:var(--red)}
+        .tier-label.green{color:var(--green)}
+        .stock-item{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:4px 10px;margin:2px;font-size:12px}
+        .stock-item .name{font-weight:600}
+        .stock-item .reason{font-size:11px;color:var(--muted)}
+        .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--border)}
+        @media(max-width:640px){.grid-4{grid-template-columns:1fr 1fr}}
+    </style>
+</head>
+<body class="light">
+
+<h1>2026-08-13 连板天梯分析</h1>
+<p class="subtitle">数据来源：复盘网/开盘啦/财联社/证券时报 · 收盘15:00 · 多源交叉验证</p>
+
+<div class="card">
+    <div class="grid-4">
+        <div class="stat"><div class="num">62</div><div class="label">涨停家数（昨91）</div></div>
+        <div class="stat"><div class="num">22</div><div class="label">连板家数（昨16）</div></div>
+        <div class="stat"><div class="num">66.7%</div><div class="label">封板率（昨83.3%）</div></div>
+        <div class="stat"><div class="num">49°C</div><div class="label">短线情绪 退潮（昨89°C）</div></div>
+    </div>
+    <div class="grid-4" style="margin-top:12px">
+        <div class="stat"><div class="num down">2</div><div class="label">跌停</div></div>
+        <div class="stat"><div class="num down">31</div><div class="label">炸板（昨12）</div></div>
+        <div class="stat"><div class="num down">7</div><div class="label">晋级失败</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">反包板</div></div>
+    </div>
+</div>
+
+<h2>一、连板梯队总览</h2>
+
+<div class="card">
+<div class="tier-row">
+<div class="tier-label gold">5板 👑</div>
+<div>
+<span class="stock-item"><span class="name">秦安股份</span> <span class="reason">人形机器人+真空镀膜+发动机零部件（一字板）</span></span>
+</div>
+</div>
+<div class="tier-row">
+<div class="tier-label red">4板</div>
+<div>
+<span class="stock-item"><span class="name">蓝盾光电</span> <span class="reason">20cm×4！重组+真空镀膜+光通信上游，复牌翻倍107%</span></span>
+<span class="stock-item"><span class="name">京投发展</span> <span class="reason">光电子资产重组+TOD轨道物业+北京国资</span></span>
+<span class="stock-item"><span class="name">同力天启</span> <span class="reason">算电协同+储能+电梯部件</span></span>
+<span class="stock-item"><span class="name">北京文化</span> <span class="reason">《欢迎来龙餐馆》上映+影视全产业链</span></span>
+<span class="stock-item"><span class="name">皇氏集团</span> <span class="reason">乳业+新式茶饮+代工+种源突破</span></span>
+<span class="stock-item"><span class="name">一鸣食品</span> <span class="reason">乳业+烘焙食品+米制鲜食（大消费总龙头）</span></span>
+</div>
+</div>
+<div class="tier-row">
+<div class="tier-label green">3板</div>
+<div>
+<span class="stock-item"><span class="name">城地香江</span> <span class="reason">算力租赁+大单</span></span>
+<span class="stock-item"><span class="name">亚泰集团</span> <span class="reason">医药+东北振兴（医药主线）</span></span>
+</div>
+</div>
+<div class="tier-row">
+<div class="tier-label" style="color:var(--blue)">2板</div>
+<div>
+<span class="stock-item"><span class="name">誉衡药业</span> <span class="reason">创新药（5天4板）</span></span>
+<span class="stock-item"><span class="name">惠天热电</span> <span class="reason">智能电网+供热（算电协同）</span></span>
+<span class="stock-item"><span class="name">坤泰股份</span> <span class="reason">汽车零部件+机器人</span></span>
+<span class="stock-item"><span class="name">金螳螂</span> <span class="reason">装修装饰+地产链</span></span>
+<span class="stock-item"><span class="name">澳洋健康</span> <span class="reason">医美+医药+养老</span></span>
+<span class="stock-item"><span class="name">华西股份</span> <span class="reason">算力+光模块参股</span></span>
+<span class="stock-item"><span class="name">德龙汇能</span> <span class="reason">燃气+算电协同</span></span>
+<span class="stock-item"><span class="name">天洋新材</span> <span class="reason">光伏胶膜+新材料</span></span>
+<span class="stock-item"><span class="name">江河集团</span> <span class="reason">建筑装饰+医疗健康</span></span>
+</div>
+</div>
+</div>
+
+<h2>二、20cm涨停板（9家，医药占6席）</h2>
+
+<div class="card">
+<table>
+<tr><th>股票</th><th>代码</th><th>今日涨幅</th><th>连板</th><th>逻辑</th></tr>
+<tr><td>蓝盾光电</td><td>300862</td><td class="up">+20.00%</td><td><span class="badge badge-red">4连板</span></td><td>重大资产重组+真空镀膜+光通信，复牌4天累计+107%</td></tr>
+<tr><td>博济医药</td><td>300404</td><td class="up">+20.00%</td><td>首板</td><td>CRO+临床前服务（医药主线）</td></tr>
+<tr><td>陇神戎发</td><td>300534</td><td class="up">+20.00%</td><td>首板</td><td>中药+甘肃国资</td></tr>
+<tr><td>南模生物</td><td>688265</td><td class="up">+20.00%</td><td>首板</td><td>模式动物CRO</td></tr>
+<tr><td>万邦医药</td><td>301520</td><td class="up">+20.00%</td><td>3天2板（反包）</td><td>临床CRO+创新药</td></tr>
+<tr><td>药易购</td><td>300937</td><td class="up">+20.00%</td><td>首板</td><td>医药商业+互联网医疗</td></tr>
+<tr><td>近岸蛋白</td><td>688137</td><td class="up">+20.00%</td><td>首板</td><td>重组蛋白+CRO上游</td></tr>
+<tr><td>立昂技术</td><td>300603</td><td class="up">+20.00%</td><td>首板</td><td>算力租赁+数据中心</td></tr>
+<tr><td>兆日科技</td><td>300333</td><td class="up">+20.00%</td><td>首板</td><td>国产芯片+密码安全</td></tr>
+</table>
+</div>
+
+<div class="green-note">
+<strong>医药20cm成建制爆发：</strong>博济医药、陇神戎发、南模生物、药易购、万邦医药、近岸蛋白6家医药股20cm涨停，覆盖CRO/中药/模式动物/医药商业全链条。叠加亚泰集团3板、誉衡药业5天4板，医药是当日唯一成建制的强主线。<strong>蓝盾光电连续4天20cm</strong>（A股罕见），4个交易日累计+107.31%，公司回应"并购重组尚处前期阶段"。
+</div>
+
+<h2>三、晋级失败（断板）</h2>
+
+<div class="card">
+<table>
+<tr><th>股票</th><th>昨日板数</th><th>失败板数</th><th>概念</th><th>失败原因</th></tr>
+<tr><td>百花医药</td><td>7板</td><td>7进8失败</td><td>CRO+创新药+金华国资</td><td>最高标高位分歧，短线情绪退潮期资金出逃</td></tr>
+<tr><td>华东数控</td><td>3板</td><td>3进4失败</td><td>工业母机+谐波减速器</td><td>机器人题材退潮，非主线</td></tr>
+<tr><td>鸿博股份</td><td>2板</td><td>2进3失败</td><td>算力+AI</td><td>炸板，算力方向分歧</td></tr>
+<tr><td>巨轮智能</td><td>2板</td><td>2进3失败</td><td>机器人+RV减速器</td><td>机器人板块整体降温</td></tr>
+<tr><td>宝鹰股份</td><td>2板</td><td>2进3失败</td><td>装修装饰+恒大概念</td><td>非主线题材</td></tr>
+<tr><td>香江控股</td><td>2板</td><td>2进3失败</td><td>房地产+1个月涨超100%</td><td>地产退潮+高位风险</td></tr>
+<tr><td>长城科技</td><td>2板</td><td>2进3失败</td><td>电磁线+新能源车</td><td>非主线</td></tr>
+</table>
+</div>
+
+<div class="alert">
+<strong>最高标断板信号：</strong>百花医药7进8失败，连板天梯最高标从"百花7板"降为"秦安5板"。昨日16家连板今日晋级9家（晋级率56.25%），但关键分歧点在于：<strong>3进4几乎全员晋级（6/7），而2进3仅2/7（28.6%）</strong>——低位梯队晋级失败率高企，说明资金只愿意抱团高位核心，不愿向外扩散，这是题材周期进入中后段的典型特征。短线情绪从89°C高潮骤降至49°C退潮。
+</div>
+
+<h2>四、首板与反包</h2>
+
+<div class="card">
+<table>
+<tr><th>类别</th><th>股票</th><th>概念</th></tr>
+<tr><td>首板·算力</td><td>立昂技术(20cm)、群兴玩具、游族网络、移远通信</td><td>算力租赁/数据中心/物联网</td></tr>
+<tr><td>首板·电力</td><td>金开新能、华电能源、理工能科</td><td>绿电/算电协同/电力信息化</td></tr>
+<tr><td>首板·其他</td><td>兆日科技(20cm)、渤海化学</td><td>国产芯片/化工</td></tr>
+<tr><td>反包板</td><td>万邦医药（3天2板，20cm）</td><td>临床CRO，昨日炸板今日反包</td></tr>
+<tr><td>炸板观察</td><td>鸿博股份、宝鹰股份、利通电子、龙洲股份、通鼎互联、江海股份、读客文化、银都股份、榕基软件</td><td>炸板31家为近期最高，分歧剧烈</td></tr>
+</table>
+</div>
+
+<h2>五、结论与明日观察</h2>
+<div class="card">
+    <div class="orange-note">
+        <strong>天梯定性：</strong>情绪从89°C骤降至49°C，涨停62家（-29）、炸板31家（+19）、封板率66.7%（-16.6pct）。最高标7板→5板，医药主线内部"龙头断板、梯队补涨"（百花7断 → 亚泰3/誉衡4板接力）。当前属于<strong>高潮后的退潮分歧期</strong>，连板接力风险显著上升。
+    </div>
+    <p><strong>明日观察要点：</strong></p>
+    <ul style="padding-left:20px;">
+        <li>秦安股份5板能否晋级6板（一字板无换手，外部流通盘小，需防开板巨震）</li>
+        <li>百花医药断板后是否有修复反包，还是医药梯队整体退潮</li>
+        <li>亚泰集团（医药3板）与城地香江（算力3板）能否带动所在主线续命</li>
+        <li>6家4板股（蓝盾/京投/同力/北京文化/皇氏/一鸣）明日淘汰赛，晋级率大概率下降</li>
+        <li>若明日涨停数继续低于50家、炸板率维持高位，短线宜转防守</li>
+    </ul>
+    <div class="alert">
+        <strong>风险提示：</strong>退潮期追高连板股风险极大，31家炸板+11家大面已发出警告。短线情绪连续两日下行（89°C→48°C→49°C），谨防退潮延续。本报告仅作市场记录，不构成投资建议。
+    </div>
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-13 · 数据来源：复盘网/财联社/证券时报/东方财富 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
