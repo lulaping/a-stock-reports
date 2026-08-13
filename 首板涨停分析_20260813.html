@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首板涨停分析 — 2026年8月13日</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .orange-note { background:rgba(210,153,29,0.08); border-left:3px solid var(--orange); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:#fff; }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>首板涨停分析 — 2026年8月13日（周四）</h1>
+<p class="subtitle">Serenity 首板分析（Limit-Up SOP · L1首板分类）· 62只涨停/22只连板/<strong>首板约40只</strong> · 剔除ST · 封板率66.7% · 炸板31家 · 情绪退潮49°C（昨89°C）</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>首板核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">62</div><div class="label">全市场涨停（剔ST）</div></div>
+        <div class="stat"><div class="num">22</div><div class="label">连板股</div></div>
+        <div class="stat"><div class="num">~40</div><div class="label">首板（今日新增）</div></div>
+        <div class="stat"><div class="num down">66.7%</div><div class="label">封板率（昨83.3%）</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        收盘：沪指-0.50% · 深成指-0.87% · 创业板-0.45% · 超3900只下跌 · 成交约2.39万亿放量 · 早盘冲高午后跳水 · 数据时点：2026-08-13 收盘（财联社/同花顺/证券时报多源交叉验证）
+    </div>
+</div>
+
+<!-- 概览 -->
+<div class="card">
+    <h2 style="margin-top:0;color:var(--orange);">今日首板总览</h2>
+    <p>今日首板约40只，按题材集中度分为三大阵营：<strong>医药/CRO（7+，含5家20cm）</strong>、<strong>算力/DeepSeek/通信（12+）</strong>、<strong>电力/能源（3+）</strong>。其余为化工、消费、并购重组等独立逻辑。</p>
+    <br>
+    <p><strong>与昨日（8/12）对比：</strong>昨日138只涨停/19只连板/首板约119只，今日仅62只涨停。首板数量锐减60%+，炸板率从10%飙升至33.3%，是典型的<strong>高潮后分歧退潮</strong>特征。医药20cm成建制爆发是今日最大亮点，但午后市场跳水导致大量算力首板炸板（利通电子、江海股份、榕基软件等炸板）。</p>
+</div>
+
+<!-- 题材分布 -->
+<h2>一、医药/CRO — 首板最强主线（7+只，5家20cm）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>代码</th><th>名称</th><th>涨停原因 / 题材</th><th>封板特征</th></tr>
+        <tr><td>300404</td><td><strong>博济医药</strong>（20cm）</td><td>CRO临床前服务+创新药，板块龙头之一</td><td>早盘封板，封单稳定</td></tr>
+        <tr><td>300534</td><td><strong>陇神戎发</strong>（20cm）</td><td>中药+创新药+甘肃国资</td><td>首板20cm，近一年涨停4次</td></tr>
+        <tr><td>688265</td><td><strong>南模生物</strong>（20cm）</td><td>AI制药+基因修饰模型+CRO服务，H1扣非+47%~79%</td><td>近一年涨停2次，科创板20cm</td></tr>
+        <tr><td>300937</td><td><strong>药易购</strong>（20cm）</td><td>医药零售整合+医药电商+AI医疗，近期收购闪送易购等</td><td>近一年涨停3次</td></tr>
+        <tr><td>688137</td><td><strong>近岸蛋白</strong>（20cm）</td><td>重组蛋白+CRO上游，合成生物概念</td><td>科创板20cm，近一年涨停2次</td></tr>
+        <tr><td>002219</td><td><strong>新里程</strong></td><td>创新药+智能机器人+脑机接口+银发经济</td><td>近一年涨停5次</td></tr>
+        <tr><td>002437</td><td><strong>誉衡药业</strong>*</td><td>创新药（5天4板，反包板）</td><td>非严格首板，反包强势</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);">* 誉衡药业严格属于反包/5天4板，非纯粹首板。催化：① 药明康德中报超预期+上调全年指引，CRO行业景气度验证；② 三靶点/口服GLP-1/环肽/小核酸等新分子需求旺盛，CDMO外需驱动业绩持续兑现；③ 8/10单日落地三起创新药出海BD交易（百济神州/信达生物/甘李药业）；④ 国内创新药投融资修复，AI制药进入商业闭环验证；⑤ DeepSeek V4 Pro正式版增强Agent能力，医药AI概念共振。</p>
+</div>
+
+<div class="green-note">
+<strong>医药首板特征：</strong>6家首板中5家为20cm（科创板+创业板），涵盖CRO全链条（临床前→临床→模式动物→蛋白→电商）。这是医药板块自7月以来规模最大的一次首板爆发。但需注意：午后市场跳水后，封板质量有所下滑，且百花医药7进8失败构成高位龙头断板，医药首板明日晋级压力较大。
+</div>
+
+<h2>二、算力/DeepSeek/通信 — 叠加催化最强（12+只）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>代码</th><th>名称</th><th>涨停原因 / 题材</th><th>封板特征</th></tr>
+        <tr><td>300603</td><td><strong>立昂技术</strong>（20cm）</td><td>算力租赁+DeepSeek概念，开盘3分钟20cm涨停</td><td>封单超17万手，近一年涨停1次（稀客）</td></tr>
+        <tr><td>300333</td><td><strong>兆日科技</strong>（20cm）</td><td>国产芯片+密码安全+DeepSeek概念</td><td>开盘一字20cm，封单2.02亿</td></tr>
+        <tr><td>002575</td><td><strong>群兴玩具</strong></td><td>算力租赁+腾讯合作+酒类销售，一字板</td><td>一字涨停，封单稳定</td></tr>
+        <tr><td>603236</td><td><strong>移远通信</strong></td><td>中报增长（H1营收152.59亿+32%、净利6.02亿+258%）+端侧AI+人形机器人+物联网模组</td><td>业绩驱动，近一年涨停4次</td></tr>
+        <tr><td>002174</td><td><strong>游族网络</strong></td><td>DeepSeek概念+游戏+先进封装合作</td><td>近一年涨停12次</td></tr>
+        <tr><td>603466</td><td><strong>风语筑</strong></td><td>DeepSeek概念+数字展示</td><td>DeepSeek概念股联动</td></tr>
+        <tr><td>603912</td><td><strong>佳力图</strong></td><td>算力租赁+液冷+数据中心</td><td>近一年涨停7次</td></tr>
+        <tr><td>603118</td><td><strong>共进股份</strong></td><td>超节点概念+通信设备</td><td>阿里云灵骏M890超节点上线催化</td></tr>
+        <tr><td>000887</td><td><strong>中鼎股份</strong></td><td>算力租赁+腾讯云战略合作</td><td>昨日因腾讯云合作涨停，今日续板</td></tr>
+        <tr><td>601789</td><td><strong>宁波建工</strong></td><td>算力+数据中心建设</td><td>算力概念扩散</td></tr>
+        <tr><td>002706</td><td><strong>良信股份</strong></td><td>固态断路器+数据中心+算力（AI电源链）</td><td>近一年涨停8次</td></tr>
+        <tr><td>002851</td><td><strong>麦格米特</strong></td><td>AI电源+英伟达产业链（Vera Rubin平台Q4出货）</td><td>近一年涨停14次</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);">催化：① 美股Nebius Q2营收+454%暴涨34%、CoreWeave Q2营收翻倍+19%，AI算力需求持续供不应求；② 腾讯Q2资本开支527.8亿（环比+65%、同比+176%），大超预期；③ DeepSeek V4 Pro正式版上线（增强Agent能力+支持Responses API/Codex接入）；④ 上海印发行动方案，依法依规开展算力补贴；⑤ 摩根士丹利：算力缺口10-20%，未来数年算力仍为受限高价值资源。⛔ 午后跳水导致利通电子、榕基软件、江海股份等多只算力首板炸板。</p>
+</div>
+
+<div class="orange-note">
+<strong>算力首板质量分化：</strong>早盘算力首板12+只，但午后炸板率高（利通电子、江海股份、榕基软件等均炸板），最终封住的只剩约8-10只。立昂技术（3分钟20cm急拉）、兆日科技（一字20cm）封板质量最好；移远通信有中报业绩支撑（H1净利+258%），是少数"业绩+题材"双驱动的首板。DeepSeek概念股12只涨停中有相当部分属于蹭概念，纯概念首板明日晋级难度大。
+</div>
+
+<h2>三、电力/能源 — 算电协同（3只）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>代码</th><th>名称</th><th>涨停原因 / 题材</th><th>封板特征</th></tr>
+        <tr><td>600726</td><td><strong>华电能源</strong></td><td>热电联产+煤炭+新能源转型+央企，黑龙江最大热电联产</td><td>近一年涨停22次（活跃股）</td></tr>
+        <tr><td>600821</td><td><strong>金开新能</strong></td><td>绿电+算力+DeepSeek概念/算电协同</td><td>叠加算力概念</td></tr>
+        <tr><td>002322</td><td><strong>理工能科</strong></td><td>电力信息化+算电协同</td><td>智能电网方向</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);">催化：东数西算工程撬动万亿级社会投资，绿电消费占比持续攀升（内蒙古/甘肃新建数据中心绿电占比超80%），算电协同成为AI基础设施新主线。央视财经：到2030年6万亿度绿电奔涌入网。同业惠天热电2连板形成板块联动。</p>
+</div>
+
+<h2>四、化工/材料 — 独立逻辑（2只）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>代码</th><th>名称</th><th>涨停原因 / 题材</th><th>封板特征</th></tr>
+        <tr><td>600800</td><td><strong>渤海化学</strong></td><td>丙烯酸（16万吨/年装置6/16投料试车成功）+天津国资</td><td>近一年涨停9次</td></tr>
+        <tr><td>601026</td><td><strong>道生天合</strong></td><td>环氧塑封材料+半导体封装+风电材料，增资参股道宜半导体</td><td>近一年涨停3次</td></tr>
+    </table>
+</div>
+
+<h2>五、其他独立逻辑首板</h2>
+
+<div class="card">
+    <table>
+        <tr><th>代码</th><th>名称</th><th>涨停原因 / 题材</th><th>封板特征</th></tr>
+        <tr><td>603956</td><td><strong>威派格</strong></td><td>PCB（增资取得安徽提曼51%股权，PCB微型钻针）+智慧水务</td><td>近一年涨停10次</td></tr>
+        <tr><td>000972</td><td><strong>中基健康</strong></td><td>小罐番茄酱+国企改革+预重整延期</td><td>近一年涨停19次，独立消费逻辑</td></tr>
+        <tr><td>600179</td><td><strong>安通控股</strong></td><td>实控人拟变更（中外运集运入主，招商局集团）+集装箱物流</td><td>重组公告催化，近一年涨停11次</td></tr>
+        <tr><td>601579</td><td><strong>会稽山</strong></td><td>食品饮料+黄酒</td><td>大消费联动</td></tr>
+    </table>
+</div>
+
+<h2>六、炸板首板（冲高回落，需警惕）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>代码</th><th>名称</th><th>涨停原因</th><th>炸板分析</th></tr>
+        <tr><td>603629</td><td><strong>利通电子</strong></td><td>算力租赁+中报预增+英伟达合作</td><td><span class="down">午后炸板</span>，算力高位分歧</td></tr>
+        <tr><td>002484</td><td><strong>江海股份</strong></td><td>AI服务器电源+超级电容+国资</td><td><span class="down">炸板</span>，AI电源链分歧</td></tr>
+        <tr><td>002474</td><td><strong>榕基软件</strong></td><td>AI应用+信创+数据要素</td><td><span class="down">炸板</span>，近一年涨停15次高波动</td></tr>
+        <tr><td>002682</td><td><strong>龙洲股份</strong></td><td>公路货运</td><td><span class="down">炸板</span></td></tr>
+        <tr><td>002491</td><td><strong>通鼎互联</strong></td><td>算力+光通信</td><td><span class="down">炸板</span></td></tr>
+        <tr><td>603277</td><td><strong>银都股份</strong></td><td>—</td><td><span class="down">炸板</span></td></tr>
+    </table>
+    <div class="alert">
+        <strong>炸板率33.3%是近期最高：</strong>31家炸板中算力方向占多数，与午后科技股跳水直接相关。利通电子（算力+英伟达合作）、江海股份（AI电源）均为高辨识度标的，炸板说明算力方向在午后遭遇了集中的获利了结。
+    </div>
+</div>
+
+<h2>七、首板质量评估与明日预判</h2>
+
+<div class="card">
+    <table>
+        <tr><th>首板</th><th>逻辑硬度</th><th>封板质量</th><th>明日晋级概率</th><th>说明</th></tr>
+        <tr>
+            <td><strong>移远通信</strong></td>
+            <td><span class="badge badge-green">高</span></td>
+            <td><span class="badge badge-green">好</span></td>
+            <td><span class="badge badge-green">中高</span></td>
+            <td>业绩+题材双驱动，H1净利+258%，端侧AI+机器人双概念，机构认可度高</td>
+        </tr>
+        <tr>
+            <td><strong>立昂技术</strong></td>
+            <td><span class="badge badge-orange">中</span></td>
+            <td><span class="badge badge-green">好</span></td>
+            <td><span class="badge badge-orange">中</span></td>
+            <td>3分钟20cm急拉，封单17万手强势，但纯概念炒作，近一年仅涨停1次</td>
+        </tr>
+        <tr>
+            <td><strong>兆日科技</strong></td>
+            <td><span class="badge badge-orange">中</span></td>
+            <td><span class="badge badge-green">好</span></td>
+            <td><span class="badge badge-orange">中</span></td>
+            <td>一字20cm封单2.02亿，但密码安全+芯片逻辑与DeepSeek关联度弱</td>
+        </tr>
+        <tr>
+            <td><strong>博济医药</strong></td>
+            <td><span class="badge badge-green">高</span></td>
+            <td><span class="badge badge-green">好</span></td>
+            <td><span class="badge badge-green">中高</span></td>
+            <td>CRO临床前龙头，医药板块最强首板，但百花7进8断板压制高位</td>
+        </tr>
+        <tr>
+            <td><strong>群兴玩具</strong></td>
+            <td><span class="badge badge-orange">中</span></td>
+            <td><span class="badge badge-green">好</span></td>
+            <td><span class="badge badge-orange">中</span></td>
+            <td>一字板强势，算力+腾讯合作双概念</td>
+        </tr>
+        <tr>
+            <td><strong>南模生物</strong></td>
+            <td><span class="badge badge-green">高</span></td>
+            <td><span class="badge badge-orange">中</span></td>
+            <td><span class="badge badge-orange">中</span></td>
+            <td>AI制药+模式动物CRO，扣非+47%~79%，但H1归母净利同比-45%~56%</td>
+        </tr>
+        <tr>
+            <td><strong>安通控股</strong></td>
+            <td><span class="badge badge-green">高</span></td>
+            <td><span class="badge badge-green">好</span></td>
+            <td><span class="badge badge-green">高</span></td>
+            <td>招商局集团入主，实控人变更独立逻辑，不受情绪退潮影响</td>
+        </tr>
+        <tr>
+            <td><strong>其他算力首板</strong></td>
+            <td><span class="badge badge-red">低</span></td>
+            <td><span class="badge badge-orange">分化</span></td>
+            <td><span class="badge badge-red">低</span></td>
+            <td>纯概念跟风，午后炸板率极高，退潮期追高风险大</td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0;color:var(--red);">退潮期首板操作策略</h2>
+    <div class="orange-note">
+        <strong>环境定性：</strong>短线情绪从89°C骤降至49°C，炸板31家（炸板率33.3%），大面11家。这是典型的高潮后退潮分歧日。退潮期追首板，<strong>次日溢价率显著下降</strong>，追高吃面概率大幅上升。
+    </div>
+    <p><strong>首板质量排序（按逻辑硬度）：</strong></p>
+    <ol style="padding-left:20px;">
+        <li><strong>安通控股</strong>（实控人变更独立逻辑，不受情绪影响）</li>
+        <li><strong>移远通信</strong>（业绩+题材双驱动，机构型首板）</li>
+        <li><strong>博济医药</strong>（CRO主线龙头首板，板块共识最强）</li>
+        <li><strong>南模生物</strong>（AI制药+扣非增长，但归母下滑需注意）</li>
+        <li>立昂技术/兆日科技（封板强势但纯概念，谨慎追高）</li>
+    </ol>
+    <br>
+    <p><strong>明日首板淘汰赛关键：</strong></p>
+    <ul style="padding-left:20px;">
+        <li>医药首板若百花医药无法修复反包，将面临集体退潮风险</li>
+        <li>算力首板分化严重，仅立昂技术/兆日科技封板质量好，其余需观察</li>
+        <li>安通控股（招商局入主）可能走出独立行情，不受情绪影响</li>
+        <li>移远通信中报业绩是硬支撑，回调后值得关注</li>
+        <li>明日若情绪继续降温（<40°C），首板行情暂停，转防守</li>
+    </ul>
+</div>
+
+<div class="alert">
+    <strong>风险提示：</strong>退潮期首板次日溢价率平均下降30-50%，今日31家炸板+11家大面已发出强烈警告。本报告仅作市场记录与首板分类，不构成投资建议。首板涨停不等于次日有溢价，尤其在情绪退潮期。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-13 · 数据来源：财联社/同花顺/证券时报/复盘网/东方财富 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
