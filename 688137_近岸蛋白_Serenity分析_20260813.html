@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>近岸蛋白 (688137) — Serenity分析 2026-08-13</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--orange); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--muted);
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .verdict { font-size:15px; padding:14px 20px; border-radius:10px; margin:10px 0; font-weight:600; }
+        .verdict-hold { background:rgba(210,153,29,0.12); border:1px solid var(--orange); color:var(--orange); }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>近岸蛋白 (688137) — Serenity 分析</h1>
+<p class="subtitle">2026年8月13日 · 重组蛋白+合成生物+AI医药概念，近5日飙涨35%触发异常波动，但营收仅1.46亿连亏两年</p>
+
+<div class="summary">
+    <strong>核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">57.00</div><div class="label">盘中价 +6.88%</div></div>
+        <div class="stat"><div class="num">39.85亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">70.29%</div><div class="label">Q1毛利率</div></div>
+        <div class="stat"><div class="num">5.82%</div><div class="label">资产负债率</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据时点：2026-08-13 盘中，财务数据来自2026Q1季报/2025年报 · 发行价106.19元，现价破发46% · 8/28中报</div>
+</div>
+
+<div class="verdict verdict-hold">
+    🟡 Hold — 7/15，重组蛋白小市值，毛利率70%+现金7.7亿，但营收1.46亿连续亏损，39亿估值靠概念支撑，等8/28中报验证
+</div>
+
+<div class="green-note" style="margin-top:0;">
+    <strong>得分序列：</strong>1:0 2:0 3:1 4:1 5:0 6:0 7:1 8:1 9:0 10:0 11:1 12:0 13:1 14:0 15:1 = <strong>7/15</strong>
+</div>
+
+<h2>一、公司概况</h2>
+
+<div class="card">
+    <table>
+        <tr><th style="width:25%">项目</th><th>内容</th></tr>
+        <tr><td>全称</td><td>苏州近岸蛋白质科技股份有限公司</td></tr>
+        <tr><td>上市日期</td><td>2022-09-29 · 科创板 · 发行价106.19元</td></tr>
+        <tr><td>总股本 / 流通股本</td><td>7017.54万股 / 7017.54万股（全流通）</td></tr>
+        <tr><td>主营业务</td><td>靶点及因子类蛋白(55%)、酶及试剂(29%)、技术服务(14%)、重组抗体(2%)</td></tr>
+        <tr><td>核心概念</td><td><span class="badge badge-blue">合成生物</span> <span class="badge badge-blue">CRO</span> <span class="badge badge-blue">AI医药</span> <span class="badge badge-blue">体外诊断</span> <span class="badge badge-blue">mRNA</span> <span class="badge badge-blue">干细胞</span></td></tr>
+        <tr><td>定位</td><td>重组蛋白行业，生命科学上游原料供应商，7大技术平台23项核心技术</td></tr>
+    </table>
+</div>
+
+<h2>二、财务表现</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>2026Q1</th><th>同比</th><th>2025全年</th><th>同比</th></tr>
+        <tr><td>营业收入</td><td>3724.67万</td><td class="up">+11.37%</td><td>1.46亿</td><td class="up">+14.80%</td></tr>
+        <tr><td>归母净利润</td><td>-1060.44万</td><td class="up">减亏10.20%</td><td>-7778.34万</td><td class="down">亏损扩大42.94%</td></tr>
+        <tr><td>扣非净利润</td><td>-1060.31万</td><td class="up">减亏14.52%</td><td>-7712.02万</td><td class="down">亏损扩大7.49%</td></tr>
+        <tr><td>毛利率</td><td><strong>70.29%</strong></td><td class="up">+8.04pct</td><td>67.12%</td><td class="up">+4.70pct</td></tr>
+        <tr><td>研发费用</td><td>1592.55万</td><td>+19.57%</td><td>6406.24万</td><td>+28.32%</td></tr>
+        <tr><td>研发占营收比</td><td><strong>42.76%</strong></td><td>+2.94pct</td><td><strong>43.75%</strong></td><td>—</td></tr>
+        <tr><td>经营现金流</td><td class="down">-1407.92万</td><td>—</td><td class="down">-1336.20万</td><td class="down">-200.35%</td></tr>
+    </table>
+</div>
+
+<div class="alert"><strong>核心矛盾：</strong>毛利率70.29%非常优秀，但营收体量太小（年化约1.5亿），研发+销售+管理费用合计远超营收，导致持续亏损。盈亏平衡点至少在营收2.5-3亿。</div>
+
+<h2>三、资产负债表</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>2026Q1</th><th>说明</th></tr>
+        <tr><td>总资产</td><td>21.46亿</td><td>—</td></tr>
+        <tr><td>净资产</td><td>20.21亿</td><td>—</td></tr>
+        <tr><td>货币资金</td><td><strong>7.73亿</strong></td><td>约占市值19.4%，无有息负债</td></tr>
+        <tr><td>资产负债率</td><td><strong>5.82%</strong></td><td>行业极低水平</td></tr>
+        <tr><td>每股净资产</td><td>28.80元</td><td>—</td></tr>
+        <tr><td>每股资本公积金</td><td>28.1762元</td><td>几乎全部是资本公积金</td></tr>
+        <tr><td>每股未分配利润</td><td class="down">-0.4043元</td><td>亏损侵蚀净资产</td></tr>
+    </table>
+</div>
+
+<div class="green-note"><strong>现金安全垫充裕：</strong>7.73亿现金+无有息负债，按当前每年亏损约8000万计算，可支撑9-10年运营。但经营现金流持续为负，每年实际消耗现金约1400-2000万。</div>
+
+<h2>四、近期行情与异常波动</h2>
+
+<div class="card">
+    <table>
+        <tr><th>日期</th><th>收盘价</th><th>涨跌幅</th><th>换手率</th><th>成交额</th><th>事件</th></tr>
+        <tr><td>8/6</td><td>—</td><td class="up">—</td><td>—</td><td>—</td><td>3日连涨开启</td></tr>
+        <tr><td>8/7</td><td>—</td><td class="up">—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>8/10</td><td>—</td><td class="up">—</td><td>—</td><td>—</td><td><span class="badge badge-red">异常波动公告</span> 3日涨幅偏离值超30%</td></tr>
+        <tr><td>8/11</td><td>56.50</td><td class="up">+2.91%</td><td>11.30%</td><td>4.43亿</td><td>融资净买入2526万</td></tr>
+        <tr><td>8/12</td><td>53.33</td><td class="down">-5.61%</td><td>8.61%</td><td>3.29亿</td><td>主力净流出1794万</td></tr>
+        <tr><td>8/13(盘中)</td><td>57.00</td><td class="up">+6.88%</td><td>6.00%</td><td>2.35亿</td><td>最高59.59，振幅14.22%</td></tr>
+    </table>
+</div>
+
+<div class="alert"><strong>公司主动预警：</strong>8/10异常波动公告中明确表示"公司经营规模相对较小，存在亏损风险"、"股价累计涨幅超过大部分同行业公司"、"积累了较多的获利调整风险"。公司自查无未披露重大事项。</div>
+
+<h2>五、Serenity 15项评分</h2>
+
+<div class="card">
+    <table>
+        <tr><th style="width:5%">#</th><th style="width:20%">维度</th><th style="width:6%">得分</th><th>判断依据</th></tr>
+        <tr><td>1</td><td>技术壁垒</td><td>0</td><td>7大技术平台+23项核心技术+18款FDA DMF备案，但行业竞争激烈，百普赛斯(301080)/义翘神州(301047)更领先</td></tr>
+        <tr><td>2</td><td>市占率/行业地位</td><td>0</td><td>营收1.46亿仅行业第50位，属于小玩家，不具备龙头地位</td></tr>
+        <tr><td>3</td><td>毛利率稳定性</td><td><span class="badge badge-green">1</span></td><td>67-70%毛利率，且同比显著回升（+8pct），反映产品结构优化</td></tr>
+        <tr><td>4</td><td>研发投入</td><td><span class="badge badge-green">1</span></td><td>研发占营收43.75%，行业极高；前瞻布局AI蛋白设计+合成生物学+类器官</td></tr>
+        <tr><td>5</td><td>营收增长</td><td>0</td><td>Q1 +11.37%，增速一般，且基数极低（年化仅1.5亿），远未到盈亏平衡点</td></tr>
+        <tr><td>6</td><td>利润质量</td><td>0</td><td>2023-2025连续三年亏损，累计亏损超1.5亿；2025年亏损扩大42.94%</td></tr>
+        <tr><td>7</td><td>现金流</td><td><span class="badge badge-green">1</span></td><td>现金7.73亿+无有息负债，财务安全垫雄厚；但经营现金流持续为负</td></tr>
+        <tr><td>8</td><td>资产负债</td><td><span class="badge badge-green">1</span></td><td>负债率仅5.82%，行业最低水平，几乎零财务风险</td></tr>
+        <tr><td>9</td><td>估值合理性</td><td>0</td><td>PB 1.98x，扣除现金后PB约1.6x；对亏损生物科技小盘不算贵，但营收体量支撑不了40亿市值</td></tr>
+        <tr><td>10</td><td>股东结构</td><td>0</td><td>仅1家基金持仓（华商恒鑫，4.21万股占比0.06%），机构几乎不关注</td></tr>
+        <tr><td>11</td><td>行业前景</td><td><span class="badge badge-green">1</span></td><td>生命科学上游+RNA药物+CGT+类器官，长期赛道好，国产替代红利</td></tr>
+        <tr><td>12</td><td>管理层</td><td>0</td><td>上市近4年表现一般，营收增长缓慢，未展现强执行力</td></tr>
+        <tr><td>13</td><td>催化剂</td><td><span class="badge badge-green">1</span></td><td>合成生物+AI医药+CRO+干细胞多重概念，8月医药板块强势，但公司主动澄清无重大事项</td></tr>
+        <tr><td>14</td><td>风险因素</td><td>0</td><td>持续亏损+营收规模小+异常波动公告+资金面弱(2.0分)+机构不关注</td></tr>
+        <tr><td>15</td><td>现金安全垫</td><td><span class="badge badge-green">1</span></td><td>7.73亿现金可支撑9-10年运营，不存在短期存活风险</td></tr>
+    </table>
+</div>
+
+<h2>六、风险扫描</h2>
+
+<ul class="flag-list">
+    <li class="fail">🔴 连续三年亏损：2023-2025累计亏损超1.5亿，2025年亏损扩大42.94%，2026Q1继续亏损</li>
+    <li class="fail">🔴 异常波动公告：8/10触发异常波动，公司自查"无重大事项"，明确提示"存在亏损风险"+"获利调整风险"</li>
+    <li class="fail">🔴 营收体量极小：年化1.5亿营收难以覆盖研发(6400万)+销售+管理费用，盈亏平衡遥遥无期</li>
+    <li class="warn">⚠️ 经营现金流持续为负：Q1经营现金流-1408万，主业不造血</li>
+    <li class="warn">⚠️ 机构几乎零持仓：仅1家基金持有4.21万股(0.06%)，同花顺资金面评分仅2.0分</li>
+    <li class="warn">⚠️ 近5日涨35%：短期涨幅巨大，换手率11%+，游资博弈特征明显</li>
+    <li class="warn">⚠️ 竞争格局：百普赛斯/义翘神州/药康生物等竞争对手更强，公司处于行业尾部</li>
+</ul>
+
+<h2>七、估值分析</h2>
+
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">28-33亿</div>
+        <div class="price-detail">对应股价 40-47 元</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">触发条件：医药板块退潮+中报继续亏损+营收增速放缓至个位数。PB 1.0-1.2x（扣除现金后业务价值极低）</p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">33-38亿</div>
+        <div class="price-detail">对应股价 47-54 元</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">触发条件：营收维持10-15%增长+亏损继续收窄。现金+基础业务价值，PB 1.3-1.6x</p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">38-50亿</div>
+        <div class="price-detail">对应股价 54-71 元</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">触发条件：医药板块持续强势+AI医药概念扩散+中报显示营收加速+亏损大幅收窄。PB 1.7-2.2x</p>
+    </div>
+</div>
+
+<div class="alert"><strong>现价57元（市值39.85亿）已在Base上沿到Bull下沿。</strong> 当前定价隐含了医药板块持续强势+AI医药概念溢价的预期，但基本面（年营收1.5亿连亏三年）不支撑此估值。近5日35%的涨幅主要由合成生物+AI医药概念驱动，而非基本面改善。</div>
+
+<h2>八、核心判断</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">客观框架</span>
+        <span>重组蛋白小市值（40亿），毛利率70%+现金7.7亿+零负债，财务安全垫优秀。但营收仅1.46亿（行业第50），连续三年亏损，研发费用吞噬全部毛利。核心矛盾：技术壁垒存在但规模太小，无法覆盖高研发成本。</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity</span>
+        <span><strong>7/15 🟡Hold</strong> — 不是最差的标的（现金+低负债+高毛利率是真实优势），但也不是好标的（营收太小+持续亏损+机构不关注）。近5日+35%是医药板块情绪驱动，公司自身8/10已主动预警风险。</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">市值/股价区间</span>
+        <span>市值 <strong>28-50亿</strong>，对应股价 <strong>40-71元</strong>。现价57元（39.85亿）处于Base上沿，向上空间有限（Bull上限71元+25%），向下风险较大（Bear下限40元-30%）。风险收益比不理想。</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">关键观察点</span>
+        <span><strong>8/28中报</strong>：Q2营收能否超5000万（年化破2亿）？亏损是否继续收窄？毛利率能否维持70%+？这三项是判断基本面的核心指标。</span>
+    </div>
+</div>
+
+<div class="alert"><strong>风险提示：</strong>本报告基于公开信息整理，仅供参考，不构成投资建议。近岸蛋白属于小市值概念股，波动极大，近期已触发异常波动公告，投资者需充分认知风险。</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-13 · 数据来源：东方财富/证券时报/同花顺/公司公告 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
