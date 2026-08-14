@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经纬辉开（300120）— Serenity 分析 2026-08-14</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--red); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--muted);
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; }
+          .conclusion-row { flex-direction:column; gap:4px; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>经纬辉开（300120）— Serenity Mode 1 分析</h1>
+<p class="subtitle">2026-08-14 盘中 · 股价 8.29 元（+7.38%）· 市值 47.62 亿 · 数据来源：证券时报/东方财富/同花顺/公司公告</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">8.29</div><div class="label">现价（元）</div></div>
+        <div class="stat"><div class="num">47.62亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">亏损</div><div class="label">PE（静）</div></div>
+        <div class="stat"><div class="num">1.90x</div><div class="label">PB</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        52周波动剧烈 · 今日 +7.38%（连续3日放量，昨+9.04%前+2.91%）· 昨收7.72 · 2025年营收25.77亿-21% 归母-4.84亿 · 资产负债率59.71% · 8/29中报
+    </div>
+</div>
+
+<!-- 客观框架 -->
+<h2>客观框架 — 行业与商业模式</h2>
+
+<div class="card">
+    <table>
+        <tr><th style="width:20%">维度</th><th>内容</th></tr>
+        <tr><td><strong>主营业务</strong></td><td>三主业格局：① 触控显示模组（13.31亿/51.7%）：LCD/OLED/柔性屏，客户包括沃尔玛/贝尔金/德赛西威/伟世通等；② 电磁线（12.27亿/47.6%）：特高压电抗器/换位导线/铜组合线，客户国家电网/南方电网/南瑞集团；③ 专网通信（2025年10月收购中兴系统，2026年3月并表）：城轨专网通信龙头</td></tr>
+        <tr><td><strong>行业地位</strong></td><td>柔性屏模组市占率国内居前；中兴系统为国家级专精特新"小巨人"，连续多年城轨专用通信市场份额第一，CMMI5全球最高等级认证；电磁线产品供货特高压领域</td></tr>
+        <tr><td><strong>战略转型</strong></td><td>从"双主业"向"三主业"转型。2025年收购中兴系统（8.50亿，业绩承诺2025-2027累计净利≥2.15亿）、持股诺思微6.68%（国内稀缺BAW射频滤波器量产企业）、参股铱加科技（深圳1.6T光芯片重大专项）。原计划出售触控显示板块但终止</td></tr>
+        <tr><td><strong>概念覆盖</strong></td><td>安防/芯片/OLED/特高压/风电/PET铜箔/专网通信/1.6T光芯片/脑机接口/消费电子/柔性屏/智慧灯杆/海工装备/汽车电子/人民币贬值受益</td></tr>
+        <tr><td><strong>财务表现</strong></td><td>2025年营收25.77亿（-20.98%），归母-4.84亿（因触控显示板块商誉减值3.13亿+存货跌价+坏账损失）。2026Q1营收6.76亿（+15.05%），归母311万（-75.71%）。毛利率15.76%，资产负债率59.71%（较上年35.97%大幅上升）</td></tr>
+    </table>
+</div>
+
+<!-- 卡点分析 -->
+<h2>核心卡点</h2>
+
+<div class="card">
+    <table>
+        <tr><th>卡点</th><th>内容</th><th>判定</th></tr>
+        <tr>
+            <td><strong>1. 2025年巨亏</strong></td>
+            <td>归母-4.84亿，商誉减值3.13亿。每股未分配利润-0.76元（负数），2025年未分红。Q1净利仅311万（同比-75.71%），中兴系统刚并表尚未贡献实质利润</td>
+            <td><span class="badge badge-red">🔴 硬伤</span></td>
+        </tr>
+        <tr>
+            <td><strong>2. 负债率飙升</strong></td>
+            <td>资产负债率从35.97%飙升至59.71%，为收购中兴系统+诺思微大幅举债。短期偿债压力显著增加，财务费用侵蚀利润</td>
+            <td><span class="badge badge-red">🔴 硬伤</span></td>
+        </tr>
+        <tr>
+            <td><strong>3. 业务过于分散</strong></td>
+            <td>触控显示+电磁线+专网通信，三个主业之间缺乏协同。原计划出售触控显示板块但终止，导致资源分散、管理复杂度高。中兴系统业绩承诺2025-2027累计≥2.15亿，压力大</td>
+            <td><span class="badge badge-orange">⚠️ 整合风险</span></td>
+        </tr>
+        <tr>
+            <td><strong>4. 大股东减持</strong></td>
+            <td>陈建波（最大股东10.09%）减持332.55万股，董树林减持303.05万股，张秋凤减持110.10万股。机构持股仅1.07%，主力持仓极低</td>
+            <td><span class="badge badge-orange">⚠️ 信号负面</span></td>
+        </tr>
+    </table>
+</div>
+
+<!-- L0 数据表 -->
+<h2>L0 关键数据（仅列非明显项）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+        <tr><td>每股净资产</td><td>4.37 元</td><td>PB 1.90x，股价接近净资产，但含商誉等无形资产</td></tr>
+        <tr><td>每股未分配利润</td><td>-0.76 元</td><td>为负数，历史亏损未弥补，无法分红</td></tr>
+        <tr><td>资产负债率</td><td>59.71%</td><td>较上年35.97%大幅上升，为收购中兴系统+诺思微举债</td></tr>
+        <tr><td>商誉</td><td>约8亿+</td><td>收购中兴系统+诺思微产生大额商誉，若业绩不达标存在减值风险</td></tr>
+        <tr><td>中兴系统业绩承诺</td><td>3年≥2.15亿</td><td>2025-2027累计净利不低于2.15亿，目前仅并表一个月</td></tr>
+        <tr><td>机构持股</td><td>1.07%（566.97万股）</td><td>机构持仓极低，无主力控盘，散户为主</td></tr>
+        <tr><td>终止射频芯片项目</td><td>已终止</td><td>原定向增发射频模组芯片项目已终止，募集资金补充流动资金</td></tr>
+    </table>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>红旗扫描</h2>
+
+<ul class="flag-list">
+    <li class="fail">🔴 2025年巨亏4.84亿，商誉减值3.13亿，每股未分配利润为负，2025年未分红</li>
+    <li class="fail">🔴 资产负债率从36%飙升至59.71%，为收购大幅举债，财务风险显著上升</li>
+    <li class="fail">🔴 大股东持续减持：陈建波减持332.55万股，董树林减持303.05万股，张秋凤减持110.10万股</li>
+    <li class="warn">⚠️ 业务过于分散（触控显示+电磁线+专网通信），缺乏协同，管理复杂度高</li>
+    <li class="warn">⚠️ 中兴系统业绩承诺三年累计≥2.15亿，若未达标将产生大额商誉减值</li>
+    <li class="warn">⚠️ 机构持股仅1.07%，无主力控盘，股价波动由散户和游资驱动</li>
+    <li class="warn">⚠️ 终止射频模组芯片募投项目，芯片布局实质进展有限</li>
+    <li class="pass">✅ PB 1.90x接近净资产，下行空间相对有限</li>
+    <li class="pass">✅ 中兴系统城轨专网通信龙头，CMMI5认证+28项专利，质地尚可</li>
+</ul>
+
+<!-- 近期走势 -->
+<h2>近期走势回顾</h2>
+
+<div class="card">
+    <table>
+        <tr><th>阶段</th><th>时间</th><th>股价区间</th><th>特征</th></tr>
+        <tr><td><strong>概念炒作期</strong></td><td>6/24 – 6/25</td><td>6.02 → 8.51</td><td class="up">PET铜箔+芯片+专网通信概念共振，6/25成交额13.59亿，换手率24.56%</td></tr>
+        <tr><td><strong>快速回落</strong></td><td>6/26 – 7/17</td><td>8.51 → 6.61</td><td class="down">炒作退潮，7/17单日-10.19%，-22%</td></tr>
+        <tr><td><strong>二次探底</strong></td><td>7/18 – 8/3</td><td>6.61 → 6.47</td><td class="down">低位震荡，8/3见底6.47</td></tr>
+        <tr><td><strong>企稳反弹</strong></td><td>8/4 – 8/11</td><td>6.47 → 6.88</td><td class="up">底部企稳，温和放量</td></tr>
+        <tr><td><strong>放量拉升</strong></td><td>8/12 – 8/14</td><td>6.88 → 8.29</td><td class="up">8/12+2.91%，8/13+9.04%（主力净流入3026万），今日+7.38%</td></tr>
+    </table>
+</div>
+
+<!-- 今日异动原因 -->
+<h2>今日异动分析</h2>
+
+<div class="card">
+    <p style="margin-bottom:8px;">经纬辉开连续3日放量拉升，8/13主力净流入3026万，今日继续净流入。这波上涨主要受以下因素驱动：</p>
+    <table>
+        <tr><th>催化</th><th>说明</th></tr>
+        <tr><td><strong>脑机接口政策</strong></td><td>8/12浙江省出台脑机接口18条支持举措，脑机接口板块连涨10日。经纬辉开被市场归类为概念股，虽然公司本身并非脑机接口研发企业</td></tr>
+        <tr><td><strong>专网通信+安防</strong></td><td>中兴系统智慧安防平台（AI+大数据+物联网），符合当前AI安防热点，市场给予新业务估值溢价</td></tr>
+        <tr><td><strong>超跌反弹</strong></td><td>从6月高点8.51跌至8/3低点6.47（-24%），技术面超跌严重，资金借利好回补</td></tr>
+        <tr><td><strong>PB低估值</strong></td><td>PB仅1.90x，接近每股净资产4.37元，低价股+低PB吸引游资参与</td></tr>
+    </table>
+</div>
+
+<!-- 客观空间 -->
+<h2>客观空间（Bear / Base / Bull）</h2>
+
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">5.5 – 6.5 元</div>
+        <div class="price-detail">市值 32 – 37 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            概念退潮+中兴系统业绩不达标+商誉减值，回到前期低点附近。PB回落至1.3-1.5x。
+        </p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">6.5 – 8.5 元</div>
+        <div class="price-detail">市值 37 – 49 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            维持现状，中兴系统稳步贡献业绩，传统业务企稳。当前8.29元处于Base上沿。
+        </p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">9 – 11 元</div>
+        <div class="price-detail">市值 52 – 63 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            专网通信业绩超预期+1.6T光芯片突破+BAW滤波器国产替代。PB回升至2.0-2.5x。
+        </p>
+    </div>
+</div>
+
+<!-- 结论 -->
+<h2>核心结论</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">Mode 1 评分</span>
+        <span><strong>1:0 2:1 3:0 4:0 5:1 6:0 7:0 8:0 9:0 10:0 11:0 12:1 13:1 14:0 15:0 = 4/15</strong></span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity 判定</span>
+        <span><span class="badge badge-red">🔴 Not Yet</span> — 4/15，巨亏+高负债+大股东减持，概念炒作驱动型投机标的</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">核心矛盾</span>
+        <span>这是一只<span class="highlight">概念丰富但基本面塌陷的投机标的</span>。2025年巨亏4.84亿、负债率飙升至59.71%、大股东持续减持、机构持仓极低，这些都是典型的"问题股"标签。但公司在专网通信（中兴系统）+芯片（诺思微/铱加科技）的布局确实有看点，且PB仅1.90x接近净资产，下行空间有限。近期脑机接口+AI安防概念驱动上涨，但公司本身并非脑机接口企业，跟风炒作风险大。</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">关键观察点</span>
+        <span>8/29中报披露 — 这是验证中兴系统并表后业绩贡献的关键窗口。如果中兴系统Q2贡献显著利润（全年1亿+），可能改变基本面判断。但在此之前，大股东减持+高负债+巨亏的组合使得风险收益比极差。当前8.29元已接近6月炒作高点8.51元，短期追高风险大。</span>
+    </div>
+</div>
+
+<div class="alert">
+    <strong>⚠️ 风险提示：</strong>经纬辉开2025年巨亏4.84亿，资产负债率飙升至59.71%，大股东持续减持，机构持仓仅1.07%。脑机接口概念与公司实际业务关联度低，追高风险极大。本报告仅供研究参考，不构成投资建议。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-14 盘中 · 数据来源：证券时报/东方财富/同花顺/公司公告/新浪财经 · 不构成投资建议
+</div>
+
+</body>
+</html>
