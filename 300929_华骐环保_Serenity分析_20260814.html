@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华骐环保（300929）— Serenity 分析 2026-08-14</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--muted);
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; }
+          .conclusion-row { flex-direction:column; gap:4px; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>华骐环保（300929）— Serenity Mode 1 分析</h1>
+<p class="subtitle">2026-08-14 午间 · 股价 16.00 元（+14.12%）· 市值 21.15 亿 · 数据来源：证券时报/东方财富/同花顺/公司公告</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">16.00</div><div class="label">现价（元）</div></div>
+        <div class="stat"><div class="num">21.15亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">2.76x</div><div class="label">PB</div></div>
+        <div class="stat"><div class="num">亏损</div><div class="label">PE（TTM）</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        52周区间：9.81 – 16.37 · 7月至今涨幅 +53% · 王根九家族累计增持至 18.29% · 2026中报预计 8/28 披露
+    </div>
+</div>
+
+<!-- 客观框架 -->
+<h2>客观框架 — 行业与商业模式</h2>
+
+<div class="card">
+    <table>
+        <tr><th style="width:20%">维度</th><th>内容</th></tr>
+        <tr><td><strong>主营业务</strong></td><td>水环境治理（污水处理投资运营 39.9%、水环境治理工程 36.2%、水处理产品销售 13.7%）+ 储能产品销售 9.1%</td></tr>
+        <tr><td><strong>行业地位</strong></td><td>国内曝气生物滤池（BAF）工艺技术领先企业，国家专精特新"小巨人"；但市值仅 21 亿，非行业龙头，竞争格局分散</td></tr>
+        <tr><td><strong>核心壁垒</strong></td><td>BAF 工艺技术积累深厚，魔方舟/魔方智水等自主产品线；但水处理行业整体技术壁垒不高，可复制性强</td></tr>
+        <tr><td><strong>成长性</strong></td><td>2025 年营收 3.55 亿（+27.13%），储能业务从零到 3219 万（占比 9.06%），氢能实验室已产出催化剂；<span class="highlight">但连续两年亏损</span></td></tr>
+        <tr><td><strong>客户结构</strong></td><td>政府/国企为主，项目制，回款周期长；应收账款占营收比高达 102%，为最大风险点</td></tr>
+        <tr><td><strong>股权结构</strong></td><td>安徽工业大学旗下安工大资产持股 14.10%（+表决权受托 11.7%，合计 25.8%）；王根九家族持股 18.29%（第一大股东群体），股权争夺隐现</td></tr>
+    </table>
+</div>
+
+<!-- 卡点分析 -->
+<h2>核心卡点</h2>
+
+<div class="card">
+    <table>
+        <tr><th>卡点</th><th>内容</th><th>判定</th></tr>
+        <tr>
+            <td><strong>1. 盈利能力</strong></td>
+            <td>2024 年亏损 4173 万，2025 年亏损 3975 万，2026Q1 亏损 302 万（同比由盈转亏）。毛利率从 30% 持续降至 22%，主业盈利能力持续恶化。年报预告 2026 年净利 -4000 万至 -2500 万，亏损延续但幅度收窄</td>
+            <td><span class="badge badge-red">🔴 硬伤</span></td>
+        </tr>
+        <tr>
+            <td><strong>2. 应收账款</strong></td>
+            <td>应收账款占最新年报营收比高达 102%，即 3.6 亿+应收款对 3.55 亿营收。2025 年大额计提信用减值损失是亏损主因。2026 年 8 月公司披露 8 起诉讼（涉案 8347 万），均为工程/买卖合同纠纷</td>
+            <td><span class="badge badge-red">🔴 硬伤</span></td>
+        </tr>
+        <tr>
+            <td><strong>3. 股权争夺</strong></td>
+            <td>王根九家族 4 个多月买入超 18% 股份（总投入超 2 亿），持股已超安工大资产（14.10%）。安工大通过表决权受托仍控制 25.8%，但王根九继续增持可能触发控制权变更。股权争夺是一把双刃剑</td>
+            <td><span class="badge badge-orange">⚠️ 双刃</span></td>
+        </tr>
+        <tr>
+            <td><strong>4. 储能转型</strong></td>
+            <td>储能箱已批量交付（2025 年收入 3219 万），氢能催化剂达 DOE 指标，CO₂加氢制甲醇催化剂完成开发。转型方向正确但体量尚小，短期难以扭转亏损</td>
+            <td><span class="badge badge-blue">观察中</span></td>
+        </tr>
+    </table>
+</div>
+
+<!-- L0 数据表 -->
+<h2>L0 关键数据（仅列非明显项）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+        <tr><td>每股净资产</td><td>5.81 元</td><td>PB 2.76x，当前股价 16 元约为净资产的 2.76 倍</td></tr>
+        <tr><td>资产负债率</td><td>55.66%</td><td>同比上升 2.25pct，债务压力在增加</td></tr>
+        <tr><td>经营现金流/股</td><td>0.11 元（2025 年报）</td><td>较 2024 年的 -0.21 元显著改善，回到正值</td></tr>
+        <tr><td>融资余额</td><td>4554 万（8/12）</td><td>近期持续小幅净买入，融资盘参与度上升</td></tr>
+        <tr><td>2025 年研发费用</td><td>约 2000 万+</td><td>储能+氢能方向研发投入，转型期特征</td></tr>
+        <tr><td>王根九增持成本</td><td>约 12-15 元区间</td><td>7 月密集增持均价约 13-14 元，当前 16 元已浮盈约 15-30%</td></tr>
+    </table>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>红旗扫描</h2>
+
+<ul class="flag-list">
+    <li class="fail">🔴 连续两年亏损（2024/2025），2026Q1 继续亏损，扣非净利润连续三年为负</li>
+    <li class="fail">🔴 应收账款/营收 = 102%，回款风险极高，8 起诉讼涉案 8347 万</li>
+    <li class="fail">🔴 毛利率从 30% 持续下滑至 22%，主业盈利能力在恶化</li>
+    <li class="warn">⚠️ 股价从 7 月初 10.44 元涨至 16 元（+53%），短期涨幅已大，估值已反映举牌预期</li>
+    <li class="warn">⚠️ 股权结构不稳定：王根九家族 vs 安工大资产，潜在控制权争夺</li>
+    <li class="warn">⚠️ 储能业务仅占营收 9%，氢能仍在实验室阶段，转型兑现尚需时间</li>
+    <li class="warn">⚠️ 2025 年不分红（连续两年未分红），无股息收益</li>
+</ul>
+
+<!-- 客观空间 -->
+<h2>客观空间（Bear / Base / Bull）</h2>
+
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">10 – 12 元</div>
+        <div class="price-detail">市值 13 – 16 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            王根九停止增持甚至减持；中报继续大亏超预期；应收账款大面积坏账。回到举牌前的震荡区间。
+        </p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">13 – 17 元</div>
+        <div class="price-detail">市值 17 – 22 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            王根九维持持股不增不减；亏损逐步收窄；储能业务稳步增长。当前 16 元处于 Base 区间的上沿。
+        </p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">18 – 22 元</div>
+        <div class="price-detail">市值 24 – 29 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            王根九继续增持至 25%+ 触发控制权争夺；中报超预期扭亏或储能订单爆发；市场赋予举牌概念溢价。
+        </p>
+    </div>
+</div>
+
+<!-- 结论 -->
+<h2>核心结论</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">Mode 1 评分</span>
+        <span><strong>1:0 2:0 3:0 4:0 5:0 6:0 7:1 8:0 9:0 10:1 11:1 12:0 13:1 14:0 15:0 = 4/15</strong></span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity 判定</span>
+        <span><span class="badge badge-red">🔴 Not Yet</span> — 基本面卡点过多（4/15），不适合价值投资</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">核心矛盾</span>
+        <span>这是一只<span class="highlight">举牌驱动的投机性标的</span>。王根九（国盾量子成功投资者）4 个多月买入超 18% 股份（投入超 2 亿），是股价上涨的唯一真实驱动力。但公司基本面极差：连续亏损、应收账款爆表、毛利率持续下滑。当前 16 元 / 21 亿市值已接近王根九增持成本区间的上沿（12-15 元），向上空间取决于他是否继续增持至控股权争夺。</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">关键观察点</span>
+        <span>8/28 中报披露 — 如果亏损收窄幅度超预期（年报预告 -4000 至 -2500 万），或储能业务收入占比大幅提升，将构成基本面改善的初步信号。反之，如果亏损扩大或王根九停止增持，股价可能快速回落至 13 元以下。</span>
+    </div>
+</div>
+
+<!-- 王根九增持时间线 -->
+<h2>王根九家族增持时间线</h2>
+
+<div class="card">
+    <table>
+        <tr><th>时间</th><th>增持人</th><th>增持股数</th><th>占总股本</th><th>累计持股</th><th>区间股价</th></tr>
+        <tr><td>3月 – 6月</td><td>王根九家族</td><td>660.67 万股</td><td>5.00%</td><td>5.00%</td><td>约 10-11 元</td></tr>
+        <tr><td>7月1日 – 7日</td><td>王根九、王凤仙</td><td>660.69 万股</td><td>5.00%</td><td>10.00%</td><td>约 11-13 元</td></tr>
+        <tr><td>7月13日 – 15日</td><td>王根九、王凤仙、王健业</td><td>545.97 万股</td><td>4.13%</td><td>14.13%</td><td>12.5-15.5 元</td></tr>
+        <tr><td>7月16日 – 17日</td><td>王根九、王凤仙</td><td>114.67 万股</td><td>0.87%</td><td>15.00%</td><td>14-15.5 元</td></tr>
+        <tr><td>7月23日 – 27日</td><td>王根九、王凤仙</td><td>434.20 万股</td><td>3.29%</td><td>18.29%</td><td>12.5-15.5 元</td></tr>
+        <tr><td>7月29日 – 31日</td><td>王根九、王凤仙</td><td>226.47 万股</td><td>1.71%</td><td><strong>约 20.0%</strong></td><td>约 13-14 元</td></tr>
+    </table>
+    <div style="margin-top:10px;font-size:13px;color:var(--muted);">
+        截至 7/31，王根九家族合计持股约 20%。安工大资产持股 14.10% + 表决权受托 11.7% = 25.8%。两者差距仅约 5.8pct。若王根九继续增持，可能触发控制权变更。
+    </div>
+</div>
+
+<!-- 8/14 盘面异动 -->
+<h2>今日盘面异动（8/14）</h2>
+
+<div class="card">
+    <p style="margin-bottom:8px;">今日早盘华骐环保大幅高开（13.91 元，昨收 14.02），随后快速拉升，截至午间最高触及 <strong>16.08 元</strong>（+14.69%），接近涨停价 16.82 元。半日成交 1.44 亿，换手率 7.54%，量比 5.23。</p>
+    <p style="color:var(--muted);font-size:13px;">
+        8/13 收盘 14.02 元（+0.29%），8/12 收 13.98 元（-0.29%），8/11 收 14.02 元（-1.55%）。此前一周在 13-14 元区间窄幅震荡，今日突然放量拉升突破前高，可能与举牌概念再度发酵或中报预期有关。
+    </p>
+</div>
+
+<div class="alert">
+    <strong>⚠️ 风险提示：</strong>华骐环保连续两年亏损，基本面存在重大不确定性。当前股价上涨主要由举牌事件驱动，而非基本面改善。王根九家族增持虽显示信心，但其增持成本已低于现价，存在获利了结风险。本报告仅供研究参考，不构成投资建议。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-14 午间 · 数据来源：证券时报/东方财富/同花顺/公司公告 · 不构成投资建议
+</div>
+
+</body>
+</html>
