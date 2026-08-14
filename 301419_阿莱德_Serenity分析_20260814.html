@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿莱德（301419）— Serenity 分析 2026-08-14</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--muted);
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; }
+          .conclusion-row { flex-direction:column; gap:4px; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>阿莱德（301419）— Serenity Mode 1 分析</h1>
+<p class="subtitle">2026-08-14 午间 · 股价 37.62 元（+20.00% 涨停）· 市值 56.43 亿 · 数据来源：证券时报/东方财富/同花顺/公司公告</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">37.62</div><div class="label">现价（元）</div></div>
+        <div class="stat"><div class="num">56.43亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">114.00</div><div class="label">PE（动）</div></div>
+        <div class="stat"><div class="num">6.10x</div><div class="label">PB</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        52周区间：24.90 – 52.65 · 今日 CPO光模块散热 20cm 涨停 · 封单6.26万手 · 昨收31.35 · 通信设备行业中位PE 76.26x
+    </div>
+</div>
+
+<!-- 客观框架 -->
+<h2>客观框架 — 行业与商业模式</h2>
+
+<div class="card">
+    <table>
+        <tr><th style="width:20%">维度</th><th>内容</th></tr>
+        <tr><td><strong>主营业务</strong></td><td>高分子材料通信设备零部件供应商，三大产品线：射频与透波防护器件（53.26%）、电子导热散热器件（21.98%）、EMI及IP防护器件（17.91%）。覆盖 ICT通信、AI算力、消费电子三大领域</td></tr>
+        <tr><td><strong>行业地位</strong></td><td>爱立信、诺基亚"优选"供应商（最高等级），同时进入华为、中兴供应链。通信设备高分子零部件细分龙头，导热散热器件毛利率高达 66.79%</td></tr>
+        <tr><td><strong>核心壁垒</strong></td><td>全链条能力：前期设计介入 → 中期产品开发 → 后期生产制造 → 最终产品验证。高分子材料配方+精密成型工艺，切换成本高（客户认证周期长）</td></tr>
+        <tr><td><strong>成长性</strong></td><td>2025年营收 4.37 亿（+24.41%），净利 7950 万（+38.91%）；2026Q1 营收 9790 万（+25.03%），净利 1238 万（+19.88%）。新产品：导热材料已切入光模块和存储芯片散热，获华工正源/科大讯飞批量订单</td></tr>
+        <tr><td><strong>客户结构</strong></td><td>海外 50.98%（毛利率 42.16%）vs 国内 49.02%（毛利率 33.41%），前五大客户集中度较高（爱立信/诺基亚/华为/中兴）</td></tr>
+        <tr><td><strong>财务亮点</strong></td><td>资产负债率仅 9.41%（几乎无负债），2026Q1 经营现金流同比+148%，应收账款较期初下降 6.85%，2025年分红 10转2.5派4元</td></tr>
+    </table>
+</div>
+
+<!-- 卡点分析 -->
+<h2>核心卡点</h2>
+
+<div class="card">
+    <table>
+        <tr><th>卡点</th><th>内容</th><th>判定</th></tr>
+        <tr>
+            <td><strong>1. 高估值</strong></td>
+            <td>动态 PE 114x，静态 PE 约 71x，PB 6.10x。虽通信设备行业中位 PE 76.26x，但阿莱德营收规模仅 4.37 亿，在行业中排名靠后，高估值隐含了较高的成长预期</td>
+            <td><span class="badge badge-orange">⚠️ 偏高</span></td>
+        </tr>
+        <tr>
+            <td><strong>2. 股价波动大</strong></td>
+            <td>从 6/3 高点 52.65 元跌至 8/3 低点 26.80 元，跌幅 49%。今日涨停 37.62 元仍距高点 -28.5%。前期 6 月 CPO 概念炒作后在 7 月大幅回撤，短期波动风险高</td>
+            <td><span class="badge badge-orange">⚠️ 高波动</span></td>
+        </tr>
+        <tr>
+            <td><strong>3. 客户集中</strong></td>
+            <td>前五大客户集中度较高，主要为爱立信/诺基亚/华为/中兴。若单一客户订单调整或电信资本开支下行，将对业绩产生较大影响</td>
+            <td><span class="badge badge-orange">⚠️ 关注</span></td>
+        </tr>
+        <tr>
+            <td><strong>4. AI散热新业务</strong></td>
+            <td>导热材料已切入光模块/存储芯片散热，获华工正源/科大讯飞订单。公司还出资 1000 万参与股权投资基金布局产业链。但新业务收入占比尚小，短期内难以成为主要利润来源</td>
+            <td><span class="badge badge-blue">观察中</span></td>
+        </tr>
+    </table>
+</div>
+
+<!-- L0 数据表 -->
+<h2>L0 关键数据（仅列非明显项）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+        <tr><td>每股净资产</td><td>8.10 元</td><td>PB 6.10x，远高于每股净资产，体现无形资产（技术/客户关系）溢价</td></tr>
+        <tr><td>导热散热器件毛利率</td><td>66.79%</td><td>三大产品线中最高，是核心利润来源和技术壁垒所在</td></tr>
+        <tr><td>海外收入毛利率</td><td>42.16%</td><td>显著高于国内（33.41%），体现海外客户溢价</td></tr>
+        <tr><td>资产负债率</td><td>9.41%</td><td>行业极低水平，几乎无财务杠杆，资金充裕</td></tr>
+        <tr><td>2026Q1 经营现金流</td><td>+148.36% YoY</td><td>回款能力大幅改善，经营质量提升</td></tr>
+        <tr><td>融资余额</td><td>1.01 亿（8/10）</td><td>融资盘参与度较高，近期融资净偿还</td></tr>
+        <tr><td>机构持股</td><td>57 家 / 4.96%</td><td>2025 年报数据，机构中等参与</td></tr>
+    </table>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>红旗扫描</h2>
+
+<ul class="flag-list">
+    <li class="warn">⚠️ PE 114x / PB 6.10x，估值偏高，隐含较高成长预期，若业绩不达预期有杀估值风险</li>
+    <li class="warn">⚠️ 股价从 52.65 跌至 26.80（-49%），高波动特征明显，不适合风险厌恶型投资者</li>
+    <li class="warn">⚠️ 客户集中度高（爱立信/诺基亚/华为/中兴），单一客户订单波动影响大</li>
+    <li class="pass">✅ 负债率极低（9.41%），几乎无财务风险</li>
+    <li class="pass">✅ 经营现金流大幅改善，应收账款下降，财务质量向好</li>
+    <li class="pass">✅ 毛利率 36%+ 稳定，导热散热产品毛利率 66.79% 体现技术溢价</li>
+</ul>
+
+<!-- 客观空间 -->
+<h2>客观空间（Bear / Base / Bull）</h2>
+
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">25 – 30 元</div>
+        <div class="price-detail">市值 38 – 45 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            CPO/AI散热概念退潮，业绩增速放缓，估值回归行业均值（PE 60-70x）。回到前期低点附近。
+        </p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">30 – 42 元</div>
+        <div class="price-detail">市值 45 – 63 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            AI散热持续催化，业绩维持 20-25% 增长，PE 80-100x。当前 37.62 元处于 Base 中枢偏上。
+        </p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">45 – 55 元</div>
+        <div class="price-detail">市值 68 – 83 亿</div>
+        <p style="font-size:13px;margin-top:8px;color:var(--muted);">
+            CPO光模块散热持续爆发，AI导热材料订单大规模放量，业绩超预期至 30-40% 增速。回到前期高点。
+        </p>
+    </div>
+</div>
+
+<!-- 近期股价走势 -->
+<h2>近期走势（6月-8月）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>阶段</th><th>时间</th><th>股价区间</th><th>特征</th></tr>
+        <tr><td><strong>CPO炒作期</strong></td><td>6/2 – 6/5</td><td>37.40 → 52.65</td><td class="up">液冷+CPO概念爆发，连续涨停，6/2 20cm涨停，6/3再涨12.2%</td></tr>
+        <tr><td><strong>快速回落</strong></td><td>6/5 – 6/12</td><td>52.65 → 38.61</td><td class="down">炒作退潮，高位筹码松动，-27%</td></tr>
+        <tr><td><strong>二次反弹</strong></td><td>6/12 – 6/30</td><td>38.61 → 51.59</td><td class="up">6/25再度涨停+8.2%，6/29+8.7%，但量能递减</td></tr>
+        <tr><td><strong>主跌浪</strong></td><td>7/1 – 7/13</td><td>51.16 → 33.66</td><td class="down">高位出货，7/13单日-11.8%，-34%</td></tr>
+        <tr><td><strong>二次探底</strong></td><td>7/21 – 8/3</td><td>29.07 → 26.80</td><td class="down">7/21涨9.2%后继续下行，8/3见底26.80</td></tr>
+        <tr><td><strong>企稳反弹</strong></td><td>8/4 – 8/13</td><td>27.26 → 31.92</td><td class="up">底部放量企稳，8/4+7.4%，8/5+3.8%</td></tr>
+        <tr><td><strong>今日涨停</strong></td><td>8/14</td><td>34.84 → 37.62</td><td class="up">CPO光模块散热概念再起，20cm涨停，封单6.26万手</td></tr>
+    </table>
+</div>
+
+<!-- 今日涨停原因 -->
+<h2>今日涨停催化剂</h2>
+
+<div class="card">
+    <table>
+        <tr><th>催化</th><th>说明</th></tr>
+        <tr><td><strong>CPO光模块散热</strong></td><td>CPO概念盘中持续走高，光模块散热方向领涨。中际旭创 17.47 亿协议受让中石科技 10.47% 股份，中石科技 20cm 一字涨停，带动整个光模块散热板块爆发</td></tr>
+        <tr><td><strong>存储芯片散热</strong></td><td>隔夜美股存储芯片暴涨（闪迪+13.67%/西部数据+7.3%/SK海力士+7.3%），存储芯片概念股拉升，阿莱德导热材料已应用于存储芯片领域</td></tr>
+        <tr><td><strong>高分红转增</strong></td><td>公司完成 10转2.5派4元 权益分派（5/28除权），高分红体现现金流健康，转增后股本扩大至1.50亿股</td></tr>
+        <tr><td><strong>AI算力散热</strong></td><td>AI服务器功耗持续提升，GPU散热需求从传统配套件升级为"核心增量环节"，阿莱德导热材料处于产业链核心位置</td></tr>
+    </table>
+</div>
+
+<!-- 结论 -->
+<h2>核心结论</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">Mode 1 评分</span>
+        <span><strong>1:1 2:1 3:1 4:1 5:1 6:1 7:1 8:1 9:1 10:1 11:0 12:0 13:1 14:0 15:0 = 10/15</strong></span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity 判定</span>
+        <span><span class="badge badge-green">🟢 卡点可控</span> — 基本面优秀（10/15），唯一卡点是高估值和高波动</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">核心矛盾</span>
+        <span>这是一只<span class="highlight">基本面扎实但估值高企的成长股</span>。营收/净利双增 25%/20%，负债率仅 9.41%，经营现金流大幅改善，导热散热产品毛利率高达 66.79%。唯一的问题在于 PE 114x 的估值已经隐含了较高成长预期，且股价从 52.65 跌至 26.80 的惨烈走势说明：一旦 CPO/AI 散热概念退潮，杀估值会非常猛烈。</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">操作建议</span>
+        <span>今日涨停是 CPO 散热概念驱动，属板块性行情而非个股独立逻辑。短期追高风险大（前期高波动教训），建议等回调至 30-33 元区间（PE 70-80x）再考虑。中长期关注 AI 散热订单放量进度和 2026 中报（预计 8 月下旬披露）。</span>
+    </div>
+</div>
+
+<div class="alert">
+    <strong>⚠️ 风险提示：</strong>阿莱德 PE 114x 估值偏高，股价波动剧烈（52周区间 24.90-52.65，振幅 111%）。CPO/AI 散热概念具有周期性，前期炒作退潮后股价曾腰斩。本报告仅供研究参考，不构成投资建议。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-14 午间 · 数据来源：证券时报/东方财富/同花顺/公司公告 · 不构成投资建议
+</div>
+
+</body>
+</html>
