@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超短交易速查卡 — 交互填写版</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        @page { size: A4 landscape; margin: 10mm; }
+        :root { --accent:#e94560; --border:#c9d1d9; --bg:#0d1117; --card:#161b22; --text:#c9d1d9; --muted:#8b949e; }
+        body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; font-size:12px; color:var(--text); background:var(--bg); line-height:1.5; margin:0; }
+        .page { max-width:1100px; margin:0 auto; padding:16px; display:flex; flex-wrap:wrap; gap:14px; }
+
+        /* 工具栏 */
+        .toolbar { position:sticky; top:0; z-index:100; background:#0d1117ee; backdrop-filter:blur(6px);
+                   display:flex; align-items:center; gap:10px; padding:10px 20px; border-bottom:1px solid #30363d;
+                   margin-bottom:6px; }
+        .toolbar .title { font-size:16px; font-weight:700; color:#fff; margin-right:auto; }
+        .btn { padding:8px 18px; border-radius:6px; border:none; font-size:13px; font-weight:600; cursor:pointer; transition:.2s; }
+        .btn-save { background:#3fb950; color:#0d1117; }
+        .btn-save:hover { background:#4cd364; }
+        .btn-pdf { background:#e94560; color:#fff; }
+        .btn-pdf:hover { background:#f05570; }
+        .btn-clear { background:#30363d; color:#c9d1d9; }
+        .btn-clear:hover { background:#3d444d; }
+        .toolbar .status { font-size:11px; color:#8b949e; }
+
+        /* 面板 */
+        .panel { background:var(--card); border:1px solid #30363d; border-radius:10px; padding:12px 16px; }
+        .panel-header { font-size:14px; font-weight:700; color:#fff; margin-bottom:8px; padding-bottom:6px; border-bottom:2px solid var(--accent); }
+        .row { display:flex; gap:8px; margin:4px 0; align-items:center; flex-wrap:wrap; }
+        .col-2 { width:calc(50% - 8px); }
+        .col-3 { width:calc(33.33% - 8px); }
+        .col-4 { width:calc(25% - 8px); }
+        .full { width:100%; }
+        @media (max-width:860px){ .col-2,.col-3,.col-4 { width:100%; } }
+
+        /* 输入控件 */
+        .field { display:inline-block; background:#0d1117; border:1px solid #30363d; border-radius:5px;
+                 color:#58a6ff; padding:3px 8px; font-size:12px; min-width:60px; outline:none; }
+        .field:focus { border-color:var(--accent); }
+        .field.num { min-width:50px; max-width:70px; }
+        .field.wide { min-width:140px; }
+        .field.txt { min-width:180px; }
+
+        /* 复选框 */
+        label.chk { display:inline-flex; align-items:center; gap:5px; cursor:pointer; user-select:none; font-size:12px; color:var(--text); }
+        label.chk input { width:15px; height:15px; accent-color:var(--accent); cursor:pointer; }
+        label.chk.checked-text { color:#3fb950; }
+        label.chk.danger input { accent-color:#f85149; }
+
+        /* 表格 */
+        table { width:100%; border-collapse:collapse; font-size:11px; margin:6px 0; }
+        th { background:#21262d; padding:6px 8px; text-align:left; color:var(--muted); border-bottom:1px solid #30363d; }
+        td { padding:6px 8px; border-bottom:1px solid #30363d; }
+
+        /* 提示 */
+        .hint { font-size:11px; color:var(--muted); margin-top:6px; }
+        .alert-box { background:rgba(248,81,73,0.1); border-left:3px solid #f85149; padding:10px 14px; border-radius:0 8px 8px 0; font-size:12px; margin:10px 0; }
+        .accent { color:var(--accent); font-weight:700; }
+        .red { color:#f85149; font-weight:700; }
+        .green { color:#3fb950; }
+        .blue { color:#58a6ff; }
+
+        /* 保存成功提示 */
+        .toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#3fb950; color:#0d1117;
+                 padding:10px 24px; border-radius:8px; font-weight:700; font-size:13px; opacity:0; transition:.3s; z-index:999; pointer-events:none; }
+        .toast.show { opacity:1; }
+        .toast.err { background:#f85149; color:#fff; }
+
+        /* 打印样式 */
+        @media print {
+            body { background:#fff; color:#000; }
+            .toolbar { display:none; }
+            .page { max-width:none; padding:0; }
+            .panel { background:#fff; border:1.5px solid #000; break-inside:avoid; }
+            .panel-header { color:#000; border-bottom:2px solid #e94560; }
+            .field { background:transparent; border:none; border-bottom:1px dotted #000; color:#000; }
+            .hint,.status { color:#666; }
+            label.chk { color:#000; }
+            th { background:#f0f0f0; color:#000; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 工具栏 -->
+<div class="toolbar">
+    <span class="title">📋 超短交易速查卡（交互版）</span>
+    <span class="status" id="statusBar">自动保存已开启</span>
+    <button class="btn btn-clear" onclick="clearAll()">清空</button>
+    <button class="btn btn-save" onclick="saveNow()">💾 保存</button>
+    <button class="btn btn-pdf" onclick="exportPDF()">📄 导出PDF</button>
+</div>
+
+<div class="page" id="cardPage">
+
+    <!-- 每日情绪仪表盘 -->
+    <div class="panel col-3" style="flex:2 1 60%;">
+        <div class="panel-header">每日情绪仪表盘</div>
+        <div class="row">
+            <span>日期 <input class="field num d" data-k="date" placeholder="MM/DD"></span>
+            <span>星期 <input class="field num d" data-k="week" placeholder="周X"></span>
+            <span>情绪温度 <input class="field num d" data-k="temp" placeholder="°C"> °C</span>
+        </div>
+        <table>
+            <tr><th>指标</th><th>数值</th><th>判定</th><th>指标</th><th>数值</th><th>判定</th></tr>
+            <tr>
+                <td>涨停/跌停</td>
+                <td><input class="field num d" data-k="zt_zt" style="width:70px;"></td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="ok_zt">好</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="bad_zt">差</label></td>
+                <td>炸板率</td>
+                <td><input class="field num d" data-k="zb" placeholder="%"></td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="ok_zb">好</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="bad_zb">差</label></td>
+            </tr>
+            <tr>
+                <td>1进2晋级</td>
+                <td><input class="field num d" data-k="j1" style="width:70px;"></td>
+                <td><input class="field num d" data-k="j1p" placeholder="%"></td>
+                <td>2进3晋级</td>
+                <td><input class="field num d" data-k="j2" style="width:70px;"></td>
+                <td><input class="field num d" data-k="j2p" placeholder="%"></td>
+            </tr>
+            <tr>
+                <td>3进4+晋级</td>
+                <td><input class="field num d" data-k="j3" style="width:70px;"></td>
+                <td><input class="field num d" data-k="j3p" placeholder="%"></td>
+                <td>最高连板</td>
+                <td><input class="field num d" data-k="max_board" placeholder="板"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>成交额</td>
+                <td><input class="field num d" data-k="amt" placeholder="万亿"></td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="inc_amt">增量</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="dec_amt">缩量</label></td>
+                <td>异动公告</td>
+                <td><input class="field num d" data-k="gonggao" placeholder="只"></td>
+                <td><label class="chk danger"><input type="checkbox" class="d" data-k="tg_gonggao">≥3退潮</label></td>
+            </tr>
+            <tr>
+                <td>仓位上限</td>
+                <td><input class="field num d accent" data-k="pos" placeholder="成"></td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="ice">冰点</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="warm">温和</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="active">活跃</label>
+                    <label class="chk danger"><input type="checkbox" class="d" data-k="hot">高潮</label></td>
+                <td>趋势/连板日</td>
+                <td colspan="2">
+                    <label class="chk"><input type="checkbox" class="d" data-k="trend">趋势日→低吸核心</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="board_day">连板日→打板接力</label>
+                </td>
+            </tr>
+        </table>
+        <div class="row"><span style="color:var(--muted);">主线板块:</span><input class="field txt d" data-k="main_sector" placeholder="输入今日主线板块" style="flex:1;"></div>
+    </div>
+
+    <!-- 8条铁律 + 仓位 -->
+    <div class="panel col-3" style="flex:1 1 32%;">
+        <div class="panel-header">8条铁律（逐条确认）</div>
+        <div class="row"><label class="chk"><input type="checkbox" class="d" data-k="r1">断板次日必须止损，无例外</label></div>
+        <div class="row"><label class="chk"><input type="checkbox" class="d" data-k="r2">一字板不追（开板即分歧）</label></div>
+        <div class="row"><label class="chk"><input type="checkbox" class="d" data-k="r3">同梯队2只断板 → 全清</label></div>
+        <div class="row"><label class="chk"><input type="checkbox" class="d" data-k="r4">单票亏损＞-5% → 无条件止损</label></div>
+        <div class="row"><label class="chk"><input type="checkbox" class="d" data-k="r5">大盘跳水翻绿 → 减仓至3成</label></div>
+        <div class="row"><label class="chk"><input type="checkbox" class="d" data-k="r6">盘中异动公告 → 立即清仓</label></div>
+        <div class="row"><label class="chk"><input type="checkbox" class="d" data-k="r7">14:30后封板 → 不参与</label></div>
+        <div class="row"><label class="chk"><input type="checkbox" class="d" data-k="r8">＞120°C高潮 → 降仓至5成</label></div>
+    </div>
+
+    <!-- 仓位管理 -->
+    <div class="panel col-3" style="flex:1 1 32%;">
+        <div class="panel-header">仓位管理</div>
+        <table>
+            <tr><th>温度</th><th>仓位</th><th>单票</th><th>日交易</th></tr>
+            <tr><td>＜50°C 冰点</td><td class="red">≤3成</td><td>≤1成</td><td>≤2只</td></tr>
+            <tr><td>50-90°C 温和</td><td>≤5成</td><td>≤1.5成</td><td>≤3只</td></tr>
+            <tr><td>90-120°C 活跃</td><td>≤7成</td><td>≤2成</td><td>≤3只</td></tr>
+            <tr><td>＞120°C 高潮</td><td class="red">≤5成</td><td>≤1.5成</td><td>≤2只</td></tr>
+        </table>
+        <div class="row"><span>今日实际仓位:</span><input class="field num d" data-k="actual_pos" placeholder="成"></div>
+    </div>
+
+    <!-- 选股 & 竞价 -->
+    <div class="panel full">
+        <div class="panel-header">选股 & 竞价</div>
+        <div class="row">
+            <span class="green">S级:</span><input class="field wide d" data-k="s1" placeholder="代码/名称">
+            <input class="field wide d" data-k="s2" placeholder="代码/名称">
+            <span>弱转强:</span><input class="field num d" data-k="wk_open" placeholder="高开%">
+            <span>量比:</span><input class="field num d" data-k="wk_vol" placeholder="%">
+        </div>
+        <div class="row">
+            <span class="blue">A级:</span><input class="field wide d" data-k="a1" placeholder="代码/名称">
+            <input class="field wide d" data-k="a2" placeholder="代码/名称">
+            <label class="chk"><input type="checkbox" class="d" data-k="wk_ok">拉红</label>
+            <label class="chk danger"><input type="checkbox" class="d" data-k="wk_fail">未拉红→放弃</label>
+            <span>封单/成交:</span><input class="field num d" data-k="fd" placeholder="x">
+        </div>
+        <div class="row">
+            <span style="color:#d2991d;">B级:</span><input class="field wide d" data-k="b1" placeholder="代码/名称">
+            <input class="field wide d" data-k="b2" placeholder="代码/名称">
+            <span>淘汰:</span>
+            <label class="chk danger"><input type="checkbox" class="d" data-k="elim_pledge">质押>50%</label>
+            <label class="chk danger"><input type="checkbox" class="d" data-k="elim_gw">商誉>50%</label>
+            <label class="chk danger"><input type="checkbox" class="d" data-k="elim_cq">澄清公告</label>
+            <label class="chk danger"><input type="checkbox" class="d" data-k="elim_yry">一日游</label>
+            <label class="chk danger"><input type="checkbox" class="d" data-k="elim_gb">高标断板</label>
+        </div>
+    </div>
+
+    <!-- 盘中执行 -->
+    <div class="panel full">
+        <div class="panel-header">盘中执行 — 时间窗口</div>
+        <table>
+            <tr><th>窗口</th><th>动作</th><th>状态</th><th>窗口</th><th>动作</th><th>状态</th></tr>
+            <tr>
+                <td>9:30-9:35</td><td>弱转强拉红确认</td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="w1_ok">拉红</label>
+                    <label class="chk danger"><input type="checkbox" class="d" data-k="w1_fail">未拉红</label></td>
+                <td>10:30-14:30</td><td>只低吸不追高</td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="w4_ok">执行</label></td>
+            </tr>
+            <tr>
+                <td>9:35-10:00</td><td>封单/成交＞3x</td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="w2_ok">是</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="w2_no">否</label></td>
+                <td>14:30后</td><td>尾盘板不碰</td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="w5_ok">执行</label></td>
+            </tr>
+            <tr>
+                <td>10:00-10:30</td><td>早盘板可追</td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="w3_ok">封板</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="w3_no">未封</label></td>
+                <td>全天</td><td>监控高标断板</td>
+                <td><label class="chk"><input type="checkbox" class="d" data-k="w6_ok">正常</label>
+                    <label class="chk danger"><input type="checkbox" class="d" data-k="w6_fail">断板!</label></td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <label class="chk"><input type="checkbox" class="d" data-k="no_gg">无公告</label>
+                    <label class="chk danger"><input type="checkbox" class="d" data-k="has_gg">有公告→立即清仓</label>
+                    <label class="chk"><input type="checkbox" class="d" data-k="no_crash">无跳水</label>
+                    <label class="chk danger"><input type="checkbox" class="d" data-k="crash">大盘翻绿→减仓至3成</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 三类模式 + 高危信号 -->
+    <div class="panel" style="flex:2 1 55%;">
+        <div class="panel-header">三类高胜率模式</div>
+        <div class="row" style="font-size:11px;color:var(--muted);">
+            <span class="green">① 弱转强反包:</span> 昨烂板+今竞价低开拉红→半仓试；不封即走
+        </div>
+        <div class="row" style="font-size:11px;color:var(--muted);">
+            <span class="blue">② 板块成建制:</span> ≥3只涨停+高标带队→竞价确认；高标断板全清
+        </div>
+        <div class="row" style="font-size:11px;color:var(--muted);">
+            <span style="color:#d2991d;">③ 产业资本催化:</span> 股权/大基金/定点→首板打板；2-3板后分批止盈
+        </div>
+        <div class="row" style="margin-top:8px;">
+            <span style="color:var(--muted);">今日模式:</span>
+            <label class="chk"><input type="checkbox" class="d" data-k="m1">弱转强</label>
+            <label class="chk"><input type="checkbox" class="d" data-k="m2">成建制</label>
+            <label class="chk"><input type="checkbox" class="d" data-k="m3">产业催化</label>
+        </div>
+    </div>
+
+    <div class="panel" style="flex:1 1 40%; border-color:#f85149;">
+        <div class="panel-header" style="border-bottom-color:#f85149;">高危信号（出现即走）</div>
+        <div class="row"><label class="chk danger"><input type="checkbox" class="d" data-k="h1">涨停被砸+封单萎缩</label></div>
+        <div class="row"><label class="chk danger"><input type="checkbox" class="d" data-k="h2">同梯队集体断板</label></div>
+        <div class="row"><label class="chk danger"><input type="checkbox" class="d" data-k="h3">大盘跳水翻绿</label></div>
+        <div class="row"><label class="chk danger"><input type="checkbox" class="d" data-k="h4">盘中异动公告</label></div>
+        <div class="row"><label class="chk danger"><input type="checkbox" class="d" data-k="h5">龙虎榜一日游</label></div>
+        <div class="alert-box">若任意高危信号勾选 → 当日放弃接力，转入防守。</div>
+    </div>
+
+</div>
+
+<!-- 保存提示 -->
+<div class="toast" id="toast"></div>
+
+<script>
+const STORE_KEY = 'chaoduan_checklist_v1';
+const $ = sel => document.querySelector(sel);
+
+// ---- 加载保存的数据 ----
+function loadData() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+        document.querySelectorAll('.d').forEach(el => {
+            const key = el.dataset.k;
+            if (el.type === 'checkbox') el.checked = !!saved[key];
+            else el.value = saved[key] || '';
+        });
+        if (saved._savedAt) {
+            const t = new Date(saved._savedAt);
+            $('#statusBar').textContent = `上次保存: ${t.toLocaleTimeString()}`;
+        }
+    } catch (e) { console.warn('数据加载失败', e); }
+}
+
+// ---- 保存数据 ----
+function collectData() {
+    const data = {};
+    document.querySelectorAll('.d').forEach(el => {
+        const key = el.dataset.k;
+        if (el.type === 'checkbox') data[key] = el.checked;
+        else data[key] = el.value;
+    });
+    data._savedAt = Date.now();
+    return data;
+}
+
+function saveNow(showToast = true) {
+    try {
+        localStorage.setItem(STORE_KEY, JSON.stringify(collectData()));
+        const t = new Date();
+        $('#statusBar').textContent = `已保存 ${t.toLocaleTimeString()}`;
+        if (showToast) showToastMsg('💾 已保存到本地', false);
+    } catch (e) {
+        if (showToast) showToastMsg('保存失败: ' + e.message, true);
+    }
+}
+
+// ---- 清空 ----
+function clearAll() {
+    if (!confirm('确定清空所有填写内容？')) return;
+    document.querySelectorAll('.d').forEach(el => {
+        if (el.type === 'checkbox') el.checked = false;
+        else el.value = '';
+    });
+    localStorage.removeItem(STORE_KEY);
+    $('#statusBar').textContent = '已清空';
+    showToastMsg('🗑 已清空', false);
+}
+
+// ---- 自动保存（输入后延迟1秒） ----
+let autoSaveTimer = null;
+document.addEventListener('input', () => {
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(() => saveNow(false), 1000);
+});
+document.addEventListener('change', () => {
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(() => saveNow(false), 1000);
+});
+
+// ---- Toast 提示 ----
+function showToastMsg(msg, isErr) {
+    const t = $('#toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isErr ? ' err' : '');
+    setTimeout(() => t.className = 'toast', 2200);
+}
+
+// ---- 导出PDF ----
+async function exportPDF() {
+    saveNow(false);
+    const btn = document.querySelector('.btn-pdf');
+    btn.textContent = '⏳ 生成中...';
+    btn.disabled = true;
+    try {
+        // 优先用 html2canvas + jsPDF 直接导出
+        if (typeof html2canvas === 'function' && typeof jspdf === 'object') {
+            const { jsPDF } = jspdf;
+            const el = $('#cardPage');
+            const canvas = await html2canvas(el, {
+                scale: 2, backgroundColor: '#0d1117',
+                useCORS: true, logging: false
+            });
+            const imgData = canvas.toDataURL('image/jpeg', 0.95);
+            const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+            const pageW = pdf.internal.pageSize.getWidth();
+            const pageH = pdf.internal.pageSize.getHeight();
+            const imgW = canvas.width * pageW / (canvas.width * (pageH / pageW));
+            // 计算缩放适配
+            const ratio = canvas.height / canvas.width;
+            let w = pageW, h = pageW * ratio;
+            if (h > pageH) { h = pageH; w = pageH / ratio; }
+            pdf.addImage(imgData, 'JPEG', (pageW - w) / 2, (pageH - h) / 2, w, h);
+            const d = new Date();
+            const fname = `超短速查卡_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}.pdf`;
+            pdf.save(fname);
+            showToastMsg('📄 PDF 已生成', false);
+        } else {
+            // 兜底：浏览器打印 → 另存为PDF
+            window.print();
+            showToastMsg('已打开打印窗口，请选择"另存为PDF"', false);
+        }
+    } catch (e) {
+        console.error(e);
+        // 失败兜底
+        showToastMsg('PDF生成失败，已打开打印窗口，请选"另存为PDF"', true);
+        setTimeout(() => window.print(), 800);
+    } finally {
+        btn.textContent = '📄 导出PDF';
+        btn.disabled = false;
+    }
+}
+
+// ---- 初始化 ----
+loadData();
+// 打印前自动保存
+window.addEventListener('beforeprint', () => saveNow(false));
+</script>
+
+<!-- CDN：html2canvas + jsPDF（导出PDF用） -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+</body>
+</html>
