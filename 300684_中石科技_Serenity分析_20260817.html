@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中石科技（300684）— Serenity 单股分析 2026-08-17</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--muted);
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>中石科技（300684）— Serenity 单股分析</h1>
+<p class="subtitle">人工合成石墨膜全球龙头 · CPO散热20cm二连板 · 中际旭创17.47亿入股10.47% · 2026-08-17 收盘</p>
+
+<!-- 核心数据卡片 -->
+<div class="summary">
+    <strong>核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">80.83元</div><div class="label">收盘价(+20%一字)</div></div>
+        <div class="stat"><div class="num">242亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">70.9x</div><div class="label">静态PE(TTM)</div></div>
+        <div class="stat"><div class="num">+44%</div><div class="label">两日累计涨幅</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据时点：2026-08-17 收盘 · 总股本约 2.984 亿股 · 来源：东方财富/同花顺/新浪财经</div>
+</div>
+
+<!-- 结论区 -->
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">行1 — 客观框架</span><span>Bear 135亿(45元) / Base 186亿(62元) / Bull 315亿(106元)；现价80.83元已高于Base，距Bull仅+31%，未过翻倍门槛</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">行2 — Serenity</span><span><strong>Hold</strong> — 卡点 6/15：散热环节玩家多、BOM占比小、非单点卡位，但 design-win 多 + 低负债 + 龙头入股提供协同锚</span></div>
+</div>
+
+<!-- L0 事实底座 -->
+<h2>L0 — 客观事实底座</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>数据</th><th>意味着什么</th></tr>
+        <tr><td>主营业务</td><td>高性能散热组件+EMI屏蔽材料；导热材料占营收 97.61%</td><td>高度聚焦的散热平台企业</td></tr>
+        <tr><td>2025年报</td><td>营收18.35亿(+17.14%)，归母3.39亿(+68.12%)，扣非3.41亿(+95.30%)</td><td>利润增速显著快于营收，费用率改善</td></tr>
+        <tr><td>2026Q1</td><td>营收3.89亿(+11.55%)，归母6478万(+4.94%)</td><td>增速明显放缓，进入淡季</td></tr>
+        <tr><td>毛利率</td><td>2025年36.22%(+5.99pct) / 2026Q1 34.00%</td><td>产品结构向高毛利集中</td></tr>
+        <tr><td>外销占比</td><td>51.07%，首次超内销；泰国项目达产</td><td>全球化布局，也带来汇率/地缘敞口</td></tr>
+        <tr><td>资本结构</td><td>负债率约14.8%，每股净资产6.99元，10派7.4元</td><td>资产负债表干净，有回购支撑</td></tr>
+        <tr><td>关键事件</td><td>中际旭创17.47亿受让10.47%股份(55.70元/股)，8/25中报</td><td>产业资本锁定，中报是首个验证窗口</td></tr>
+    </table>
+</div>
+
+<!-- 15条卡点判据 -->
+<h2>Serenity 卡点判据（15条）</h2>
+<div class="card">
+    <p><strong>得分序列：</strong> 1:1 2:0 3:0 4:1 5:1 6:1 7:1 8:0 9:1 10:0 11:0 12:0 13:0 14:0 15:0 = <strong>6/15</strong></p>
+    <table>
+        <tr><th>命中项</th><th>判据</th><th>说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td>人工合成高导热石墨膜全球龙头（细分龙头，非全行业垄断）</td></tr>
+        <tr><td>4</td><td>designed-in + 多客户</td><td>覆盖北美大客户/苹果/三星/H客户/中兴/爱立信/诺基亚/思科/菲尼萨</td></tr>
+        <tr><td>5</td><td>认证周期长</td><td>VC模组通过国内外头部光通信厂商认证并批量供货</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td>800G/1.6T 放量带动光模块散热增量，但当期仍以消费电子为主</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td>负债率约14.8%，净现金状态，无财务压力</td></tr>
+        <tr><td>9</td><td>大客户全包上游</td><td>中际旭创入股10.47%锁定协同（部分满足，非全包）</td></tr>
+    </table>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>红旗扫描</h2>
+<ul class="flag-list">
+    <li class="warn">⚠️ 客户集中度：消费电子大客户（苹果等）占比较高，单一客户依赖是持续隐忧</li>
+    <li class="warn">⚠️ 短期涨幅：两日累计 +44%、20cm 二连板，情绪溢价显著，回撤风险积聚</li>
+    <li class="warn">⚠️ 增速放缓：2026Q1 归母仅 +4.94%，与 2025 全年 +68% 形成反差，需中报验证</li>
+</ul>
+<div class="card"><p style="font-size:13px;color:var(--muted);">其余红旗项（增发稀释/大股东质押>50%/商誉>50%/零收入炒作/技术过远/纯软件等）通过。</p></div>
+
+<!-- 三情景估值 -->
+<h2>三情景估值</h2>
+<div class="price-box">
+    <div class="pb-card bear"><h4>Bear</h4><div class="price">135亿</div><div class="price-detail">对应股价 45.2 元</div><p style="font-size:13px;margin-top:8px">中报散热收入占比未抬升，PE回落至40x，事件驱动退潮</p></div>
+    <div class="pb-card base"><h4>Base</h4><div class="price">186亿</div><div class="price-detail">对应股价 62.3 元</div><p style="font-size:13px;margin-top:8px">散热订单稳增，PE维持55x，中报符合预期</p></div>
+    <div class="pb-card bull"><h4>Bull</h4><div class="price">315亿</div><div class="price-detail">对应股价 105.6 元</div><p style="font-size:13px;margin-top:8px">AI散热放量，2026净利4.5亿，PE 70x，光模块散热占比抬升</p></div>
+</div>
+
+<!-- 风险提示 -->
+<div class="alert"><strong>风险提示：</strong>现价80.83元已高于Base情景(62元)，赔率不占优；20cm二连板后短线波动剧烈，谨防高位分歧；中报(8/25)不及预期将触发估值回归。本报告仅供研究参考，不构成投资建议。</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-17 · 数据来源：东方财富/同花顺/新浪财经/财联社 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
