@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超短交易策略清单 — 2026-08-17</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .checklist { list-style:none; padding:0; }
+        .checklist li { padding:6px 12px; margin:3px 0; display:flex; align-items:flex-start; gap:8px; }
+        .checklist li .box { width:18px; height:18px; border:2px solid var(--border); border-radius:3px; flex-shrink:0; margin-top:2px; }
+        .checklist li .box.required { border-color:var(--accent); }
+        .checklist li .box.fail { border-color:var(--red); background:rgba(248,81,73,0.2); }
+        .step-num { display:inline-block; width:28px; height:28px; line-height:28px; text-align:center; border-radius:50%; background:var(--accent); color:#fff; font-size:13px; font-weight:700; margin-right:10px; flex-shrink:0; }
+        .divider { border:0; border-top:1px solid var(--border); margin:20px 0; }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>超短交易策略清单</h1>
+<p class="subtitle">可执行的每日复盘 + 选股 + 执行 + 退出 SOP · 2026-08-17 编制</p>
+
+<div class="summary">
+    <strong>核心原则：</strong>情绪周期定仓位，竞价信号定买卖，板块成建制定方向，断板次日必止损。
+</div>
+
+<!-- ====== 清单1: 每日复盘 ====== -->
+<h2>清单1：每日复盘（15:00 收盘后 — 30分钟）</h2>
+
+<div class="card">
+    <p><strong>统计以下数据，填写当日情绪仪表盘：</strong></p>
+    <table>
+        <tr><th>指标</th><th>数值</th><th>健康区间</th><th>今日判断</th></tr>
+        <tr><td>涨停家数</td><td>____</td><td>≥60 正常；<40 冰点</td><td><span class="badge badge-green">□</span> <span class="badge badge-orange">□</span> <span class="badge badge-red">□</span></td></tr>
+        <tr><td>跌停家数</td><td>____</td><td>≤5 正常；>10 退潮</td><td><span class="badge badge-green">□</span> <span class="badge badge-orange">□</span> <span class="badge badge-red">□</span></td></tr>
+        <tr><td>炸板率</td><td>____%</td><td><25% 好；>35% 差</td><td><span class="badge badge-green">□</span> <span class="badge badge-orange">□</span> <span class="badge badge-red">□</span></td></tr>
+        <tr><td>1进2晋级率</td><td>____/____</td><td>>20% 正常</td><td><span class="badge badge-green">□</span> <span class="badge badge-orange">□</span> <span class="badge badge-red">□</span></td></tr>
+        <tr><td>2进3晋级率</td><td>____/____</td><td>>30% 正常</td><td><span class="badge badge-green">□</span> <span class="badge badge-orange">□</span> <span class="badge badge-red">□</span></td></tr>
+        <tr><td>3进4+晋级率</td><td>____/____</td><td>统计≥3板存活数</td><td><span class="badge badge-green">□</span> <span class="badge badge-orange">□</span> <span class="badge badge-red">□</span></td></tr>
+        <tr><td>最高连板</td><td>____板</td><td>≥4板 情绪好</td><td><span class="badge badge-green">□</span> <span class="badge badge-orange">□</span> <span class="badge badge-red">□</span></td></tr>
+        <tr><td>成交额</td><td>____万亿</td><td>≥2万亿 增量</td><td><span class="badge badge-green">□</span> <span class="badge badge-orange">□</span> <span class="badge badge-red">□</span></td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <p><strong>定性判断（每项必答）：</strong></p>
+    <ul class="checklist">
+        <li><span class="box required"></span><strong>今天是趋势日还是连板日？</strong>（趋势日 = 指数放量+抱团核心；连板日 = 梯队完整+晋级率高）→ 明日策略：<span class="highlight">趋势日→低吸核心；连板日→打板接力</span></li>
+        <li><span class="box required"></span><strong>当前最强主线板块：</strong>____（板块内≥3只涨停才算成建制）</li>
+        <li><span class="box required"></span><strong>今日弱转强标的：</strong>____（昨日烂板/分歧，今日竞价低开但分时拉红封板）→ 明日重点观察</li>
+        <li><span class="box required"></span><strong>今日异动公告数量：</strong>____ 只 → 若≥3只，次日退潮概率高，降仓</li>
+        <li><span class="box required"></span><strong>明日情绪温度预估：</strong>____°C → 参考仓位：&lt;50°C ≤3成 / 50-90°C 5成 / 90-120°C 7成 / >120°C 5成（高潮降仓）</li>
+    </ul>
+</div>
+
+<hr class="divider">
+
+<!-- ====== 清单2: 选股 ====== -->
+<h2>清单2：晚间选股（20:00 — 筛选次日候选）</h2>
+
+<div class="card">
+    <p><strong>步骤：</strong></p>
+    <ol style="padding-left:20px;margin:12px 0;">
+        <li><strong>拉今日涨停池</strong> → 排除 ST / 一字板无换手 / 尾盘偷袭(14:30后) / 流通市值>200亿</li>
+        <li><strong>分类标注</strong> 三档：
+            <br><span class="badge badge-green">S级</span> 弱转强+板块成建制+产业资本催化（至少满足2项）
+            <br><span class="badge badge-orange">A级</span> 板块成建制+封板质量高，但无产业催化
+            <br><span class="badge badge-red">B级</span> 独苗涨停/玄学炒作/跟风补涨
+        </li>
+        <li><strong>淘汰</strong> 以下任一情形：
+            <ul class="checklist" style="margin-top:6px;">
+                <li><span class="box fail"></span>大股东质押>50% 或 商誉/净资产>50%</li>
+                <li><span class="box fail"></span>公司已发澄清公告/异动公告</li>
+                <li><span class="box fail"></span>龙虎榜全为"一日游"游资</li>
+                <li><span class="box fail"></span>同板块最高标今日断板</li>
+            </ul>
+        </li>
+        <li><strong>筛选结果</strong>：S级 ____ 只 / A级 ____ 只 / B级 ____ 只</li>
+    </ol>
+</div>
+
+<hr class="divider">
+
+<!-- ====== 清单3: 竞价 ====== -->
+<h2>清单3：竞价阶段（9:15-9:25 — 10分钟决生死）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>检查项</th><th>通过标准</th><th>不通过则</th></tr>
+        <tr><td>高开幅度</td><td>一进二 2-5%；高标 1-3%</td><td>＞7%高开 → 放弃（兑现盘砸盘）；低开＞3% → 放弃</td></tr>
+        <tr><td>竞价量比</td><td>竞价成交/昨日成交 5-15%</td><td>＜3%（无承接）→ 放弃；＞25%（分歧巨大）→ 观望</td></tr>
+        <tr><td>竞价形态</td><td>低开→9:25竞价拉高（分歧转一致）</td><td>高开→9:20后持续撤单 → 放弃</td></tr>
+        <tr><td>20cm票</td><td>9:20-9:25封单递增</td><td>大幅低开 → 放弃</td></tr>
+        <tr><td>板块确认</td><td>同板块至少2只竞价高开确认</td><td>独苗高开 → 降半仓</td></tr>
+    </table>
+
+    <div class="green-note" style="margin-top:10px;">
+        <strong>核心信号 —— 弱转强：</strong>昨日炸板/烂板，今日竞价低开但分时快速拉红。这是2026年胜率最高的买入形态，资金自救+抢筹共振。
+    </div>
+
+    <div class="alert" style="margin-top:10px;">
+        <strong>竞价阶段直接淘汰：</strong>一字板不给机会的 → 不追（开板即分歧，追入即接盘）；大盘竞价低开且翻绿 → 所有买入计划推迟30分钟。
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- ====== 清单4: 盘中执行 ====== -->
+<h2>清单4：盘中执行（9:30-15:00 — 按纪律执行）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>时间窗口</th><th>动作</th><th>纪律</th></tr>
+        <tr><td>9:30-9:35</td><td>观察弱转强标的能否拉红</td><td>竞价低开但5分钟内拉红 → 可半仓试；5分钟未拉红 → 放弃</td></tr>
+        <tr><td>9:35-10:00</td><td>确认封板质量</td><td>封单/成交比＞3x → 可加仓；开板≥3次 → 减仓</td></tr>
+        <tr><td>10:00-10:30</td><td>早盘封板可追</td><td>10:30前封板 → 质量好；午后封板 → 只低吸不追高</td></tr>
+        <tr><td>14:30后</td><td>尾盘偷袭不碰</td><td>14:30后才封板 → 一律不参与，次日溢价极低</td></tr>
+        <tr><td>全天</td><td>监控同板块高标</td><td>同板块最高标断板 → 立即减仓，板块退潮信号</td></tr>
+        <tr><td>全天</td><td>监控异动公告</td><td>持仓股盘中发公告 → 立即清仓，无例外</td></tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<!-- ====== 清单5: 退出 ====== -->
+<h2>清单5：退出纪律（无例外）</h2>
+
+<div class="alert">
+    <ul class="checklist">
+        <li><span class="box fail"></span><strong>铁律1：断板次日必须止损。</strong>不管任何理由，昨日涨停今日未封板 → 开盘即卖。反包是重新上车的机会，不是硬扛的理由。</li>
+        <li><span class="box fail"></span><strong>铁律2：同梯队2只以上同时断板 → 全清。</strong>这是主线退潮的明确信号，不分个股强弱。</li>
+        <li><span class="box fail"></span><strong>铁律3：单票亏损＞-5% → 无条件止损。</strong>不补仓、不扛单、不等反包。</li>
+        <li><span class="box fail"></span><strong>铁律4：大盘跳水翻绿 → 减仓至3成。</strong>系统性风险面前不分个股。</li>
+    </ul>
+</div>
+
+<hr class="divider">
+
+<!-- ====== 清单6: 仓位 ====== -->
+<h2>清单6：仓位管理</h2>
+
+<div class="card">
+    <table>
+        <tr><th>情绪温度</th><th>仓位上限</th><th>单票上限</th><th>单日交易上限</th></tr>
+        <tr><td>＜50°C（冰点）</td><td>3成</td><td>1成</td><td>≤2只</td></tr>
+        <tr><td>50-90°C（温和）</td><td>5成</td><td>1.5成</td><td>≤3只</td></tr>
+        <tr><td>90-120°C（活跃）</td><td>7成</td><td>2成</td><td>≤3只</td></tr>
+        <tr><td>＞120°C（高潮）</td><td>5成（降仓）</td><td>1.5成</td><td>≤2只</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:10px;">
+        <strong>高潮期特殊规则：</strong>＞120°C 只做核心不追高标，预留至少3成现金应对次日分歧。高潮次日往往是亏钱效应最大的交易日。
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- ====== 清单7: 三类高胜率模式速查 ====== -->
+<h2>清单7：三类高胜率模式快速识别卡</h2>
+
+<div class="card">
+    <table>
+        <tr><th>模式</th><th>识别条件</th><th>买入时机</th><th>退出条件</th></tr>
+        <tr>
+            <td><strong>① 弱转强反包</strong></td>
+            <td>昨日烂板/炸板/分歧 + 今日竞价低开→分时拉红</td>
+            <td>分时拉红确认后 半仓；封板加仓</td>
+            <td>次日不封板即走；炸板走</td>
+        </tr>
+        <tr>
+            <td><strong>② 板块成建制</strong></td>
+            <td>板块≥3只涨停 + 高标带队 + 处在加速期</td>
+            <td>竞价确认板块高开 + 个股过竞价清单</td>
+            <td>板块高标断板 → 全清</td>
+        </tr>
+        <tr>
+            <td><strong>③ 产业资本催化</strong></td>
+            <td>股权转让/大基金入股/定点中标公告</td>
+            <td>公告后首板打板/次日竞价确认</td>
+            <td>公告利好兑现（2-3板后）→ 分批止盈</td>
+        </tr>
+    </table>
+</div>
+
+<hr class="divider">
+
+<!-- ====== 清单8: 每日速查总结 ====== -->
+<h2>清单8：每日速查卡（打印/截图用）</h2>
+
+<div class="summary">
+    <div class="grid-4">
+        <div class="stat"><div class="num">□</div><div class="label">情绪温度<br>___°C</div></div>
+        <div class="stat"><div class="num">□</div><div class="label">趋势日/连板日<br>___</div></div>
+        <div class="stat"><div class="num">□</div><div class="label">今日仓位<br>___成</div></div>
+        <div class="stat"><div class="num">□</div><div class="label">最高连板<br>___板</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;">
+        <strong>今日候选：</strong>S级____只 / A级____只 | <strong>异动公告：</strong>____只 | <strong>主线：</strong>____ | <strong>风险：</strong>____
+    </div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+    <table>
+        <tr><th>#</th><th>铁律（逐条确认）</th><th>√</th></tr>
+        <tr><td>1</td><td>断板次日必须止损，无例外</td><td>□</td></tr>
+        <tr><td>2</td><td>一字板不追（开板即分歧）</td><td>□</td></tr>
+        <tr><td>3</td><td>同梯队2只断板 → 全清</td><td>□</td></tr>
+        <tr><td>4</td><td>单票亏损＞-5% → 无条件止损</td><td>□</td></tr>
+        <tr><td>5</td><td>大盘跳水翻绿 → 减仓至3成</td><td>□</td></tr>
+        <tr><td>6</td><td>盘中异动公告 → 立即清仓</td><td>□</td></tr>
+        <tr><td>7</td><td>14:30后封板 → 不参与</td><td>□</td></tr>
+        <tr><td>8</td><td>＞120°C高潮 → 降仓至5成</td><td>□</td></tr>
+    </table>
+</div>
+
+<div class="alert">
+    <strong>风险提示：</strong>本清单基于2026年A股历史样本归纳，不保证未来有效性。超短交易高风险高波动，请根据自身风险承受能力使用。本清单仅供研究参考，不构成投资建议。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-17 · 数据来源：财联社/东方财富/证券时报 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
