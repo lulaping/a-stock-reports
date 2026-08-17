@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市场收盘分析 — YYYY年MM月DD日</title>
+    <!-- ============================================================
+         收盘分析模板 v1.0
+         ─────────────────────────────────────────────
+         用法：
+         1. 复制本文件，按命名规则重命名：市场复盘_{YYYYMMDD}_Serenity分析.html
+         2. 替换所有 {{占位符}} 为实际数据
+         3. 不修改 <style> 内的样式
+         4. 组件清单（按需使用）：
+            - .summary      顶部一句话总结
+            - .card         普通内容卡片
+            - table         数据表格
+            - .badge        标签徽章
+            - .alert        红色警示框
+            - .green-note   绿色提示框
+            - .stocks + .stock-item(.pos/.neg)  异动个股网格
+            - .up / .down   涨/跌颜色
+            - .highlight    高亮文字
+            - .tag-sector   板块标签
+         5. 命名规则：市场复盘_{YYYYMMDD}_Serenity分析.html
+         ============================================================ -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:900px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .stocks { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+        .stock-item { background:rgba(48,54,61,0.3); border-radius:6px; padding:8px 12px; border-left:3px solid var(--border); }
+        .stock-item.pos { border-left-color:var(--green); }
+        .stock-item.neg { border-left-color:var(--red); }
+        .tag { font-size:11px; padding:1px 6px; border-radius:3px; margin-right:4px; }
+        .tag-sector { background:rgba(88,166,255,0.15); color:var(--blue); }
+        .highlight { background:rgba(233,69,96,0.15); border-radius:4px; padding:2px 6px; color:var(--accent); }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .stocks { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>市场收盘分析 — {{YYYY}}年{{MM}}月{{DD}}日（周{{X}}）</h1>
+<p class="subtitle">Serenity 短线情绪分析引擎 · 数据来源：财联社/东方财富/证券时报 · {{YYYY-MM-DD}} 收盘</p>
+
+<!-- 核心摘要 -->
+<div class="summary">
+    <strong>一句话：{{一句话总结今日市场核心矛盾}}</strong>
+</div>
+
+<!-- 指数表现 -->
+<h2>指数表现</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>最高</th><th>最低</th><th>全日成交</th></tr>
+        <tr><td><strong>上证指数</strong></td><td>{{上证收盘}}</td><td class="{{up/down}}">{{涨跌幅}}</td><td>{{最高}}</td><td>{{最低}}</td><td rowspan="4" style="vertical-align:middle;"><strong>{{成交额}}万亿</strong><br><span class="{{up/down}}">{{较昨日变化}}</span></td></tr>
+        <tr><td><strong>深证成指</strong></td><td>{{深成指收盘}}</td><td class="{{up/down}}">{{涨跌幅}}</td><td>{{最高}}</td><td>{{最低}}</td></tr>
+        <tr><td><strong>创业板指</strong></td><td>{{创业板收盘}}</td><td class="{{up/down}}">{{涨跌幅}}</td><td>{{最高}}</td><td>{{最低}}</td></tr>
+        <tr><td><strong>北证50</strong></td><td>{{北证50收盘}}</td><td class="{{up/down}}">{{涨跌幅}}</td><td>{{最高}}</td><td>{{最低}}</td></tr>
+    </table>
+    <div style="margin-top:10px;font-size:13px;color:var(--muted);">
+        全市场：上涨{{N}}家 / 下跌{{N}}家 · 涨停{{N}}家（含ST） / 跌停{{N}}家 · 炸板{{N}}家（炸板率{{X%}}）· 平均涨跌幅 <span class="{{up/down}}">{{±X%}}</span>
+    </div>
+</div>
+
+<!-- 上午vs下午走势 -->
+<h2>盘中走势回顾</h2>
+
+<div class="card">
+    <table>
+        <tr><th>时段</th><th>上证</th><th>创业板</th><th>特征</th></tr>
+        <tr><td><strong>上午</strong></td><td>{{上午涨跌}}</td><td>{{上午涨跌}}</td><td>{{上午特征描述}}</td></tr>
+        <tr><td><strong>下午</strong></td><td>{{下午涨跌}}</td><td>{{下午涨跌}}</td><td>{{下午特征描述}}</td></tr>
+        <tr><td><strong>全天</strong></td><td>{{全天涨跌}}</td><td>{{全天涨跌}}</td><td>{{全天关键词}}</td></tr>
+    </table>
+</div>
+
+<!-- 连板梯队 -->
+<h2>连板梯队</h2>
+
+<div class="card">
+    <table>
+        <tr><th>板数</th><th>标的</th><th>封板时间</th><th>封单</th><th>换手率</th><th>题材/备注</th></tr>
+        {{#each 连板梯队}}
+        <tr><td><strong>{{N}}板</strong></td><td>{{名称}}（{{代码}}）</td><td>{{封板时间}}</td><td>{{封单金额}}</td><td>{{换手率}}</td><td>{{题材说明}}</td></tr>
+        {{/each}}
+    </table>
+    <div style="margin-top:8px;font-size:13px;color:var(--muted);">
+        晋级率：{{X}}/{{Y}}={{Z%}} · 昨日{{N}}板今日{{M}}板，{{晋级分析}}
+    </div>
+</div>
+
+<div class="alert">
+    <strong>连板情绪：{{情绪判断}}</strong> — {{详细分析}}
+</div>
+
+<!-- 涨停板块分布 -->
+<h2>涨停板块分布</h2>
+
+<div class="card">
+    <table>
+        <tr><th>排名</th><th>板块</th><th>涨停数</th><th>代表标的</th><th>逻辑</th></tr>
+        {{#each 涨停板块}}
+        <tr><td>{{排名}}</td><td><strong>{{板块名}}</strong></td><td>{{涨停数}}家</td><td>{{代表标的}}</td><td>{{涨停逻辑}}</td></tr>
+        {{/each}}
+    </table>
+</div>
+
+<!-- 领涨板块 -->
+<h2>领涨板块（概念指数）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>排名</th><th>板块</th><th>涨幅</th><th>催化</th></tr>
+        {{#each 领涨板块}}
+        <tr><td>{{排名}}</td><td><strong>{{板块名}}</strong></td><td class="up">{{涨幅}}</td><td>{{催化原因}}</td></tr>
+        {{/each}}
+    </table>
+</div>
+
+<!-- 领跌板块 -->
+<h2>领跌板块</h2>
+
+<div class="card">
+    <table>
+        <tr><th>排名</th><th>板块</th><th>跌幅</th><th>原因</th></tr>
+        {{#each 领跌板块}}
+        <tr><td>{{排名}}</td><td><strong>{{板块名}}</strong></td><td class="down">{{跌幅}}</td><td>{{下跌原因}}</td></tr>
+        {{/each}}
+    </table>
+</div>
+
+<!-- 重点异动个股 -->
+<h2>重点异动个股</h2>
+
+<div class="stocks">
+    {{#each 异动个股}}
+    <div class="stock-item {{pos/neg}}">
+        <strong>{{名称}}</strong> <span class="{{up/down}}">{{涨跌幅}}</span><br>
+        <span style="font-size:12px;color:var(--muted);">{{异动说明}}</span>
+    </div>
+    {{/each}}
+</div>
+
+<!-- 龙虎榜看点 -->
+<h2>龙虎榜看点</h2>
+
+<div class="card">
+    <table>
+        <tr><th>标的</th><th>净买入</th><th>买方主力</th><th>卖方主力</th><th>信号</th></tr>
+        {{#each 龙虎榜}}
+        <tr><td>{{名称}}</td><td class="{{up/down}}">{{净买入}}</td><td>{{买方}}</td><td>{{卖方}}</td><td>{{信号解读}}</td></tr>
+        {{/each}}
+    </table>
+</div>
+
+<!-- 短线情绪判断 -->
+<h2>短线情绪判断</h2>
+
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>昨日</th><th>今日</th><th>变化</th></tr>
+        <tr><td>短线温度</td><td>{{昨日温度}}</td><td>{{今日温度}}</td><td class="{{up/down}}">{{变化}}</td></tr>
+        <tr><td>涨停/跌停</td><td>{{昨日涨停数}} / {{昨日跌停数}}</td><td>{{今日涨停数}} / {{今日跌停数}}</td><td class="{{up/down}}">{{变化}}</td></tr>
+        <tr><td>连板数量</td><td>{{昨日连板数}}家</td><td>{{今日连板数}}家</td><td class="{{up/down}}">{{变化}}</td></tr>
+        <tr><td>晋级率</td><td>{{昨日晋级率}}</td><td>{{今日晋级率}}</td><td class="{{up/down}}">{{变化}}</td></tr>
+        <tr><td>炸板率</td><td>{{昨日炸板率}}</td><td>{{今日炸板率}}</td><td class="{{up/down}}">{{变化}}</td></tr>
+        <tr><td>成交额</td><td>{{昨日成交额}}万亿</td><td>{{今日成交额}}万亿</td><td class="{{up/down}}">{{变化}}</td></tr>
+        <tr><td>最高标</td><td>{{昨日最高标}}</td><td>{{今日最高标}}</td><td class="{{up/down}}">{{变化}}</td></tr>
+    </table>
+</div>
+
+<!-- 隔夜催化验证 -->
+<h2>隔夜催化验证</h2>
+
+<div class="card">
+    <table>
+        <tr><th>隔夜消息</th><th>预期方向</th><th>实际表现</th><th>兑现</th></tr>
+        {{#each 催化验证}}
+        <tr><td>{{消息描述}}</td><td>{{预期方向}}</td><td>{{实际表现}}</td><td class="{{up/down}}">{{兑现状态}}</td></tr>
+        {{/each}}
+    </table>
+</div>
+
+<!-- 后市展望 -->
+<h2>后市展望</h2>
+
+<div class="green-note">
+    {{#each 后市展望要点}}
+    <strong>{{序号}}. {{标题}}</strong> — {{内容}}<br><br>
+    {{/each}}
+</div>
+
+<div class="alert">
+    <strong>风险提示：</strong>{{风险提示内容}}本报告仅供研究参考，不构成投资建议。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · {{YYYY-MM-DD}} 收盘 · 数据来源：财联社/东方财富/证券时报/中财网 · 不构成投资建议
+</div>
+
+</body>
+</html>
