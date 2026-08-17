@@ -3,179 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>盘前纪要 — 2026年8月14日</title>
+    <title>盘前纪要 2026-08-14</title>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <style>
-        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:900px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
-        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:4px; }
         .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
-        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
-        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
-        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
         table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
-        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
         td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
         .up { color:var(--green); } .down { color:var(--red); }
-        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
-        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
-        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
-        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
-        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
-        .badge-gold { background:rgba(255,215,0,0.2); color:#ffd700; }
-        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
-        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
-        .orange-note { background:rgba(210,153,29,0.08); border-left:3px solid var(--orange); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
-        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
-        .vs-box { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:10px 0; }
-        .vs-item { background:rgba(48,54,61,0.2); border-radius:8px; padding:12px 16px; }
-        .pos { border:1px solid rgba(63,185,80,0.3); }
-        .neg { border:1px solid rgba(248,81,73,0.3); }
-        .item { padding:6px 0; border-bottom:1px solid rgba(48,54,61,0.5); }
-        .item:last-child { border-bottom:none; }
-        .tag { font-size:11px; padding:1px 6px; border-radius:3px; margin-right:4px; }
-        .tag-sector { background:rgba(88,166,255,0.15); color:var(--blue); }
-        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
-        @media (max-width:640px) { .vs-box { grid-template-columns:1fr; } }
+        .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; margin:1px; }
+        .tag-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .tag-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .tag-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .tag-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .tag-cyan { background:rgba(57,210,192,0.2); color:var(--cyan); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        .emoji-lg { font-size:20px; }
+        .sector-box { background:rgba(88,166,255,0.06); border:1px solid rgba(88,166,255,0.2); border-radius:8px; padding:12px 16px; margin:8px 0; }
+        @media (max-width:640px) { .grid-2 { grid-template-columns:1fr; } }
     </style>
 </head>
-<body>
+<body class="light">
 
 <h1>盘前纪要 — 2026年8月14日（周五）</h1>
-<p class="subtitle">隔夜利好利空消息汇总 · 数据来源：财联社/东方财富/证券时报/第一财经/央广网 · 2026-08-14 盘前</p>
+<p class="subtitle">隔夜利好利空消息汇总 · 数据来源：证券时报/财联社/东方财富/同花顺/36氪</p>
 
 <!-- 综合判断 -->
-<div class="summary">
-    <strong>综合判断：整体偏多，但连板情绪面承压。</strong>央行万亿逆回购+美股标普创新高构成强支撑，存储芯片/光通信/AI算力修复预期强；但多只连板股密集发布风险提示，退潮情绪可能延续。今日关注存储芯片/光通信/AI算力修复力度，以及医药CRO能否延续强势。
+<div class="card" style="border-top:3px solid var(--blue);">
+    <h3>综合判断：<span class="tag tag-green">偏多</span> 但连板情绪面承压</h3>
+    <p style="font-size:13px;margin-top:6px;">隔夜美股标普创历史新高+存储芯片暴涨+央行万亿逆回购释放流动性，外围和流动性环境偏暖。但高位连板股密集发布风险提示+缩量至2.14万亿+中东局势扰动，短线情绪处于冰点期。今日是周五，资金做多意愿通常偏弱，预计震荡分化格局。</p>
 </div>
 
-<!-- 利好 -->
-<h2 style="color:var(--green);">🟢 利好</h2>
-
-<div class="card pos">
-    <h3 style="margin-top:0;">🥇 重大利好</h3>
-    <div class="item">
-        <strong>1. 央行万亿流动性"双管齐下"</strong><br>
-        今日开展<span class="up">1万亿</span>6个月买断式逆回购（到期等量续作）+ <span class="up">每日6000亿</span>隔夜逆回购（首次月中操作），释放强烈宽松信号。<br>
-        <span class="tag tag-sector">银行</span><span class="tag tag-sector">券商</span><span class="tag tag-sector">全市场</span>
-    </div>
-    <div class="item">
-        <strong>2. 美股标普500再创历史新高，存储芯片暴涨</strong><br>
-        标普500收7798.99（+0.65%），纳指+0.81%。闪迪+13.67%（长期指引：2028-2030营收中高双位数增长，毛利率约80%），西部数据+7.3%，SK海力士+7.3%，美光+4.2%。特斯拉+3.8%，奈飞+5.4%。<br>
-        <span class="tag tag-sector">存储芯片</span><span class="tag tag-sector">光通信</span><span class="tag tag-sector">AI算力</span>
-    </div>
-    <div class="item">
-        <strong>3. 美国7月PPI低于预期，美联储9月加息概率降至35%</strong><br>
-        PPI同比+4.7%（预期4.9%，前值5.5%），核心PPI+4.2%符合预期。交易员定价年内大概率不再加息。<br>
-        <span class="tag tag-sector">全球风险资产</span><span class="tag tag-sector">科技成长</span>
+<!-- 情绪温度计 -->
+<div class="card" style="text-align:center;">
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap;gap:10px;">
+        <div><span class="tag tag-green" style="font-size:18px;padding:6px 16px;">🥇 重大利好 3</span></div>
+        <div><span class="tag tag-blue" style="font-size:18px;padding:6px 16px;">🥈 中等利好 4</span></div>
+        <div><span class="tag tag-orange" style="font-size:18px;padding:6px 16px;">🥉 轻微利好 3</span></div>
+        <div><span class="tag tag-red" style="font-size:18px;padding:6px 16px;">🔴 重大利空 2</span></div>
+        <div><span class="tag tag-orange" style="font-size:18px;padding:6px 16px;">⚠️ 中等利空 3</span></div>
     </div>
 </div>
 
-<div class="card pos">
-    <h3 style="margin-top:0;">🥈 中等利好</h3>
-    <div class="item">
-        <strong>4. DeepSeek V4 API大幅涨价，高峰时段涨幅最高1100%</strong><br>
-        DeepSeek-V4-Pro高峰时段输出价格从0.025元涨至0.3元，8月17日生效。反映AI算力需求旺盛。<br>
-        <span class="tag tag-sector">算力基础设施</span><span class="tag tag-sector">寒武纪</span><span class="tag tag-sector">海光信息</span><span class="tag tag-sector">浪潮信息</span>
-    </div>
-    <div class="item">
-        <strong>5. 多家公司中报业绩超预期</strong><br>
-        协创数据H1净利18.63亿+331%，海光信息H1净利17.98亿+49.7%，中科曙光H1净利9.78亿+34.2%，吉比特H1净利10.92亿+69.3%（拟10派100元），宏和科技H1净利3.79亿+334%，中芯国际Q2收入30亿美元环比+20%。<br>
-        <span class="tag tag-sector">芯片</span><span class="tag tag-sector">算力</span><span class="tag tag-sector">游戏</span>
-    </div>
-    <div class="item">
-        <strong>6. 光通信景气持续验证</strong><br>
-        Coherent Q4收入20.5亿超预期，称订单已排至2028年。Lumentum营收利润全面超预期+13.6%。联想ADR底部大涨18.95%。<br>
-        <span class="tag tag-sector">CPO</span><span class="tag tag-sector">光通信</span><span class="tag tag-sector">中际旭创</span>
-    </div>
-    <div class="item">
-        <strong>7. 翰宇药业司美格鲁肽三期临床完成</strong><br>
-        GLP-1减肥药赛道再添催化，叠加昨日CRO板块5家20cm涨停。<br>
-        <span class="tag tag-sector">CRO</span><span class="tag tag-sector">创新药</span><span class="tag tag-sector">减肥药</span>
-    </div>
-</div>
-
-<div class="card pos">
-    <h3 style="margin-top:0;">🥉 轻微利好</h3>
-    <div class="item"><strong>8. 贵州茅台等消费龙头今日盘后披露半年报</strong> — 安琪酵母、有友食品、承德露露、香飘飘等同步披露 <span class="tag tag-sector">消费</span></div>
-    <div class="item"><strong>9. 成品油零售限价大概率下调</strong> — 年内第五次下调 <span class="tag tag-sector">交通运输</span><span class="tag tag-sector">物流</span></div>
-    <div class="item"><strong>10. 谷歌推出Gemini 3.7 Flash模型</strong> — 间接利好AI应用端 <span class="tag tag-sector">AI应用</span></div>
-</div>
-
-<!-- 利空 -->
-<h2 style="color:var(--red);">🔴 利空</h2>
-
-<div class="card neg">
-    <h3 style="margin-top:0;">🔴 重大利空</h3>
-    <div class="item">
-        <strong>1. 中概股继续承压，京东暴跌7.3%</strong><br>
-        纳斯达克中国金龙指数-1.84%，京东-7.31%（财报后），拼多多-5.46%，阿里-2.44%。<br>
-        <span class="tag tag-sector">北向资金情绪</span><span class="tag tag-sector">中概股概念</span>
-    </div>
-    <div class="item">
-        <strong>2. 国际油价大跌，黄金白银齐跌</strong><br>
-        WTI原油-2.43%至81.25美元，布伦特-2.15%至87.07美元。COMEX黄金-1.03%，白银-1.04%。<br>
-        <span class="tag tag-sector">石油石化</span><span class="tag tag-sector">贵金属</span><span class="tag tag-sector">黄金股</span>
-    </div>
-    <div class="item">
-        <strong>3. 多只连板股密集发布风险提示公告</strong><br>
-        秦安股份：不涉及人形机器人生产制造（5连板）；蓝盾光电：严重异常波动，重组尚存不确定性（4连20cm）；城地香江：暂未开展算力租赁业务（3连板）；京投发展：拟收购标的奇芯光电尚处亏损状态（4连板）；万邦医药：仅API接入DeepSeek，无业务合作（3天2板）；福赛科技：机器人零部件上半年未形成正式订单。<br>
-        <span class="tag tag-sector">连板情绪</span><span class="tag tag-sector">退潮</span>
-    </div>
-</div>
-
-<div class="card neg">
-    <h3 style="margin-top:0;">⚠️ 中等利空</h3>
-    <div class="item">
-        <strong>4. 美联储鹰派声音仍存</strong><br>
-        克利夫兰联储主席哈马克坚持"应立即加息"。里士满联储主席巴尔金表示"尚不确定是否需要加息"。<br>
-        <span class="tag tag-sector">美联储</span>
-    </div>
-    <div class="item">
-        <strong>5. 美国对无人机加征最高100%关税</strong><br>
-        利空出口型无人机企业（纵横股份/观典防务），利好国产替代（航天彩虹/中无人机/中信海直）。<br>
-        <span class="tag tag-sector">国防军工</span>
-    </div>
-    <div class="item">
-        <strong>6. 今日限售股解禁</strong><br>
-        华能蒙电5.36亿股（市值27.36亿），志高机械8586万股（占总股本68.8%，市值14.68亿）。<br>
-        <span class="tag tag-sector">解禁</span>
-    </div>
-    <div class="item">
-        <strong>7. 日本央行加息预期扰动</strong><br>
-        昨日午后跳水导火索之一，但日经早盘已涨1.8%反应不大。<br>
-        <span class="tag tag-sector">日本央行</span>
-    </div>
-</div>
-
-<!-- 综合判断 -->
-<h2>综合判断矩阵</h2>
+<!-- 第1部分：重大利好 -->
+<h2>🥇 重大利好</h2>
 
 <div class="card">
+    <h3>1. 美股三大指数创新高，存储芯片全线暴涨</h3>
+    <p>标普500涨0.65%报7798.99点再创历史新高，盘中首次站上7800点；纳指涨0.81%；道指涨0.13%。<strong>存储板块爆发：闪迪+13.68%、西部数据+7.3%、SK海力士+7.3%、希捷+4.9%、美光+4.2%</strong>。闪迪投资者日公布长期财务模型，目标2028-2030财年中高双位数营收增长，毛利率约80%。</p>
+    <div class="sector-box">
+        <strong>→ 受益板块：</strong>存储芯片（长鑫科技/兆易创新/大唐电信）、光通信（中际旭创/天孚通信/新易盛）、AI算力（寒武纪/海光信息/中科曙光）
+    </div>
+</div>
+
+<div class="card">
+    <h3>2. 央行万亿流动性"双管齐下"</h3>
+    <p>央行开展<strong>1万亿元</strong>6个月期买断式逆回购，同时开展<strong>3490亿</strong>隔夜逆回购（单日上限6000亿），对冲税期与政府债发行，稳定短端资金面。这是央行首次在月中操作隔夜逆回购，释放强烈宽松信号。</p>
+    <div class="sector-box">
+        <strong>→ 受益板块：</strong>银行、券商、全市场（流动性改善）
+    </div>
+</div>
+
+<div class="card">
+    <h3>3. 中际旭创17.47亿战略入股中石科技，算力散热产业链催化</h3>
+    <p>光模块龙头中际旭创（万亿市值）以<strong>17.47亿元</strong>受让中石科技10.47%股份，转让价55.70元/股（近乎平价，折价仅0.8%），锁定12个月。中石科技是人工合成高导热石墨膜全球龙头，VC模组已通过800G光模块认证并量产，1.6T散热在研。</p>
+    <div class="sector-box">
+        <strong>→ 受益板块：</strong>CPO散热（中石科技/阿莱德/富信科技）、光模块（中际旭创/剑桥科技/新易盛）
+    </div>
+</div>
+
+<!-- 第2部分：中等利好 -->
+<h2>🥈 中等利好</h2>
+
+<div class="card">
+    <h3>4. 美国7月PPI低于预期，9月降息概率升至100%</h3>
+    <p>美7月PPI同比+4.7%（预期4.9%，前值5.5%），环比持平。零售销售环比-0.6%（去年5月来最大降幅）。市场完全消化9月降息25基点预期，甚至降息50基点概率升至6.3%。美财长贝森特公开呼吁"9月降息50基点可能性非常高"。2年期美债收益率跌至3.683%，美元指数跌破98。</p>
+    <div class="sector-box">
+        <strong>→ 受益板块：</strong>全球风险资产、科技成长股、黄金（伦敦金收3362美元/盎司+0.36%）
+    </div>
+</div>
+
+<div class="card">
+    <h3>5. DeepSeek API大幅涨价，V4 Pro正式上线</h3>
+    <p>DeepSeek API调价：旗舰模型高峰时段输出价格升至27元/百万tokens（较现价涨约350%），V4 Pro正式版8月13日上线。涨价反映AI算力需求旺盛，利好算力基础设施。</p>
+    <div class="sector-box">
+        <strong>→ 受益板块：</strong>算力基础设施（寒武纪/海光信息/浪潮信息/中科曙光）
+    </div>
+</div>
+
+<div class="card">
+    <h3>6. 多家公司中报业绩超预期</h3>
     <table>
-        <tr><th>维度</th><th>方向</th><th>强度</th><th>说明</th></tr>
-        <tr><td>宏观流动性</td><td><span class="up">偏多</span></td><td>强</td><td>央行万亿逆回购+隔夜逆回购首现月中</td></tr>
-        <tr><td>海外市场</td><td><span class="up">偏多</span></td><td>强</td><td>标普新高+存储暴涨，但中概股拖累</td></tr>
-        <tr><td>美联储</td><td><span class="up">偏多</span></td><td>中</td><td>9月加息概率降至35%，但鹰派声音仍在</td></tr>
-        <tr><td>连板情绪</td><td><span class="down">偏空</span></td><td>强</td><td>多只高位股密集发布风险提示</td></tr>
-        <tr><td>大宗商品</td><td><span class="down">偏空</span></td><td>中</td><td>油价、黄金、白银齐跌</td></tr>
-        <tr><td>业绩面</td><td><span class="up">偏多</span></td><td>中</td><td>中科曙光/海光/协创等财报亮眼</td></tr>
+        <tr><th>公司</th><th>业绩</th></tr>
+        <tr><td>海光信息</td><td>H1净利17.98亿，同比+49.7%，营收90.99亿+66.5%</td></tr>
+        <tr><td>中芯国际</td><td>Q2收入30亿美元，环比+20%，毛利率25.3%，Q3指引+2-4%</td></tr>
+        <tr><td>紫光国微</td><td>H1净利润同比+15%</td></tr>
+        <tr><td>宏和科技</td><td>H1净利3.79亿，同比+334%（电子布量价齐升）</td></tr>
+        <tr><td>思源电气</td><td>H1净利润同比+13.23%</td></tr>
+        <tr><td>协创数据</td><td>H1净利18.63亿，同比+331%</td></tr>
+        <tr><td>中科曙光</td><td>H1净利9.78亿，同比+34.2%</td></tr>
     </table>
 </div>
 
-<div class="green-note">
-    <strong>今日关注方向：</strong>存储芯片/光通信/AI算力（美股映射最强）→ 医药CRO（昨日最强主线能否延续）→ 大金融（银行/保险尾盘逆势护盘，央行流动性利好直接受益）→ 消费（茅台等披露半年报催化）
+<div class="card">
+    <h3>7. 商务部对印度单模光纤反倾销续征5年</h3>
+    <p>自2026年8月14日起，对原产于印度的进口单模光纤继续征收反倾销税，实施期限5年。叠加英伟达Spectrum-X光互联方案量产催化，利好CPO/光模块/光纤光缆国产替代。</p>
+    <div class="sector-box">
+        <strong>→ 受益板块：</strong>光纤光缆（长飞光纤/中天科技/杭电股份）、CPO光模块（中际旭创/剑桥科技）
+    </div>
 </div>
 
+<!-- 第3部分：轻微利好 -->
+<h2>🥉 轻微利好</h2>
+
+<div class="card">
+    <h3>8. MSCI季度指数调整，新纳入半导体/AI/高端制造标的</h3>
+    <p>MSCI季度调整，新纳入半导体、AI、高端制造A股标的，预期带来海外被动资金流入。但被动资金分批逐步入场，短期增量资金幅度有限。</p>
+</div>
+
+<div class="card">
+    <h3>9. 四部门联合发布集成电路/工业母机税收优惠</h3>
+    <p>财政部等四部门联合公告：集成电路企业、工业母机企业非货币性资产交换所得可在不超过5年期限内分期缴纳。相当于给企业一笔无息政策资金，缓解短期资金压力。</p>
+</div>
+
+<div class="card">
+    <h3>10. 我国加快新一代通信网建设</h3>
+    <p>万兆光网试点已建设136个项目，5G基站全面向5G-A升级演进，6G加速技术部署，支撑智能网联新能源汽车、具身智能等新兴产业。</p>
+</div>
+
+<!-- 第4部分：重大利空 -->
+<h2>🔴 重大利空</h2>
+
+<div class="card">
+    <h3>1. 多只连板股密集发布风险提示公告（高位股出清信号）</h3>
+    <table>
+        <tr><th>个股</th><th>澄清内容</th></tr>
+        <tr><td>秦安股份（5板）</td><td>主营业务不涉及人形机器人及零配件的生产制造</td></tr>
+        <tr><td>蓝盾光电（4连20cm）</td><td>严重异常波动，重组尚存不确定性</td></tr>
+        <tr><td>城地香江（3板）</td><td>暂未开展算力租赁业务，终止2024年度定增</td></tr>
+        <tr><td>京投发展（4板）</td><td>奇芯光电尚处亏损状态，收购存在重大不确定性</td></tr>
+        <tr><td>万邦医药</td><td>仅通过API接入DeepSeek，无业务合作</td></tr>
+        <tr><td>福赛科技</td><td>机器人零部件上半年未形成正式订单</td></tr>
+        <tr><td>炬光科技</td><td>光通信、消费电子等新兴业务收入占比相对较低</td></tr>
+        <tr><td>长盈通</td><td>用于通信领域的光纤在手或意向订单较少</td></tr>
+    </table>
+    <div class="alert" style="margin-top:8px;">
+        <strong>⚡ 这是退潮期最典型的"高位股出清"信号。</strong>8只连板/热门股同时澄清，叠加昨日百花7进8断板，今日连板股面临巨大抛压。秦安5板、同力天启4板、皇氏4板、德龙汇能2板等均可能断板甚至跌停。
+    </div>
+</div>
+
+<div class="card">
+    <h3>2. 中东地缘局势升级，油价波动</h3>
+    <p>美军增派航母，霍尔木兹海峡对峙加剧；伊朗最高领袖顾问称若条件不满足将升级冲突。美国防部长表示可对伊朗实施"无限期"海上封锁。WTI原油跌2.43%至81.25美元，布伦特跌2.15%至87.07美元。油价大幅波动抬升全球通胀担忧，压制A股整体风险偏好。</p>
+    <div class="sector-box">
+        <strong>→ 影响板块：</strong>短期利空全市场（风险偏好下降），利好军工（成飞集成/亚星锚链）、石油（中国石油/中国石化）
+    </div>
+</div>
+
+<!-- 第5部分：中等利空 -->
+<h2>⚠️ 中等利空</h2>
+
+<div class="card">
+    <h3>3. 日本释放9-10月加息预期</h3>
+    <p>日本央行释放9-10月加息预期，美日利差收敛，全球跨境风险资金存在回流扰动，压制成长赛道估值。这是昨日午后A股跳水的导火索之一。</p>
+</div>
+
+<div class="card">
+    <h3>4. 美国对进口无人机加征最高100%关税</h3>
+    <p>美国总统签署公告，以国家安全为由对进口无人机及零部件征收10%至100%的从价关税，21天后生效。</p>
+    <div class="sector-box">
+        <strong>→ 利空：</strong>出口型无人机企业（纵横股份/观典防务）<br>
+        <strong>→ 利好：</strong>国产替代（航天彩虹/中无人机/中信海直）
+    </div>
+</div>
+
+<div class="card">
+    <h3>5. 个股利空公告</h3>
+    <table>
+        <tr><th>公司</th><th>利空内容</th></tr>
+        <tr><td>达仁堂</td><td>H1净利润6.58亿，同比-8.97%</td></tr>
+        <tr><td>景兴纸业</td><td>补缴税款及滞纳金合计1618万元</td></tr>
+        <tr><td>佰维存储</td><td>股东孙静减持计划届满，累计减持0.50%</td></tr>
+        <tr><td>流金科技</td><td>两股东拟合计减持不超2%股份</td></tr>
+        <tr><td>*ST闻泰</td><td>H1净亏损4.06亿元，同比转亏</td></tr>
+        <tr><td>中国交建</td><td>H1新签合同额同比-8.89%</td></tr>
+        <tr><td>汇金股份</td><td>终止筹划重大资产重组</td></tr>
+        <tr><td>科达制造</td><td>终止收购特福国际51.55%股权</td></tr>
+        <tr><td>山外山</td><td>股东拟减持4.03%股份</td></tr>
+        <tr><td>永杰科技</td><td>股东拟减持3%股份</td></tr>
+    </table>
+</div>
+
+<!-- 第6部分：隔夜外盘 -->
+<h2>🌏 隔夜外盘一览</h2>
+
+<div class="grid-2">
+    <div class="card">
+        <h3>美股指数</h3>
+        <table>
+            <tr><td>标普500</td><td class="up">+0.65%</td><td>7798.99（历史新高）</td></tr>
+            <tr><td>纳斯达克</td><td class="up">+0.81%</td><td>26803.03</td></tr>
+            <tr><td>道琼斯</td><td class="up">+0.13%</td><td>53839.99</td></tr>
+            <tr><td>中概金龙</td><td class="up">+2.08%</td><td>腾讯ADR+7.4%</td></tr>
+        </table>
+    </div>
+    <div class="card">
+        <h3>大宗商品/外汇</h3>
+        <table>
+            <tr><td>WTI原油</td><td class="down">-2.43%</td><td>81.25美元</td></tr>
+            <tr><td>布伦特原油</td><td class="down">-2.15%</td><td>87.07美元</td></tr>
+            <tr><td>COMEX黄金</td><td class="up">+0.36%</td><td>3362美元</td></tr>
+            <tr><td>美元指数</td><td class="down">-0.26%</td><td>97.84</td></tr>
+            <tr><td>10Y美债</td><td class="down">↓</td><td>4.24%</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- 第7部分：今日关注 -->
+<h2>🎯 今日关注要点</h2>
+
+<div class="card">
+    <table>
+        <tr><th>关注点</th><th>内容</th></tr>
+        <tr><td><strong>1. 连板股出清程度</strong></td><td>秦安/同力天启/皇氏/城地/京投等8只连板股密集澄清，今日大概率大面积断板或跌停。关注蓝盾光电（4连20cm复牌）能否继续独立走强</td></tr>
+        <tr><td><strong>2. CPO散热主线持续性</strong></td><td>中石科技一字板预期，中际旭创入股是实质性利好。关注阿莱德/富信科技/剑桥科技等能否跟涨，判断新主线是否成立</td></tr>
+        <tr><td><strong>3. 存储芯片能否接力</strong></td><td>隔夜美股闪迪+13.68%，长鑫科技/兆易创新/大唐电信今日有望高开，但需观察资金承接力度</td></tr>
+        <tr><td><strong>4. 成交量能否维持</strong></td><td>昨日2.14万亿（缩4080亿），若继续缩量至2万亿以下，将确认短期弱势格局</td></tr>
+        <tr><td><strong>5. 周五效应</strong></td><td>周五资金做多意愿偏弱，尾盘可能面临周末避险抛压。关注周末消息面（人形机器人运动会8/22开幕）</td></tr>
+        <tr><td><strong>6. 华虹宏力业绩利好出尽</strong></td><td>H1营收+20%毛利率25.3%，但股价-8.75%已反映利好出尽，需警惕半导体板块短期回调</td></tr>
+    </table>
+</div>
+
+<!-- 第8部分：策略建议 -->
+<h2>📋 策略建议</h2>
+
+<div class="green-note">
+    <strong>冰点期防守为主，控制3-4成仓位。</strong>重点关注CPO散热（中石科技/阿莱德）和存储芯片（长鑫科技/兆易创新）的持续性，若今日放量走强可适度加仓。连板方向暂避，等待旧股出清完毕。稀土（中国稀土）和医药（博济医药/神奇制药）作为辅助方向。可提前布局机器人概念（8/22人形机器人运动会催化）。
+</div>
+
+<!-- 风险提示 -->
 <div class="alert">
-    <strong>风险提示：</strong>连板股密集发布风险提示是退潮延续信号，追高需谨慎。本报告仅供研究参考，不构成投资建议。
+    <strong>⚠️ 风险提示：</strong>本报告仅为盘前消息汇总分析，不构成任何投资建议。连板股风险极大，高位接盘可能造成严重亏损。市场有风险，投资需谨慎。数据来源为公开信息，可能存在延迟或遗漏。
 </div>
 
 <div class="footer">
-    Serenity 分析引擎 · 2026-08-14 盘前 · 数据来源：财联社/东方财富/证券时报/第一财经/央广网 · 不构成投资建议
+    Serenity 分析引擎 · 2026-08-14 盘前 · 数据来源：证券时报/财联社/东方财富/同花顺/36氪 · 不构成投资建议
 </div>
 
 </body>
