@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>超短交易速查卡 — 打印版</title>
+    <style>
+        @page { size: A4 landscape; margin: 12mm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 11px; color: #1a1a2e; line-height: 1.4; }
+        .page { width: 277mm; height: 190mm; padding: 12mm; display: flex; flex-wrap: wrap; gap: 8mm; }
+        .panel { border: 2px solid #333; border-radius: 6px; padding: 8px 10px; }
+        .panel-header { font-size: 13px; font-weight: 700; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 2px solid #e94560; }
+        .row { display: flex; gap: 6px; margin: 2px 0; align-items: center; }
+        .box { width: 14px; height: 14px; border: 1.5px solid #333; border-radius: 2px; flex-shrink: 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 10px; }
+        th { background: #f0f0f0; padding: 3px 5px; text-align: left; border: 1px solid #ccc; font-weight: 600; }
+        td { padding: 3px 5px; border: 1px solid #ccc; }
+        .red { color: #cf222e; font-weight: 700; }
+        .green { color: #1a7f37; }
+        .accent { color: #e94560; font-weight: 700; }
+        .fill { border-bottom: 1px solid #999; min-width: 40px; display: inline-block; }
+        hr { border: 0; border-top: 1px solid #ccc; margin: 4px 0; }
+        .left-col { width: 65%; display: flex; flex-direction: column; gap: 8mm; }
+        .right-col { width: 33%; display: flex; flex-direction: column; gap: 8mm; }
+        @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 左列 -->
+    <div class="left-col">
+
+        <!-- 面板1：每日情绪仪表盘 -->
+        <div class="panel">
+            <div class="panel-header">每日情绪仪表盘 <span style="font-size:10px;color:#888;">日期：____/____/____</span></div>
+            <table>
+                <tr><th>指标</th><th>数值</th><th>判定</th><th>指标</th><th>数值</th><th>判定</th></tr>
+                <tr><td>涨停/跌停</td><td>___/___</td><td>□好 □差</td><td>炸板率</td><td>___%</td><td>□好 □差</td></tr>
+                <tr><td>1进2晋级</td><td>___/___</td><td>___%</td><td>2进3晋级</td><td>___/___</td><td>___%</td></tr>
+                <tr><td>3进4+晋级</td><td>___/___</td><td>___%</td><td>最高连板</td><td>___板</td><td></td></tr>
+                <tr><td>成交额</td><td>___万亿</td><td>□增量 □缩量</td><td>异动公告</td><td>___只</td><td>□≥3退潮</td></tr>
+                <tr><td>情绪温度</td><td class="accent">___°C</td><td>□冰 □温 □活 □高</td><td>仓位上限</td><td class="accent">___成</td><td></td></tr>
+                <tr><td>趋势日/连板日</td><td colspan="3">□趋势日 → 低吸核心 &nbsp;&nbsp; □连板日 → 打板接力</td><td>主线板块</td><td colspan="2">______________</td></tr>
+            </table>
+        </div>
+
+        <!-- 面板2：今日候选 & 弱转强 -->
+        <div class="panel">
+            <div class="panel-header">选股 & 竞价</div>
+            <table>
+                <tr><th>S级</th><td colspan="5">□ ________________________________（弱转强+板块+催化）</td></tr>
+                <tr><th>A级</th><td colspan="5">□ ________________________________（板块成建制+封板质量高）</td></tr>
+                <tr><th>B级</th><td colspan="5">□ ________________________________（独苗/玄学/跟风）</td></tr>
+                <tr><th>淘汰</th><td colspan="5">□质押>50% □商誉>50% □澄清公告 □一日游 □高标断板</td></tr>
+                <tr><th>弱转强</th><td>高开___%</td><td>量比___%</td><td>□拉红</td><td>□未拉红→放弃</td><td>封单/成交 ___x</td></tr>
+            </table>
+        </div>
+
+        <!-- 面板3：盘中执行时间窗口 -->
+        <div class="panel">
+            <div class="panel-header">盘中执行 — 时间窗口</div>
+            <table>
+                <tr><th>窗口</th><th>动作</th><th>状态</th><th>窗口</th><th>动作</th><th>状态</th></tr>
+                <tr><td>9:30-9:35</td><td>弱转强拉红确认</td><td>□拉红 □未拉红</td><td>10:30-14:30</td><td>只低吸不追高</td><td>□执行</td></tr>
+                <tr><td>9:35-10:00</td><td>封单/成交＞3x</td><td>□是 □否</td><td>14:30后</td><td>尾盘板不碰</td><td>□执行</td></tr>
+                <tr><td>10:00-10:30</td><td>早盘板可追</td><td>□封板 □未封</td><td>全天</td><td>监控高标断板</td><td>□正常 □断板!</td></tr>
+                <tr><td colspan="6">盘中异动公告：□无 □有→立即清仓 &nbsp;|&nbsp; 大盘翻绿：□无 □有→减仓至3成</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 右列 -->
+    <div class="right-col">
+
+        <!-- 面板4：8条铁律 -->
+        <div class="panel">
+            <div class="panel-header">8条铁律（逐条确认）</div>
+            <div class="row"><span class="box"></span> 1. 断板次日必须止损，无例外</div>
+            <div class="row"><span class="box"></span> 2. 一字板不追（开板即分歧）</div>
+            <div class="row"><span class="box"></span> 3. 同梯队2只断板 → 全清</div>
+            <div class="row"><span class="box"></span> 4. 单票亏损＞-5% → 无条件止损</div>
+            <div class="row"><span class="box"></span> 5. 大盘跳水翻绿 → 减仓至3成</div>
+            <div class="row"><span class="box"></span> 6. 盘中异动公告 → 立即清仓</div>
+            <div class="row"><span class="box"></span> 7. 14:30后封板 → 不参与</div>
+            <div class="row"><span class="box"></span> 8. ＞120°C高潮 → 降仓至5成</div>
+        </div>
+
+        <!-- 面板5：仓位矩阵 -->
+        <div class="panel">
+            <div class="panel-header">仓位管理</div>
+            <table>
+                <tr><th>温度</th><th>仓位</th><th>单票</th><th>日交易</th></tr>
+                <tr><td>＜50°C 冰点</td><td class="red">≤3成</td><td>≤1成</td><td>≤2只</td></tr>
+                <tr><td>50-90°C 温和</td><td>≤5成</td><td>≤1.5成</td><td>≤3只</td></tr>
+                <tr><td>90-120°C 活跃</td><td>≤7成</td><td>≤2成</td><td>≤3只</td></tr>
+                <tr><td>＞120°C 高潮</td><td class="red">≤5成</td><td>≤1.5成</td><td>≤2只</td></tr>
+            </table>
+        </div>
+
+        <!-- 面板6：三类模式速查 -->
+        <div class="panel">
+            <div class="panel-header">三类高胜率模式</div>
+            <div style="font-size:10px;">
+                <strong>① 弱转强反包：</strong>昨烂板+今竞价低开拉红→半仓试；不封即走<br>
+                <strong>② 板块成建制：</strong>≥3只涨停+高标带队→竞价确认；高标断板全清<br>
+                <strong>③ 产业资本催化：</strong>股权/大基金/定点→首板打板；2-3板后分批止盈
+            </div>
+        </div>
+
+        <!-- 面板7：高危信号 -->
+        <div class="panel" style="border-color: #cf222e;">
+            <div class="panel-header" style="border-bottom-color: #cf222e;">高危信号（出现即走）</div>
+            <div style="font-size:10px;">
+                <span class="red">■</span> 涨停被砸+封单萎缩 &nbsp;
+                <span class="red">■</span> 同梯队集体断板<br>
+                <span class="red">■</span> 大盘跳水翻绿 &nbsp;
+                <span class="red">■</span> 盘中异动公告<br>
+                <span class="red">■</span> 龙虎榜一日游
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
