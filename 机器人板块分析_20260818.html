@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股机器人板块分析 — 2026-08-18</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .stock-item { display:inline-block; background:rgba(48,54,61,0.3); border-radius:6px; padding:6px 12px; margin:4px; border-left:3px solid var(--border); font-size:12px; }
+        .stock-item .code { color:var(--muted); margin-right:6px; }
+        .stock-item.pos { border-left-color:var(--green); }
+        .stock-item.neg { border-left-color:var(--red); }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px){ table { font-size:12px; } }
+    </style>
+</head>
+<body>
+
+<h1>A股机器人板块深度分析 — 2026年8月18日</h1>
+<p class="subtitle">产业链分支全景 · 数据来源：东方财富实时行情(截至8/18午间)、证券时报/数据宝/公司公告</p>
+
+<!-- 核心摘要 -->
+<div class="summary">
+    <strong>一句话：人形机器人处于"量产元年+催化密集"窗口——明日(8/19)宇树科技科创板上市(市值约610亿)、8/19-23世界机器人大会、8/22世界人形机器人运动会，上半年全球出货1.91万台(+272%)，特斯拉Optimus远期产能目标上调10倍至1000万台/年。8月以来板块平均涨10.99%，主力资金8/17单日净流入148亿。今日板块温和分化：绿的谐波+4.84%、中大力德+6.24%领涨，拓斯达-3.06%回调，资金主攻农业暂分流。核心卡点环节：谐波减速器(绿的谐波)、丝杠(北特/贝斯特/五洲新春)、执行器总成(三花/拓普)、六维力矩传感(柯力)。</strong>
+</div>
+
+<!-- 一、超级周期定位 -->
+<h2>一、超级周期定位（终端锁定）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>数据</th><th>含义</th></tr>
+        <tr><td>全球出货</td><td class="up">2026H1 人形机器人出货 1.91 万台，同比 +272%</td><td>工业/商用占70%+，从"展会演示"走向"产线生产力"</td></tr>
+        <tr><td>市场规模</td><td>2026年 230 亿 → 2030年 2776 亿（东吴证券）</td><td>2026-2030 CAGR 86.4%</td></tr>
+        <tr><td>特斯拉 Optimus</td><td>Gen3 预计 2026年 7-8 月启动量产</td><td>远期产能目标修正为 1000 万台/年（原 100 万的 10 倍）</td></tr>
+        <tr><td>宇树科技</td><td class="badge badge-red">8/19 科创板上市</td><td>发行价 150.80 元，PE 219 倍，上市市值约 610 亿</td></tr>
+        <tr><td>产业事件</td><td>8/17 宇树"超人"原地跳高2米破纪录；8/19-23 世界机器人大会；8/22 世界人形机器人运动会(666支/2056台)</td><td>8月催化最密集窗口</td></tr>
+        <tr><td>工业本体涨价</td><td>埃夫特打响2026提价第一枪(5-8%)</td><td>行业从"卷价格"转向"保利润"，估值体系重塑</td></tr>
+    </table>
+    <div class="green-note"><strong>周期判断：处于"主题炒作→订单落地→业绩兑现"的转折期。</strong>2026 是量产元年，2027-28 为产能爬坡关键年——符合 Serenity 框架"未来爆发营收"特征。</div>
+</div>
+
+<!-- 二、产业链供应链栈 -->
+<h2>二、产业链分支全景（按部件拆解）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>分支</th><th>环节</th><th>卡点强度</th><th>代表标的（今日涨跌）</th></tr>
+
+        <tr><td rowspan="3" style="vertical-align:middle;"><strong>① 减速器<br>(关节核心)</strong></td>
+            <td>谐波减速器</td><td class="badge badge-red">极高</td>
+            <td><span class="stock-item pos"><span class="code">688017</span>绿的谐波 <span class="up">+4.84%</span></span><br>谐波龙头，特斯拉/宇树核心供应商，技术壁垒最高环节</td></tr>
+        <tr><td>RV减速器</td><td class="badge badge-red">高</td>
+            <td><span class="stock-item pos"><span class="code">002472</span>双环传动 <span class="up">+1.47%</span></span> RV+谐波双布局，进入特斯拉/比亚迪链</td></tr>
+        <tr><td>行星减速器</td><td class="badge badge-blue">中高</td>
+            <td><span class="stock-item pos"><span class="code">002896</span>中大力德 <span class="up">+6.24%</span></span>（与宇树合作）· 003021 兆威机电 · 002527 新时达 · 昊志机电 <span class="up">+2.76%</span></td></tr>
+
+        <tr><td rowspan="3" style="vertical-align:middle;"><strong>② 电机与驱动<br>(动力核心)</strong></td>
+            <td>伺服电机/系统</td><td class="badge badge-blue">中高</td>
+            <td><span class="stock-item"><span class="code">300124</span>汇川技术 <span class="down">-0.92%</span></span> 工业自动化龙头 · 688160 步科股份 <span class="up">+4.57%</span>（机器人营收占比>50%）</td></tr>
+        <tr><td>空心杯电机<br>(灵巧手核心)</td><td class="badge badge-blue">中高</td>
+            <td><span class="stock-item pos"><span class="code">603728</span>鸣志电器 <span class="up">+0.28%</span></span> 空心杯龙头 · 300660 江苏雷利 <span class="up">+1.21%</span> · 禾川科技</td></tr>
+        <tr><td>无框力矩电机</td><td class="badge badge-blue">中高</td>
+            <td>步科股份 · 昊志机电 · 688348 伟创电气 · 雷赛智能</td></tr>
+
+        <tr><td rowspan="3" style="vertical-align:middle;"><strong>③ 丝杠与执行器<br>(增量最纯环节)</strong></td>
+            <td>行星滚柱丝杠</td><td class="badge badge-red">极高</td>
+            <td><span class="stock-item"><span class="code">603009</span>北特科技 <span class="down">-0.83%</span></span>（底盘转型丝杠，预期差大）· 300580 贝斯特 <span class="down">-1.58%</span> · 603667 五洲新春 <span class="down">-0.53%</span> · 601100 恒立液压 <span class="down">-1.40%</span> · 603119 浙江荣泰</td></tr>
+        <tr><td>执行器总成<br>(Tier1)</td><td class="badge badge-red">极高</td>
+            <td><span class="stock-item pos"><span class="code">002050</span>三花智控 <span class="up">+0.28%</span></span> 旋转执行器+热管理双龙头 · 601689 拓普集团 <span class="up">+0.04%</span> 绑定特斯拉/宇树，量产确定性最高</td></tr>
+        <tr><td>关节模组</td><td class="badge badge-blue">中高</td>
+            <td>兆威机电（微型传动+灵巧手模组）· 江苏雷利</td></tr>
+
+        <tr><td rowspan="3" style="vertical-align:middle;"><strong>④ 传感器<br>(感知层)</strong></td>
+            <td>六维力矩传感</td><td class="badge badge-red">高</td>
+            <td><span class="stock-item"><span class="code">603662</span>柯力传感 <span class="down">-0.51%</span></span> · 东华测试</td></tr>
+        <tr><td>触觉传感器</td><td class="badge badge-orange">中</td>
+            <td>汉威科技</td></tr>
+        <tr><td>3D视觉</td><td class="badge badge-orange">中</td>
+            <td><span class="stock-item pos"><span class="code">688322</span>奥比中光 <span class="up">+1.81%</span></span></td></tr>
+
+        <tr><td rowspan="2" style="vertical-align:middle;"><strong>⑤ 本体</strong></td>
+            <td>工业机器人本体</td><td class="badge badge-orange">中</td>
+            <td><span class="stock-item pos"><span class="code">002747</span>埃斯顿 <span class="up">+2.03%</span></span> 全链条龙头，H1净利预增21倍 · 688165 埃夫特(提价) · 300024 机器人 <span class="up">+3.51%</span></td></tr>
+        <tr><td>整机/卖铲人</td><td class="badge badge-orange">中</td>
+            <td><span class="stock-item neg"><span class="code">300607</span>拓斯达 <span class="down">-3.06%</span></span> 五轴机床市占率>30%，H1净利预增213-300%</td></tr>
+    </table>
+</div>
+
+<!-- 三、卡点环节分析 -->
+<h2>三、Serenity 卡点定位（哪些环节最值钱）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>环节</th><th>卡点逻辑</th><th>对标判据</th><th>评价</th></tr>
+        <tr><td class="up"><strong>谐波减速器</strong></td><td>人形机器人单机需 12-14 个，价值量最大；绿的谐波国产唯一批量量产，全球寡头(哈默纳科)</td><td>判据1垄断 + 判据4多客户 + 判据13极少数玩家</td><td class="up">确定性最高的卡点环节</td></tr>
+        <tr><td class="up"><strong>行星滚柱丝杠</strong></td><td>线性执行器核心，加工壁垒极高(磨床依赖进口)，国产化率&lt;20%</td><td>判据15国产替代紧迫度 + 判据8供需缺口</td><td class="up">国产替代最强主线，2027-28放量</td></tr>
+        <tr><td class="up"><strong>执行器总成(Tier1)</strong></td><td>三花/拓普绑定头部主机厂，价值量占比最高(单机>50%)</td><td>判据9大客户全包 + 判据3价值量大</td><td class="up">量产确定性最高，但估值已高</td></tr>
+        <tr><td class="badge badge-blue">空心杯电机</td><td>灵巧手驱动核心，鸣志技术对标Maxon</td><td>判据2小市值 vs TAM</td><td>灵巧手放量后弹性大</td></tr>
+        <tr><td class="badge badge-blue">六维力矩传感</td><td>力控刚需，柯力为A股稀缺标的</td><td>判据5认证周期长</td><td>渗透率提升路径清晰</td></tr>
+        <tr><td class="badge badge-orange">本体/集成</td><td>竞争激烈、毛利率低</td><td>—</td><td class="down">非卡点，弹性靠业绩爆发(埃斯顿/拓斯达)</td></tr>
+    </table>
+</div>
+
+<!-- 四、资金与情绪 -->
+<h2>四、资金面与市场情绪</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数据</th></tr>
+        <tr><td>8月板块表现</td><td class="up">人形机器人概念股 8 月以来平均 +10.99%，胜宏科技/江苏北人/维峰电子涨超 40%</td></tr>
+        <tr><td>8/17 主力资金</td><td class="up">人形机器人概念净流入 148 亿+；三花智控/绿的谐波/埃斯顿/双环传动超 10 亿；卧龙电驱/中大力德超 6 亿；宁德时代 8.13 亿居首（已实现量产线常态化部署）</td></tr>
+        <tr><td>今日(8/18)分化</td><td>绿的谐波+4.84% / 中大力德+6.24% / 步科+4.57% 领涨；拓斯达-3.06% / 贝斯特-1.58% / 恒立液压-1.40% 回调——资金今日主攻农业，机器人暂作轮动休整</td></tr>
+        <tr><td>业绩兑现</td><td>40 余只概念股披露中报，10 只净利翻倍：埃斯顿 +2144%~2593%（预增最高）、拓斯达 +213%~300%、昊志机电、凯尔达</td></tr>
+        <tr><td>机构关注</td><td>8 月九号公司(267家)/丰立智能/步科股份获密集调研</td></tr>
+    </table>
+</div>
+
+<!-- 五、明日与近期催化 -->
+<h2>五、近期催化日历</h2>
+
+<div class="card">
+    <table>
+        <tr><th>日期</th><th>事件</th><th>影响</th></tr>
+        <tr><td class="up"><strong>8/19</strong></td><td><strong>宇树科技科创板上市</strong>（市值约610亿）</td><td>最强催化！人形机器人第一股，上市首日可能带动板块情绪冲高（对标宁德/寒武纪效应）</td></tr>
+        <tr><td>8/19-23</td><td>2026 世界机器人大会（北京）</td><td>300+企业参展，宇树王兴兴主论坛演讲</td></tr>
+        <tr><td>8/22</td><td>第二届世界人形机器人运动会（冰丝带）</td><td>666 支队伍 / 2056 台机器人，规模同比翻番</td></tr>
+        <tr><td>Q3-Q4</td><td>特斯拉 Optimus Gen3 量产爬坡</td><td>全球产业链共振</td></tr>
+        <tr><td>8月底</td><td>中报披露收官</td><td>业绩兑现验证（埃斯顿/拓斯达等）</td></tr>
+    </table>
+</div>
+
+<!-- 六、风险 -->
+<h2>六、风险提示</h2>
+
+<div class="card">
+    <div class="alert">
+        <strong>① 宇树上市"利好兑现"风险</strong> — 板块 8 月已涨 10.99%、部分个股涨超 40%，上市首日若冲高回落易形成"见光死"，参照高位题材股惯例，情绪高点往往伴随兑现潮。<br>
+        <strong>② 估值已高</strong> — 中大力德 PE 355 倍、宇树 PE 219 倍、绿的谐波高位，板块整体透支 2027 年业绩；今日农业吸金亦显示板块短期获利盘重。<br>
+        <strong>③ 量产不及预期</strong> — 人形机器人仍处小批量阶段，2026 出货 1.91 万台 vs 2030 年 2776 亿市场需持续兑现，任一环节延期(特斯拉Optimus推迟/宇树爬坡慢)即杀估值。<br>
+        <strong>④ 涨跌结构分化</strong> — 纯题材跟风股(如蹭概念小盘)与核心卡点股差异巨大，需甄别；拓斯达等 H1 大涨股已开始回调。<br>
+        <strong>⑤ 情绪节奏</strong> — 今日(8/18)农业主线爆发、机器人暂休整，短期追高需等宇树上市落地后再定，防"双主线切换"踏空。
+    </div>
+    <div class="green-note">
+        <strong>策略建议：</strong>① 核心仓位聚焦卡点环节（谐波/丝杠/执行器总成）龙头，回调低吸而非追高；② 8/19 宇树上市后观察首日表现定情绪基调——高开强势则板块二波可期，冲高回落则等第二只脚；③ 甄别业绩真兑现（埃斯顿/拓斯达类 H1 翻倍）与纯题材股；④ 控制仓位，机器人板块目前是"产业趋势对、但短期位置高"的典型，节奏重于方向。
+    </div>
+</div>
+
+<div class="footer">Serenity 分析引擎 · A股机器人板块分析 · 2026-08-18 · 数据截至午间 · 本报告仅供研究参考，不构成投资建议</div>
+
+</body>
+</html>
