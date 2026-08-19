@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首板分析暨二板晋级前瞻 — 2026-08-19</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:1000px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-gray { background:rgba(139,148,158,0.2); color:var(--muted); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:22px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .tag { font-size:11px; padding:1px 6px; border-radius:3px; margin-right:4px; }
+        .tag-sector { background:rgba(88,166,255,0.15); color:var(--blue); }
+        .tag-reason { background:rgba(210,153,29,0.15); color:var(--orange); }
+        .highlight { background:rgba(233,69,96,0.15); border-radius:4px; padding:2px 6px; color:var(--accent); }
+        .tier-high { border-left:4px solid var(--green); }
+        .tier-mid { border-left:4px solid var(--orange); }
+        .tier-low { border-left:4px solid var(--red); }
+        .tier-elim { border-left:4px solid var(--muted); opacity:0.6; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+        .candidate-row { display:flex; align-items:flex-start; gap:12px; padding:12px 16px; margin:6px 0; background:var(--card); border:1px solid var(--border); border-radius:8px; }
+        .candidate-info { flex:1; }
+        .candidate-name { font-size:15px; font-weight:600; }
+        .candidate-detail { font-size:12px; color:var(--muted); margin-top:2px; }
+        .candidate-score { min-width:80px; text-align:center; }
+        .score-num { font-size:20px; font-weight:700; }
+    </style>
+</head>
+<body>
+
+<h1>首板分析暨二板晋级前瞻 — 2026-08-19</h1>
+<p class="subtitle">今日涨停36家，扣除7家连板股，共29家首板。L8退潮确认期（温度21分），首板晋级二板成功率极低，谨慎参与。</p>
+
+<!-- 总览 -->
+<div class="summary">
+    <strong>环境总览</strong>
+    <div class="grid-4" style="margin-top:10px;">
+        <div class="stat"><div class="num">29</div><div class="label">首板家数</div></div>
+        <div class="stat"><div class="num">21/100</div><div class="label">L8温度计</div></div>
+        <div class="stat"><div class="num">3板</div><div class="label">最高标</div></div>
+        <div class="stat"><div class="num">8.9%</div><div class="label">晋级率</div></div>
+    </div>
+    <div class="alert" style="margin-top:10px;">
+        <strong>L8判定：退潮确认期，绝对空仓观望。</strong> 首板晋级二板属于"退潮日首板"范畴，历史验证成功率约10-15%。明日竞价总开关已关闭（高标跌停→市场级漏斗一关闭），<span class="highlight">不建议参与任何首板晋级博弈</span>。
+    </div>
+</div>
+
+<!-- 板块分类 -->
+<h2>① 首板板块分布与涨停原因</h2>
+
+<div class="card">
+    <h3 style="margin-top:0;">🏠 家居/厨卫电器（5家）</h3>
+    <p style="font-size:12px;color:var(--muted);">涨停原因：<span class="tag tag-reason">公积金条例大修</span> 政策预期驱动家居消费，盘前纪要明确利好方向</p>
+    <table>
+        <tr><th>股票</th><th>现价</th><th>涨幅</th><th>换手</th><th>成交额</th><th>封板时间</th><th>炸板</th><th>市值</th></tr>
+        <tr><td><strong>亿田智能</strong></td><td>26.66</td><td class="up">+19.98%</td><td class="down">19.4%</td><td>8.2亿</td><td>13:07:54</td><td>0次</td><td>48.9亿</td></tr>
+        <tr><td><strong>好太太</strong></td><td>14.66</td><td class="up">+9.98%</td><td>2.2%</td><td>1.3亿</td><td>9:36:16</td><td>2次</td><td>59.0亿</td></tr>
+        <tr><td><strong>志邦家居</strong></td><td>6.57</td><td class="up">+10.05%</td><td>3.1%</td><td>0.9亿</td><td>9:32:38</td><td>1次</td><td>28.5亿</td></tr>
+        <tr><td><strong>日出东方</strong></td><td>7.63</td><td class="up">+9.94%</td><td>4.9%</td><td>3.0亿</td><td>11:01:13</td><td>0次</td><td>62.0亿</td></tr>
+        <tr><td><strong>万和电气</strong></td><td>7.57</td><td class="up">+10.03%</td><td>5.3%</td><td>2.5亿</td><td>13:51:57</td><td>0次</td><td>56.3亿</td></tr>
+    </table>
+    <div class="green-note">板块优势：政策催化明确（公积金条例大修），同方向5家涨停形成板块效应。但亿田智能(Serenity 1/15)基本面极差，日出东方/万和电气为下午封板，封板质量一般。</div>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">⛏️ 焦炭/煤炭/能源（5家）</h3>
+    <p style="font-size:12px;color:var(--muted);">涨停原因：<span class="tag tag-reason">焦炭涨价周期</span> 焦化行业开工率走低，焦炭价格连续提涨；能源板块防御性抱团</p>
+    <table>
+        <tr><th>股票</th><th>现价</th><th>涨幅</th><th>换手</th><th>成交额</th><th>封板时间</th><th>炸板</th><th>市值</th></tr>
+        <tr><td><strong>陕西黑猫</strong></td><td>3.71</td><td class="up">+10.09%</td><td>7.7%</td><td>5.7亿</td><td>10:15:31</td><td>1次</td><td>75.8亿</td></tr>
+        <tr><td><strong>美锦能源</strong></td><td>3.89</td><td class="up">+9.89%</td><td>4.2%</td><td>7.1亿</td><td>9:35:36</td><td>2次</td><td>171.0亿</td></tr>
+        <tr><td><strong>宝泰隆</strong></td><td>3.04</td><td class="up">+10.14%</td><td>3.8%</td><td>2.2亿</td><td>9:30:02</td><td>0次</td><td>58.2亿</td></tr>
+        <tr><td><strong>大有能源</strong></td><td>6.82</td><td class="up">+10.00%</td><td>5.2%</td><td>8.3亿</td><td>9:48:29</td><td>0次</td><td>163.1亿</td></tr>
+        <tr><td><strong>华锦股份</strong></td><td>5.07</td><td class="up">+9.98%</td><td>5.1%</td><td>4.0亿</td><td>13:05:51</td><td>1次</td><td>81.1亿</td></tr>
+    </table>
+    <div class="green-note">板块优势：焦炭板块今日涨幅+6.53%领涨市场，防御属性强（退潮日资金避风港）。宝泰隆/大有能源封板质量好（早盘封板+0炸板）。但美锦能源171亿市值偏大，持续连板需巨量资金。</div>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">💊 化学制药/中药（4家）</h3>
+    <p style="font-size:12px;color:var(--muted);">涨停原因：<span class="tag tag-reason">防御轮动</span> 退潮日医药板块作为防御配置，部分个股叠加超跌反弹</p>
+    <table>
+        <tr><th>股票</th><th>现价</th><th>涨幅</th><th>换手</th><th>成交额</th><th>封板时间</th><th>炸板</th><th>市值</th></tr>
+        <tr><td><strong>亨迪药业(20cm)</strong></td><td>14.54</td><td class="up">+19.97%</td><td>13.7%</td><td>8.0亿</td><td>9:34:36</td><td>4次</td><td>60.7亿</td></tr>
+        <tr><td><strong>西点药业(20cm)</strong></td><td>33.38</td><td class="up">+19.99%</td><td class="red"><strong>28.2%</strong></td><td>5.3亿</td><td>9:35:42</td><td>1次(回封)</td><td>25.5亿</td></tr>
+        <tr><td><strong>汉森制药</strong></td><td>8.42</td><td class="up">+10.07%</td><td>6.4%</td><td>2.6亿</td><td>9:33:42</td><td>1次</td><td>41.9亿</td></tr>
+        <tr><td><strong>哈三联</strong></td><td>15.63</td><td class="up">+9.99%</td><td>12.9%</td><td>3.2亿</td><td>9:31:27</td><td>1次</td><td>25.2亿</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;"><strong>西点药业换手28.2% > 20% → L8强制剔除</strong>。亨迪药业炸板4次，封板质量差。医药板块核心里今日化学制药多股炸板（神奇/丰原/亨迪），防御轮动持续性存疑。</div>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">🏢 房地产/物业（3家）</h3>
+    <p style="font-size:12px;color:var(--muted);">涨停原因：<span class="tag tag-reason">政策预期</span> 公积金条例+房地产松绑预期</p>
+    <table>
+        <tr><th>股票</th><th>现价</th><th>涨幅</th><th>换手</th><th>成交额</th><th>封板时间</th><th>炸板</th><th>市值</th></tr>
+        <tr><td><strong>南都物业</strong></td><td>11.88</td><td class="up">+10.00%</td><td>4.0%</td><td>0.9亿</td><td>9:30:14</td><td>1次</td><td>22.3亿</td></tr>
+        <tr><td><strong>中交发展</strong></td><td>4.90</td><td class="up">+10.11%</td><td>4.4%</td><td>1.6亿</td><td>9:33:48</td><td>0次</td><td>36.6亿</td></tr>
+        <tr><td><strong>我爱我家</strong></td><td>2.38</td><td class="up">+10.19%</td><td>18.3%</td><td>10.1亿</td><td>9:33:27</td><td>4次</td><td>55.7亿</td></tr>
+    </table>
+    <div class="green-note">中交发展封板质量最优（0炸板+早盘封板），南都物业小市值+低换手为加分项。我爱我家成交10亿但换手18.3%偏高，炸板4次，筹码松动。</div>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">其他首板（12家）</h3>
+    <table>
+        <tr><th>股票</th><th>板块</th><th>涨停原因</th><th>换手</th><th>封板</th><th>炸板</th></tr>
+        <tr><td><strong>斯达半导</strong></td><td>半导体</td><td><span class="tag tag-reason">半导体反弹</span></td><td>8.8%</td><td>9:53:13</td><td>2次</td></tr>
+        <tr><td><strong>尚太科技</strong></td><td>电池</td><td><span class="tag tag-reason">锂电池反弹</span></td><td>6.2%</td><td>9:31:21</td><td><span class="down">10次</span></td></tr>
+        <tr><td><strong>金利华电(20cm)</strong></td><td>电网设备</td><td><span class="tag tag-reason">电网资金抱团</span></td><td>16.5%</td><td>9:59:27</td><td>1次</td></tr>
+        <tr><td><strong>百合股份</strong></td><td>食品加工</td><td><span class="tag tag-reason">食品防御</span></td><td>11.5%</td><td>9:32:33</td><td>0次</td></tr>
+        <tr><td><strong>永顺泰</strong></td><td>农产品加工</td><td><span class="tag tag-reason">农业板块联动</span></td><td>6.1%</td><td>9:45:15</td><td>7次</td></tr>
+        <tr><td><strong>南京港</strong></td><td>航运港口</td><td><span class="tag tag-reason">航运</span></td><td>6.5%</td><td>11:22:09</td><td>3次</td></tr>
+        <tr><td><strong>金能科技</strong></td><td>化学原料</td><td><span class="tag tag-reason">化工涨价</span></td><td>4.5%</td><td>14:12:02</td><td>0次</td></tr>
+        <tr><td><strong>中毅达</strong></td><td>化学原料</td><td><span class="tag tag-reason">化工涨价</span></td><td>6.7%</td><td>10:24:35</td><td>2次</td></tr>
+        <tr><td><strong>江顺科技</strong></td><td>专用设备</td><td><span class="tag tag-reason">次新+设备</span></td><td>13.5%</td><td>9:54:45</td><td>2次</td></tr>
+        <tr><td><strong>速达股份</strong></td><td>专用设备</td><td><span class="tag tag-reason">次新+设备</span></td><td>5.5%</td><td>9:42:27</td><td>0次</td></tr>
+        <tr><td><strong>鲁信创投</strong></td><td>通用设备</td><td><span class="tag tag-reason">创投/设备</span></td><td>6.0%</td><td>9:25:02</td><td>1次</td></tr>
+        <tr><td><strong>罗普斯金</strong></td><td>装修建材</td><td><span class="tag tag-reason">建材联动</span></td><td>2.1%</td><td>9:25:00</td><td>0次</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;">尚太科技炸板10次（封板质量极差）、永顺泰炸板7次、南京港下午封板——均属低质量首板，基本排除晋级可能。</div>
+</div>
+
+<!-- 晋级二板前瞻 -->
+<h2>② 明日晋级二板前瞻（L8六维评分）</h2>
+
+<div class="card">
+    <p style="margin-bottom:10px;">L8退潮确认期，首板晋级二板属于高风险操作。以下按<b>高/中/低/剔除</b>四级分级，<span class="highlight">仅用于观测验证，不建议实际参与</span>。</p>
+    <table>
+        <tr><th>分级</th><th>标准</th><th>家数</th></tr>
+        <tr><td><span class="badge badge-green">高概率</span></td><td>板块位置前中段+换手5-15%+早盘封板+0-1次炸板+防御属性+催化明确</td><td>0家</td></tr>
+        <tr><td><span class="badge badge-orange">中概率</span></td><td>满足以上4项以上，但有1-2项瑕疵</td><td>5家</td></tr>
+        <tr><td><span class="badge badge-blue">低概率</span></td><td>满足2-3项，有较重瑕疵</td><td>10家</td></tr>
+        <tr><td><span class="badge badge-gray">剔除</span></td><td>换手>20% / 炸板>5次 / 下午封板 / 基本面极差</td><td>14家</td></tr>
+    </table>
+</div>
+
+<!-- 中概率候选 -->
+<div class="card" style="border-top:3px solid var(--orange);">
+    <h3 style="margin-top:0;">中概率（5家）</h3>
+
+    <div class="candidate-row tier-mid">
+        <div class="candidate-info">
+            <div class="candidate-name">宝泰隆 <span class="tag tag-sector">焦炭Ⅱ</span></div>
+            <div class="candidate-detail">3.04元 · 换手3.8% · 成交2.2亿 · 封板9:30:02 · 炸板0 · 市值58.2亿</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">涨停原因：焦炭涨价。早盘秒板+0炸板+低换手3.8%，封板质量最优。焦炭板块今日+6.53%领涨，防御属性强。</div>
+        </div>
+        <div class="candidate-score">
+            <div class="score-num" style="color:var(--orange);">52/100</div>
+            <div style="font-size:10px;color:var(--muted);">板块位置25/30·换手15/20·板块属性12/15·封板13/15·催化6/10·赔率4/10</div>
+        </div>
+    </div>
+
+    <div class="candidate-row tier-mid">
+        <div class="candidate-info">
+            <div class="candidate-name">中交发展 <span class="tag tag-sector">房地产服</span></div>
+            <div class="candidate-detail">4.90元 · 换手4.4% · 成交1.6亿 · 封板9:33:48 · 炸板0 · 市值36.6亿</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">涨停原因：房地产政策预期。早盘封板+0炸板+低换手4.4%+小市值36.6亿。但房地产板块仅3家涨停，板块效应偏弱。</div>
+        </div>
+        <div class="candidate-score">
+            <div class="score-num" style="color:var(--orange);">48/100</div>
+            <div style="font-size:10px;color:var(--muted);">板块位置18/30·换手17/20·板块属性10/15·封板13/15·催化6/10·赔率5/10</div>
+        </div>
+    </div>
+
+    <div class="candidate-row tier-mid">
+        <div class="candidate-info">
+            <div class="candidate-name">南都物业 <span class="tag tag-sector">房地产服</span></div>
+            <div class="candidate-detail">11.88元 · 换手4.0% · 成交0.9亿 · 封板9:30:14 · 炸板1次 · 市值22.3亿</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">涨停原因：物业政策预期。小市值22.3亿+早盘封板+低换手4.0%，迷你盘优势。但炸板1次扣分，板块效应弱。</div>
+        </div>
+        <div class="candidate-score">
+            <div class="score-num" style="color:var(--orange);">46/100</div>
+            <div style="font-size:10px;color:var(--muted);">板块位置18/30·换手17/20·板块属性10/15·封板10/15·催化6/10·赔率6/10</div>
+        </div>
+    </div>
+
+    <div class="candidate-row tier-mid">
+        <div class="candidate-info">
+            <div class="candidate-name">罗普斯金 <span class="tag tag-sector">装修建材</span></div>
+            <div class="candidate-detail">6.34元 · 换手2.1% · 成交0.9亿 · 封板9:25:00 · 炸板0 · 市值42.3亿</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">涨停原因：家居/建材联动（公积金政策）。竞价即封板+0炸板+低换手2.1%，封板质量极佳。但板块仅1家涨停，独立行情。</div>
+        </div>
+        <div class="candidate-score">
+            <div class="score-num" style="color:var(--orange);">44/100</div>
+            <div style="font-size:10px;color:var(--muted);">板块位置12/30·换手18/20·板块属性10/15·封板15/15·催化6/10·赔率4/10</div>
+        </div>
+    </div>
+
+    <div class="candidate-row tier-mid">
+        <div class="candidate-info">
+            <div class="candidate-name">好太太 <span class="tag tag-sector">家居用品</span></div>
+            <div class="candidate-detail">14.66元 · 换手2.2% · 成交1.3亿 · 封板9:36:16 · 炸板2次 · 市值59.0亿</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">涨停原因：公积金政策驱动家居消费。低换手2.2%+早盘封板，家居板块5家涨停形成板块效应。但炸板2次，封板质量一般。</div>
+        </div>
+        <div class="candidate-score">
+            <div class="score-num" style="color:var(--orange);">42/100</div>
+            <div style="font-size:10px;color:var(--muted);">板块位置22/30·换手18/20·板块属性8/15·封板8/15·催化8/10·赔率3/10</div>
+        </div>
+    </div>
+</div>
+
+<!-- 低概率候选 -->
+<div class="card" style="border-top:3px solid var(--blue);">
+    <h3 style="margin-top:0;">低概率（10家）</h3>
+    <table>
+        <tr><th>股票</th><th>板块</th><th>核心瑕疵</th><th>评分</th></tr>
+        <tr><td>志邦家居</td><td>家居用品</td><td>炸板1次，成交0.9亿偏低，封板后无换手</td><td>38/100</td></tr>
+        <tr><td>百合股份</td><td>食品加工</td><td>zttj.ct=3（历史有3连板），潜伏盘重，换手11.5%偏高</td><td>36/100</td></tr>
+        <tr><td>日出东方</td><td>厨卫电器</td><td>上午11:01封板偏晚，市值62亿偏大</td><td>34/100</td></tr>
+        <tr><td>大有能源</td><td>煤炭开采</td><td>市值163亿偏大，煤炭板块今日涨幅不高(+1.66%)</td><td>32/100</td></tr>
+        <tr><td>汉森制药</td><td>中药Ⅱ</td><td>医药板块今日炸板率极高，板块持续性存疑</td><td>30/100</td></tr>
+        <tr><td>哈三联</td><td>化学制药</td><td>换手12.9%偏高，医药板块溃散</td><td>28/100</td></tr>
+        <tr><td>金利华电(20cm)</td><td>电网设备</td><td>20cm首板次日溢价率低，换手16.5%偏高</td><td>26/100</td></tr>
+        <tr><td>鲁信创投</td><td>通用设备</td><td>涨停原因不明，通用设备板块跌幅-7.73%</td><td>24/100</td></tr>
+        <tr><td>斯达半导</td><td>半导体</td><td>半导体板块-9.27%，逆势涨停难持续</td><td>22/100</td></tr>
+        <tr><td>速达股份</td><td>专用设备</td><td>成交0.8亿极低，无人问津，炸板0但无换手</td><td>20/100</td></tr>
+    </table>
+</div>
+
+<!-- 剔除名单 -->
+<div class="card" style="border-top:3px solid var(--muted);">
+    <h3 style="margin-top:0;">强制剔除（14家）</h3>
+    <div class="alert" style="margin:0;">
+        <strong>剔除原因分类：</strong><br>
+        <span class="badge badge-red">换手>20%</span> 西点药业(28.2%)<br>
+        <span class="badge badge-red">炸板>5次</span> 尚太科技(10次)、永顺泰(7次)<br>
+        <span class="badge badge-red">下午封板</span> 南京港(11:22)、陕西黑猫(10:15偏晚)、金能科技(14:12)、华锦股份(13:05)、万和电气(13:51)、亿田智能(13:07)<br>
+        <span class="badge badge-red">基本面极差</span> 亿田智能(Serenity 1/15 连续亏损+负毛利率)<br>
+        <span class="badge badge-red">换手>15%</span> 我爱我家(18.3%)、金利华电(16.5%)<br>
+        <span class="badge badge-red">20cm首板</span> 亨迪药业(炸板4次)、西点药业(换手28.2%)、金利华电(换手16.5%)<br>
+        <span class="badge badge-red">炸板过多</span> 中毅达(2次)、江顺科技(2次)
+    </div>
+</div>
+
+<!-- 情绪总开关判定 -->
+<h2>③ L8 竞价总开关判定</h2>
+<div class="card">
+    <table>
+        <tr><th>漏斗</th><th>检查项</th><th>明日预判</th><th>结论</th></tr>
+        <tr><td><strong>漏斗一</strong><br>市场级</td><td>高标(≥5板)有无跌停</td><td>正裕/爱丽/一鸣/金螳螂/桂发祥全部跌停，明早大概率继续跌停或低开</td><td class="down">关闭<br>→不参与</td></tr>
+        <tr><td rowspan="2"><strong>漏斗二</strong><br>板块级</td><td>龙头竞价</td><td>农业龙头(京粮/金健/红四方)若竞价低开，则板块级关闭</td><td class="down">待竞价确认</td></tr>
+        <tr><td>方向辨识度</td><td>焦炭/家居/房地产三个方向，焦炭板块最强但龙头不明确</td><td class="down">待竞价确认</td></tr>
+        <tr><td rowspan="2"><strong>漏斗三</strong><br>个股级</td><td>高开-2%~+5%</td><td>中概率候选竞价需在-2%~+5%区间</td><td>待竞价确认</td></tr>
+        <tr><td>量比1.5-3倍</td><td>竞价量比达标</td><td>待竞价确认</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;">
+        <strong>综合结论：</strong>L8退潮确认期，温度21分冰点，高标全线跌停 → <span class="highlight">漏斗一已关闭</span>。明日竞价总开关极大概率保持关闭，中概率候选仅供观察，不建议实际参与。
+    </div>
+</div>
+
+<!-- 操作建议 -->
+<h2>④ 操作建议</h2>
+<div class="card">
+    <div class="alert" style="margin:0;">
+        <strong>L8 退潮确认期操作纪律：</strong><br>
+        1. <span class="highlight">绝对空仓</span>，不参与任何首板晋级博弈<br>
+        2. 中概率5只候选仅用于<b>竞价验证</b>（验证首板晋级二板的模式特征），不实际操作<br>
+        3. 若明日竞价出现以下信号，可<b>小幅关注</b>（≤1成仓）：<br>
+        &nbsp;&nbsp;• 上证指数竞价高开>0.5%<br>
+        &nbsp;&nbsp;• 跌停家数竞价<5家<br>
+        &nbsp;&nbsp;• 中概率候选中有个股竞价高开+2%~+5%且量比>1.5<br>
+        &nbsp;&nbsp;• 农业龙头(京粮/金健/红四方)竞价不差<br>
+        4. 以上条件全部满足才考虑轻仓试探，<b>任一条件不满足则放弃</b><br>
+        5. 退潮周期通常持续3-5个交易日，耐心等待温度回升>40分
+    </div>
+</div>
+
+<div class="footer">L8 首板晋级分析框架 · 数据来源：东方财富 · 2026-08-19 收盘 · 仅供研究参考，不构成投资建议</div>
+</body>
+</html>
