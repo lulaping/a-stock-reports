@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板晋级前瞻模板（L8）</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .blue-note { background:rgba(88,166,255,0.08); border-left:3px solid var(--blue); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .filler { color:var(--orange); font-style:italic; }
+        .op-sheet { border:2px solid var(--accent); }
+        .op-row { padding:6px 0; border-bottom:1px dashed var(--border); font-size:13px; }
+        .op-row:last-child { border-bottom:none; }
+        .checkbox { display:inline-block; width:14px; height:14px; border:1px solid var(--muted); border-radius:3px; margin-right:8px; vertical-align:middle; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px){ table { font-size:12px; } }
+    </style>
+</head>
+<body>
+
+<h1>连板晋级前瞻 — 2026年X月X日（周X）</h1>
+<p class="subtitle">按 L8 SOP（情绪总开关→方向→六维打分→候选池→竞价三漏斗→操作单）· 基于 X/X 收盘数据 · 上一日验证：X/X 前瞻 10候选晋级X个（X%）</p>
+
+<div class="summary">
+    <strong>一句话（待填）：</strong>【60-80字概括：明日情绪判定、主攻方向、最高风险点、总仓位】<span class="filler">（按 Step0-3 输出结果合并填写）</span>
+</div>
+
+<!-- ============ STEP 0：情绪总开关（L8 新增·必填） ============ -->
+<h2>一、情绪总开关（Step 0 · 先判能不能做）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>得分</th></tr>
+        <tr><td>涨停家数（30分）</td><td class="filler">[填写当日涨停数]</td><td class="filler">[按规则打分]</td></tr>
+        <tr><td>跌停家数（20分）</td><td class="filler">[填写]</td><td class="filler">[按规则打分]</td></tr>
+        <tr><td>连板晋级率（20分）</td><td class="filler">[填写]</td><td class="filler">[按规则打分]</td></tr>
+        <tr><td>最高标高度（15分）</td><td class="filler">[填写]</td><td class="filler">[按规则打分]</td></tr>
+        <tr><td>炸板率（15分）</td><td class="filler">[填写]</td><td class="filler">[按规则打分]</td></tr>
+        <tr><td><strong>情绪温度合计</strong></td><td><strong>≥80=高潮 / 40-80=正常 / ≤40=冰点</strong></td><td><strong class="filler">[X/100]</strong></td></tr>
+        <tr><td><strong>退潮确认检查</strong></td><td>涨停&lt;60家？高标跌停/低开？</td><td><strong class="filler">[是/否]</strong></td></tr>
+    </table>
+    <div class="alert"><strong>总开关判定（必填）：</strong><span class="filler">[做 / 轻做 / 空仓观望] —— 退潮确认=无条件空仓，候选池作废。</span></div>
+</div>
+
+<!-- ============ STEP 1：主线方向（L8 新增·必填） ============ -->
+<h2>二、主线方向（Step 1 · ≤2 个主攻方向）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>方向</th><th>属性</th><th>板块位置</th><th>代表标的</th><th>参与方式</th></tr>
+        <tr><td class="filler">[方向一：如农业]</td><td class="up">[防御/进攻]</td><td class="filler">[发酵/主升/高潮后期]</td><td class="filler">[龙头+补涨]</td><td class="filler">[低吸/打板/观察]</td></tr>
+        <tr><td class="filler">[方向二：如机器人]</td><td class="filler">[防御/进攻]</td><td class="filler">[预热/发酵]</td><td class="filler">[核心卡点股]</td><td class="filler">[竞价确认后低吸]</td></tr>
+    </table>
+    <div class="blue-note"><strong>方向纪律：</strong>方向命中率（历史数据库）≥60% 的方向才能作为主攻方向；进攻型主线处于高潮后期时强制降级不参与；防御型主线高潮后期可保留参与资格。</div>
+</div>
+
+<!-- ============ STEP 2：六维打分（L8 新增） ============ -->
+<h2>三、候选六维打分（Step 2 · 每票必填）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>维度（权重）</th><th>打分标准</th></tr>
+        <tr><td>板块位置（30%）</td><td>发酵期=3 / 主升初期=3 / 主升后期=2 / 高潮后期≥9家=1 / 退潮=0</td></tr>
+        <tr><td>换手质量（20%）</td><td>3-15% 理想=3；&gt;20% 强制剔除=0；&lt;2% 惜售=2（退潮日失效）</td></tr>
+        <tr><td>板块属性（15%）</td><td>防御型=3 / 中性=2 / 进攻型=1（高潮后期加权）</td></tr>
+        <tr><td>封板质量（15%）</td><td>秒板/一字=3 / 早盘换手板=2 / 尾盘或炸板回封=1</td></tr>
+        <tr><td>产业催化（10%）</td><td>强催化=3 / 中=2 / 无=1</td></tr>
+        <tr><td>赔率 EV（10%）</td><td>EV≥10%=3 / EV 5-10%=2 / EV 0-5%=1 / EV&lt;0=0（一票否决）</td></tr>
+    </table>
+    <div class="green-note"><strong>评级规则：</strong>总分≥85 且环境允许→S级（仅上升期）；70-84→A级；55-69→B级；&lt;55→观察不参与；EV&lt;0 直接剔除。</div>
+</div>
+
+<!-- ============ STEP 3：双向候选池（L8 新增 EV 列） ============ -->
+<h2>四、候选池（Step 3 · A延续 + B切换）</h2>
+
+<div class="card">
+    <h3 style="margin:0 0 8px 0;">A 类延续候选</h3>
+    <table>
+        <tr><th>级别</th><th>标的</th><th>今日/换手</th><th>板块</th><th>晋级逻辑</th><th>Win/Loss/EV</th></tr>
+        <tr><td class="filler">[S级（仅上升期可填）]</td><td class="filler">[代码 名称]</td><td class="filler">[X板 换手Y%]</td><td class="filler">[板块]</td><td class="filler">[2-3句]</td><td class="filler">[+10%/-15%/EV=?%]</td></tr>
+        <tr><td class="filler">[A级]</td><td class="filler">[…]</td><td class="filler">[…]</td><td class="filler">[…]</td><td class="filler">[…]</td><td class="filler">[…/+?%/EV=?%]</td></tr>
+        <tr><td class="filler">[B级]</td><td class="filler">[…]</td><td class="filler">[…]</td><td class="filler">[…]</td><td class="filler">[…]</td><td class="filler">[…/+?%/EV=?%]</td></tr>
+    </table>
+
+    <h3 style="margin:12px 0 8px 0;">B 类切换候选（新催化方向）</h3>
+    <table>
+        <tr><th>方向</th><th>代表标的</th><th>切换催化</th><th>确认信号</th></tr>
+        <tr><td class="filler">[方向]</td><td class="filler">[标的1/标的2]</td><td class="filler">[事件/日期]</td><td class="filler">[龙头竞价高开+板块≥3家高开]</td></tr>
+    </table>
+</div>
+
+<!-- ============ STEP 4：竞价三漏斗（L8 替换并行清单） ============ -->
+<h2>五、竞价三漏斗（Step 4 · 明日 9:25 串行执行）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>漏斗</th><th>检查项</th><th>通过标准</th><th>不过处置</th></tr>
+        <tr><td><strong>① 市场级</strong></td><td>最高标竞价 / 指数竞价</td><td class="filler">[最高标非跌停开盘]</td><td class="down">退潮确认 → 全部放弃，停止检查</td></tr>
+        <tr><td><strong>② 板块级</strong></td><td>板块龙头竞价 / 板块≥3家高开</td><td class="filler">[龙头高开或一字]</td><td class="down">该板块全部放弃</td></tr>
+        <tr><td><strong>③ 个股级</strong></td><td>高开区间 / 量比</td><td>高开 -2%~+5% / 量比 1.5-3倍</td><td class="down">该股放弃（高开&gt;5%=兑现）</td></tr>
+    </table>
+</div>
+
+<!-- ============ STEP 5：操作单（L8 新增·盘前打印执行） ============ -->
+<h2>六、明日操作单（Step 5 · 竞价/盘中逐项打钩）</h2>
+
+<div class="card op-sheet">
+    <div class="op-row"><strong>总仓位：</strong><span class="filler">[按情绪总开关输出，如 0仓/≤2成/≤5成]</span></div>
+    <div class="op-row"><strong>主攻方向：</strong><span class="filler">[方向一] + [方向二]</span></div>
+    <div class="op-row"><strong>一票否决信号：</strong><span class="filler">[如：最高标跌停开盘 / 涨停预期&lt;60家 → 取消全部操作]</span></div>
+    <div class="op-row"><span class="checkbox"></span><strong>标的A（级别）：</strong>竞价高开 <span class="filler">[-2%~+5%]</span>、量比 <span class="filler">[X]</span> 达标 → 买入 <span class="filler">[仓位%]</span></div>
+    <div class="op-row"><span class="checkbox"></span><strong>标的B（级别）：</strong>竞价高开 <span class="filler">[…]</span> 达标 → 低吸 <span class="filler">[仓位%]</span></div>
+    <div class="op-row"><span class="checkbox"></span><strong>标的C（B类切换）：</strong>板块龙头竞价高开确认后低吸 <span class="filler">[仓位%]</span>，开盘不追</div>
+    <div class="op-row"><strong>禁止清单：</strong><span class="filler">[高位妖股名单 / 换手&gt;20%高位股 / 玄学独苗]</span> —— 只观察不参与</div>
+</div>
+
+<!-- ============ STEP 6：风险提示 ============ -->
+<h2>七、风险提示</h2>
+
+<div class="card">
+    <div class="alert">
+        <strong>① 环境风险：</strong><span class="filler">[基于情绪总开关的风险描述]</span><br>
+        <strong>② 方向风险：</strong><span class="filler">[主攻方向的分化/退潮风险]</span><br>
+        <strong>③ 个股风险：</strong><span class="filler">[候选个股的断板/换手/高度风险]</span><br>
+        <strong>④ 数据与规则：</strong>本前瞻基于 L8 方法论（S级环境化/赔率EV/情绪总开关为试验规则，需≥5日验证）；统计样本仅 <span class="filler">[N]</span> 日，后续以验证数据库持续校准。
+    </div>
+</div>
+
+<div class="footer">Serenity 分析引擎 · L8 连板晋级前瞻（情绪总开关+方向+六维打分+竞价三漏斗+操作单）· [日期] · 本报告仅供研究参考，不构成投资建议</div>
+
+</body>
+</html>

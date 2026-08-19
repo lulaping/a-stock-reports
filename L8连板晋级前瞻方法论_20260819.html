@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L8 连板晋级前瞻方法论升级 — 2026-08-19</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:22px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:30px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:18px 0 8px; color:var(--blue); }
+        h4 { font-size:13px; margin:14px 0 6px; }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-purple { background:rgba(191,97,179,0.2); color:#d2a8ff; }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .blue-note { background:rgba(88,166,255,0.08); border-left:3px solid var(--blue); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .flow { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0; }
+        .flow-step { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 14px; font-size:12px; flex:1; min-width:130px; }
+        .flow-step b { display:block; color:#fff; margin-bottom:4px; }
+        .flow-step .step-no { color:var(--accent); font-weight:700; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px){ table { font-size:12px; } }
+    </style>
+</head>
+<body>
+
+<h1>L8 连板晋级前瞻方法论升级</h1>
+<p class="subtitle">基于 8/17、8/18、8/19 三日验证闭环（累计 26 候选）· 2026-08-19 发布 · 替代 L7</p>
+
+<div class="summary">
+    <strong>核心一句话：三日验证暴露 L7 三大系统性缺陷——① S 级连续 8 个候选 0% 命中，分级与命中率严重负相关；② 前瞻只评估"晋级概率"未评估"失败赔率"，数学期望无法衡量；③ 缺少"情绪总开关"，8/19 系统性退潮日（涨停42家/24家跌停/高标全跌停）任何级别候选均失效。L8 以"情绪总开关 → 方向判断 → 六维打分 → 双向候选池（含赔率）→ 竞价三漏斗 → 操作单"重构全流程，并建立规则版本管理与验证数据库，实现可量化、可回测、可沉淀。</strong>
+</div>
+
+<h2>一、三日验证数据全景（L7 失效证据）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>验证日</th><th>S级</th><th>A级</th><th>B级</th><th>核心候选命中</th><th>当日环境</th></tr>
+        <tr><td>8/14前瞻→8/17</td><td class="down">0/3 (0%)</td><td class="up">3/4 (75%)</td><td>—</td><td>—</td><td>高潮153°C</td></tr>
+        <tr><td>8/17前瞻→8/18</td><td class="down">0/3 (0%)</td><td class="up">3/4 (75%)</td><td>1/3 (33%)</td><td>4/10 (40%)</td><td>高潮次日分化</td></tr>
+        <tr><td>8/18前瞻→8/19</td><td class="down">0/2 (0%)</td><td>2/4 (50%)</td><td class="up">2/4 (50%)</td><td>4/10 (40%)</td><td class="down">系统性退潮</td></tr>
+        <tr><td><strong>累计</strong></td><td class="down"><strong>0/8 (0%)</strong></td><td class="up"><strong>8/12 (66.7%)</strong></td><td><strong>3/7 (42.9%)</strong></td><td><strong>8/20 (40%)</strong></td><td>—</td></tr>
+    </table>
+    <div class="alert"><strong>L7 失效的 3 条硬证据：</strong>① <strong>S 级 0/8</strong>——"分级=晋级概率"的假设被数据证伪，S 级实际是"最危险标签"（高位焦点=退潮最先被砸）；② <strong>A 级 66.7% vs S 级 0%</strong>——分级命中率与"级别"完全负相关，说明分级依据（板块成建制/弱转强）恰好命中了高潮陷阱；③ <strong>8/19 环境决定论</strong>——退潮日无论 S/A/B 全部失效，环境对命中的影响（第一天 4/10→退潮日 4/10 但 S 级全灭）远大于个股选择。</div>
+</div>
+
+<h2>二、L8 十大升级</h2>
+
+<h3>P0-1：分级体系重构——S 级"环境化"</h3>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>L7（废除）</th><th>L8（新）</th></tr>
+        <tr><td>S 级定义</td><td>高概率晋级标签（板块成建制+弱转强）</td><td class="down">仅作为"环境标签"：只有情绪上升期（温度40-80°C 且连板晋级率≥40%）才允许存在 S 级</td></tr>
+        <tr><td>S 级授予条件</td><td>满足 2 项形态即可授予</td><td>环境通过总开关 + 主线处于主升初期 + 板块涨停 3-9 家（非高潮后期）</td></tr>
+        <tr><td>A 级定位</td><td>中高概率</td><td class="up">最高参与梯队（历史命中率 66.7%），实际交易主战场</td></tr>
+        <tr><td>B 级定位</td><td>中概率观察</td><td>低位切换方向，仅竞价确认后低吸，不追高</td></tr>
+        <tr><td>退潮日/高潮日</td><td>照常给候选</td><td class="down">不设 S 级；若温度≥80°C 或 ≤40°C，全部候选降一档，且只留 A 级 1-2 个观察</td></tr>
+    </table>
+    <div class="green-note"><strong>设计逻辑：</strong>S 级 0/8 证明"个股形态无法对抗情绪环境"。L8 把 S 级从"个股标签"转为"环境标签"——只在高确定性环境中出现，从源头消灭"S 级=陷阱"。<strong>正裕工业（换手2%惜售）在退潮日竞价直接跌停，就是 S 级环境化最好的注脚。</strong></div>
+</div>
+
+<h3>P0-2：增加"赔率"维度（期望值评估）</h3>
+<div class="card">
+    <table>
+        <tr><th>项目</th><th>说明</th></tr>
+        <tr><td>成功收益（Win）</td><td>晋级成功次日的理论收益：主板涨停 +10%、20cm 涨停 +20%</td></tr>
+        <tr><td>失败亏损（Loss）</td><td>断板/跌停的次日代价：断板 -3%~-5%、跌停 -10% + 次日计提 -5%~-10%</td></tr>
+        <tr><td>期望值公式</td><td>EV = P(晋级) × Win − P(断板) × Loss；EV &gt; 0 才可参与</td></tr>
+        <tr><td>参与门槛</td><td>赔率比（Win:Loss）≥ 2:1 <strong>且</strong> 晋级率 ≥ 50%</td></tr>
+    </table>
+    <div class="alert"><strong>8/19 实例回算：</strong>S 级正裕工业（历史同类晋级率 0%）：EV = 0 × 10% − 100% × 15% = <span class="down">−15%</span>，数学上绝对禁止参与。A 级（历史 66.7%）：EV = 66.7% × 10% − 33.3% × 5% = +5.0%，值得参与。<strong>赔率维度让"该不该做"从感觉变成算术。</strong></div>
+</div>
+
+<h3>P0-3：情绪总开关（第一步，不是第一步之一）</h3>
+<div class="card">
+    <table>
+        <tr><th>温度区间</th><th>定性</th><th>总仓位</th><th>候选策略</th><th>历史依据</th></tr>
+        <tr><td class="down">≥80°C</td><td class="down">高潮</td><td>≤2成 或 空仓</td><td>高潮次日亏钱效应最大，不设 S 级，只观察</td><td>8/17 温度153°C → 8/18 分化</td></tr>
+        <tr><td class="up">40-80°C</td><td class="up">正常</td><td>≤5成</td><td>正常执行 S/A/B 全流程</td><td>—</td></tr>
+        <tr><td class="down">≤40°C</td><td class="down">冰点</td><td>3-5成</td><td>不做高位接力，只做低位首板/趋势低吸</td><td>—</td></tr>
+        <tr><td class="down">退潮确认</td><td class="down">触发即空仓</td><td><strong>0 仓</strong></td><td>涨停 &lt;60 家 + 高标跌停开盘 → 无条件观望</td><td>8/19 涨停42家+爱丽/一鸣跌停</td></tr>
+    </table>
+    <div class="blue-note"><strong>L8 铁律：先过总开关，再谈候选。总开关不过，候选池作废。</strong>情绪温度量化打分表见第五节。8/19 若先执行此开关 → 直接空仓 → 完美规避全部 6 个失败候选（含 S 级 2 个跌停）。</div>
+</div>
+
+<h3>P1-4：竞价确认升级为"三漏斗"（串行，非并行）</h3>
+<div class="card">
+    <div class="flow">
+        <div class="flow-step"><span class="step-no">漏斗一 市场级</span><b>高标竞价 / 指数竞价 / 涨停家数预期</b>高标跌停开盘=退潮确认→<span class="down">全放弃</span></div>
+        <div class="flow-step"><span class="step-no">漏斗二 板块级</span><b>板块龙头竞价 / 板块≥3家高开</b>龙头低开→<span class="down">该板块全部放弃</span></div>
+        <div class="flow-step"><span class="step-no">漏斗三 个股级</span><b>高开-2%~+5% / 量比1.5-3倍</b>超区间→<span class="down">该股放弃</span></div>
+    </div>
+    <div class="green-note"><strong>优先级依据（8/19 验证）：</strong>高标跌停（爱丽/一鸣）触发时，个股高开区间/量比检查全部失去意义——市场级不过，后两级免检。串行漏斗比并行清单更符合实战决策顺序，且减少决策负担。</div>
+</div>
+
+<h3>P1-5：方向命中率单列统计</h3>
+<div class="card">
+    <p>前瞻核心价值是<b>方向判断</b>，个股命中是方向正确的子集。L8 前瞻强制输出"明日主线方向"（≤2 个），验证时单独统计方向命中率。</p>
+    <table>
+        <tr><th>验证日</th><th>方向判断</th><th>方向内候选</th><th>方向命中率</th><th>评价</th></tr>
+        <tr><td>8/19</td><td>农业（B级）</td><td>红四方✓/金健✓/京粮✓/天山✗</td><td class="up">3/4 (75%)</td><td class="orange">方向对了但只给 B 级，权重严重低估</td></tr>
+        <tr><td>8/19</td><td>机器人（B类切换）</td><td>正裕✗</td><td class="down">0/1</td><td>宇树高开但核心跌停，切换失败</td></tr>
+        <tr><td>8/18</td><td>CPO（S级）</td><td>共进✗/华正✗/中瓷✗/旭光✓/中石✓</td><td class="down">2/5 (40%)</td><td>高潮后期方向错误</td></tr>
+    </table>
+    <div class="blue-note"><strong>修正规则：</strong>方向对 + 级别低估（农业 75% 只给 B 级）比方向错更可惜。L8 规定：方向命中率 ≥60% 的方向，次日必须上调一档参与权重（A 级起步），并作为该方向的"主攻方向"标注。</div>
+</div>
+
+<h3>P1-6：板块属性维度（防御/进攻）加入打分</h3>
+<div class="card">
+    <table>
+        <tr><th>属性</th><th>代表板块</th><th>高潮后期表现</th><th>L8 处置</th></tr>
+        <tr><td class="up">防御型</td><td>农业/医药/公用事业/食品</td><td>8/19 农业高潮后期逆势存活（金健/红四方/京粮晋级）</td><td>高潮后期保留 A 级，可参与</td></tr>
+        <tr><td class="down">进攻型</td><td>CPO/半导体/AI/题材</td><td>8/17-8/18 CPO 高潮后期团灭（0/3）</td><td>高潮后期强制降级至 B 级以下</td></tr>
+    </table>
+    <div class="green-note"><strong>8/18 vs 8/19 对比实验：</strong>同样"高潮后期（板块≥9家涨停）"，进攻型 CPO（12家）次日团灭，防御型农业（28家）次日逆势 3 家晋级——<strong>板块属性比板块位置更关键</strong>。六维打分中新增此维度（权重 15%）。</div>
+</div>
+
+<h3>P2-7：验证指标补全（可执行收益/断板亏损）</h3>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>定义</th><th>8/19 示例</th></tr>
+        <tr><td>晋级命中</td><td>是否封板晋级（L7 已有）</td><td>红四方 ✓</td></tr>
+        <tr><td>可执行收益</td><td>按竞价纪律买入后的当日账面收益（竞价开盘价→收盘价）</td><td>京粮控股：高开+2.06%买入 → 收+10.01%，当日 +7.9%</td></tr>
+        <tr><td>断板亏损</td><td>断板股的实际亏损幅度</td><td>正裕工业 -10%、桂发祥 -10.02%</td></tr>
+        <tr><td>规则漏杀</td><td>被规则放弃但实际晋级的标的（规则的机会成本）</td><td>神奇制药高开+5.54%超区间被放弃但晋级（成本 +10%）</td></tr>
+        <tr><td>规则规避</td><td>被规则放弃且实际失败的标的（规则的止损价值）</td><td>哈森高开+7.69%被放弃后断板（规避 -2.5%）</td></tr>
+    </table>
+    <div class="blue-note"><strong>目的：</strong>不仅问"晋级率多少"，还要问"按规则做，赚多少/亏多少/漏多少/躲多少"——只有这 4 个数才能算出规则的净期望值。</div>
+</div>
+
+<h3>P2-8：规则版本管理</h3>
+<div class="card">
+    <table>
+        <tr><th>规则</th><th>提出日</th><th>验证次数</th><th>命中/有效</th><th>状态</th></tr>
+        <tr><td>S级不给高潮后期板块（≥9家涨停）</td><td>8/18</td><td>2</td><td>2/2</td><td class="badge badge-green">固化</td></tr>
+        <tr><td>高位巨量换手&gt;20% 排除</td><td>8/18</td><td>2</td><td>2/2（金螳螂/澳洋）</td><td class="badge badge-green">固化</td></tr>
+        <tr><td>高标跌停开盘=退潮确认，全部观望</td><td>8/18</td><td>1</td><td>1/1（8/19 爱丽/一鸣）</td><td class="badge badge-blue">观察</td></tr>
+        <tr><td>涨停&lt;60家=退潮延续</td><td>8/18</td><td>1</td><td>1/1（8/19 42家）</td><td class="badge badge-blue">观察</td></tr>
+        <tr><td>竞价高开&gt;+5% 放弃</td><td>8/19</td><td>1</td><td>1/1（哈森/天山断板）</td><td class="badge badge-blue">观察</td></tr>
+        <tr><td>防御属性板块高潮后期可保留 A 级</td><td>8/19</td><td>1</td><td>1/1（农业）</td><td class="badge badge-blue">观察</td></tr>
+        <tr><td>S 级环境化（仅上升期授予）</td><td>8/19</td><td>0</td><td>—</td><td class="badge badge-orange">试验</td></tr>
+        <tr><td>赔率维度 EV≥0 才参与</td><td>8/19</td><td>0</td><td>—</td><td class="badge badge-orange">试验</td></tr>
+        <tr><td>情绪总开关（温度≥80/≤40 降级）</td><td>8/19</td><td>0</td><td>—</td><td class="badge badge-orange">试验</td></tr>
+    </table>
+    <div class="alert"><strong>固化条件：≥3 次验证全部有效才固化；≥5 次验证稳定才写入方法论硬规则。</strong>当前状态标注：试验（首次提出）→ 观察（1-2 次）→ 固化（≥3 次）。规则不可一日双改，每次调整需登记。</div>
+</div>
+
+<h3>P2-9：前瞻操作单化（可执行性）</h3>
+<div class="card">
+    <p>前瞻 HTML 增加"明日操作单"区块（L8 模板标准组件），竞价时段逐项打钩执行：</p>
+    <table>
+        <tr><th>操作单字段</th><th>内容</th></tr>
+        <tr><td>总仓位</td><td>由情绪总开关直接输出（如退潮确认→0仓）</td></tr>
+        <tr><td>主攻方向（≤2个）</td><td>方向 + 代表标的 + 参与方式（低吸/打板）</td></tr>
+        <tr><td>竞价触发条件</td><td>每票：高开区间/量比/板块龙头（三漏斗）</td></tr>
+        <tr><td>一票否决信号</td><td>高标跌停 / 涨停预期&lt;60家 → 取消全部操作</td></tr>
+        <tr><td>禁止清单</td><td>高位妖股（如爱丽/一鸣）、换手&gt;20%高位股、玄学独苗</td></tr>
+    </table>
+</div>
+
+<h3>P2-10：高位巨量换手强制排除（固化）</h3>
+<div class="card">
+    <div class="green-note"><strong>已 2/2 复现的硬规则（本次固化为 L8 强制项）：</strong>4 板及以上 + 换手 &gt;20% 的候选直接剔出候选池——8/17 金螳螂（27.94%）断板、澳洋健康（24%）跌停。L8 前瞻筛选阶段即执行，不再进入候选表。</div>
+</div>
+
+<h2>三、L8 全流程（新版 SOP）</h2>
+
+<div class="card">
+    <div class="flow">
+        <div class="flow-step"><span class="step-no">Step 0</span><b>情绪总开关</b>量化温度 → 判明日"做/不做/轻做"</div>
+        <div class="flow-step"><span class="step-no">Step 1</span><b>主线方向</b>确定 ≤2 个主攻方向（防御/进攻属性标注）</div>
+        <div class="flow-step"><span class="step-no">Step 2</span><b>六维打分</b>板块位置30%+换手20%+板块属性15%+封板质量15%+催化10%+赔率10%</div>
+        <div class="flow-step"><span class="step-no">Step 3</span><b>双向候选池</b>A延续+B切换，每票标注 Win/Loss/EV</div>
+        <div class="flow-step"><span class="step-no">Step 4</span><b>竞价三漏斗</b>市场级→板块级→个股级 串行过滤</div>
+        <div class="flow-step"><span class="step-no">Step 5</span><b>操作单执行</b>按总仓位+主攻方向+触发条件执行</div>
+        <div class="flow-step"><span class="step-no">Step 6</span><b>验证闭环</b>晋级/可执行收益/断板亏损/规则漏杀/规避 → 更新数据库</div>
+    </div>
+    <div class="blue-note"><strong>与 L7 的关键差异：</strong>L7 从"盘后筛选"开始，L8 从"情绪总开关"开始；L7 是 5 条并行竞价检查，L8 是 3 级串行漏斗；L7 候选只标概率，L8 候选标 EV 期望值；L7 验证只看晋级，L8 验证看 5 个指标。</div>
+</div>
+
+<h2>四、情绪温度计（Step 0 量化表）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>满分</th><th>打分规则</th></tr>
+        <tr><td>涨停家数</td><td>30</td><td>≥100家=30；60-100家=20；40-60家=10；&lt;40家=0</td></tr>
+        <tr><td>跌停家数</td><td>20</td><td>0家=20；1-5家=15；6-15家=8；&gt;15家=0</td></tr>
+        <tr><td>连板晋级率</td><td>20</td><td>≥40%=20；25-40%=14；15-25%=8；&lt;15%=0</td></tr>
+        <tr><td>最高标高度</td><td>15</td><td>≥7板=15；5-6板=10；3-4板=6；&lt;3板=2</td></tr>
+        <tr><td>炸板率</td><td>15</td><td>≤20%=15；20-30%=10；30-40%=5；&gt;40%=0</td></tr>
+        <tr><td><strong>合计</strong></td><td><strong>100</strong></td><td class="down">≥80=高潮（空仓/轻仓）· 40-80=正常 · ≤40=冰点（低吸）</td></tr>
+    </table>
+    <div class="alert"><strong>8/19 实测：</strong>涨停42家→10分；跌停24家→0分；晋级率18.7%→8分；最高标2板→2分；炸板率25%→10分；合计 <strong>30/100 分</strong>——落入"冰点区"且叠加退潮确认（涨停&lt;60+高标跌停），总开关判定：<span class="down">空仓观望</span>。若 8/18 前瞻先跑此开关，可完全避开正裕/桂发祥跌停。</div>
+</div>
+
+<h2>五、六维打分模型（Step 2）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>权重</th><th>打分要点</th></tr>
+        <tr><td>板块位置</td><td>30%</td><td>发酵期=3分；主升初期=3分；主升后期=2分；高潮后期（≥9家涨停）=1分；退潮=0分</td></tr>
+        <tr><td>换手质量</td><td>20%</td><td>理想 3-15%；&gt;20% 强制剔除；&lt;2% 惜售需环境配合（退潮日失效）</td></tr>
+        <tr><td class="up">板块属性</td><td class="up">15%</td><td class="up">防御型（农业/医药/公用）=3分；中性=2分；进攻型（科技/题材）=1分（高潮后期加权）</td></tr>
+        <tr><td>封板质量</td><td>15%</td><td>秒板/一字=3分；早盘换手板=2分；尾盘板/炸板回封=1分</td></tr>
+        <tr><td>产业催化</td><td>10%</td><td>强催化（产业资本入股/政策）=3分；中=2分；无=1分</td></tr>
+        <tr><td class="up">赔率 EV</td><td class="up">10%</td><td class="up">EV≥10%=3分；EV 5-10%=2分；EV 0-5%=1分；EV&lt;0=0分（直接剔除）</td></tr>
+    </table>
+    <div class="blue-note"><strong>评级规则：</strong>总分 ≥85 且环境允许 → S 级（仅上升期）；70-84 → A 级；55-69 → B 级；&lt;55 → 观察不参与。EV&lt;0 一票否决。</div>
+</div>
+
+<h2>六、验证数据库（随 L8 建立）</h2>
+
+<div class="card">
+    <p>已生成 <b>连板前瞻验证数据库_20260819.xlsx</b>，结构如下：</p>
+    <table>
+        <tr><th>Sheet</th><th>内容</th><th>用途</th></tr>
+        <tr><td>候选明细</td><td>每次前瞻全部候选：日期/分级/标的/板块/换手/晋级结果/当日涨跌幅/可执行收益/断板亏损</td><td>逐票跟踪，计算分级真实命中率</td></tr>
+        <tr><td>分级命中率</td><td>按验证日×分级汇总命中率</td><td>验证"分级=概率"假设是否成立</td></tr>
+        <tr><td>方向命中率</td><td>按方向统计：农业/CPO/医药/机器人等</td><td>方向判断力评估（P1-5）</td></tr>
+        <tr><td>规则验证</td><td>每条规则的提出日/验证次数/命中数/状态（试验/观察/固化）</td><td>规则版本管理（P2-8）</td></tr>
+        <tr><td>竞价信号</td><td>竞价四查/三漏斗信号的触发与结果</td><td>验证信号有效性，校准阈值</td></tr>
+    </table>
+    <div class="green-note"><strong>使用方式：</strong>每个验证日结束后 30 分钟内更新数据库；规则状态变更需在此登记；后续每次前瞻先查询数据库中的最新分级命中率与规则状态，作为当日定级依据。</div>
+</div>
+
+<h2>七、模板升级说明</h2>
+
+<div class="card">
+    <table>
+        <tr><th>模板</th><th>L8 升级要点</th></tr>
+        <tr><td>连板晋级前瞻模板_L8.html</td><td>新增：情绪总开关区块（温度计+判定）→ 主线方向区块 → 六维打分表 → 候选池（含 Win/Loss/EV 列）→ 竞价三漏斗（替换五查并行清单）→ <span style="color:#e94560;">明日操作单</span> → 禁止清单 → 规则版本引用</td></tr>
+        <tr><td>连板前瞻验证复盘模板_L8.html</td><td>新增：方向命中率区块 → 可执行收益/断板亏损/规则漏杀/规则规避 4 指标 → 竞价三漏斗验证 → 规则状态更新登记表 → 数据库更新清单</td></tr>
+    </table>
+</div>
+
+<h2>八、执行清单（明日起适用）</h2>
+
+<div class="card">
+    <div class="green-note">
+        <strong>8/20 前瞻起强制执行：</strong><br>
+        ① 盘后先跑情绪温度计 → 判定明日"做/不做/轻做"（退潮确认直接空仓）；<br>
+        ② 确定 ≤2 个主攻方向（标注防御/进攻属性）；<br>
+        ③ 六维打分生成候选池，每票必标 Win/Loss/EV，EV&lt;0 剔除；<br>
+        ④ 高位换手&gt;20%、玄学独苗、高潮后期进攻板块 → 禁止清单；<br>
+        ⑤ 竞价按三漏斗串行执行，市场级不过全部取消；<br>
+        ⑥ 收盘后更新验证数据库 5 个 Sheet，并登记规则状态变更。
+    </div>
+    <div class="alert"><strong>风险提示：</strong>L8 规则中"试验"状态项（S级环境化/赔率EV/情绪总开关）尚无自身验证样本，需 5 个验证日检验后才固化；当前方法论调整基于 3 日 26 候选数据，统计显著性有限；情绪温度计阈值（40/80°C）为经验初值，需回测校准。</div>
+</div>
+
+<div class="footer">Serenity 分析引擎 · L8 连板晋级前瞻方法论 v1.0 · 2026-08-19 发布 · 基于三日验证闭环（8/17-8/19）· 本报告仅供研究参考，不构成投资建议</div>
+
+</body>
+</html>

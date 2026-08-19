@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板前瞻验证复盘模板（L8）</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .blue-note { background:rgba(88,166,255,0.08); border-left:3px solid var(--blue); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .verdict { font-weight:700; }
+        .verdict.ok { color:var(--green); } .verdict.no { color:var(--red); }
+        .filler { color:var(--orange); font-style:italic; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px){ table { font-size:12px; } }
+    </style>
+</head>
+<body>
+
+<h1>连板前瞻验证复盘 — 2026年X月X日（周X）</h1>
+<p class="subtitle">验证对象：《连板晋级前瞻_[日期].html》（L8 SOP）· 数据来源：[数据源] · 验证方法：L8 反馈闭环（第 N 次）</p>
+
+<div class="summary">
+    <strong>一句话：</strong><span class="filler">[核心结论：晋级X个/命中率X% + 最反直觉发现 + 总开关/竞价漏斗执行是否有效]</span>
+</div>
+
+<h2>一、验证总览（核心指标）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>评价</th></tr>
+        <tr><td>候选数 / 晋级数</td><td class="filler">[X / X]</td><td class="filler">[命中率%]</td></tr>
+        <tr><td>分级命中率</td><td>S:<span class="filler">[x/x]</span> A:<span class="filler">[x/x]</span> B:<span class="filler">[x/x]</span></td><td class="filler">[对比历史数据库]</td></tr>
+        <tr><td>方向命中率（L8 新增）</td><td class="filler">[方向一:x/x · 方向二:x/x]</td><td class="filler">[方向判断是否有效]</td></tr>
+        <tr><td>可执行收益（L8 新增）</td><td class="filler">[按竞价纪律操作的理论合计收益]</td><td class="filler">[正/负]</td></tr>
+        <tr><td>断板亏损合计（L8 新增）</td><td class="filler">[全部断板股实际亏损]</td><td class="filler">[规避了多少]</td></tr>
+        <tr><td>规则漏杀（L8 新增）</td><td class="filler">[被规则放弃但实际晋级的标的]</td><td class="filler">[机会成本]</td></tr>
+        <tr><td>规则规避（L8 新增）</td><td class="filler">[被规则放弃且实际失败的标的]</td><td class="filler">[止损价值]</td></tr>
+        <tr><td>情绪总开关判定</td><td class="filler">[温度 X/100 · 判定:做/轻做/空仓]</td><td class="filler">[事后验证是否该空仓]</td></tr>
+    </table>
+</div>
+
+<h2>二、逐条验证明细</h2>
+
+<div class="card">
+    <table>
+        <tr><th>级别</th><th>标的</th><th>昨日/换手</th><th>竞价表现</th><th>今日收盘</th><th>结果</th><th>可执行收益</th><th>断板亏损</th><th>归因</th></tr>
+        <tr><td class="filler">[S/A/B]</td><td class="filler">[代码 名称]</td><td class="filler">[X板 换手%]</td><td class="filler">[高开X%/低开X%]</td><td class="filler">[涨跌幅]</td><td class="filler">[✓晋级/✗断板]</td><td class="filler">[+X%]</td><td class="filler">[-X%]</td><td class="filler">[2-3句]</td></tr>
+    </table>
+</div>
+
+<h2>三、竞价三漏斗验证（L8）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>漏斗</th><th>预设通过标准</th><th>实际竞价</th><th>判定</th></tr>
+        <tr><td>① 市场级</td><td class="filler">[最高标非跌停开盘]</td><td class="filler">[最高标竞价表现]</td><td class="filler">[通过/触发退潮确认]</td></tr>
+        <tr><td>② 板块级</td><td class="filler">[板块龙头竞价]</td><td class="filler">[龙头表现]</td><td class="filler">[通过/该板块放弃]</td></tr>
+        <tr><td>③ 个股级</td><td>高开 -2%~+5% / 量比1.5-3</td><td class="filler">[逐票高开情况]</td><td class="filler">[达标/超区间放弃]</td></tr>
+    </table>
+    <div class="green-note"><strong>漏斗有效性结论：</strong><span class="filler">[市场级是否成功预警退潮 / 个股级规避了几个断板 / 漏杀几只]</span></div>
+</div>
+
+<h2>四、方向命中率（L8 新增）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>前瞻方向</th><th>方向内候选</th><th>命中</th><th>方向命中率</th><th>级别给定是否合理</th></tr>
+        <tr><td class="filler">[方向一]</td><td class="filler">[候选列表]</td><td class="filler">[x]</td><td class="filler">[x/x]</td><td class="filler">[低估/合理/高估 → 下日调整]</td></tr>
+    </table>
+    <div class="blue-note"><strong>结论：</strong>方向命中率≥60% 的方向，次日上调参与权重（A级起步）；≤40% 的方向，次日降级观察。</div>
+</div>
+
+<h2>五、规则验证与状态更新（L8 版本管理）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>规则</th><th>本次表现</th><th>累计验证</th><th>状态变更</th></tr>
+        <tr><td class="filler">[规则名]</td><td class="filler">[有效/无效/误伤]</td><td class="filler">[N/M 有效]</td><td class="filler">[试验→观察→固化 → 保持不变]</td></tr>
+    </table>
+    <div class="alert"><strong>数据库更新清单（收盘后 30 分钟内完成）：</strong>① 候选明细 Sheet 追加今日 X 条；② 分级命中率 Sheet 更新累计命中率；③ 方向命中率 Sheet 更新；④ 规则验证 Sheet 更新状态；⑤ 竞价信号 Sheet 记录三漏斗触发情况。</div>
+</div>
+
+<h2>六、经验沉淀与明日前瞻调整</h2>
+
+<div class="card">
+    <div class="green-note">
+        <strong>可保留的有效规律：</strong><span class="filler">[本日验证有效且与历史一致的规律]</span><br>
+        <strong>必须规避的教训：</strong><span class="filler">[本日新发现的失败模式]</span><br>
+        <strong>L8 规则调整：</strong><span class="filler">[本日需修改/新增的规则及理由]</span>
+    </div>
+    <div class="alert"><strong>风险提示：</strong><span class="filler">[样本量说明 / 数据完整性说明 / 统计显著性提示]</span></div>
+</div>
+
+<div class="footer">Serenity 分析引擎 · L8 连板晋级前瞻验证闭环（第 N 次）· [日期] · 本报告仅供研究参考，不构成投资建议</div>
+
+</body>
+</html>
