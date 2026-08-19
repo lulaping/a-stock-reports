@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金利华电（300069）Serenity分析 — 2026-08-19</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--red); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 金利华电（300069）Serenity 分析</h1>
+<p class="subtitle">2026-08-19 收盘 · 20cm涨停首板（电网设备）· 结论：<span class="badge badge-red">回避</span> · Serenity 4/15</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>📊 核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">34.66</div><div class="label">现价（元）</div></div>
+        <div class="stat"><div class="num up">+20.01%</div><div class="label">今日涨幅（20cm涨停）</div></div>
+        <div class="stat"><div class="num">40.55亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">4/15</div><div class="label">Serenity 评分</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据来源：东方财富 · 2026-08-19 收盘 · 电网设备-玻璃绝缘子</div>
+</div>
+
+<!-- 行情快照 -->
+<h2>① 行情快照</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>指标</th><th>数值</th></tr>
+        <tr><td>现价</td><td><strong>34.66元</strong></td><td>涨停价</td><td>34.66元（封死）</td></tr>
+        <tr><td>开盘价</td><td>31.52元</td><td>跌停价</td><td>23.10元</td></tr>
+        <tr><td>今日最高/最低</td><td>34.66 / 29.20</td><td>昨收</td><td>28.88元</td></tr>
+        <tr><td>成交额</td><td>6.09亿元</td><td>量比</td><td>3.59</td></tr>
+        <tr><td>换手率</td><td>16.35%</td><td>流通市值</td><td>40.55亿（全流通）</td></tr>
+        <tr><td>总股本</td><td>1.17亿股</td><td>市盈率(动)</td><td class="down">约338倍（年化净利仅约1200万）</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;">今日 20cm 涨停，涨停原因：电网设备板块资金抱团（同板块日丰股份2连板、金利华电20cm首板）。涨停发生在 L8 情绪冰点（温度11分）+退潮确认日，属于逆势卡位品种，持续性存疑。</div>
+</div>
+
+<!-- 财务数据 -->
+<h2>② 财务数据（L0 基本面）</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>2026Q1</th><th>2025年报</th><th>解读</th></tr>
+        <tr><td>营业收入</td><td>5088万（<span class="up">+54.8%</span>）</td><td>2.20亿（-19.2%）</td><td>Q1放量，但2025全年下滑，趋势不稳</td></tr>
+        <tr><td>归母净利润</td><td>304万（<span class="up">+487.8%</span>）</td><td class="down">-534万</td><td>2025年亏损，2026Q1微利转正</td></tr>
+        <tr><td>扣非净利</td><td>224万</td><td class="down">-365万</td><td>主业造血能力弱</td></tr>
+        <tr><td>毛利率</td><td>33.29%</td><td>31.30%</td><td>玻璃绝缘子行业中等水平</td></tr>
+        <tr><td>ROE</td><td>1.12%</td><td class="down">-1.74%</td><td>净资产收益率极低</td></tr>
+        <tr><td>资产负债率</td><td colspan="2" class="down">64.29%（2026Q1）</td><td>负债率偏高，高于60%警戒线</td></tr>
+        <tr><td>每股净资产</td><td colspan="2">2.33元</td><td>净资产仅约2.73亿元</td></tr>
+    </table>
+    <div class="green-note" style="margin:8px 0 0;">正面：2026Q1 营收与净利同比双增，电网/特高压投资周期对玻璃绝缘子有真实需求拉动。</div>
+</div>
+
+<!-- Mode 1 打分 -->
+<h2>③ Mode 1 Serenity 评分</h2>
+<div class="card">
+    <p style="font-size:15px;margin-bottom:10px;">
+        打分序列：<span style="font-size:17px;font-weight:700;">
+        <span class="down">1:0</span> <span class="down">2:0</span> <span class="up">3:1</span> <span class="down">4:0</span> <span class="down">5:0</span>
+        <span class="up">6:1</span> <span class="up">7:1</span> <span class="down">8:0</span> <span class="down">9:0</span> <span class="down">10:0</span>
+        <span class="down">11:0</span> <span class="down">12:0</span> <span class="down">13:0</span> <span class="down">14:0</span> <span class="down">15:0</span>
+        = <span style="color:var(--red);">4/15</span></span>
+    </p>
+    <table>
+        <tr><th>项</th><th>得1分条件</th><th>实际值</th><th>判定</th></tr>
+        <tr><td>1 经营现金流</td><td>为正</td><td>微利但现金流未证实</td><td>0</td></tr>
+        <tr><td>2 负债率&lt;60%</td><td>通过</td><td>64.29%</td><td class="down">0</td></tr>
+        <tr><td>3 毛利率&gt;20%</td><td>通过</td><td>33.29%</td><td class="up">1</td></tr>
+        <tr><td>4 净利率&gt;10%</td><td>通过</td><td>5.98%</td><td class="down">0</td></tr>
+        <tr><td>5 ROE&gt;10%</td><td>通过</td><td>1.12%</td><td class="down">0</td></tr>
+        <tr><td>6 营收增长</td><td>通过</td><td>+54.8%（但2025全年-19.2%）</td><td class="up">1</td></tr>
+        <tr><td>7 净利增长</td><td>通过</td><td>+487.8%（基数极低）</td><td class="up">1</td></tr>
+        <tr><td>8-14 商誉/应收/存货/现金流匹配/财务费用/质押/解禁</td><td>通过</td><td>未核实，保守计0</td><td class="down">0×7</td></tr>
+        <tr><td>15 估值合理</td><td>PE/PB合理</td><td>PB≈14.9倍，PE(动)≈338倍</td><td class="down">0</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;"><strong>Serenity 判定：回避</strong> — 4/15 属于"低质量+高估值"组合。盈利基数极小、负债率高、估值离谱，涨停纯属题材驱动。</div>
+</div>
+
+<!-- 核心卡点 & 硬伤 -->
+<h2>④ 核心卡点与硬伤</h2>
+<div class="card">
+    <p><strong>核心卡点：</strong>40.55亿市值 vs 年化净利仅约1200万（PE≈338倍）——业绩完全无法支撑当前估值，卡点在"估值回归"。</p>
+    <p style="margin-top:8px;"><strong>硬伤1：</strong>资产负债率64.29%超警戒线，玻璃绝缘子行业议价能力弱（国网/南网集采压价）。</p>
+    <p style="margin-top:8px;"><strong>硬伤2：</strong>2025年全年亏损，2026Q1微利系低基数，盈利质量差（扣非224万）。</p>
+    <p style="margin-top:8px;"><strong>硬伤3：</strong>退潮日涨停——今日L8情绪冰点11分、高标全线跌停，逆势20cm涨停属于"卡位"而非"主升"，次日溢价率历史偏低（L8验证：S级连续团灭）。</p>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>⑤ 红旗扫描</h2>
+<div class="card">
+    <ul class="flag-list">
+        <li class="fail">估值红旗：PB≈14.9倍（净资产2.73亿 vs 市值40.55亿），PE(动)≈338倍，远超行业合理区间</li>
+        <li class="fail">盈利红旗：2025年报亏损-534万，主业造血能力弱，2026Q1净利率仅5.98%</li>
+        <li class="fail">财务红旗：资产负债率64.29%&gt;60%警戒线，电网集采行业现金流受账期拖累</li>
+        <li class="warn">情绪红旗：涨停日处于L8退潮确认期（温度11分），逆势20cm涨停次日回落风险高</li>
+        <li class="warn">换手红旗：换手16.35%+量比3.59，短线博弈筹码结构不稳定</li>
+    </ul>
+</div>
+
+<!-- 估值三情景 -->
+<h2>⑥ 客观空间估值（市值 → 股价）</h2>
+<div class="card">
+    <div class="price-box">
+        <div class="pb-card bear">
+            <div style="font-size:12px;color:var(--muted);">BEAR 悲观</div>
+            <div class="price">6.6亿 / 5.6元</div>
+            <div class="price-detail">PS 3倍（营收回归2.2亿）+电网投资不及预期 → 较现价 <span class="down">-84%</span></div>
+        </div>
+        <div class="pb-card base">
+            <div style="font-size:12px;color:var(--muted);">BASE 中性</div>
+            <div class="price">11亿 / 9.4元</div>
+            <div class="price-detail">PS 5倍（业绩兑现，净利率提升至8%）→ 较现价 <span class="down">-73%</span></div>
+        </div>
+        <div class="pb-card bull">
+            <div style="font-size:12px;color:var(--muted);">BULL 乐观</div>
+            <div class="price">17.6亿 / 15.0元</div>
+            <div class="price-detail">PS 8倍（特高压订单放量+净利3000万+）→ 较现价 <span class="down">-57%</span></div>
+        </div>
+    </div>
+    <div class="alert" style="margin:8px 0 0;"><strong>当前价格 34.66 元已超出 Bull 情景约 131%</strong>，任何情景下均无安全边际，估值严重透支。</div>
+</div>
+
+<!-- 结论 -->
+<h2>⑦ 结论</h2>
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">Serenity 判定</span><span><strong>回避（4/15）</strong> — 低质量基本面 + 极端高估 + 退潮日逆势涨停</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">操作建议</span><span>空仓观望，<strong>禁止追高</strong>。持仓者涨停日可借流动性出局，不贪次日溢价。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">触发条件</span><span>若后续业绩持续兑现（净利率回到10%+）且回调至 Base 区间（≤9.4元）再纳入观察。</span></div>
+</div>
+
+<div class="footer">Serenity 分析框架 · 数据来源：东方财富 · 2026-08-19 收盘 · 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

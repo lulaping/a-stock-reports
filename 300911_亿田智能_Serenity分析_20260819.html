@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亿田智能（300911）Serenity分析 — 2026-08-19</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--red); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 亿田智能（300911）Serenity 分析</h1>
+<p class="subtitle">2026-08-19 收盘 · 20cm涨停（厨电/家居链）· 结论：<span class="badge badge-red">回避</span> · Serenity 1/15</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>📊 核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">26.66</div><div class="label">现价（元）</div></div>
+        <div class="stat"><div class="num up">+19.98%</div><div class="label">今日涨幅（20cm涨停）</div></div>
+        <div class="stat"><div class="num">48.88亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">1/15</div><div class="label">Serenity 评分</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据来源：东方财富 · 2026-08-19 收盘 · 家用电器-集成灶</div>
+</div>
+
+<!-- 行情快照 -->
+<h2>① 行情快照</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>指标</th><th>数值</th></tr>
+        <tr><td>现价</td><td><strong>26.66元</strong></td><td>涨停价</td><td>26.66元（封死）</td></tr>
+        <tr><td>开盘价</td><td>22.43元（高开+0.9%）</td><td>昨收</td><td>22.22元</td></tr>
+        <tr><td>今日最高/最低</td><td>26.66 / 22.36</td><td>量比</td><td>2.55</td></tr>
+        <tr><td>成交额</td><td>8.03亿元</td><td>流通市值</td><td>45.68亿</td></tr>
+        <tr><td>换手率</td><td>18.96%</td><td>总股本</td><td>1.83亿股</td></tr>
+        <tr><td>市盈率(动)</td><td class="down">亏损（PE无意义）</td><td>PB</td><td class="down">约4.28倍</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;">今日涨停原因：公积金条例大修政策激活家居/厨电链（同板块志邦家居/好太太涨停），集成灶作为地产链后周期品种受政策预期驱动。但公司 <strong>连续亏损且2026Q1毛利率为负（-38.47%）</strong>，属于典型的"政策预期+超跌反抽"。</div>
+</div>
+
+<!-- 财务数据 -->
+<h2>② 财务数据（L0 基本面）</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>2026Q1</th><th>2025年报</th><th>解读</th></tr>
+        <tr><td>营业收入</td><td class="down">2180万（-62.1%）</td><td class="down">3.38亿（-51.9%）</td><td>营收连续大幅萎缩，集成灶行业寒冬</td></tr>
+        <tr><td>归母净利润</td><td class="down">-3541万</td><td class="down">-1.72亿（-747.6%）</td><td>连续亏损且亏损扩大</td></tr>
+        <tr><td>扣非净利</td><td class="down">-4012万</td><td class="down">-1.88亿</td><td>主业持续失血</td></tr>
+        <tr><td>毛利率</td><td class="down"><strong>-38.47%</strong></td><td>10.31%</td><td>Q1毛利率转负，生产无规模效应</td></tr>
+        <tr><td>ROE</td><td class="down">-3.06%</td><td class="down">-13.31%</td><td>净资产持续亏损侵蚀</td></tr>
+        <tr><td>每股净资产</td><td colspan="2">5.91元</td><td>净资产约11.41亿元</td></tr>
+        <tr><td>经营现金流</td><td colspan="2" class="down">每股-0.087元</td><td>现金流为负</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;"><strong>基本面全面恶化：</strong>2025年营收-51.9%、净利-1.72亿，2026Q1营收-62.1%、毛利率-38.47%。集成灶行业受地产下行拖累陷入深度衰退，公司处于亏损漩涡中。</div>
+</div>
+
+<!-- Mode 1 打分 -->
+<h2>③ Mode 1 Serenity 评分</h2>
+<div class="card">
+    <p style="font-size:15px;margin-bottom:10px;">
+        打分序列：<span style="font-size:17px;font-weight:700;">
+        <span class="down">1:0</span> <span class="up">2:1</span> <span class="down">3:0</span> <span class="down">4:0</span> <span class="down">5:0</span>
+        <span class="down">6:0</span> <span class="down">7:0</span> <span class="down">8:0</span> <span class="down">9:0</span> <span class="down">10:0</span>
+        <span class="down">11:0</span> <span class="down">12:0</span> <span class="down">13:0</span> <span class="down">14:0</span> <span class="down">15:0</span>
+        = <span style="color:var(--red);">1/15</span></span>
+    </p>
+    <table>
+        <tr><th>项</th><th>得1分条件</th><th>实际值</th><th>判定</th></tr>
+        <tr><td>1 经营现金流</td><td>为正</td><td class="down">每股-0.087元，为负</td><td class="down">0</td></tr>
+        <tr><td>2 负债率&lt;60%</td><td>通过</td><td>45.98%</td><td class="up">1</td></tr>
+        <tr><td>3 毛利率&gt;20%</td><td>通过</td><td class="down">-38.47%（负）</td><td class="down">0</td></tr>
+        <tr><td>4 净利率&gt;10%</td><td>通过</td><td class="down">为负</td><td class="down">0</td></tr>
+        <tr><td>5 ROE&gt;10%</td><td>通过</td><td class="down">-3.06%</td><td class="down">0</td></tr>
+        <tr><td>6 营收增长</td><td>通过</td><td class="down">-62.1%</td><td class="down">0</td></tr>
+        <tr><td>7 净利增长</td><td>通过</td><td class="down">亏损扩大</td><td class="down">0</td></tr>
+        <tr><td>8-12 商誉/应收/存货/现金流匹配/财务费用</td><td>通过</td><td>未核实，保守计0</td><td class="down">0×5</td></tr>
+        <tr><td>13-14 质押/解禁</td><td>无风险</td><td>未核实，保守计0</td><td class="down">0×2</td></tr>
+        <tr><td>15 估值合理</td><td>PE/PB合理</td><td class="down">亏损PE无意义，PB 4.28倍</td><td class="down">0</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;"><strong>Serenity 判定：回避（危险）</strong> — 1/15 属于极端低分。亏损+负毛利+营收腰斩+估值不便宜，全维度亮红灯。</div>
+</div>
+
+<!-- 核心卡点 & 硬伤 -->
+<h2>④ 核心卡点与硬伤</h2>
+<div class="card">
+    <p><strong>核心卡点：</strong>行业（集成灶）深度衰退 vs 政策预期反弹——政策利好无法对冲地产下行与消费降级，卡点在"基本面反转"。</p>
+    <p style="margin-top:8px;"><strong>硬伤1：</strong>2026Q1毛利率 -38.47%（<span class="highlight">负毛利率意味着每卖一台都在亏钱</span>），产能利用率严重不足。</p>
+    <p style="margin-top:8px;"><strong>硬伤2：</strong>连续两个季度大幅亏损（2025全年-1.72亿、2026Q1-3541万），且营收降幅持续扩大（-52% → -62%），尚无止血迹象。</p>
+    <p style="margin-top:8px;"><strong>硬伤3：</strong>48.88亿市值 vs 11.41亿净资产（PB 4.28倍）——对一家亏损企业，PB 4.3倍估值极不合理。</p>
+    <p style="margin-top:8px;"><strong>硬伤4：</strong>今日涨停系政策消息驱动的一日游概率大（公积金条例属预期而非落地业绩），L8退潮日环境下题材接力失败率高。</p>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>⑤ 红旗扫描</h2>
+<div class="card">
+    <ul class="flag-list">
+        <li class="fail">盈利红旗：2025年报净利-1.72亿（-747.6%），2026Q1续亏-3541万，连续亏损无止血</li>
+        <li class="fail">毛利率红旗：2026Q1毛利率-38.47%，为负意味着量价齐跌、亏损经营</li>
+        <li class="fail">营收红旗：2026Q1营收-62.1%、2025全年-51.9%，收入持续腰斩式萎缩</li>
+        <li class="fail">估值红旗：亏损公司PB仍达4.28倍（市值48.88亿 vs 净资产11.41亿）</li>
+        <li class="fail">现金流红旗：经营现金流每股-0.087元，造血能力为负</li>
+        <li class="warn">题材红旗：涨停靠公积金政策预期，非业绩驱动；同板块志邦/好太太为首板，板块成色不足</li>
+        <li class="warn">情绪红旗：L8退潮确认日（温度11分）的涨停，次日溢价率历史极低</li>
+    </ul>
+</div>
+
+<!-- 估值三情景 -->
+<h2>⑥ 客观空间估值（市值 → 股价）</h2>
+<div class="card">
+    <div class="price-box">
+        <div class="pb-card bear">
+            <div style="font-size:12px;color:var(--muted);">BEAR 悲观</div>
+            <div class="price">9.1亿 / 5.0元</div>
+            <div class="price-detail">PB 0.8倍（净资产减值+退市风险定价）→ 较现价 <span class="down">-81%</span></div>
+        </div>
+        <div class="pb-card base">
+            <div style="font-size:12px;color:var(--muted);">BASE 中性</div>
+            <div class="price">13.7亿 / 7.5元</div>
+            <div class="price-detail">PB 1.2倍（周期底部估值）→ 较现价 <span class="down">-72%</span></div>
+        </div>
+        <div class="pb-card bull">
+            <div style="font-size:12px;color:var(--muted);">BULL 乐观</div>
+            <div class="price">20.5亿 / 11.2元</div>
+            <div class="price-detail">PB 1.8倍（困境反转+行业回暖预期兑现）→ 较现价 <span class="down">-58%</span></div>
+        </div>
+    </div>
+    <div class="alert" style="margin:8px 0 0;"><strong>当前价格 26.66 元超出 Bull 情景约 138%</strong>，PB 4.28倍对亏损企业属于极端高估，三情景下均无任何安全边际。</div>
+</div>
+
+<!-- 结论 -->
+<h2>⑦ 结论</h2>
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">Serenity 判定</span><span><strong>回避（1/15，危险）</strong> — 连续亏损 + 负毛利率 + 营收腰斩 + PB 4.3倍高估</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">操作建议</span><span>严禁参与。政策预期驱动的超跌反抽不可持续，此类标的属于 L8 禁止清单中的"基本面雷区"。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">触发条件</span><span>除非出现明确的基本面反转证据（连续两季毛利率回正+营收止跌），否则永久回避。</span></div>
+</div>
+
+<div class="footer">Serenity 分析框架 · 数据来源：东方财富 · 2026-08-19 收盘 · 仅供研究参考，不构成投资建议</div>
+</body>
+</html>
