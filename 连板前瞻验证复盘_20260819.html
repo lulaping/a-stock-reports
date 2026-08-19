@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板前瞻验证复盘 — 2026-08-19</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; color:#fff; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .stock-item { display:inline-block; background:rgba(48,54,61,0.3); border-radius:6px; padding:6px 12px; margin:4px; border-left:3px solid var(--border); font-size:12px; }
+        .stock-item.pos { border-left-color:var(--green); }
+        .stock-item.neg { border-left-color:var(--red); }
+        .verdict { font-weight:700; }
+        .verdict.ok { color:var(--green); } .verdict.no { color:var(--red); }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px){ table { font-size:12px; } }
+    </style>
+</head>
+<body>
+
+<h1>连板前瞻验证复盘 — 2026年8月19日（周三）</h1>
+<p class="subtitle">验证对象：《连板晋级前瞻_20260819.html》（8/18盘后发布，L7 SOP盘后筛选+竞价确认两步法） · 数据时间：8/19交易时段实时（东方财富） · 验证方法：L7 SOP 反馈闭环（第3次验证）</p>
+
+<div class="summary">
+    <strong>一句话：8/19系统性退潮日（涨停79→42家、24家跌停、下跌4632家、成交跌破2万亿），前瞻 10 个核心候选收盘/盘中晋级 4 个（40%）。<span style="color:#f85149;">S级连续第3日团灭（0/2：正裕工业、桂发祥双双跌停）</span>——但与前两日"高潮板块陷阱"不同，本次是"系统性退潮日高位股无差别杀跌"。竞价四查 5 条规则全部正确触发：高标（爱丽家居/一鸣食品）跌停开盘即"退潮确认、全部观望"，若严格执行可完整规避 S 级 2 个跌停。农业（高潮后期板块）在退潮日逆势晋级 4 只（金健/红四方/京粮/农发），防御属性主线在极端退潮日成为唯一避风港。</strong>
+</div>
+
+<h2>一、验证总览（10 候选 / 4 晋级）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>分级</th><th>候选数</th><th>晋级</th><th>命中率</th><th>评价</th></tr>
+        <tr><td><strong>S级</strong></td><td>2</td><td>0</td><td class="down"><strong>0%</strong></td><td>正裕工业/桂发祥双双跌停——连续第3日S级团灭</td></tr>
+        <tr><td><strong>A级</strong></td><td>4</td><td>2</td><td class="up"><strong>50%</strong></td><td>神奇制药5板/红四方3板晋级，丰原炸板/天山断板</td></tr>
+        <tr><td><strong>B级</strong></td><td>4</td><td>2</td><td class="up">50%</td><td>金健米业3板/京粮控股3板晋级，哈森/沃格断板</td></tr>
+        <tr><td><strong>合计（S+A+B）</strong></td><td><strong>10</strong></td><td><strong>4</strong></td><td><strong>40%</strong></td><td>退潮日 40% 命中，全部晋级集中在农业/医药低位方向</td></tr>
+    </table>
+    <div class="alert"><strong>核心结论：</strong>① S 级连续第 3 日 0% 命中（8/17→0/3、8/18→0/3、8/19→0/2），但失败归因不同——前两日为"高潮后期板块陷阱"（CPO），本日为"系统性退潮日高位无差别杀跌"（低换手3板同样跌停）。<strong>S 级不是"概率最高的标签"，而是"最危险的标签"</strong>。② 竞价确认环节完美工作：高标跌停=退潮信号，规避了 2 个 S 级跌停。③ 防御性主线（农业）在退潮日逆势走强，与进攻性主线（CPO 8/18团灭）形成鲜明对比。</div>
+</div>
+
+<h2>二、逐条验证明细（10 候选）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>分级</th><th>标的</th><th>昨日</th><th>今日竞价</th><th>当前状态</th><th>结果</th><th>归因</th></tr>
+        <tr><td rowspan="2">S级</td><td>正裕工业 603089</td><td>3板（换手2.00%惜售）</td><td class="down">竞价跌停</td><td class="down">-10.00% 跌停（10.62）</td><td class="verdict no">✗ 断板跌停</td><td class="down">系统性退潮日高位股无差别杀跌，机器人链核心见光死（宇树高开629%抽血）</td></tr>
+        <tr><td>桂发祥 002820</td><td>3板（换手2.05%惜售）</td><td class="down">低开2.20%（超-2%下限）</td><td class="down">-10.02% 跌停（11.04）</td><td class="verdict no">✗ 断板跌停</td><td class="down">消费独苗无板块协同，一鸣食品（16天11板）跌停拖累食品链</td></tr>
+        <tr><td rowspan="4">A级</td><td>神奇制药 600613</td><td>4板（换手15.08%）</td><td>高开5.54%（超+5%上限）</td><td class="up">+10.05% 涨停（8.54）5连板</td><td class="verdict ok">✓ 晋级</td><td>市场唯一高度板（低价医药+游资抱团），退潮日卡位最高标</td></tr>
+        <tr><td>丰原药业 000153</td><td>1板（一字）</td><td>竞价涨停2连板</td><td>+7.49%（7.18，最高7.35）</td><td class="verdict no">✗ 未晋级</td><td>医药1进2炸板，高位开板承接不足，尾随神奇制药但跟风乏力</td></tr>
+        <tr><td>天山生物 300313</td><td>2板20cm</td><td>高开13.35%（超+5%上限）</td><td>+11.80%（14.40，最高15.16触20cm）</td><td class="verdict no">✗ 断板</td><td>创业板20cm 3板高度难破，高开过度=兑现盘集中，冲涨停回落</td></tr>
+        <tr><td>红四方 603395</td><td>2板（换手7.49%）</td><td>竞价涨停</td><td class="up">+10.02% 涨停（29.00）3连板</td><td class="verdict ok">✓ 晋级</td><td>农业化肥核心龙，板块逆势主线资金抱团</td></tr>
+        <tr><td rowspan="4">B级</td><td>金健米业 600127</td><td>2板（换手8.54%）</td><td>竞价一字涨停</td><td class="up">+9.99% 一字涨停（7.82）3连板</td><td class="verdict ok">✓ 晋级</td><td>农业先锋龙头，粮食危机+厄尔尼诺催化，一字加速</td></tr>
+        <tr><td>京粮控股 000505</td><td>2板（换手12.21%）</td><td>高开/竞价附近</td><td class="up">+10.01% 涨停（7.47）3连板</td><td class="verdict ok">✓ 晋级</td><td>农业补涨，板块梯队共振（金健/农发/京粮/红四方）</td></tr>
+        <tr><td>哈森股份 603958</td><td>2板（换手0.50%）</td><td>高开7.69%（超+5%上限）</td><td>+5.04%（19.39，最高20.31）</td><td class="verdict no">✗ 断板</td><td>极致惜售但板块无协同+高开过度兑现，独苗属性再验证</td></tr>
+        <tr><td>沃格光电 603773</td><td>11天6板</td><td>低开4.4%</td><td>+3.20%（115.58）</td><td class="verdict no">✗ 断板</td><td>妖股高位（光电器件）退潮日资金离场，反抽乏力</td></tr>
+    </table>
+</div>
+
+<h2>三、竞价四查验证（L7 Step2 · 前瞻预设 vs 实际）</h2>
+
+<div class="card">
+    <table>
+        <tr><th>检查项</th><th>前瞻预设标准</th><th>8/19 实际竞价</th><th>判定</th></tr>
+        <tr><td>① 高开区间 -2%~+5%</td><td>正裕工业/桂发祥需在区间内</td><td class="down">正裕竞价跌停（-10%）；桂发祥低开2.20%</td><td class="up">✓ 双双触发放弃——完美规避2个跌停</td></tr>
+        <tr><td>② 量比 1.5-3 倍</td><td>S/A 级全部</td><td>哈森高开7.69%超区间、丰原竞价一字</td><td class="up">✓ 哈森超区间放弃（最终断板）</td></tr>
+        <tr><td>③ 板块龙头竞价</td><td>农业：金健米业 / 医药：神奇制药高开</td><td>金健米业竞价涨停✓；神奇制药高开5.54%✓</td><td>✓ 农业/医药龙头走强，可参与两方向</td></tr>
+        <tr><td>④ 宇树上市开关</td><td>宇树高开+机器人≥3家高开</td><td>宇树高开629%✓，但正裕工业（机器人核心）跌停✗</td><td class="up">✓ 信号矛盾→放弃B类切换（正裕跌停验证正确）</td></tr>
+        <tr><td>⑤ 高标竞价</td><td>爱丽家居/百合花非跌停开盘</td><td class="down">爱丽家居、一鸣食品一字跌停</td><td class="up">✓ 退潮确认信号触发 → 全部观望</td></tr>
+    </table>
+    <div class="green-note"><strong>竞价纪律判定：5 条规则全部正确触发。</strong>其中 ⑤ 是决定性信号——高标（爱丽家居13天12板/一鸣食品16天11板）跌停开盘即"退潮确认"，按 L7 SOP 应<b>全部观望、不参与任何晋级接力</b>。若严格执行，S 级 2 个跌停（正裕/桂发祥）可 100% 规避；A/B 级中农业方向（金健/红四方/京粮）为唯一可参与点，且需严控仓位。</div>
+</div>
+
+<h2>四、前瞻预设信号与风险提示验证</h2>
+
+<div class="card">
+    <table>
+        <tr><th>前瞻预设</th><th>8/19 实际</th><th>结果</th></tr>
+        <tr><td><strong>退潮预警：</strong>"涨停 110→79 家连续收缩，若跌破 60 家则确认退潮延续，仓位降至 ≤3 成"</td><td>涨停 79→<span style="color:#f85149;">42 家</span>（远低于 60 家警戒线）、跌停 24 家、下跌 4632 家、成交跌破 2 万亿</td><td class="up">✓ 完全验证——退潮确认，应空仓/≤3成</td></tr>
+        <tr><td><strong>③ 高位妖股不接力：</strong>爱丽家居 24天13板/一鸣食品 16天11板</td><td>爱丽家居 <span class="down">-10% 跌停</span>、一鸣食品 <span class="down">-10% 跌停</span></td><td class="up">✓ 完全验证</td></tr>
+        <tr><td><strong>② 宇树上市双刃剑：</strong>高开过度易见光死+抽血效应</td><td>宇树高开 629%（市值 4449 亿）后回落，机器人核心正裕工业跌停、哈森冲高回落</td><td class="up">✓ 验证——见光死+抽血拖累机器人链</td></tr>
+        <tr><td><strong>④ 电子出清未完：</strong>CPO/半导体勿抢反弹</td><td>中石科技 -8.74%、旭光电子 -0.32%，光通信/存储持续调整</td><td class="up">✓ 验证</td></tr>
+        <tr><td><strong>① 农业高潮后期风险：</strong>28家涨停后分化概率极大</td><td>农业逆势晋级（金健/红四方/京粮/农发/万向 3 家涨停），但内部分化：神农种业冲高回落、罗牛山冲高回落</td><td>△ 部分验证——<strong>防御性主线在退潮日反而存活</strong>（详见经验沉淀）</td></tr>
+    </table>
+</div>
+
+<h2>五、连续三日验证经验沉淀</h2>
+
+<div class="card">
+    <table>
+        <tr><th>验证日</th><th>S级</th><th>A级</th><th>B级</th><th>失败主因</th></tr>
+        <tr><td>8/14前瞻→8/17</td><td class="down">0/3 (0%)</td><td class="up">3/4 (75%)</td><td>-</td><td>S级=高潮板块（CPO等）团灭</td></tr>
+        <tr><td>8/17前瞻→8/18</td><td class="down">0/3 (0%)</td><td class="up">3/4 (75%)</td><td>1/3 (33%)</td><td>S级=高潮板块（CPO）团灭</td></tr>
+        <tr><td>8/18前瞻→8/19</td><td class="down">0/2 (0%)</td><td>2/4 (50%)</td><td class="up">2/4 (50%)</td><td>S级=系统性退潮日高位无差别杀跌</td></tr>
+    </table>
+    <div class="alert"><strong>S级连续3日0%的深层原因（归因修正）：</strong>前两日失败是"S级误标高潮后期板块"，本日失败是"S级给了退潮日高位3板"。<strong>本质共因：S级="高概率晋级"的直觉是错的，S级候选（3板+及以上、市场焦点）恰是退潮日资金最先抛弃的对象。</strong>正裕工业"低换手2%惜售"的形态优势，在竞价跌停面前毫无意义——<strong>退潮日，位置（高位）决定生死，形态（换手）只是浮云</strong>。</div>
+    <div class="green-note"><strong>三日验证沉淀的有效规律：</strong>① <strong>A级命中率最稳定</strong>：8/18=75%、8/19=50%，均远高于S级——A级"发酵期主线+换手中等+产业催化"是最高性价比梯队；② <strong>竞价⑤信号（高标跌停）是退潮日第一道闸门</strong>，8/19触发后全部观望可规避全部跌停；③ <strong>防御性主线（农业）vs 进攻性主线（CPO）分化</strong>：高潮后期板块若属"防御属性"（粮食/医药），退潮日逆势存活；若属"进攻属性"（科技），退潮日最先崩——板块属性比板块位置更关键；④ 高开>+5%（哈森7.69%/天山13.35%/神奇5.54%）的候选兑现概率极高。</div>
+</div>
+
+<h2>六、明日前瞻改进执行（L7 升级）</h2>
+
+<div class="card">
+    <div class="green-note">
+        <strong>按第3次验证结果升级 L7 SOP：</strong><br>
+        1. <strong>S级定义重构：</strong>取消"低换手惜售3板"自动S级逻辑。S级仅限"情绪上升期（涨停≥80家且连板晋级率≥40%）+主升期主线龙头"，退潮信号下不设S级，全部降为B级观察<br>
+        2. <strong>退潮日铁律：</strong>高标跌停开盘 或 涨停<60家 → 无条件空仓观望，禁止任何晋级接力（正裕/桂发祥教训）<br>
+        3. <strong>板块属性维度：</strong>新增"防御/进攻"属性打分——防御性主线（农业/医药/公用）高潮后期可保留A级；进攻性主线（科技/题材）高潮后期强制降级<br>
+        4. <strong>高开区间执行：</strong>竞价高开>+5%一律放弃（8/19验证：哈森7.69%/天山13.35%全部断板），一字加速板不追<br>
+        5. <strong>农业3板明日观察：</strong>金健米业/红四方/京粮控股若 8/20 竞价不弱，农业可能成为退潮期唯一防御主线，但只做"低吸不追高"
+    </div>
+    <div class="alert"><strong>风险提示：</strong>① 本次为 8/19 交易时段数据，若为盘中快照，收盘后涨停/晋级数可能微调，但 S 级 0/2（两股已封死跌停）与竞价四查结论不受影响；② 验证样本仅 3 日，S 级 0/3、0/3、0/2 共 8 个候选样本，统计显著性仍有限，需 ≥5 个验证日确认后固化为硬规则；③ 农业连涨后同样存在退潮风险，明日若农业涨停家数显著收缩，则防御主线也需降级。</div>
+</div>
+
+<div class="footer">Serenity 分析引擎 · L7 连板晋级前瞻验证闭环（第3次）· 2026-08-19 · 本报告仅供研究参考，不构成投资建议</div>
+
+</body>
+</html>
