@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L8 盘前执行清单 — 2026-08-20（周四）</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        @page { size: A4 landscape; margin: 10mm; }
+        :root { --accent:#e94560; --border:#c9d1d9; --bg:#0d1117; --card:#161b22; --text:#c9d1d9; --muted:#8b949e; }
+        * { box-sizing:border-box; }
+        body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; font-size:12px; color:var(--text); background:var(--bg); line-height:1.55; margin:0; }
+        .page { max-width:1100px; margin:0 auto; padding:14px; }
+
+        .toolbar { position:sticky; top:0; z-index:100; background:#0d1117ee; backdrop-filter:blur(6px);
+                   display:flex; align-items:center; gap:10px; padding:10px 20px; border-bottom:1px solid #30363d; }
+        .toolbar .title { font-size:16px; font-weight:700; color:#fff; margin-right:auto; }
+        .btn { padding:7px 16px; border-radius:6px; border:none; font-size:13px; font-weight:600; cursor:pointer; transition:.2s; }
+        .btn-save { background:#3fb950; color:#0d1117; }
+        .btn-pdf { background:#e94560; color:#fff; }
+        .btn-clear { background:#30363d; color:#c9d1d9; }
+        .toolbar .status { font-size:11px; color:#8b949e; }
+
+        .panel { background:var(--card); border:1px solid #30363d; border-radius:10px; padding:12px 16px; margin-bottom:14px; }
+        .panel-header { font-size:14px; font-weight:700; color:#fff; margin-bottom:8px; padding-bottom:6px; border-bottom:2px solid var(--accent); display:flex; align-items:center; gap:8px; }
+        .step-no { background:var(--accent); color:#fff; border-radius:4px; padding:1px 7px; font-size:12px; }
+        .step-title { font-size:12px; font-weight:400; color:var(--muted); }
+
+        label.chk { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; font-size:12px; margin:5px 0; }
+        label.chk input { width:15px; height:15px; accent-color:var(--accent); cursor:pointer; flex-shrink:0; }
+        label.chk.checked-text { color:#3fb950; }
+        .danger input { accent-color:#f85149; }
+
+        .field { background:#0d1117; border:1px solid #30363d; border-radius:5px; color:#58a6ff; padding:3px 8px; font-size:12px; min-width:60px; outline:none; }
+        .field:focus { border-color:var(--accent); }
+        .field.num { min-width:48px; max-width:64px; }
+        .field.wide { min-width:140px; }
+        .row { display:flex; gap:8px; margin:5px 0; align-items:center; flex-wrap:wrap; }
+        .hint { font-size:11px; color:var(--muted); margin-top:5px; }
+        .tag { display:inline-block; background:rgba(233,69,96,.15); color:var(--accent); border-radius:4px; padding:1px 7px; font-size:11px; font-weight:600; }
+        .tag.green { background:rgba(63,185,80,.15); color:#3fb950; }
+        .tag.orange { background:rgba(210,153,29,.15); color:#d2991d; }
+
+        table { width:100%; border-collapse:collapse; font-size:11px; margin:6px 0; }
+        th { background:#21262d; padding:6px 8px; text-align:left; color:var(--muted); border-bottom:1px solid #30363d; }
+        td { padding:6px 8px; border-bottom:1px solid #30363d; }
+
+        .verdict { border-radius:8px; padding:10px 14px; font-size:13px; font-weight:700; margin-top:8px; }
+        .verdict.warn { background:rgba(248,81,73,.15); color:#f85149; border:1px solid #f85149; }
+        .verdict.ok { background:rgba(63,185,80,.12); color:#3fb950; border:1px solid #3fb950; }
+        .verdict.normal { background:rgba(88,166,255,.12); color:#58a6ff; border:1px solid #58a6ff; }
+
+        .score-big { font-size:20px; font-weight:800; color:#fff; }
+        .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#2ea043; color:#fff; padding:10px 22px; border-radius:8px; font-size:13px; opacity:0; transition:.3s; z-index:200; pointer-events:none; }
+        .toast.show { opacity:1; }
+        .toast.err { background:#f85149; }
+
+        @media print {
+            .toolbar { display:none; }
+            body { background:#fff; color:#111; }
+            .panel { border-color:#ccc; break-inside:avoid; }
+            .verdict.warn { border-color:#f85149; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="toolbar">
+    <span class="title">L8 盘前执行清单 · 2026-08-20（周四）</span>
+    <span class="status" id="statusBar"></span>
+    <button class="btn btn-save" onclick="saveNow()">💾 保存</button>
+    <button class="btn btn-pdf" onclick="exportPDF()">📄 导出PDF</button>
+    <button class="btn btn-clear" onclick="clearAll()">🗑 清空</button>
+</div>
+
+<div class="page">
+
+<!-- ============ 一、T-1 晚间待办 ============ -->
+<div class="panel">
+    <div class="panel-header">一、T-1 晚间待办（8/19 盘后 · 开盘前必须完成）<span class="step-title">Step 0-3 输出准备</span></div>
+    <label class="chk"><input type="checkbox" class="d" data-k="t1_db"> 更新验证数据库（8/19 数据入 5 Sheet：候选明细/分级命中率/方向命中率/规则验证/竞价信号）</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="t1_qz"> 生成 8/20 连板晋级前瞻（L8：情绪总开关→方向→六维打分→候选池）</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="t1_ev"> 全部候选完成六维打分 + EV 计算，EV&lt;0 已一票否决剔除</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="t1_op"> 明日操作单已确认并打印（总仓位/主攻方向/逐票触发条件/禁止清单）</label>
+    <div class="hint">未完成任一项 → 开盘前补齐，禁止带"未定"状态开盘。</div>
+</div>
+
+<!-- ============ 二、Step 0 情绪温度计 ============ -->
+<div class="panel">
+    <div class="panel-header"><span class="step-no">Step 0</span> 情绪温度计判定 <span class="step-title">基于 8/19 收盘数据 · 输入后自动算分</span></div>
+    <table>
+        <tr><th>指标（权重）</th><th>数值</th><th>得分规则</th><th>自动得分</th></tr>
+        <tr><td>涨停家数（30分）</td><td><input class="field num d" type="number" data-k="t0_zt" value="42"></td>
+            <td>≥100=30 / 60-100=20 / 40-60=10 / &lt;40=0</td><td id="sc_zt" class="tag">—</td></tr>
+        <tr><td>跌停家数（20分）</td><td><input class="field num d" type="number" data-k="t0_dt" value="24"></td>
+            <td>0=20 / 1-5=15 / 6-15=8 / &gt;15=0</td><td id="sc_dt" class="tag">—</td></tr>
+        <tr><td>连板晋级率 %（20分）</td><td><input class="field num d" type="number" data-k="t0_jj" value="10"></td>
+            <td>≥40=20 / 25-40=14 / 15-25=8 / &lt;15=0</td><td id="sc_jj" class="tag">—</td></tr>
+        <tr><td>最高标高度 板（15分）</td><td><input class="field num d" type="number" data-k="t0_gd" value="5"></td>
+            <td>≥7板=15 / 5-6板=10 / 3-4板=6 / &lt;3板=2</td><td id="sc_gd" class="tag">—</td></tr>
+        <tr><td>炸板率 %（15分）</td><td><input class="field num d" type="number" data-k="t0_zb" value="25"></td>
+            <td>≤20=15 / 20-30=10 / 30-40=5 / &gt;40=0</td><td id="sc_zb" class="tag">—</td></tr>
+        <tr><td><strong>情绪温度合计</strong></td><td colspan="2"><strong id="temp_sum" class="score-big">—</strong> / 100</td><td id="temp_zone" class="tag orange">—</td></tr>
+    </table>
+
+    <div class="row">
+        <span class="tag">退潮确认检查</span>
+        <label class="chk danger"><input type="checkbox" class="d" data-k="t0_tc1" checked> 涨停 &lt;60 家（8/19 实际 42 家 ✓）</label>
+        <label class="chk danger"><input type="checkbox" class="d" data-k="t0_tc2" checked> 高标跌停/低开（8/19 爱丽家居、一鸣食品跌停 ✓）</label>
+    </div>
+
+    <div class="verdict normal" id="verdict0">等待计算…</div>
+    <div class="hint">预填 8/19 收盘参考值（可修改实时重算）。退潮确认（两勾任一勾选）→ 无条件空仓观望，候选池作废；未退潮时按温度分区定仓位：≥80°C 高潮 ≤2成 / 40-80°C 正常 ≤5成 / ≤40°C 冰点 3-5成低吸。</div>
+</div>
+
+<!-- ============ 三、Step 1-3 候选复核 ============ -->
+<div class="panel">
+    <div class="panel-header"><span class="step-no">Step 1-3</span> 主攻方向 + 候选池复核 <span class="step-title">≤2 个方向 · 每票 EV≥0</span></div>
+    <div class="row"><span class="tag">主攻方向一</span><input class="field wide d" data-k="s_dir1" placeholder="如：农业（防御型）龙头低吸"></div>
+    <div class="row"><span class="tag">主攻方向二</span><input class="field wide d" data-k="s_dir2" placeholder="如：医药（防御型）或留空"></div>
+    <div class="row"><span class="tag">总仓位</span><input class="field num d" type="text" data-k="s_pos" placeholder="0"> 成 <span class="hint">（按 Step 0 温度计输出填写，退潮确认填 0）</span></div>
+    <label class="chk"><input type="checkbox" class="d" data-k="s_ban1"> 禁止清单已列明：高位妖股（爱丽家居/一鸣食品类）不参与</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="s_ban2"> 换手 &gt;20% 高位股已剔除（L8 固化规则）</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="s_ban3"> 玄学独苗/无板块协同标的已剔除</label>
+</div>
+
+<!-- ============ 四、竞价三漏斗 ============ -->
+<div class="panel">
+    <div class="panel-header"><span class="step-no">Step 4</span> 竞价三漏斗 <span class="step-title">9:15-9:25 串行执行 · 市场级不过 → 后两级免检</span></div>
+
+    <div class="row" style="background:rgba(88,166,255,.08);border-radius:6px;padding:6px 10px;">
+        <b>漏斗一 市场级（9:15-9:20）</b>
+    </div>
+    <div class="row"><span class="tag">昨日高标竞价</span><input class="field wide d" data-k="f1_high" placeholder="爱丽家居/一鸣食品/神奇制药5板 → 跌停/低开/平开/高开?"></div>
+    <div class="row"><span class="tag">指数竞价</span><input class="field num d" type="text" data-k="f1_idx" placeholder="0"> %（负=低开）</div>
+    <div class="row"><span class="tag">竞价涨停</span><input class="field num d" type="text" data-k="f1_zts" placeholder="0"> 家 <span class="tag">竞价跌停</span><input class="field num d" type="text" data-k="f1_dts" placeholder="0"> 家</div>
+    <label class="chk danger"><input type="checkbox" class="d" data-k="f1_flag1"> 高标跌停开盘 → <b>■ 退潮确认：停止执行，全部观望</b></label>
+    <label class="chk danger"><input type="checkbox" class="d" data-k="f1_flag2"> 竞价跌停&gt;10 家 或 指数低开&gt;1% → 降级：仅留 1 个 A 级低吸，其余放弃</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="f1_pass"> 市场级通过 → 进入漏斗二</label>
+    <div class="verdict warn" id="verdict1" style="display:none;">⚠️ 市场级触发退潮/降级信号，按对应处置执行！</div>
+
+    <div class="row" style="background:rgba(88,166,255,.08);border-radius:6px;padding:6px 10px;margin-top:10px;">
+        <b>漏斗二 板块级（9:20-9:23）</b>
+    </div>
+    <div class="row"><span class="tag">农业龙头竞价</span><input class="field wide d" data-k="f2_nong" placeholder="金健米业/红四方 → 高开/低开?"></div>
+    <div class="row"><span class="tag">医药龙头竞价</span><input class="field wide d" data-k="f2_yi" placeholder="神奇制药 → 高开/低开?"></div>
+    <label class="chk"><input type="checkbox" class="d" data-k="f2_geo"> 候选所属板块 ≥3 家高开</label>
+    <div class="hint">龙头低开 → 该板块全部放弃（漏斗三免检该板块标的）。</div>
+
+    <div class="row" style="background:rgba(88,166,255,.08);border-radius:6px;padding:6px 10px;margin-top:10px;">
+        <b>漏斗三 个股级（9:24-9:25）</b>
+    </div>
+    <table>
+        <tr><th>标的（级别）</th><th>高开幅度</th><th>达标 -2%~+5%</th><th>量比(较昨1.5-3)</th><th>达标</th><th>处置</th></tr>
+        <tr>
+            <td><input class="field wide d" data-k="f3_stock1" placeholder="标的一"></td>
+            <td><input class="field num d" type="text" data-k="f3_o1" placeholder="%"></td>
+            <td><input type="checkbox" class="d" data-k="f3_a1"></td>
+            <td><input class="field num d" type="text" data-k="f3_v1" placeholder="x"></td>
+            <td><input type="checkbox" class="d" data-k="f3_b1"></td>
+            <td><input class="field wide d" data-k="f3_d1" placeholder="买入/放弃"></td>
+        </tr>
+        <tr>
+            <td><input class="field wide d" data-k="f3_stock2" placeholder="标的二"></td>
+            <td><input class="field num d" type="text" data-k="f3_o2" placeholder="%"></td>
+            <td><input type="checkbox" class="d" data-k="f3_a2"></td>
+            <td><input class="field num d" type="text" data-k="f3_v2" placeholder="x"></td>
+            <td><input type="checkbox" class="d" data-k="f3_b2"></td>
+            <td><input class="field wide d" data-k="f3_d2" placeholder="买入/放弃"></td>
+        </tr>
+        <tr>
+            <td><input class="field wide d" data-k="f3_stock3" placeholder="标的三（可选）"></td>
+            <td><input class="field num d" type="text" data-k="f3_o3" placeholder="%"></td>
+            <td><input type="checkbox" class="d" data-k="f3_a3"></td>
+            <td><input class="field num d" type="text" data-k="f3_v3" placeholder="x"></td>
+            <td><input type="checkbox" class="d" data-k="f3_b3"></td>
+            <td><input class="field wide d" data-k="f3_d3" placeholder="买入/放弃"></td>
+        </tr>
+    </table>
+    <div class="hint">高开 &gt;+5% = 兑现，放弃；低开 &lt;-2% = 示弱，放弃；一字板不追；量比不足 = 承接弱，放弃。两达标项全勾才可买入。</div>
+</div>
+
+<!-- ============ 五、开盘执行 ============ -->
+<div class="panel">
+    <div class="panel-header"><span class="step-no">Step 5</span> 开盘执行 <span class="step-title">9:30-9:45</span></div>
+    <div class="row"><span class="tag">实际买入</span><input class="field wide d" data-k="s_buy" placeholder="标的 + 仓位%，如：京粮控股 2成"></div>
+    <label class="chk danger"><input type="checkbox" class="d" data-k="s_veto"> 盘中一票否决触发（最高标炸板跌停 / 板块集体跳水）→ 清仓观望</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="s_done"> 买入执行完成，记录成交价</label>
+    <div class="row"><span class="tag">成交备注</span><input class="field wide d" data-k="s_note" placeholder="成交价/仓位/剩余现金"></div>
+</div>
+
+<!-- ============ 六、收盘后待办 ============ -->
+<div class="panel">
+    <div class="panel-header"><span class="step-no">Step 6</span> 收盘后待办（15:00 后 30 分钟内）</div>
+    <label class="chk"><input type="checkbox" class="d" data-k="p1"> 更新验证数据库 5 Sheet（8/20 候选明细/分级/方向/规则/竞价信号）</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="p2"> 规则状态变更登记（试验→观察→固化 条件核查）</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="p3"> 生成连板前瞻验证复盘报告（L8 模板）并推送</label>
+    <label class="chk"><input type="checkbox" class="d" data-k="p4"> 按温度计/漏斗执行结果校准明日前瞻参数</label>
+</div>
+
+<div class="panel" style="text-align:center;color:var(--muted);font-size:11px;">
+    L8 连板晋级前瞻 · 2026-08-20 盘前执行清单 · Serenity 分析引擎 · 数据仅用于研究，不构成投资建议
+</div>
+
+</div><!-- /.page -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORE_KEY = 'l8_premarket_20260820_v1';
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
+
+// ---- 情绪温度计自动计算 ----
+function calcTemp() {
+    const zt = +($('#t0_zt').value || 0), dt = +($('#t0_dt').value || 0);
+    const jj = +($('#t0_jj').value || 0), gd = +($('#t0_gd').value || 0), zb = +($('#t0_zb').value || 0);
+    const s_zt = zt >= 100 ? 30 : zt >= 60 ? 20 : zt >= 40 ? 10 : 0;
+    const s_dt = dt === 0 ? 20 : dt <= 5 ? 15 : dt <= 15 ? 8 : 0;
+    const s_jj = jj >= 40 ? 20 : jj >= 25 ? 14 : jj >= 15 ? 8 : 0;
+    const s_gd = gd >= 7 ? 15 : gd >= 5 ? 10 : gd >= 3 ? 6 : 2;
+    const s_zb = zb <= 20 ? 15 : zb <= 30 ? 10 : zb <= 40 ? 5 : 0;
+    $('#sc_zt').textContent = s_zt; $('#sc_dt').textContent = s_dt;
+    $('#sc_jj').textContent = s_jj; $('#sc_gd').textContent = s_gd; $('#sc_zb').textContent = s_zb;
+    const sum = s_zt + s_dt + s_jj + s_gd + s_zb;
+    $('#temp_sum').textContent = sum;
+    const zone = sum >= 80 ? '高潮' : sum >= 40 ? '正常' : '冰点';
+    $('#temp_zone').textContent = zone;
+    const tc = $('#t0_tc1').checked || $('#t0_tc2').checked;
+    const v = $('#verdict0');
+    if (tc) {
+        v.className = 'verdict warn';
+        v.textContent = '⚠️ 退潮确认（涨停<60 或 高标跌停）→ 总开关判定：空仓观望（0 仓），候选池作废，不参与任何晋级接力';
+    } else if (sum >= 80) {
+        v.className = 'verdict warn';
+        v.textContent = `温度 ${sum}/100 高潮 → 高潮次日亏钱效应最大，总仓位 ≤2 成，只观察不追高`;
+    } else if (sum >= 40) {
+        v.className = 'verdict ok';
+        v.textContent = `温度 ${sum}/100 正常 → 总仓位 ≤5 成，正常执行 S/A/B 全流程`;
+    } else {
+        v.className = 'verdict normal';
+        v.textContent = `温度 ${sum}/100 冰点 → 不做高位接力，总仓位 3-5 成，只低吸低位首板/趋势（若叠加退潮确认则空仓）`;
+    }
+}
+
+// ---- 漏斗一自动预警 ----
+function calcFunnel1() {
+    const f1 = $('#f1_flag1').checked, f2 = $('#f1_flag2').checked;
+    const v = $('#verdict1');
+    if (f1 || f2) {
+        v.style.display = 'block';
+        v.textContent = f1 ? '⚠️ 高标跌停 → 退潮确认：停止执行，全部观望（后两级免检）'
+                           : '⚠️ 竞价跌停>10家 或 指数低开>1% → 降级：仅留 1 个 A 级低吸';
+    } else v.style.display = 'none';
+}
+
+// ---- 输入监听：自动计算 + 自动保存 ----
+let autoSaveTimer = null;
+document.addEventListener('input', () => { calcTemp(); calcFunnel1(); scheduleSave(); });
+document.addEventListener('change', () => { calcTemp(); calcFunnel1(); scheduleSave(); });
+function scheduleSave() {
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(() => saveNow(false), 1000);
+}
+
+// ---- 本地保存 ----
+function loadData() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+        $$('.d').forEach(el => {
+            const k = el.dataset.k;
+            if (el.type === 'checkbox') el.checked = !!saved[k];
+            else el.value = saved[k] !== undefined ? saved[k] : el.value;
+        });
+        if (saved._savedAt) $('#statusBar').textContent = '上次保存: ' + new Date(saved._savedAt).toLocaleTimeString();
+    } catch (e) { console.warn('load fail', e); }
+    calcTemp(); calcFunnel1();
+}
+function collectData() {
+    const d = {};
+    $$('.d').forEach(el => { d[el.dataset.k] = el.type === 'checkbox' ? el.checked : el.value; });
+    d._savedAt = Date.now(); return d;
+}
+function saveNow(show = true) {
+    try {
+        localStorage.setItem(STORE_KEY, JSON.stringify(collectData()));
+        $('#statusBar').textContent = '已保存 ' + new Date().toLocaleTimeString();
+        if (show) toast('💾 已保存到本地', false);
+    } catch (e) { if (show) toast('保存失败: ' + e.message, true); }
+}
+function clearAll() {
+    if (!confirm('确定清空所有填写内容？')) return;
+    $$('.d').forEach(el => { if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
+    localStorage.removeItem(STORE_KEY); $('#statusBar').textContent = '已清空';
+    calcTemp(); calcFunnel1(); toast('🗑 已清空', false);
+}
+function toast(msg, err) {
+    const t = $('#toast'); t.textContent = msg; t.className = 'toast show' + (err ? ' err' : '');
+    setTimeout(() => t.className = 'toast', 2200);
+}
+
+// ---- 导出PDF ----
+async function exportPDF() {
+    saveNow(false);
+    const btn = $('.btn-pdf'); btn.textContent = '⏳ 生成中...'; btn.disabled = true;
+    try {
+        if (typeof html2canvas === 'function' && typeof jspdf === 'object') {
+            const { jsPDF } = jspdf;
+            const canvas = await html2canvas(document.body, { scale: 2, backgroundColor: '#0d1117', useCORS: true, logging: false });
+            const img = canvas.toDataURL('image/jpeg', 0.95);
+            const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+            const pw = pdf.internal.pageSize.getWidth(), ph = pdf.internal.pageSize.getHeight();
+            const ratio = canvas.height / canvas.width;
+            let w = pw, h = pw * ratio;
+            if (h > ph) { h = ph; w = ph / ratio; }
+            pdf.addImage(img, 'JPEG', (pw - w) / 2, (ph - h) / 2, w, h);
+            pdf.save('L8盘前执行清单_20260820.pdf');
+            toast('📄 PDF 已生成', false);
+        } else { window.print(); toast('已打开打印窗口，请选择"另存为PDF"', false); }
+    } catch (e) {
+        console.error(e); toast('PDF生成失败，已打开打印窗口', true);
+        setTimeout(() => window.print(), 800);
+    } finally { btn.textContent = '📄 导出PDF'; btn.disabled = false; }
+}
+
+window.addEventListener('beforeprint', () => saveNow(false));
+loadData();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</body>
+</html>
