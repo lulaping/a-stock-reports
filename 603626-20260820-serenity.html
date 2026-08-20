@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科森科技(603626) Serenity 分析 — 2026-08-20</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #ffffff; --card: #f6f8fa; --border: #d0d7de; --text: #1a1a2e; --muted: #656d76;
+                --red: #cf222e; --orange: #9a6700; --green: #1a7f37; --blue: #0969da; --accent: #b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:var(--card); border:1px solid var(--border); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.06); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(207,34,46,0.1); color:var(--red); }
+        .badge-orange { background:rgba(154,103,0,0.1); color:var(--orange); }
+        .badge-green { background:rgba(26,127,55,0.1); color:var(--green); }
+        .badge-blue { background:rgba(9,105,218,0.1); color:var(--blue); }
+        .alert { background:rgba(207,34,46,0.06); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(26,127,55,0.06); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--border);
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(154,103,0,0.15); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>科森科技（603626）Serenity 分析</h1>
+<p class="subtitle">2026-08-20 收盘涨停（16.95，+9.99%）· 盘中一度临时停牌（新浪数据）后封板 · 总市值 94.05 亿 · 数据来源：东方财富/新浪财经/同花顺</p>
+
+<div class="summary">
+    <strong>📊 核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">16.95</div><div class="label">现价（+9.99%涨停）</div></div>
+        <div class="stat"><div class="num">94.05亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">5.55亿</div><div class="label">总股本</div></div>
+        <div class="stat"><div class="num">5.05%</div><div class="label">换手率</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">今日涨停主因：机器人+消费电子+AI散热+扭亏为盈题材（同花顺异动解析）。盘中触及涨停 16.95 后一度临时停牌，最终封板。</div>
+</div>
+
+<h2>一、结论（两行）</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">客观框架</span>
+        <span>熊市 40-50 亿 / 基准 60-70 亿 / 牛市 110-130 亿。当前市值 94 亿处于<b>基准与牛市之间</b>，对应股价 10.8-23.4 元区间，现价 16.95 元未到牛市上沿但已显著高于基准上沿。</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity 视角</span>
+        <span><b>回避（Serenity 4/15）</b> — 主业扣非连亏、2026 扭亏全靠出售子公司一次性投资收益约 6 亿，消费电子结构件主业毛利率仅 3.15%，属于"卖资产保壳+题材炒作"型标的，基本面不支撑 94 亿市值。</span>
+    </div>
+</div>
+
+<h2>二、客观事实底座</h2>
+
+<div class="card">
+    <h3 style="font-size:14px;color:var(--blue);">L0-事实</h3>
+    <table>
+        <tr><th>项目</th><th>数据</th><th>意味着什么</th></tr>
+        <tr><td>今日行情</td><td>16.95 涨停（+9.99%）· 总市值 94.05 亿 · 换手 5.05% · 量比 1.99</td><td>题材涨停，机器人/消费电子/AI散热/扭亏为盈</td></tr>
+        <tr><td>2026Q1 营收</td><td>6.253 亿（同比 -9.51%）</td><td class="down">营收连续 6 个季度下滑，主业需求仍弱</td></tr>
+        <tr><td>2026Q1 归母净利</td><td>3.855 亿（+512.78%）</td><td>含出售科森医疗 100% 股权约 6 亿投资收益</td></tr>
+        <tr><td>2026Q1 扣非净利</td><td><b>-8758 万</b></td><td class="down">主业仍在亏损，账面盈利全靠非经常性损益</td></tr>
+        <tr><td>2025 年报</td><td>归母 -2.363 亿 · 扣非 -4.184 亿 · 营收 31.33 亿(-7.37%)</td><td class="down">连续三年亏损（2023/2024/2025），未弥补亏损约 4.82 亿</td></tr>
+        <tr><td>2026 中报预告</td><td>归母 2.3-3.15 亿（扭亏）· <b>扣非预亏 1.2-2.05 亿</b></td><td class="down">扭亏主因出售子公司，主业仍失血（Q2 单季预计亏损 0.7-1.55 亿）</td></tr>
+        <tr><td>毛利率</td><td>2026Q1 11.41% · 2025 年报约 1.11%</td><td class="down">消费电子结构件毛利率仅 3.15%，增收不增利</td></tr>
+        <tr><td>ROE</td><td>2026Q1 摊薄 18.47% · 2025 -11.73%</td><td>一次性收益推高，不可持续</td></tr>
+        <tr><td>资产负债率</td><td>52.86%（2026Q1）</td><td>较 2025 年报 64.31% 下降，卖资产降负债</td></tr>
+        <tr><td>经营现金流</td><td>2026Q1 每股 -0.1303 元</td><td class="down">由正转负，资金链需关注</td></tr>
+        <tr><td>业务结构</td><td>消费电子结构件 80.38%（毛利率 3.15%）· 医疗器械 11.06%（已出售）· 储能 3.40%</td><td class="down">高毛利医疗业务被剥离，剩余主业低毛利</td></tr>
+        <tr><td>地区结构</td><td>海外收入占 70.31%（毛利率 15.67%）· 国内毛利率 -13.27%</td><td>国内业务亏损，依赖海外</td></tr>
+        <tr><td>股东户数</td><td>4.635 万户（2026Q1，环比 -33.5%）</td><td class="up">筹码趋于集中</td></tr>
+        <tr><td>融资余额</td><td>约 7.12 亿（8/19 减少 6705 万）</td><td>杠杆资金高位撤出</td></tr>
+    </table>
+    <h3 style="font-size:14px;color:var(--blue);">L0-框架</h3>
+    <p style="font-size:13px;">科森科技是<b>消费电子精密金属/塑胶结构件代工</b>企业，处于产业链中游制造环节。上游为金属材料/CNC 设备，下游为苹果/华为/亚马逊/谷歌/Meta 等终端品牌。同层对标：长盈精密、蓝思科技、东山精密、领益智造、捷荣技术等。科森体量（31 亿营收）明显小于长盈（百亿级）、蓝思（五百亿级），行业地位边缘化。核心差异化：马来西亚产能布局 + 机器人结构件/固态电池/AI 散热等新题材切入（占比极低）。</p>
+</div>
+
+<h2>三、两套评估</h2>
+
+<div class="card">
+    <h3 style="font-size:14px;color:var(--blue);">3a Serenity 框架：15 条卡点判据</h3>
+    <p style="font-size:13px;">1:0 2:0 3:0 4:0 5:0 6:0 7:0 8:1 9:0 10:0 11:1 12:1 13:0 14:1 15:0 = <b>4/15</b></p>
+    <table>
+        <tr><th>得分项</th><th>说明</th></tr>
+        <tr><td>8. 资产负债率 52.86%</td><td>降负债，结构尚可（但主业不盈利是根本问题）</td></tr>
+        <tr><td>11. 海外客户结构</td><td>苹果/华为/亚马逊/Meta，海外占 70% 收入，客户优质</td></tr>
+        <tr><td>12. 筹码集中</td><td>股东户数 -33.5%，筹码集中（偏题材属性）</td></tr>
+        <tr><td>14. 题材想象空间</td><td>机器人/固态电池/AI 散热/折叠屏，故事多</td></tr>
+    </table>
+    <div class="alert"><strong>好卡点判定：无。</strong>4 个得分项中 2 个是"筹码/题材"（偏交易属性），2 个是财务结构（负债/客户），没有一条指向"可持续盈利成长"。核心卡点 = 主业扣非持续亏损、靠卖资产保壳。</div>
+
+    <h3 style="font-size:14px;color:var(--blue);">红旗扫描（仅列 warn/fail）</h3>
+    <ul class="flag-list">
+        <li class="fail"><b>主业扣非连亏：</b>2025 扣非 -4.18 亿、2026Q1 扣非 -8758 万、中报扣非预亏 1.2-2.05 亿，卖资产（约 6 亿投资收益）掩盖真实经营困境</li>
+        <li class="fail"><b>扭亏不可持续：</b>2026 中报扭亏主要靠出售科森医疗 100% 股权一次性收益，Q2 单季主业预计仍亏损 0.7-1.55 亿</li>
+        <li class="fail"><b>高毛利业务剥离：</b>医疗手术器械结构件（毛利率 34.85%）被出售，剩余消费电子主业毛利率仅 3.15%</li>
+        <li class="fail"><b>未弥补亏损 4.82 亿：</b>连续三年亏损，累计亏损尚未修复</li>
+        <li class="warn"><b>经营现金流转负：</b>2026Q1 每股 -0.13 元，资金链紧张</li>
+        <li class="warn"><b>治理风险：</b>续聘会计师事务所遭近 86% 中小股东反对，员工持股计划弃权比例高</li>
+        <li class="warn"><b>控股股东质押：</b>7/23 公告部分股份补充质押</li>
+        <li class="warn"><b>估值过高：</b>PE(TTM) 约 72 倍（亏损主业支撑不起），PB 约 4.1 倍</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h3 style="font-size:14px;color:var(--blue);">3b 估值评估：相对估值/市值跨层法</h3>
+    <div class="price-box">
+        <div class="pb-card bear">
+            <div>🐻 Bear（主题退潮+主业亏损）</div>
+            <div class="price">40-50 亿</div>
+            <div class="price-detail">对应股价 <b>7.2-9.0 元</b> · 题材退潮 + 主业持续亏损回归<br>PB 1.8-2.2 倍</div>
+        </div>
+        <div class="pb-card base">
+            <div>⚖️ Base（现状延续）</div>
+            <div class="price">60-70 亿</div>
+            <div class="price-detail">对应股价 <b>10.8-12.6 元</b> · 主业微亏、题材估值<br>PB 2.6-3.1 倍</div>
+        </div>
+        <div class="pb-card bull">
+            <div>🐂 Bull（新业务放量+主业扭亏）</div>
+            <div class="price">110-130 亿</div>
+            <div class="price-detail">对应股价 <b>19.8-23.4 元</b> · 机器人/AI 散热贡献业绩<br>PB 4.8-5.7 倍</div>
+        </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);">现价 16.95 元 / 市值 94 亿：处于 Base 上沿（70 亿）与 Bull 下沿（110 亿）之间，<b>隐含了对机器人/AI 散热新业务的乐观预期</b>。但该业务目前营收占比极低，短期无法验证。</p>
+</div>
+
+<h2>四、核心卡点与硬伤</h2>
+
+<div class="card">
+    <div class="alert" style="margin:0;">
+        <strong>核心卡点：</strong>① <b>主业盈利能力缺失</b>——消费电子结构件毛利率 3.15%，扣非连亏，营收连续 6 季下滑；② <b>扭亏质量极差</b>——2026 年盈利全靠出售医疗子公司约 6 亿一次性投资收益，Q2 主业仍亏；③ <b>高毛利业务已剥离</b>，剩余业务无利润支点。<br><br>
+        <strong>硬伤：</strong>① 未弥补亏损 4.82 亿（三年亏空未填）；② 经营现金流 2026Q1 转负；③ 治理信号负面（审计师遭 86% 股东反对）；④ 控股股东补充质押；⑤ PE 72 倍 vs 亏损主业，纯题材估值。
+    </div>
+    <div class="green-note" style="margin:12px 0 0;"><strong>相对亮点（不改变结论）：</strong>① 海外客户优质（苹果/华为/Meta，占收入 70%）；② 资产负债率降至 52.86%；③ 马来西亚产能布局有长期看点；④ 机器人/固态电池/AI 散热题材处于风口（今日涨停主因）。</div>
+</div>
+
+<h2>五、今日涨停归因与操作建议</h2>
+
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>分析</th></tr>
+        <tr><td>涨停原因</td><td>题材共振：机器人结构件（2025 年已有家用机器人结构件订单，占营收比例小）+ 消费电子（AI 手机渗透率突破 50%）+ AI 散热 + 扭亏为盈（卖资产）</td></tr>
+        <tr><td>板块属性</td><td>消费电子/机器人/苹果概念。8/19 市场暴跌后 8/20 情绪修复日（涨停 66 家），题材股反弹</td></tr>
+        <tr><td>Serenity 判定</td><td><b>4/15 回避</b> — 基本面（连亏/卖资产保壳）与当前 94 亿市值严重背离</td></tr>
+        <tr><td>操作建议</td><td><b>不参与。</b>纯题材博弈标的，退潮后修复期涨停不代表基本面拐点；若已持仓，涨停可视为题材兑现的减仓机会。等待 8/25 中报正式披露验证扣非是否改善</td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;"><strong>风险提示：</strong>① 中报扣非预亏 1.2-2.05 亿（8/25 披露），若披露后题材退潮股价大概率回落至 Base 区间；② 今日盘中临时停牌，需警惕监管异动核查；③ 融资余额 7.12 亿高位，杠杆资金撤出压力大。</div>
+</div>
+
+<div class="footer">Serenity 分析引擎 · 科森科技 603626 · 2026-08-20 · 仅供研究参考，不构成投资建议</div>
+
+</body>
+</html>
