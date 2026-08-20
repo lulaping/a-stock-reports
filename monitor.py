@@ -16,15 +16,22 @@ import time
 import datetime
 import os
 import sys
+import re
 from typing import Dict, List, Optional, Tuple
+
+# Windows 控制台 GBK 编码兼容：强制 UTF-8 输出（emoji 不会报错）
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 
 # ============================================================
 # 配置区 — 按需修改
 # ============================================================
 
-# 持仓股票 (代码, 名称, 成本价, 连板数, 所属板块)
+# 持仓股票 (代码, 名称, 成本价, 连板数, 所属板块, 是否高位股)
 HOLDINGS = [
-    {"code": "002081", "name": "金螳螂", "cost": 5.65, "board": 4, "sector": "装修"},
+    {"code": "002081", "name": "金螳螂", "cost": 5.65, "board": 4, "sector": "装修", "high": True},
 ]
 
 # 板块高标（板块名 → 最高标代码）
@@ -32,10 +39,41 @@ SECTOR_LEADERS = {
     "装修": "002081",
 }
 
+# 高位股冲高减仓规则（情绪冰点时触发）
+HIGH_PULLBACK_PCT = 7.0    # 冲高阈值：涨幅≥7%（主板）；创业板/科创自动翻倍为14%
+TEMP_ICE_THRESHOLD = 40    # 情绪温度 ≤40（冰点）时该规则生效
+TEMP_REFRESH_SEC = 300     # 情绪温度缓存刷新间隔（秒）
+
 # 监控参数
 POLL_INTERVAL = 3          # 轮询间隔（秒）
 ALERT_SOUND = False        # 是否播放提示音（Windows Beep）
 LOG_FILE = "monitor_log.txt"
+
+# 飞书 webhook（复用 start-scan.py 的配置文件，避免重复配置）
+WEBHOOK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "start_scan_webhook.txt")
+FEISHU_WEBHOOK = ""
+PUSH_EXIT_SIGNALS = True   # 退出信号(止损/断板/炸板/板块退潮)是否推送飞书
+
+def load_webhook_from_file():
+    """从 start_scan_webhook.txt 读取飞书 webhook。
+    格式：FEISHU:https://... 或 直接 https://...（无前缀默认飞书）"""
+    global FEISHU_WEBHOOK
+    try:
+        if os.path.exists(WEBHOOK_FILE):
+            with open(WEBHOOK_FILE, "r", encoding="utf-8") as f:
+                line = f.read().strip()
+            if not line:
+                return
+            if line.startswith("http"):
+                FEISHU_WEBHOOK = line
+            elif ":" in line and line.split(":", 1)[1].startswith("http"):
+                kind, url = line.split(":", 1)
+                if kind.upper() in ("FEISHU", "FEISHU_WEBHOOK"):
+                    FEISHU_WEBHOOK = url
+    except Exception:
+        pass
+
+load_webhook_from_file()
 
 # ============================================================
 # 东方财富实时行情API
@@ -161,8 +199,44 @@ def log(msg: str):
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(line + "\n")
 
+def extract_stock_title(msg: str) -> str:
+    """从信号消息提取「股票名(代码)」作为标题，找不到则回退空串。
+    如：'[断板] 金螳螂(002081) 昨日4板...' → '金螳螂(002081)'"""
+    m = re.search(r"([\u4e00-\u9fa5A-Za-z]{2,10})\((\d{6})\)", msg)
+    if m:
+        return f"{m.group(1)}({m.group(2)})"
+    return ""
+
+def push_feishu(title: str, content: str):
+    """推送飞书富文本卡片（红色头部，突出退出信号）
+    注意：Windows GBK 环境下 json= 参数会因 emoji 编码失败，
+    必须手动序列化为 UTF-8 bytes 并显式指定 Content-Type。"""
+    if not FEISHU_WEBHOOK:
+        return
+    try:
+        payload = {
+            "msg_type": "interactive",
+            "card": {
+                "header": {
+                    "title": {"tag": "plain_text", "content": title},
+                    "template": "red",
+                },
+                "elements": [{"tag": "div", "text": {"tag": "lark_md", "content": content}}],
+            },
+        }
+        data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        requests.post(
+            FEISHU_WEBHOOK,
+            data=data,
+            headers={"Content-Type": "application/json; charset=utf-8"},
+            timeout=5,
+        )
+        log(f"[飞书] 已推送退出信号: {title}")
+    except Exception as e:
+        log(f"[ERROR] 飞书推送失败: {e}")
+
 def alert(msg: str, level: str = "WARN"):
-    """报警输出"""
+    """报警输出：控制台打印 + 飞书推送（仅 DANGER 级别的退出信号推送）"""
     prefix = {"WARN": "⚠️", "DANGER": "🚨", "INFO": "📢", "OK": "✅"}
     p = prefix.get(level, "🔔")
     line = f"{p} {p} {p}  {msg}"
@@ -176,14 +250,66 @@ def alert(msg: str, level: str = "WARN"):
             winsound.Beep(freq, 500)
         except:
             pass
+    # 飞书推送：DANGER = 止损/断板/炸板/板块退潮等退出信号
+    if PUSH_EXIT_SIGNALS and level == "DANGER":
+        stock = extract_stock_title(msg)
+        title = f"🚨 退出信号 {stock}" if stock else "🚨 退出信号"
+        push_feishu(title, msg)
+
+# ============================================================
+# 市场情绪温度（L8 简化版，盘中实时）
+# ============================================================
+
+_TEMP_CACHE = {"time": 0, "temp": None, "zt": 0, "dt": 0, "max_lbc": 0}
+_POOL_UT = "7eea3edcaed734bea9cbfc24409ed989"
+
+def fetch_pool(kind: str) -> list:
+    """拉取东财涨停(ZT)/跌停(DT)池，失败返回空列表"""
+    url = f"https://push2ex.eastmoney.com/getTopic{kind}Pool"
+    params = {
+        "ut": _POOL_UT, "dpt": "wz.ztzt",
+        "Pageindex": 0, "pagesize": 1000, "sort": "fund:asc",
+        "date": datetime.date.today().strftime("%Y%m%d"),
+    }
+    try:
+        resp = requests.get(url, params=params, timeout=8)
+        data = resp.json()
+        if data.get("data") and data["data"].get("pool"):
+            return data["data"]["pool"]
+    except Exception as e:
+        log(f"[ERROR] {kind}池拉取失败: {e}")
+    return []
+
+def get_market_temp() -> dict:
+    """盘中情绪温度（L8 简化版：涨停数30分/跌停数20分/最高板15分/晋级率按中性10分），
+    5分钟缓存。返回 {temp, zone, zt, dt, max_lbc}"""
+    now = time.time()
+    if now - _TEMP_CACHE["time"] < TEMP_REFRESH_SEC and _TEMP_CACHE["temp"] is not None:
+        return _TEMP_CACHE
+    zt_pool = fetch_pool("ZT")
+    dt_pool = fetch_pool("DT")
+    zt = len(zt_pool)
+    dt = len(dt_pool)
+    max_lbc = max((int(p.get("lbc") or 0) for p in zt_pool), default=0)
+    # L8 打分
+    s_zt = 30 if zt >= 100 else 20 if zt >= 60 else 10 if zt >= 40 else 0
+    s_dt = 20 if dt == 0 else 15 if dt <= 5 else 8 if dt <= 15 else 0
+    s_gd = 15 if max_lbc >= 7 else 10 if max_lbc >= 5 else 6 if max_lbc >= 3 else 2
+    s_jj = 10  # 盘中晋级率未知，按中性
+    temp = s_zt + s_dt + s_gd + s_jj
+    zone = "高潮" if temp >= 80 else "正常" if temp >= 40 else "冰点"
+    _TEMP_CACHE.update({"time": now, "temp": temp, "zone": zone,
+                        "zt": zt, "dt": dt, "max_lbc": max_lbc})
+    return _TEMP_CACHE
+
 
 # ============================================================
 # 规则检测
 # ============================================================
 
 def check_rules(holdings: list, quotes: dict, indices: dict, 
-                prev_window: str) -> List[str]:
-    """检查清单4规则，返回报警消息列表"""
+                prev_window: str, temp_info: dict = None) -> List[str]:
+    """检查清单4规则，返回报警消息列表。temp_info: 情绪温度(可选)"""
     alerts = []
     window, desc = get_time_window()
 
@@ -191,6 +317,8 @@ def check_rules(holdings: list, quotes: dict, indices: dict,
     for name, idx in indices.items():
         if name == "上证指数" and idx["pct"] < -0.5:
             alerts.append(f"[大盘] {name} {idx['pct']:+.2f}% 翻绿，减仓至3成！")
+
+    temp = temp_info.get("temp") if temp_info else None
 
     # 逐持仓检查
     for h in holdings:
@@ -218,6 +346,15 @@ def check_rules(holdings: list, quotes: dict, indices: dict,
         # 铁律：断板
         if h["board"] >= 1 and pct < 9.5 and window in ("W2", "W3", "W4", "W5"):
             alerts.append(f"[断板] {name}({code}) 昨日{h['board']}板，今日{pct:+.2f}%未封板，断板！")
+
+        # 高位股冲高减仓（情绪冰点 temp≤40 时，冲高≥7%/14%且未封板 → 无条件减仓至≤2成）
+        if (h.get("high") and temp is not None and temp <= TEMP_ICE_THRESHOLD
+                and window in ("W1", "W2", "W3", "W4")):
+            is_20cm = code.startswith(("30", "68"))
+            pull_thresh = HIGH_PULLBACK_PCT * 2 if is_20cm else HIGH_PULLBACK_PCT
+            limit_pct = 19.5 if is_20cm else 9.5
+            if pct >= pull_thresh and pct < limit_pct:
+                alerts.append(f"[冲高减仓] {name}({code}) 冰点(温度{temp})冲高{pct:+.1f}%，减仓至≤2成！")
 
         # 窗口1: 弱转强确认 (9:30-9:35)
         if window == "W1" and prev_window != "W1":
@@ -320,6 +457,7 @@ def main():
         # 获取实时数据
         quotes = get_realtime_quotes(all_codes)
         indices = get_index_quotes()
+        temp_info = get_market_temp()
 
         if not quotes:
             print(f"\r⏳ 获取数据中...", end="")
@@ -334,6 +472,8 @@ def main():
             color = "🟢" if idx["pct"] > 0 else "🔴" if idx["pct"] < 0 else "⚪"
             print(f"{color}{name} {idx['pct']:+.2f}%  ", end="")
         print()
+        print(f"  🌡️ 情绪温度: {temp_info['temp']}/100 ({temp_info['zone']})  "
+              f"涨停{temp_info['zt']} 跌停{temp_info['dt']} 最高{temp_info['max_lbc']}板")
         for h in HOLDINGS:
             q = quotes.get(h["code"])
             if q:
@@ -349,14 +489,14 @@ def main():
             alert(a, "INFO")
 
         # 检查规则
-        alerts = check_rules(HOLDINGS, quotes, indices, prev_window)
+        alerts = check_rules(HOLDINGS, quotes, indices, prev_window, temp_info)
         for a in alerts:
             # 防重复（同类型在同窗口只报一次）
             key = a[:30]
             now_ts = time.time()
             if key not in alerted_rules:
                 alerted_rules.add(key)
-                if "止损" in a or "断板" in a or "炸板" in a or "板块" in a:
+                if "止损" in a or "断板" in a or "炸板" in a or "板块" in a or "冲高" in a:
                     alert(a, "DANGER")
                 elif "弱转强" in a or "封板" in a:
                     alert(a, "OK")
@@ -369,6 +509,19 @@ def main():
     log("监控结束")
 
 if __name__ == "__main__":
+    if "--test-notify" in sys.argv:
+        # 测试飞书推送通道
+        print("=" * 50)
+        print("测试飞书推送...")
+        if FEISHU_WEBHOOK:
+            log(f"webhook: {FEISHU_WEBHOOK[:50]}...")
+            push_feishu("🚨 退出信号测试", 
+                        "**[测试]** monitor.py 飞书推送已接通\n"
+                        "止损/断板/炸板/板块退潮信号将推送到此群\n"
+                        f"时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        else:
+            print("❌ 未检测到飞书 webhook，请检查 start_scan_webhook.txt 配置")
+        sys.exit(0)
     try:
         main()
     except KeyboardInterrupt:
