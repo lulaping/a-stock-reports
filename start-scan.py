@@ -23,6 +23,7 @@ import datetime
 import subprocess
 import sys
 import os
+import re
 from typing import Dict, List, Optional, Set, Tuple
 
 # Windows 控制台 GBK 编码兼容：强制 UTF-8 输出
@@ -260,9 +261,28 @@ def push_webhook(title: str, content: str):
             log(f"[ERROR] 飞书推送失败: {e}")
 
 
-def notify(msg: str, title: str = "📈 启动信号", level: str = "info"):
-    """综合通知：控制台 + 弹窗 + webhook（无提示音）"""
+def extract_stock_title(msg: str) -> str:
+    """从信号消息中提取「股票名(代码)」作为标题，找不到则回退到信号类型。
+    如：'⭐ 晋级2板 志邦家居(603801) 1→2板 ...' → '志邦家居(603801)'"""
+    # 匹配 名称(6位代码)
+    m = re.search(r"([\u4e00-\u9fa5A-Za-z]{2,10})\((\d{6})\)", msg)
+    if m:
+        return f"{m.group(1)}({m.group(2)})"
+    return ""
+
+
+def notify(msg: str, title: str = "", level: str = "info"):
+    """综合通知：控制台 + 弹窗 + webhook（无提示音）。
+    title 为空时自动从消息提取股票名(代码)作为标题，让弹窗/卡片直接看到标的。"""
     log(msg)
+    # 生成标题：优先股票名(代码)，否则用信号类型
+    if not title:
+        stock = extract_stock_title(msg)
+        if stock:
+            tag = "🚀" if "拉升" in msg else "⭐" if "晋级" in msg else "💥" if "断板" in msg else "🆕" if "首板" in msg else "📊"
+            title = f"{tag} {stock}"
+        else:
+            title = "📈 启动信号"
     # 1. Windows 弹窗（异步，不阻塞）
     try:
         safe_msg = msg.replace("'", "").replace('"', "")
@@ -517,8 +537,7 @@ def main():
             log(f"🔄 首轮基线: {len(stocks)} 只涨停, {len(surges)} 只放量拉升(≥{SURGE_PCT}%)")
             if all_msgs:
                 for m in all_msgs[:10]:
-                    notify(m, title="📈 启动信号" if "晋级" in m or "首板" in m or "拉升" in m else "📊 监控",
-                           level="info")
+                    notify(m, level="info")
             time.sleep(POLL_INTERVAL)
             continue
 
@@ -537,8 +556,7 @@ def main():
         if all_msgs:
             for m in all_msgs[:10]:   # 每轮最多报 10 条
                 level = "danger" if "断板" in m else "info"
-                notify(m, title="📈 启动信号" if "晋级" in m or "秒板" in m or "拉升" in m else "📊 监控",
-                       level=level)
+                notify(m, level=level)
             if len(all_msgs) > 10:
                 notify(f"…… 另有 {len(all_msgs)-10} 条信号，见 {LOG_FILE}", level="info")
 
