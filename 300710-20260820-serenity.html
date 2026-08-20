@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万隆光电(300710) Serenity Mode 1 分析 — 2026-08-20</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<!-- ============ ① 标题区 ============ -->
+<h1>万隆光电(300710) — Serenity Mode 1 分析</h1>
+<p class="subtitle">光纤概念 + 拟收购中控信息"蛇吞象"重组 | 2026-08-20 20cm涨停收于32.27元 | 数据来源：新浪财经/东方财富/证券时报/上海证券报</p>
+
+<!-- ============ ② 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>核心数据（2026-08-20 收盘）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+20.01%</div><div class="label">今日涨幅</div></div>
+        <div class="stat"><div class="num">32.27元</div><div class="label">收盘价(涨停封死)</div></div>
+        <div class="stat"><div class="num">32.11亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">8.83%</div><div class="label">换手率</div></div>
+    </div>
+    <div style="margin-top:8px;font-size:13px;color:var(--muted);">总股本 9949.03万股 | 流通股本 7458.00万股 | 流通市值 24.07亿 | 市净率 7.41 | PE(TTM) 亏损 | 主力净流入 6353万元</div>
+</div>
+
+<!-- ============ ③ 结论区 ============ -->
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">行1 — 客观框架</span>
+        <span><strong>Bear 15-20亿（对应股价15-20元） / Base 30-40亿（对应股价30-40元） / Bull 55-65亿（对应股价55-65元）</strong>。当前市值32.11亿处于Base区间下沿，重组成功预期已部分定价。翻倍门槛（+100%）对应64亿，需Bull case才可触及。</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">行2 — Serenity 判定</span>
+        <span><strong>Hold</strong> — 标的在Serenity能力圈边缘（光纤概念属AI供应链映射，但主业为广电网络设备，收购标的为基建数智化，均非典型卡点逻辑）。当前核心驱动力是重组审核预期，而非供应链瓶颈。15条卡点判据不适用，仅做红旗扫描+情景估值。</span>
+    </div>
+</div>
+
+<!-- ============ ④ Scope Gate 判定 ============ -->
+<h2>Scope Gate — 能力圈判定</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>判定</th><th>说明</th></tr>
+        <tr><td>市场模式</td><td><span class="badge badge-blue">A股模式</span></td><td>6位数字代码300710，深交所创业板</td></tr>
+        <tr><td>分析模式</td><td><span class="badge badge-orange">Mode 1（边缘适用）</span></td><td>用户要求全流程，但标的不在核心能力圈内</td></tr>
+        <tr><td>能力圈匹配</td><td><span class="badge badge-red">非核心能力圈</span></td><td>广电网络设备（非AI供应链/半导体/机器人/新能源/etc.），光纤概念为AI数据中心的弱映射，收购标的为基建数智化（非硬件卡点）。Serenity 15条判据不适用，降级为情景估值+红旗扫描。</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑤ L0-事实底座 ============ -->
+<h2>L0-事实底座</h2>
+
+<div class="card">
+    <strong>业务结构（2025年报）</strong>
+    <table>
+        <tr><th>业务板块</th><th>营收（亿元）</th><th>占比</th><th>毛利率</th><th>意味着什么</th></tr>
+        <tr><td>有线电视光纤传输设备</td><td>1.13</td><td>41.91%</td><td>—</td><td>核心主业，但广电行业已进入存量竞争</td></tr>
+        <tr><td>电信增值服务</td><td>0.71</td><td>26.22%</td><td>—</td><td>2025年新增并表，来源为前期收购的子公司</td></tr>
+        <tr><td>有线电视电缆传输设备</td><td>0.56</td><td>20.85%</td><td>—</td><td>传统业务，逐年萎缩</td></tr>
+        <tr><td>其他</td><td>0.30</td><td>11.02%</td><td>—</td><td>含数据通信系统/PON设备等</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <strong>财务数据</strong>
+    <table>
+        <tr><th>指标</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026Q1</th><th>趋势</th></tr>
+        <tr><td>营收（亿元）</td><td>3.46</td><td>3.41</td><td>2.90</td><td>2.70</td><td>0.47</td><td class="down">连续4年下滑</td></tr>
+        <tr><td>归母净利润（亿元）</td><td>-0.22</td><td>-0.10</td><td>-1.99</td><td>-0.29</td><td>-0.09</td><td class="down">连续4年亏损</td></tr>
+        <tr><td>扣非净利润（亿元）</td><td>-0.23</td><td>-0.11</td><td>-2.06</td><td>-0.32</td><td>-0.10</td><td class="down">连续4年亏损</td></tr>
+        <tr><td>毛利率</td><td>—</td><td>—</td><td>—</td><td>—</td><td>29.33%</td><td>稳定但偏低</td></tr>
+        <tr><td>资产负债率</td><td>—</td><td>—</td><td>—</td><td>—</td><td>18.10%</td><td>低杠杆</td></tr>
+        <tr><td>每股净资产</td><td>—</td><td>—</td><td>—</td><td>—</td><td>4.36元</td><td>市净率7.41倍</td></tr>
+    </table>
+    <div class="alert" style="margin-top:8px;"><strong>关键警示：</strong>连续4年累计亏损约2.6亿元，主业持续失血。若2026年继续亏损，可能触发ST风险警示（创业板为*ST条件：扣非净利为负且营收<1亿）。2026H1营收预估实际约0.9-1.0亿（Q1为0.47亿），需关注8月29日中报。</div>
+</div>
+
+<div class="card">
+    <strong>重大资产重组 — 收购中控信息100%股权</strong>
+    <table>
+        <tr><th>维度</th><th>内容</th></tr>
+        <tr><td>交易对价</td><td>23.25亿元（股份支付20.925亿 + 现金支付2.325亿）</td></tr>
+        <tr><td>标的估值</td><td>收益法估值24.64亿元，增值率30.48%，扣除分红后协商作价23.25亿</td></tr>
+        <tr><td>发行股份价格</td><td>19.19元/股（购买资产）；21.23元/股（配套融资，实控人全额认购）</td></tr>
+        <tr><td>配套融资</td><td>不超过6.34亿元，由实控人付小铜全额认购</td></tr>
+        <tr><td>标的简介</td><td>中控信息，国内领先的基础设施数智化服务商，聚焦城市交通/轨道交通/水环境/建筑智能体，2025年营收23.35亿，资产总额62.35亿（万隆光电同期仅5.82亿）</td></tr>
+        <tr><td>业绩承诺</td><td>2026-2028年扣非净利润分别不低于0.8亿/0.95亿/1.05亿元，分期发行股份绑定</td></tr>
+        <tr><td>审核进度</td><td>2026-07-13 深交所出具审核问询函；2026-08-10 公司申请延期回复（不超过30日）</td></tr>
+        <tr><td>核心风险</td><td>深交所审核通过 + 证监会同意注册方可实施，不确定性高</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑥ 今日涨停分析 ============ -->
+<h2>今日涨停分析（2026-08-20）</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>内容</th></tr>
+        <tr><td>涨停时间</td><td>10:45 触及涨停，全天封死（20cm涨停）</td></tr>
+        <tr><td>盘中异动</td><td>盘中两度临时停牌（10:28/14:45），触发创业板严重异常波动</td></tr>
+        <tr><td>驱动逻辑</td><td><strong>三层叠加：</strong>① 光纤概念（AI硬件反弹，SK海力士40万亿韩元回购，藤仓光纤业绩指引上修）② 拟收购中控信息重组预期③ 广电网络设备行业跟随</td></tr>
+        <tr><td>封板质量</td><td><span class="badge badge-green">强板</span> 封单20337手（约6.5亿），买一远大于卖单，全天成交2.01亿</td></tr>
+        <tr><td>资金流向</td><td>主力净流入6353万（大单3112万+特大单3241万），散户净流入1682万</td></tr>
+        <tr><td>龙虎榜</td><td>买入总计7491万 vs 卖出总计2487万，净差+5004万。广发证券台州/杭州席位合计买入5790万（占买入77%），游资主导</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑦ 红旗扫描 ============ -->
+<h2>红旗扫描</h2>
+<ul class="flag-list">
+    <li class="fail">🔴 <strong>连续4年亏损（硬否决维度）</strong>：2022-2025年累计归母亏损约2.6亿元，2026Q1继续亏损-910.8万。若2026年全年亏损，结合营收下滑趋势，有触发*ST可能。</li>
+    <li class="fail">🔴 <strong>重组审核不确定（硬否决维度）</strong>：深交所审核问询函延期回复中，能否通过及时间均不确定。若重组失败，股价将面临大幅回调风险。</li>
+    <li class="warn">⚠️ <strong>股价表现较弱（交易面风险）</strong>：近6个月涨幅-14.96%，近3个月-20.51%，跑输行业。今日涨停前处于下降趋势。</li>
+    <li class="warn">⚠️ <strong>中控信息营收/扣非连续2年下滑</strong>：2024-2025年营收分别-17.95%/-10.66%，扣非净利润分别-15.6%/-22.34%。标的自身经营质量存疑。</li>
+    <li class="warn">⚠️ <strong>极高市净率（7.41倍）</strong>：无盈利支撑下，当前PB完全依赖重组预期，安全边际极低。</li>
+    <li class="pass">✅ 大股东质押比例：无股权质押信息（通过）</li>
+    <li class="pass">✅ 商誉/净资产：2460万/5.68%（在安全范围内，通过）</li>
+    <li class="pass">✅ 资产负债率18.10%（低负债，通过）</li>
+    <li class="pass">✅ 海外核心技术依赖：不涉及（通过）</li>
+    <li class="pass">✅ 纯软件/SaaS/零收入炒作：中控信息有实质营收和客户，非纯炒作（通过）</li>
+</ul>
+
+<!-- ============ ⑧ 情景估值 ============ -->
+<h2>情景估值（Bear / Base / Bull）</h2>
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear（重组失败）</h4>
+        <div class="price">15-20亿</div>
+        <div class="price-detail">对应股价 15-20元</div>
+        <p style="font-size:13px;margin-top:8px;">
+            <strong>触发条件：</strong>深交所否决重组 or 证监会不予注册 or 中控信息业绩大幅低于承诺。<br>
+            <strong>依据：</strong>回归原主业估值。参考广电设备可比公司（数码视讯/佳创视讯等）PS约0.5-1x，2.7亿营收→1.5-3亿市值；加上净现金约1.5亿，合计约15-20亿。当前股价32.27元有<strong>38-54%下行空间</strong>。
+        </p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base（重组成功）</h4>
+        <div class="price">30-40亿</div>
+        <div class="price-detail">对应股价 30-40元</div>
+        <p style="font-size:13px;margin-top:8px;">
+            <strong>触发条件：</strong>重组顺利过审，2026年备考利润约0.8亿（中控信息承诺下限）。<br>
+            <strong>依据：</strong>参考A股信息系统集成商（如中科信息、银江技术等）合理PE 30-40x。0.8亿×35x=28亿，加上原主业约4-5亿残余价值，合计约30-40亿。当前市值32亿处于此区间<strong>下沿</strong>，上行空间<strong>0-25%</strong>。
+        </p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull（重组超预期+协同效应）</h4>
+        <div class="price">55-65亿</div>
+        <div class="price-detail">对应股价 55-65元</div>
+        <p style="font-size:13px;margin-top:8px;">
+            <strong>触发条件：</strong>重组成功 + 中控信息2027年利润超1.5亿 + 万隆光电原有业务协同变现。<br>
+            <strong>依据：</strong>若万隆光电通过融资资金推动中控信息加速增长，且AI/数智化概念赋予估值溢价，PE可给40-50x。1.5亿×45x=67.5亿。当前市值有<strong>71-102%上行空间</strong>，恰好过翻倍门槛。
+        </p>
+    </div>
+</div>
+
+<!-- ============ ⑨ 催化剂时点 ============ -->
+<h2>催化剂时点</h2>
+<div class="card">
+    <table>
+        <tr><th>时点</th><th>事件</th><th>类型</th><th>影响方向</th></tr>
+        <tr><td>2026-08-29</td><td>中报披露</td><td>财报</td><td>如果继续亏损，强化*ST预期；若意外改善，正面</td></tr>
+        <tr><td>2026年9月上旬</td><td>深交所问询函回复截止</td><td>审核</td><td>回复内容质量决定重组推进节奏</td></tr>
+        <tr><td>2026年Q3-Q4</td><td>深交所重组审核会</td><td>审核</td><td>过会/否决直接影响股价方向</td></tr>
+        <tr><td>2026年Q4</td><td>证监会注册</td><td>监管</td><td>最后一道门槛</td></tr>
+        <tr><td>2026年</td><td>中控信息年报业绩</td><td>业绩</td><td>若2026年扣非<0.8亿，触发补偿条款</td></tr>
+    </table>
+    <div class="alert" style="margin-top:8px;"><strong>⚠️ 核心判断：</strong>当前股价已部分定价重组成功预期（Base case下沿），但尚未包含重组失败风险。8月29日中报是关键短期验证节点。</div>
+</div>
+
+<!-- ============ ⑩ 综合判定 ============ -->
+<h2>综合判定</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>判定</th></tr>
+        <tr><td>客观框架</td><td><span class="badge badge-orange">Bear/Base/Bull 不对称</span> — Bear下行38-54% vs Bull上行71-102%，赔率表面有利，但Base case仅0-25%上行空间，本质是"重组成功不涨、重组失败暴跌"的彩票型结构。</td></tr>
+        <tr><td>Serenity 信念档</td><td><span class="badge badge-orange">Hold</span> — 标的不在能力圈核心，缺乏供应链卡点逻辑。当前价格已反映Base预期，安全边际不足。</td></tr>
+        <tr><td>短线博弈</td><td><span class="badge badge-red">高难度</span> — 今日20cm涨停+龙虎榜游资主导，光纤概念持续性存疑，追高风险极大。</td></tr>
+        <tr><td>中线投资</td><td><span class="badge badge-orange">观望</span> — 等待重组审核结果明朗后再评估。若重组失败，15-20亿是合理估值区间。</td></tr>
+        <tr><td>长线价值</td><td><span class="badge badge-red">不推荐</span> — 原主业持续萎缩，转型后的基建数智化赛道非高壁垒赛道，中控信息自身业绩也在下滑。</td></tr>
+    </table>
+</div>
+
+<!-- 风险提示 -->
+<div class="alert">
+    <strong>⚠️ 风险提示：</strong>本文分析基于公开信息，不构成投资建议。万隆光电当前的核心变量是重组审核结果，具有高度不确定性。投资者应充分评估重组失败风险。今日涨停更多受光纤概念短期情绪驱动，需警惕概念退潮后的回调风险。
+</div>
+
+<!-- ============ ④ 页脚 ============ -->
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-20 · 数据来源：新浪财经/东方财富/证券时报/上海证券报/长江商报/深交所公告 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
