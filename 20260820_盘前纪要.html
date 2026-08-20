@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-20 盘前纪要 — A股隔夜利好利空消息汇总</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --red: #f85149; --orange: #d2991d; --green: #3fb950; --blue: #58a6ff; --accent: #e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); max-width:960px; margin:0 auto; padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:16px 0 8px; color:var(--blue); }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted); font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .badge-gray { background:rgba(139,148,158,0.2); color:var(--muted); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .impact-list { list-style:none; padding:0; }
+        .impact-list li { padding:12px 16px; margin-bottom:8px; border-radius:8px; border:1px solid var(--border); background:var(--card); }
+        .impact-list li .source { font-size:11px; color:var(--muted); margin:2px 0; }
+        .impact-list li .sector { font-size:11px; margin-top:4px; }
+        .impact-list li .sector span { display:inline-block; padding:1px 6px; border-radius:3px; margin-right:3px; font-size:10px; }
+        .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; margin-right:4px; }
+        .tag-gold { background:rgba(233,69,96,0.25); color:var(--accent); }
+        .tag-silver { background:rgba(210,153,29,0.25); color:var(--orange); }
+        .tag-bronze { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .tag-red { background:rgba(248,81,73,0.25); color:var(--red); }
+        .tag-warn { background:rgba(139,148,158,0.2); color:var(--muted); }
+        .highlight { background:rgba(233,69,96,0.15); border-radius:4px; padding:2px 6px; color:var(--accent); }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px; padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+        .sentiment-box { display:flex; gap:16px; margin:12px 0; flex-wrap:wrap; }
+        .sentiment-item { flex:1; min-width:120px; text-align:center; padding:16px; background:var(--card); border-radius:8px; border:1px solid var(--border); }
+        .sentiment-item .score { font-size:28px; font-weight:700; }
+        .sentiment-item .label { font-size:11px; color:var(--muted); margin-top:4px; }
+    </style>
+</head>
+<body>
+
+<h1>盘前纪要 — 2026-08-20（星期四）</h1>
+<p class="subtitle">隔夜利好利空消息汇总 | 数据截至 2026-08-20 06:00 | L8框架：退潮确认期，绝对空仓观望</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>隔夜行情速览</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">+0.22%</div><div class="label">道指</div></div>
+        <div class="stat"><div class="num">+0.21%</div><div class="label">标普500</div></div>
+        <div class="stat"><div class="num">+0.16%</div><div class="label">纳指</div></div>
+        <div class="stat"><div class="num">+1.51%</div><div class="label">中概股(金龙)</div></div>
+    </div>
+    <div class="grid-4" style="margin-top:8px;">
+        <div class="stat"><div class="num" style="color:var(--green);">+4.35%</div><div class="label">黄金(伦敦金)</div></div>
+        <div class="stat"><div class="num" style="color:var(--green);">+5.79%</div><div class="label">白银(伦敦银)</div></div>
+        <div class="stat"><div class="num" style="color:var(--orange);">-2.12%</div><div class="label">费城半导体</div></div>
+        <div class="stat"><div class="num" style="color:var(--green);">-0.86%</div><div class="label">美元指数</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--muted);">A股昨收：沪指3894.42(-2.40%) 深成指13890.15(-5.01%) 创业板3473.49(-6.26%) | L8温度21/100冰点+退潮确认</div>
+</div>
+
+<!-- 今日本地重要事件 -->
+<h2>今日重点关注</h2>
+<div class="card">
+    <table>
+        <tr><th>时间</th><th>事件</th><th>影响程度</th></tr>
+        <tr><td>09:00</td><td>LPR利率报价（8月）</td><td><span class="badge badge-orange">中等</span></td></tr>
+        <tr><td>09:15</td><td>L8竞价三漏斗检查（高标跌停+跌停池>10家）</td><td><span class="badge badge-red">关键</span></td></tr>
+        <tr><td>20:30</td><td>美国初请失业金人数</td><td><span class="badge badge-blue">一般</span></td></tr>
+        <tr><td>22:00</td><td>美国成屋销售数据</td><td><span class="badge badge-blue">一般</span></td></tr>
+    </table>
+    <div class="alert" style="margin:8px 0 0;">L8判定：今日竞价漏斗一（高标全线跌停）极大概率继续关闭，退潮确认期绝对空仓观望，不抄底不接飞刀。</div>
+</div>
+
+<!-- ======== 利好 ======== -->
+<h2>🥇 重大利好</h2>
+<ul class="impact-list">
+
+<li>
+    <span class="tag tag-gold">🥇 重大利好</span>
+    <strong>公积金条例大修落地 — 10万亿级资金松绑</strong>
+    <div class="source">来源：国务院 | 8月19日盘后</div>
+    <div>国务院修改《住房公积金管理条例》，自9月20日起施行：①租房提取公积金取消收入比例门槛；②新增装修自住住房、支付物业费等提取情形；③公积金存贷利率由国务院决定，为后续降息留空间。</div>
+    <div class="sector">影响板块：🏠 家居/装修/厨卫电器 🏢 房地产/物业 🏬 消费</div>
+</li>
+
+<li>
+    <span class="tag tag-gold">🥇 重大利好</span>
+    <strong>美股创新药暴涨 — Moderna飙176%，mRNA癌症疫苗III期成功</strong>
+    <div class="source">来源：Moderna/默沙东公告 | 8月19日美股</div>
+    <div>Moderna与默沙东宣布，个性化mRNA癌症疫苗（intismeran autogene）联合Keytruda治疗高风险黑色素瘤III期试验达到主要终点。Moderna涨176%，默沙东涨12.6%创历史新高，纳斯达克生物科技指数+6.39%。</div>
+    <div class="sector">影响板块：💊 mRNA疫苗/创新药（康希诺、康泰生物、沃森生物、智飞生物、万泰生物）🧬 CRO/CDMO</div>
+</li>
+
+</ul>
+
+<h2>🥈 中等利好</h2>
+<ul class="impact-list">
+
+<li>
+    <span class="tag tag-silver">🥈 中等利好</span>
+    <strong>中概股走强 — 金龙指数+1.51%</strong>
+    <div class="source">来源：美股收盘 | 8月19日</div>
+    <div>经过连续6天回调后中概股大幅反弹，金龙指数+1.51%，金山云+14%，亚朵+5%，理想汽车+4%，拼多多+3.36%。阿里巴巴+0.59%，京东+1.84%。</div>
+    <div class="sector">影响板块：🇨🇳 中概股/港股互联网 📱 电商</div>
+</li>
+
+<li>
+    <span class="tag tag-silver">🥈 中等利好</span>
+    <strong>黄金白银暴涨 — 黄金+4.35%突破4520美元</strong>
+    <div class="source">来源：COMEX/LBMA | 8月19日</div>
+    <div>伦敦金+4.35%报4521.87美元，COMEX黄金+3.62%报4580.7美元；伦敦银+5.79%报66.97美元。美元指数大跌0.86%至98.80。美国财政部增加长期国债回购规模压低利率。</div>
+    <div class="sector">影响板块：🥇 黄金/贵金属 💰 有色金属</div>
+</li>
+
+<li>
+    <span class="tag tag-silver">🥈 中等利好</span>
+    <strong>上海市"数字上海"十五五规划发布</strong>
+    <div class="source">来源：上海市人民政府 | 8月19日</div>
+    <div>到2030年建成"国际数据枢纽+三位一体算力（通用/智能/超算）+公共数据上链+政务智能体+5G-A/6G/卫星互联网"。短期引起相关主题重估。</div>
+    <div class="sector">影响板块：💻 算力IDC/液冷（数据港、宝信软件、英维克）🔗 区块链/数据要素（格尔软件）🤖 AI政务（云赛智联、万达信息、电科数字）📡 通信新基建（中际旭创）</div>
+</li>
+
+<li>
+    <span class="tag tag-silver">🥈 中等利好</span>
+    <strong>焦炭提涨 + 资源品涨价</strong>
+    <div class="source">来源：行业资讯 | 8月19日晚</div>
+    <div>焦企开始提涨焦炭报价；负极材料产业链价格走高；化工进入传统旺季，下游库存低位，后续采购需求有望回升。</div>
+    <div class="sector">影响板块：⛏️ 焦炭/煤炭（陕西黑猫、美锦能源、宝泰隆）🔋 负极材料 🧪 化工</div>
+</li>
+
+<li>
+    <span class="tag tag-silver">🥈 中等利好</span>
+    <strong>永鼎股份(600105)半年报 — 营收+47.75%，净利+58.06%</strong>
+    <div class="source">来源：财联社 | 8月19日17:38</div>
+    <div>推出10派0.35元分红方案，二季度业绩环比明显抬升。</div>
+    <div class="sector">影响板块：🔌 光通信/电缆</div>
+</li>
+
+<li>
+    <span class="tag tag-silver">🥈 中等利好</span>
+    <strong>中微公司半年报 — 净利润+300%</strong>
+    <div class="source">来源：公告 | 8月19日晚</div>
+    <div>半导体设备龙头业绩爆发，验证国产替代逻辑。</div>
+    <div class="sector">影响板块：🔬 半导体设备</div>
+</li>
+
+<li>
+    <span class="tag tag-silver">🥈 中等利好</span>
+    <strong>洛阳钼业半年报 — 净利润+86.27%，拟10派0.95元</strong>
+    <div class="source">来源：公告 | 8月19日晚</div>
+    <div>有色金属龙头业绩高增，叠加金价暴涨利好。</div>
+    <div class="sector">影响板块：⛏️ 有色金属/矿业</div>
+</li>
+
+</ul>
+
+<h2>🥉 一般利好</h2>
+<ul class="impact-list">
+
+<li>
+    <span class="tag tag-bronze">🥉 一般利好</span>
+    <strong>三星上调先进晶圆代工报价最高15%</strong>
+    <div class="source">来源：产业资讯 | 8月19日晚</div>
+    <div>晶圆代工涨价周期延续，利好国内代工企业。</div>
+    <div class="sector">影响板块：🔬 晶圆代工/半导体</div>
+</li>
+
+<li>
+    <span class="tag tag-bronze">🥉 一般利好</span>
+    <strong>SK海力士大额回购计划</strong>
+    <div class="source">来源：公告 | 8月19日</div>
+    <div>存储龙头回购提振信心，叠加存储涨价预期。</div>
+    <div class="sector">影响板块：💾 存储芯片</div>
+</li>
+
+<li>
+    <span class="tag tag-bronze">🥉 一般利好</span>
+    <strong>美元指数大跌0.86% — 人民币资产受益</strong>
+    <div class="source">来源：外汇市场 | 8月19日</div>
+    <div>美元走弱推动人民币升值预期，利好A股外资流入。</div>
+    <div class="sector">影响板块：🏦 银行/金融 🏭 周期股</div>
+</li>
+
+<li>
+    <span class="tag tag-bronze">🥉 一般利好</span>
+    <strong>美国财政部增加国债回购规模</strong>
+    <div class="source">来源：美国财政部 | 8月19日</div>
+    <div>长期名义国债回购规模至少翻倍至40亿美元，压低长期利率。</div>
+    <div class="sector">影响板块：📈 全球风险资产</div>
+</li>
+
+<li>
+    <span class="tag tag-bronze">🥉 一般利好</span>
+    <strong>上海凤凰B股回购 + 威胜信息/广电电气回购</strong>
+    <div class="source">来源：公告 | 8月19日晚</div>
+    <div>多家公司发布回购公告，提振市场信心。</div>
+    <div class="sector">影响板块：个股层面</div>
+</li>
+
+</ul>
+
+<!-- ======== 利空 ======== -->
+<h2>🔴 重大利空</h2>
+<ul class="impact-list">
+
+<li>
+    <span class="tag tag-red">🔴 重大利空</span>
+    <strong>美股科技股分化 — 费城半导体-2.12%，存储/光通信继续回调</strong>
+    <div class="source">来源：美股收盘 | 8月19日</div>
+    <div>费城半导体指数-2.12%。希捷-7.87%跌破所有均线，西部数据-7%，博通-4.61%，英特尔-4.02%，英伟达-0.99%连续4日回调。存储/光通信板块持续走弱，近期A股科技股承压。</div>
+    <div class="sector">影响板块：⚠️ 存储芯片（兆易创新、北京君正）⚠️ 光通信（中际旭创、新易盛、天孚通信）⚠️ 半导体设备/材料</div>
+</li>
+
+<li>
+    <span class="tag tag-red">🔴 重大利空</span>
+    <strong>A股昨日暴跌 — 沪指-2.4%跌破3900，创业板-6.26%</strong>
+    <div class="source">来源：A股收盘 | 8月19日</div>
+    <div>沪指3894.42(-2.40%)，深成指-5.01%，创业板-6.26%，科创50-6.89%。两市净流出2639亿，涨停36家/跌停17家。L8温度21/100冰点+退潮确认。北证50-4.90%已破位。</div>
+    <div class="sector">影响板块：⚠️ 全市场情绪延续悲观 ⚠️ 科技股/机器人/半导体全线重挫</div>
+</li>
+
+<li>
+    <span class="tag tag-red">🔴 重大利空</span>
+    <strong>监管组合拳降温 — 爱丽家居暂停交易+蓝盾光电停牌+25家风险提示</strong>
+    <div class="source">来源：上交所/深交所 | 8月19日晚</div>
+    <div>上交所暂停爱丽家居异常交易账户，蓝盾光电深夜停牌核查，爱丽家居/一鸣食品再涨将申请停牌，开开实业/聚和材料/艾艾精工等25家提示风险。高标全线跌停后监管继续加码。</div>
+    <div class="sector">影响板块：⚠️ 高位妖股/短线情绪 ⚠️ 连板股（正裕工业、爱丽家居、一鸣食品、金螳螂、桂发祥）</div>
+</li>
+
+</ul>
+
+<h2>⚠️ 一般利空</h2>
+<ul class="impact-list">
+
+<li>
+    <span class="tag tag-warn">⚠️ 一般利空</span>
+    <strong>美联储纪要偏鹰 — 多名官员认为若通胀不降需收紧</strong>
+    <div class="source">来源：美联储7月会议纪要 | 8月19日</div>
+    <div>3名官员反对维持利率，主张加息25bp。联储主席沃什提议将会议次数从8次减至6次。AI投资对通胀的广泛影响引起关注。</div>
+    <div class="sector">影响板块：📉 全球风险偏好 🌐 新兴市场</div>
+</li>
+
+<li>
+    <span class="tag tag-warn">⚠️ 一般利空</span>
+    <strong>高标全线跌停 — 情绪冰点延续</strong>
+    <div class="source">来源：A股收盘 | 8月19日</div>
+    <div>昨5板正裕工业/爱丽家居/一鸣食品/金螳螂全部跌停，昨4板桂发祥跌停。最高标骤降至3板。今日竞价大概率继续跌停或大幅低开，L8漏斗一确认关闭。</div>
+    <div class="sector">影响板块：⚠️ 短线情绪 ⚠️ 连板/妖股</div>
+</li>
+
+<li>
+    <span class="tag tag-warn">⚠️ 一般利空</span>
+    <strong>国博电子半年报 — 净利润-51.26%</strong>
+    <div class="source">来源：公告 | 8月19日晚</div>
+    <div>军工电子龙头业绩大幅下滑。</div>
+    <div class="sector">影响板块：⚠️ 军工电子</div>
+</li>
+
+<li>
+    <span class="tag tag-warn">⚠️ 一般利空</span>
+    <strong>个股解禁压力 — 乖宝宠物3.07亿股/真兰仪表/宏远股份周四解禁</strong>
+    <div class="source">来源：公告 | 8月20日</div>
+    <div>乖宝宠物解禁3.07亿股（占流通盘比例高），真兰仪表/宏远股份解禁。</div>
+    <div class="sector">影响板块：⚠️ 乖宝宠物、真兰仪表、宏远股份</div>
+</li>
+
+</ul>
+
+<!-- 盘面研判 -->
+<h2>今日盘面前瞻</h2>
+<div class="card">
+    <div class="sentiment-box">
+        <div class="sentiment-item">
+            <div class="score" style="color:var(--red);">21/100</div>
+            <div class="label">L8温度计</div>
+        </div>
+        <div class="sentiment-item">
+            <div class="score" style="color:var(--red);">冰点</div>
+            <div class="label">情绪区间</div>
+        </div>
+        <div class="sentiment-item">
+            <div class="score" style="color:var(--red);">退潮</div>
+            <div class="label">总开关判定</div>
+        </div>
+        <div class="sentiment-item">
+            <div class="score" style="color:var(--orange);">观察</div>
+            <div class="label">操作建议</div>
+        </div>
+    </div>
+
+    <div class="alert" style="margin:10px 0;">
+        <strong>L8 操作建议：绝对空仓，不抄底不接飞刀。</strong> 退潮确认期持续，今日高标竞价大概率继续跌停，漏斗一关闭。
+    </div>
+
+    <h3>今日关注焦点</h3>
+    <table>
+        <tr><th>方向</th><th>催化剂</th><th>持续性判断</th></tr>
+        <tr><td>🏠 家居/装修/物业</td><td>公积金条例大修（10万亿级）</td><td class="up">政策中期利好，可持续关注，但退潮日不宜追高</td></tr>
+        <tr><td>💊 mRNA疫苗/创新药</td><td>Moderna癌疫苗III期成功（+176%）</td><td class="orange">情绪催化，A股对标公司多为早期临床，追高风险大</td></tr>
+        <tr><td>🥇 黄金/贵金属</td><td>金价+4.35%突破4520美元</td><td class="up">美元走弱+联储偏鹰+国债回购，黄金中期趋势向好</td></tr>
+        <tr><td>⛏️ 焦炭/煤炭</td><td>焦炭提涨+防御属性</td><td class="up">退潮日防御板块，昨日逆势+6.53%，但连续大涨后需谨慎</td></tr>
+        <tr><td>🔬 半导体/设备</td><td>中微净利+300%/三星涨价</td><td class="down">费城半导体-2.12%，A股半导体昨日-9.27%，短期承压</td></tr>
+    </table>
+
+    <h3>关键点位</h3>
+    <table>
+        <tr><th>指数</th><th>昨日收盘</th><th>支撑位</th><th>压力位</th></tr>
+        <tr><td>上证指数</td><td>3894.42</td><td>3850（前低）</td><td>3930（5日线）</td></tr>
+        <tr><td>创业板指</td><td>3473.49</td><td>3400（整数关）</td><td>3600（10日线）</td></tr>
+    </table>
+
+    <h3>风险提示</h3>
+    <div class="alert" style="margin:4px 0;">
+        <strong>1. 竞价风险：</strong> 高标全线跌停 → 竞价大概率继续跌停开盘，恐慌情绪延续<br>
+        <strong>2. 板块风险：</strong> 科技股受美股半导体拖累 + 昨日A股科技-9%以上，抄底风险极大<br>
+        <strong>3. 监管风险：</strong> 爱丽家居暂停交易+蓝盾光电停牌，监管高压持续<br>
+        <strong>4. 解禁风险：</strong> 乖宝宠物3.07亿股今日解禁（食品板块承压）<br>
+        <strong>5. 外汇风险：</strong> 美元指数虽然大跌，但若LPR利率超预期下调，人民币可能承压
+    </div>
+</div>
+
+<div class="footer">L8 盘前纪要 · 2026-08-20 · 数据截至06:00 · 仅供参考，不构成投资建议</div>
+</body>
+</html>
