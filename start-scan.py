@@ -230,9 +230,11 @@ def notify(msg: str, title: str = "📈 启动信号", level: str = "info"):
 
 def detect_changes(curr: List[dict], prev: List[dict],
                    yesterday: Dict[str, dict],
-                   reported: Set[str]) -> Tuple[List[str], List[dict]]:
+                   reported: Set[str], first_run: bool = False
+                   ) -> Tuple[List[str], List[dict]]:
     """
     对比本轮 vs 上轮涨停池，返回 (通知列表, 板块统计)
+    first_run=True 表示首轮基线：首板聚合为一条，避免刷屏
     """
     msgs = []
     curr_map = {s["code"]: s for s in curr}
@@ -244,37 +246,53 @@ def detect_changes(curr: List[dict], prev: List[dict],
         if s["sector"]:
             sector_stats.setdefault(s["sector"], []).append(s)
 
-    # 1. 新增涨停（上轮没有 → 本轮出现）
+    # 1. 晋级监控（昨日在梯队 + 今日在池 + 板数增加，报一次）
     for code, s in curr_map.items():
-        if code in prev_map or code in reported:
-            continue
-        # L8 过滤
-        if EXCLUDE_ST and s["is_st"]:
-            continue
-        if s["turnover"] > MAX_TURNOVER:
-            continue
-        if s["seal_amount"] < MIN_SEAL_AMOUNT:
+        if code in reported:
             continue
         y = yesterday.get(code)
-        if y:  # 昨日在连板梯队 → 晋级
-            if s["board"] > y["board"]:
-                tag = "🥇" if s["board"] >= 3 else "⭐"
-                msgs.append(f"{tag} 晋级{s['board']}板 {s['name']}({code}) "
-                            f"{s['board']-1}→{s['board']}板 · 板块:{s['sector']} "
-                            f"换手{s['turnover']:.1f}% 封单{s['seal_amount']/1e8:.1f}亿")
-        else:  # 全新首板
-            tag = "⚡秒板" if s["first_seal"] <= "09:35:00" else "🆕首板"
-            if s["_yizi"]:
-                continue  # 一字板不刷屏
-            msgs.append(f"{tag} {s['name']}({code}) · 板块:{s['sector']} "
+        if y and s["board"] > y["board"]:
+            tag = "🥇" if s["board"] >= 3 else "⭐"
+            msgs.append(f"{tag} 晋级{s['board']}板 {s['name']}({code}) "
+                        f"{y['board']}→{s['board']}板 · 板块:{s['sector']} "
                         f"换手{s['turnover']:.1f}% 封单{s['seal_amount']/1e8:.1f}亿")
+            reported.add(code)
 
-    # 2. 断板监控（昨日连板 → 今日不在池）
+    # 2. 断板监控（昨日连板 → 今日不在池，报一次）
     for code, y in yesterday.items():
         if code in curr_map or code in reported:
             continue
         if y["board"] >= 2 and y["board"] <= 10:  # 只报 2 板以上断板
             msgs.append(f"💥 断板 {y['name']}({code}) {y['board']}板 → 断板 · 板块:{y['sector']}")
+            reported.add(code)
+
+    # 3. 首板监控（昨日不在梯队 + 今日新涨停）
+    first_boards = []
+    for code, s in curr_map.items():
+        if code in yesterday or code in reported:
+            continue
+        if s["board"] != 1:            # 只看首板
+            continue
+        if EXCLUDE_ST and s["is_st"]:
+            continue
+        if s["turnover"] > MAX_TURNOVER:
+            continue
+        if s["_yizi"]:
+            continue                  # 一字板不刷屏
+        first_boards.append(s)
+        reported.add(code)
+
+    if first_boards:
+        if first_run:
+            # 首轮基线：聚合为一条，避免几十条刷屏
+            names = "、".join(f"{s['name']}({s['code']})" for s in first_boards[:20])
+            more = f"… 共{len(first_boards)}只" if len(first_boards) > 20 else f"共{len(first_boards)}只"
+            msgs.append(f"🆕 今日首板 {more}: {names}")
+        else:
+            for s in first_boards:
+                tag = "⚡秒板" if s["first_seal"] <= "09:35:00" else "🆕首板"
+                msgs.append(f"{tag} {s['name']}({s['code']}) · 板块:{s['sector']} "
+                            f"换手{s['turnover']:.1f}% 封单{s['seal_amount']/1e8:.1f}亿")
 
     return msgs, sector_stats
 
@@ -349,7 +367,7 @@ def main():
         pool = fetch_limit_pool()
         stocks = [parse_stock(it) for it in pool]
         stocks = is_limit_up_first(stocks)
-        msgs, sector_stats = detect_changes(stocks, [], yesterday, set())
+        msgs, sector_stats = detect_changes(stocks, [], yesterday, set(), first_run=True)
         sector_msgs = check_sector_surge(sector_stats, set())
         all_msgs = msgs + sector_msgs
         log(f"今日涨停 {len(stocks)} 只 | 昨日连板 {len(yesterday)} 只")
@@ -393,11 +411,19 @@ def main():
         stocks = [parse_stock(it) for it in pool]
         stocks = is_limit_up_first(stocks)
 
-        # 首次轮询：建立本轮基线，只初始化不通知
+        # 首次轮询：标记 first_run，首板聚合为一条上报（不刷屏）
         if not prev_pool:
             prev_pool = stocks
-            reported = {s["code"] for s in stocks}  # 基线池全部标记已报，避免首轮刷屏
+            msgs, sector_stats = detect_changes(stocks, [], yesterday, reported, first_run=True)
+            sector_msgs = check_sector_surge(sector_stats, sector_reported)
+            for s in stocks:
+                reported.add(s["code"])
+            all_msgs = msgs + sector_msgs
             log(f"🔄 首轮基线: {len(stocks)} 只涨停")
+            if all_msgs:
+                for m in all_msgs[:8]:
+                    notify(m, title="📈 启动信号" if "晋级" in m or "首板" in m else "📊 监控",
+                           level="info")
             time.sleep(POLL_INTERVAL)
             continue
 
