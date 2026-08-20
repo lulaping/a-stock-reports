@@ -38,6 +38,35 @@ if sys.platform == "win32":
 # 推送 webhook（二选一或都填，留空则只弹窗+声音）
 WECHAT_WEBHOOK = ""   # 企业微信机器人 webhook，如 https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx
 FEISHU_WEBHOOK = ""   # 飞书机器人 webhook，如 https://open.feishu.cn/open-apis/bot/v2/hook/xxx
+DINGTALK_WEBHOOK = "" # 钉钉机器人 webhook（含 access_token）
+WEBHOOK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "start_scan_webhook.txt")
+
+def load_webhook_from_file():
+    """从本地配置文件读取 webhook 地址（避免 token 写入公开脚本）
+    格式：FEISHU:https://...  /  DINGTALK:https://...  /  WECHAT:https://...
+    无前缀则默认飞书
+    """
+    global DINGTALK_WEBHOOK, FEISHU_WEBHOOK, WECHAT_WEBHOOK
+    try:
+        if os.path.exists(WEBHOOK_FILE):
+            with open(WEBHOOK_FILE, "r", encoding="utf-8") as f:
+                line = f.read().strip()
+            if not line or not line.startswith("http"):
+                # 带平台前缀格式
+                if ":" in line and line.split(":", 1)[1].startswith("http"):
+                    kind, url = line.split(":", 1)
+                    if kind.upper() == "DINGTALK":
+                        DINGTALK_WEBHOOK = url
+                    elif kind.upper() == "WECHAT":
+                        WECHAT_WEBHOOK = url
+                    else:
+                        FEISHU_WEBHOOK = url
+            else:
+                FEISHU_WEBHOOK = line
+    except Exception:
+        pass
+
+load_webhook_from_file()
 
 # 监控参数
 POLL_INTERVAL = 10        # 轮询间隔（秒）
@@ -155,7 +184,15 @@ def log(msg: str):
 
 
 def push_webhook(title: str, content: str):
-    """推送企业微信/飞书 webhook"""
+    """推送钉钉/企业微信/飞书 webhook"""
+    if DINGTALK_WEBHOOK:
+        try:
+            # 钉钉 markdown 消息（支持换行需用 \n\n）
+            md = f"### {title}\n\n" + content.replace("\n", "\n\n")
+            payload = {"msgtype": "markdown", "markdown": {"title": title, "text": md}}
+            requests.post(DINGTALK_WEBHOOK, json=payload, timeout=5)
+        except Exception as e:
+            log(f"[ERROR] 钉钉推送失败: {e}")
     if WECHAT_WEBHOOK:
         try:
             payload = {
@@ -167,7 +204,17 @@ def push_webhook(title: str, content: str):
             log(f"[ERROR] 企业微信推送失败: {e}")
     if FEISHU_WEBHOOK:
         try:
-            payload = {"msg_type": "text", "content": {"text": f"{title}\n{content}"}}
+            # 飞书富文本卡片：支持多条信号分行、加粗标题
+            payload = {
+                "msg_type": "interactive",
+                "card": {
+                    "header": {
+                        "title": {"tag": "plain_text", "content": title},
+                        "template": "turquoise",
+                    },
+                    "elements": [{"tag": "div", "text": {"tag": "lark_md", "content": content}}],
+                },
+            }
             requests.post(FEISHU_WEBHOOK, json=payload, timeout=5)
         except Exception as e:
             log(f"[ERROR] 飞书推送失败: {e}")
