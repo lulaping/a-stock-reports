@@ -77,6 +77,13 @@ MAX_TURNOVER = 20.0       # 换手率 >20% 剔除（L8 强制）
 MIN_SEAL_AMOUNT = 0.3e8   # 封单资金下限（元），低于此不报（弱封）
 SECTOR_MIN_COUNT = 3      # 板块异动阈值：同板块 ≥3 家涨停
 
+# 放量拉升监控参数（盘中涨幅榜）
+SURGE_PCT = 5.5           # 涨幅 ≥5.5% 触发（未涨停）
+SURGE_VOL_RATIO = 1.5     # 量比 ≥1.5（放量标准，东财量比）
+SURGE_TURNOVER_MIN = 2.0  # 换手率 ≥2%（排除无量一字微涨）
+SURGE_URL = "https://push2.eastmoney.com/api/qt/clist/get"
+UT2 = "bd1d9ddb04089700cf9c27f6f7426281"
+
 # ============================================================
 # 涨停池 API
 # ============================================================
@@ -137,6 +144,50 @@ def is_limit_up_first(pool: List[dict]) -> List[dict]:
                        and it["turnover"] < 3.0)
         result.append(it)
     return result
+
+
+# ============================================================
+# 盘中涨幅榜（放量拉升监控）
+# ============================================================
+
+def fetch_surge_list() -> List[dict]:
+    """拉取全市场涨幅榜，返回涨幅 ≥SURGE_PCT% 且未涨停的个股（含量比/换手）"""
+    params = {
+        "pn": 1, "pz": 300, "po": 1, "np": 1, "fltt": 2, "invt": 2,
+        "fid": "f3", "fs": "m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23,m:0+t:81+s:2048",
+        "fields": "f2,f3,f8,f10,f12,f14,f22",
+        "ut": UT2, "_": int(time.time() * 1000),
+    }
+    try:
+        resp = requests.get(SURGE_URL, params=params, timeout=8)
+        data = resp.json()
+        result = []
+        if data.get("data") and data["data"].get("diff"):
+            for it in data["data"]["diff"]:
+                pct = it.get("f3", 0)
+                if pct is None or pct < SURGE_PCT:
+                    continue
+                code = str(it.get("f12", ""))
+                name = it.get("f14", "")
+                # 判断是否涨停（主板10% / 创业板/科创20% / 北交所30%）
+                limit = 30 if code.startswith(("4", "8", "92")) else \
+                        20 if code.startswith(("30", "68")) else 10
+                if pct >= limit - 0.05:
+                    continue  # 已涨停，交给涨停池报
+                result.append({
+                    "code": code,
+                    "name": name,
+                    "pct": pct,
+                    "price": it.get("f2", 0),
+                    "turnover": it.get("f8", 0) or 0,
+                    "vol_ratio": it.get("f10", 0) or 0,   # 东财量比
+                    "speed": it.get("f22", 0) or 0,       # 涨速
+                    "is_st": "ST" in name.upper(),
+                })
+        return result
+    except Exception as e:
+        log(f"[ERROR] 涨幅榜拉取失败: {e}")
+        return []
 
 
 # ============================================================
@@ -309,6 +360,41 @@ def check_sector_surge(sector_stats: Dict[str, List[dict]],
     return msgs
 
 
+def detect_surge(curr: List[dict], prev: List[dict],
+                 reported: Set[str], first_run: bool = False) -> List[str]:
+    """盘中放量拉升监控：涨幅≥SURGE_PCT + 量比≥SURGE_VOL_RATIO + 换手≥SURGE_TURNOVER_MIN
+    prev 为上一轮涨幅榜；reported 用于去重（同一股票只报一次）"""
+    msgs = []
+    curr_map = {s["code"]: s for s in curr}
+    prev_map = {s["code"]: s for s in prev}
+
+    new_surges = []
+    for code, s in curr_map.items():
+        if code in prev_map or code in reported:
+            continue
+        if EXCLUDE_ST and s["is_st"]:
+            continue
+        if s["vol_ratio"] < SURGE_VOL_RATIO:
+            continue
+        if s["turnover"] < SURGE_TURNOVER_MIN:
+            continue
+        new_surges.append(s)
+        reported.add(code)
+
+    if new_surges:
+        if first_run:
+            # 首轮基线：聚合一条
+            names = "、".join(f"{s['name']}({s['code']})" for s in new_surges[:15])
+            more = f"… 共{len(new_surges)}只" if len(new_surges) > 15 else f"共{len(new_surges)}只"
+            msgs.append(f"🚀 放量拉升 {more}(涨幅≥{SURGE_PCT}%+量比≥{SURGE_VOL_RATIO}): {names}")
+        else:
+            for s in new_surges[:5]:   # 每轮最多报5条，避免刷屏
+                tag = "⚡急拉" if s["speed"] >= 3 else "🚀拉升"
+                msgs.append(f"{tag} {s['name']}({s['code']}) {s['pct']:+.1f}% "
+                            f"量比{s['vol_ratio']:.1f} 换手{s['turnover']:.1f}% 涨速{s['speed']:+.2f}")
+    return msgs
+
+
 # ============================================================
 # 主循环
 # ============================================================
@@ -389,6 +475,8 @@ def main():
     prev_pool: List[dict] = []
     reported: Set[str] = set()   # 已通知的晋级/断板去重
     sector_reported: Set[str] = set()
+    prev_surge: List[dict] = []
+    reported_surge: Set[str] = set()  # 已通知的放量拉升去重
 
     while True:
         # 收盘后自动退出（避免收盘后重复误报断板）
@@ -411,40 +499,51 @@ def main():
         stocks = [parse_stock(it) for it in pool]
         stocks = is_limit_up_first(stocks)
 
-        # 首次轮询：标记 first_run，首板聚合为一条上报（不刷屏）
+        # 涨幅榜（放量拉升监控）
+        surges = fetch_surge_list()
+
+        # 首次轮询：标记 first_run，首板/拉升聚合为一条上报（不刷屏）
         if not prev_pool:
             prev_pool = stocks
+            prev_surge = surges
             msgs, sector_stats = detect_changes(stocks, [], yesterday, reported, first_run=True)
             sector_msgs = check_sector_surge(sector_stats, sector_reported)
+            surge_msgs = detect_surge(surges, [], reported_surge, first_run=True)
             for s in stocks:
                 reported.add(s["code"])
-            all_msgs = msgs + sector_msgs
-            log(f"🔄 首轮基线: {len(stocks)} 只涨停")
+            for s in surges:
+                reported_surge.add(s["code"])
+            all_msgs = msgs + sector_msgs + surge_msgs
+            log(f"🔄 首轮基线: {len(stocks)} 只涨停, {len(surges)} 只放量拉升(≥{SURGE_PCT}%)")
             if all_msgs:
-                for m in all_msgs[:8]:
-                    notify(m, title="📈 启动信号" if "晋级" in m or "首板" in m else "📊 监控",
+                for m in all_msgs[:10]:
+                    notify(m, title="📈 启动信号" if "晋级" in m or "首板" in m or "拉升" in m else "📊 监控",
                            level="info")
             time.sleep(POLL_INTERVAL)
             continue
 
         msgs, sector_stats = detect_changes(stocks, prev_pool, yesterday, reported)
         sector_msgs = check_sector_surge(sector_stats, sector_reported)
+        surge_msgs = detect_surge(surges, prev_surge, reported_surge)
 
         # 更新已报告集合（记录本池出现的代码）
         for s in stocks:
             reported.add(s["code"])
+        for s in surges:
+            reported_surge.add(s["code"])
 
         # 输出通知（合并，避免刷屏）
-        all_msgs = msgs + sector_msgs
+        all_msgs = msgs + sector_msgs + surge_msgs
         if all_msgs:
-            for m in all_msgs[:8]:   # 每轮最多报 8 条
+            for m in all_msgs[:10]:   # 每轮最多报 10 条
                 level = "danger" if "断板" in m else "info"
-                notify(m, title="📈 启动信号" if "晋级" in m or "秒板" in m else "📊 监控",
+                notify(m, title="📈 启动信号" if "晋级" in m or "秒板" in m or "拉升" in m else "📊 监控",
                        level=level)
-            if len(all_msgs) > 8:
-                notify(f"…… 另有 {len(all_msgs)-8} 条信号，见 {LOG_FILE}", level="info")
+            if len(all_msgs) > 10:
+                notify(f"…… 另有 {len(all_msgs)-10} 条信号，见 {LOG_FILE}", level="info")
 
         prev_pool = stocks
+        prev_surge = surges
         time.sleep(POLL_INTERVAL)
 
 
