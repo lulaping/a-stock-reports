@@ -80,6 +80,7 @@ SECTOR_MIN_COUNT = 3      # 板块异动阈值：同板块 ≥3 家涨停
 
 # 放量拉升监控参数（盘中涨幅榜）
 SURGE_PCT = 5.5           # 涨幅 ≥5.5% 触发（未涨停）
+BREAK_PCT = 6.0           # 涨幅突破 6% 即推送（无条件，放量拉升之外的更强信号）
 SURGE_VOL_RATIO = 1.5     # 量比 ≥1.5（放量标准，东财量比）
 SURGE_TURNOVER_MIN = 2.0  # 换手率 ≥2%（排除无量一字微涨）
 SURGE_URL = "https://push2.eastmoney.com/api/qt/clist/get"
@@ -279,7 +280,12 @@ def notify(msg: str, title: str = "", level: str = "info"):
     if not title:
         stock = extract_stock_title(msg)
         if stock:
-            tag = "🚀" if "拉升" in msg else "⭐" if "晋级" in msg else "💥" if "断板" in msg else "🆕" if "首板" in msg else "📊"
+            tag = ("⚡" if "急拉" in msg else
+                   "📈" if "突破" in msg else
+                   "🚀" if "拉升" in msg else
+                   "⭐" if "晋级" in msg else
+                   "💥" if "断板" in msg else
+                   "🆕" if "首板" in msg else "📊")
             title = f"{tag} {stock}"
         else:
             title = "📈 启动信号"
@@ -382,35 +388,51 @@ def check_sector_surge(sector_stats: Dict[str, List[dict]],
 
 def detect_surge(curr: List[dict], prev: List[dict],
                  reported: Set[str], first_run: bool = False) -> List[str]:
-    """盘中放量拉升监控：涨幅≥SURGE_PCT + 量比≥SURGE_VOL_RATIO + 换手≥SURGE_TURNOVER_MIN
+    """盘中涨幅监控（两类信号，去重共用 reported）：
+    ① 涨幅突破 BREAK_PCT(6%)：无条件推送（更强信号，最优先）
+    ② 放量拉升：5.5% ≤ 涨幅 < 6% 且 量比/换手达标
     prev 为上一轮涨幅榜；reported 用于去重（同一股票只报一次）"""
     msgs = []
     curr_map = {s["code"]: s for s in curr}
     prev_map = {s["code"]: s for s in prev}
 
-    new_surges = []
+    new_breaks = []   # 突破6%信号
+    new_surges = []   # 放量拉升信号（5.5%-6%区间）
     for code, s in curr_map.items():
         if code in prev_map or code in reported:
             continue
         if EXCLUDE_ST and s["is_st"]:
             continue
-        if s["vol_ratio"] < SURGE_VOL_RATIO:
-            continue
-        if s["turnover"] < SURGE_TURNOVER_MIN:
-            continue
-        new_surges.append(s)
-        reported.add(code)
+        if s["pct"] >= BREAK_PCT:
+            # ① 突破6%：无条件（不要求量比/换手）
+            new_breaks.append(s)
+            reported.add(code)
+        elif (s["pct"] >= SURGE_PCT
+              and s["vol_ratio"] >= SURGE_VOL_RATIO
+              and s["turnover"] >= SURGE_TURNOVER_MIN):
+            # ② 放量拉升（5.5%-6%区间）
+            new_surges.append(s)
+            reported.add(code)
+
+    if new_breaks:
+        if first_run:
+            names = "、".join(f"{s['name']}({s['code']})" for s in new_breaks[:15])
+            more = f"… 共{len(new_breaks)}只" if len(new_breaks) > 15 else f"共{len(new_breaks)}只"
+            msgs.append(f"📈 涨幅突破{BREAK_PCT}% {more}: {names}")
+        else:
+            for s in new_breaks[:5]:   # 每轮最多报5条，避免刷屏
+                tag = "⚡急拉" if s["speed"] >= 3 else "📈突破"
+                msgs.append(f"{tag} {s['name']}({s['code']}) {s['pct']:+.1f}% "
+                            f"量比{s['vol_ratio']:.1f} 换手{s['turnover']:.1f}% 涨速{s['speed']:+.2f}")
 
     if new_surges:
         if first_run:
-            # 首轮基线：聚合一条
             names = "、".join(f"{s['name']}({s['code']})" for s in new_surges[:15])
             more = f"… 共{len(new_surges)}只" if len(new_surges) > 15 else f"共{len(new_surges)}只"
-            msgs.append(f"🚀 放量拉升 {more}(涨幅≥{SURGE_PCT}%+量比≥{SURGE_VOL_RATIO}): {names}")
+            msgs.append(f"🚀 放量拉升 {more}(5.5%-6%+量比≥{SURGE_VOL_RATIO}): {names}")
         else:
-            for s in new_surges[:5]:   # 每轮最多报5条，避免刷屏
-                tag = "⚡急拉" if s["speed"] >= 3 else "🚀拉升"
-                msgs.append(f"{tag} {s['name']}({s['code']}) {s['pct']:+.1f}% "
+            for s in new_surges[:5]:
+                msgs.append(f"🚀拉升 {s['name']}({s['code']}) {s['pct']:+.1f}% "
                             f"量比{s['vol_ratio']:.1f} 换手{s['turnover']:.1f}% 涨速{s['speed']:+.2f}")
     return msgs
 
