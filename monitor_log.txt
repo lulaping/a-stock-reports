@@ -1,0 +1,183 @@
+[00:00:44] ==================================================
+[00:00:44] 超短持仓监控启动
+[00:00:44] 持仓: 1只 | 轮询间隔: 3s
+[00:00:44] 板块高标: 1个板块
+[00:00:44] ==================================================
+[00:04:17] ==================================================
+[00:04:17] 超短持仓监控启动
+[00:04:17] 持仓: 1只 | 轮询间隔: 3s
+[00:04:17] 板块高标: 1个板块
+[00:04:17] ==================================================
+[00:08:43] ==================================================
+[00:08:43] 超短持仓监控启动
+[00:08:43] 持仓: 1只 | 轮询间隔: 3s
+[00:08:43] 板块高标: 1个板块
+[00:08:43] ==================================================
+[09:15:47] ==================================================
+[09:15:47] 超短持仓监控启动
+[09:15:47] 持仓: 1只 | 轮询间隔: 3s
+[09:15:47] 板块高标: 1个板块
+[09:15:47] ==================================================
+[09:15:47] 
+========================================
+[09:15:47] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:15:47] ========================================
+[09:15:48] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:15:51] 
+========================================
+[09:15:51] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:15:51] ========================================
+[09:15:51] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:15:54] 
+========================================
+[09:15:54] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:15:54] ========================================
+[09:15:54] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:15:57] 
+========================================
+[09:15:57] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:15:57] ========================================
+[09:15:57] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:00] 
+========================================
+[09:16:00] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:00] ========================================
+[09:16:00] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:04] 
+========================================
+[09:16:04] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:04] ========================================
+[09:16:04] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:07] 
+========================================
+[09:16:07] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:07] ========================================
+[09:16:07] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:10] 
+========================================
+[09:16:10] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:10] ========================================
+[09:16:10] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:13] 
+========================================
+[09:16:13] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:13] ========================================
+[09:16:13] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:17] 
+========================================
+[09:16:17] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:17] ========================================
+[09:16:17] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:20] 
+========================================
+[09:16:20] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:20] ========================================
+[09:16:20] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:23] 
+========================================
+[09:16:23] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:23] ========================================
+[09:16:23] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:26] 
+========================================
+[09:16:26] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:26] ========================================
+[09:16:26] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:29] 
+========================================
+[09:16:29] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:29] ========================================
+[09:16:30] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:33] 
+========================================
+[09:16:33] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:33] ========================================
+[09:16:33] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:36] 
+========================================
+[09:16:36] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:36] ========================================
+[09:16:36] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:39] 
+========================================
+[09:16:39] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:39] ========================================
+[09:16:39] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:42] 
+========================================
+[09:16:42] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:42] ========================================
+[09:16:42] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:46] 
+========================================
+[09:16:46] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:46] ========================================
+[09:16:46] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:49] 
+========================================
+[09:16:49] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:49] ========================================
+[09:16:49] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:52] 
+========================================
+[09:16:52] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:52] ========================================
+[09:16:52] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:55] 
+========================================
+[09:16:55] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:55] ========================================
+[09:16:55] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:16:59] 
+========================================
+[09:16:59] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:16:59] ========================================
+[09:16:59] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:17:02] 
+========================================
+[09:17:02] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:17:02] ========================================
+[09:17:02] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:17:05] 
+========================================
+[09:17:05] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:17:05] ========================================
+[09:17:05] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:17:08] 
+========================================
+[09:17:08] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:17:08] ========================================
+[09:17:08] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:17:12] 
+========================================
+[09:17:12] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:17:12] ========================================
+[09:17:12] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:17:15] 
+========================================
+[09:17:15] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:17:15] ========================================
+[09:17:15] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:17:18] 
+========================================
+[09:17:18] 🕐 进入 竞价阶段 (9:15-9:25)
+[09:17:18] ========================================
+[09:17:18] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[09:17:20] 
+用户中断，监控停止
+[10:14:04] ==================================================
+[10:14:04] 超短持仓监控启动
+[10:14:04] 持仓: 1只 | 轮询间隔: 3s
+[10:14:04] 板块高标: 1个板块
+[10:14:04] ==================================================
+[10:14:04] 
+========================================
+[10:14:04] 🕐 进入 窗口3: 早盘封板可追 (10:00-10:30)
+[10:14:04] ========================================
+[10:14:15] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[10:14:18] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[10:14:22] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[10:14:25] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[10:14:28] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[10:14:31] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[10:14:34] [ERROR] 获取002081行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
