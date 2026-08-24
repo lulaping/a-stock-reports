@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天力锂能 (301152) — Serenity Mode 1 分析</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body.light { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 天力锂能 (301152) — Serenity Mode 1 分析</h1>
+<p class="subtitle">锂电正极材料（三元为主）· 收盘 19.43 元 · 总市值 23.07 亿 · 🔴 证监会立案 + 实控人股权冻结法拍流拍 → 治理硬伤压倒一切</p>
+
+<!-- ============ 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📊 核心数据（截至 2026-08-21 收盘）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">19.43元</div><div class="label">收盘价</div></div>
+        <div class="stat"><div class="num">23.07亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">-2.01亿</div><div class="label">2025年归母净利</div></div>
+        <div class="stat"><div class="num">845万</div><div class="label">2026Q1归母净利</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">总股本 1.1874 亿股 · 每股净资产 10.20 元 · PB 1.91x · PE(动) 68.24x · 数据来源：同花顺/东方财富/企查查</div>
+</div>
+
+<!-- ============ ① 结论 ============ -->
+<h2>一、核心结论</h2>
+<div class="card">
+    <div class="conclusion-box">
+        <div class="conclusion-row"><span class="conclusion-label">行1 — 客观框架</span><span>🔴 <strong>Bear</strong> — 23 亿市值（19.43 元）仍处三情景中枢之上，治理风险未定价，下行空间 >30%（对应 16 亿/13.5 元）</span></div>
+        <div class="conclusion-row"><span class="conclusion-label">行2 — Serenity</span><span><strong>Sell</strong> — 锂电正极无卡点（充分竞争 20+ 玩家）+ 证监会立案 + 实控人资金占用 + 股权冻结流拍，不满足任何一条好卡点判据</span></div>
+    </div>
+</div>
+
+<!-- ============ ② 客观事实底座 ============ -->
+<h2>二、L0 客观事实底座</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数值</th><th>含义</th></tr>
+        <tr><td>主营业务</td><td>三元正极材料（2025 营收占比 82.5%）+ 磷酸铁锂 + 碳酸锂</td><td>纯正锂电正极材料商，小动力细分龙头</td></tr>
+        <tr><td>总股本 / 市值</td><td>1.1874 亿股 / 23.07 亿</td><td>小盘股，流通市值仅 13.79 亿</td></tr>
+        <tr><td>2026Q1 营收</td><td>5.16 亿（+23.31%）</td><td>收入端回暖</td></tr>
+        <tr><td>2026Q1 归母净利</td><td>845 万（+121.3%）</td><td><strong>连续三年亏损后首次单季扭亏</strong>，扣非 619 万</td></tr>
+        <tr><td>2025 全年归母</td><td>-2.01 亿（减亏 56.8%）</td><td>仍在亏损，Q1 扭亏待验证持续性</td></tr>
+        <tr><td>2023/2024 归母</td><td>-4.96 亿 / -4.66 亿</td><td>历史大额亏损主因：锂价暴跌 + 高价库存减值</td></tr>
+        <tr><td>毛利率</td><td>9.99%（2026Q1）</td><td>正极材料同质化竞争，毛利极薄</td></tr>
+        <tr><td>资产负债率</td><td>52.73%</td><td>偏高，短债 5.01 亿</td></tr>
+        <tr><td>每股净资产 / PB</td><td>10.20 元 / 1.91x</td><td>尚在净资产 1.9 倍，无破净保护</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">数据来源：2026Q1 季报（新浪财经/东方财富）· 2025 年报（同花顺）· 企查查 ｜ 全部 `已证实`</p>
+</div>
+
+<div class="card">
+    <p><strong>L0-框架（产业链定位）：</strong>天力锂能处于锂电产业链 <strong>正极材料层</strong>（电芯 → 正极材料 → 前驱体 → 锂盐），对标当升科技 / 容百科技 / 厦钨新能 / 长远锂科 / 振华新材 / 湖南裕能等 <strong>20+ 家同层玩家</strong>。正极材料环节国产化率 >90%（完全国产化、无替代瓶颈），行业产能过剩、价格战激烈 —— <strong>这是 Serenity 意义上"没有卡点"的教科书级反例</strong>：不垄断、不稀缺、认证短、客户可随意切换。</p>
+</div>
+
+<!-- ============ ③ 卡点五连判 ============ -->
+<h2>三、Serenity 卡点框架：15 条判据</h2>
+<div class="card">
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>命中项说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td>0</td><td>正极材料 20+ 家玩家，市占率 <6%，无定价权</td></tr>
+        <tr><td>2</td><td>小市值 vs 巨大 TAM</td><td>2</td><td>23 亿小市值，但"小市值+无卡点"= 无护城河的小市值，不是机会</td></tr>
+        <tr><td>3-4</td><td>BOM 占比 / designed-in</td><td>0</td><td>正极材料虽是 BOM 大头，但认证周期短、供应商可替换</td></tr>
+        <tr><td>5</td><td>认证周期长</td><td>0</td><td>材料认证约 1-2 个季度，非多年壁垒</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td>1</td><td>固态电池（高镍正极可用）是远期期权，但公司明确不直接生产固态电池</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td>0</td><td>连续三年累计亏损超 11 亿，靠短期借款维持，52.7% 负债率</td></tr>
+        <tr><td>8-14</td><td>其余通用判据</td><td>0</td><td>无 one-poin failure / 无国家安全 / 无本土化护城河 / 无数年可见性</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td>0</td><td>正极材料国产化率已 >90%，无替代窗口</td></tr>
+        <tr><td><strong>合计</strong></td><td><strong>卡点质量</strong></td><td><strong>3/15</strong></td><td><strong>低</strong>：唯一亮点是 Q1 扭亏 + 固态电池远期期权</td></tr>
+    </table>
+</div>
+
+<!-- ============ ④ 红旗扫描 ============ -->
+<h2>四、红旗扫描（硬否决命中）</h2>
+<div class="card">
+    <ul class="flag-list">
+        <li class="fail">🔴 <strong>【硬否决】证监会立案</strong> — 2026-07-31 公司及控股股东/实控人王瑞庆因涉嫌信息披露违法违规被立案调查，立案期间无解除时间表</li>
+        <li class="fail">🔴 <strong>【硬否决】财务造假/追溯更正</strong> — 2026-08-16 更正 2023-2025 三年年报，涉及<strong>关联方资金占用 + 商誉调整</strong>，且此前被证监会立案，审计可信度存疑</li>
+        <li class="fail">🔴 <strong>【硬否决】实控人股权冻结/法拍流拍</strong> — 王瑞庆（持股 19.27%）部分股份被司法变卖、冻结，90 万股折价 19% 仍无买家流拍 —— 控制权稳定性亮红灯</li>
+        <li class="warn">⚠️ <strong>连续三年亏损</strong> — 2023/2024/2025 累计亏损超 11 亿，2026Q1 扭亏 845 万体量过小，持续性未验证</li>
+        <li class="warn">⚠️ <strong>毛利率 9.99% + 产能利用率低</strong> — 磷酸铁锂产能利用率仅 44.6%、碳酸锂 31.5%，低负荷运行，行业产能过剩</li>
+        <li class="pass">✅ 其余通过 — 无高商誉（已冲减）、无高质押（2026-07-17 部分解押）</li>
+    </ul>
+</div>
+
+<div class="alert"><strong>⚠️ 关键判断：</strong>3 项红旗全部是 <strong>硬否决级</strong>。Serenity 红旗规则明确 —— "命中即降级/否决"。证监会立案 + 财务追溯更正 + 实控人股权冻结，任何一项单独出现都足以否决，三者叠加 = <strong>治理风险全面爆发</strong>，属于"不碰"标的。</div>
+
+<!-- ============ ⑤ 估值（亏损企业情景法） ============ -->
+<h2>五、估值：亏损企业情景法（PB/PS 锚）</h2>
+<div class="card">
+    <p>PE(TTM) 为负，跳过常规尺子，用情景法。总股本 1.1874 亿股，当前 19.43 元 / 23.07 亿。</p>
+    <div class="price-box">
+        <div class="pb-card bear"><h4>🐻 Bear</h4><div class="price">16 亿</div><div class="price-detail">对应股价 13.5 元（-31%）</div><p style="font-size:13px;margin-top:8px">假设：立案落地处罚 + 实控人变更/清算风险 + Q1 扭亏不持续 → PB 回落至 1.3x</p></div>
+        <div class="pb-card base"><h4>📊 Base</h4><div class="price">23 亿</div><div class="price-detail">对应股价 19.4 元（现价）</div><p style="font-size:13px;margin-top:8px">假设：2026 全年减亏至 -0.5~0 亿 + 治理风险维持现状不恶化 → PB 1.9x，仅靠题材维持</p></div>
+        <div class="pb-card bull"><h4>🐂 Bull</h4><div class="price">30 亿</div><div class="price-detail">对应股价 25.3 元（+30%）</div><p style="font-size:13px;margin-top:8px">假设：立案结案无罪/轻罚 + 固态电池高镍订单落地 + 全年扭亏 ≥3000 万 → 给 PB 2.5x + 题材溢价</p></div>
+    </div>
+    <p style="font-size:13px;margin-top:8px;"><strong>风险收益比：</strong>Bear -31% / Base 0% / Bull +30%。上行最大 30% 且需"立案结案利好"，下行 31% 且有硬伤 —— <strong>赔率不对称，且远未过 +100% 翻倍门槛</strong>。</p>
+</div>
+
+<!-- ============ ⑥ 催化剂与风险 ============ -->
+<h2>六、催化剂与风险</h2>
+<div class="card">
+    <p><strong>潜在催化剂（均不确定）：</strong></p>
+    <table>
+        <tr><th>催化剂</th><th>时点</th><th>可信度</th></tr>
+        <tr><td>证监会立案结案（从轻）</td><td>[未核实] 无时间表</td><td>低 — 涉及信息披露违规</td></tr>
+        <tr><td>固态电池高镍正极订单</td><td>[未核实] 远期</td><td>低 — 公司已澄清不直接生产固态电池</td></tr>
+        <tr><td>2026 全年扭亏</td><td>2027 年 4 月</td><td>中 — Q1 扭亏 845 万，但体量极小</td></tr>
+    </table>
+    <br>
+    <p><strong>关键风险：</strong>① 立案处罚落地可能带来罚款/整改/退市风险警示；② 实控人资金占用问题可能引发 ST 或控制权变更；③ 实控人股权法拍流拍 → 持续抛压预期；④ 正极材料行业价格战无解，毛利率难回升。</p>
+</div>
+
+<!-- ============ ⑦ 综合判定 ============ -->
+<h2>七、综合判定</h2>
+<div class="card">
+    <div class="green-note"><strong>唯一正面：</strong>2026Q1 单季扭亏（归母 845 万、经营现金流转正 4508 万）是 3 年来第一次，说明锂价企稳后经营端有改善迹象。</div>
+    <div class="alert"><strong>但不足以改变结论：</strong>① 卡点质量 3/15（正极材料无卡点）；② 3 项硬否决红旗（立案 + 追溯更正 + 实控人冻结）；③ 赔率不对称（Bull +30% < Bear -31%）。</div>
+    <p style="margin-top:12px;"><strong>操作建议：</strong><strong>回避，不参与。</strong>Serenity 的纪律是"红旗命中即否决"—— 治理层面的三连爆（立案、财务更正、实控人冻结）意味着这只股票的任何上涨都是不确定性博弈，不是投资。若要跟踪，唯一观察点：<strong>证监会立案结案公告</strong>（若无处罚或轻罚 + 全年扭亏确认，再重做一次完整分析）。</p>
+</div>
+
+<!-- ============ 页脚 ============ -->
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-24 · 数据来源：2026Q1 季报 / 同花顺 / 东方财富 / 企查查 / 界面新闻 / 证券之星 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
