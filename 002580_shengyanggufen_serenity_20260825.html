@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣阳股份(002580) Serenity 深度分析 2026-08-25</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* ---------- 主题变量：深色（默认） ---------- */
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        /* ---------- 主题变量：浅色（body.light 时启用） ---------- */
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<!-- ============ ① 标题区 ============ -->
+<h1>📊 圣阳股份(002580.SZ) — Serenity 供应链卡点深度分析</h1>
+<p class="subtitle">通信现金牛 + IDC液冷备电卡点 + 储能期权：好卡点22/30 · 红旗通过 · 信念分档 Buy</p>
+
+<!-- ============ ② 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📊 核心数据（2025年报 / as-of 2026-08-25）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">34.15亿</div><div class="label">营收(+13.28%)</div></div>
+        <div class="stat"><div class="num">1.86亿</div><div class="label">归母净利(-9.43%)</div></div>
+        <div class="stat"><div class="num">~95.5亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num">46-51x</div><div class="label">PE-TTM</div></div>
+        <div class="stat"><div class="num">42.9%</div><div class="label">通信电源营收占比</div></div>
+        <div class="stat"><div class="num">+112%</div><div class="label">数据中心备电增速</div></div>
+        <div class="stat"><div class="num">22/30</div><div class="label">Serenity卡点得分</div></div>
+        <div class="stat"><div class="num">Buy</div><div class="label">信念分档</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">总股本4.54亿/流通4.52亿 · 国资控股(山东发展集团23.08%) · 数据来源：2025年报/东方财富/互动易/龙虎榜</div>
+</div>
+
+<!-- ============ ③ 结论区（两行） ============ -->
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">行1 — 客观框架</span><span>Bear ¥7.9(36亿) / <strong>Base ¥30.4(138亿)</strong> / Bull ¥59.5(270亿) → Base案赔率1:1.45，加权期望¥30.7 vs 当前¥21.0，<span class="up">隐含+46%上行</span>；翻倍门槛¥42需Bull兑现(概率25%)</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">行2 — Serenity</span><span><strong style="color:var(--green)">🟢 Buy</strong> — 好卡点22/30 + 红旗0 Fail + 核心催化剂(云厂液冷PACK定点)窗口2025Q4-26Q1明确；市场只给"储能概念"估值，实则买到<strong>"通信现金牛+IDC卡点"</strong>双重资产；建议左侧分批建仓</span></div>
+</div>
+
+<!-- ============ ④ 锁超级周期+终端 ============ -->
+<h2>🎯 超级周期与终端定位</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>判定</th><th>证据锚点</th></tr>
+        <tr><td><strong>超级周期</strong></td><td><span class="badge badge-blue">AI算力基建高峰 + 十五五储能政策窗口</span></td><td>2024-2026 IDC建设爆发；发改委新型储能指导意见要求2027年装机&gt;60GW</td></tr>
+        <tr><td>终端1：AI算力IDC备电</td><td><span class="badge badge-green">加速期(渗透率5-30%)</span></td><td>液冷磷酸铁锂渗透率2023&lt;5% → 2025约15-20%，工信部指引2027&gt;50%</td></tr>
+        <tr><td>终端2：通信后备电源</td><td><span class="badge badge-orange">成熟期(&gt;30%)</span></td><td>5G基站存量400万+，铅碳替代铅酸渗透率已超40%</td></tr>
+        <tr><td>终端3：储能电站</td><td><span class="badge badge-blue">导入期(&lt;5%)</span></td><td>各省强制配储10-20%/2h落地，工商业储能套利模型跑通</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑤ 供应链栈 ============ -->
+<h2>🏗️ 供应链栈与多跳映射（圣阳定位）</h2>
+<div class="card">
+<pre style="font-size:13px;line-height:1.8;overflow-x:auto;">
+L0 终端层   ：三大运营商 / 阿里云·腾讯云·华为云 / 电网侧储能 / 工商业园区
+L1 系统集成 ：科华数据 / 科士达 / 华为数字能源 / 阳光电源 / <strong>圣阳股份★</strong>
+L2 PACK模组：<strong>圣阳股份★(自产PACK)</strong> ←→ 宁德时代 / 亿纬锂能 / 海辰储能
+L3 电芯     ：磷酸铁锂(宁德/比亚迪/国轩) | 铅碳(<strong>圣阳自产★</strong>/天能/双登)
+L4 材料     ：LFP正极(德福/当升) · 负极(贝特瑞) · 隔膜(恩捷) · 电解液(天赐)
+L5 设备原料 ：先导智能(化成分容) · 碳酸锂(天齐/盐湖)
+</pre>
+    <p style="font-size:13px;margin-top:8px;"><strong>卡点本质</strong>：运营商/IDC大厂<strong>集采准入资格</strong> + <strong>液冷PACK热管理工艺</strong> + <strong>铅碳长循环配方</strong> = 三重准入壁垒</p>
+</div>
+
+<!-- ============ ⑥ 15条卡点判据 ============ -->
+<h2>⛏️ 好卡点判据打分（15条 × 2分制）</h2>
+<div class="card">
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明（仅命中项）</th></tr>
+        <tr><td>2</td><td>极小市值 vs 巨大TAM</td><td class="up"><strong>+2</strong></td><td>市值95亿 vs IDC备电2027 TAM&gt;300亿，Sub-¥100亿达标</td></tr>
+        <tr><td>3</td><td>BOM占比+designed-in</td><td class="up"><strong>+2</strong></td><td>IDC单柜电池BOM 15-20万，已进头部云厂合格供方库</td></tr>
+        <tr><td>4</td><td>designed-in+多客户</td><td class="up"><strong>+2</strong></td><td>三大运营商+头部云厂+电网侧，多条链反复出现=toll booth</td></tr>
+        <tr><td>5</td><td>认证周期长未反映营收</td><td class="up"><strong>+2</strong></td><td>液冷PACK认证12-18个月，2026-27放量，当期财务未体现</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td class="up"><strong>+2</strong></td><td>数据中心备电2025约8亿 → 2027有望&gt;30亿</td></tr>
+        <tr><td>10</td><td>国家安全/政策介入</td><td class="up"><strong>+2</strong></td><td>储能+数据中心均列国家战略，东数西算工程</td></tr>
+        <tr><td>11</td><td>本土化护城河</td><td class="up"><strong>+2</strong></td><td>通信电源国产化率&gt;90%；IDC备电国产替代窗口2025-27</td></tr>
+        <tr><td>12</td><td>信息不对称/定价错误</td><td class="up"><strong>+2</strong></td><td>市场按"储能概念"给46-51x PE，实为三重资产定价错误</td></tr>
+        <tr><td>15</td><td><strong>国产替代紧迫度</strong></td><td class="up"><strong>+2</strong></td><td>IDC液冷备电国产化率&lt;20% + 政策窗口 + 合格供方&lt;10家 = 最强形态</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td class="up">+1</td><td>净负债~3亿勉强覆盖，扩产需外部融资</td></tr>
+        <tr><td>8</td><td>需求远超供给</td><td class="up">+1</td><td>液冷PACK结构性缺口，但铅酸产能过剩</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td class="up">+1</td><td>进头部云厂供方库的国内&lt;10家，圣阳在列</td></tr>
+        <tr><td>14</td><td>营收可见性/backlog</td><td class="up">+1</td><td>有框架协议无锁量订单，可见性中等</td></tr>
+        <tr><td>1/9</td><td>垄断寡头/大客户包产能</td><td class="down">0</td><td>非寡头格局，无被包产能</td></tr>
+    </table>
+    <p><strong>总分：22/30 (73.3%) ≥ 阈值66.7% → ✅ 判定为好卡点</strong></p>
+    <div class="green-note"><strong>关键洞察：</strong>市场只盯着"储能概念"给高估值，忽略了通信电源每年稳定贡献1.5-2亿净利润的<span class="highlight">现金牛属性</span>，也低估了IDC备电认证通过后的<span class="highlight">确定性放量拐点</span>。</div>
+</div>
+
+<!-- ============ ⑦ L0事实底座 ============ -->
+<h2>📋 客观事实底座（L0）</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>数值(2025年报)</th><th>来源</th><th>意味着什么</th></tr>
+        <tr><td>总营收</td><td>34.15亿 (+13.28%)</td><td>年报</td><td>增速跑赢制造业均值</td></tr>
+        <tr><td>归母净利</td><td>1.86亿 (-9.43%)</td><td>年报</td><td>锂科子公司拖累+储能扩张投入，掩盖主业改善</td></tr>
+        <tr><td>扣非净利</td><td>1.76亿 (+1.30%)</td><td>年报</td><td>核心业务真实微增</td></tr>
+        <tr><td>通信电源</td><td>14.6亿 / 占比42.86%</td><td>年报分产品</td><td><strong>现金牛</strong>，毛利~25%，运营商集采份额稳定</td></tr>
+        <tr><td>数据中心备电</td><td>7.9亿 / <strong class="up">+111.97%</strong></td><td>年报分产品</td><td><strong>主增长极</strong>，液冷PACK放量，毛利~18%</td></tr>
+        <tr><td>储能电力</td><td>5.9亿 / 占比17.32%</td><td>年报分产品</td><td><strong>期权</strong>，集成毛利~12%，规模效应未显现</td></tr>
+        <tr><td>PE-TTM / PB / ROE</td><td>46-51x / 3.99x / 7.8%</td><td>行情+年报</td><td>PE溢价同行60-80%，ROE仅同行60-70% → 概念溢价</td></tr>
+        <tr><td>货币资金/有息负债</td><td>~15亿 / ~18亿</td><td>年报</td><td>净负债~3亿，报表健康可撑扩产</td></tr>
+        <tr><td>大股东</td><td>山东发展集团 23.08%</td><td>年报</td><td>国资控股，质押&lt;10%，股权稳定</td></tr>
+        <tr><td>政府补助/净利</td><td>~1200万 / 6.5%</td><td>年报</td><td>非政策依赖型盈利</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑧ 红旗扫描 ============ -->
+<h2>🚩 红旗扫描（A股12项适配版）</h2>
+<ul class="flag-list">
+    <li class="warn">⚠️ <strong>海外核心技术依赖</strong> — 液冷结构件/摩擦搅拌焊设备/高精度注液设备依赖海外，已建国产替代备选（降级不否决）</li>
+    <li class="pass">✅ 其余11项通过：近3年无定增稀释（2021定增引入国资属战略入股）；客户分散无单一&gt;50%；净负债/EBITDA&lt;1x；三大业务均有实质营收非纯炒作；技术均已批量交付；政府补助占比6.5%；大股东质押&lt;10%；商誉占净资产5%；无重大关联交易；互动易回复详尽（信息密度A级）</li>
+</ul>
+<p><strong>结论：0 Fail / 1 Warn → 无硬否决，整体通过</strong></p>
+
+<!-- ============ ⑨ 估值 ============ -->
+<h2>💰 估值：三情景（以2027年为锚点）</h2>
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear（概率25%）</h4>
+        <div class="price down">36亿</div>
+        <div class="price-detail">对应股价 ¥7.9</div>
+        <p style="font-size:13px;margin-top:8px;">IDC认证延期 + 储能政策退坡 + 通信存量下滑 → 2027E净利2.0亿 × PE 18x</p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base（概率50%）</h4>
+        <div class="price">138亿</div>
+        <div class="price-detail">对应股价 ¥30.4</div>
+        <p style="font-size:13px;margin-top:8px;">IDC备电放量达标 + 储能破局 + 通信平稳 → 2027E净利5.5亿 × PE 25x</p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull（概率25%）</h4>
+        <div class="price up">270亿</div>
+        <div class="price-detail">对应股价 ¥59.5</div>
+        <p style="font-size:13px;margin-top:8px;">液冷PACK头部云厂独家 + 储能系统龙头 + 出口爆发 → 2027E净利9亿 × PE 30x</p>
+    </div>
+</div>
+<div class="card">
+    <p><strong>加权期望股价 = ¥30.7</strong> vs 当前 ¥21.0 → <span class="up"><strong>隐含+46%上行</strong></span>，但Bear下行-62%风险对称。</p>
+    <table>
+        <tr><th>A股专用尺子</th><th>结果</th><th>点评</th></tr>
+        <tr><td>SOTP分部估值</td><td>41.4-65.5亿（¥9.1-14.4）</td><td>显著低于当前市值 → 当前价含高成长预期</td></tr>
+        <tr><td>PEG相对法</td><td>PEG(2025)=35-39x 严重偏离<br>PEG(2027E)=0.34x 极便宜</td><td>当前PE完全定价在2027业绩兑现上 = 抢跑定价</td></tr>
+        <tr><td>赛道同类对比</td><td>同行中位数PE~28x（科华28x/科士达32x/阳光22x）</td><td>圣阳46-51x溢价&gt;60% → 纯概念溢价</td></tr>
+        <tr><td>政策溢价折价法</td><td>合理PE 34-39x → 合理市值82-94亿（¥18.1-20.7）</td><td>当前¥21.0略高于政策溢价上限 → 合理偏贵</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑩ 催化剂 ============ -->
+<h2>⚡ 催化剂时点（A股特色优先）</h2>
+<div class="card">
+    <table>
+        <tr><th>催化剂</th><th>具体事件</th><th>时间窗口</th><th>确定性</th></tr>
+        <tr><td><strong>定点/中标公告 ★核心</strong></td><td>头部云厂液冷磷酸铁锂PACK批量定点</td><td>2025Q4-2026Q2</td><td><span class="badge badge-green">高</span></td></tr>
+        <tr><td>产线投产公告</td><td>液冷PACK新产线/储能基地投产</td><td>2025Q3-2026Q1</td><td><span class="badge badge-green">高</span></td></tr>
+        <tr><td>政策文件</td><td>数据中心绿色低碳专项行动/十五五储能规划</td><td>2025H2-2026H1</td><td><span class="badge badge-green">高</span></td></tr>
+        <tr><td>机构调研密集</td><td>季度调研&gt;50家 = 关注度爆发前兆</td><td>实时监控</td><td><span class="badge badge-orange">中</span></td></tr>
+        <tr><td>产业基金增资</td><td>国家大基金三期/山东产业基金</td><td>2025-2026</td><td><span class="badge badge-orange">中</span></td></tr>
+        <tr><td>财报验证</td><td>2026Q1/Q2单季净利环比大幅改善</td><td>2026Q1-Q2</td><td><span class="badge badge-orange">中</span></td></tr>
+    </table>
+    <p><strong>核心锚点：</strong>2025Q4-2026Q1 云厂液冷PACK批量定点公告 = 卡点兑现的"时刻零"</p>
+</div>
+
+<!-- ============ ⑪ 证据交叉验证 ============ -->
+<h2>✅ 证据交叉验证（三桶来源）</h2>
+<div class="card">
+    <table>
+        <tr><th>关键论点</th><th>①公司源</th><th>②行业源</th><th>③跨链源</th><th>结论</th></tr>
+        <tr><td>IDC液冷PACK进入头部云厂供方库</td><td>互动易"已通过多家头部客户认证"</td><td>产业链调研：样机通过阿里/腾讯/华为测试</td><td>科华/科士达财报披露液冷PACK放量侧证</td><td><span class="badge badge-green">已证实(高置信)</span></td></tr>
+        <tr><td>通信电源市占前三/现金牛</td><td>年报集采份额/毛利率</td><td>运营商集采公告</td><td>科华/科士达同口径一致</td><td><span class="badge badge-green">已证实</span></td></tr>
+        <tr><td>铅碳技术壁垒/长循环</td><td>专利/专精特新小巨人/行业标准制定</td><td>铅酸行业协会数据</td><td>天能/超威/双登同类对标</td><td><span class="badge badge-green">已证实</span></td></tr>
+        <tr><td>2027年IDC备电&gt;30亿假设</td><td>管理层纪要"数据中心业务翻3番"</td><td>2027新增机柜&gt;50万测算</td><td>科华/科士达IDC增速参照</td><td><span class="badge badge-orange">管理层声称+推断(中置信)</span></td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑫ 操作建议 ============ -->
+<h2>📌 操作建议清单</h2>
+<div class="card">
+    <table>
+        <tr><th>动作</th><th>时机</th><th>仓位</th><th>备注</th></tr>
+        <tr><td><strong>首次建仓</strong></td><td>当前 / 回调至¥19-20</td><td>3-5%</td><td>左侧抢跑，买"现金牛+卡点期权"</td></tr>
+        <tr><td><strong>加仓确认</strong></td><td>2025Q4-2026Q1定点公告落地</td><td>+5-8%</td><td>卡点兑现确认性加仓</td></tr>
+        <tr><td>止盈/减仓</td><td>股价达¥30-35（Base案上限）</td><td>分批减仓</td><td>兑现Base案收益</td></tr>
+        <tr><td><strong>止损离场</strong></td><td>跌破¥17 或 基本面恶化</td><td>清仓</td><td>保护本金</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑬ 监控指标与风险 ============ -->
+<h2>⚠️ 关键监控指标</h2>
+<div class="alert"><strong>风险提示：</strong>
+① 卡点兑现失败 — 2026Q1前无云厂定点公告 → 减半仓位；2026H1仍无 → 清仓；
+② 锂科子公司亏损扩大或商誉减值计提 → 红旗升级；
+③ 碳酸锂&gt;15万/吨或铅&gt;2万/吨压缩毛利；
+④ 单一客户占比&gt;30%且毛利率下滑；
+⑤ 股价跌破¥17（政策溢价下限）→ 止损。
+当前PE-TTM 46-51x完全建立在2027年业绩兑现预期上，若IDC放量不及预期回撤空间大。</div>
+<div class="green-note"><strong>综合判定：</strong>通信现金牛被忽视 + IDC液冷PACK卡点渗透率拐点被低估 + 储能期权免费赠送。Serenity框架给 <strong>Buy</strong>（卡点扎实+催化剂明确），客观框架给"谨慎乐观"（当前价含抢跑预期）→ 融合结论：<strong>Buy，左侧分批建仓 + 严控仓位 + 锁定2026Q1定点催化剂</strong>。</div>
+
+<!-- ============ ⑭ 页脚 ============ -->
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-25 · 数据来源：2025年报/东方财富/互动易/财联社 · 分析仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
