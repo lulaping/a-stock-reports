@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浙江世宝(002703) Serenity 深度分析 2026-08-25</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <style>
+        :root { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                 --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:var(--card); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(208,215,222,0.35); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:600; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(207,34,46,0.15); color:var(--red); }
+        .badge-orange { background:rgba(154,103,0,0.15); color:var(--orange); }
+        .badge-green { background:rgba(26,127,55,0.15); color:var(--green); }
+        .badge-blue { background:rgba(9,105,218,0.15); color:var(--blue); }
+        .alert { background:rgba(207,34,46,0.06); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(26,127,55,0.07); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:22px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--orange); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); background:var(--card); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--muted);
+                        background:var(--card); font-size:13.5px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(154,103,0,0.18); padding:1px 4px; border-radius:3px; }
+        pre.stack { font-size:13px; line-height:1.8; overflow-x:auto; font-family:Consolas,'Courier New',monospace; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- ============ 标题 ============ -->
+<h1>📊 浙江世宝(002703.SZ / 01057.HK) — Serenity 供应链卡点深度分析</h1>
+<p class="subtitle">L3法定冗余真卡点，但61x PE已透支Base情景 + 减持/定增摊薄双重红旗：卡点17/30未达标 · 信念分档 Hold</p>
+
+<!-- ============ 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📊 核心数据（2025年报 + 2026中报 / as-of 2026-08-25）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">35.49亿</div><div class="label">2025营收(+31.76%)</div></div>
+        <div class="stat"><div class="num">1.81亿</div><div class="label">2025归母净利(+21.05%)</div></div>
+        <div class="stat"><div class="num">~117亿</div><div class="label">总市值(¥14.18)</div></div>
+        <div class="stat"><div class="num">61x</div><div class="label">PE-TTM / PB 5.4x</div></div>
+        <div class="stat"><div class="num">+39.6%</div><div class="label">26Q2单季净利增速</div></div>
+        <div class="stat"><div class="num">2026底</div><div class="label">SBW线控转向SOP</div></div>
+        <div class="stat"><div class="num">17/30</div><div class="label">Serenity卡点得分</div></div>
+        <div class="stat"><div class="num">Hold</div><div class="label">信念分档</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:var(--muted);">总股本8.23亿/流通5.86亿 · A+H上市(H股大幅折价) · 民企控股(世宝控股31.79%+张世权3.21%) · 52周区间¥11.31-28.75 · 数据来源：2025年报/2026中报/业绩说明会/投关互动/证券时报/中证报</div>
+</div>
+
+<!-- ============ 结论区 ============ -->
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">行1 — 客观框架</span><span>Bear ¥6.1(50亿) / <strong>Base ¥13.4(110亿)</strong> / Bull ¥21.3(175亿) → 加权期望¥12.9 vs 当前¥14.2，<span class="down">隐含约-9%下行空间</span>；当前市值已基本充分定价Base情景，上行需Bull兑现(L3渗透超预期+SBW份额领先)</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">行2 — Serenity</span><span><strong style="color:var(--orange)">🟡 Hold</strong> — SBW是<span class="highlight">L3法规强制冗余部件的真卡点</span>(GB44721-2026)，但卡点得分17/30未达标(<66.7%)；PE-TTM 61x vs 汽零可比25-35x已严重透支；叠加<strong>控股股东减持+13.94亿定增摊薄+应收672%/净利+现金比率三连降</strong>四重警示；建议等回调或右侧验证信号再介入</span></div>
+</div>
+
+<!-- ============ 锁超级周期+终端 ============ -->
+<h2>🎯 超级周期与终端定位</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>判定</th><th>证据锚点</th></tr>
+        <tr><td><strong>超级周期</strong></td><td><span class="badge badge-blue">智能驾驶L3商业化拐点（政策强制驱动）</span></td><td>L3准入许可已发放；GB44721-2026于2027-07-01强制执行L3安全要求；线控转向国标2026年7月实施</td></tr>
+        <tr><td>终端：乘用车L3+智驾车型</td><td><span class="badge badge-green">加速期（渗透率5→30%）</span></td><td>线控底盘是高阶智驾必备执行端；华金证券预计中国乘用车智能底盘市场2025年466亿→2030年1171亿</td></tr>
+        <tr><td>基本盘：商用车转向</td><td><span class="badge badge-orange">成熟期</span></td><td>40年配套积累；新能源轻卡电动循环球市占率&gt;50%（公司口径）；电液循环球用于无人矿卡/港口车</td></tr>
+    </table>
+</div>
+
+<!-- ============ 供应链栈 ============ -->
+<h2>🏗️ 供应链栈与多跳映射（世宝定位）</h2>
+<div class="card">
+<pre class="stack">
+L0 终端层   ：整车厂 — 自主品牌/新势力(定点保密) · 上汽通用五菱/长安/奇瑞等传统客户
+L1 转向系统总成：<strong>浙江世宝★(C-EPS/R-EPS/SBW/RWS)</strong> ←→ 博世/采埃孚/耐世特(Nexteer)/捷太格特
+              国内同赛道：伯特利(线控制动为主) · 经纬恒润(SBW研发) · 豪能股份/中马传动
+L2 核心部件 ：EPS电机/ECU(PKK)/转矩角度传感器/丝杆 — 部分自产配套定增扩产
+L3 基础工艺 ：精密机加工/电控标定/车规安全件验证(ISO 26262)
+</pre>
+    <p style="font-size:13px;margin-top:8px;"><strong>卡点本质</strong>：SBW取消机械连接后成为<span class="highlight">法规强制的冗余安全件</span> — 车规认证周期长(定点到SOP约2-3年) + 国产量产玩家稀缺(&lt;5家) + 单车价值量跃升(2000-4000元 vs C-EPS的800-1500元)</p>
+</div>
+
+<!-- ============ 15条卡点判据 ============ -->
+<h2>⛏️ 好卡点判据打分（15条 × 2分制）</h2>
+<div class="card">
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明</th></tr>
+        <tr><td>3</td><td>BOM占比+designed-in</td><td class="up"><strong>+2</strong></td><td>安全件designed-in属性极强，换供应商需重新公告认证</td></tr>
+        <tr><td>4</td><td>多客户反复出现</td><td class="up"><strong>+2</strong></td><td>多家主流车企SBW定点(保密)+商用车基本盘+RWS四季度量产</td></tr>
+        <tr><td>5</td><td>认证周期长未反映营收</td><td class="up"><strong>+2</strong></td><td>SOP在2026年底，当期报表完全未体现 — 符合"未来营收"形态</td></tr>
+        <tr><td>10</td><td>国家安全/政策介入</td><td class="up"><strong>+2</strong></td><td>GB44721-2026强制标准 = A股最强"政策强制"卡点形态之一</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td class="up"><strong>+2</strong></td><td>国内具备SBW量产能力的候选&lt;5家（博世/采埃孚外资主导下）</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td class="up"><strong>+2</strong></td><td>SBW国产化率低+L3法规窗口+自主可控诉求，替代紧迫度高</td></tr>
+        <tr><td>1</td><td>垄断寡头格局</td><td class="up">+1</td><td>细分寡头但非垄断；外资仍占主导，世宝份额待证明</td></tr>
+        <tr><td>2</td><td>小市值vs大TAM</td><td class="up">+1</td><td>117亿市值 vs 2030年智底盘千亿TAM — 不算"极小"</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td class="up">+1</td><td>SOP后放量在2027-28年；公司自认"2026年不会对业绩产生显著影响"</td></tr>
+        <tr><td>8</td><td>需求远超供给</td><td class="up">+1</td><td>产能利用率80-90%，但扩产依赖定增落地，非即期紧缺</td></tr>
+        <tr><td>11</td><td>本土化护城河</td><td class="up">+1</td><td>快速响应+成本优势真实存在，但核心ECU/电机部分外购</td></tr>
+        <tr><td>7</td><td>资产负债表撑过爬坡</td><td class="down">0</td><td>现金比率0.75→0.46→0.38三连降、短债占比100%、依赖13.94亿定增输血</td></tr>
+        <tr><td>9</td><td>大客户包产能</td><td class="down">0</td><td>无被包产能形态</td></tr>
+        <tr><td>12</td><td>信息不对称/定价错误</td><td class="down">0</td><td><strong>方向相反</strong> — 61x PE说明预期已被充分甚至过度定价，无错误定价优势</td></tr>
+        <tr><td>14</td><td>营收可见性/backlog</td><td class="down">0</td><td>定点客户名称保密、无锁量订单披露、可见性弱</td></tr>
+    </table>
+    <p><strong>总分：17/30 (56.7%) &lt; 阈值66.7% → ❌ 未达好卡点标准</strong></p>
+    <div class="alert"><strong>关键差异（对比002580）：</strong>世宝的SBW卡点本身是"真卡点"，但三个减分项致命——①资产负债表偏弱需靠定增爬坡；②61x估值已抢跑定价、无信息不对称优势；③定点保密导致营收可见性差。真卡点 ≠ 好价格。</div>
+</div>
+
+<!-- ============ L0事实底座 ============ -->
+<h2>📋 客观事实底座（L0）</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>数值</th><th>来源</th><th>意味着什么</th></tr>
+        <tr><td>2025年报</td><td>营收35.49亿(+31.76%) / 归母1.81亿(+21.05%) / 扣非1.55亿(+12.95%)</td><td>年报/中证报</td><td>量价齐驱高增长</td></tr>
+        <tr><td>2026H1</td><td>营收17.21亿(+12.90%) / 归母1.04亿(+11.48%) / 扣非+17.51%</td><td>中报</td><td>增速中枢回落但仍双位数</td></tr>
+        <tr><td>26Q2单季</td><td>营收9.68亿(+20.03%) / 归母6185万(+39.62%) / 扣非+58.02%</td><td>中报</td><td><strong>单季加速</strong>，对冲半年度放缓担忧</td></tr>
+        <tr><td>经营现金流</td><td>H1净流入2.08亿(+127.72%)</td><td>中报</td><td>回款改善，质量加分项</td></tr>
+        <tr><td>毛利率/净利率</td><td>H1毛利18.9%(回升) / 净利率6.47%</td><td>中报</td><td>价格战最凶阶段或已过去</td></tr>
+        <tr><td>研发投入</td><td>2025年2.16亿(+35.05%)占营收6.08%，人员541人</td><td>年报</td><td>重投SBW/RWS/角模块</td></tr>
+        <tr><td>资产负债表</td><td>负债率44.01%(32→42→44连升)；短债4.33亿占总债务100%；现金比率0.38</td><td>中报/鹰眼预警</td><td><strong>偏紧</strong>，扩产靠外部融资</td></tr>
+        <tr><td>应收账款</td><td>应收/最新归母净利=672%</td><td>证券之星</td><td>整车厂账期压力，行业通病但体量大</td></tr>
+        <tr><td>股东动向</td><td>控股股东36.11%→35%减持；张世权退出十大流通股东；北向增持至773万股(1.32%)</td><td>中报/新浪</td><td><strong>内部人减持 vs 外资加仓</strong>背离</td></tr>
+        <tr><td>分红</td><td>股息率TTM 0.42%；上市以来分红/融资比0.19</td><td>富途</td><td>回报股东能力弱</td></tr>
+    </table>
+</div>
+
+<!-- ============ 红旗扫描 ============ -->
+<h2>🚩 红旗扫描（A股12项适配版）</h2>
+<ul class="flag-list">
+    <li class="warn">⚠️ <strong>控股股东减持</strong> — 世宝控股36.11%→35%，实控人张世权退出十大流通股东。幅度不大但时点敏感（SBW量产前夕），信号负面</li>
+    <li class="warn">⚠️ <strong>13.94亿定增摊薄在路上</strong> — 发行上限30%股本，9月15日临时股东大会审议；SBW产业化5.62亿+管柱4.38亿+PPK 1亿+研发0.94亿+补流2亿。摊薄即期回报，且2亿补流显示资金链确实偏紧</li>
+    <li class="warn">⚠️ <strong>应收账款672%/归母净利</strong> — 叠加预付账款较期初+107%超营收增速，营运资金占用上升</li>
+    <li class="warn">⚠️ <strong>流动性指标趋势性恶化</strong> — 资产负债率32%→42%→44%三连升；现金比率0.75→0.46→0.38三连降；短期债务占总债务100%</li>
+    <li class="warn">⚠️ <strong>客户集中度偏高</strong> — 投资者问询指出"转向占营收96%、前五大66%"，单一行业+集中客户双暴露（公司未正面否认）</li>
+    <li class="pass">✅ 无商誉/质押/监管处罚风险；政府补助占比低；<strong>加分项</strong>：公司主动澄清"没有人形机器人应用研究"、坦承"SBW 2026年不产生显著业绩影响" — 预期管理诚实，概念炒作与基本面边界清晰</li>
+</ul>
+<p><strong>结论：0 Fail / 5 Warn → 无硬否决，但风险偏好显著降级</strong></p>
+
+<!-- ============ 估值 ============ -->
+<h2>💰 估值：三情景（以2028年为锚，因SBW放量在2027-28）</h2>
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear（概率30%）</h4>
+        <div class="price down">50亿</div>
+        <div class="price-detail">对应股价 ¥6.1</div>
+        <p style="font-size:13px;margin-top:8px;">价格战延续+C-EPS萎缩快于SBW放量+定点车型销量不及预期 → 2028E净利2.5亿 × PE 20x</p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base（概率50%）</h4>
+        <div class="price">110亿</div>
+        <div class="price-detail">对应股价 ¥13.4</div>
+        <p style="font-size:13px;margin-top:8px;">SBW如期2026年底SOP、温和爬坡 → 2028E净利约3.8亿 × PE 29x（汽零合理上限）</p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull（概率20%）</h4>
+        <div class="price up">175亿</div>
+        <div class="price-detail">对应股价 ¥21.3</div>
+        <p style="font-size:13px;margin-top:8px;">L3渗透超预期+世宝拿下自主SBW份额第一 → 2028E净利5亿 × PE 35x（稀缺性溢价）</p>
+    </div>
+</div>
+<div class="card">
+    <p><strong>加权期望股价 ≈ ¥12.9</strong> vs 当前 ¥14.2 → <span class="down"><strong>隐含约-9%，赔率不佳</strong></span>；翻倍门槛需Bull兑现（概率仅20%），Bear下行-57%。</p>
+    <table>
+        <tr><th>A股专用尺子</th><th>结果</th><th>点评</th></tr>
+        <tr><td>赛道同类对比</td><td>伯特利~30x / 拓普~35x / 汽零板块均值25-35x vs 世宝PE-TTM 61x</td><td>溢价70-140%，纯SBW预期抢跑定价</td></tr>
+        <tr><td>PEG视角</td><td>2026E净利约2.2亿(增速~20%) → PEG≈3；2027-28若兑现40%复合增速 → PEG≈1.5</td><td>当前价已计入未来两年高增</td></tr>
+        <tr><td>H/A折价参照</td><td>H股(01057)长期大幅折价，中报后H股涨近10%仍折价明显</td><td>A股价含流动性/题材溢价</td></tr>
+        <tr><td>52周位置</td><td>现价14.18 vs 高点28.75(-51%) / 低点11.31(+25%)</td><td>高位腰斩后的震荡区，筹码结构复杂</td></tr>
+    </table>
+</div>
+
+<!-- ============ 催化剂 ============ -->
+<h2>⚡ 催化剂时点（A股特色优先）</h2>
+<div class="card">
+    <table>
+        <tr><th>催化剂</th><th>具体事件</th><th>时间窗口</th><th>方向</th></tr>
+        <tr><td><strong>SBW SOP首批装车 ★核心</strong></td><td>首个定点车型年底量产下线、定点客户名单披露</td><td>2026年底</td><td><span class="badge badge-green">向上·决定性</span></td></tr>
+        <tr><td>定增审批推进</td><td>9/15股东大会→深交所审核→批文</td><td>2026Q3-Q4</td><td><span class="badge badge-blue">双向·落地前压制估值</span></td></tr>
+        <tr><td>L3法规强制实施倒计时</td><td>GB44721-2026于2027-07-01生效</td><td>持续发酵至2027年中</td><td><span class="badge badge-green">向上·主题催化</span></td></tr>
+        <tr><td>RWS后轮转向量产</td><td>面向高性能豪华车型，2025Q4已启动</td><td>已兑现·跟踪爬坡</td><td><span class="badge badge-green">向上</span></td></tr>
+        <tr><td>新定点/海外车企认证</td><td>国际车企供应商资格认证推进中</td><td>随时</td><td><span class="badge badge-orange">向上·脉冲</span></td></tr>
+        <tr><td>解禁/减持/摊薄</td><td>定增发行+控股股东后续动作</td><td>2026H2-2027</td><td><span class="badge badge-red">向下·压制</span></td></tr>
+    </table>
+    <p><strong>核心锚点：</strong>2026年底SBW SOP装车 = 卡点兑现"时刻零"。在此之前，股价主要由主题情绪+资金驱动，基本面无锚。</p>
+</div>
+
+<!-- ============ 证据交叉验证 ============ -->
+<h2>✅ 证据交叉验证（三桶来源）</h2>
+<div class="card">
+    <table>
+        <tr><th>关键论点</th><th>①公司源</th><th>②行业源</th><th>③跨链源</th><th>结论</th></tr>
+        <tr><td>SBW 2026年底SOP量产</td><td>2026-04-08业绩说明会(中证报报道)</td><td>2026-08-19投关回复(证券时报)重申"今年年底"</td><td>L3准入车型开发节奏佐证</td><td><span class="badge badge-green">两源一致·已证实</span></td></tr>
+        <tr><td>"SBW 2026年不产生显著业绩影响"</td><td>投关原话</td><td>—</td><td>—</td><td><span class="badge badge-green">已证实·重要预期管理</span></td></tr>
+        <tr><td>多家主流车企SBW定点</td><td>公司称保密</td><td>无法第三方核实具体客户</td><td>新势力/自主为主(公司口径)</td><td><span class="badge badge-orange">管理层声称·中置信</span></td></tr>
+        <tr><td>新能源轻卡电动循环球市占&gt;50%</td><td>机构调研纪要</td><td>单源</td><td>—</td><td><span class="badge badge-orange">中置信</span></td></tr>
+        <tr><td>GB44721-2026强制标准</td><td>投资者问询引用</td><td>国标公开信息</td><td>—</td><td><span class="badge badge-green">已证实</span></td></tr>
+        <tr><td>否认人形机器人业务</td><td>董秘7月明确回复"没有相关应用研究"</td><td>—</td><td>—</td><td><span class="badge badge-green">已证实·防伪关键</span></td></tr>
+    </table>
+</div>
+
+<!-- ============ 操作建议 ============ -->
+<h2>📌 操作建议清单</h2>
+<div class="card">
+    <table>
+        <tr><th>情形</th><th>建议</th><th>逻辑</th></tr>
+        <tr><td><strong>未持有</strong></td><td>现价不追。两个介入点：<br>① 回调至¥11-12区间分批<br>② 2026年底SBW SOP确认+定点披露后右侧介入</td><td>¥11-12对应2028E Base PE ~24x，赔率修复；右侧确认牺牲部分涨幅换确定性</td></tr>
+        <tr><td><strong>已持有</strong></td><td>可持有观察至2026年底SOP验证；若9月定增方案对老股东不利或Q3业绩失速则减仓</td><td>持有成本不同，用止损纪律代替预测</td></tr>
+        <tr><td><strong>短线交易者</strong></td><td>L3主题脉冲（国标倒计时、板块联动）可波段参与，严格止盈止损，勿恋战</td><td>当前阶段是主题定价而非业绩定价</td></tr>
+        <tr><td><strong>止损线</strong></td><td>跌破¥11（52周低点下方）或SBW SOP延期公告 → 无条件离场</td><td>卡点叙事证伪</td></tr>
+    </table>
+</div>
+
+<!-- ============ 监控与风险 ============ -->
+<h2>⚠️ 关键监控指标与风险提示</h2>
+<div class="alert"><strong>风险提示：</strong>
+① SBW SOP延期或定点车型销量不及预期 → 卡点叙事证伪，戴维斯双杀；
+② 价格战重启压毛利 — C-EPS占收入~50%，仍是最大收入来源；
+③ 定增发行摊薄+潜在后续减持；
+④ 应收账款坏账与现金流恶化；
+⑤ 若市场以"机器人/具身智能"题材炒作该股，注意公司已官方否认相关业务 — 题材与基本面脱节时谨防纯情绪行情。
+当前PE-TTM 61x建立在2027-28年SBW放量预期上，Base情景下当前价无安全边际。</div>
+<div class="green-note"><strong>综合判定：</strong>SBW作为L3法定冗余件是真卡点（政策强制+高壁垒+玩家稀缺），但Serenity框架三项否决——卡点得分17/30未达标、估值已抢跑定价（加权期望低于现价）、五项红旗预警。<strong>信念分档：Hold</strong>。与002580（好卡点22/30+期望价高于现价46%=Buy）形成鲜明对照：同一框架下，好公司与好股票的分野在于<span class="highlight">价格是否已透支了故事</span>。</div>
+
+<!-- ============ 页脚 ============ -->
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-25 · 数据来源：2025年报/2026中报/业绩说明会/投资者关系互动/证券时报/中国证券报/鹰眼预警 · 分析仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
