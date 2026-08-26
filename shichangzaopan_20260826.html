@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股上午复盘 — 2026-08-26（周三）</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* ---------- 主题变量：深色（默认） ---------- */
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 A股上午复盘 — 2026年8月26日（周三）</h1>
+<p class="subtitle">放量反弹权重搭台：沪指半日涨0.72%，大金融（券商中报+分红）与有色铜（LME铜创历史新高）领涨，可控核聚变/医药/算力多点开花；高位题材竞价分歧、黄白线分化，CRO与农业退潮</p>
+
+<!-- ============ 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📊 核心数据（午间收盘）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+0.72%</div><div class="label">上证指数 3917.40</div></div>
+        <div class="stat"><div class="num up">+1.21%</div><div class="label">深证成指 13911.99</div></div>
+        <div class="stat"><div class="num up">+1.39%</div><div class="label">创业板指 3444.62</div></div>
+        <div class="stat"><div class="num up">+1.09%</div><div class="label">科创综指 1916.84</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">
+        半日成交 <strong>1.23万亿</strong>（较上日放量 837亿，10:44 已破万亿，预计全天超1.8万亿）· 涨跌家数 <strong>3574涨 / 1809跌</strong> · 涨停 <strong>56家</strong> / 跌停 <strong>0家</strong> · 北证50 +0.96% · 恒指 -0.83%（与A股背离）
+    </div>
+    <div style="margin-top:6px;font-size:12px;color:var(--muted);">数据来源：财联社午评 11:31 / 证券时报 11:27 / 人民财讯 · 数据时点：2026-08-26 11:30</div>
+</div>
+
+<!-- ============ ① 盘面总览 ============ -->
+<h2>① 盘面总览</h2>
+<div class="card">
+    <table>
+        <tr><th>指数</th><th>午间收盘</th><th>涨跌幅</th><th>备注</th></tr>
+        <tr><td>上证指数</td><td>3917.40</td><td class="up">+0.72%</td><td>昨收 3889.44，放量上攻</td></tr>
+        <tr><td>深证成指</td><td>13911.99</td><td class="up">+1.21%</td><td>强于沪指</td></tr>
+        <tr><td>创业板指</td><td>3444.62</td><td class="up">+1.39%</td><td>领涨三大指数</td></tr>
+        <tr><td>科创综指</td><td>1916.84</td><td class="up">+1.09%</td><td>—</td></tr>
+        <tr><td>北证50</td><td>1073.45</td><td class="up">+0.96%</td><td>—</td></tr>
+        <tr><td>恒生指数</td><td>24206.03</td><td class="down">-0.83%</td><td>港股走弱，内外背离</td></tr>
+    </table>
+    <div style="font-size:13px;color:var(--muted);">
+        <strong>盘中走势回顾：</strong>竞价三大指数涨跌不一（沪指低开0.20%/深成指高开0.11%/创业板高开0.35%），随后震荡走高。早盘轮动快速：可控核聚变（9:33）→ 医药生物（9:35）→ 造纸（9:44）→ 证券（9:48）→ 有色铜（9:54）→ 固态电池（9:58）→ 大金融二次拉升（10:24）。10:12 CPO 一度下挫（杰普特跌超10%）后于 10:47 震荡回升，剑桥科技涨停。10:35 深成指、创业板指涨逾1%，午间双双收涨1%+。
+    </div>
+    <div style="margin-top:8px;font-size:13px;color:var(--muted);">
+        指数分时黄白线分化、<strong>大市值权重方向领涨</strong>；10:30 快评提示市场延续分化、活跃资金高低切换明显，算力/半导体/医药早盘相对较弱，泛消费及红利方向走高，题材轮动快但缺乏合力聚焦。
+    </div>
+</div>
+
+<!-- ============ ② 板块热点 ============ -->
+<h2>② 板块热点（领涨 / 领跌双向）</h2>
+<div class="card">
+    <table>
+        <tr><th style="width:110px;">方向</th><th>板块</th><th>表现/代表个股</th><th>驱动逻辑</th></tr>
+        <tr>
+            <td rowspan="6" class="up"><strong>领涨</strong></td>
+            <td>券商 / 大金融</td>
+            <td>锦龙股份、湘财股份、南华期货涨停，兆日科技+15%，国元证券、华创云信、招商证券、国信证券跟涨</td>
+            <td>"牛市旗手"异动：20家券商披露2026H1业绩，中泰证券净利+146.38%居首，10家公布中期分红预案</td>
+        </tr>
+        <tr>
+            <td>有色 · 铜 / 黄金</td>
+            <td>江西铜业、白银有色、金诚信涨停，云南铜业、西部矿业、北方铜业、铜陵有色跟涨；黄金深中华A（4板）、迪阿股份涨停</td>
+            <td>隔夜 LME 期铜报 14324.5 美元/吨，创收盘历史新高</td>
+        </tr>
+        <tr>
+            <td>可控核聚变</td>
+            <td>融发核电一字涨停（封单107万手）、百利电气涨停，哈焊华通、常辅股份涨超10%</td>
+            <td>2026核聚变能大会：长三角高温超导磁体创新联合体发布 25T 强场磁体研制路线图（2028首条测试线/2030原型磁体）</td>
+        </tr>
+        <tr>
+            <td>算力硬件 / CPO / 液冷</td>
+            <td>剑桥科技（中报净利3.28亿+171%）、共进股份涨停；液冷康盛股份、豪尔赛2连板，亿利达4天3板</td>
+            <td>CPO 盘中剧震后回升；TrendForce 预测 AI 液冷渗透率 2026 年升至 53%</td>
+        </tr>
+        <tr>
+            <td>医药生物</td>
+            <td>康希诺20cm涨停、汉森制药6连板、卫光生物2板、万泰生物、千金药业、中关村涨停</td>
+            <td>莫德纳 mRNA 癌症疫苗 III 期初步阳性，隔夜股价涨14%，巴克莱上调目标价</td>
+        </tr>
+        <tr>
+            <td>造纸 / 固态电池 / 次新</td>
+            <td>太阳纸业（Q2净利+16.84%）、青山纸业2板；上海洗霸3天2板（固态电池国际标准立项）；国仪公司20cm</td>
+            <td>中报催化 + 固态电池国际标准立项 + 近端次新反弹</td>
+        </tr>
+        <tr>
+            <td rowspan="3" class="down"><strong>领跌</strong></td>
+            <td>CRO / CMO</td>
+            <td>益诺思、康龙化成、泓博医药、义翘神州跌幅靠前</td>
+            <td>医药内部分化，CXO 获利回吐</td>
+        </tr>
+        <tr>
+            <td>空间计算 / MR / 出版</td>
+            <td>相关题材股调整</td>
+            <td>无新增催化，资金高低切流出</td>
+        </tr>
+        <tr>
+            <td>石油石化 / 种业</td>
+            <td>开盘农业种植、贵金属、石油石化跌幅居前</td>
+            <td>高位题材竞价低开退潮（金健米业/红四方等）</td>
+        </tr>
+    </table>
+</div>
+
+<!-- ============ ③ 连板梯队 ============ -->
+<h2>③ 连板梯队（上午不完全统计，来自竞价快讯+盘中直播）</h2>
+<div class="card">
+    <table>
+        <tr><th>连板</th><th>个股</th><th>题材</th><th>竞价/盘中信号</th></tr>
+        <tr><td><span class="badge badge-red">6板</span></td><td>汉森制药</td><td>医药</td><td>5板时高开9.08%，盘中晋级6板，当前最高标</td></tr>
+        <tr><td><span class="badge badge-orange">7天5板</span></td><td>金健米业</td><td>农业</td><td class="down">竞价低开1.61%，高位分歧</td></tr>
+        <tr><td><span class="badge badge-orange">7天4板</span></td><td>红四方</td><td>化肥</td><td class="down">竞价低开5.18%，退潮信号</td></tr>
+        <tr><td><span class="badge badge-orange">6天3板</span></td><td>万向德农</td><td>农业</td><td>竞价高开3.81%</td></tr>
+        <tr><td><span class="badge badge-orange">4天3板</span></td><td>亿利达</td><td>液冷</td><td>延续强势</td></tr>
+        <tr><td><span class="badge badge-orange">4板</span></td><td>深中华A</td><td>黄金</td><td>竞价高开2.79%，T字</td></tr>
+        <tr><td><span class="badge badge-blue">3板</span></td><td>楚天龙 / 新华百货</td><td>数字货币 / 回购</td><td>楚天龙平开、新华百货低开4.07%</td></tr>
+        <tr><td><span class="badge badge-blue">3天2板</span></td><td>金富科技 / 上海洗霸</td><td>液冷 / 固态电池</td><td>金富科技高开2.17%</td></tr>
+        <tr><td><span class="badge badge-green">2板</span></td><td>海鸥住工 / 中南文化 / 建设机械 / 康盛股份 / 豪尔赛 / 卫光生物 / 青山纸业</td><td>股权/并购/液冷/医药/造纸</td><td>海鸥住工、中南文化竞价涨停；建设机械高开9.92%</td></tr>
+    </table>
+    <div style="font-size:13px;color:var(--muted);">
+        高度锚：<strong>汉森制药6连板</strong>（医药，连续两日担当情绪核心）；农业（金健米业/红四方）与化肥高位股竞价低开，<strong>高位题材退潮分化</strong>，资金向大金融、有色等权重及低位方向切换。
+    </div>
+</div>
+
+<!-- ============ ④ 资金面 ============ -->
+<h2>④ 资金面</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>明细</th></tr>
+        <tr><td>板块净流入</td><td>有色金属（<strong>+74亿</strong>）、非银金融、工业金属</td></tr>
+        <tr><td>板块净流出</td><td>电子、通信、半导体</td></tr>
+        <tr><td>个股净流入</td><td>洛阳钼业（<strong>+15亿居首</strong>）、剑桥科技、江西铜业、紫金矿业</td></tr>
+        <tr><td>个股净流出</td><td>新易盛（超-5亿）、天孚通信、长鑫科技、兆易创新</td></tr>
+    </table>
+    <div style="font-size:13px;color:var(--muted);">主力早盘明显回流有色+大金融，卖出电子/通信/半导体——与"高低切换、权重搭台"的盘面特征一致。数据时点约 10:55（财联社盯盘）。</div>
+</div>
+
+<!-- ============ ⑤ 核心催化逻辑 ============ -->
+<h2>⑤ 核心催化逻辑</h2>
+<div class="card">
+    <ul style="padding-left:20px;font-size:14px;">
+        <li><strong>券商中报+中期分红（最强主线）</strong>：20家上市券商披露2026H1业绩，中泰证券净利+146.38%居首，财达、华安增超一倍，10家公布中期分红预案 → "牛市旗手"直线拉升，权重护盘。</li>
+        <li><strong>LME铜创历史新高</strong>：期铜报 14324.5 美元/吨（收盘历史新高）→ 有色铜、贵金属全线回暖，主力单板块净流入74亿。</li>
+        <li><strong>可控核聚变政策催化</strong>：2026核聚变能大会发布长三角高温超导磁体联合体 25T 强场磁体研制路线图（2028首条测试线/2030原型磁体）→ 融发核电一字涨停领衔。</li>
+        <li><strong>莫德纳mRNA癌症疫苗III期阳性</strong> + 固态电池国际标准立项 + AI液冷渗透率预期（2026年53%）→ 医药、电池、算力多点开花。</li>
+    </ul>
+</div>
+
+<!-- ============ ⑥ 风险关注 ============ -->
+<h2>⑥ 风险关注</h2>
+<div class="alert">
+    <strong>⚠️ 风险提示：</strong>
+    <ol style="padding-left:18px;font-size:13px;margin-top:6px;">
+        <li><strong>港股背离</strong>：恒指半日 -0.83%，与A股反弹方向相反，外部情绪未共振，午后防冲高回落。</li>
+        <li><strong>高位题材退潮</strong>：金健米业（7天5板）、红四方（7天4板）、新华百货竞价低开，农业/化肥退潮信号明确，高位连板分歧加大。</li>
+        <li><strong>黄白线分化、权重领涨</strong>：指数靠大金融/有色权重拉动，题材端赚钱效应集中于低位补涨，CPO 盘中剧震（杰普特一度-10%后板块回升）显示内部分歧大。</li>
+        <li><strong>热点轮动快、缺合力</strong>：10:30 快评提示"活跃资金高低切换明显"，午后需观察量能能否延续（10:44已破万亿、预计全天超1.8万亿）及大金融能否持续。</li>
+    </ol>
+</div>
+
+<div class="green-note">
+    <strong>短线情绪判断：</strong>涨停56家/跌停0家，量能放量837亿，大金融+有色权重搭台、多点开花，市场偏暖但结构分化——指数强势与题材高位分歧并存，属"权重搭台、题材轮动"格局，追高需谨慎。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-26 · 数据来源：财联社/证券时报/人民财讯 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
