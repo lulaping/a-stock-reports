@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盘前纪要 — 2026年8月26日</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* ---------- 主题变量：深色（默认） ---------- */
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- ============ ① 标题区 ============ -->
+<h1>📋 盘前纪要 — 2026年8月26日（周三）</h1>
+<p class="subtitle">隔夜美股全线收涨、英伟达终结七连跌；油价大跌缓解通胀担忧；中报业绩密集披露期，"业绩为王、分化加剧"；今晚核心PCE+明晚英伟达财报是最大变量</p>
+
+<!-- ============ ② 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📊 A股昨日收盘（8/25）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">+0.19%</div><div class="label">沪指 3889.44</div></div>
+        <div class="stat"><div class="num down">-0.35%</div><div class="label">深成指 13745.87</div></div>
+        <div class="stat"><div class="num down">-1.00%</div><div class="label">创业板指 3397.52</div></div>
+        <div class="stat"><div class="num">1.84万亿</div><div class="label">成交额 缩量1756亿·下半年地量</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">涨停70家 / 跌停4家 · 超4200股上涨 · 小微盘题材活跃，存量资金博弈格局</div>
+</div>
+
+<!-- ============ ① 宏观/政策类 ============ -->
+<h2>🏛️ 一、宏观 / 政策类</h2>
+<div class="card">
+    <table>
+        <tr><th>方向</th><th>消息</th><th>影响解读</th></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>发改委召开"六网协同"会议</strong>，研究"六张网"投融资机制与支持政策，细化财政/金融/价格工具，推动重大工程加快开工（十部委参与）</td><td>基建/重大工程项目催化，关注电网、水利、交通相关链条</td></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>今日国新办发布会</strong>：工信部副部长辛国斌介绍"十五五"规划实施、加快推进新型工业化</td><td>新型工业化主题催化窗口：工业母机、机器人、半导体设备</td></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>道交法修订草案初审</strong>：明确自动驾驶汽车上路行驶条件、违章处理原则和保险制度</td><td>自动驾驶合规门槛确立，产业法规落地里程碑</td></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>四大行优化中小微贷款贴息</strong>：流动资金贷款纳入贴息范围，中央财政年化1个百分点贴息；单户贷款规模上限提高</td><td>稳增长政策加码，利好中小微服务实体</td></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>流动性护航</strong>：央行今日逆回购3860亿净投放护月末（昨日5000亿MLF已落地）；中央结算公司9/1起调降债券业务收费</td><td>月末资金面宽松，债市利好</td></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>上海"十五五"贸易中心规划</strong>：健全锂钴镍期货品种序列，推人民币计价国际化新品种；国家数据局发布第五批50个公共数据示范场景</td><td>数据要素、期货品种扩容主题</td></tr>
+        <tr><td><span class="badge badge-red">利空</span></td><td><strong>加拿大对约200亿美元美国商品征收报复性关税</strong>（15%/25%/50%三档，9/8生效）；特朗普威胁2027年起对加拿大汽车关税提至50%</td><td>北美贸易摩擦升级，供应链成本预期上升</td></tr>
+        <tr><td><span class="badge badge-red">风险</span></td><td><strong>本周重磅事件密集</strong>：今晚20:30 美国7月核心PCE；周三盘后英伟达财报；周四沃什杰克逊霍尔首秀（巴克莱预计释放"重启加息"信号概率&gt;50%）</td><td>全球市场观望情绪浓，A股尾盘波动或加大</td></tr>
+    </table>
+</div>
+
+<!-- ============ ② 产业/行业类 ============ -->
+<h2>🏭 二、产业 / 行业类</h2>
+<div class="card">
+    <table>
+        <tr><th>方向</th><th>消息</th><th>关联板块</th></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>高温超导核聚变重大突破</strong>：中国聚变能源牵头，联合上海超导、东部超导、上海电气等9家长三角创新联合体攻关托卡马克磁体，2028年前建成首条25T强场磁体测试线，2030年前完成原型磁体</td><td>可控核聚变、超导材料（上海超导概念、雪人集团、中国核建等）</td></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>存储超级周期持续</strong>：味之素ABF薄膜满负荷运行供应严重短缺、优先AI客户；集邦预估2027年存储器占CSP资本支出比重将达68%；隔夜美光+2.48%、希捷+3.40%、西数+3.53%</td><td>存储芯片、模组、主控（联芸科技等）</td></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>英伟达财报前瞻乐观</strong>：Q2业绩有望超预期，GB300出货量环比+15%，摩根大通维持280美元目标价；隔夜费半指数+1.44%，光通信Lumentum+6.67%、Coherent+4.59%</td><td>CPO/光模块、PCB、算力租赁——财报前抢跑修复</td></tr>
+        <tr><td><span class="badge badge-green">利好</span></td><td><strong>人形机器人热度延续</strong>：世界人形机器人运动会天工机器人百米跑出8.86秒再破纪录；AGIC深圳通用人工智能展今日开幕（8/26-28）</td><td>人形机器人产业链、AI应用</td></tr>
+        <tr><td><span class="badge badge-orange">中性偏空</span></td><td><strong>油价重挫</strong>：美伊缓和+霍尔木兹海峡水雷清除，WTI -3.12%报82.36美元、布伦特-3.89%报88.58美元，创两周新低</td><td>油气开采承压；航空/化工成本端受益；通胀担忧缓解</td></tr>
+    </table>
+</div>
+
+<!-- ============ ③ 公司/个股类 ============ -->
+<h2>🏢 三、公司 / 个股类</h2>
+<div class="card">
+    <p><span class="badge badge-green">业绩利好</span> 中报密集披露，周期复苏+AI硬件两条主线：</p>
+    <table>
+        <tr><th>公司</th><th>H1净利润</th><th>同比</th><th>看点</th></tr>
+        <tr><td>欧科亿</td><td>3.71亿</td><td class="up">+47734%</td><td>数控刀具提价+低基数</td></tr>
+        <tr><td>杭电股份</td><td>3.93亿</td><td class="up">+939%</td><td>AI数据中心成光纤新增需求</td></tr>
+        <tr><td>联芸科技</td><td>5.20亿</td><td class="up">+826%</td><td>存储主控放量</td></tr>
+        <tr><td>长鹰硬科</td><td>3.81亿</td><td class="up">+1069%</td><td>稀土涨价</td></tr>
+        <tr><td>雅化集团</td><td>12.16亿</td><td class="up">+795%</td><td>锂业复苏</td></tr>
+        <tr><td>高德红外</td><td>13.51亿</td><td class="up">+647%</td><td>军工红外，拟10派1元</td></tr>
+        <tr><td>中稀有色</td><td>4.03亿</td><td class="up">+457%</td><td>稀土价格上行</td></tr>
+        <tr><td>桐昆股份</td><td>42.22亿</td><td class="up">+285%</td><td>PTA/涤纶长丝价差修复</td></tr>
+        <tr><td>四川长虹</td><td>16.46亿</td><td class="up">+229%</td><td>—</td></tr>
+        <tr><td>全志科技</td><td>4.90亿</td><td class="up">+204%</td><td>SoC芯片</td></tr>
+        <tr><td>盐湖股份</td><td>61.69亿</td><td class="up">+138%</td><td>钾锂量价齐升</td></tr>
+        <tr><td>红板科技</td><td>5.39亿</td><td class="up">+125%</td><td>高端PCB订单+涨价</td></tr>
+        <tr><td>江西铜业</td><td>86.32亿</td><td class="up">+107%</td><td>铜价上行</td></tr>
+        <tr><td>沪电股份</td><td>29.23亿</td><td class="up">+74%</td><td>AI算力PCB龙头</td></tr>
+    </table>
+    <p><span class="badge badge-red">业绩利空</span></p>
+    <ul class="flag-list">
+        <li class="fail">🔴 欧菲光 H1净亏4.44亿（亏损扩大）；卓胜微净亏3.71亿（射频前端景气下行）</li>
+        <li class="fail">🔴 中科星图由盈转亏3.19亿；中科飞测净亏1.27亿（半导体量检测投入期）</li>
+        <li class="warn">⚠️ 汉王科技亏损扩大；楚天龙（3连板）H1净亏6212万——高位题材股业绩证伪风险</li>
+    </ul>
+    <p style="margin-top:10px;"><span class="badge badge-blue">重要公告</span></p>
+    <table>
+        <tr><th>类型</th><th>公告</th></tr>
+        <tr><td>算力大单</td><td>艾可蓝签11.09亿元算力资源服务合同（服务期60个月）</td></tr>
+        <tr><td>停牌</td><td>华昌化工控股股东筹划协议转让、或致控股权变更，今起停牌≤2日</td></tr>
+        <tr><td>摘帽复牌</td><td>ST长园、ST宁科撤销其他风险警示，今日复牌</td></tr>
+        <tr><td>扩产投资</td><td>金辰股份拟10亿投建TGV玻璃基封装半导体装备项目</td></tr>
+        <tr><td>并购</td><td>康希通信1.51亿收购知融科技50.36%股权；拓斯达1.47亿受让来勒光电49%；长鸿高科收购广西长科100%股权推进中</td></tr>
+        <tr><td>股东动态</td><td>马云连日增持阿里港股超6亿港元（管理层合计超8亿）；震有科技实控人拟增持1500-3000万元；万泰生物实控人捐赠3300万股</td></tr>
+        <tr><td>涨价/订单</td><td>明泰铝业上调加工费300-500元/吨；江龙船艇签8700万美元工作船合同（占去年营收84%）</td></tr>
+        <tr><td>新股申购</td><td>洛轴股份（创业板，15.88元）、天博智能（62.65元）、杰锋动力（北交所，30.70元）；今日理想汽车披露财报</td></tr>
+    </table>
+</div>
+
+<!-- ============ ④ 外围市场 ============ -->
+<h2>🌍 四、外围市场全景</h2>
+<div class="card">
+    <table>
+        <tr><th>类别</th><th>标的</th><th>收盘</th><th>涨跌幅</th></tr>
+        <tr><td rowspan="3">🇺🇸 美股</td><td>道琼斯（三连涨）</td><td>53577.40</td><td class="up">+0.30%</td></tr>
+        <tr><td>标普500</td><td>7677.28</td><td class="up">+0.32%</td></tr>
+        <tr><td>纳斯达克</td><td>26151.30</td><td class="up">+0.66%</td></tr>
+        <tr><td>关键个股</td><td>英伟达（终结7连跌）/ AMD / 费半指数</td><td>—</td><td class="up">+2.19% / +4.91% / +1.44%</td></tr>
+        <tr><td>🇭🇰 港股</td><td>恒生指数（夜期25648 高水137点·偏多信号）</td><td>25511.10</td><td class="down">-0.02%</td></tr>
+        <tr><td>🛢️ 原油</td><td>WTI / 布伦特</td><td>82.36 / 88.58美元</td><td class="down">-3.12% / -3.89%</td></tr>
+        <tr><td>🥇 黄金</td><td>COMEX黄金</td><td>4715.90美元/盎司</td><td class="up">+0.39%</td></tr>
+        <tr><td>💵 汇率</td><td>美元指数 / 离岸人民币</td><td>98.92 / 6.7173</td><td class="up">美元回落·人民币走强</td></tr>
+        <tr><td>📉 美债</td><td>10Y收益率</td><td>4.63%</td><td class="down">连续两日下行</td></tr>
+    </table>
+    <div style="font-size:13px;color:var(--muted);margin-top:8px;">地缘焦点从"再开战"转向"经济施压"交易：美方扩大对伊次级制裁，但阿曼斡旋下霍尔木兹海峡恢复通航预期升温 → 油价跳水、通胀警报暂缓、风险偏好回暖。</div>
+</div>
+
+<!-- ============ ⑤ 综合判断 ============ -->
+<h2>⚖️ 五、综合判断</h2>
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">多方驱动</span><span>① 美股企稳反弹，芯片链/光通信修复带动A股算力链情绪；② 港股夜期高水137点+人民币走强；③ 政策暖风：六张网、新型工业化发布会、贴息加码、流动性净投放；④ 中报主线明确：化工涨价/稀土/AI硬件（PCB·光通信·存储）批量高增；⑤ 油价大跌缓解全球通胀与利率压力</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">空方制约</span><span>① 两市缩量至下半年地量，增量资金入场意愿有限，存量博弈；② 创业板弱势未改；③ 今晚PCE→明晚英伟达财报→周四沃什讲话，事件密度高，资金观望；④ 中加关税升级扰动外需预期；⑤ 有色/资源股受油价跳水拖累回调压力</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">方向预判</span><span><strong>震荡偏暖、结构市延续。</strong>昨日个股赚钱效应大幅修复（涨停70 vs 跌停4），小微盘+题材活跃度高于权重；外围无恙背景下今日大概率延续"指数平淡、个股活跃"格局。重点方向：<span class="highlight">中报超预期兑现</span>（PCB/光通信/存储/化工涨价/稀土）、<span class="highlight">政策催化</span>（可控核聚变、自动驾驶法规、新型工业化、数据要素）、低位补涨的算力租赁/液冷。回避：油气链、高位无业绩纯题材票（中报证伪窗口）</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">关键观察</span><span>① 成交能否重回2万亿上方（决定反弹高度）；② 英伟达财报前A股算力链抢跑力度；③ 种业/医药/跨境支付等昨日热点是否分歧退潮；④ 连板梯队（越剑智能10天5板、金健米业7天5板）晋级情况作为情绪风向标</span></div>
+</div>
+
+<div class="alert"><strong>⚠️ 风险提示：</strong>今晚20:30美国核心PCE若超预期，将强化"重启加息"叙事并压制明日全球风险资产；明晨英伟达财报不及预期可能引发算力链集体回撤——财报落地前控制仓位、勿盲目追高隔夜跳空板块。</div>
+
+<!-- ============ 页脚 ============ -->
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-26 盘前 · 数据来源：澎湃牛市早报/第一财经/中新经纬/智通财经/上市公司公告 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
