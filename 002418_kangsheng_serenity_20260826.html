@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>康盛股份(002418) Serenity深度分析 — 2026年8月26日</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<!-- ============ ① 标题区 ============ -->
+<h1>🔧 康盛股份(002418) Serenity深度分析 — 2026年8月26日</h1>
+<p class="subtitle">液冷概念炒作 vs 基本面塌陷：董事长被取保候审+控股股东中植系破产清算双红旗压顶，液冷H1营收仅369.69万（占0.27%）但PE已276x，"英伟达认证"未经公告确认属社区信息</p>
+
+<!-- ============ ② 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📊 核心数据（2026H1）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">46.02亿</div><div class="label">总市值·股价4.05元</div></div>
+        <div class="stat"><div class="num down">276x</div><div class="label">PE动·行业均91x</div></div>
+        <div class="stat"><div class="num down">832.6万</div><div class="label">H1净利·-7.00%</div></div>
+        <div class="stat"><div class="num">8.55%</div><div class="label">毛利率·极低</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">总股本11.36亿股 · ROE 0.45% · 资产负债率53.55% · 液冷业务H1营收369.69万元（占0.27%） · 数据来源：2026半年报</div>
+</div>
+
+<!-- ============ 结论区 ============ -->
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">行1 — 客观框架</span><span><strong>Bear 20-25亿（对应股价1.76-2.20元）/ Base 30-35亿（2.64-3.08元）/ Bull 45-55亿（3.96-4.84元）</strong>。当前市值46亿（4.05元）已处Bull上限附近，上行空间有限，下行风险显著。未过翻倍门槛。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">行2 — Serenity</span><span><strong>🔴 Sell</strong> — 两条硬否决级红旗命中（董事长取保候审+控股股东破产清算），好卡点仅3/15，液冷业务营收占比0.27%无法支撑276x PE，"英伟达认证"未经公告确认存在信息不对称风险。故事虽热（液冷+算力+英伟达）但基本面与治理结构塌陷，赔率极不利。</span></div>
+</div>
+
+<!-- ============ 三情景估值 ============ -->
+<div class="price-box">
+    <div class="pb-card bear"><h4>🐻 Bear</h4><div class="price">20-25亿</div><div class="price-detail">对应股价 1.76-2.20 元</div><p style="font-size:13px;margin-top:8px">假设：控股股东破产清算致股权被动减持/司法拍卖；液冷业务持续亏损拖累；家电主业受原材料压价持续；董事长事件升级。按家电零部件行业均PE 30x × H1净利年化~1700万 = 5亿主业 + 液冷期权0 = 约20亿下限</p></div>
+    <div class="pb-card base"><h4>📊 Base</h4><div class="price">30-35亿</div><div class="price-detail">对应股价 2.64-3.08 元</div><p style="font-size:13px;margin-top:8px">假设：治理风险钝化但未消除；液冷业务2027年收入达1-2亿（仍占比<5%）；家电主业稳定微利。给予液冷业务5-10亿期权价值 + 主业20-25亿 = 30-35亿</p></div>
+    <div class="pb-card bull"><h4>🐂 Bull</h4><div class="price">45-55亿</div><div class="price-detail">对应股价 3.96-4.84 元</div><p style="font-size:13px;margin-top:8px">假设：英伟达认证经公告正式确认 + 液冷订单2027年放量至5亿+；中植系股权由国资接盘完成切割；家电主业毛利修复。需所有条件同时满足，概率较低。</p></div>
+</div>
+
+<!-- ============ ① L0-事实底座 ============ -->
+<h2>📋 L0-事实底座</h2>
+<div class="card">
+    <p><strong>业务拆分（2026H1）</strong></p>
+    <table>
+        <tr><th>板块</th><th>营收</th><th>占比</th><th>毛利率</th><th>说明</th></tr>
+        <tr><td>制冷管路及配件（家电）</td><td>12.04亿</td><td>87.4%</td><td>~7.7%</td><td>基本盘，受铜铝涨价+主机厂压价双重挤压</td></tr>
+        <tr><td>汽车整车及部件（中植一客）</td><td>8580万</td><td>6.2%</td><td>~17.5%</td><td>引入战投犀重汽车+郑州绿港，2024年销474台</td></tr>
+        <tr><td>液冷产品（云创智达）</td><td>369.69万</td><td class="down">0.27%</td><td>—</td><td><strong>关键：营收极低，产能爬坡期，小幅拖累业绩</strong></td></tr>
+        <tr><td>铜合金（贵溪美藤）</td><td>—</td><td>—</td><td>—</td><td>2024年收入342万，仍处投入期</td></tr>
+    </table>
+    <p><strong>关键财务（2026H1）</strong></p>
+    <table>
+        <tr><th>指标</th><th>数值</th><th>意味着什么</th></tr>
+        <tr><td>营业总收入</td><td>13.78亿（+16.39%）</td><td>营收增长主要来自家电板块量价修复</td></tr>
+        <tr><td>归母净利润</td><td>832.6万（-7.00%）</td><td>增收不增利，原材料压价+液冷拖累</td></tr>
+        <tr><td>扣非净利润</td><td>615.3万（-8.52%）</td><td>主业盈利能力更弱</td></tr>
+        <tr><td>毛利率</td><td>8.55%</td><td>极低，低于家电零部件行业均值，说明议价权弱</td></tr>
+        <tr><td>ROE</td><td>0.45%</td><td>远低于行业2.69%，资本回报极差</td></tr>
+        <tr><td>资产负债率</td><td>53.55%（上年46.64%）</td><td>负债率上升，财务压力加大</td></tr>
+        <tr><td>每股未分配利润</td><td>-0.20元</td><td>累计亏损未弥补，分红能力受限</td></tr>
+        <tr><td>股东户数</td><td>9.96万（-19.28%）</td><td>筹码集中，但需结合舆情看（炒作期特征）</td></tr>
+        <tr><td>质押比例</td><td>22.6%（2.57亿股）</td><td>控股股东质押，破产清算下处置存不确定性</td></tr>
+    </table>
+</div>
+
+<!-- ============ ② L0-框架 ============ -->
+<h2>🏗️ 产业链定位</h2>
+<div class="card">
+    <table>
+        <tr><th>层级</th><th>环节</th><th>康盛位置</th><th>对标</th></tr>
+        <tr><td>终端</td><td>AI数据中心/储能/新能源车</td><td>—</td><td>英伟达GB300/阿里/华为</td></tr>
+        <tr><td>系统</td><td>液冷整体方案</td><td>云创智达（浸没式+冷板）</td><td>英维克/申菱/高澜/同飞</td></tr>
+        <tr><td>器件</td><td>冷板/CDU/干冷器/快接头</td><td>康盛供应</td><td>三花智控/飞荣达</td></tr>
+        <tr><td>材料</td><td>铜管/铝板/微通道</td><td>康盛传统主业</td><td>海亮股份/精达股份</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;"><strong>教学解读</strong>：康盛本质是<strong>家电制冷铜管厂转型液冷</strong>，在液冷产业链中处于<strong>器件层中下游</strong>，并非卡点环节。液冷是竞争性市场（英维克/申菱/高澜/同飞/中石科技等多家玩家），康盛的微通道冷板技术虽有积累但<strong>非唯一/唯二供应商</strong>，不构成卡点形态。真正算卡点的是英伟达GPU本身、HBM、ABF载板等环节。</p>
+</div>
+
+<!-- ============ ③ Serenity 15条卡点判据 ============ -->
+<h2>🔬 Serenity 15条卡点判据</h2>
+<div class="card">
+    <table>
+        <tr><th>#</th><th>判据</th><th>得分</th><th>说明（仅命中项）</th></tr>
+        <tr><td>1</td><td>垄断/双寡头</td><td>0</td><td>—</td></tr>
+        <tr><td>2</td><td>极小市值vs大TAM</td><td>1</td><td>市值46亿较小，但液冷TAM分散且多家分食</td></tr>
+        <tr><td>3</td><td>BOM占比大+designed-in</td><td>0</td><td>—</td></tr>
+        <tr><td>4</td><td>designed-in+多客户</td><td>0</td><td>—</td></tr>
+        <tr><td>5</td><td>认证周期长</td><td>1</td><td>"英伟达认证"未经公告确认，属社区信息</td></tr>
+        <tr><td>6</td><td>未来爆发营收</td><td>0</td><td>液冷H1仅369万，2027放量属推测</td></tr>
+        <tr><td>7</td><td>资产负债表能撑</td><td>0</td><td>资产负债率53%+未分配利润负</td></tr>
+        <tr><td>8</td><td>Demand>>Supply</td><td>0</td><td>—</td></tr>
+        <tr><td>9</td><td>大客户全包产能</td><td>0</td><td>—</td></tr>
+        <tr><td>10</td><td>国家安全/政府介入</td><td>0</td><td>—</td></tr>
+        <tr><td>11</td><td>Made in America</td><td>0</td><td>—</td></tr>
+        <tr><td>12</td><td>信息不对称</td><td>1</td><td><strong>市场对"英伟达认证"炒作但公司2024-10互动易明确否认直接合作</strong></td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td>0</td><td>—</td></tr>
+        <tr><td>14</td><td>多年营收可见性</td><td>0</td><td>—</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td>0</td><td>液冷非紧迫卡点，国产化率高</td></tr>
+    </table>
+    <p style="margin-top:10px;"><strong>卡点得分：3/15 — 低分，非好卡点。</strong>液冷业务在供应链中不构成卡点（竞争性市场+营收占比0.27%+无垄断地位）。</p>
+</div>
+
+<!-- ============ ④ 红旗扫描 ============ -->
+<h2>🚩 红旗扫描（A股12项）</h2>
+<ul class="flag-list">
+    <li class="fail">🔴 <strong>董事长兼总经理王亚骏被司法机关取保候审</strong>（2026-08-12公告）——硬否决级红旗！原因未披露，"不影响履职"的表述反而增加不确定性。董事长身兼两职，公司治理高度集中于一人。</li>
+    <li class="fail">🔴 <strong>控股股东中植系破产清算进行中</strong>——常州星若+重庆拓洋被纳入248家实质合并清算，股权处置方式未定，存在被动减持/司法拍卖风险。历史已与地方国资接盘协议终止。</li>
+    <li class="warn">⚠️ <strong>信息不对称风险极高</strong>：2024-10-20公司互动易明确回复"与英伟达暂无直接合作关系"，但2025下半年起社区/股吧大量炒作"通过英伟达GB300认证"，公司未发公告正式确认或澄清。<strong>标注：未证实</strong></li>
+    <li class="warn">⚠️ <strong>资产负债表压力</strong>：资产负债率53.55%（上升），每股未分配利润-0.20元，液冷业务仍亏损拖累整体业绩</li>
+    <li class="warn">⚠️ <strong>控股股东质押22.6%</strong>：破产清算背景下质押股权处置高度不确定</li>
+    <li class="warn">⚠️ <strong>估值严重透支</strong>：PE-TTM 188x / PE动276x，远超行业均值91x，液冷营收占比0.27%无法支撑，纯概念溢价</li>
+    <li class="pass">✅ 其余通过：无非频繁定增稀释（历史有*ST摘帽背景但近期无大额融资）、非纯软件、非技术太远（液冷为现有技术）</li>
+</ul>
+
+<!-- ============ ⑤ 催化剂 ============ -->
+<h2>⚡ 催化剂时点</h2>
+<div class="card">
+    <table>
+        <tr><th>类型</th><th>事件</th><th>时点</th><th>性质</th></tr>
+        <tr><td>风险事件</td><td>董事长取保候审后续进展</td><td>未定</td><td><span class="badge badge-red">负面</span></td></tr>
+        <tr><td>风险事件</td><td>控股股东破产清算股权处置</td><td>未定</td><td><span class="badge badge-red">负面</span></td></tr>
+        <tr><td>潜在利好</td><td>英伟达财报（今晚盘后）</td><td>2026-08-27</td><td><span class="badge badge-orange">中性</span> 若英伟达液冷渗透率提升，概念股或短线脉冲</td></tr>
+        <tr><td>潜在利好</td><td>液冷订单/定点公告</td><td>待跟踪</td><td><span class="badge badge-green">正面</span> 若公司正式公告大客户定点则逻辑改变</td></tr>
+        <tr><td>潜在利好</td><td>中植系股权由国资接盘完成</td><td>待跟踪</td><td><span class="badge badge-green">正面</span> 若完成切割可消除最大治理风险</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑥ 风险提示 ============ -->
+<div class="alert"><strong>⚠️ 核心风险：</strong>① 董事长司法事件升级可能（取保→正式起诉→无法履职）；② 控股股东破产清算致股权被动处置/司法拍卖；③ "英伟达认证"若公司公告否认则概念泡沫破裂；④ 液冷业务持续亏损拖累报表；⑤ 家电主业受原材料周期+主机厂压价双重挤压，毛利修复无期；⑥ PE 276x在业绩证伪窗口（中报已披露H1净利-7%）存在估值回归压力。</div>
+
+<div class="green-note"><strong>操作建议：</strong>当前价4.05元（市值46亿）已处Bull case上限，<strong>不建议追高</strong>。若已持有，建议利用液冷概念情绪高点减仓。关注两个验证节点：①公司是否正式公告确认英伟达认证；②中植系股权处置方案落地。两者同时明确前，赔率极不利。</div>
+
+<!-- ============ 页脚 ============ -->
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-26 · 数据来源：公司2026半年报/2025年报/公告/互动易/上证报/企查查 · 标注：已证实/管理层声称/推断/未证实 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
