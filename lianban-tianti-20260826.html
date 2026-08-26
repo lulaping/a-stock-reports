@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连板天梯评级 — 2026-08-26 收盘</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- ============ ① 标题区 ============ -->
+<h1>📊 连板天梯评级 — 2026年8月26日（周三）收盘</h1>
+<p class="subtitle">情绪弱修复：高度6板、连板13只、涨停56家/跌停2家；主线=有色·黄金+大金融+医药；高标集体晋级但量能不足，追高需竞价验证</p>
+
+<!-- ============ ② 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📊 收盘核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">3912.52 <span style="font-size:14px;color:var(--green)">+0.59%</span></div><div class="label">上证指数</div></div>
+        <div class="stat"><div class="num">56 / 2</div><div class="label">涨停 / 跌停</div></div>
+        <div class="stat"><div class="num">1.81万亿</div><div class="label">两市成交（缩量231亿）</div></div>
+        <div class="stat"><div class="num">6板</div><div class="label">最高标 汉森制药</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据时点：2026-08-26 收盘。深成指 13841.33（+0.69%）、创业板指 3414.88（+0.51%）；全市场 2946 涨 / 2448 跌。连板股 13 只、午盘封板率 78%（财联社口径，不含 ST/退市）。来源：财联社、证券时报·数据宝、东财Choice、界面新闻。</div>
+</div>
+
+<!-- ============ ③ 一、情绪周期定位 ============ -->
+<h2>一、情绪周期定位：修复期（弱修复），未进入主升</h2>
+<div class="card">
+    <table>
+        <tr><th>情绪维度</th><th>8/25（昨日）</th><th>8/26（今日）</th><th>边际变化</th></tr>
+        <tr><td>连板最高标</td><td>5板（汉森制药）</td><td><strong>6板（汉森制药回封）</strong></td><td class="up">高度打开</td></tr>
+        <tr><td>涨停/跌停</td><td>70 / 4</td><td>56 / 2</td><td class="up">跌停清零趋势，涨停略降</td></tr>
+        <tr><td>连板股数量</td><td>~12 只</td><td>13 只</td><td class="up">数量增加</td></tr>
+        <tr><td>封板率（午盘）</td><td>71.4%（收盘）</td><td>78%（不含ST）</td><td class="up">封板质量改善</td></tr>
+        <tr><td>两市成交</td><td>1.83万亿（缩量1756亿）</td><td>1.81万亿（缩量231亿）</td><td class="down">量能仍未放出</td></tr>
+    </table>
+    <p style="margin-top:10px;"><strong>定性：</strong>指数三连涨（沪指日线3连阳修复），高标集体晋级（汉森6板、深中华5板、楚天龙4板），跌停仅2家，情绪处于<b>修复期</b>。但两市成交 1.81 万亿持续缩量、题材呈"电风扇"轮动（券商→有色→黄金→核聚变→算力→医药日内轮动），缺乏单一主线合力放量，属于<b>缩量弱修复</b>，赚钱效应局部扩散但未到情绪主升期。明日兑现预期偏高。</p>
+</div>
+
+<!-- ============ ④ 二、连板天梯（收盘） ============ -->
+<h2>二、连板天梯（收盘后）</h2>
+<div class="card">
+    <table>
+        <tr><th>连板</th><th>代码</th><th>名称</th><th>收盘价/涨幅</th><th>换手</th><th>封单</th><th>驱动逻辑</th><th>判定</th></tr>
+        <tr><td><span class="badge badge-red">6板</span></td><td>002412</td><td>汉森制药</td><td class="up">12.33 +9.99%</td><td>21.27%</td><td>9.5万手</td><td>中药/创新药+基药目录+中报净利+55.5%+Moderna催化；盘中炸板午后回封</td><td><span class="badge badge-red">🔴 回避</span></td></tr>
+        <tr><td><span class="badge badge-red">5板</span></td><td>000017</td><td>深中华A</td><td class="up">9.46 +10.00%</td><td>24.10%</td><td>1037万股</td><td>黄金避险+金价4700美元；公司澄清金价传导有限</td><td><span class="badge badge-orange">🟡 观望</span></td></tr>
+        <tr><td><span class="badge badge-red">4板</span></td><td>003040</td><td>楚天龙</td><td class="up">17.03 +10.01%</td><td>23.24%</td><td>361万股</td><td>数字人民币+跨境支付（央行7行接入数币）</td><td><span class="badge badge-orange">🟡 观望</span></td></tr>
+        <tr><td><span class="badge badge-orange">3板</span></td><td>002084</td><td>海鸥住工</td><td class="up">4.79 +10.11%</td><td>0.34%</td><td>1.14亿股(5.46亿)</td><td>控制权变更+博泰车联高溢价收购+智能座舱（一字）</td><td><span class="badge badge-green">🟢 可博弈*</span></td></tr>
+        <tr><td><span class="badge badge-orange">5天3板</span></td><td>688185</td><td>康希诺</td><td class="up">85.62 +20.00%</td><td>4.68%</td><td>2.39亿</td><td>mRNA个性化肿瘤疫苗合作+Moderna暴涨（20cm）</td><td><span class="badge badge-green">🟢 可博弈*</span></td></tr>
+        <tr><td><span class="badge badge-blue">2板×10</span></td><td>—</td><td>华天酒店/青岛金王/康盛股份/浙江世宝/冀衡医药/捷荣技术/华阳国际/豪尔赛/青山纸业/万向德农</td><td class="up">涨停</td><td>—</td><td>—</td><td>酒店/美容护理/液冷·家电/汽零/医药/消费电子/建筑装饰/造纸·光模块/种植业·转基因</td><td><span class="badge badge-orange">🟡 观望</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">* 海鸥住工为一字板（无法买入），需等首次开板换手后再评估；康希诺为科创板 20cm 高标，波动大。断板个股：新华百货（3板失败，低开-4.07%）、金健米业（7天5板后断板，今日+2.58%）。</p>
+</div>
+
+<!-- ============ ⑤ 三、高标个股五维评级 ============ -->
+<h2>三、高标个股五维评级（板块位置30% / 封板质量20% / 换手结构20% / 题材新颖度15% / 筹码结构15%）</h2>
+<div class="card">
+    <table>
+        <tr><th>个股</th><th>板块位置<br>(30%)</th><th>封板质量<br>(20%)</th><th>换手结构<br>(20%)</th><th>题材新颖<br>(15%)</th><th>筹码结构<br>(15%)</th><th>加权分</th><th>判定</th></tr>
+        <tr><td>汉森制药 6板</td><td>3.0 医药发酵中但近高潮、非当日最强主线</td><td>2.5 秒板→炸板→回封，振幅14%</td><td>2.5 换手21.3%巨量分歧</td><td>3.0 中药+业绩，题材偏传统</td><td>2.0 龙虎榜净卖1.02亿、两度澄清</td><td><strong>2.65</strong></td><td><span class="badge badge-red">🔴</span></td></tr>
+        <tr><td>深中华A 5板</td><td>4.0 黄金属当日最强主线分支</td><td>2.5 炸板回封、封单仅9814万</td><td>2.5 换手24.1%高位巨量</td><td>3.0 金价催化但公司澄清传导有限</td><td>1.5 PE308/PB16.5、机构净卖5664万、中报-43%</td><td><strong>2.88</strong></td><td><span class="badge badge-orange">🟡</span></td></tr>
+        <tr><td>楚天龙 4板</td><td>2.5 数字货币非主线、昨日东信和平已断板</td><td>3.0 平开快速拉板、封单6154万</td><td>2.5 换手23.2%分歧巨大</td><td>3.0 数币+跨境支付，题材偏旧</td><td>3.5 机构+深股通净买8000万+、两融4日+61.7%，但中报亏损</td><td><strong>2.83</strong></td><td><span class="badge badge-orange">🟡</span></td></tr>
+        <tr><td>海鸥住工 3板</td><td>2.0 独立事件无板块效应</td><td>5.0 一字封单5.46亿极强</td><td>5.0 换手0.34%缩量锁仓</td><td>4.0 控制权变更+高溢价收购想象空间</td><td>4.0 流通盘小、筹码锁定</td><td><strong>3.80</strong></td><td><span class="badge badge-green">🟢*</span></td></tr>
+        <tr><td>康希诺 5天3板</td><td>4.0 生物疫苗属医药主线强分支</td><td>3.5 20cm封单2.39亿较强</td><td>4.0 换手4.68%相对健康</td><td>4.5 mRNA肿瘤疫苗+Moderna，新颖度高</td><td>3.0 5天3板累计59%、20cm波动大</td><td><strong>3.83</strong></td><td><span class="badge badge-green">🟢*</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">评级映射：加权 ≥4.5 强（🟢 可博弈）／3.5~4.4 中（🟡 观望）／＜3.5 弱（🔴 回避）。* 海鸥住工一字无法买入、康希诺 20cm 高波动，均附高风险注记。</p>
+</div>
+
+<!-- ============ ⑥ 四、逐股解读与逻辑 ============ -->
+<h2>四、逐股解读（结合市场情绪—龙头—板块—大盘互动框架）</h2>
+<div class="card">
+    <p><strong>1️⃣ 汉森制药（002412）6板 · 医药最高标 — 🔴 回避</strong></p>
+    <ul>
+        <li>晋级路径：5天4板→竞价高开9%秒板冲6板→半小时后炸板跳水（最低10.76，-4.0%）→午后回封涨停至收盘。振幅14.01%、换手21.27%、成交12.36亿，高位巨量分歧。</li>
+        <li>驱动：国务院《国民健康"十五五"规划》+药监局仿制药新政 + 隔夜 Moderna +14% + 中报净利 +55.52%。<b>板块效应</b>：医药今日涨停6+家（汉森/康希诺/冀衡/千金/万泰/卫光），处于发酵期，但已连续活跃、接近高潮。</li>
+        <li>红旗：6板累计+77%；龙虎榜机构+游资合计净卖出约1.02亿；公司两度发布异动澄清；利润主要靠联营收益、营收同比-6.42%。</li>
+        <li><b>结论：</b>作为市场总高度，只可持有不可新进；明日竞价若高开<3%或低开，大概率断板，并可能带动医药高位股集体退潮。</li>
+    </ul>
+    <p><strong>2️⃣ 深中华A（000017）5板 · 黄金 — 🟡 观望</strong></p>
+    <ul>
+        <li>晋级路径：盘中炸板后回封（振幅11.28%），换手24.10%、成交9.62亿，封单仅1037万股/9814万（偏弱）。</li>
+        <li>驱动：金价重返4700美元+避险；黄金板块今日涨停3家（金一文化、迪阿股份20cm、深中华A），有色（工业金属+贵金属）为当日<b>最强主线</b>，板块资金净流入超74亿。</li>
+        <li>红旗：动态PE 308、PB 16.54 极度高估；中报净利-43%、毛利率仅7.59%，公司<b>自己澄清"金价上涨传导有限"</b>；龙虎榜机构净卖出5664万、游资净买入6082万——机构借势出逃。</li>
+        <li><b>结论：</b>纯情绪+主线位置支撑，题材兑现度差，高位接力性价比低；仅适合博弈板块情绪的短线客，明日需看黄金板块能否续强（迪阿/金一是否晋级）。</li>
+    </ul>
+    <p><strong>3️⃣ 楚天龙（003040）4板 · 数字人民币 — 🟡 观望</strong></p>
+    <ul>
+        <li>晋级路径：竞价平开→开盘快速拉升封板，换手23.24%（午盘）、成交超15亿，分歧巨大。</li>
+        <li>驱动：央行新增7家银行接入数字人民币系统+跨境支付活跃；与恒银科技、兆日科技同属计算机设备方向。但数字货币<b>非今日主线</b>，昨日同板块东信和平已断板，板块效应偏弱。</li>
+        <li>结构：中报亏损（净利-6212万）；龙虎榜机构净买入3847万+深股通净买入4289万（有长线资金接力），但游资净卖出2335万；两融4日增61.7%——杠杆资金过热。</li>
+        <li><b>结论：</b>资金结构分歧（机构+深股通 vs 游资撤退），4板高度面临压制，适合观察能否"卡位"成为大金融人气核心，追高谨慎。</li>
+    </ul>
+    <p><strong>4️⃣ 海鸥住工（002084）3板 · 股权转让 — 🟢 可博弈（等首开）</strong></p>
+    <ul>
+        <li>一字板，换手仅0.34%、封单1.14亿股/5.46亿，筹码完全锁定。</li>
+        <li>驱动：控制权拟变更+博泰车联高溢价收购+智能座舱，事件驱动有想象空间，与兆日科技等"并购重组"主题共振。</li>
+        <li><b>结论：</b>3板一字缩量，结构最优，但无法买入；<b>关注首次开板换手后的承接</b>，若首开不破位（换手>15%仍红盘）可视为超预期，否则回避。</li>
+    </ul>
+    <p><strong>5️⃣ 康希诺（688185）5天3板 · mRNA肿瘤疫苗 — 🟢 可博弈（高波动）</strong></p>
+    <ul>
+        <li>20cm涨停，封单2.39亿，换手4.68%相对健康；5天3板区间累计+59%。</li>
+        <li>驱动：与德普世签约mRNA个性化治疗型肿瘤疫苗共同开发；隔夜Moderna +14%（巴克莱上调目标价+Wolfe看好mRNA癌症疫苗商业潜力），全球叙事共振。</li>
+        <li><b>结论：</b>医药主线中<b>题材最新颖、板块共振最强</b>的分支龙头，封板结构好；但科创板20cm波动大、5天3板后位置不低，只适合激进资金低吸博弈，不适合追板。</li>
+    </ul>
+    <p><strong>6️⃣ 2板梯队（10只）— 🟡 整体观望</strong></p>
+    <ul>
+        <li>多为业绩线/事件补涨：青山纸业（造纸+400G/800G光模块+福建国资，午盘封单1.59亿）、万向德农（转基因百万亩推广）、康盛股份（液冷+算力服务）、浙江世宝（线控转向+小米）等。</li>
+        <li>2板辨识度低、淘汰率高（昨日首板晋级率不足两成），仅主线分支（有色/黄金/算力）内的2板有进阶潜力，其余观望。</li>
+    </ul>
+</div>
+
+<!-- ============ ⑦ 五、板块生命周期与大-小盘互动 ============ -->
+<h2>五、板块生命周期 & 大盘—连板互动</h2>
+<div class="card">
+    <table>
+        <tr><th>方向</th><th>涨停家数</th><th>生命周期位置</th><th>高潮降级规则触发？</th></tr>
+        <tr><td>有色·工业金属/贵金属</td><td>5~7家（江西铜业/白银有色/金诚信/精艺股份+金一/迪阿/深中华）</td><td>发酵期（首日集体爆发，铜价新高+中报验证）</td><td class="down">未达9家警戒线，暂不降级</td></tr>
+        <tr><td>医药（中药/疫苗/创新药）</td><td>6+家</td><td>发酵期→近高潮（已连续活跃多日）</td><td class="down">未达9家，但高位分歧加剧</td></tr>
+        <tr><td>大金融（券商/互联金融/数币）</td><td>4~5家</td><td>事件+业绩驱动，第一日爆发</td><td>—</td></tr>
+        <tr><td>可控核聚变</td><td>3家（融发核电/百利电气/顺钠）</td><td>事件驱动（25T高温超导磁体）</td><td>—</td></tr>
+        <tr><td>算力硬件/光模块</td><td>3~4家（剑桥/共进/青山纸业/杭电）</td><td>中报业绩验证（剑桥+171%）</td><td>—</td></tr>
+    </table>
+    <p style="margin-top:10px;"><strong>大盘—连板传导：</strong>今日沪指+0.59%收3912，大金融"搭台"（券商板块涨停潮）支撑指数；有色+算力"唱戏"承接短线资金。但成交1.81万亿继续缩量，<b>指数靠权重护盘、题材靠轮动接力</b>，属典型的"权重搭台、情绪局部活跃"结构——大盘不弱（3连阳）但量能不足，决定了连板高度有限（当前6板已是天花板附近），板块之间此消彼长（CPO/CRO调整、有色/医药轮动）。</p>
+</div>
+
+<!-- ============ ⑧ 六、明日（8/27）竞价验证清单 ============ -->
+<h2>六、明日竞价验证清单（四查）</h2>
+<div class="card">
+    <ul class="flag-list">
+        <li class="warn">⚠️ <strong>汉森制药（6板）：</strong>竞价高开区间需 -2%~+5%、量比 1.5~3 倍；高开>8%或低开即防断板，它定医药板块情绪方向。</li>
+        <li class="warn">⚠️ <strong>深中华A（5板）：</strong>能否弱转强高开>3%并快速回封；需同步看黄金板块（迪阿/金一/金诚信）竞价是否续强。</li>
+        <li class="warn">⚠️ <strong>楚天龙（4板）：</strong>能否卡位晋级，看大金融是否延续（锦龙/湘财竞价状态）。</li>
+        <li class="pass">✅ <strong>海鸥住工（3板）：</strong>一字板是否开板，首开换手承接决定是否值得参与。</li>
+        <li class="pass">✅ <strong>康希诺（20cm）：</strong>高开幅度与量比，谨防20cm冲高回落。</li>
+        <li class="pass">✅ <strong>大盘：</strong>能否放量突破1.9万亿是情绪能否升级为强修复的关键信号。</li>
+    </ul>
+</div>
+
+<!-- ============ ⑨ 结论区 ============ -->
+<h2>结论</h2>
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">情绪定位</span><span>缩量弱修复期：高度 6 板（汉森回封）、连板 13 只、涨停 56 / 跌停 2，情绪回暖但量能不足、题材电风扇，未进入主升。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">龙头结构</span><span>总高度汉森制药（医药）🔴回避；黄金深中华A 🟡观望；数币楚天龙 🟡观望；最优结构为海鸥住工（一字锁仓）🟢与康希诺（医药最强分支）🟢，但分别受"无法买入"与"20cm高波动"约束。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">交易策略</span><span>弱势修复期不追高位板，聚焦主线分支（有色/黄金、医药疫苗）内的低位晋级与首开检验机会；明日竞价以"四查"确认后再动手，缩量环境以防守为主。</span></div>
+</div>
+
+<!-- 风险提示 -->
+<div class="alert"><strong>⚠️ 风险提示：</strong>1）缩量弱修复下明日兑现预期高，高位股（汉森/深中华/楚天龙）断板风险集中；2）三高标均存在"业绩不支撑+机构出逃/澄清"瑕疵，纯情绪博弈；3）中报披露收官期，业绩暴雷个股随时出现；4）今晚英伟达财报为科技链关键变量。本报告基于公开信息整理，不构成投资建议。</div>
+
+<!-- ============ ④ 页脚 ============ -->
+<div class="footer">
+    Serenity 连板交易策略框架 · 2026-08-26 收盘 · 数据来源：财联社/证券时报·数据宝/东方财富/界面新闻/新浪财经 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
