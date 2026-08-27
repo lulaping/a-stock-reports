@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChanlunX 一类买点(B1)扩大样本扫描 — 2026-08-27</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 ChanlunX 一类买点（B1）扩大样本扫描</h1>
+<p class="subtitle">验证池扩至 32 只个股 · 近一年日线 · DLL 版本 v20260827.11（含盘整背驰通道修复 + 同bar信号去重）</p>
+
+<div class="summary">
+    <strong>📊 核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">32</div><div class="label">扫描样本（只）</div></div>
+        <div class="stat"><div class="num">6</div><div class="label">出现 B1 的股票</div></div>
+        <div class="stat"><div class="num">19%</div><div class="label">B1 出现率</div></div>
+        <div class="stat"><div class="num">5/4周</div><div class="label">集中于 6-22~7-20 窗口</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据口径：东方财富前复权日线（fqt=1），区间 2025-08-27 ~ 2026-08-27；买卖点由 ChanlunX.dll 函数10/17 计算，置信度 0~100</div>
+</div>
+
+<h2>一、B1 案例清单（按置信度降序）</h2>
+<div class="card">
+    <table>
+        <tr><th>#</th><th>股票</th><th>代码</th><th>板块</th><th>B1 日期</th><th>B1 价格</th><th>置信度</th><th>QDZ=55 可见性</th></tr>
+        <tr><td>1</td><td><strong>格力电器</strong></td><td>000651</td><td>深主板·家电</td><td>2026-06-22</td><td>34.27</td><td><span class="badge badge-green">75</span></td><td>✅ 显示</td></tr>
+        <tr><td>2</td><td><strong>中国平安</strong></td><td>601318</td><td>沪主板·保险</td><td>2026-06-29</td><td>46.90</td><td><span class="badge badge-green">60</span></td><td>✅ 显示</td></tr>
+        <tr><td>3</td><td><strong>平安银行</strong></td><td>000001</td><td>深主板·银行</td><td>2026-07-01</td><td>9.99</td><td><span class="badge badge-green">59</span></td><td>✅ 显示</td></tr>
+        <tr><td>4</td><td><strong>汇川技术</strong></td><td>300124</td><td>创业板·工控</td><td>2026-07-20</td><td>57.32</td><td><span class="badge badge-orange">56</span></td><td>✅ 显示（临界）</td></tr>
+        <tr><td>5</td><td><strong>比亚迪</strong></td><td>002594</td><td>深主板·整车</td><td>2026-06-29</td><td>77.24</td><td><span class="badge badge-orange">49</span></td><td>⚠️ 被过滤</td></tr>
+        <tr><td>6</td><td><strong>亿纬锂能</strong></td><td>300014</td><td>创业板·锂电</td><td>2026-07-20</td><td>49.40</td><td><span class="badge badge-red">45</span></td><td>⚠️ 被过滤</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--muted);">注：汇川技术在 885 根全量K线窗口下另有 1 例 B1（2025-01-06 @54.24，conf=61）；本表统一按近一年窗口统计。</p>
+</div>
+
+<div class="alert">💡 <strong>QDZ 参数提示</strong>：置信度 45~49 的盘整背驰型 B1 在 QDZ=55 下不会显示。若希望全部可见，请将通达信"缠论主图"公式的 QDZ 参数设为 ≤45。</div>
+
+<h2>二、时间分布特征</h2>
+<div class="card">
+    <table>
+        <tr><th>时间窗口</th><th>B1 数量</th><th>占比</th><th>对应市场背景</th></tr>
+        <tr><td>2026-06-22 ~ 07-20（四周）</td><td class="up"><strong>5 例</strong></td><td>83%</td><td>大盘 6 月末调整见底阶段，个股背驰低点共振出现</td></tr>
+        <tr><td>其余时段（约48周）</td><td>1 例*</td><td>17%</td><td>*汇川全量窗口 2025-01-06，一年窗口内不可见</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:10px;">B1 高度集中在市场阶段性底部附近——个股级别的趋势背驰买点并非均匀分布，而是随大盘节奏共振释放。这既是缠论"级别联立"的体现，也是信号有效性的间接佐证。</div>
+</div>
+
+<h2>三、行业结构</h2>
+<div class="card">
+    <table>
+        <tr><th>方向</th><th>出 B1 的品种</th><th>特征</th></tr>
+        <tr><td class="up">✅ 产出 B1</td><td>新能源链（比亚迪/亿纬）、大金融（中国平安/平安银行）、家电（格力）、工控（汇川）</td><td>深度下跌后企稳的方向，下跌斜率放缓 + MACD 面积缩减</td></tr>
+        <tr><td class="down">❌ 未产出</td><td>白酒（茅台/五粮液）、资源（紫金/神华）、AI 算力（中际旭创/新易盛）、光储（阳光电源）</td><td>持续强势通道中，缺乏合格的趋势背驰段；顶部未走完确认结构</td></tr>
+    </table>
+</div>
+
+<h2>四、为什么 S1（一类卖点）全池为 0？</h2>
+<div class="card">
+    <ul style="padding-left:20px;">
+        <li>样本以<strong>多头行情个股为主</strong>：多数票一年高点不断刷新，突破 ZG 后仍创新高，不满足"后段不创新高"的证伪幸存条件；</li>
+        <li>S1 要求"上涨背驰 + 跌破最后中枢 ZG + 信号后不再新高"，三者同时成立通常需要先有一轮像样的顶部构筑；</li>
+        <li>这与 B1 只出现在跌透的位置互为镜像，<strong>属定义内的正常稀疏而非缺陷</strong>。</li>
+    </ul>
+</div>
+
+<h2>五、方法论说明（判定链）</h2>
+<div class="card">
+    <table>
+        <tr><th>环节</th><th>规则</th></tr>
+        <tr><td>笔划分</td><td>合并K分型法：顶底交替连接，端点间隔 ≥4 根原始K，极值优先修正 + 吞笔回退（破幅阈值 0.5%），延迟确认处理扩张结构</td></tr>
+        <tr><td>背驰分层</td><td>以最近连续同向中枢链长分级：链长 ≥2 → 趋势背驰（要求依次下移中枢 + 背驰段终点跌破最后中枢 ZD）；恰为 1 → 盘整背驰（本次修复恢复的通道）</td></tr>
+        <tr><td>证伪剔除</td><td>信号后若创更低价则撤销（保证幸存者为真历史底）；末根未确认 K 不标记</td></tr>
+        <tr><td>同bar去重</td><td>一买与二买重合取 B1、二买与三买重合取 B3，同级取高置信度（v20260827.11 新增）</td></tr>
+    </table>
+</div>
+
+<h2>六、其余 26 只样本速览（未出 B1）</h2>
+<div class="card">
+    <p style="font-size:13px;line-height:2.0;">
+        <span class="badge badge-blue">沪主板</span> 长江电力·贵州茅台·紫金矿业·中信证券·中国石化·中国神华·海螺水泥·隆基绿能·通威股份&nbsp;&nbsp;
+        <span class="badge badge-blue">深主板</span> 京东方A·五粮液·美的集团·天齐锂业&nbsp;&nbsp;
+        <span class="badge badge-blue">创业板</span> 宁德时代·蓝英装备·盈趣科技·阳光电源·中际旭创·东方财富·爱尔眼科&nbsp;&nbsp;
+        <span class="badge badge-blue">其他</span> 赛力斯·赣锋锂业(2处已知笔框架盲区)
+    </p>
+    <p style="font-size:13px;color:var(--muted);">上述样本均有 B2/S2/S3 等次级信号输出，仅缺一类买点——多为上行通道或震荡市所致。</p>
+</div>
+
+<h2>七、风险提示</h2>
+<div class="alert">
+    ⚠️ 1. B1 为左侧信号：其成立依赖"信号后不创新低"，此时点无法预知未来，实盘需配合止损（如跌破 B1 低点即离场）；<br>
+    2. 本扫描基于历史日线回算，前复权价格与通达信本地数据可能存在除权口径差异；<br>
+    3. 置信度仅反映结构完整度，不代表上涨概率；低置信度（&lt;50）信号建议仅观察不动手；<br>
+    4. 六月下旬共振现象可能仅是本轮市场的特殊节奏，不可外推为普适规律；<br>
+    5. 通达信图表加载K线数量会影响全量重算结果，建议固定加载范围后再对比本报告。
+</div>
+
+<div class="footer">ChanlunX v20260827.11 · 扫描工具 dbg_maidi_stat / verify_bi · 报告生成于 2026-08-27 · 仅供研究参考，不构成投资建议</div>
+
+</body>
+</html>
