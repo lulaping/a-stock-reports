@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChanlunX 买卖点置信度计算规则 — 2026-08-27</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        code { background:rgba(110,118,129,0.2); padding:1px 6px; border-radius:4px;
+               font-family:Consolas,monospace; font-size:13px; color:#79c0ff; }
+        pre { background:#0a0d12; border:1px solid var(--border); border-radius:8px; padding:14px;
+              overflow-x:auto; font-size:13px; color:#a5d6ff; margin:10px 0; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+<h1>🎯 ChanlunX 买卖点置信度计算规则</h1>
+<p class="subtitle">Maidi.cpp · DLL 函数17(0~100) · 主图公式 QDZ 阈值联动 · v20260827.11</p>
+
+<div class="summary">
+    <strong>📌 核心结论</strong><br>
+    六类买卖点的置信度只有<strong>一类买卖点（B1/S1）是动态计算</strong>——按"背驰类型基础分 × MACD 面积缩减系数"得出；二类（B2/S2）与三类（B3/S3）均为<strong>固定 70 分</strong>。该设计让 QDZ 阈值成为筛选严格度的旋钮。
+</div>
+
+<h2>一、一类买卖点（B1/S1）：动态计算</h2>
+<div class="card">
+    <p><strong>第一步 · 按背驰类型定基础分</strong>（中枢链判定，Maidi.cpp L226）</p>
+    <table>
+        <tr><th>背驰类型</th><th>判定条件</th><th>基础分</th></tr>
+        <tr><td><span class="badge badge-green">趋势背驰</span></td><td>最近连续同向中枢链 ≥2 个（依次下移/上移）</td><td><strong>80</strong></td></tr>
+        <tr><td><span class="badge badge-orange">盘整背驰</span></td><td>恰好 1 个同向中枢（链长=1）</td><td><strong>60</strong></td></tr>
+        <tr><td><span class="badge badge-red">不构成</span></td><td>无同向中枢（链长=0）</td><td>不出信号</td></tr>
+    </table>
+    <p><strong>第二步 · 乘以 MACD 面积缩减系数</strong>（L396/L418）</p>
+    <pre>conf = base × (0.7 + 0.3 × strength / 100)
+strength = (1 − 当前段MACD面积 ÷ 前一同向段面积) × 100</pre>
+    <ul style="padding-left:20px;">
+        <li>面积缩减越多（背驰越显著）→ strength 越高 → 折减越少</li>
+        <li>面积完全不缩（strength=0）→ 系数取下限 0.7</li>
+        <li>理论区间：<strong>趋势背驰 56~80</strong>，<strong>盘整背驰 42~60</strong></li>
+    </ul>
+</div>
+
+<h2>二、二类/三类买卖点：固定 70 分</h2>
+<div class="card">
+    <table>
+        <tr><th>信号</th><th>置信度</th><th>理由</th><th>附加约束</th></tr>
+        <tr><td>B2 二买 / S2 二卖</td><td><span class="badge badge-blue">70</span></td><td>纯几何判定（回调不破前低/前高 + 证伪作废），无背驰维度可量化</td><td>锚定低/高点后跌破即作废</td></tr>
+        <tr><td>B3 三买 / S3 三卖</td><td><span class="badge badge-blue">70</span></td><td>离开段突破中枢 + 回抽不回，同属形态成立即合格</td><td>同一中枢最多 2 次</td></tr>
+    </table>
+    <div class="green-note">70 分的设计意图：保证 B2/S2/S3 在 QDZ=55 缺省值下始终可见；一类点的 42~80 宽幅分布则刻意留给 QDZ 做筛选。</div>
+</div>
+
+<h2>三、验证池实测反推核对（32只·近一年）</h2>
+<div class="card">
+    <table>
+        <tr><th>案例</th><th>置信度</th><th>结构分解</th><th>验证</th></tr>
+        <tr><td>格力电器 B1 @34.27</td><td>75</td><td>80 × 0.9375 → 面积缩减 ≈79%</td><td>✅ 趋势背驰·强</td></tr>
+        <tr><td>中国平安 B1 @46.90</td><td>60</td><td>80 × 0.75 → 面积缩减 ≈17%</td><td>✅ 趋势背驰·中</td></tr>
+        <tr><td>平安银行 B1 @9.99</td><td>59</td><td>80 × 0.7375 → 面积缩减 ≈12.5%</td><td>✅ 趋势背驰·中</td></tr>
+        <tr><td>汇川技术 B1 @57.32</td><td>56</td><td>60 × 0.933（或 80×0.7 极限折减）</td><td>✅ 盘整背驰·显著</td></tr>
+        <tr><td>比亚迪 B1 @77.24</td><td>49</td><td>60 × 0.817 → 面积缩减 ≈39%</td><td>✅ 盘整背驰·中</td></tr>
+        <tr><td>亿纬锂能 B1 @49.40</td><td>45</td><td>60 × 0.75 → 面积缩减 ≈17%</td><td>✅ 盘整背驰·中</td></tr>
+    </table>
+</div>
+
+<h2>四、QDZ 阈值使用指南</h2>
+<div class="card">
+    <table>
+        <tr><th>QDZ 设置</th><th>效果</th><th>适用场景</th></tr>
+        <tr><td>≤45</td><td>全部信号可见（含最弱盘整背驰 B1）</td><td>研究/复盘统计</td></tr>
+        <tr><td><strong>55（缺省）</strong></td><td>B2/S2/S3 全可见；B1/S1 仅趋势背驰或强盘整背驰可见</td><td><strong>日常盯盘（推荐）</strong></td></tr>
+        <tr><td>60~75</td><td>滤掉全部盘整背驰；只要面积缩减显著的趋势背驰</td><td>只做趋势反转</td></tr>
+        <tr><td>&gt;80</td><td>连最强趋势背驰也被过滤（理论区间上限 80）</td><td>⚠️ 无信号可用，勿用</td></tr>
+    </table>
+</div>
+
+<h2>五、设计原理</h2>
+<div class="card">
+    <ul style="padding-left:20px;">
+        <li><strong>为什么用 MACD 面积比</strong>：面积比衡量"动能衰竭程度"，正是缠论背驰的核心定义，且天然归一到 0~100，无需额外归一化参数；</li>
+        <li><strong>为什么二/三类不动态</strong>：二买本质是"一买的次级确认"，三买本质是"中枢上移的确认"，其可靠性来自结构本身而非动能，固定分值更贴近"形态成立即合格"的缠论语义；</li>
+        <li><strong>置信度 ≠ 上涨概率</strong>：它量化的是结构完整度（中枢链长度 × 动能衰竭程度），不构成对未来走势的预测保证。</li>
+    </ul>
+</div>
+
+<h2>六、相关文件</h2>
+<div class="card">
+    <p style="font-size:13px;">
+        · 计算：ChanlunX/Maidi.cpp（find_beichi 强度 → MaiDian 输出）<br>
+        · 输出接口：DLL 函数 10/11（买卖点类型）+ 函数 17（置信度 0~100）<br>
+        · 主图联动：缠论主图.txt 第 31 行 <code>QD>=QDZ</code> 过滤显示<br>
+        · 选股联动：一/二/三买选股.txt（近N日窗口版，BARSLAST&lt;N）<br>
+        · 实测来源：验证池 32 只个股扫描报告（<a href="b1-cases-20260827.html" style="color:var(--blue);">b1-cases-20260827.html</a>）
+    </p>
+</div>
+
+<div class="footer">ChanlunX v20260827.11 · 报告生成于 2026-08-27 · 仅供研究参考，不构成投资建议</div>
+
+</body>
+</html>
