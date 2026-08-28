@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChanlunX 项目优化评估方案 — 2026-08-28</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        h3 { font-size:14px; margin:18px 0 8px; color:var(--text); }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        code { background:rgba(110,118,129,0.2); padding:1px 5px; border-radius:3px; font-size:12px; }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>🔧 ChanlunX 项目优化评估方案</h1>
+<p class="subtitle">评估基准：90只样本验证（80日K×3年 + 5只5分钟 + 5只连板妖股）· v20260828.1（DLL）· 2026-08-28</p>
+
+<!-- ============ 总览 ============ -->
+<div class="summary">
+    <strong>📋 评估总览</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">7</div><div class="label">评估维度</div></div>
+        <div class="stat"><div class="num">22</div><div class="label">识别问题点</div></div>
+        <div class="stat"><div class="num">4</div><div class="label">P0 优先项</div></div>
+        <div class="stat"><div class="num">96.7%</div><div class="label">当前ext合规率</div></div>
+    </div>
+</div>
+
+<div class="green-note">
+<strong>总体判断：</strong>核心算法（笔划分）经90只样本、约6.3万根K线验证，交替/间隔违规为0，主体逻辑已达高置信度稳定。当前短板不在算法本身，而在<b>工程化配套</b>：验证工具的盲区（查不出多余笔）、段级别/买卖点模块缺乏同等强度验证、README严重过时、版本管理依赖zip手工备份。以下按7维度展开。
+</div>
+
+<!-- ============ 1 功能完整性 ============ -->
+<h2>1️⃣ 功能完整性</h2>
+<div class="card">
+<h3>问题 1.1 · verify 工具存在结构性盲区（最关键）<span class="badge badge-red">高</span></h3>
+<p><b>现象：</b>三口径（alt/gap/ext）能证明"没有违规笔"，但查不出<b>"多余的笔"</b>——长城汽车2023年案例（多出一笔向下的笔）两端点本身合规，verify始终PASS，最终靠人工看图发现。<br>
+<b>根因：</b>局部口径验证无法判定全局结构冗余，这是工具方法论层面的缺口。<br>
+<b>建议：</b>建立<b>金标（golden test）机制</b>——将90只已验证样本中人工复核确认过的笔端点序列固化为基线文件，verify增加第4口径"与金标比对"，任何算法改动导致基线偏离即报警。<br>
+<b>预期效果：</b>彻底封堵"错误但合规"类缺陷，回归验证从"三口径"升级为"全结构"。这是所有后续优化的地基。</p>
+</div>
+<div class="card">
+<h3>问题 1.2 · 段（Duan）与买卖点（Maidi）缺乏系统验证 <span class="badge badge-red">高</span></h3>
+<p><b>现象：</b>90只样本验证全部集中在笔级别；段划分（Func3/4）与买卖点（Func10/11/12）仅靠零散抽图。<br>
+<b>根因：</b>验证精力随缺陷分布集中于笔模块（历史缺陷也确实都在笔上）。<br>
+<b>建议：</b>复用同一验证池，开发 verify_duan（段端点极值性/交替/包含检查）与 verify_maidi（买卖点定义条件逐项断言，如B1必满足背驰+中枢条件）。<br>
+<b>预期效果：</b>三模块统一回归，未来任何改动（如置信度公式调整）有安全网。</p>
+</div>
+<div class="card">
+<h3>问题 1.3 · 三约束互斥盲区残留 <span class="badge badge-orange">中</span></h3>
+<p><b>现象：</b>90样本13处FAIL（剔除3处窗口伪影后10处），全部同构："更极端分型与相邻反向分型间隔不足被拒入链→保留的次极端端点违规"。最大偏差11%（上海电影V型急涨）。<br>
+<b>根因：</b>严格笔定义下"间隔≥4+顶底交替+端点极值"在密集分型区数学互斥，非算法缺陷。<br>
+<b>建议：</a></b>① 等低容差从0.1%提至0.2%（可消除等低型2处，成本一行）；② 建 KNOWN_ISSUES.md 固化盲区清单与判别特征；③ 剩余8处互斥属固有，标注"已知"即可。</p>
+</div>
+<div class="card">
+<h3>问题 1.4 · 数据源单点风险 <span class="badge badge-orange">中</span></h3>
+<p><b>现象：</b>东财接口IP级限流后仅剩新浪（上限1023根/次），5分钟级验证窗口被迫缩至1个月。<br>
+<b>建议：</b>fetch脚本增加多源回退链（东财→新浪→腾讯→本地.lc5解析兜底），并支持增量更新。</p>
+</div>
+<div class="card">
+<h3>问题 1.5 · README 严重过时 <span class="badge badge-red">高（成本低）</span></h3>
+<p><b>现象：</b>README仍写 TDXDLL2 绑定（实际 TDXDLL5）、CMake/MSVC 编译（实际 g++ -m32 命令行）、函数表仅9个（实际17个，缺买点/卖点/置信度/目标位/止损位/笔力度/段力度/背驰配置）。<br>
+<b>根因：</b>项目演进快于文档，README为上游遗留。<br>
+<b>建议：</b>重写README：17函数总表、真实编译命令、公式参数（B1~S3/QDZ/BLD/DDLD）添加步骤、已知盲区引用。</p>
+</div>
+
+<!-- ============ 2 代码质量 ============ -->
+<h2>2️⃣ 代码质量</h2>
+<div class="card">
+<h3>问题 2.1 · Main.cpp 模板化重复 <span class="badge badge-blue">低</span></h3>
+<p>17个导出函数重复"guard→拷入参→调核心→拷回出参"模式，且存在 <code>Pivot ZhongShuOne = ZhongShuList.at(i)</code> 这类对象拷贝（应const引用）。建议模板/宏包装收拢，约可减200行。风险低、收益为可维护性。</p>
+</div>
+<div class="card">
+<h3>问题 2.2 · BiChuLi 状态机复杂度逼近维护极限 <span class="badge badge-orange">中</span></h3>
+<p><b>现象：</b>经多轮修复（双条件gap、吞笔回退、起点极值修复、ext_violated），状态机含多条回退路径与例外规则，圈复杂度高，<b>每次修一个盲区都需90只全量回归</b>。<br>
+<b>根因：</b>规则以时间线方式叠加进单一函数，而非分层。<br>
+<b>建议：</b>① 将"分型识别→链构建→回退裁决→极值修复"拆为可独立单测的纯函数；② 为每个历史缺陷案例（长城/国电南瑞/立讯/赣锋）写场景化单测，固化"修复不复发"约束。</p>
+</div>
+<div class="card">
+<h3>问题 2.3 · 魔法数字分散 <span class="badge badge-blue">低</span></h3>
+<p>BI_FENXING_GAP=3、GAP_ZJ=4、BI_BREAK_THR=0.005、等低容差0.1%等分散在各文件。建议集中为命名配置结构体，与17号"背驰参数配置"函数模式对齐，为将来可配置化铺路。</p>
+</div>
+<div class="card">
+<h3>问题 2.4 · tests/ 目录杂物堆积 <span class="badge badge-blue">低</span></h3>
+<p>dbg_*.cpp、convert*.ps1 等8个一次性诊断脚本与长期工具混放。建议分 <code>tests/tools</code>（长期）与 <code>tests/oneshot</code>（一次性，可归档删除）。</p>
+</div>
+
+<!-- ============ 3 性能 ============ -->
+<h2>3️⃣ 性能表现</h2>
+<div class="card">
+<h3>现状评估：无实际痛点 <span class="badge badge-green">低优先</span></h3>
+<p>727根日K单次计算毫秒级，用户无卡顿反馈。<b>潜在热点：</b>全市场选股时，公式每根K线重复调用DLL，Func5~14各自独立重算中枢/笔，同一输入被重复计算多次。<br>
+<b>建议（仅在选股变慢时实施）：</b>① thread_local 输入hash缓存（注意通达信多线程安全，键含全部入参+数据指针地址）；② 选股公式改单次调用聚合输出（置信度函数已是此模式）。<br>
+<b>结论：暂不动，避免为不存在的瓶颈引入缓存一致性风险。</b></p>
+</div>
+
+<!-- ============ 4 用户体验 ============ -->
+<h2>4️⃣ 用户体验</h2>
+<div class="card">
+<h3>问题 4.1 · DLL无版本可查 <span class="badge badge-orange">中</span></h3>
+<p>用户无法确认通达信里跑的是哪个版本（本次v20260828.1需手动替换DLL）。建议占用一个空闲函数号导出版本号/编译日期，主图公式可显示，杜绝"改了没生效"的排查成本。</p>
+</div>
+<div class="card">
+<h3>问题 4.2 · 信号不显示的排查成本高 <span class="badge badge-orange">中</span></h3>
+<p>历史案例：K线数量/缩放导致B1"消失"（实为显示问题），排查耗时长。建议：① 文档化"信号不显示排查清单"（末K保护/窗口前缀失真/缩放/参数开关BLD、DDLD）；② 可选诊断函数：返回任意bar的链状态（第几笔/分型密度），辅助定位。</p>
+</div>
+<div class="card">
+<h3>问题 4.3 · 安装/升级流程文档化 <span class="badge badge-blue">低</span></h3>
+<p>升级步骤（替换DLL→重启通达信→绑定TDXDLL5）散落在对话记忆中，写入README安装节。</p>
+</div>
+
+<!-- ============ 5 安全性 ============ -->
+<h2>5️⃣ 安全性</h2>
+<div class="card">
+<h3>问题 5.1 · 无异常兜底，算法崩溃会拖垮通达信主程序 <span class="badge badge-red">高</span></h3>
+<p><b>现象：</b>guard()已防御空指针/nCount非法（好），但算法层若发生越界/抛异常（如未来改动引入），将直接崩溃宿主。<br>
+<b>建议：</b>17个导出函数体包 <code>__try/__except</code>（SEH，x86兼容），异常时清零输出返回，实现"宁可无信号不可崩宿主"。<br>
+<b>预期效果：</b>把最坏情况从"通达信崩溃丢页面数据"降为"该函数输出为空"。</p>
+</div>
+<div class="card">
+<h3>问题 5.2 · 备份只有本地zip，无异地 <span class="badge badge-orange">中</span></h3>
+<p>zip备份机制运转良好（每日递增序号），但全部在E盘本地，磁盘故障即全损。项目已有 .gitignore，建议 git init + 推送私有远程仓库，tag对应zip版本号（zip习惯保留作双保险）。</p>
+</div>
+<div class="card">
+<h3>已达标项 <span class="badge badge-green">pass</span></h3>
+<ul class="flag-list">
+<li class="pass">静态链接 -static-libgcc/-static-libstdc++，无运行时依赖，换机部署零缺失</li>
+<li class="pass">fetch脚本走HTTPS且curl默认证书校验，无凭据硬编码</li>
+<li class="pass">输入边界防御（guard）覆盖全部导出函数</li>
+</ul>
+</div>
+
+<!-- ============ 6 可维护性 ============ -->
+<h2>6️⃣ 可维护性</h2>
+<div class="card">
+<h3>问题 6.1 · 无git版本管理 <span class="badge badge-red">高</span></h3>
+<p><b>现象：</b>依赖 <code>ChanlunX_v{YYYYMMDD}.{序号}.zip</code> 手工备份。无法diff两版本差异、无法定位"哪次改动引入回归"、回滚靠整包替换。<br>
+<b>建议：</b>git init + 每次修改即commit（message对应zip版本号）+ 远程私有仓库异地备份。zip机制保留。这是与1.1金标机制并列的P0。</p>
+</div>
+<div class="card">
+<h3>问题 6.2 · 回归验证无统一入口 <span class="badge badge-orange">中</span></h3>
+<p><b>现象：</b>当前回归=手工循环跑verify_bi+人工看输出，散落在临时PowerShell命令里。<br>
+<b>建议：</b>run_all_tests.ps1：一键拉取/更新验证池→跑verify_bi（+未来的verify_duan/maidi）→输出汇总CSV（股票/三口径/违规明细）→与上次结果diff标红新增违规。</p>
+</div>
+<div class="card">
+<h3>问题 6.3 · 盲区知识未固化 <span class="badge badge-orange">中</span></h3>
+<p>三约束互斥、窗口前缀失真、等低噪音等结论散落在注释与对话中。建议KNOWN_ISSUES.md（与1.3合并实施），含每类盲区：特征、判别方法、案例代码、是否可修复。</p>
+</div>
+
+<!-- ============ 7 扩展性 ============ -->
+<h2>7️⃣ 扩展性</h2>
+<div class="card">
+<h3>问题 7.1 · 函数编号资源需规划 <span class="badge badge-blue">低</span></h3>
+<p>17个函数已占用，版本查询（4.1）、诊断（4.2）还需2~3个号。通达信DLL函数上限充足但应统一规划编号表写入README，避免随意占用。</p>
+</div>
+<div class="card">
+<h3>问题 7.2 · 分钟级验证基础设施薄弱 <span class="badge badge-orange">中（长期）</span></h3>
+<p>5分钟买卖点公式（30分钟一买/二买/三买选股.txt）已存在，但分钟级数据仅新浪1023根可用，回测能力受限。长期方案：本地通达信 .lc5 定向解析工具（用户此前倾向网络数据，列为可选项）或数据库缓存。</p>
+</div>
+<div class="card">
+<h3>问题 7.3 · 笔规则参数不可配置 <span class="badge badge-blue">低（按需）</span></h3>
+<p>用户曾提及"另一种笔标准"（高开冲高极值入笔），当时决定维持标准缠论不动。若未来想支持多笔标准，需将GAP/容差/包含规则参数化（与2.3配置集中化衔接）。<b>当前不实施</b>，仅预留架构空间。</p>
+</div>
+
+<!-- ============ 优先级矩阵 ============ -->
+<h2>📌 实施优先级与预期效果</h2>
+<table>
+<tr><th>优先级</th><th>措施</th><th>对应问题</th><th>成本</th><th>预期效果</th></tr>
+<tr><td><span class="badge badge-red">P0</span></td><td>git版本管理+异地备份</td><td>6.1/5.2</td><td>0.5天</td><td>diff/回滚/追溯能力从无到有，磁盘故障不再全损</td></tr>
+<tr><td><span class="badge badge-red">P0</span></td><td>金标测试机制（第4口径）</td><td>1.1</td><td>1天</td><td>封堵"错误但合规"盲区，长城类缺陷永不复发</td></tr>
+<tr><td><span class="badge badge-red">P0</span></td><td>README重写</td><td>1.5/4.3</td><td>0.5天</td><td>消除TDXDLL2等误导信息，新机部署零踩坑</td></tr>
+<tr><td><span class="badge badge-red">P0</span></td><td>SEH异常兜底</td><td>5.1</td><td>0.5天</td><td>最坏情况从崩宿主降为空输出</td></tr>
+<tr><td><span class="badge badge-orange">P1</span></td><td>一键回归脚本+汇总diff</td><td>6.2</td><td>0.5天</td><td>回归从手工半小时缩至一键2分钟</td></tr>
+<tr><td><span class="badge badge-orange">P1</span></td><td>段级/买卖点验证工具</td><td>1.2</td><td>2天</td><td>三模块统一安全网</td></tr>
+<tr><td><span class="badge badge-orange">P1</span></td><td>等低容差0.1%→0.2%</td><td>1.3</td><td>10分钟</td><td>消除2处等低型违规，90样本ext合规率→98.9%</td></tr>
+<tr><td><span class="badge badge-orange">P1</span></td><td>KNOWN_ISSUES.md</td><td>6.3/1.3</td><td>0.5天</td><td>盲区知识固化，新会话零重复排查</td></tr>
+<tr><td><span class="badge badge-orange">P1</span></td><td>DLL版本号导出函数</td><td>4.1</td><td>0.5天</td><td>版本可视，杜绝"改了没生效"</td></tr>
+<tr><td><span class="badge badge-blue">P2</span></td><td>状态机拆分+场景单测</td><td>2.2</td><td>2天</td><td>后续盲区修复回归成本减半</td></tr>
+<tr><td><span class="badge badge-blue">P2</span></td><td>数据源多源回退</td><td>1.4</td><td>1天</td><td>单点限流不再阻塞验证工作</td></tr>
+<tr><td><span class="badge badge-blue">P2</span></td><td>Main.cpp去重/魔法数字集中/诊断函数</td><td>2.1/2.3/4.2</td><td>1天</td><td>可维护性改善</td></tr>
+<tr><td><span class="badge badge-blue">P3</span></td><td>性能缓存/分钟级数据设施/笔标准配置化</td><td>3/7.2/7.3</td><td>按需</td><td>仅在对应痛点出现时实施</td></tr>
+</table>
+
+<div class="alert">
+<strong>⚠️ 实施顺序约束：</strong>金标机制（P0）必须在任何进一步的算法改动（如容差调整P1）<b>之前</b>落地——先有安全网，再动算法，否则容差改动将无法区分"消除盲区"与"引入回归"。git管理同理应最先实施。
+</div>
+
+<!-- ============ 结论 ============ -->
+<div class="conclusion-box">
+<div class="conclusion-row"><span class="conclusion-label">总体评价</span><span>算法核心已高置信度稳定（90样本·alt/gap双零），瓶颈在工程化配套而非缠论逻辑本身</span></div>
+<div class="conclusion-row"><span class="conclusion-label">最优先三件事</span><span>① git版本管理 ② 金标测试机制 ③ README重写+SEH兜底——合计约2.5天，风险防护能力跃升一个量级</span></div>
+<div class="conclusion-row"><span class="conclusion-label">暂不实施</span><span>性能缓存（无痛点）、笔标准配置化（用户已决定维持标准）、分钟级数据设施（等实际需求）</span></div>
+</div>
+
+<div class="footer">ChanlunX 优化评估 · 生成于 2026-08-28 · 基于 v20260828.1 验证数据</div>
+
+</body>
+</html>
