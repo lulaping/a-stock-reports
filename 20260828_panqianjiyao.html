@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盘前纪要 — 2026-08-28</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 盘前纪要 — 2026年8月28日（星期五）</h1>
+<p class="subtitle">英伟达财报引爆全球AI叙事，A股昨日放量大涨，今日面临分化考验</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>📊 核心数据速览</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">3956.57</div><div class="label">沪指昨收 <span class="up">+1.13%</span></div></div>
+        <div class="stat"><div class="num">2.14万亿</div><div class="label">昨日两市成交</div></div>
+        <div class="stat"><div class="num up">+8.74%</div><div class="label">英伟达隔夜</div></div>
+        <div class="stat"><div class="num up">+1.57%</div><div class="label">纳指隔夜</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据截至：2026-08-27 收盘 / 2026-08-28 盘前 | 来源：财联社/证券时报/东方财富</div>
+</div>
+
+<!-- 外围市场 -->
+<h2>一、外围市场（隔夜）</h2>
+<div class="card">
+    <table>
+        <tr><th>市场</th><th>收盘</th><th>涨跌</th><th>要点</th></tr>
+        <tr><td>道指</td><td>53,569.44</td><td class="up">+0.20%</td><td>温和收涨</td></tr>
+        <tr><td>标普500</td><td>7,730.99</td><td class="up">+0.72%</td><td>科技驱动</td></tr>
+        <tr><td>纳指</td><td>26,541.35</td><td class="up">+1.57%</td><td>英伟达领涨</td></tr>
+        <tr><td>英伟达</td><td>$227.98</td><td class="up">+8.74%</td><td>Q2营收962亿刀，2028财年指引+70%</td></tr>
+        <tr><td>费城半导体</td><td>—</td><td class="up">+2.33%</td><td>博通+4.49%，台积电ADR+2.30%</td></tr>
+        <tr><td>恒生指数</td><td>25,565.74</td><td class="down">-0.34%</td><td>港股27日收跌</td></tr>
+        <tr><td>恒生科技</td><td>4,620.29</td><td class="down">-0.13%</td><td>智谱、百度领涨</td></tr>
+    </table>
+</div>
+<div class="green-note">
+    <strong>外围核心：</strong>英伟达Q2营收962亿美元（同比+106%），CFO预计2028财年营收增长约70%（远超预期45%），黄仁勋称"算力就是收入"、"若无供应限制还能高得多"。AI算力主线的中长期叙事获得顶级背书。
+</div>
+
+<!-- 宏观政策 -->
+<h2>二、宏观/政策面</h2>
+<div class="card">
+    <table>
+        <tr><th>事件</th><th>影响</th><th>方向</th></tr>
+        <tr><td>六大行发布中小微企业贷款贴息细则，单户上限由5000万提至7500万</td><td>财政金融协同促内需</td><td><span class="badge badge-green">利好</span></td></tr>
+        <tr><td>央行开展200亿7天逆回购+3330亿隔夜逆回购，单日净回笼2455亿</td><td>流动性边际收敛</td><td><span class="badge badge-orange">中性偏空</span></td></tr>
+        <tr><td>上海"十五五"规划：壮大12个新兴支柱产业，集成电路利润大增18.5倍</td><td>半导体国产替代政策背书</td><td><span class="badge badge-green">利好</span></td></tr>
+        <tr><td>两融余额26280.79亿，较前日+113.06亿</td><td>杠杆资金仍在流入</td><td><span class="badge badge-green">利好</span></td></tr>
+    </table>
+</div>
+
+<!-- 行业动态 -->
+<h2>三、行业/产业动态</h2>
+<div class="card">
+    <table>
+        <tr><th>事件</th><th>影响</th><th>方向</th></tr>
+        <tr><td>SK海力士CEO：存储芯片短缺料持续至2030年底，启动40亿美元美国存储中心</td><td>存储超级周期确认</td><td><span class="badge badge-green">利好</span></td></tr>
+        <tr><td>MLCC涨价循环：三星电机Q4报价上调至多30%，高通9月1日上调芯片价格</td><td>被动元件+芯片涨价周期</td><td><span class="badge badge-green">利好</span></td></tr>
+        <tr><td>2026中国国际大数据产业博览会今日开幕（8/28-30）</td><td>AI应用/数据要素催化</td><td><span class="badge badge-green">利好</span></td></tr>
+        <tr><td>昨日算力硬件全线爆发后，今日早盘半导体主力净流出48亿</td><td>高位分歧，短线获利盘涌出</td><td><span class="badge badge-red">利空</span></td></tr>
+    </table>
+</div>
+
+<!-- 公司公告 -->
+<h2>四、公司/个股公告</h2>
+<div class="card">
+    <table>
+        <tr><th>公司</th><th>事项</th><th>影响</th></tr>
+        <tr><td>中金公司</td><td>吸收合并东兴证券、信达证券获上交所并购重组委审议通过</td><td><span class="badge badge-green">券商整合里程碑</span></td></tr>
+        <tr><td>湖南黄金</td><td>拟购买黄金天岳、中南冶炼100%股权，今日复牌</td><td><span class="badge badge-green">重组复牌</span></td></tr>
+        <tr><td>宁波东力</td><td>拟定增募资不超10亿元，用于精密减速器智能制造项目</td><td><span class="badge badge-green">机器人/减速器扩产</span></td></tr>
+        <tr><td>大普微</td><td>签订5.15亿美元企业级PCIe SSD销售订单</td><td><span class="badge badge-green">存储订单落地</span></td></tr>
+        <tr><td>百济神州</td><td>上半年净利润32.71亿元，同比+627%</td><td><span class="badge badge-green">创新药业绩爆发</span></td></tr>
+        <tr><td>华虹宏力</td><td>出货量创历史新高，上半年净利润同比+436.69%</td><td><span class="badge badge-green">晶圆代工高景气</span></td></tr>
+        <tr><td>锦富技术</td><td>上半年净亏损1.17亿元，Q2环比持续亏损</td><td><span class="badge badge-red">业绩亏损</span></td></tr>
+    </table>
+</div>
+
+<!-- 昨日盘面回顾 -->
+<h2>五、昨日盘面回顾（8月27日）</h2>
+<div class="card">
+    <table>
+        <tr><th>指标</th><th>数据</th><th>备注</th></tr>
+        <tr><td>沪指</td><td>3956.57 <span class="up">+1.13%</span></td><td>放量长阳，逼近4000点</td></tr>
+        <tr><td>深成指</td><td><span class="up">+1.50%</span></td><td>同步大涨</td></tr>
+        <tr><td>创业板指</td><td><span class="up">+1.71%</span></td><td>科技领涨</td></tr>
+        <tr><td>科创50</td><td><span class="up">+3.77%</span></td><td>算力硬件爆发</td></tr>
+        <tr><td>两市成交</td><td>2.14万亿</td><td>放量3191亿</td></tr>
+        <tr><td>上涨/下跌</td><td>~3400 / ~1600</td><td>普涨格局</td></tr>
+        <tr><td>涨停</td><td>~80只</td><td>半导体4.99%、电子化学品4.62%领涨</td></tr>
+        <tr><td>主力净流入</td><td>332.14亿</td><td>电子板块净流入427亿</td></tr>
+    </table>
+</div>
+<div class="alert">
+    <strong>⚠️ 分化预警：</strong>昨日算力全线暴涨后，今日早盘已现高低切换——半导体主力半日净流出48亿，农业/房地产/黄金逆势走强。昨日"无脑买"阶段结束，今日进入精选个股阶段。
+</div>
+
+<!-- 综合判断 -->
+<h2>六、综合判断与今日策略</h2>
+
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">多空对比</span>
+        <span>多头（英伟达财报/存储周期/政策贴息/两融流入）vs 空头（昨日高潮后分歧/央行净回笼/获利盘涌出）→ <strong>多头仍占优但需消化分歧</strong></span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">方向预判</span>
+        <span>沪指4000点关口前蓄势，预计今日震荡分化，科技主线内部轮动（从算力硬件向存储/光模块/PCB等业绩确定性分支切换）</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">关键观察</span>
+        <span>① 4000点能否放量突破 ② 英伟达产业链（中际旭创/新易盛/沪电股份）是否持续 ③ 金融股（中金复牌）能否接力 ④ 若缩量至1.8万亿以下需警惕回调</span>
+    </div>
+</div>
+
+<div class="green-note">
+    <strong>正面锚点：</strong>英伟达2028财年70%增长指引给全球AI capex叙事上了"保险"，A股科技主线的产业趋势并未结束，今日分化属于高潮后的正常换手而非趋势终结。
+</div>
+
+<div class="alert">
+    <strong>风险提示：</strong>① 4000点整数关口心理压力+获利盘回吐可能引发日内大幅波动；② 美联储9月加息预期升温（PCE通胀3.7%超预期）压制全球风险偏好；③ 若两市成交快速萎缩至1.8万亿以下，短线操作需降仓。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-28 · 数据来源：财联社/证券时报/东方财富/新华网 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
