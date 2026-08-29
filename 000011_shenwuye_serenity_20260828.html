@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深物业A(000011) — Serenity分析 2026-08-28</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .price-box { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:12px 0; }
+        .pb-card { padding:16px; border-radius:8px; border:1px solid var(--border); }
+        .pb-card.bear { border-top:4px solid var(--red); }
+        .pb-card.base { border-top:4px solid var(--orange); }
+        .pb-card.bull { border-top:4px solid var(--green); }
+        .pb-card .price { font-size:22px; font-weight:700; margin:8px 0; }
+        .pb-card .price-detail { font-size:13px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } .price-box { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body class="light">
+
+<h1>📊 深物业A(000011) — Serenity 分析</h1>
+<p class="subtitle">深圳国资地产+物管 | 2026-08-28 | 非能力圈标的，框架降级说明</p>
+
+<!-- 核心数据 -->
+<div class="summary">
+    <strong>📊 核心数据</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num up">9.15</div><div class="label">8/28收盘 <span class="up">+9.98%</span></div></div>
+        <div class="stat"><div class="num">54.5亿</div><div class="label">总市值</div></div>
+        <div class="stat"><div class="num down">-6818万</div><div class="label">2026H1归母净利</div></div>
+        <div class="stat"><div class="num">82.74</div><div class="label">RSI6（超买区）</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据：2026半年报（8/28披露）+ 8/28收盘行情 | 来源：公司公告/同花顺/证券时报</div>
+</div>
+
+<!-- 结论 -->
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">行1 — 客观框架</span>
+        <span>Bear <strong>7.5元</strong>（-18%）/ Base <strong>8.3元</strong>（-9%）/ Bull <strong>10.5元</strong>（+15%）｜<strong>未过翻倍门槛</strong>，地产毛利率崩塌压制估值</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">行2 — Serenity视角</span>
+        <span><strong>Hold</strong> — 非能力圈标的（地产/物管），无供应链卡点逻辑，短线资金博弈深圳国资股属性，中长期基本面疲弱</span>
+    </div>
+</div>
+
+<!-- L0 事实底座 -->
+<h2>L0 — 客观事实底座</h2>
+<div class="card">
+    <table>
+        <tr><th>项目</th><th>数据</th><th>意味着什么</th></tr>
+        <tr><td>总市值</td><td>54.53亿元</td><td>小市值，弹性大</td></tr>
+        <tr><td>总股本</td><td>5.96亿股</td><td>—</td></tr>
+        <tr><td>2026H1营收</td><td>12.05亿元 <span class="up">+10.78%</span></td><td>物管稳定+地产结转增加</td></tr>
+        <tr><td>2026H1归母净利</td><td><span class="down">-6818万元</span>（同比-572.5%）</td><td>由盈转亏，Q2单季亏损4094万</td></tr>
+        <tr><td>扣非净利</td><td><span class="down">-7260万元</span>（同比-185.7%）</td><td>主业盈利能力恶化</td></tr>
+        <tr><td>经营现金流</td><td>+1458万元（去年同期-1.07亿）</td><td>回款改善，去库存见效</td></tr>
+        <tr><td>净资产</td><td>33.12亿元</td><td>PB约1.65倍</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <strong>业务结构（2026H1）</strong>
+    <table>
+        <tr><th>业务</th><th>收入</th><th>占比</th><th>同比</th><th>毛利率</th><th>状态</th></tr>
+        <tr><td>物业管理</td><td>7.79亿</td><td>64.6%</td><td>+1.1%</td><td>14.97%</td><td>稳定但低毛利</td></tr>
+        <tr><td>房地产开发</td><td>3.52亿</td><td>29.2%</td><td>+64.7%</td><td><span class="down">2.82%</span>（-37pct）</td><td>量增利崩</td></tr>
+        <tr><td>资产运营</td><td>0.75亿</td><td>6.2%</td><td>-28.3%</td><td>—</td><td>萎缩</td></tr>
+    </table>
+</div>
+
+<!-- 15条卡点判据 -->
+<h2>15条卡点判据（Serenity框架）</h2>
+<div class="card">
+    <table>
+        <tr><th>#</th><th>判据</th><th>评分</th><th>说明</th></tr>
+        <tr><td>1</td><td>垄断/双寡头/single point of failure</td><td>0</td><td>地产/物管红海竞争</td></tr>
+        <tr><td>2</td><td>极小市值 vs 巨大下游TAM</td><td>1</td><td>54亿市值小，但地产TAM萎缩</td></tr>
+        <tr><td>3</td><td>BOM占比高 + designed-in</td><td>0</td><td>不适用</td></tr>
+        <tr><td>4</td><td>多客户 designed-in</td><td>0</td><td>—</td></tr>
+        <tr><td>5</td><td>认证周期长、未反映当期营收</td><td>0</td><td>—</td></tr>
+        <tr><td>6</td><td>未来爆发营收（2027-28）</td><td>0</td><td>地产下行周期</td></tr>
+        <tr><td>7</td><td>资产负债表能撑过爬坡</td><td>0</td><td>有息负债高，财务费用+77%</td></tr>
+        <tr><td>8</td><td>Demand far outstrips supply</td><td>0</td><td>供过于求</td></tr>
+        <tr><td>9</td><td>大客户全包上游产能</td><td>0</td><td>—</td></tr>
+        <tr><td>10</td><td>国家安全/政府介入</td><td>1</td><td>深圳国资背景，但非战略级</td></tr>
+        <tr><td>11</td><td>本土化=护城河</td><td>0</td><td>—</td></tr>
+        <tr><td>12</td><td>信息不对称/定价错误</td><td>0</td><td>—</td></tr>
+        <tr><td>13</td><td>极少数玩家</td><td>0</td><td>同质化严重</td></tr>
+        <tr><td>14</td><td>多年营收可见性/backlog</td><td>0</td><td>地产结算波动大</td></tr>
+        <tr><td>15</td><td>国产替代紧迫度</td><td>0</td><td>不适用</td></tr>
+        <tr><td colspan="2"><strong>合计</strong></td><td><strong>2/15</strong></td><td>非卡点标的</td></tr>
+    </table>
+</div>
+
+<!-- 红旗扫描 -->
+<h2>红旗扫描</h2>
+<ul class="flag-list">
+    <li class="fail">🔴 <strong>地产毛利率崩塌</strong>：房地产板块毛利率2.82%，同比骤降37个百分点，主业盈利能力恶化</li>
+    <li class="fail">🔴 <strong>财务费用激增</strong>：财务费用同比+76.89%至7900万，利息负担沉重</li>
+    <li class="fail">🔴 <strong>行业下行周期</strong>：地产行业深度调整，政策聚焦存量盘活而非增量扩张</li>
+    <li class="warn">⚠️ <strong>政府补助大幅减少</strong>：其他收益同比-88.52%，政策红利退坡</li>
+    <li class="warn">⚠️ <strong>高质押风险</strong>：控股股东深投控曾计划转让5%股份（后终止），股权稳定性存疑</li>
+    <li class="pass">✅ 其余通过（无单一客户集中/无商誉/无增发稀释）</li>
+</ul>
+
+<!-- 缠论/技术面 -->
+<h2>技术面 — 缠论视角</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>状态</th><th>信号</th></tr>
+        <tr><td>8/28涨停</td><td>收9.15元，+9.98%</td><td>一字板t晋级2连板</td></tr>
+        <tr><td>RSI6</td><td>82.74</td><td><span class="badge badge-red">超买区</span>（&gt;70）</td></tr>
+        <tr><td>BIAS6</td><td>+10.33%</td><td>偏离均线过大，短线回调压力</td></tr>
+        <tr><td>近20日涨幅</td><td>+15.24%</td><td>8/7低点7.76→8/28收盘9.15</td></tr>
+        <tr><td>平均成本</td><td>8.93元</td><td>当前价略高于成本线</td></tr>
+        <tr><td>中期趋势</td><td>空头行情</td><td>有加速下跌后反弹特征</td></tr>
+    </table>
+</div>
+
+<div class="alert">
+    <strong>⚠️ 缠论定位：</strong>当前处于<strong>日线上级别反弹（一买后向上笔）</strong>，但RSI超买+BIAS过大显示短线动能透支。若9.15元不能持续放量突破，可能形成<strong>次级别顶分型</strong>回落。地产板块非主线热点，此次涨停更偏向深圳国资属性轮动+低位反弹。
+</div>
+
+<!-- 估值 -->
+<h2>估值（亏损企业专属）</h2>
+<div class="price-box">
+    <div class="pb-card bear">
+        <h4>🐻 Bear</h4>
+        <div class="price">7.5元</div>
+        <div class="price-detail">对应市值 44.7亿（-18%）</div>
+        <p style="font-size:13px;margin-top:8px">地产毛利率持续低于5%，全年亏损扩大至1.5亿+，PB跌破1.3x</p>
+    </div>
+    <div class="pb-card base">
+        <h4>📊 Base</h4>
+        <div class="price">8.3元</div>
+        <div class="price-detail">对应市值 49.5亿（-9%）</div>
+        <p style="font-size:13px;margin-top:8px">物管业务撑住基本盘，地产毛利率缓步修复至8-10%，全年微利或盈亏平衡</p>
+    </div>
+    <div class="pb-card bull">
+        <h4>🐂 Bull</h4>
+        <div class="price">10.5元</div>
+        <div class="price-detail">对应市值 62.6亿（+15%）</div>
+        <p style="font-size:13px;margin-top:8px">深圳国资改革注入资产/地产政策超预期宽松，PB修复至1.9x+</p>
+    </div>
+</div>
+
+<div class="alert">
+    <strong>⚠️ 关键约束：</strong>当前股价9.15元已接近Base情景（8.3元），Bull情景需深圳国资改革或地产政策超预期催化，概率较低。<strong>Bear情景概率大于Bull情景</strong>——地产毛利率崩塌+财务费用高企是结构性问题，非短期可解。
+</div>
+
+<!-- 综合判定 -->
+<h2>综合判定</h2>
+<div class="conclusion-box">
+    <div class="conclusion-row">
+        <span class="conclusion-label">Serenity判定</span>
+        <span><strong>Hold</strong> — 非能力圈标的，无供应链卡点逻辑，短线反弹不改中期弱势</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">短线视角</span>
+        <span>🟡 观望 — 涨停次日溢价可期，但RSI超买+BIAS过大，追高风险高</span>
+    </div>
+    <div class="conclusion-row">
+        <span class="conclusion-label">中长线视角</span>
+        <span>🔴 回避 — 地产毛利率崩塌+财务费用激增+行业下行周期，基本面不支持中长期持有</span>
+    </div>
+</div>
+
+<div class="green-note">
+    <strong>核心逻辑：</strong>深物业A今日涨停是<strong>深圳国资属性+地产板块轮动+低位反弹</strong>的共振，与技术形态修复有关，与公司基本面改善无关。物业管理业务（64.6%收入占比）提供基本盘安全垫，但14.97%的毛利率难以支撑高估值。短期博弈需紧盯深圳国资改革消息面，中长期需等待地产行业见底信号。
+</div>
+
+<div class="footer">
+    Serenity 分析引擎 · 2026-08-28 · 数据来源：公司公告/同花顺/证券时报/东方财富 · 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
