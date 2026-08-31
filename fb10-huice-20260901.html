@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日首板Top10 · ChanlunX买卖点成功率回测 2026-09-01</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* ---------- 主题变量：深色（默认） ---------- */
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 今日首板Top10 · ChanlunX 买卖点成功率回测（2026-09-01）</h1>
+<p class="subtitle">复用 20260901 首板前10只（封板时间序）2年日K腾讯qfq数据，笔划分抽检10/10 PASS后直接跑 dump_signals→signal_stats 前向收益回测：138信号，B类信号胜率与8/31 btc池结论方向一致</p>
+
+<div class="summary">
+    <strong>📊 核心数据（10只 × 2年日K，2024-08~2026-08）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">138</div><div class="label">信号总数（B2×81/B3×13/S×44）</div></div>
+        <div class="stat"><div class="num">90.1%</div><div class="label">B2 胜率 win10（n=81）</div></div>
+        <div class="stat"><div class="num">+16.5%</div><div class="label">B3 平均20日收益（n=13）</div></div>
+        <div class="stat"><div class="num">97.5%</div><div class="label">B信号 5日内摸+3% 比例</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">口径：B信号=次日开盘进场、S信号=信号日收盘出场；win10=10日后收盘胜率；hit3=5日内最高触及+3%；数据源=腾讯qfq日K，工具=build32/dump_signals.exe+signal_stats.exe（均与源码同步核对）</div>
+</div>
+
+<h2>① 样本与流水线</h2>
+<div class="card">
+    <p>今日（20260901）涨停池88只、首板70只，按封板时间取前10只（广宇集团/天保基建/亚厦股份/浔兴股份/西子洁能/智光电气/悍高集团/海天精工/诺德股份/金帝股份），腾讯qfq 2年日K（500根，悍高集团2025-07上市仅265根）。</p>
+    <p>流水线：<span class="badge badge-blue">verify_bi 笔划分校验</span> 10/10 PASS（alt=0 gap=0 ext=0，333笔零违规）→ <span class="badge badge-blue">dump_signals 信号导出</span> 138条 → <span class="badge badge-blue">signal_stats 前向收益统计</span>。样本窗口前缀截断只影响窗口前端，统计计全窗口信号。</p>
+</div>
+
+<h2>② 总体成功率（按信号类型）</h2>
+<div class="card">
+    <table>
+        <tr><th>类型</th><th>n</th><th>5日收益</th><th>10日收益</th><th>20日收益</th><th>MAE中位</th><th>MAE最差</th><th>hit3%</th><th>摸+3%均时</th></tr>
+        <tr><td><span class="badge badge-green">B2 二买</span></td><td>81</td><td class="up">+6.25%</td><td class="up">+8.21%</td><td class="up">+10.43%</td><td>-1.19%</td><td>-9.10%</td><td>97.5%</td><td>2.77天</td></tr>
+        <tr><td><span class="badge badge-green">B3 三买</span></td><td>13</td><td class="up">+11.99%</td><td class="up">+12.51%</td><td class="up">+16.51%</td><td>-1.04%</td><td>-18.66%</td><td>100%</td><td>2.15天</td></tr>
+        <tr><td><span class="badge badge-red">S1 一卖</span></td><td>2</td><td class="down">-10.08%</td><td class="down">-6.48%</td><td class="down">-6.12%</td><td>-16.67%</td><td>-16.67%</td><td>100%</td><td>1.00天</td></tr>
+        <tr><td><span class="badge badge-red">S2 二卖</span></td><td>41</td><td class="down">-4.06%</td><td class="down">-2.87%</td><td class="down">-3.49%</td><td>-8.31%</td><td>-18.10%</td><td>90.2%</td><td>2.22天</td></tr>
+        <tr><td><span class="badge badge-red">S3 三卖</span></td><td>1</td><td class="down">-13.55%</td><td class="down">-14.86%</td><td class="down">-5.23%</td><td>-16.39%</td><td>-16.39%</td><td>100%</td><td>1.00天</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);">S类收益为负=卖对（信号后下跌）；hit3对S类=10日内曾跌超3%的避险比例。B3 各项全面领先但 MAE最差-18.66% 提示三买失败时跌幅不小。</p>
+</div>
+
+<h2>③ 置信度分桶（win10）</h2>
+<div class="card">
+    <table>
+        <tr><th>类型</th><th>conf桶</th><th>n</th><th>win10%</th><th>avgRet10</th><th>win20%</th></tr>
+        <tr><td>B2</td><td>&lt;60</td><td>70</td><td>91.4</td><td class="up">+7.98%</td><td>80.0</td></tr>
+        <tr><td>B2</td><td>60-69</td><td>10</td><td>90.0</td><td class="up">+10.70%</td><td>80.0</td></tr>
+        <tr><td>B2</td><td>≥80</td><td>1</td><td class="down">0.0</td><td class="down">-1.19%</td><td class="down">0.0</td></tr>
+        <tr><td>B3</td><td>&lt;60</td><td>6</td><td>100.0</td><td class="up">+12.15%</td><td>83.3</td></tr>
+        <tr><td>B3</td><td>60-69</td><td>6</td><td>83.3</td><td class="up">+9.14%</td><td>66.7</td></tr>
+        <tr><td>B3</td><td>70-79</td><td>1</td><td>100.0</td><td class="up">+34.86%</td><td>100.0</td></tr>
+        <tr><td>S2</td><td>&lt;60</td><td>41</td><td>68.3</td><td class="down">-2.87%</td><td>61.0</td></tr>
+    </table>
+    <div class="green-note">与 8/31 btc池 45样本重跑结论交叉验证：<b>B2 60-69 弱桶规律消失</b>再次确认（本轮90.0% ≈ &lt;60桶91.4%），不支持按 conf 过滤 B2 60-69；B3 各桶全部高胜率，方向一致。</div>
+</div>
+
+<h2>④ 年度稳定性</h2>
+<div class="card">
+    <table>
+        <tr><th>类型</th><th>年份</th><th>n</th><th>win10%</th><th>avgRet</th></tr>
+        <tr><td>B2</td><td>2025</td><td>41</td><td>92.7</td><td class="up">+7.74%</td></tr>
+        <tr><td>B2</td><td>2026</td><td>40</td><td>87.5</td><td class="up">+8.68%</td></tr>
+        <tr><td>S2</td><td>2025</td><td>13</td><td>92.3</td><td class="down">-5.15%</td></tr>
+        <tr><td>S2</td><td>2026</td><td>26</td><td class="down">53.8</td><td class="down">-1.29%</td></tr>
+    </table>
+    <p>B2 两年稳定（92.7%/87.5%）；<span class="highlight">S2 在2026年明显弱化（53.8% vs 92.3%）</span>——2026上半年市场整体偏强、首板股回调浅，卖出信号"卖对"比例下降，与选样窗口内强势股动量有关。</p>
+</div>
+
+<h2>⑤ 个股信号画像（亮点与教训）</h2>
+<div class="card">
+    <table>
+        <tr><th>股票</th><th>信号结构</th><th>表现</th></tr>
+        <tr><td>诺德股份 sh600110</td><td>6×B3（5.52→9.20）+ 8×B2，末段 S2@11.97</td><td class="up">三买接力贯穿主升浪，5.52→11.97 区间收益可观</td></tr>
+        <tr><td>智光电气 sz002169</td><td>9×B2 + 2×B3（8.27/11.01），S2@13.53</td><td class="up">B3双响后走出 8.27→13.53 主升；<b>唯一 B2 conf=81（14.29）之后一路回落</b>，20日-6.06%</td></tr>
+        <tr><td>西子洁能 sz002534</td><td>14×B2 + 2×B3，S2@16.55</td><td class="up">10.70→17.85 稳步爬升，B信号胜率全样本最高梯队</td></tr>
+        <tr><td>海天精工 sh601882</td><td>13×B2 + 13×S2 交替（17.6~25.2 箱体）</td><td class="up">箱体内 B/S 全部命中区间顶底，波段结构教科书样本</td></tr>
+        <tr><td>浔兴股份 sz002098</td><td>4×S2 + 1×S1@11.97（conf 80）</td><td class="down">持续阴跌结构，卖方信号主导，S1 后1日即跌16.7%</td></tr>
+        <tr><td>天保基建 sz000965</td><td>11×B2 + 9×S2（2.89~4.87 箱体）</td><td class="up">低箱体反复，B2 win10 表现中规中矩</td></tr>
+    </table>
+</div>
+
+<h2>⑥ 偏差与局限（必读）</h2>
+<div class="alert">
+    <b>选样偏差是最大风险</b>：首板涨停股是当日最强动量样本，2年回看窗口内这些股票多走出强势结构，B类信号胜率被<b>结构性抬高</b>，不能与随机抽样（btc池/随机5只）结论直接对比，更不能外推到全市场。次新+首板的002169 B2 conf=81失败样本提示：高conf不代表免检，B2≥80桶在btc池中样本也仅个位数。<b>10只个股内部信号高度自相关</b>（箱体股贡献大量重复信号），有效独立样本远小于138。S2 2026年弱化（53.8%）需在更大池子里复核后再下结论。
+</div>
+
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">回测结论</span><span>B3 信号质量最高（win10 92.3%均值、ret20 +16.5%、hit3 100%），B2 量大且稳（win10 90.1%），B2 60-69 弱桶规律在首板样本中再次不存在——conf 过滤策略维持 QDZ=40 全显示；S2 对首板股的避险价值2026年走弱，卖出侧读数仍不参与决策。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">引擎验证</span><span>138信号全部由当前源码编译 exe 产出，笔划分零违规 + 信号前向收益与 8/31 btc 池方向一致，引擎行为稳定性进一步确认。待办维持：B3/S3 证伪增加逐K跌破 stop 口径。</span></div>
+</div>
+
+<div class="footer">ChanlunX 抽检流水线 · 数据源：腾讯qfq/东财涨停池 · 生成于 2026-09-01</div>
+
+</body>
+</html>
