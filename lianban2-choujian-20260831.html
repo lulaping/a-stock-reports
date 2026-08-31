@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChanlunX 今日2连板样本抽检 — 引擎验证 2026-08-31</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:6px; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:6px; margin:12px 0; font-size:13px; }
+        .conclusion-box { background:var(--card); border:2px solid var(--accent); border-radius:10px;
+                          padding:16px 20px; margin:20px 0; }
+        .conclusion-row { padding:6px 0; border-bottom:1px dashed var(--border); font-size:14px; }
+        .conclusion-row:last-child { border-bottom:none; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:32px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        code { background:rgba(110,118,129,0.2); padding:1px 6px; border-radius:4px; font-size:12px; }
+    </style>
+</head>
+<body>
+    <h1>ChanlunX 今日2连板样本抽检 — 笔划分10/10 PASS，信号层暴露2项工具链缺陷并已修复</h1>
+    <div class="subtitle">报告日期：2026-08-31（周一）收盘后 ｜ 样本：今日2连板个股（除ST/北交所）10只 × 近2年日K（腾讯qfq，520根/只） ｜ 引擎：ChanlunX 当前源码全量重编译</div>
+
+    <div class="summary">
+        <table style="margin:0;">
+            <tr>
+                <td><span style="font-size:22px;color:var(--green);font-weight:700;">10/10</span><br><span style="color:var(--muted);font-size:12px;">笔划分回归 PASS</span></td>
+                <td><span style="font-size:22px;color:var(--blue);font-weight:700;">159</span><br><span style="color:var(--muted);font-size:12px;">买卖点信号（B2×73/B3×13/S2×65/S3×8）</span></td>
+                <td><span style="font-size:22px;color:var(--red);font-weight:700;">2</span><br><span style="color:var(--muted);font-size:12px;">工具链缺陷（均已修复）</span></td>
+                <td><span style="font-size:22px;color:var(--green);font-weight:700;">17/17</span><br><span style="color:var(--muted);font-size:12px;">黄金测试断言全过</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>一、样本池（今日涨停池88家 → 2连板10只）</h2>
+    <div class="card">
+        <table>
+            <tr><th>代码</th><th>名称</th><th>板块</th><th>verify_bi(2年日K)</th><th>笔数</th><th>信号分布</th></tr>
+            <tr><td>sz000011</td><td>深物业A</td><td>房地产开发</td><td class="up">PASS</td><td>32</td><td>S2×4</td></tr>
+            <tr><td>sz000560</td><td>我爱我家</td><td>房地产服务</td><td class="up">PASS</td><td>32</td><td>S2×14/S3×1</td></tr>
+            <tr><td>sz002679</td><td>福建金森</td><td>林业</td><td class="up">PASS</td><td>34</td><td>B2×15/S2×8/S3×1</td></tr>
+            <tr><td>sz003005</td><td>竞业达</td><td>IT服务</td><td class="up">PASS</td><td>43</td><td>S2×13/S3×4/B2×1</td></tr>
+            <tr><td>sh600227</td><td>赤天化</td><td>农化制品</td><td class="up">PASS</td><td>24</td><td>B2×8/B3×3/S2×4</td></tr>
+            <tr><td>sh600551</td><td>时代出版</td><td>出版</td><td class="up">PASS</td><td>22</td><td>S2×5/S3×2/B2×1</td></tr>
+            <tr><td>sh600691</td><td>潞化科技</td><td>农化制品</td><td class="up">PASS</td><td>34</td><td>B2×14/S2×4</td></tr>
+            <tr><td>sh600722</td><td>金牛化工</td><td>化学原料</td><td class="up">PASS</td><td>30</td><td>B2×10/B3×3/S2×3</td></tr>
+            <tr><td>sh601086</td><td>国芳集团</td><td>一般零售</td><td class="up">PASS</td><td>36</td><td>B2×12/B3×4/S2×8</td></tr>
+            <tr><td>sh603559</td><td>中通国脉</td><td>通信服务</td><td class="up">PASS</td><td>33</td><td>B2×13/B3×2/S2×9</td></tr>
+        </table>
+        <div style="color:var(--muted);font-size:12px;">数据：东财push2ex涨停池（date=20260831，lbc=2，排除ST）；K线：腾讯 ifzq qfqday 2024-08~2026-08-31，520根/只，5列+4列副本双份落盘。verify_bi 全部 alt=0 gap=0 ext=0。</div>
+    </div>
+
+    <h2>二、信号前向收益统计（159信号，正确口径）</h2>
+    <div class="card">
+        <table>
+            <tr><th>类型</th><th>n</th><th>ret5</th><th>ret10</th><th>ret20</th><th>MAE_P05</th><th>hit3%</th></tr>
+            <tr><td>B2</td><td>73</td><td class="up">+6.78%</td><td class="up">+10.63%</td><td class="up">+12.21%</td><td class="down">-6.06%</td><td>100%</td></tr>
+            <tr><td>B3</td><td>13</td><td class="up">+6.13%</td><td class="up">+3.11%</td><td class="up">+3.95%</td><td class="down">-17.09%</td><td>100%</td></tr>
+            <tr><td>S2</td><td>65</td><td class="down">-4.57%</td><td class="down">-5.04%</td><td class="down">-6.50%</td><td class="down">-17.87%</td><td>96.9%</td></tr>
+            <tr><td>S3</td><td>8</td><td class="down">-1.95%</td><td class="up">+0.70%</td><td class="up">+1.21%</td><td class="down">-16.74%</td><td>87.5%</td></tr>
+        </table>
+        <table>
+            <tr><th>分桶</th><th>n</th><th>win10%</th><th>avgRet10</th><th>avgRet20</th><th>解读</th></tr>
+            <tr><td>B2 &lt;60</td><td>68</td><td class="up">92.6</td><td class="up">+11.18%</td><td class="up">+12.82%</td><td>主力桶，表现稳健</td></tr>
+            <tr><td>B2 60-69</td><td>5</td><td class="down">60.0</td><td>+3.25%</td><td>+3.98%</td><td>小样本偏弱，与btc池重跑结论一致（见第四节）</td></tr>
+            <tr><td>B3 ≥80</td><td>2</td><td class="down">0.0</td><td class="down">-5.80%</td><td class="down">-13.38%</td><td>样本仅2，观察项（600722@14.88/601086@10.78，MFE均+14%以上但收盘口径输）</td></tr>
+            <tr><td>S2 &lt;60</td><td>63</td><td class="up">87.3</td><td class="down">-5.21%</td><td class="down">-6.88%</td><td>卖出读数正确率高</td></tr>
+            <tr><td>S3 ≥80</td><td>2</td><td class="up">100.0</td><td class="down">-12.64%</td><td class="down">-11.10%</td><td>竞业达16.10/13.98两卖，后续均大跌，卖对</td></tr>
+        </table>
+        <div class="green-note">连板股画像符合预期：长期阴跌型2连板（我爱我家15个卖信号/竞业达17个）卖信号密集且全部正确；B2 主力桶 win10 92.6% 与历史 btc 池 85.1% 同向。</div>
+    </div>
+
+    <h2>三、深挖复核：金牛化工 B3@20260323 的"假信号"疑云（结论：引擎正确，暴露证伪粒度问题）</h2>
+    <div class="card">
+        <p>初版统计中 <code>sh600722|20260428|B3|13.50</code> 后价格从14.88一路跌到7.43（-50%）却仍挂在输出里，疑似漏证伪。逐层追查：</p>
+        <table>
+            <tr><th>检查项</th><th>结果</th></tr>
+            <tr><td>段结构（diag_struct）</td><td>zs[1] zg=7.09/zd=6.35；离开段5.70→20.02，回抽段20.02→14.88，回抽终点14.88&gt;ZG且&gt;离开段起点5.70 → <span class="up">B3几何成立</span></td></tr>
+            <tr><td>证伪回收（Maidi.cpp L756）</td><td>参照=中枢ZD 6.35；此后最低7.43 未跌破6.35 → <span class="up">按规则不回收</span>，行为与定义一致</td></tr>
+            <tr><td>真问题</td><td><span class="down">B3 的 stop 字段（=回抽段终点价14.88）存了但证伪逻辑不使用</span>——跌破回抽段低点 -50% 信号仍挂。与 B1 的双口径逐K证伪不对齐</td></tr>
+        </table>
+        <div class="alert">待办建议：B3/S3 证伪增加"逐K跌破 stop（回抽段终点价）"口径（与 B1 逐K证伪对齐）。本次抽检不改引擎，仅记录。另：初版统计里的 434|B3|13.50 与 438|S2|14.25 属工具链错位产物（见下节），非引擎输出。</div>
+    </div>
+
+    <h2>四、工具链两大缺陷（本次抽检的真实收获）</h2>
+    <div class="card">
+        <p><span class="badge badge-red">缺陷1</span> <strong>build32 旧 exe 与源码不同步</strong>：dump_bi.exe 编译于 8/29 14:14，而 Bi.cpp/BiChuLi.cpp 8/31 10:02 已改；verify_bi.exe（8/31 1:02）同样早于引擎修改。旧产物跑出的结果不可信。<br>
+        <span class="up">修复：dump_bi / dump_signals / verify_bi / signal_stats 全部按当前源码重编译（22:16~22:20）。</span></p>
+        <p><span class="badge badge-red">缺陷2</span> <strong>dump_signals / dump_bi 5列CSV sscanf 静默错位</strong>：只按4列解析，腾讯qfqday（date,open,<b>close,high</b>,low）的前4字段被当成 date,open,<b>high,low</b> —— close当high、high当low。与 8/29 verify_bi 教训完全同款。本次抽检脚本初版直接喂5列CSV，产生了 434|B3|13.50 等错位信号。<br>
+        <span class="up">修复：dump_signals.cpp / dump_bi.cpp 增加5列分支（o=open, h=high, l=low），重编译后 5列直喂与4列副本输出完全一致（159信号交叉验证通过）。verify_bi 此前已修，无需动。</span></p>
+        <div class="alert"><strong>连锁影响（重要）</strong>：conf 校准常备工具 run_conf_stats.ps1 的 btc 45样本池也是5列CSV直喂 dump_signals —— <strong>历史1055样本分层表全部是错位口径产物，作废</strong>。已用修复后工具重跑（1146信号）：</div>
+        <table>
+            <tr><th>结论项</th><th>历史（错位口径）</th><th>重跑（正确口径 45样本/1146信号）</th><th>判定</th></tr>
+            <tr><td>B2 60-69 弱桶</td><td>win10 73%，显著弱于&lt;60桶，"唯一需过滤桶"</td><td>win10 84.4% ≈ &lt;60桶 85.1%（差0.7点，不满足≥5点判据）</td><td class="down">规律消失，不再支持过滤B2 60-69</td></tr>
+            <tr><td>B3 ≥80 金牌桶</td><td>win10 100%、+11%收益</td><td>win10 100%、ret20 +18.88%，n=7 居前</td><td class="up">确认有效</td></tr>
+            <tr><td>多数B2读数&lt;60属正常</td><td>88.2%</td><td>92.9%（590/635）</td><td class="up">维持，QDZ=40建议不变</td></tr>
+        </table>
+    </div>
+
+    <h2>五、黄金回归与笔划分漂移</h2>
+    <div class="card">
+        <p><span class="badge badge-green">PASS</span> run_golden.ps1：<strong>17/17 断言全过</strong>（含长城汽车共用K、国电南瑞双条件间隔、立讯精密起点极值性、星宇股份逐K证伪、蓝英装备吞笔回退等全部修复案例无复发）。</p>
+        <p>信号 diff +1468/-1467 基本为 conf 值漂移（基线硬编码70 → 打分制），位置级仅 <code>sxnny|587|20260129|S2|15.90</code> 一处新增（8/29 已确认为源码演进、几何正确）。</p>
+        <p>笔端点 diff +7/-5，其中 <strong>hsgy 8/27~10/9 一段三笔合并为一笔（54.50顶/47.90底/50.99顶 → 56.51顶）</strong>、syzg/wegf 端点价 ±0.01 微调，为 8/31 笔划分修复（PEND插针赦免）+ 样本数据刷新的叠加产物。17 断言未覆盖该区间，<span class="badge badge-orange">标注为待人工复核项</span>，暂不判定回归。</p>
+    </div>
+
+    <h2>六、风险提示</h2>
+    <div class="card">
+        <ul style="padding-left:20px;">
+            <li>2连板样本仅10只，B3≥80 桶（n=2）、B2 60-69 桶（n=5）样本过小，任何分层结论仅供观察，不构成过滤规则变更依据。</li>
+            <li>B2/B3 统计口径为次日开盘进场、10/20日后收盘胜率，连板股隔日大幅高开会显著摊薄实际收益（hit3=100% 但 MAE_P05 -6% 说明回撤普遍存在）。</li>
+            <li>本报告引擎结论基于"当前源码"，与通达信内运行的 ChanlunX.dll（函数5）版本可能不同步，见文末提醒。</li>
+            <li>历史 conf 分层表作废意味着 8/29 以来基于该表做出的过滤参数判断需要以新表为准重新审视（QDZ 参数建议暂不受影响）。</li>
+        </ul>
+    </div>
+
+    <div class="conclusion-box">
+        <div class="conclusion-row"><strong>抽检结论：</strong>今日10只2连板样本 × 2年日K，笔划分维度 10/10 PASS 零违规，信号层几何抽查（含金牛化工B3深挖）全部符合引擎定义，核心算法无回归。</div>
+        <div class="conclusion-row"><strong>工程结论：</strong>真正的收获是两个工具链缺陷——旧exe未重编、5列CSV静默错位（verify_bi 教训复发），均已修复并交叉验证；历史 conf 分层表确认作废，重跑后 B2 60-69 弱桶规律消失、B3≥80 金牌桶维持。</div>
+    </div>
+
+    <div class="footer">ChanlunX 抽检报告 · 生成于 2026-08-31 · 样本数据与脚本：ChanlunX/tests/lianban2_check.py · build32/lianban2/</div>
+</body>
+</html>
