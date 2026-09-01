@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日首板Top10 · 3年日K笔划分可视化+成功率回测 2026-09-01</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .chart { margin:18px 0; }
+        .chart img { width:100%; border-radius:8px; border:1px solid var(--border); }
+        .chart .cap { font-size:12px; color:var(--muted); margin-top:6px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<h1>📊 今日首板Top10 · 3年日K笔划分可视化 + 成功率回测（2026-09-01）</h1>
+<p class="subtitle">今日涨停池实时快照（65涨停/48首板）按封板时间取前10只，腾讯qfq 781根（2023-06~2026-09-01）：verify_bi 10/10 PASS（501笔零违规）+ 278信号前向收益回测；含逐只K线笔划分图</p>
+
+<div class="summary">
+    <strong>📊 核心数据（10只 × 3年日K）</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">278</div><div class="label">信号（B1×1/B2×168/B3×15/S×94）</div></div>
+        <div class="stat"><div class="num">87.1%</div><div class="label">B2 win10（n=168，ret20 +10.6%）</div></div>
+        <div class="stat"><div class="num">+15.5%</div><div class="label">B3 平均10日收益（n=15，hit3 100%）</div></div>
+        <div class="stat"><div class="num">-10.9%</div><div class="label">S2 10日内最大跌幅中位（n=87）</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">口径：B信号=次日开盘进场、S信号=信号日收盘出场；win10=10日后收盘胜率；hit3=5日内触及+3%；3年窗口覆盖2023-09与2024-09两轮牛熊转折</div>
+</div>
+
+<h2>① 样本与流水线</h2>
+<div class="card">
+    <p>样本（封板时间序）：英力特000635、精艺股份002295、吉华集团603980、爱丽家居603221、凯撒文化002425、京粮控股000505、百洋股份002696、粤传媒002181、深粮控股000019、恒宝股份002104。</p>
+    <p>流水线：<span class="badge badge-blue">verify_bi</span> 10/10 PASS（alt=0 gap=0 ext=0，501笔）→ <span class="badge badge-blue">matplotlib 笔划分可视化</span>（全局+最近90根放大）→ <span class="badge badge-blue">dump_signals→signal_stats</span> 278信号前向回测。</p>
+</div>
+
+<h2>② 回测总体（按信号类型）</h2>
+<div class="card">
+    <table>
+        <tr><th>类型</th><th>n</th><th>5日收益</th><th>10日收益</th><th>20日收益</th><th>MAE中位</th><th>MAE最差</th><th>hit3%</th></tr>
+        <tr><td><span class="badge badge-green">B1 一买</span></td><td>1</td><td class="up">+2.46%</td><td class="up">+12.93%</td><td class="up">+20.94%</td><td>-0.82%</td><td>-0.82%</td><td>100%</td></tr>
+        <tr><td><span class="badge badge-green">B2 二买</span></td><td>168</td><td class="up">+6.32%</td><td class="up">+9.24%</td><td class="up">+10.60%</td><td>-1.12%</td><td>-9.54%</td><td>98.2%</td></tr>
+        <tr><td><span class="badge badge-green">B3 三买</span></td><td>15</td><td class="up">+9.71%</td><td class="up">+15.47%</td><td class="up">+12.19%</td><td>-0.89%</td><td>-9.27%</td><td>100%</td></tr>
+        <tr><td><span class="badge badge-red">S1 一卖</span></td><td>1</td><td class="down">-3.30%</td><td class="down">-4.40%</td><td class="down">-13.94%</td><td>-9.17%</td><td>-9.17%</td><td>100%</td></tr>
+        <tr><td><span class="badge badge-red">S2 二卖</span></td><td>87</td><td class="down">-6.02%</td><td class="down">-6.53%</td><td class="down">-7.29%</td><td>-10.91%</td><td>-32.77%</td><td>97.7%</td></tr>
+        <tr><td><span class="badge badge-red">S3 三卖</span></td><td>6</td><td class="down">-2.44%</td><td class="down">-6.71%</td><td class="down">-5.06%</td><td>-15.77%</td><td>-19.71%</td><td>100%</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);">3年窗口含完整下跌段，S类样本（94个）远多于2年窗口（44个），MAE_P50 -10.91% 表示S2后10日中位跌幅逾一成，卖出侧读数质量在弱市结构中更突出。B3 MAE最差仅-9.27%（2年窗口曾见-18.66%），本轮三买无深度失败案例。</p>
+</div>
+
+<h2>③ 置信度分桶（win10）</h2>
+<div class="card">
+    <table>
+        <tr><th>类型</th><th>conf桶</th><th>n</th><th>win10%</th><th>avgRet10</th><th>win20%</th></tr>
+        <tr><td>B2</td><td>&lt;60</td><td>155</td><td>87.1</td><td class="up">+9.05%</td><td>78.7</td></tr>
+        <tr><td>B2</td><td>60-69</td><td>9</td><td>88.9</td><td class="up">+9.07%</td><td>77.8</td></tr>
+        <tr><td>B2</td><td>70-79</td><td>2</td><td>100.0</td><td class="up">+16.85%</td><td>50.0</td></tr>
+        <tr><td>B2</td><td>≥80</td><td>2</td><td>50.0</td><td class="up">+16.36%</td><td>50.0</td></tr>
+        <tr><td>B3</td><td>&lt;60</td><td>6</td><td>100.0</td><td class="up">+25.40%</td><td>100.0</td></tr>
+        <tr><td>B3</td><td>60-69</td><td>8</td><td>75.0</td><td class="up">+9.18%</td><td>62.5</td></tr>
+        <tr><td>S2</td><td>&lt;60</td><td>82</td><td>86.6</td><td class="down">-7.00%</td><td>80.5</td></tr>
+        <tr><td>S3</td><td>&lt;60</td><td>3</td><td>100.0</td><td class="down">-12.60%</td><td>66.7</td></tr>
+    </table>
+    <div class="green-note"><b>B2 60-69 弱桶规律第三次确认不存在</b>（88.9% ≈ &lt;60桶87.1%，三次独立样本池方向一致），conf 过滤策略维持 QDZ=40 全显示；B3&lt;60 桶 ret10 +25.4% 最强但 n=6，B3 60-69 反而 75%，conf 高低与 B3 胜率尚无稳定单调关系。</div>
+</div>
+
+<h2>④ 年度稳定性（3年）</h2>
+<div class="card">
+    <table>
+        <tr><th>类型</th><th>年份</th><th>n</th><th>win10%</th><th>avgRet</th></tr>
+        <tr><td>B2</td><td>2024</td><td>51</td><td>84.3</td><td class="up">+9.39%</td></tr>
+        <tr><td>B2</td><td>2025</td><td>69</td><td>89.9</td><td class="up">+7.42%</td></tr>
+        <tr><td>B2</td><td>2026</td><td>48</td><td>85.4</td><td class="up">+11.67%</td></tr>
+        <tr><td>S2</td><td>2024</td><td>23</td><td>87.0</td><td class="down">-7.72%</td></tr>
+        <tr><td>S2</td><td>2025</td><td>30</td><td>86.7</td><td class="down">-6.38%</td></tr>
+        <tr><td>S2</td><td>2026</td><td>33</td><td>81.8</td><td class="down">-5.99%</td></tr>
+    </table>
+    <p>B2 三年 win10 全部 84%~90%，跨牛熊稳定；S2 三年 82%~87% 同样稳定。<span class="highlight">注意：2年池（早盘名单）S2 2026年 win10 曾低至53.8%，3年池（本名单）为81.8%——两池名单不同，差异主要来自样本构成而非时间效应</span>，再次提示小池子单年数字波动大，需大池复核。</p>
+</div>
+
+<h2>⑤ 笔划分可视化（10只 · 3年日K）</h2>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sz000635.png" alt="英力特">
+    <div class="cap"><b>英力特(000635)</b> B2×20 + S2×19 + S3×1：典型宽幅震荡结构，买卖信号均衡交替；2026-08-07 三卖@6.60 后贴近期末，放大图可见下跌段刚展开。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sz002295.png" alt="精艺股份">
+    <div class="cap"><b>精艺股份(002295)</b> B2×18 + B3×3 + S2×8：3年 +61%（3.76~17.44 宽幅区间），2024 年深跌见底后 2025 年筑底回升，B3 群出现在右侧回升段。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sh603980.png" alt="吉华集团">
+    <div class="cap"><b>吉华集团(603980)</b> B2×18 + B3×4 + S2×5：3年 +98%（低点 2.51 翻倍至 7.92），深跌筑底后的回升结构，每个下跌中枢后的回抽均给出可操作二买/三买。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sh603221.png" alt="爱丽家居">
+    <div class="cap"><b>爱丽家居(603221)</b> B2×12 + B3×3，<b>全程零卖出信号</b>：3年 +308%（7.49→30.55）本批最强，主升段 B3 密集，零S信号与单边强势结构完全自洽。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sz002425.png" alt="凯撒文化">
+    <div class="cap"><b>凯撒文化(002425)</b> B2×10 + S2×17 + S3×2（2024-03/05 连续三卖）：2024 年初下跌结构 S 信号密集命中，随后长期底部 B2 开始接力。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sz000505.png" alt="京粮控股">
+    <div class="cap"><b>京粮控股(000505)</b> <b>本批唯一一买</b> B1@4.73（2024-08-26，conf56）+ B2×15：一买精准落在 2024-09 行情启动前夜，后 20 日 +20.9%。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sz002696.png" alt="百洋股份">
+    <div class="cap"><b>百洋股份(002696)</b> B2×21 + S2×23 + S3@5.78（2026-07-03，conf71）：底部箱体反复最充分的样本，S3 出现后 10 日 -12.6%（S3&lt;60桶 avgRet10 口径）。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sz002181.png" alt="粤传媒">
+    <div class="cap"><b>粤传媒(002181)</b> B2×14 + B3×3 + S2×2：2025-2026 重心缓慢抬升，B 信号主导。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sz000019.png" alt="深粮控股">
+    <div class="cap"><b>深粮控股(000019)</b> B2×23（全批最多）+ S1@8.46（2026-04-13，conf78）+ S2×2：一卖命中阶段顶，其后 20 日 -13.9%；随后底部 B2 密集出现。</div>
+</div>
+
+<div class="chart card">
+    <img src="fb10-3y-20260901/sz002104.png" alt="恒宝股份">
+    <div class="cap"><b>恒宝股份(002104)</b> B2×17 + S2×6 + <b>2×S3</b>（2026-08-07 与 2026-08-27 连续三卖，conf均61）：近月顶部结构递进确认，是 S3 证伪粒度问题（stop 存而不用待办）的天然观察样本。</div>
+</div>
+
+<h2>⑥ 偏差与局限（必读）</h2>
+<div class="alert">
+    <b>选样偏差</b>：首板涨停股为当日最强动量样本，B类信号胜率被结构性抬高，不可外推全市场；10只个股信号自相关，有效独立样本远小于278。<b>名单差异</b>：本池为盘后实时快照（48首板取前10），与早盘池（70首板）名单完全不同，两轮回测数字不可直接对比。<b>极端值</b>：S2 MAE最差-32.77%来自单一深跌个股；B1/S1 各仅1个样本，任何结论都不成立。<b>胜率口径</b>：win10 为10日后收盘价对比，未计入滑点与停牌；hit3 为5日内曾触及+3%，非确定性收益。
+</div>
+
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">回测结论</span><span>3年跨牛熊窗口下 B2 win10 三年稳定在 84%~90%（ret20 +10.6%），B3 ret10 +15.5% 居首；B2 60-69 弱桶规律在第三个独立样本池中再次不存在，QDZ=40 全显示策略维持；S2/S3 在含下跌段的结构中避险价值显著（MAE中位 -10.9%/-15.8%）。</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">引擎验证</span><span>3年窗口 501笔零违规 + 278信号跨 2023-09/2024-09 两次牛熊转折行为一致，笔划分与买卖点引擎稳定性进一步确认；恒宝股份连续 S3 为"B3/S3 证伪增加逐K跌破 stop"待办提供了下一批观察样本。</span></div>
+</div>
+
+<div class="footer">ChanlunX 抽检流水线 · 数据源：腾讯qfq/东财涨停池 · 可视化 matplotlib · 生成于 2026-09-01</div>
+
+</body>
+</html>
