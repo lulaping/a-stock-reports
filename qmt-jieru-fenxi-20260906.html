@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 交易员接入 QMT 实盘可行性分析 — 技术评估 2026-09-06</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* ---------- 主题变量：深色（默认） ---------- */
+        :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e;
+                --red:#f85149; --orange:#d2991d; --green:#3fb950; --blue:#58a6ff; --accent:#e94560; }
+        /* ---------- 主题变量：浅色（body.light 时启用） ---------- */
+        body.light { --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --text:#1a1a2e; --muted:#656d76;
+                     --red:#cf222e; --orange:#9a6700; --green:#1a7f37; --blue:#0969da; --accent:#b35900; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+               background:var(--bg); color:var(--text); max-width:960px; margin:0 auto;
+               padding:24px 20px; line-height:1.7; font-size:14px; }
+        h1 { font-size:21px; color:var(--accent); border-bottom:2px solid var(--accent);
+             padding-bottom:10px; margin-bottom:6px; }
+        .subtitle { color:var(--muted); font-size:13px; margin-bottom:20px; }
+        h2 { font-size:16px; margin:28px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }
+        .summary { background:linear-gradient(135deg,#1a1a2e,#0f3460); border-radius:12px;
+                   padding:20px 24px; margin:16px 0; border:1px solid var(--border); }
+        body.light .summary { background:var(--card); }
+        .card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+                padding:16px 20px; margin:10px 0; }
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:rgba(48,54,61,0.3); padding:8px 10px; text-align:left; color:var(--muted);
+             font-size:11px; font-weight:500; border-bottom:1px solid var(--border); }
+        td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+        .up { color:var(--green); } .down { color:var(--red); }
+        .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+        .badge-red { background:rgba(248,81,73,0.2); color:var(--red); }
+        .badge-orange { background:rgba(210,153,29,0.2); color:var(--orange); }
+        .badge-green { background:rgba(63,185,80,0.2); color:var(--green); }
+        .badge-blue { background:rgba(88,166,255,0.2); color:var(--blue); }
+        .alert { background:rgba(248,81,73,0.08); border-left:3px solid var(--red);
+                 padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .green-note { background:rgba(63,185,80,0.08); border-left:3px solid var(--green);
+                      padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px; }
+        .stat { text-align:center; }
+        .stat .num { font-size:24px; font-weight:700; color:var(--accent); }
+        .stat .label { font-size:11px; color:var(--muted); }
+        .conclusion-box { border:2px solid var(--green); border-radius:10px; padding:20px 24px; margin:16px 0; }
+        .conclusion-row { display:flex; align-items:baseline; gap:8px; padding:10px 0;
+                          border-bottom:1px solid var(--border); }
+        .conclusion-row:last-child { border-bottom:none; }
+        .conclusion-label { font-weight:600; font-size:13px; white-space:nowrap; min-width:118px; color:var(--muted); }
+        .flag-list { list-style:none; padding:0; }
+        .flag-list li { padding:8px 12px; margin-bottom:6px; border-left:4px solid var(--gray,var(--muted));
+                        background:var(--card); font-size:14px; border-radius:0 4px 4px 0; }
+        .flag-list li.pass { border-left-color:var(--green); }
+        .flag-list li.warn { border-left-color:var(--orange); }
+        .flag-list li.fail { border-left-color:var(--red); }
+        .highlight { background:rgba(210,153,29,0.25); padding:1px 4px; border-radius:3px; }
+        .footer { text-align:center; color:var(--muted); font-size:12px; margin-top:40px;
+                  padding-top:16px; border-top:1px solid var(--border); }
+        code { background:rgba(110,118,129,0.2); padding:1px 5px; border-radius:4px; font-size:12px; color:var(--blue); }
+        pre { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px 16px;
+              overflow-x:auto; font-size:12px; line-height:1.6; margin:12px 0; color:var(--text); }
+        @media (max-width:640px) { .grid-4 { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- ============ ① 标题区 ============ -->
+<h1>🤖 AI 交易员接入 QMT 实盘可行性分析</h1>
+<p class="subtitle">tick-stock-panel 模拟盘 → 国金证券 miniQMT 实盘的改造路径 · 结论：<span class="up">可行且架构天然适配</span>，主要工程量在「真实回报处理 + 资金持仓对账」，策略/风控/管理层几乎全复用</p>
+
+<!-- ============ ② 核心数据卡片 ============ -->
+<div class="summary">
+    <strong>📌 核心结论速览</strong>
+    <div class="grid-4">
+        <div class="stat"><div class="num">高</div><div class="label">可行性评级</div></div>
+        <div class="stat"><div class="num">10万</div><div class="label">miniQMT 门槛(20日日均资产)</div></div>
+        <div class="stat"><div class="num">~80%</div><div class="label">现有代码复用度(估)</div></div>
+        <div class="stat"><div class="num">1个</div><div class="label">必须重写的核心层(撮合)</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);">数据时点：2026-09-06 · 门槛/费率信息来自公开渠道，政策随时可能调整，以国金证券官方为准</div>
+</div>
+
+<!-- ============ ③ 现状盘点 ============ -->
+<h2>一、现状盘点：模拟盘离实盘有多远</h2>
+<div class="card">
+<p style="font-size:13px;margin-bottom:8px;">tick-stock-panel 的 AI 交易员模块（<code>app/custom/aitrader</code>）已具备完整的「策略 → 风控 → 撮合 → 审计 → 监控」闭环，其中<span class="highlight">只有撮合层是模拟的</span>，其余模块在实盘中可直接复用或小幅适配：</p>
+    <table>
+        <tr><th>模块</th><th>现状</th><th>实盘价值</th></tr>
+        <tr><td>策略评估引擎</td><td>6 种策略类型 + 动态交易员注册表，20s tick 轮询选股出信号</td><td><span class="badge badge-green">直接复用</span></td></tr>
+        <tr><td>风控链</td><td>时段门控/T+1/涨跌停/流动性/回撤红线滞回/紧急停机/交易员级开关</td><td><span class="badge badge-green">复用 + 实盘护栏强化</span></td></tr>
+        <tr><td>账户管理</td><td>动态增删/停用/审计日志/风控事件流/净值序列</td><td><span class="badge badge-green">直接复用</span></td></tr>
+        <tr><td>监控 UI</td><td>订单流水/成交流水(120天)/归因分析/净值对比/管理页</td><td><span class="badge badge-green">直接复用</span></td></tr>
+        <tr><td>行情管道</td><td>enriched 增量行情(腾讯/雪球源)</td><td><span class="badge badge-blue">复用为主，xtdata 可作对照源</span></td></tr>
+        <tr><td><strong>撮合层</strong></td><td>_apply_fill：按现价即时 100% 成交，无滑点/排队/部分成交</td><td><span class="badge badge-red">必须重写为真实回报链路</span></td></tr>
+    </table>
+</div>
+
+<!-- ============ ④ QMT 关键事实 ============ -->
+<h2>二、QMT / miniQMT 关键事实（2026）</h2>
+<div class="card">
+    <table>
+        <tr><th>维度</th><th>标准 QMT（大 QMT）</th><th>MiniQMT（极简模式）★ 目标形态</th></tr>
+        <tr><td>策略运行环境</td><td>QMT 客户端内置 Python（3.6，仅白名单库）</td><td><strong>本机任意 Python</strong>（3.6~3.14，建议 3.11），<code>pip install xtquant</code></td></tr>
+        <tr><td>与本项目契合度</td><td>低（策略须搬进 QMT 内运行）</td><td><span class="badge badge-green">高</span>：xtquant 是本地 Python 库，FastAPI 进程可直接调用</td></tr>
+        <tr><td>依赖条件</td><td>—</td><td>miniQMT 客户端在本机运行且登录（<strong>交易需登录</strong>，行情不用）</td></tr>
+        <tr><td>交易 API</td><td>passorder()</td><td>order_stock / order_stock_async、cancel_order、query_asset/positions/orders/trades、on_stock_trade 等回报回调</td></tr>
+        <tr><td>回测</td><td>内置回测引擎</td><td>无（xtquant 仅行情+交易）——现有模拟盘恰好补位</td></tr>
+        <tr><td>品种</td><td colspan="2">A股(含北交所)/ETF/可转债/两融/逆回购/期货期权等</td></tr>
+    </table>
+    <p style="font-size:13px;">国金开通条件（多渠道信息汇总，<strong>口径存在分歧处已标注</strong>）：</p>
+    <table>
+        <tr><th>条件</th><th>要求</th><th>备注</th></tr>
+        <tr><td>资金门槛</td><td>miniQMT：近 20 个交易日日均资产 ≥ <strong>10 万</strong>；全功能 QMT：50 万（另有渠道称 30 万，<span class="highlight">口径分歧</span>）</td><td>股票+基金+现金均计入，不含两融负债；头部券商多为 50 万，国金属亲民档</td></tr>
+        <tr><td>风险测评</td><td>C4 积极型及以上（个别渠道称 C3 可办）</td><td>佣金宝 APP 可重新测评</td></tr>
+        <tr><td>交易经验</td><td>部分渠道称需 6 个月以上 A 股交易经验</td><td>不同渠道表述不一，以申请时券商审核为准</td></tr>
+        <tr><td>办理渠道</td><td><span class="highlight">必须通过客户经理专属渠道</span>，APP 自助申请可能按高门槛审核</td><td>全程线上，审核 1~3 个工作日，免软件使用费（佣金费率需单独谈）</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑤ 接入架构 ============ -->
+<h2>三、接入架构：BrokerAdapter 双实现</h2>
+<div class="card">
+<p style="font-size:13px;margin-bottom:8px;">核心思路：把「下单执行」抽象为 BrokerAdapter 接口，模拟盘与实盘成为两个可切换实现，<span class="highlight">上层策略/风控/账户/UI 全部不动</span>：</p>
+<pre>tick-stock-panel (FastAPI · Windows 本机 · 与 miniQMT 同机 ✅)
+ ├─ 策略评估层 (strategies.py 6 策略类型)     ── 不变
+ ├─ 风控层 (validate_order / 回撤红线 / 停机)  ── 不变 + 实盘护栏
+ ├─ ★ 执行层 BrokerAdapter (新增抽象)
+ │    ├─ SimBroker   = 现有 _apply_fill 模拟撮合 (保留 → 模拟盘继续跑)
+ │    └─ QmtBroker   = xtquant 桥 (order_stock → 回报状态机 → 对账)
+ │         └─ miniQMT 客户端 (本机登录) → 国金柜台
+ └─ 前端 (订单/成交/净值/归因/管理页)          ── 不变 + 实盘模式开关</pre>
+    <table>
+        <tr><th>模拟 vs 实盘的关键差异</th><th>现状（模拟）</th><th>实盘（QMT）改造点</th></tr>
+        <tr><td>成交模型</td><td>按现价即时全额成交</td><td>委托 → 部分成交/全部成交/废单/撤单，需实现<strong>回报状态机</strong>（on_stock_order / on_stock_trade 回调驱动）</td></tr>
+        <tr><td>资金/持仓</td><td>引擎内部记账</td><td>定期与券商对账（query_stock_asset / positions），防错单漂移；T+1 可用数量以券商 can_use_volume 为准</td></tr>
+        <tr><td>多交易员</td><td>每交易员独立 10/30 万虚拟账户</td><td>实盘只有<strong>一个</strong>资金账户：多交易员需「虚拟份额记账 + 合并下单」，或先只映射 1 个交易员实盘</td></tr>
+        <tr><td>价格</td><td>无滑点</td><td>限价/五档市价，需滑点与废单处理（涨跌停无法成交等）</td></tr>
+        <tr><td>故障语义</td><td>无</td><td>xtquant 断线（on_disconnected）→ 自动熔断 + 人工介入</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑥ 工作量评估 ============ -->
+<h2>四、改造工作量评估</h2>
+<div class="card">
+    <table>
+        <tr><th>工作项</th><th>规模</th><th>说明</th></tr>
+        <tr><td>BrokerAdapter 抽象 + SimBroker 重构</td><td><span class="badge badge-orange">中</span></td><td>现有 place_order/_execute_signal 调用点收敛到接口</td></tr>
+        <tr><td>QmtBroker（下单/回报状态机/对账/断线熔断）</td><td><span class="badge badge-red">大</span></td><td>核心工程；回报与订单流水的幂等关联（order_remark 载 trader_id+signal）</td></tr>
+        <tr><td>实盘风控护栏</td><td><span class="badge badge-orange">中</span></td><td>单日最大下单笔数/金额、下单冷却、连续废单熔断、启动需手动解锁</td></tr>
+        <tr><td>前端实盘模式 + 下单二次确认</td><td><span class="badge badge-green">小</span></td><td>模拟/实盘模式徽章已具备（BETA 标签处扩展）</td></tr>
+        <tr><td>程序化交易报备材料整理</td><td><span class="badge badge-green">小</span></td><td>低频策略报备内容简单（见下节）</td></tr>
+    </table>
+    <p style="font-size:13px;">总体量级估计：<strong>2~4 周</strong>（熟悉两边代码、单人投入；不含模拟盘策略验证期）。此为经验估计，实际以开发过程为准。</p>
+</div>
+
+<!-- ============ ⑦ 合规 ============ -->
+<h2>五、合规要求：程序化交易报备（个人也要做）</h2>
+<div class="card">
+    <table>
+        <tr><th>事项</th><th>要求</th></tr>
+        <tr><td>监管依据</td><td>《证券市场程序化交易管理规定（试行）》 + 沪深北交易所实施细则（2025 年下半年起陆续施行），原则「<strong>先报告、后交易</strong>」</td></tr>
+        <tr><td>报备内容</td><td>账户基本信息、资金规模、策略类型及主要内容、交易指令执行方式、<strong>最高申报速率/单日最高申报笔数</strong>、交易软件名称（迅投 QMT/自研）、开发主体等</td></tr>
+        <tr><td>对本项目的影响</td><td>当前 20s tick + 日级调仓属低频，报备内容简单；<span class="highlight">切勿升级为 tick 级高频</span>（高频另有额外报告义务与更高监控标准）；策略/软件重大变更需在下月初前变更报告</td></tr>
+        <tr><td>违规后果</td><td>未报备/虚报被监测到 → 限制量化通道甚至账户限制</td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑧ 风险清单 ============ -->
+<h2>六、风险清单</h2>
+<ul class="flag-list">
+    <li class="fail">🔴 <strong>误单风险</strong>：全自动实盘的第一单前必须有护栏（单日限额 + 冷却 + 熔断 + 二次确认），且先经 P1/P2 阶段验证 —— 现有模拟盘从未经历过「真实废单/部分成交」路径</li>
+    <li class="fail">🔴 <strong>链路单点</strong>：miniQMT 客户端必须本机在线登录，xtquant 断线（on_disconnected）须自动熔断停机；本机 Windows 重启/断网 = 交易中断</li>
+    <li class="warn">⚠️ <strong>回测乐观偏差</strong>：模拟撮合按现价全额成交，胜率/收益天然偏乐观；实盘滑点、排队、涨跌停不可成交会侵蚀收益 —— 模拟盘统计不可直接外推</li>
+    <li class="warn">⚠️ <strong>多交易员 vs 单账户</strong>：实盘只有一个资金账户，多交易员「虚拟份额」记账有归属歧义（同一票被两个交易员同时持有），建议首期只映射 1 个交易员</li>
+    <li class="warn">⚠️ <strong>外部依赖变动</strong>：xtquant 版本升级 API 可能变动；国金门槛/费率政策随时调整（2026 年已多次口径变化）</li>
+    <li class="pass">✅ 本机 Windows + 本地 Python 与 xtquant 天然同栈，无跨机部署问题</li>
+    <li class="pass">✅ 低频日级策略远离高频监管阈值，报备简单</li>
+</ul>
+
+<!-- ============ ⑨ 备选方案 ============ -->
+<h2>七、备选方案对比（诚实评价）</h2>
+<div class="card">
+    <table>
+        <tr><th>方案</th><th>优势</th><th>劣势</th><th>结论</th></tr>
+        <tr><td><strong>miniQMT + xtquant</strong>（国金）</td><td>本地 Python 全自由、门槛 10 万、与现有系统同机同栈、回调/查询 API 完整</td><td>需客户端在线、无回测、单机依赖</td><td><span class="badge badge-green">★ 首选</span></td></tr>
+        <tr><td>PTrade（恒生，国金同步提供）</td><td>云端托管、断电断网策略仍在跑、稳定</td><td>策略必须写在其内置环境，<strong>无法与 tick-stock-panel 直连</strong>，只能信号导出+人工搬运</td><td><span class="badge badge-orange">架构不匹配</span></td></tr>
+        <tr><td>掘金量化</td><td>回测+仿真+实盘平台化，文档好</td><td>需用其 SDK 与终端体系，现有面板/交易员体系整合弱，等于重写执行+监控</td><td><span class="badge badge-orange">备选</span></td></tr>
+        <tr><td>easytrader 等客户端自动化</td><td>无资金门槛、任意券商</td><td>模拟键鼠/内存读取性质灰色、易随客户端升级失效、无回报回调，<strong>不建议实盘主力</strong></td><td><span class="badge badge-red">不推荐</span></td></tr>
+        <tr><td>券商条件单/网格工具</td><td>零代码、稳定</td><td>无法实现自定义多策略 AI 交易员逻辑</td><td><span class="badge badge-orange">能力不足</span></td></tr>
+    </table>
+</div>
+
+<!-- ============ ⑩ 路线图 ============ -->
+<h2>八、建议路线图</h2>
+<div class="card">
+    <table>
+        <tr><th>阶段</th><th>内容</th><th>风险敞口</th></tr>
+        <tr><td><strong>P0 现在</strong></td><td>模拟盘持续跑策略 + 归因分析，积累各交易员胜率/回撤统计（交易员管理/归因页已就绪）</td><td>零</td></tr>
+        <tr><td><strong>P1 只读对接</strong></td><td>开通国金 miniQMT（客户经理渠道）+ 完成程序化报备；xtquant 只读接入：每日对账资金/持仓、行情对照 —— <strong>零下单</strong></td><td>零</td></tr>
+        <tr><td><strong>P2 半自动</strong></td><td>BrokerAdapter 上线：AI 信号 → 前端人工确认 → 一键 QMT 下单；回报/对账全链路验证</td><td>每笔人工把关</td></tr>
+        <tr><td><strong>P3 全自动灰度</strong></td><td>单交易员 + 小资金 + 护栏（单日限额/熔断）全自动，逐步放量；其余交易员保持模拟</td><td>小资金可控</td></tr>
+    </table>
+    <div class="green-note" style="margin-top:10px;"><strong>正向信号：</strong>模拟盘已具备实盘管理的一切「外围能力」（订单/成交/审计/风控事件/归因/管理 UI），接入 QMT 是替换执行内核而非重建系统 —— 这正是当前架构最大的先发优势。</div>
+</div>
+
+<!-- ============ ⑪ 结论 ============ -->
+<div class="conclusion-box">
+    <div class="conclusion-row"><span class="conclusion-label">可行性</span><span>高。xtquant 本地 Python 模式与 tick-stock-panel（Windows + FastAPI + Python）同机同栈，策略/风控/账户/管理层约 80% 复用，核心工程集中在 QmtBroker 回报状态机与对账</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">前置条件</span><span>国金 miniQMT：20 日日均资产 ≥10 万 + 风评 C4+ + 客户经理渠道办理；程序化交易报备（个人必须，低频策略报备简单）</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">最大风险</span><span>非技术，而是「模拟成交假设过优」直接实盘 —— 必须按 P1 只读 → P2 半自动 → P3 全自动灰度推进，护栏先于自动化</span></div>
+    <div class="conclusion-row"><span class="conclusion-label">不确定性声明</span><span>门槛/费率/风评等级等政策信息存在渠道分歧且随时可变，以国金官方最终审核为准；xtquant API 兼容性以实际版本实测为准</span></div>
+</div>
+
+<div class="alert"><strong>⚠️ 风险提示：</strong>本报告为技术可行性评估，不构成投资建议。量化实盘存在本金亏损风险，模拟盘历史表现不代表实盘收益；程序化交易须依法履行报备义务。</div>
+
+<!-- ============ ④ 页脚 ============ -->
+<div class="footer">
+    tick-stock-panel 技术评估 · 2026-09-06 · 信息来源：国金证券公开渠道/迅投 miniQMT 文档/证监会及交易所规则 · 数据仅供参考
+</div>
+
+</body>
+</html>
